@@ -1,7 +1,7 @@
 # Configuration de la veille. Tout ce qui est marqué A_COMPLETER doit être rempli avant le premier épisode.
 
 podcast:
-  title: "A_COMPLETER"               # nom du podcast
+  title: "Signal in the AI Fog"
   description: >-
     Every weekday morning, six minutes on enterprise AI in production:
     models and vendors, European sovereignty, LLMOps and MLOps platforms,
