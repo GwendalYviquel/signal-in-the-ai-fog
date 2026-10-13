@@ -1,4 +1,4 @@
-# Veille IA en production — podcast automatique
+# Podcast quotidien de veille IA (en anglais) — génération automatique
 
 Chaque matin de semaine, une GitHub Action :
 
@@ -43,10 +43,10 @@ git push -u origin main
 
 ### 3. Compléter `config.yaml`
 
-- `podcast.author`, `podcast.owner_name`, `podcast.owner_email` : Spotify envoie un code de vérification à cette adresse, et elle apparaît dans le flux public. Une adresse dédiée est conseillée.
+- `podcast.title`, `podcast.author`, `podcast.owner_name`, `podcast.owner_email` : Spotify envoie un code de vérification à cette adresse, et elle apparaît dans le flux public. Une adresse dédiée est conseillée.
 - `tts.voice_id` : dans ElevenLabs, *Voices*, puis « Copy voice ID » sur la voix choisie.
 - `themes` : les rubriques suivies, modifiables à tout moment.
-- Pochette : `docs/cover.jpg` est une pochette par défaut ; remplacez-la par un carré de 1400 à 3000 px si vous le souhaitez.
+- Pochette : `docs/cover.jpg` est une pochette par défaut, à regénérer avec le nom choisi (`python tools/make_cover.py "Nom du podcast"`) ; remplacez-la par un carré de 1400 à 3000 px si vous le souhaitez.
 
 ### 4. Activer GitHub Pages
 

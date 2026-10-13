@@ -1,6 +1,6 @@
 """Génère une pochette simple (3000 x 3000 px) dans docs/cover.jpg.
 
-Usage : pip install pillow && python tools/make_cover.py "Veille IA en production"
+Usage : pip install pillow && python tools/make_cover.py "AI in Production"
 Remplacez-la par votre propre visuel si vous en avez un.
 """
 import sys
@@ -8,7 +8,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-title = sys.argv[1] if len(sys.argv) > 1 else "Veille IA en production"
+title = sys.argv[1] if len(sys.argv) > 1 else "AI in Production"
 size = 3000
 img = Image.new("RGB", (size, size), (20, 24, 38))
 draw = ImageDraw.Draw(img)

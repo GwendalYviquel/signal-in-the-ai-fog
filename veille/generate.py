@@ -5,28 +5,25 @@ from pathlib import Path
 import anthropic
 
 ROOT = Path(__file__).resolve().parent.parent
-JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
-MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
-        "août", "septembre", "octobre", "novembre", "décembre"]
 
 
-def date_fr(d) -> str:
-    return f"{JOURS[d.weekday()]} {d.day} {MOIS[d.month - 1]} {d.year}"
+def date_en(d) -> str:
+    return f"{d:%A}, {d:%B} {d.day}, {d.year}"
 
 
 def build_user_message(cfg, now, previous_scripts):
-    themes = "\n".join(f"- {t['name']} : {t['focus']}" for t in cfg["themes"])
-    variante = ""
+    themes = "\n".join(f"- {t['name']}: {t['focus']}" for t in cfg["themes"])
+    variant = ""
     if now.weekday() == 0:
-        variante = "C'est lundi : la rubrique À surveiller couvre toute la semaine, et l'actualité depuis vendredi est éligible."
+        variant = "It is Monday: the What to watch segment covers the whole week, and news since Friday is eligible."
     elif now.weekday() == 4:
-        variante = "C'est vendredi : le sujet du jour est une tendance de fond de la semaine, avec plus de recul."
-    historique = "\n\n---\n\n".join(previous_scripts) if previous_scripts else "Aucun."
+        variant = "It is Friday: the story of the day is a deeper trend from the week, with more perspective."
+    history = "\n\n---\n\n".join(previous_scripts) if previous_scripts else "None."
     return (
-        f"Nous sommes le {date_fr(now)}. Prépare l'épisode du jour.\n"
-        f"{variante}\n\n"
-        f"Thèmes des rubriques, dans l'ordre :\n{themes}\n\n"
-        f"Épisodes précédents (pour la continuité des sujets à surveiller et éviter les répétitions) :\n{historique}"
+        f"Today is {date_en(now)}. Prepare today's episode.\n"
+        f"{variant}\n\n"
+        f"Segment themes, in order:\n{themes}\n\n"
+        f"Previous episodes (for continuity on stories to watch and to avoid repetition):\n{history}"
     )
 
 
