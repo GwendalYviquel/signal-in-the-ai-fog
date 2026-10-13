@@ -54,10 +54,12 @@ for color, n in (((120, 70, 200), 14), ((30, 170, 190), 12), ((220, 90, 170), 6)
             d.ellipse([x, y, x + 2.2 * r, y + r], fill=random.randint(60, 120))
     img = ImageChops.screen(img, glow_layer(blobs, 220, color, 0.55))
 
-# 3. Halo lumineux derrière "AI"
-cx, cy = S // 2, 1420
-img = ImageChops.screen(img, glow_layer(lambda d: d.ellipse([cx - 900, cy - 700, cx + 900, cy + 700], fill=200),
-                                        350, (40, 200, 210), 0.9))
+# 3. Zone assombrie derrière "AI" pour le contraste
+cx, cy = S // 2, 1230
+dark = Image.new("L", (S, S), 0)
+ImageDraw.Draw(dark).ellipse([cx - 1100, cy - 650, cx + 1100, cy + 650], fill=170)
+dark = dark.filter(ImageFilter.GaussianBlur(260))
+img = Image.composite(Image.new("RGB", (S, S), (6, 6, 22)), img, dark)
 
 # 4. Particules lumineuses
 part = Image.new("L", (S, S), 0)
@@ -80,21 +82,28 @@ def spaced(text, f, y, color, tracking):
 
 
 # 5. "SIGNAL IN THE"
-spaced("SIGNAL IN THE", font(FONT_BOLD, 165), 520, (230, 232, 245), 34)
+spaced("SIGNAL IN THE", font(FONT_BOLD, 175), 470, (230, 232, 245), 34)
 
-# 6. "AI" géant en dégradé turquoise -> rose, avec lueur
+# 6. "AI" géant : ombre portée, lueur extérieure, dégradé vif et liseré clair
 f_ai = font(FONT_BOLD, 1100)
 bbox = draw.textbbox((0, 0), "AI", font=f_ai)
 w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
-ax, ay = (S - w) / 2 - bbox[0], 830 - bbox[1]
+ax, ay = (S - w) / 2 - bbox[0], 800 - bbox[1]
 mask = Image.new("L", (S, S), 0)
 ImageDraw.Draw(mask).text((ax, ay), "AI", font=f_ai, fill=255)
-img = ImageChops.screen(img, Image.composite(Image.new("RGB", (S, S), (60, 230, 220)),
-                                             Image.new("RGB", (S, S), 0),
-                                             mask.filter(ImageFilter.GaussianBlur(90))))
+outline = Image.new("L", (S, S), 0)
+ImageDraw.Draw(outline).text((ax, ay), "AI", font=f_ai, fill=255, stroke_width=16, stroke_fill=255)
+
+shadow = outline.filter(ImageFilter.GaussianBlur(45))
+img = Image.composite(Image.new("RGB", (S, S), (0, 0, 8)), img, shadow)
+glow = ImageChops.subtract(outline.filter(ImageFilter.MaxFilter(41)), outline).filter(ImageFilter.GaussianBlur(55))
+img = ImageChops.screen(img, Image.composite(Image.new("RGB", (S, S), (150, 90, 255)),
+                                             Image.new("RGB", (S, S), 0), glow))
+img.paste(Image.new("RGB", (S, S), (245, 250, 255)), (0, 0), outline)   # liseré clair
+
 yy, xx = np.mgrid[0:S, 0:S]
 t = ((xx - (S - w) / 2) / w).clip(0, 1)[..., None]
-c1, c2, c3 = (np.array(c, float) for c in ((70, 240, 215), (110, 170, 255), (245, 110, 220)))
+c1, c2, c3 = (np.array(c, float) for c in ((40, 245, 210), (80, 170, 255), (255, 90, 210)))
 fill = np.where(t < 0.5, c1 + (c2 - c1) * (t / 0.5), c2 + (c3 - c2) * ((t - 0.5) / 0.5)).astype("uint8")
 img.paste(Image.fromarray(fill), (0, 0), mask)
 draw = ImageDraw.Draw(img)
