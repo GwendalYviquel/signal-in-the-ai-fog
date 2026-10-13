@@ -1,0 +1,4 @@
+anthropic>=0.40
+requests>=2.31
+PyYAML>=6.0
+mutagen>=1.47

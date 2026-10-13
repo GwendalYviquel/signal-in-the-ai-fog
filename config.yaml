@@ -1,0 +1,46 @@
+# Configuration de la veille. Tout ce qui est marqué A_COMPLETER doit être rempli avant le premier épisode.
+
+podcast:
+  title: "Veille IA en production"
+  description: >-
+    Chaque matin de semaine, six minutes sur l'actualité de l'IA en entreprise :
+    modèles et fournisseurs, souveraineté européenne, plateformes LLMOps et MLOps,
+    évaluation, réglementation et retail. Script rédigé et voix synthétisée par une IA.
+  author: "A_COMPLETER"              # nom affiché comme auteur du podcast
+  owner_name: "A_COMPLETER"
+  owner_email: "A_COMPLETER"         # Spotify y envoie un code de vérification
+  language: "fr"
+  category: "Technology"
+  explicit: false
+  cover_file: "cover.jpg"            # dans docs/, carré, 1400 à 3000 px
+  # Laisser vide pour utiliser https://<compte>.github.io/<depot>/
+  base_url: ""
+
+generation:
+  model: "claude-sonnet-5-5"
+  max_tokens: 8000
+  web_search_max_uses: 15
+  timezone: "Europe/Paris"
+  target_words: 950                  # environ 6 à 7 minutes à l'oral
+
+tts:
+  voice_id: "A_COMPLETER"            # identifiant de voix ElevenLabs
+  model_id: "eleven_multilingual_v2"
+  output_format: "mp3_44100_128"
+  max_chars_per_request: 4500
+  use_context: true                  # previous_text / next_text pour une diction continue
+
+# Thèmes suivis, dans l'ordre des rubriques de l'épisode.
+themes:
+  - name: "Modèles et fournisseurs"
+    focus: "Sorties de LLM, prix des tokens, disponibilité réelle en production, dépréciations"
+  - name: "Souveraineté et Europe"
+    focus: "Acteurs européens (Mistral et autres), cloud souverain, financements, partenariats"
+  - name: "Plateforme"
+    focus: "AI gateways, routage de modèles, maîtrise des coûts, LLMOps, MLOps (ZenML, MLflow, Vertex AI, Kubernetes), inférence"
+  - name: "Qualité"
+    focus: "RAG, évaluation de modèles, LLM-as-a-judge, benchmarks, labelling et annotation"
+  - name: "Réglementation"
+    focus: "AI Act, RGPD, échéances de conformité à venir"
+  - name: "Retail et agents"
+    focus: "IA chez les distributeurs, commerce agentique, cas d'usage magasins et e-commerce"

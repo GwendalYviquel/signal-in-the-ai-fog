@@ -1,0 +1,59 @@
+"""Génération du flux RSS du podcast (compatible Spotify et Apple Podcasts)."""
+import datetime as dt
+from email.utils import format_datetime
+from pathlib import Path
+from xml.sax.saxutils import escape
+
+DISCLAIMER = "Script rédigé et voix synthétisée par une intelligence artificielle."
+
+
+def _episode_description(ep: dict) -> str:
+    lines = [ep["summary"], "", "Sources :"]
+    lines += [f"- {s['title']} : {s['url']}" for s in ep.get("sources", [])]
+    lines += ["", DISCLAIMER]
+    return "\n".join(lines)
+
+
+def build_feed(cfg: dict, episodes: list[dict], base_url: str) -> str:
+    p = cfg["podcast"]
+    base_url = base_url.rstrip("/") + "/"
+    explicit = "true" if p.get("explicit") else "false"
+    items = []
+    for ep in sorted(episodes, key=lambda e: e["date"], reverse=True):
+        pub = dt.datetime.fromisoformat(ep["published_at"])
+        items.append(f"""    <item>
+      <title>{escape(ep['title'])}</title>
+      <description>{escape(_episode_description(ep))}</description>
+      <guid isPermaLink="false">{escape(ep['guid'])}</guid>
+      <pubDate>{format_datetime(pub)}</pubDate>
+      <enclosure url="{escape(ep['audio_url'])}" length="{ep['audio_bytes']}" type="audio/mpeg"/>
+      <itunes:duration>{int(ep['duration_seconds'])}</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>{explicit}</itunes:explicit>
+    </item>""")
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{escape(p['title'])}</title>
+    <link>{escape(base_url)}</link>
+    <atom:link href="{escape(base_url + 'feed.xml')}" rel="self" type="application/rss+xml"/>
+    <language>{escape(p['language'])}</language>
+    <description>{escape(p['description'])}</description>
+    <itunes:author>{escape(p['author'])}</itunes:author>
+    <itunes:owner>
+      <itunes:name>{escape(p['owner_name'])}</itunes:name>
+      <itunes:email>{escape(p['owner_email'])}</itunes:email>
+    </itunes:owner>
+    <itunes:image href="{escape(base_url + p['cover_file'])}"/>
+    <itunes:category text="{escape(p['category'])}"/>
+    <itunes:explicit>{explicit}</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+{chr(10).join(items)}
+  </channel>
+</rss>
+"""
+
+
+def write_feed(cfg: dict, episodes: list[dict], out_path: Path, base_url: str) -> None:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(build_feed(cfg, episodes, base_url), encoding="utf-8")

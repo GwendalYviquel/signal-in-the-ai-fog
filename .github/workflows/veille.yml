@@ -1,0 +1,89 @@
+name: Veille IA quotidienne
+
+on:
+  # Désactivé tant que la configuration n'est pas validée (voir README, étape 6).
+  # GitHub planifie en UTC : 5h15 UTC = 7h15 à Paris en été, 6h15 en hiver.
+  # schedule:
+  #   - cron: "15 5 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Script uniquement (aucun crédit ElevenLabs, aucune publication)"
+        type: boolean
+        default: true
+      force:
+        description: "Régénérer même si l'épisode du jour existe déjà"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # commit des scripts + création des releases audio
+  pages: write      # publication du flux RSS
+  id-token: write
+
+concurrency:
+  group: veille
+  cancel-in-progress: false
+
+jobs:
+  episode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      # Sur l'exécution planifiée, les inputs sont vides : publication réelle.
+      DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+      FORCE: ${{ inputs.force && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Générer l'épisode
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: python -m veille.main
+
+      - name: Conserver le script du jour
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: script-du-jour
+          path: build/*.md
+          if-no-files-found: ignore
+
+      - name: Enregistrer l'épisode dans le dépôt
+        if: env.DRY_RUN == 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet || {
+            git commit -m "Épisode du $(TZ=Europe/Paris date +%F)"
+            git push
+          }
+
+      - name: Préparer GitHub Pages
+        if: env.DRY_RUN == 'false'
+        uses: actions/configure-pages@v5
+
+      - name: Envoyer le flux RSS
+        if: env.DRY_RUN == 'false'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Publier le flux RSS
+        id: deploy
+        if: env.DRY_RUN == 'false'
+        uses: actions/deploy-pages@v4
