@@ -7,3 +7,7 @@ build/
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Private editorial context (never committed)
+private/
+.DS_Store

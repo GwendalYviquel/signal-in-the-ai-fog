@@ -8,12 +8,12 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 
 A GitHub Action runs four steps:
 
-1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and writes the script following the editorial line in `prompts/system.md`. The three previous scripts are passed in for continuity from one day to the next and to avoid repetition.
+1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and returns them as JSON, one field per part of the episode, following the editorial line in `prompts/system.md`. The three previous scripts are passed in for continuity from one day to the next and to avoid repetition. The code then validates the episode (structure, theme order, sources, no markdown, no first person, no forbidden terms, length), asks for one correction round if needed, and assembles the spoken script with a fixed opening, transitions and sign-off.
 2. **Speech synthesis**: the text is split into chunks and sent to ElevenLabs, with the neighbouring chunks as context to keep the delivery continuous.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
 4. **Distribution**: `data/episodes.json` is updated, and the `docs/feed.xml` feed is regenerated and deployed to GitHub Pages.
 
-Every episode follows the same format: opening with the headlines, story of the day, themed segments, number of the day, what to watch, question of the week. On Mondays it covers the news since Friday and the week ahead; on Fridays, the story of the day steps back to look at a trend from the week.
+Every episode follows the same format, as a single-voice monologue: opening with the headlines, story of the day, three or four themed segments, number of the day, what to watch, question for your team. Each story has two layers: the facts (what happened and its real status: announced, preview or available) and a short read (what it means for a platform team or a retailer), signposted so the listener hears where analysis begins. On Mondays it covers the news since Friday and the week ahead; on Fridays, the story of the day steps back to look at a trend from the week.
 
 ### Run modes
 
@@ -47,6 +47,7 @@ tools/make_cover.py                  cover art generation
 - `config.yaml` holds everything editorial or tunable: title, description, language, Claude model, target length, ElevenLabs voice and model, and the list of themes with their scope. Themes can be changed at any time; they are used in segment order.
 - `prompts/system.md` defines the tone, the audience, the source-checking rules and the expected output format (`<title>`, `<summary>`, `<script>`, `<sources>`).
 - The `ANTHROPIC_API_KEY` and `ELEVENLABS_API_KEY` keys are stored as GitHub Actions secrets. No secret is committed.
+- The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken; an episode containing one is rejected.
 
 ## Costs and safeguards
 
