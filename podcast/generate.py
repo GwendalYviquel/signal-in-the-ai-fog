@@ -1,4 +1,4 @@
-"""Rédaction du script de veille avec l'API Claude et la recherche web."""
+"""Episode script writing with the Claude API and web search."""
 import re
 from pathlib import Path
 
@@ -31,14 +31,14 @@ def _tag(text, name, required=True):
     m = re.search(rf"<{name}>(.*?)</{name}>", text, re.S)
     if not m:
         if required:
-            raise ValueError(f"Balise <{name}> absente de la réponse du modèle")
+            raise ValueError(f"Tag <{name}> missing from the model response")
         return ""
     return m.group(1).strip()
 
 
 def clean_for_tts(script: str) -> str:
-    script = re.sub(r"\[[^\]]*\]", "", script)          # [Intro], [Sujet 1]...
-    script = re.sub(r"[*_#>`]", "", script)              # résidus de markdown
+    script = re.sub(r"\[[^\]]*\]", "", script)          # [Intro], [Story 1]...
+    script = re.sub(r"[*_#>`]", "", script)              # leftover markdown
     script = re.sub(r"https?://\S+", "", script)
     script = re.sub(r"[ \t]+", " ", script)
     return re.sub(r"\n{3,}", "\n\n", script).strip()
@@ -68,7 +68,7 @@ def generate_episode(cfg, now, previous_scripts):
               "max_uses": gen["web_search_max_uses"]}]
 
     text_parts = []
-    for _ in range(6):  # la recherche web peut mettre le tour en pause (pause_turn)
+    for _ in range(6):  # web search can pause the turn (pause_turn)
         resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"],
                                       system=system, tools=tools, messages=messages)
         text_parts += [b.text for b in resp.content if b.type == "text"]

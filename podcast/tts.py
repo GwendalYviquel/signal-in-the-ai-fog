@@ -1,4 +1,4 @@
-"""Synthèse vocale avec l'API ElevenLabs (texte découpé en morceaux)."""
+"""Speech synthesis with the ElevenLabs API (text split into chunks)."""
 import os
 import time
 from pathlib import Path
@@ -13,7 +13,7 @@ def split_text(text: str, max_chars: int) -> list[str]:
     for para in [p.strip() for p in text.split("\n\n") if p.strip()]:
         if len(para) <= max_chars:
             pieces.append(para)
-        else:  # paragraphe trop long : découpe par phrases
+        else:  # paragraph too long: split by sentence
             pieces += [s for s in para.replace(". ", ".\n").splitlines() if s.strip()]
     chunks, current = [], ""
     for piece in pieces:
@@ -34,7 +34,7 @@ def _post(url, headers, params, body, retries=3):
         if r.status_code in (429, 500, 502, 503) and attempt < retries - 1:
             time.sleep(10 * (attempt + 1))
             continue
-        raise RuntimeError(f"ElevenLabs {r.status_code} : {r.text[:300]}")
+        raise RuntimeError(f"ElevenLabs {r.status_code}: {r.text[:300]}")
 
 
 def synthesize(text: str, tts_cfg: dict, out_path: Path) -> None:
@@ -42,7 +42,7 @@ def synthesize(text: str, tts_cfg: dict, out_path: Path) -> None:
     url = API.format(voice_id=tts_cfg["voice_id"])
     params = {"output_format": tts_cfg["output_format"]}
     chunks = split_text(text, tts_cfg["max_chars_per_request"])
-    print(f"Synthèse vocale : {len(text)} caractères en {len(chunks)} requête(s)")
+    print(f"Speech synthesis: {len(text)} characters in {len(chunks)} request(s)")
     with open(out_path, "wb") as f:
         for i, chunk in enumerate(chunks):
             body = {"text": chunk, "model_id": tts_cfg["model_id"]}

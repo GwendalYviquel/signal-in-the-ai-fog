@@ -1,11 +1,11 @@
-"""Hébergement du MP3 en tant que fichier de release GitHub (via la CLI gh)."""
+"""MP3 hosting as a GitHub release asset (via the gh CLI)."""
 import os
 import subprocess
 from pathlib import Path
 
 
 def repo() -> str:
-    return os.environ["GITHUB_REPOSITORY"]  # "compte/depot", fourni par GitHub Actions
+    return os.environ["GITHUB_REPOSITORY"]  # "owner/repo", set by GitHub Actions
 
 
 def pages_url() -> str:

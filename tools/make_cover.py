@@ -1,6 +1,6 @@
-"""Génère la pochette du podcast (3000 x 3000 px) dans docs/cover.jpg.
+"""Generate the podcast cover art (3000 x 3000 px) in docs/cover.jpg.
 
-Usage : pip install pillow numpy && python tools/make_cover.py
+Usage: pip install pillow numpy && python tools/make_cover.py
 """
 import math
 import random
@@ -26,7 +26,7 @@ def font(path, size):
 
 
 def gradient(c1, c2, c3):
-    """Dégradé diagonal à trois couleurs."""
+    """Three-colour diagonal gradient."""
     yy, xx = np.mgrid[0:S, 0:S]
     t = ((xx + yy) / (2 * S))[..., None]
     c1, c2, c3 = (np.array(c, float) for c in (c1, c2, c3))
@@ -42,10 +42,10 @@ def glow_layer(draw_fn, blur, color, strength=1.0):
     return Image.composite(Image.new("RGB", (S, S), color), Image.new("RGB", (S, S), 0), mask)
 
 
-# 1. Fond : dégradé nuit -> violet -> bleu canard
+# 1. Background: night -> purple -> teal gradient
 img = gradient((8, 10, 32), (52, 22, 96), (6, 70, 96))
 
-# 2. Brouillard coloré (nappes floutées, mélange "screen")
+# 2. Coloured fog (blurred patches, "screen" blend)
 for color, n in (((120, 70, 200), 14), ((30, 170, 190), 12), ((220, 90, 170), 6)):
     def blobs(d, n=n):
         for _ in range(n):
@@ -54,14 +54,14 @@ for color, n in (((120, 70, 200), 14), ((30, 170, 190), 12), ((220, 90, 170), 6)
             d.ellipse([x, y, x + 2.2 * r, y + r], fill=random.randint(60, 120))
     img = ImageChops.screen(img, glow_layer(blobs, 220, color, 0.55))
 
-# 3. Zone assombrie derrière "AI" pour le contraste
+# 3. Darkened area behind "AI" for contrast
 cx, cy = S // 2, 1230
 dark = Image.new("L", (S, S), 0)
 ImageDraw.Draw(dark).ellipse([cx - 1100, cy - 650, cx + 1100, cy + 650], fill=170)
 dark = dark.filter(ImageFilter.GaussianBlur(260))
 img = Image.composite(Image.new("RGB", (S, S), (6, 6, 22)), img, dark)
 
-# 4. Particules lumineuses
+# 4. Glowing particles
 part = Image.new("L", (S, S), 0)
 pd = ImageDraw.Draw(part)
 for _ in range(260):
@@ -84,7 +84,7 @@ def spaced(text, f, y, color, tracking):
 # 5. "SIGNAL IN THE"
 spaced("SIGNAL IN THE", font(FONT_BOLD, 175), 470, (230, 232, 245), 34)
 
-# 6. "AI" géant : ombre portée, lueur extérieure, dégradé vif et liseré clair
+# 6. Giant "AI": drop shadow, outer glow, vivid gradient and light outline
 f_ai = font(FONT_BOLD, 1100)
 bbox = draw.textbbox((0, 0), "AI", font=f_ai)
 w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -99,7 +99,7 @@ img = Image.composite(Image.new("RGB", (S, S), (0, 0, 8)), img, shadow)
 glow = ImageChops.subtract(outline.filter(ImageFilter.MaxFilter(41)), outline).filter(ImageFilter.GaussianBlur(55))
 img = ImageChops.screen(img, Image.composite(Image.new("RGB", (S, S), (150, 90, 255)),
                                              Image.new("RGB", (S, S), 0), glow))
-img.paste(Image.new("RGB", (S, S), (245, 250, 255)), (0, 0), outline)   # liseré clair
+img.paste(Image.new("RGB", (S, S), (245, 250, 255)), (0, 0), outline)   # light outline
 
 yy, xx = np.mgrid[0:S, 0:S]
 t = ((xx - (S - w) / 2) / w).clip(0, 1)[..., None]
@@ -111,7 +111,7 @@ draw = ImageDraw.Draw(img)
 # 7. "FOG"
 spaced("FOG", font(FONT_BOLD, 330), 1760, (240, 240, 250), 90)
 
-# 8. Onde de signal : bruit à gauche, impulsion nette au centre, calme à droite
+# 8. Signal wave: noise on the left, sharp pulse in the centre, calm on the right
 base, pts = 2400, []
 for x in range(250, S - 250, 8):
     u = (x - S / 2) / (S / 2)
@@ -122,9 +122,9 @@ img = ImageChops.screen(img, glow_layer(lambda d: d.line(pts, fill=255, width=30
 draw = ImageDraw.Draw(img)
 draw.line(pts, fill=(200, 255, 248), width=9)
 
-# 9. Accroche
+# 9. Tagline
 spaced("DAILY AI BRIEFING", font(FONT_BOLD, 92), 2760, (190, 200, 225), 26)
 
 out = Path(__file__).resolve().parent.parent / "docs" / "cover.jpg"
 img.save(out, quality=92)
-print(f"Pochette enregistrée : {out}")
+print(f"Cover saved: {out}")

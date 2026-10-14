@@ -1,8 +1,8 @@
-"""Orchestration : script (Claude) -> audio (ElevenLabs) -> release GitHub -> flux RSS.
+"""Pipeline: script (Claude) -> audio (ElevenLabs) -> GitHub release -> RSS feed.
 
-Variables d'environnement :
-  DRY_RUN=true  génère uniquement le script (aucun appel ElevenLabs, aucune publication)
-  FORCE=true    régénère même le week-end ou si l'épisode du jour existe déjà
+Environment variables:
+  DRY_RUN=true  only generate the script (no ElevenLabs call, nothing published)
+  FORCE=true    regenerate even on weekends or if today's episode already exists
 """
 import datetime as dt
 import json
@@ -32,11 +32,11 @@ def to_markdown(ep: dict, day: dt.date) -> str:
 
 
 def check_config(cfg: dict, dry_run: bool) -> None:
-    to_fill = [k for k, v in cfg["podcast"].items() if v == "A_COMPLETER"]
-    if not dry_run and cfg["tts"]["voice_id"] == "A_COMPLETER":
+    to_fill = [k for k, v in cfg["podcast"].items() if v == "TO_FILL"]
+    if not dry_run and cfg["tts"]["voice_id"] == "TO_FILL":
         to_fill.append("tts.voice_id")
     if to_fill and not dry_run:
-        raise SystemExit(f"config.yaml : à compléter avant publication -> {', '.join(to_fill)}")
+        raise SystemExit(f"config.yaml: fill in before publishing -> {', '.join(to_fill)}")
 
 
 def main() -> None:
@@ -47,12 +47,12 @@ def main() -> None:
     now = dt.datetime.now(ZoneInfo(cfg["generation"]["timezone"]))
     today = now.date()
     if today.weekday() >= 5 and not force:
-        print("Week-end : pas d'épisode.")
+        print("Weekend: no episode.")
         return
 
     episodes = json.loads(EPISODES.read_text(encoding="utf-8")) if EPISODES.exists() else []
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
-        print("L'épisode du jour est déjà publié.")
+        print("Today's episode is already published.")
         return
 
     SCRIPTS.mkdir(parents=True, exist_ok=True)
@@ -65,11 +65,11 @@ def main() -> None:
     (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
     print(md)
     if dry_run:
-        print("DRY_RUN : script généré, aucune synthèse vocale ni publication.")
+        print("DRY_RUN: script generated, no speech synthesis or publication.")
         return
 
     (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
-    mp3 = BUILD / f"veille-{today}.mp3"
+    mp3 = BUILD / f"episode-{today}.mp3"
     tts.synthesize(ep["script"], cfg["tts"], mp3)
 
     tag = f"episode-{today}"
@@ -93,7 +93,7 @@ def main() -> None:
 
     base_url = cfg["podcast"].get("base_url") or publish.pages_url()
     feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
-    print(f"Épisode publié : {audio_url}")
+    print(f"Episode published: {audio_url}")
 
 
 if __name__ == "__main__":

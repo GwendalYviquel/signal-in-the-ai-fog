@@ -1,28 +1,28 @@
-name: Veille IA quotidienne
+name: Daily episode
 
 on:
-  # Désactivé tant que la configuration n'est pas validée.
-  # GitHub planifie en UTC : 5h15 UTC = 7h15 à Paris en été, 6h15 en hiver.
+  # Disabled until the configuration is validated.
+  # GitHub schedules in UTC: 5:15 UTC = 7:15 in Paris in summer, 6:15 in winter.
   # schedule:
   #   - cron: "15 5 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Script uniquement (aucun crédit ElevenLabs, aucune publication)"
+        description: "Script only (no ElevenLabs credits, nothing published)"
         type: boolean
         default: true
       force:
-        description: "Régénérer même si l'épisode du jour existe déjà"
+        description: "Regenerate even if today's episode already exists"
         type: boolean
         default: false
 
 permissions:
-  contents: write   # commit des scripts + création des releases audio
-  pages: write      # publication du flux RSS
+  contents: write   # commit scripts + create audio releases
+  pages: write      # publish the RSS feed
   id-token: write
 
 concurrency:
-  group: veille
+  group: daily-episode
   cancel-in-progress: false
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     env:
-      # Sur l'exécution planifiée, les inputs sont vides : publication réelle.
+      # On scheduled runs the inputs are empty: real publication.
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
       FORCE: ${{ inputs.force && 'true' || 'false' }}
     steps:
@@ -44,46 +44,46 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Installer les dépendances
+      - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Générer l'épisode
+      - name: Generate the episode
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           GH_TOKEN: ${{ github.token }}
-        run: python -m veille.main
+        run: python -m podcast.main
 
-      - name: Conserver le script du jour
+      - name: Keep today's script
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: script-du-jour
+          name: episode-script
           path: build/*.md
           if-no-files-found: ignore
 
-      - name: Enregistrer l'épisode dans le dépôt
+      - name: Commit the episode to the repository
         if: env.DRY_RUN == 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data docs
           git diff --cached --quiet || {
-            git commit -m "Épisode du $(TZ=Europe/Paris date +%F)"
+            git commit -m "Episode $(TZ=Europe/Paris date +%F)"
             git push
           }
 
-      - name: Préparer GitHub Pages
+      - name: Configure GitHub Pages
         if: env.DRY_RUN == 'false'
         uses: actions/configure-pages@v5
 
-      - name: Envoyer le flux RSS
+      - name: Upload the RSS feed
         if: env.DRY_RUN == 'false'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
-      - name: Publier le flux RSS
+      - name: Deploy the RSS feed
         id: deploy
         if: env.DRY_RUN == 'false'
         uses: actions/deploy-pages@v4

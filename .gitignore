@@ -5,5 +5,5 @@ __pycache__/
 build/
 *.mp3
 
-# Réglages locaux de Claude Code
+# Local Claude Code settings
 .claude/settings.local.json

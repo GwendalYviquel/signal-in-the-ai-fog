@@ -1,60 +1,60 @@
 # Signal in the AI Fog
 
-Podcast quotidien de veille IA, en anglais, entièrement généré et publié de façon automatique.
+A daily AI news podcast in English, fully generated and published automatically.
 
-Chaque matin de semaine, un épisode d'environ six minutes fait le point sur l'IA d'entreprise en production : modèles et fournisseurs, souveraineté européenne, plateformes LLMOps et MLOps, qualité et évaluation, réglementation, retail et agents. Le script est rédigé par Claude à partir d'une recherche web, puis lu par une voix ElevenLabs. L'épisode est diffusé via un flux RSS que Spotify et les autres plateformes de podcast récupèrent automatiquement.
+Every weekday morning, an episode of about six minutes covers enterprise AI in production: models and vendors, European sovereignty, LLMOps and MLOps platforms, quality and evaluation, regulation, retail and agents. The script is written by Claude from a web search, then read by an ElevenLabs voice. Episodes are distributed through an RSS feed that Spotify and other podcast platforms pick up automatically.
 
-## Fonctionnement
+## How it works
 
-Une GitHub Action enchaîne quatre étapes :
+A GitHub Action runs four steps:
 
-1. **Rédaction** : l'API Claude, avec l'outil de recherche web, sélectionne cinq ou six actualités des dernières 24 à 72 heures et rédige le script selon la ligne éditoriale de `prompts/system.md`. Les trois derniers scripts lui sont fournis pour assurer la continuité d'un jour à l'autre et éviter les redites.
-2. **Synthèse vocale** : le texte est découpé en morceaux et envoyé à ElevenLabs, avec le contexte des morceaux voisins pour garder une diction continue.
-3. **Hébergement** : le MP3 est publié comme fichier d'une *release* GitHub (`episode-AAAA-MM-JJ`).
-4. **Diffusion** : `data/episodes.json` est mis à jour, le flux `docs/feed.xml` est régénéré et déployé sur GitHub Pages.
+1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and writes the script following the editorial line in `prompts/system.md`. The three previous scripts are passed in for continuity from one day to the next and to avoid repetition.
+2. **Speech synthesis**: the text is split into chunks and sent to ElevenLabs, with the neighbouring chunks as context to keep the delivery continuous.
+3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
+4. **Distribution**: `data/episodes.json` is updated, and the `docs/feed.xml` feed is regenerated and deployed to GitHub Pages.
 
-Le format de chaque épisode est fixe : ouverture avec les titres, sujet du jour, rubriques thématiques, chiffre du jour, points à surveiller, question de la semaine. Le lundi couvre l'actualité depuis le vendredi et la semaine à venir ; le vendredi, le sujet du jour prend du recul sur une tendance de la semaine.
+Every episode follows the same format: opening with the headlines, story of the day, themed segments, number of the day, what to watch, question of the week. On Mondays it covers the news since Friday and the week ahead; on Fridays, the story of the day steps back to look at a trend from the week.
 
-### Modes d'exécution
+### Run modes
 
-| Mode | Déclenchement | Effet |
+| Mode | Trigger | Effect |
 | --- | --- | --- |
-| Dry run | Lancement manuel, option `dry_run` (par défaut) | Script uniquement, téléchargeable dans l'artefact `script-du-jour`. Aucun appel ElevenLabs, aucune publication. |
-| Publication | Lancement manuel sans `dry_run`, ou planification | Épisode complet : audio, release, flux RSS. |
-| Force | Option `force` | Régénère l'épisode du jour même s'il existe déjà (ou le week-end), en remplaçant la release. |
+| Dry run | Manual run, `dry_run` option (default) | Script only, downloadable from the `episode-script` artifact. No ElevenLabs call, nothing published. |
+| Publish | Manual run without `dry_run`, or schedule | Full episode: audio, release, RSS feed. |
+| Force | `force` option | Regenerates today's episode even if it already exists (or on a weekend), replacing the release. |
 
-La planification (`cron` en UTC dans le workflow) vise un épisode disponible avant le trajet du matin, du lundi au vendredi.
+The schedule (`cron` in UTC in the workflow) aims to have the episode ready before the morning commute, Monday to Friday.
 
-## Contenu du dépôt
+## Repository contents
 
 ```
-config.yaml                  métadonnées du podcast, modèles, voix, thèmes suivis
-prompts/system.md            ligne éditoriale, format de l'épisode, règles d'écriture pour la voix
-veille/main.py               orchestration (point d'entrée : python -m veille.main)
-veille/generate.py           rédaction du script via l'API Claude et la recherche web
-veille/tts.py                synthèse vocale ElevenLabs
-veille/publish.py            upload du MP3 en release GitHub (CLI gh)
-veille/feed.py               flux RSS compatible Spotify et Apple Podcasts
-data/episodes.json           historique des épisodes publiés (source du flux RSS)
-data/scripts/                scripts archivés, un fichier Markdown par jour
-docs/                        site GitHub Pages : feed.xml et cover.jpg
-tools/make_cover.py          génération de la pochette
-.github/workflows/veille.yml workflow quotidien
+config.yaml                          podcast metadata, models, voice, themes covered
+prompts/system.md                    editorial line, episode format, writing rules for the voice
+podcast/main.py                      pipeline (entry point: python -m podcast.main)
+podcast/generate.py                  script writing with the Claude API and web search
+podcast/tts.py                       ElevenLabs speech synthesis
+podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
+podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
+data/episodes.json                   history of published episodes (source of the RSS feed)
+data/scripts/                        archived scripts, one Markdown file per day
+docs/                                GitHub Pages site: feed.xml and cover.jpg
+tools/make_cover.py                  cover art generation
+.github/workflows/daily-episode.yml  daily workflow
 ```
 
 ### Configuration
 
-- `config.yaml` porte tout ce qui est éditorial ou paramétrable : titre, description, langue, modèle Claude, longueur cible, voix et modèle ElevenLabs, liste des thèmes et leur périmètre. Les thèmes peuvent être modifiés à tout moment, ils sont repris dans l'ordre des rubriques.
-- `prompts/system.md` définit le ton, l'audience, les règles de vérification des sources et le format de sortie attendu (`<title>`, `<summary>`, `<script>`, `<sources>`).
-- Les clés `ANTHROPIC_API_KEY` et `ELEVENLABS_API_KEY` sont stockées en secrets GitHub Actions. Aucun secret n'est versionné.
+- `config.yaml` holds everything editorial or tunable: title, description, language, Claude model, target length, ElevenLabs voice and model, and the list of themes with their scope. Themes can be changed at any time; they are used in segment order.
+- `prompts/system.md` defines the tone, the audience, the source-checking rules and the expected output format (`<title>`, `<summary>`, `<script>`, `<sources>`).
+- The `ANTHROPIC_API_KEY` and `ELEVENLABS_API_KEY` keys are stored as GitHub Actions secrets. No secret is committed.
 
-## Coûts et garde-fous
+## Costs and safeguards
 
-- Un épisode représente environ 6 000 à 7 000 caractères, soit autant de crédits ElevenLabs avec un modèle standard, pour 20 à 23 épisodes par mois.
-- ElevenLabs n'est jamais appelé en dry run.
-- Un épisode déjà publié n'est pas régénéré, sauf avec `force`.
-- Aucun épisode n'est produit le week-end.
+- An episode is about 6,000 to 7,000 characters, which is as many ElevenLabs credits with a standard model, for 20 to 23 episodes a month.
+- ElevenLabs is never called in a dry run.
+- An episode that is already published is not regenerated, unless `force` is used.
+- No episode is produced on weekends.
 
-## Transparence
+## Transparency
 
-L'ouverture de chaque épisode et sa description indiquent que le contenu est rédigé et lu par une IA, en cohérence avec les obligations de marquage des contenus générés par IA de l'AI Act. Les sources de chaque épisode sont listées dans sa description.
+The opening of each episode and its description state that the content is written and read by AI, in line with the AI Act's labelling obligations for AI-generated content. Each episode's sources are listed in its description.

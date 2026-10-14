@@ -1,4 +1,4 @@
-"""Génération du flux RSS du podcast (compatible Spotify et Apple Podcasts)."""
+"""Podcast RSS feed generation (Spotify and Apple Podcasts compatible)."""
 import datetime as dt
 from email.utils import format_datetime
 from pathlib import Path
