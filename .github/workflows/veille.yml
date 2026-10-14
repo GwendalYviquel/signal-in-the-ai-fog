@@ -1,7 +1,7 @@
 name: Veille IA quotidienne
 
 on:
-  # Désactivé tant que la configuration n'est pas validée (voir README, étape 6).
+  # Désactivé tant que la configuration n'est pas validée.
   # GitHub planifie en UTC : 5h15 UTC = 7h15 à Paris en été, 6h15 en hiver.
   # schedule:
   #   - cron: "15 5 * * 1-5"

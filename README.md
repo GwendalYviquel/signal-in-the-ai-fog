@@ -1,84 +1,60 @@
-# Podcast quotidien de veille IA (en anglais) — génération automatique
+# Signal in the AI Fog
 
-Chaque matin de semaine, une GitHub Action :
+Podcast quotidien de veille IA, en anglais, entièrement généré et publié de façon automatique.
 
-1. rédige le script de veille avec l'API Claude (recherche web incluse) ;
-2. le fait lire par une voix ElevenLabs ;
-3. héberge le MP3 en *release* GitHub ;
-4. met à jour le flux RSS publié sur GitHub Pages, que Spotify récupère automatiquement.
+Chaque matin de semaine, un épisode d'environ six minutes fait le point sur l'IA d'entreprise en production : modèles et fournisseurs, souveraineté européenne, plateformes LLMOps et MLOps, qualité et évaluation, réglementation, retail et agents. Le script est rédigé par Claude à partir d'une recherche web, puis lu par une voix ElevenLabs. L'épisode est diffusé via un flux RSS que Spotify et les autres plateformes de podcast récupèrent automatiquement.
+
+## Fonctionnement
+
+Une GitHub Action enchaîne quatre étapes :
+
+1. **Rédaction** : l'API Claude, avec l'outil de recherche web, sélectionne cinq ou six actualités des dernières 24 à 72 heures et rédige le script selon la ligne éditoriale de `prompts/system.md`. Les trois derniers scripts lui sont fournis pour assurer la continuité d'un jour à l'autre et éviter les redites.
+2. **Synthèse vocale** : le texte est découpé en morceaux et envoyé à ElevenLabs, avec le contexte des morceaux voisins pour garder une diction continue.
+3. **Hébergement** : le MP3 est publié comme fichier d'une *release* GitHub (`episode-AAAA-MM-JJ`).
+4. **Diffusion** : `data/episodes.json` est mis à jour, le flux `docs/feed.xml` est régénéré et déployé sur GitHub Pages.
+
+Le format de chaque épisode est fixe : ouverture avec les titres, sujet du jour, rubriques thématiques, chiffre du jour, points à surveiller, question de la semaine. Le lundi couvre l'actualité depuis le vendredi et la semaine à venir ; le vendredi, le sujet du jour prend du recul sur une tendance de la semaine.
+
+### Modes d'exécution
+
+| Mode | Déclenchement | Effet |
+| --- | --- | --- |
+| Dry run | Lancement manuel, option `dry_run` (par défaut) | Script uniquement, téléchargeable dans l'artefact `script-du-jour`. Aucun appel ElevenLabs, aucune publication. |
+| Publication | Lancement manuel sans `dry_run`, ou planification | Épisode complet : audio, release, flux RSS. |
+| Force | Option `force` | Régénère l'épisode du jour même s'il existe déjà (ou le week-end), en remplaçant la release. |
+
+La planification (`cron` en UTC dans le workflow) vise un épisode disponible avant le trajet du matin, du lundi au vendredi.
+
+## Contenu du dépôt
 
 ```
-config.yaml               podcast, modèles, voix, thèmes suivis
-prompts/system.md         ligne éditoriale et format récurrent de l'épisode
-veille/main.py            orchestration (point d'entrée)
-veille/generate.py        script via l'API Claude
-veille/tts.py             synthèse vocale ElevenLabs
-veille/publish.py         upload du MP3 en release GitHub
-veille/feed.py            flux RSS compatible Spotify / Apple Podcasts
-data/episodes.json        historique des épisodes publiés
-data/scripts/             scripts archivés (servent aussi à la continuité d'un jour à l'autre)
-docs/                     site GitHub Pages : feed.xml + cover.jpg
-tools/make_cover.py       génère une pochette par défaut
+config.yaml                  métadonnées du podcast, modèles, voix, thèmes suivis
+prompts/system.md            ligne éditoriale, format de l'épisode, règles d'écriture pour la voix
+veille/main.py               orchestration (point d'entrée : python -m veille.main)
+veille/generate.py           rédaction du script via l'API Claude et la recherche web
+veille/tts.py                synthèse vocale ElevenLabs
+veille/publish.py            upload du MP3 en release GitHub (CLI gh)
+veille/feed.py               flux RSS compatible Spotify et Apple Podcasts
+data/episodes.json           historique des épisodes publiés (source du flux RSS)
+data/scripts/                scripts archivés, un fichier Markdown par jour
+docs/                        site GitHub Pages : feed.xml et cover.jpg
+tools/make_cover.py          génération de la pochette
+.github/workflows/veille.yml workflow quotidien
 ```
 
-## Mise en place
+### Configuration
 
-### 1. Créer le dépôt
-
-Le dépôt doit être **public** : GitHub Pages gratuit et les fichiers audio des releases doivent être accessibles à Spotify. Aucun secret ni information personnelle n'est versionné.
-
-```bash
-git remote add origin git@github.com:<compte>/<depot>.git
-git push -u origin main
-```
-
-### 2. Ajouter les secrets
-
-*Settings → Secrets and variables → Actions → New repository secret* :
-
-| Nom | Où le trouver |
-| --- | --- |
-| `ANTHROPIC_API_KEY` | console.anthropic.com → API Keys |
-| `ELEVENLABS_API_KEY` | elevenlabs.io → Profile → API Keys |
-
-### 3. Compléter `config.yaml`
-
-- `podcast.title`, `podcast.author`, `podcast.owner_name`, `podcast.owner_email` : Spotify envoie un code de vérification à cette adresse, et elle apparaît dans le flux public. Une adresse dédiée est conseillée.
-- `tts.voice_id` : dans ElevenLabs, *Voices*, puis « Copy voice ID » sur la voix choisie.
-- `themes` : les rubriques suivies, modifiables à tout moment.
-- Pochette : `docs/cover.jpg` est une pochette par défaut, régénérable avec `pip install pillow numpy && python tools/make_cover.py` ; remplacez-la par un carré de 1400 à 3000 px si vous le souhaitez.
-
-### 4. Activer GitHub Pages
-
-*Settings → Pages → Build and deployment → Source : **GitHub Actions***.
-
-### 5. Tester sans dépenser de crédits ElevenLabs
-
-*Actions → Veille IA quotidienne → Run workflow*, case **dry_run cochée** (valeur par défaut).
-Seul l'appel à l'API Claude est consommé. Le script est téléchargeable dans l'artefact `script-du-jour` du run.
-
-### 6. Premier épisode réel
-
-Relancer le workflow avec **dry_run décoché**. Vérifier ensuite :
-
-- le MP3 dans *Releases* ;
-- le flux sur `https://<compte>.github.io/<depot>/feed.xml`.
-
-### 7. Soumettre le podcast à Spotify (une seule fois)
-
-Sur creators.spotify.com : avatar → *Add a new show* → *Find an existing show* → coller l'URL du flux, puis valider le code reçu par e-mail. Spotify relit ensuite le flux toutes les quelques heures : chaque nouvel épisode y apparaît automatiquement.
-
-### 8. Activer la planification
-
-Dans `.github/workflows/veille.yml`, décommenter le bloc `schedule`. Les exécutions planifiées publient pour de vrai (pas de dry run).
-Le cron est en UTC : `15 5 * * 1-5` donne 7h15 à Paris en été et 6h15 en hiver.
+- `config.yaml` porte tout ce qui est éditorial ou paramétrable : titre, description, langue, modèle Claude, longueur cible, voix et modèle ElevenLabs, liste des thèmes et leur périmètre. Les thèmes peuvent être modifiés à tout moment, ils sont repris dans l'ordre des rubriques.
+- `prompts/system.md` définit le ton, l'audience, les règles de vérification des sources et le format de sortie attendu (`<title>`, `<summary>`, `<script>`, `<sources>`).
+- Les clés `ANTHROPIC_API_KEY` et `ELEVENLABS_API_KEY` sont stockées en secrets GitHub Actions. Aucun secret n'est versionné.
 
 ## Coûts et garde-fous
 
-- Un épisode fait environ 6 000 à 7 000 caractères, soit autant de crédits ElevenLabs avec un modèle standard, et 20 à 23 épisodes par mois.
-- Le script n'appelle jamais ElevenLabs en dry run et ne régénère pas un épisode déjà publié (sauf `force`).
-- Le week-end, aucun épisode n'est produit.
+- Un épisode représente environ 6 000 à 7 000 caractères, soit autant de crédits ElevenLabs avec un modèle standard, pour 20 à 23 épisodes par mois.
+- ElevenLabs n'est jamais appelé en dry run.
+- Un épisode déjà publié n'est pas régénéré, sauf avec `force`.
+- Aucun épisode n'est produit le week-end.
 
 ## Transparence
 
-L'ouverture de chaque épisode et sa description indiquent que le contenu est rédigé et lu par une IA, en cohérence avec les obligations de marquage des contenus générés par IA de l'AI Act.
+L'ouverture de chaque épisode et sa description indiquent que le contenu est rédigé et lu par une IA, en cohérence avec les obligations de marquage des contenus générés par IA de l'AI Act. Les sources de chaque épisode sont listées dans sa description.
