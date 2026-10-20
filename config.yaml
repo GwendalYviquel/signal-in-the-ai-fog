@@ -26,7 +26,7 @@ generation:
 
 tts:
   voices:                            # ElevenLabs voice IDs
-    host: "TkBXFhNSp04NiWhhR7jP"     # opening, facts, transitions, sign-off
+    host: "nPczCjzI2devNBz1zQrb"     # opening, facts, transitions, sign-off
     analyst: "4e32WqNVWRquDa1OcRYZ"  # every read layer (analysis)
   pause_seconds: 0.6                 # breath when the other voice takes over
   model_id: "eleven_multilingual_v2"
