@@ -42,13 +42,17 @@ VOICE_CHECK = [  # about 170 characters in total: a few cents of ElevenLabs cred
 def voice_check(cfg: dict, mp3: Path) -> None:
     """Both voices through the real ElevenLabs API, with the episode's settings and pause."""
     tts.synthesize(VOICE_CHECK, cfg["tts"], mp3)
-    info = MP3(mp3).info
-    print(f"Voice check audio: {info.length:.1f} s, {info.channels} channel(s), {info.bitrate // 1000} kbps, "
-          f"{info.sample_rate} Hz")
-    if cfg["tts"].get("pause_seconds") and not tts.silence_like(mp3.read_bytes()[:8192], 0.1):
+    data = mp3.read_bytes()
+    seconds = tts.mp3_duration(data)
+    if not seconds or (cfg["tts"].get("pause_seconds") and not tts.silence_like(data[:8192], 0.1)):
         raise RuntimeError("ElevenLabs audio format not recognised: the pause between voices would be missing")
-    if info.length < 3:
-        raise RuntimeError(f"Voice check audio too short ({info.length:.1f} s)")
+    info = MP3(mp3).info
+    print(f"Voice check audio: {seconds:.1f} s, {info.channels} channel(s), {info.bitrate // 1000} kbps, "
+          f"{info.sample_rate} Hz (players read {info.length:.1f} s)")
+    if abs(info.length - seconds) > 0.5:
+        raise RuntimeError(f"Players would read {info.length:.1f} s for {seconds:.1f} s of audio")
+    if seconds < 3:
+        raise RuntimeError(f"Voice check audio too short ({seconds:.1f} s)")
 
 
 def rehearse(with_voice: bool = False) -> None:
@@ -72,7 +76,7 @@ def rehearse(with_voice: bool = False) -> None:
             "date": now.date().isoformat(), "title": "Rehearsal", "summary": "Publication test.",
             "headlines": [], "themes": [], "sources": [{"title": "Example", "url": "https://example.com"}],
             "published_at": now.replace(microsecond=0).isoformat(), "guid": f"{publish.repo()}#{tag}",
-            "audio_url": audio_url, "audio_bytes": mp3.stat().st_size, "duration_seconds": MP3(mp3).info.length,
+            "audio_url": audio_url, "audio_bytes": mp3.stat().st_size, "duration_seconds": tts.mp3_duration(mp3.read_bytes()),
         }
         episodes = main.load(main.EPISODES) + [episode]
         base_url = cfg["podcast"].get("base_url") or publish.pages_url()

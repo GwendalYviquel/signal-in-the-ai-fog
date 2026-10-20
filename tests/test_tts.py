@@ -188,3 +188,38 @@ def test_candidate_voices_can_be_checked_without_changing_the_config(posts):
     results = tts.check_voices(tts.candidate_voices(CFG, " idA , idB,"))
     assert results == {"candidate 1": "ok", "candidate 2": "ok"}
     assert [s.url.rsplit("/", 1)[1] for s in sent] == ["idA", "idB"]
+
+
+def elevenlabs_like_chunk(n_frames):
+    """Shape of a real ElevenLabs response: ID3 tag, then an Info header frame giving the duration
+    of this chunk only, then the sound frames."""
+    id3 = b"ID3\x04\x00\x00\x00\x00\x00\x05" + b"\x00" * 5
+    info = b"\xff\xfb\x90\xc4" + b"\x00" * 17 + b"Info" + b"\x00" * 392
+    sound = b"\xff\xfb\x90\xc4" + b"\x55" * 413
+    return id3 + info + sound * n_frames
+
+
+def test_concatenated_chunks_keep_their_real_duration(posts, tmp_path, monkeypatch):
+    # Regression (2026-10-20): the first real voice sample lasted 9.7 s but players and the RSS
+    # duration read 3.6 s, the length announced by the first chunk's Info header.
+    from mutagen.mp3 import MP3
+    chunks = [elevenlabs_like_chunk(100), elevenlabs_like_chunk(250)]
+    monkeypatch.setattr(tts, "_post", lambda url, headers, params, body: chunks.pop(0))
+    out = tmp_path / "ep.mp3"
+    tts.synthesize([("host", "A."), ("analyst", "B.")], CFG | {"pause_seconds": 0}, out)
+    data = out.read_bytes()
+    assert b"Info" not in data and not data.startswith(b"ID3")
+    expected = 350 * 1152 / 44100  # about 9.1 s
+    assert abs(tts.mp3_duration(data) - expected) < 0.01
+    assert abs(MP3(out).info.length - expected) < 0.2  # what players and tools read
+
+
+def test_header_frames_are_not_counted_as_sound():
+    assert abs(tts.mp3_duration(elevenlabs_like_chunk(10)) - 10 * 1152 / 44100) < 0.001
+    assert tts.audio_frames(b"\x00" * 100) == b""
+
+
+def test_response_without_audio_fails_clearly(posts, tmp_path, monkeypatch):
+    monkeypatch.setattr(tts, "_post", lambda *a: b'{"error": "not audio"}')
+    with pytest.raises(RuntimeError, match="returned no MP3 audio for request 1"):
+        tts.synthesize([("host", "A.")], CFG, tmp_path / "ep.mp3")

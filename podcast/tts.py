@@ -60,6 +60,42 @@ _BITRATES = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320]  
 _SAMPLE_RATES = [44100, 48000, 32000]
 
 
+def _frames(audio: bytes):
+    """Yield (frame bytes, sample rate) for each MPEG-1 Layer III frame, skipping an ID3v2 tag."""
+    i = 0
+    if audio[:3] == b"ID3" and len(audio) >= 10:
+        i = 10 + ((audio[6] << 21) | (audio[7] << 14) | (audio[8] << 7) | audio[9])
+    while i < len(audio) - 4:
+        b1, b2 = audio[i + 1], audio[i + 2]
+        bitrate_idx, rate_idx = b2 >> 4, (b2 >> 2) & 0x3
+        if audio[i] == 0xFF and (b1 & 0xFE) == 0xFA and 0 < bitrate_idx < 15 and rate_idx != 3:
+            rate = _SAMPLE_RATES[rate_idx]
+            length = 144 * _BITRATES[bitrate_idx] * 1000 // rate + ((b2 >> 1) & 1)
+            yield audio[i:i + length], rate
+            i += length
+        else:
+            i += 1
+
+
+def _is_header_frame(frame: bytes) -> bool:
+    """Xing/Info/VBRI frames describe the file they start (its duration), they carry no sound."""
+    return b"Xing" in frame[4:40] or b"Info" in frame[4:40] or frame[36:40] == b"VBRI"
+
+
+def audio_frames(audio: bytes) -> bytes:
+    """Only the sound frames of an MP3: no ID3 tag, no Xing/Info header.
+
+    Every ElevenLabs response starts with an Info header giving the duration of that response
+    alone. Concatenated as is, the first one made players and tools read the duration of the
+    first chunk for the whole episode (3.6 s instead of 9.7 s on the first real voice sample)."""
+    return b"".join(f for f, _ in _frames(audio) if not _is_header_frame(f))
+
+
+def mp3_duration(audio: bytes) -> float:
+    """Duration in seconds, by counting sound frames (1152 samples each)."""
+    return sum(1152 / rate for f, rate in _frames(audio) if not _is_header_frame(f))
+
+
 def silence_like(audio: bytes, seconds: float) -> bytes:
     """Silence in exactly the same MP3 format (channels, bitrate, rate) as the given audio,
     so it can be concatenated without glitches. Empty if the format is not recognised."""
@@ -117,12 +153,15 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> N
                     if i < len(chunks) - 1:
                         body["next_text"] = chunks[i + 1][:500]
                 try:
-                    audio = _post(API.format(voice_id=voice), headers, params, body)
+                    audio = audio_frames(_post(API.format(voice_id=voice), headers, params, body))
                 except RuntimeError as e:
                     # Name the voice: a failure on the second voice used to look like one on the first.
                     raise RuntimeError(f"{e} [request {requests_count + 1}, {role} voice {voice}, "
                                        f"{len(chunk)} characters; {billed} characters already "
                                        f"synthesised in this run]") from None
+                if not audio:
+                    raise RuntimeError(f"ElevenLabs returned no MP3 audio for request {requests_count + 1} "
+                                       f"({role} voice {voice}): check tts.output_format")
                 requests_count += 1
                 billed += len(chunk)
                 print(f"ElevenLabs request {requests_count}: {role} voice {voice}, {len(chunk)} characters, ok")

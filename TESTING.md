@@ -26,7 +26,7 @@ python -m pytest
 | `test_validate.py` | 19 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text, lengths |
 | `test_generate.py` | 17 | The Claude loop: submission through the tool, light corrections versus corrections in the research conversation (no invented source), truncated responses, `pause_turn`, every tool call answered, workspace header, private context |
 | `test_assemble.py` | 7 | Spoken script: fixed opening with AI disclosure, order of parts, sign-off by weekday, headline punctuation, the read layer always on the analyst voice |
-| `test_tts.py` | 20 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently, candidate IDs checked without changing the config |
+| `test_tts.py` | 23 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently, candidate IDs checked without changing the config, real duration kept when chunks are concatenated |
 | `test_feed_catalog.py` | 5 | RSS feed (valid XML, escaping, enclosure, AI disclosure) and catalog (previews replaced by published episodes) |
 | `test_main.py` | 13 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script, voices checked before paying for the script |
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
@@ -56,6 +56,9 @@ python -m pytest
 
 | 2026-10-20 | [Check voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490668885) | ❌ (expected) | First one-word check: host voice ok, analyst voice HTTP 402. 3 characters billed instead of 62 | — |
 | 2026-10-20 | [Check voices, candidate ID](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490818034) | ✅ | Candidate analyst voice checked without changing the config: ok, 3 characters | Adopted as the analyst voice |
+
+| 2026-10-20 | [Check voices on push](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions) | ✅ | Automatic check after the analyst voice changed in `config.yaml`: both voices ok, 6 characters | — |
+| 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39497411738) | ✅ but a bug found | Both voices, 147 characters, mono 44.1 kHz, release uploaded, downloaded and deleted. The log said 3.6 s for two sentences: the sample really lasts 9.7 s (370 frames). Each ElevenLabs response starts with an Info header giving its own duration; concatenated, the first one made tools and players read the first chunk's duration. A real episode would have shown a few seconds on Spotify and a wrong seek bar | Info headers and ID3 tags stripped from every chunk; durations computed by counting frames; the rehearsal fails if players would read a duration off by more than 0.5 s. Tests: `test_concatenated_chunks_keep_their_real_duration`, `test_header_frames_are_not_counted_as_sound`, `test_response_without_audio_fails_clearly` |
 
 The offline suite has also passed on GitHub for every commit since it was added.
 

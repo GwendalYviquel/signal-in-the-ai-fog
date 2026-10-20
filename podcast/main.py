@@ -13,7 +13,6 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import yaml
-from mutagen.mp3 import MP3
 
 from . import catalog, feed, generate, publish, tts
 
@@ -132,7 +131,7 @@ def main() -> None:
         "guid": f"{publish.repo()}#{tag}",
         "audio_url": audio_url,
         "audio_bytes": mp3.stat().st_size,
-        "duration_seconds": MP3(mp3).info.length,
+        "duration_seconds": tts.mp3_duration(mp3.read_bytes()),
     })
     save(EPISODES, episodes)
     # Archived only once published: the next episodes treat archived scripts as already aired.
