@@ -56,17 +56,21 @@ A GitHub Action runs four steps:
 Every episode follows the same structure. Each story has two layers: the facts (what happened and its real status: announced, preview or available), read by the host, and a short read (what it means for a platform team or a retailer), read by the analyst and signposted so the listener hears where analysis begins.
 
 ```mermaid
-flowchart LR
-    open["Opening<br/>date · AI disclosure<br/>3 headlines"]:::host
-    story["Story of the day<br/>facts · ~130 words"]:::host
-    sread["The read<br/>~110 words"]:::analyst
-    seg["Segment<br/>facts · ~45 words"]:::host
-    segread["The read<br/>~35 words"]:::analyst
-    tail["Number of the day<br/>What to watch<br/>Question for your team<br/>Sign-off"]:::host
-
-    open --> story -- "pause 0.6 s" --> sread -- "pause" --> seg -- "pause" --> segread
-    segread -. "× 3 or 4 themes" .-> seg
-    segread -- "pause" --> tail
+flowchart TB
+    subgraph A["Opening and story of the day"]
+        direction LR
+        open["Opening<br/>date · AI disclosure<br/>3 headlines"]:::host --> story["Story of the day<br/>facts · ~130 words"]:::host
+        story -- "pause 0.6 s" --> sread["The read<br/>~110 words"]:::analyst
+    end
+    subgraph B["3 or 4 segments, in theme order"]
+        direction LR
+        seg["Segment<br/>facts · ~45 words"]:::host -- "pause" --> segread["The read<br/>~35 words"]:::analyst
+    end
+    subgraph C["Closing"]
+        direction LR
+        tail["Number of the day · What to watch<br/>Question for your team · Sign-off"]:::host
+    end
+    A --> B --> C
 
     classDef host fill:#e3fbf7,stroke:#0b8f84,color:#0a3d38
     classDef analyst fill:#efe9ff,stroke:#6d3fd6,color:#3a1d6e
