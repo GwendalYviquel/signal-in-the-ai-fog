@@ -18,16 +18,16 @@
   {
    "date": "2026-10-20",
    "status": "preview",
-   "title": "Argon's price clock, Mistral's weights, and agents at checkout",
-   "summary": "Google's Gemini 4 Argon is generally available at an introductory price that doubles on December first. Also: Mistral Large 4 weights are due by month end, NVIDIA open-sources Run:ai, the AI Act's December dates, and Google's Universal Cart brings agentic checkout to retailers.",
+   "title": "Mistral's open-weight deadline and a price cliff",
+   "summary": "Mistral Large 4 is in preview and its open weights are due within days, while Ecosia's switch to Chinese open models tests the sovereignty pitch. Also: Gemini 4 Argon's December price doubling, Haiku 5.5's token-length price boundary, the December second AI Act marking date, and Google's Universal Cart going live.",
    "headlines": [
-    "Gemini four Argon arrives with a price cliff",
-    "Mistral Large four weights due this month",
-    "Google's Universal Cart opens agentic checkout"
+    "Mistral's open weights deadline looms",
+    "Gemini 4 Argon price cliff",
+    "Google's Universal Cart goes live"
    ],
    "themes": [
-    "Models and vendors",
     "Sovereignty and Europe",
+    "Models and vendors",
     "Platform",
     "Regulation",
     "Retail and agents"
@@ -37,59 +37,71 @@
    "spotify_url": "",
    "sources": [
     {
-     "title": "Google AI for Developers: What's new in Gemini 4 Argon",
-     "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+     "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
     },
     {
-     "title": "VentureBeat: Google makes Gemini 4 Argon broadly available with limited-time low API pricing",
-     "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
+     "title": "Beam: Mistral Large 4, benchmarks, pricing and open weights",
+     "url": "https://beam.ai/agentic-insights/mistral-large-4-open-weights"
     },
     {
-     "title": "Technology.org: Google Opens Gemini 4 Argon at $2/$10 Pricing",
-     "url": "https://www.technology.org/2026/10/14/gemini-4-argon-generally-available-pricing-december/"
+     "title": "Cybernews: Ecosia drops Mistral, eyes Chinese open-weight AI models",
+     "url": "https://cybernews.com/ai-news/ecosia-drops-mistral/"
     },
     {
-     "title": "Mistral AI: Introducing Mistral Large 4",
-     "url": "https://mistral.ai/news/mistral-large-4/"
+     "title": "Tom's Hardware: Independent tests rank Mistral's Large 4 the best AI model outside the U.S. and China",
+     "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/independent-tests-rank-mistrals-new-trillion-parameter-large-4-the-best-ai-model-outside-the-u-s-and-china-but-chinese-open-weights-still-overcome-europes-best-efforts"
     },
     {
-     "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+     "title": "TechNode: Ecosia switches from Mistral to open-weight AI models",
+     "url": "https://technode.com/2026/10/09/ecosia-switches-from-mistral-to-open-weight-ai-models-including-qwen-glm-and-kimi/"
+    },
+    {
+     "title": "Lindy: What Is Mistral Large 4",
      "url": "https://www.lindy.ai/blog/mistral-large-4"
     },
     {
-     "title": "AI Weekly: Mistral Opens Timestral, 209M Time-Series Model Beating TimesFM-3",
-     "url": "https://aiweekly.co/alerts/mistral-opens-timestral-209m-time-series-model-beating-timesfm-3"
+     "title": "Computing for Geeks: Gemini 4 Argon pricing, benchmarks and API tested",
+     "url": "https://computingforgeeks.com/gemini-4-argon-released-features-benchmarks/"
     },
     {
-     "title": "AIwire: NVIDIA Open Sources Full Run:ai Platform for GPU Orchestration",
-     "url": "https://www.hpcwire.com/aiwire/2026/10/13/nvidia-open-sources-full-runai-platform-for-gpu-orchestration/"
+     "title": "Kingy AI: Gemini 4 Argon specs, benchmarks, pricing",
+     "url": "https://kingy.ai/blog/gemini-4-argon-specs-benchmarks-pricing/"
     },
     {
-     "title": "TechRepublic: Nvidia Run Is Now Open Source: What's Free and Paid",
-     "url": "https://www.techrepublic.com/article/news-nvidia-runai-open-source-free-paid/"
+     "title": "VentureBeat: Anthropic launches Claude Haiku 5.5 with 90% API price reduction",
+     "url": "https://venturebeat.com/technology/anthropic-launches-claude-haiku-5-5-with-90-api-price-reduction-matching-gpt-6-luna"
     },
     {
-     "title": "Matthews Wong: EU AI Act Digital Omnibus Deadlines: A DevOps Team Calendar",
+     "title": "The New Stack: Anthropic launches Haiku 5.5 at a much lower price",
+     "url": "https://thenewstack.io/anthropic-claude-haiku-5-5/"
+    },
+    {
+     "title": "Cooley: Digital AI Omnibus delays key deadlines, introduces new rules",
+     "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/"
+    },
+    {
+     "title": "Matthews Wong: EU AI Act Digital Omnibus deadlines, a DevOps team calendar",
      "url": "https://www.matthewswong.com/en/blog/eu-ai-act-digital-omnibus-devops-deadlines/"
     },
     {
-     "title": "Usercentrics: EU AI Act Deal: Digital Omnibus Now in Force",
-     "url": "https://usercentrics.com/knowledge-hub/eu-ai-act-high-risk-delay-article-50-transparency-consent/"
+     "title": "Unite.AI: Google launches Universal Cart across Search and the Gemini app",
+     "url": "https://www.unite.ai/google-launches-universal-cart-across-search-and-the-gemini-app/"
     },
     {
-     "title": "Cyberdunes: Google Agentic Checkout and Universal Cart",
-     "url": "https://www.cyberdunes.com/blog/news/google-agentic-checkout-universal-cart/"
+     "title": "PPC Land: Google's Universal Cart reaches US Search and Gemini, but not YouTube",
+     "url": "https://ppc.land/googles-universal-cart-reaches-us-search-and-gemini-but-not-youtube/"
     },
     {
-     "title": "Delante: Google Universal Cart Launches: What It Means for E-commerce",
-     "url": "https://delante.co/google-universal-cart-search-gemini/"
+     "title": "Startup Fortune: Google's Universal Cart goes live and retailers are already pushing back",
+     "url": "https://startupfortune.com/googles-universal-cart-goes-live-and-retailers-are-already-pushing-back/"
     },
     {
-     "title": "The Agentic Commerce Frontier: October 13 - October 19",
+     "title": "The Agentic Commerce Frontier: October 13 to October 19",
      "url": "https://agentcommerce.substack.com/p/the-agentic-commerce-frontier-october-f26"
     }
    ],
-   "transcript": "Good morning, it's Tuesday, October 20. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Gemini four Argon arrives with a price cliff, Mistral Large four weights due this month, and Google's Universal Cart opens agentic checkout.\n\nFirst, the story of the day.\n\nGoogle made Gemini 4 Argon generally available on October thirteenth, two weeks after announcing it on September thirtieth and restricting it to vetted cyber defenders. It is served through the paid Gemini API and AI Studio, and in the Gemini app and AI Mode for Pro and Ultra subscribers. The free API tier is excluded. Introductory pricing is two dollars per million input tokens and ten dollars per million output tokens, with thinking tokens billed as output. Cached input costs ten cents per million tokens. That introductory rate runs through November thirtieth. From December first, Google's documentation lists four dollars per million input tokens, twenty dollars per million output tokens, and twenty cents per million cached input tokens. Press coverage notes OpenAI's GPT-6 Astra is listed at ten dollars input and fifty dollars output per million tokens.\n\nThe read here: this is a pricing cliff disguised as a launch. Any evaluation you run before November thirtieth measures a price you cannot budget on. Compare Argon against alternatives at the December rate, not the promotional one. For a platform team, this is a gateway question. Keep a price table with effective dates per model, and alert when a rate changes. Make sure routing policies are cost-aware, so a doubled price shifts traffic by configuration rather than by a code change. It is also worth watching whether other vendors answer with their own time-limited discounts. Promotional pricing is becoming a standard way to win developer share.\n\nNext, Sovereignty and Europe.\n\nMistral launched a public preview of Mistral Large 4 on October sixth. It is a mixture-of-experts model of about one trillion parameters, trained on Nvidia GPUs in Mistral's own European datacenters. Weights are promised by the end of October, but no license terms are published yet. List price is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens. On October nineteenth, Mistral also released Timestral, a family of small time-series models under a modified MIT license.\n\nWhy it matters: a European open-weight flagship is only sovereign once you can actually host it. Treat the end-of-month weights and the license as the real test. Timestral is worth a look for a retailer: forecasting models that run on CPU change the inference cost conversation for demand and replenishment.\n\nNext, Platform.\n\nOn October thirteenth, NVIDIA released the full Run:ai platform as open source under the Apache 2.0 license. Until now only the KAI Scheduler had been open. The release adds a GPU fractioning operator, resource management for projects and quotas, and a workload map, and includes the control plane. It runs on your own Kubernetes, on premises or in cloud. Enterprise support remains a paid option.\n\nThe bigger picture: GPU scheduling, quotas and fractional sharing are no longer behind a licence. For a team running its own inference capacity on Kubernetes, that lowers the cost of fair-share across teams. Worth a proof of concept, though you inherit the operational burden that support contracts used to cover.\n\nNext, Regulation.\n\nThe Digital Omnibus on AI, Regulation 2026/1744, entered into force on July twenty-seventh. It moved stand-alone high-risk obligations from August 2026 to December second, 2027, and embedded-product obligations to August second, 2028. It did not move Article 50 transparency rules for new systems, applicable since August 2026. Two dates still fall on December second, 2026: marking for older generative systems, and two new Article 5 prohibitions.\n\nReading between the lines: the delay applies to one class of duty only. Your nearest deadline is December second, this year. Check whether any customer-facing generative assistant produces content that needs marking, and whether your gateway can apply it centrally.\n\nNext, Retail and agents.\n\nGoogle launched Universal Cart in the United States on October fifteenth, across AI Mode in Search and the Gemini app. It holds products from several retailers and checks out through the Universal Commerce Protocol. The merchant stays seller of record. Launch retailers include Target, Walmart and Wayfair. There is no announced date for Europe. Shopify also opened its catalog and Shop Pay checkout to outside agents through an MCP connection.\n\nWhat this really signals: checkout is moving into the agent, while the retailer keeps fulfilment and the customer service burden. Europe is not live yet, so use the gap to audit what your product data, stock and price APIs would expose to an agent.\n\nThe number of the day.\n\nEighteen of twenty. An October sixteenth audit found that eighteen of twenty large UK online retailers give no explicit robots.txt instructions to AI crawlers or shopping agents, as agents start to shop.\n\nWhat to watch.\n\nBy October thirty-first, Mistral has promised Large 4 weights. Watch the license terms. October twenty-eighth, the Agentic AI Foundation holds a working group on open agentic commerce standards. November thirtieth, Gemini 4 Argon's introductory price ends. January first, Gemini 3.8 Flash rates also double. December second brings the next AI Act dates. Also watch for any European date for Universal Cart.\n\nAnd a question for your team.\n\nIf a model's price doubled next month, could your gateway reroute traffic by configuration alone, and would your evaluations tell you which cheaper model is good enough?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+   "transcript": "Good morning, it's Tuesday, October 20. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Mistral's open weights deadline looms, Gemini 4 Argon price cliff, and Google's Universal Cart goes live.\n\nFirst, the story of the day.\n\nMistral put Large 4 into public preview on October sixth. It is a one-trillion-parameter multimodal mixture-of-experts model, trained on Nvidia Grace Blackwell chips in Mistral's own European data centers. List price on the API is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens, with a fifty percent launch discount that was set to run two weeks. The open weights are not out yet. Mistral commits to the end of October, and its chief scientist has pointed to October twenty-seventh. The licence is unpublished; Large 3 shipped under Apache two point zero. Artificial Analysis scores Large 4 at thirty-eight, the best outside the US and China, but behind several Chinese open models. Separately, Ecosia dropped Mistral for hosted Chinese open-weight models, and its CEO says costs roughly halved.\n\nThe read here: today, Large 4 is an API preview, not a self-hostable model. For a platform team, sovereignty only becomes real when the weights and the licence are in your hands, so those two items decide everything. The Ecosia story is a warning about method. A vendor's flagship claim and a customer's cost-and-quality result can diverge, especially at scale. Treat both as hypotheses and run your own business benchmark. It is also worth watching whether the licence allows unrestricted commercial self-hosting. If it does, a European open-weight option belongs in your gateway as a routable, evaluated candidate. If it doesn't, the sovereignty argument weakens considerably.\n\nNext, Models and vendors.\n\nGoogle's Gemini 4 Argon became generally available in the Gemini API on October thirteenth, and on Vertex AI in global, US and EU endpoints. Price is two dollars per million input tokens and ten dollars per million output tokens until November thirtieth. From December first, it doubles to four dollars and twenty dollars. Vertex adds ten percent for regional endpoints.\n\nReading between the lines: this is a price cliff, not a price. Any business case built on the introductory rate will look twice as expensive in six weeks. Budget at the December figure now, and compare cost per completed task, not sticker price, before you promote it to a default route.\n\nNext, Platform.\n\nAnthropic's Claude Haiku 5.5, launched October seventh, is tiered by prompt length. Under one hundred thousand tokens it costs ten cents per million input tokens and fifty cents per million output tokens. Above that, fifty cents and two dollars fifty. Anthropic estimates about seventy-five percent average savings versus Haiku 4.5, including a tokenizer that uses slightly more tokens.\n\nWhat this really signals: prompt length is now a cost dimension. A gateway that routes only on model name and quota will miss a fivefold jump at the threshold. Log token counts per route, and replay your own traffic through the new tokenizer before trusting the headline saving.\n\nNext, Regulation.\n\nRegulation 2026/1744, the Digital Omnibus on AI, has been in force since July twenty-seventh. It moves stand-alone high-risk obligations from August 2026 to December second, 2027, and product-embedded ones to August 2028. Article 50 transparency rules apply, and systems already on the market get until December second, 2026 for machine-readable marking of AI-generated content.\n\nWhy it matters: the high-risk delay is real, but the December second marking date is about six weeks away. Any retailer generating product images, descriptions or customer-facing text should check now whether outputs carry machine-readable marks, and where in the pipeline that happens.\n\nNext, Retail and agents.\n\nGoogle launched Universal Cart in the US on October fifteenth, across Search and the Gemini app. It holds items from several retailers, tracks price drops and restocks, and checks out via Google Pay or hands off to the merchant, who stays seller of record. Launch partners include Walmart, Target and Wayfair. YouTube and Gmail have no date.\n\nThe bigger picture: the basket moves from the retailer's site to the agent's surface. That makes accurate, machine-readable product, price and stock data the entry ticket. It is worth watching how much checkout partners actually allow, since early reports say some limit it.\n\nThe number of the day.\n\nTwenty-one point six percent. That is the share of AI shoppers who have let an assistant complete a purchase, according to Product.ai research. Nearly ninety percent still verify recommendations before buying.\n\nWhat to watch.\n\nOctober twenty-seventh is the reported date for Mistral Large 4's open weights. Watch the licence terms as much as the files. Mistral's launch discount was set to end around now. Looking further out, December first brings Gemini 4 Argon's doubled price, and December second is the AI Act marking date for generative systems already on the market. Also watch whether Google dates its YouTube and Gmail cart.\n\nAnd a question for your team.\n\nIf a new open-weight model lands next week, can your evaluation harness score it against your current default on your own business tasks within forty-eight hours?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
   }
  ]
 }

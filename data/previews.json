@@ -1,74 +1,86 @@
 [
   {
     "date": "2026-10-20",
-    "title": "Argon's price clock, Mistral's weights, and agents at checkout",
-    "summary": "Google's Gemini 4 Argon is generally available at an introductory price that doubles on December first. Also: Mistral Large 4 weights are due by month end, NVIDIA open-sources Run:ai, the AI Act's December dates, and Google's Universal Cart brings agentic checkout to retailers.",
+    "title": "Mistral's open-weight deadline and a price cliff",
+    "summary": "Mistral Large 4 is in preview and its open weights are due within days, while Ecosia's switch to Chinese open models tests the sovereignty pitch. Also: Gemini 4 Argon's December price doubling, Haiku 5.5's token-length price boundary, the December second AI Act marking date, and Google's Universal Cart going live.",
     "headlines": [
-      "Gemini four Argon arrives with a price cliff",
-      "Mistral Large four weights due this month",
-      "Google's Universal Cart opens agentic checkout"
+      "Mistral's open weights deadline looms",
+      "Gemini 4 Argon price cliff",
+      "Google's Universal Cart goes live"
     ],
     "themes": [
-      "Models and vendors",
       "Sovereignty and Europe",
+      "Models and vendors",
       "Platform",
       "Regulation",
       "Retail and agents"
     ],
     "sources": [
       {
-        "title": "Google AI for Developers: What's new in Gemini 4 Argon",
-        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+        "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+        "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
       },
       {
-        "title": "VentureBeat: Google makes Gemini 4 Argon broadly available with limited-time low API pricing",
-        "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
+        "title": "Beam: Mistral Large 4, benchmarks, pricing and open weights",
+        "url": "https://beam.ai/agentic-insights/mistral-large-4-open-weights"
       },
       {
-        "title": "Technology.org: Google Opens Gemini 4 Argon at $2/$10 Pricing",
-        "url": "https://www.technology.org/2026/10/14/gemini-4-argon-generally-available-pricing-december/"
+        "title": "Cybernews: Ecosia drops Mistral, eyes Chinese open-weight AI models",
+        "url": "https://cybernews.com/ai-news/ecosia-drops-mistral/"
       },
       {
-        "title": "Mistral AI: Introducing Mistral Large 4",
-        "url": "https://mistral.ai/news/mistral-large-4/"
+        "title": "Tom's Hardware: Independent tests rank Mistral's Large 4 the best AI model outside the U.S. and China",
+        "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/independent-tests-rank-mistrals-new-trillion-parameter-large-4-the-best-ai-model-outside-the-u-s-and-china-but-chinese-open-weights-still-overcome-europes-best-efforts"
       },
       {
-        "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+        "title": "TechNode: Ecosia switches from Mistral to open-weight AI models",
+        "url": "https://technode.com/2026/10/09/ecosia-switches-from-mistral-to-open-weight-ai-models-including-qwen-glm-and-kimi/"
+      },
+      {
+        "title": "Lindy: What Is Mistral Large 4",
         "url": "https://www.lindy.ai/blog/mistral-large-4"
       },
       {
-        "title": "AI Weekly: Mistral Opens Timestral, 209M Time-Series Model Beating TimesFM-3",
-        "url": "https://aiweekly.co/alerts/mistral-opens-timestral-209m-time-series-model-beating-timesfm-3"
+        "title": "Computing for Geeks: Gemini 4 Argon pricing, benchmarks and API tested",
+        "url": "https://computingforgeeks.com/gemini-4-argon-released-features-benchmarks/"
       },
       {
-        "title": "AIwire: NVIDIA Open Sources Full Run:ai Platform for GPU Orchestration",
-        "url": "https://www.hpcwire.com/aiwire/2026/10/13/nvidia-open-sources-full-runai-platform-for-gpu-orchestration/"
+        "title": "Kingy AI: Gemini 4 Argon specs, benchmarks, pricing",
+        "url": "https://kingy.ai/blog/gemini-4-argon-specs-benchmarks-pricing/"
       },
       {
-        "title": "TechRepublic: Nvidia Run Is Now Open Source: What's Free and Paid",
-        "url": "https://www.techrepublic.com/article/news-nvidia-runai-open-source-free-paid/"
+        "title": "VentureBeat: Anthropic launches Claude Haiku 5.5 with 90% API price reduction",
+        "url": "https://venturebeat.com/technology/anthropic-launches-claude-haiku-5-5-with-90-api-price-reduction-matching-gpt-6-luna"
       },
       {
-        "title": "Matthews Wong: EU AI Act Digital Omnibus Deadlines: A DevOps Team Calendar",
+        "title": "The New Stack: Anthropic launches Haiku 5.5 at a much lower price",
+        "url": "https://thenewstack.io/anthropic-claude-haiku-5-5/"
+      },
+      {
+        "title": "Cooley: Digital AI Omnibus delays key deadlines, introduces new rules",
+        "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/"
+      },
+      {
+        "title": "Matthews Wong: EU AI Act Digital Omnibus deadlines, a DevOps team calendar",
         "url": "https://www.matthewswong.com/en/blog/eu-ai-act-digital-omnibus-devops-deadlines/"
       },
       {
-        "title": "Usercentrics: EU AI Act Deal: Digital Omnibus Now in Force",
-        "url": "https://usercentrics.com/knowledge-hub/eu-ai-act-high-risk-delay-article-50-transparency-consent/"
+        "title": "Unite.AI: Google launches Universal Cart across Search and the Gemini app",
+        "url": "https://www.unite.ai/google-launches-universal-cart-across-search-and-the-gemini-app/"
       },
       {
-        "title": "Cyberdunes: Google Agentic Checkout and Universal Cart",
-        "url": "https://www.cyberdunes.com/blog/news/google-agentic-checkout-universal-cart/"
+        "title": "PPC Land: Google's Universal Cart reaches US Search and Gemini, but not YouTube",
+        "url": "https://ppc.land/googles-universal-cart-reaches-us-search-and-gemini-but-not-youtube/"
       },
       {
-        "title": "Delante: Google Universal Cart Launches: What It Means for E-commerce",
-        "url": "https://delante.co/google-universal-cart-search-gemini/"
+        "title": "Startup Fortune: Google's Universal Cart goes live and retailers are already pushing back",
+        "url": "https://startupfortune.com/googles-universal-cart-goes-live-and-retailers-are-already-pushing-back/"
       },
       {
-        "title": "The Agentic Commerce Frontier: October 13 - October 19",
+        "title": "The Agentic Commerce Frontier: October 13 to October 19",
         "url": "https://agentcommerce.substack.com/p/the-agentic-commerce-frontier-october-f26"
       }
     ],
-    "published_at": "2026-10-20T18:26:15+02:00"
+    "published_at": "2026-10-20T18:30:37+02:00"
   }
 ]
