@@ -22,7 +22,7 @@ generation:
   max_tokens: 8000
   web_search_max_uses: 15
   timezone: "Europe/Paris"
-  target_words: 950                  # about 6 to 7 minutes spoken
+  target_words: 880                  # about 6 minutes spoken
 
 tts:
   voice_id: "TO_FILL"                # ElevenLabs voice ID

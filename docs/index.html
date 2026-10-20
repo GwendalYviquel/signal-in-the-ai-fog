@@ -323,7 +323,7 @@
       const previews = episodes.length - published.length;
       const hours = published.reduce((t, e) => t + (e.duration_seconds || 0), 0) / 3600;
       const first = fmtDay(episodes[episodes.length - 1].date);
-      const parts = [`${published.length} episode${published.length === 1 ? "" : "s"}`];
+      const parts = published.length ? [`${published.length} episode${published.length === 1 ? "" : "s"}`] : [];
       if (previews) parts.push(`${previews} preview${previews === 1 ? "" : "s"}`);
       if (hours) parts.push(`${hours.toFixed(1)} hours of listening`);
       parts.push(`since ${first}`);

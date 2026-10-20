@@ -15,11 +15,12 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Word ranges per part: outside them is a warning, not an error (models miscount).
 LENGTHS = {
-    "story facts": (110, 200), "story read": (100, 190),
-    "segment facts": (35, 85), "segment read": (25, 65),
-    "number_of_the_day": (20, 60), "what_to_watch": (40, 110), "question": (15, 50),
+    "story facts": (100, 170), "story read": (80, 150),
+    "segment facts": (30, 70), "segment read": (20, 55),
+    "number_of_the_day": (15, 50), "what_to_watch": (35, 90), "question": (12, 40),
 }
 SEGMENTS_MIN, SEGMENTS_MAX = 2, 5
+HEADLINE_MAX_WORDS = 8
 FIRST_PERSON = re.compile(r"\b(we|We|our|Our|ours|us)\b")  # "US" (country) stays allowed
 UNSPEAKABLE = re.compile(r"[*_#`\[\]<>{}]|https?://")
 
@@ -102,6 +103,9 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
 
     if len(ep["headlines"]) != 3:
         errors.append(f"Expected 3 headlines, got {len(ep['headlines'])}")
+    for h in ep["headlines"]:
+        if "," in h or words(h) > HEADLINE_MAX_WORDS:
+            errors.append(f"Headline must be at most {HEADLINE_MAX_WORDS} words with no comma: {h!r}")
 
     themes = [t["name"] for t in cfg["themes"]]
     story = ep["story_of_the_day"]
