@@ -28,7 +28,7 @@ def repo(tmp_path, monkeypatch):
                        "SCRIPTS": tmp_path / "data/scripts", "PREVIEWS": tmp_path / "data/previews.json",
                        "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build"}.items():
         monkeypatch.setattr(main, name, path)
-    for var in ("DRY_RUN", "PREVIEW", "FORCE"):
+    for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE"):
         monkeypatch.delenv(var, raising=False)
     monkeypatch.setattr(main, "current_time", lambda cfg: TUESDAY)
     return tmp_path

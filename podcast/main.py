@@ -38,6 +38,18 @@ def current_time(cfg: dict) -> dt.datetime:
     return dt.datetime.now(ZoneInfo(cfg["generation"]["timezone"]))
 
 
+def scheduled_run_is_due(cfg: dict, cron: str, now_utc: dt.datetime) -> bool:
+    """GitHub cron runs in UTC; one cron line exists for summer time and one for winter time.
+    A run proceeds only if the cron that triggered it lands on publish_at in Paris today.
+    It reads the cron, not the clock: a run that starts late is still recognised."""
+    if not cron:
+        return True  # manual run
+    minute, hour = (int(v) for v in cron.split()[:2])
+    planned = now_utc.astimezone(dt.timezone.utc).replace(hour=hour, minute=minute, second=0, microsecond=0)
+    local = planned.astimezone(ZoneInfo(cfg["generation"]["timezone"]))
+    return f"{local:%H:%M}" == cfg["generation"]["publish_at"]
+
+
 def themes_covered(structured: dict) -> list[str]:
     themes = [structured["story_of_the_day"]["theme"]] + [s["theme"] for s in structured["segments"]]
     return list(dict.fromkeys(themes))
@@ -77,6 +89,10 @@ def main() -> None:
     check_config(cfg, dry_run or preview)
 
     now = current_time(cfg)
+    cron = os.getenv("SCHEDULE", "").strip()  # the cron line of a scheduled run, empty otherwise
+    if not scheduled_run_is_due(cfg, cron, now):
+        print(f"Cron {cron!r} is the other side of daylight saving time today: nothing to do.")
+        return
     today = now.date()
     if today.weekday() >= 5 and not force:
         print("Weekend: no episode.")

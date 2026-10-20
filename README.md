@@ -72,7 +72,13 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 - **Rehearsal**: an MP3 is uploaded as a release, downloaded back from its public URL and checked in the feed and catalog, then the release is deleted. Nothing is published or committed. With `with_voice`, both voices read two short sentences (147 characters) and the sample is kept as an artifact.
 - **Force** (`force` option): regenerates today's episode even if it already exists (or on a weekend), replacing the release.
 
-The schedule (`cron` in UTC in the workflow) aims to have the episode ready before the morning commute, Monday to Friday.
+### Schedule
+
+The daily run starts at **4:05 Paris time, every weekday, public holidays included** (`generation.publish_at`). The episode is online about 15 minutes later, which leaves Spotify close to three hours to pick up the feed before a 7:00 listen. GitHub cron runs in UTC, so the workflow has two cron lines, one for summer time and one for winter time; each run reads the cron line that triggered it (not the clock, so a late start is still recognised) and only the one landing on 4:05 in Paris goes on. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
+
+```
+gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
+```
 
 ## Repository contents
 

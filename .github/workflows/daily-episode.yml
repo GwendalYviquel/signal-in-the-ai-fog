@@ -1,10 +1,12 @@
 name: Daily episode
 
 on:
-  # Disabled until the configuration is validated.
-  # GitHub schedules in UTC: 5:15 UTC = 7:15 in Paris in summer, 6:15 in winter.
-  # schedule:
-  #   - cron: "15 5 * * 1-5"
+  # GitHub schedules in UTC. Two lines keep the run at 4:05 Paris time all year
+  # (generation.publish_at); the code keeps only the one matching today's offset.
+  # Every weekday, public holidays included.
+  schedule:
+    - cron: "5 2 * * 1-5"   # 4:05 Paris in summer time (UTC+2)
+    - cron: "5 3 * * 1-5"   # 4:05 Paris in winter time (UTC+1)
   workflow_dispatch:
     inputs:
       dry_run:
@@ -27,6 +29,9 @@ concurrency:
 
 jobs:
   episode:
+    # Scheduled runs only once the SCHEDULE_ENABLED repository variable is "true":
+    # gh variable set SCHEDULE_ENABLED --body true   (and --body false to pause)
+    if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment:
@@ -36,6 +41,7 @@ jobs:
       # On scheduled runs the inputs are empty: real publication.
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
       FORCE: ${{ inputs.force && 'true' || 'false' }}
+      SCHEDULE: ${{ github.event.schedule }}   # which cron line triggered the run, empty when manual
     steps:
       - uses: actions/checkout@v4
 

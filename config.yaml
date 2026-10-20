@@ -22,6 +22,10 @@ generation:
   max_tokens: 16000                  # room for the episode after long web searches
   web_search_max_uses: 15
   timezone: "Europe/Paris"
+  # Paris time the scheduled run starts, all year: the episode is online about 15 minutes later,
+  # leaving Spotify close to 3 hours to pick up the feed before a 7:00 listen. The two crons in
+  # .github/workflows/daily-episode.yml (summer and winter) must match it: a test checks.
+  publish_at: "04:05"
   target_words: 880                  # about 6 minutes spoken
 
 tts:
