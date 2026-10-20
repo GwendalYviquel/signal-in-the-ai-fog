@@ -50,6 +50,7 @@ tools/make_cover.py                  cover art generation (python tools/make_cov
 .github/workflows/tests.yml          test suite on every push
 .github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
 tests/                               offline test suite (pytest)
+TESTING.md                           test suite and journal of real runs
 ```
 
 ### Configuration
@@ -74,6 +75,8 @@ python -m pytest
 ```
 
 The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and the pipeline runs on a temporary copy of the data. It covers episode validation, the generation loop (tool submission, correction rounds, truncated responses), script assembly, speech chunking and retries, the RSS feed, the catalog, every run mode end to end, the cover art (platform specs, every word drawn, even without the DejaVu font), the catalog page in a headless browser (cards, Spotify button, search, filters, stats, deep links, HTML injection, mobile layout), the consistency between the prompt and the checks (an episode written exactly to the prompt must pass), the workflows (triggers, concurrency, dry-run guards), and repository hygiene (secrets wired into workflows, private files ignored, no forbidden term in tracked files when `FORBIDDEN_TERMS` is set). Every bug met in a real run gets a regression test.
+
+[TESTING.md](TESTING.md) details the suite and keeps a journal of every real run, successful or not, with what each one taught us.
 
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 

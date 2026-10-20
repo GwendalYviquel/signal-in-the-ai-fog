@@ -143,3 +143,13 @@ def test_config_is_ready_to_publish(cfg):
     text = yaml.safe_dump(cfg)
     assert "TO_FILL" not in text
     assert cfg["podcast"]["owner_email"] and "@" in cfg["podcast"]["owner_email"]
+
+
+def test_testing_journal_lists_every_test_file_with_its_count():
+    # TESTING.md documents the suite and every real run: it must not fall behind the code.
+    import re
+    journal = (ROOT / "TESTING.md").read_text(encoding="utf-8")
+    documented = dict(re.findall(r"^\| `(test_\w+\.py)` \| (\d+) \|", journal, re.M))
+    actual = {p.name: str(p.read_text(encoding="utf-8").count("\ndef test_"))
+              for p in (ROOT / "tests").glob("test_*.py")}
+    assert documented == actual
