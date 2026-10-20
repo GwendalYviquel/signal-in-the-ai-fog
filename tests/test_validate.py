@@ -34,18 +34,22 @@ def test_headline_with_comma_is_rejected(cfg):
     # Regression (2026-10-20): "Mistral Large 4 is live in preview, weights still pending"
     # made "Today: A, B, and C" unreadable.
     ep = make_episode(headlines=["Mistral Large 4 live, weights pending", "b c", "d e"])
-    assert any("no comma" in e for e in errors_of(ep, cfg))
+    assert any("must not contain a comma" in e for e in errors_of(ep, cfg))
 
 
-def test_headline_too_long_is_rejected(cfg):
-    ep = make_episode(headlines=["one two three four five six seven eight nine", "b c", "d e"])
-    assert any("at most 8 words" in e for e in errors_of(ep, cfg))
+def test_headline_too_long_is_rejected_with_its_count(cfg):
+    # Learning (2026-10-20): "Gemini four Argon goes live with a price cliff" failed at 9 words
+    # without saying so; the limit is now 10 and the error gives the count.
+    assert not errors_of(make_episode(headlines=["Gemini four Argon goes live with a price cliff", "b", "c"]), cfg)
+    ep = make_episode(headlines=["one two three four five six seven eight nine ten eleven", "b c", "d e"])
+    assert "Headline has 11 words, max 10: 'one two three four five six seven eight nine ten eleven'" in errors_of(ep, cfg)
 
 
 def test_headline_numbers_must_be_spelled_out(cfg):
     # Regression (2026-10-20): "1,000 tokens per second" was rejected for its comma;
-    # the prompt now asks for numbers in words, which passes.
+    # numbers without separators, or in words, pass.
     assert errors_of(make_episode(headlines=["Mercury 3 passes 1,000 tokens", "b c", "d e"]), cfg)
+    assert not errors_of(make_episode(headlines=["Mercury 3 passes 1000 tokens", "b c", "d e"]), cfg)
     assert not errors_of(make_episode(headlines=["Mercury 3 passes one thousand tokens", "b c", "d e"]), cfg)
 
 
@@ -134,4 +138,4 @@ def test_part_length_only_warns(cfg):
 def test_total_length_far_from_target_is_an_error(cfg):
     ep = make_episode()
     ep["story_of_the_day"]["facts"] = text(900)
-    assert any("target is about" in e for e in errors_of(ep, cfg))
+    assert any(e.startswith("Episode is too long") for e in errors_of(ep, cfg))

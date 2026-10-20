@@ -4,6 +4,7 @@ The model submits the episode through the submit_episode tool (one field per par
 of the episode); this module validates it and assembles the spoken script with the
 fixed opening, transitions and sign-off, so every episode follows the same structure.
 """
+import json
 import os
 import re
 from pathlib import Path
@@ -19,7 +20,7 @@ LENGTHS = {
     "number_of_the_day": (15, 50), "what_to_watch": (35, 90), "question": (12, 40),
 }
 SEGMENTS_MIN, SEGMENTS_MAX = 2, 5
-HEADLINE_MAX_WORDS = 8
+HEADLINE_MAX_WORDS = 10
 FIRST_PERSON = re.compile(r"\b(we|We|our|Our|ours|us)\b")  # "US" (country) stays allowed
 UNSPEAKABLE = re.compile(r"[*_#`\[\]<>{}]|https?://")
 
@@ -121,8 +122,10 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     if len(ep["headlines"]) != 3:
         errors.append(f"Expected 3 headlines, got {len(ep['headlines'])}")
     for h in ep["headlines"]:
-        if "," in h or words(h) > HEADLINE_MAX_WORDS:
-            errors.append(f"Headline must be at most {HEADLINE_MAX_WORDS} words with no comma: {h!r}")
+        if "," in h:
+            errors.append(f"Headline must not contain a comma (write 1000, not 1,000): {h!r}")
+        if words(h) > HEADLINE_MAX_WORDS:
+            errors.append(f"Headline has {words(h)} words, max {HEADLINE_MAX_WORDS}: {h!r}")
 
     themes = [t["name"] for t in cfg["themes"]]
     story = ep["story_of_the_day"]
@@ -171,8 +174,10 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
         return errors, warnings
     target = cfg["generation"]["target_words"]
     total = words(assemble(ep, cfg, None))
-    if not 0.75 * target <= total <= 1.25 * target:
-        errors.append(f"Episode is {total} words, target is about {target}")
+    if total < 0.75 * target:
+        errors.append(f"Episode is too short: {total} words, target is about {target}")
+    elif total > 1.25 * target:
+        errors.append(f"Episode is too long: {total} words, target is about {target}")
     return errors, warnings
 
 
@@ -227,6 +232,43 @@ def _ask(client, gen, system, tools, messages):
     return call, resp.stop_reason == "max_tokens"
 
 
+def _evaluate(call, truncated, cfg, gen):
+    """Return (episode or None if unusable, errors, warnings)."""
+    if truncated:
+        print(f"Response cut off at max_tokens ({gen['max_tokens']}): consider raising generation.max_tokens")
+        return None, ["Your response was cut off by the output length limit before the episode was complete. "
+                      "Submit it again, keeping every text within its target length."], []
+    if call is None:
+        return None, ["No episode submitted: call the submit_episode tool."], []
+    try:
+        errors, warnings = validate(call.input, cfg)
+    except (KeyError, TypeError, AttributeError, IndexError) as e:
+        return None, [f"Malformed episode: {e!r}"], []
+    if _needs_research(errors):
+        return None, errors, warnings  # fixed in the full conversation, which has web search
+    return call.input, errors, warnings
+
+
+def _needs_research(errors: list[str]) -> bool:
+    """Errors that need new content or sources: never fixed without web search (no invented sources)."""
+    return any(e.startswith("Missing field") or "has no source" in e or "needs both facts and read" in e
+               or e.startswith("Episode is too short") for e in errors)
+
+
+def _correct(client, gen, system, ep, errors):
+    """Light correction round: only the episode and its errors, no research history."""
+    messages = [{"role": "user", "content":
+                 "Here is today's episode, as you submitted it:\n" + json.dumps(ep, ensure_ascii=False)
+                 + "\n\nIt does not meet the requirements:\n- " + "\n- ".join(errors)
+                 + "\n\nFix only these points, keep everything else unchanged, and call submit_episode "
+                   "with the full corrected episode."}]
+    resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"], system=system,
+                                  tools=[SUBMIT_TOOL], tool_choice={"type": "tool", "name": SUBMIT_TOOL["name"]},
+                                  messages=messages)
+    call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
+    return call, resp.stop_reason == "max_tokens"
+
+
 def generate_episode(cfg, now, previous_scripts):
     gen = cfg["generation"]
     system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
@@ -240,21 +282,14 @@ def generate_episode(cfg, now, previous_scripts):
     tools = [{"type": "web_search_20250305", "name": "web_search",
               "max_uses": gen["web_search_max_uses"]}, SUBMIT_TOOL]
 
-    attempts = 3  # up to two correction rounds if the episode is invalid
+    # The full conversation does the research; corrections of a complete episode are sent
+    # in a separate light conversation (episode + errors only), much cheaper than replaying
+    # every search result. The full conversation is resumed only when nothing usable came back.
+    call, truncated = _ask(client, gen, system, tools, messages)
+    pending = call  # tool call of the full conversation still waiting for its tool_result
+    attempts = 3
     for attempt in range(attempts):
-        call, truncated = _ask(client, gen, system, tools, messages)
-        if truncated:
-            print(f"Response cut off at max_tokens ({gen['max_tokens']}): consider raising generation.max_tokens")
-            errors, warnings = ["Your response was cut off by the output length limit before the episode was "
-                                "complete. Submit it again, keeping every text within its target length."], []
-        elif call is None:
-            errors, warnings = ["No episode submitted: call the submit_episode tool."], []
-        else:
-            ep = call.input
-            try:
-                errors, warnings = validate(ep, cfg)
-            except (KeyError, TypeError, AttributeError, IndexError) as e:
-                errors, warnings = [f"Malformed episode: {e!r}"], []
+        ep, errors, warnings = _evaluate(call, truncated, cfg, gen)
         for w in warnings:
             print(f"Warning: {w}")
         if not errors:
@@ -262,13 +297,18 @@ def generate_episode(cfg, now, previous_scripts):
         print(f"Invalid episode (attempt {attempt + 1}):\n- " + "\n- ".join(errors))
         if attempt == attempts - 1:
             raise SystemExit("The episode is still invalid after the correction rounds: nothing published.")
+        if ep is not None:
+            call, truncated = _correct(client, gen, system, ep, errors)
+            continue
         feedback = ("The episode does not meet the requirements:\n- " + "\n- ".join(errors)
                     + "\nFix these points and call submit_episode again with the full corrected episode.")
-        if call is None:
+        if pending is None:
             messages.append({"role": "user", "content": feedback})
         else:  # every tool call, even a truncated one, must be answered with a tool_result
             messages.append({"role": "user", "content": [
-                {"type": "tool_result", "tool_use_id": call.id, "content": feedback, "is_error": True}]})
+                {"type": "tool_result", "tool_use_id": pending.id, "content": feedback, "is_error": True}]})
+        call, truncated = _ask(client, gen, system, tools, messages)
+        pending = call
 
     return {
         "title": ep["title"].strip(),

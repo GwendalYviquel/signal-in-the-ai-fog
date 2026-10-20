@@ -27,20 +27,64 @@ def test_episode_is_submitted_through_the_tool_not_as_text(cfg, fake_claude):
     assert "call the submit_episode tool" in last_user_content(client.calls[1])
 
 
-def test_invalid_submission_gets_a_tool_result_with_the_errors(cfg, fake_claude):
+def is_light(call):
+    """A light correction: one user message, only the submit tool, forced."""
+    return (len(call["messages"]) == 1 and [t["name"] for t in call["tools"]] == ["submit_episode"]
+            and call.get("tool_choice") == {"type": "tool", "name": "submit_episode"})
+
+
+def test_wording_errors_are_fixed_in_a_light_correction(cfg, fake_claude):
+    # Learning (2026-10-20): correction rounds replayed every search result, about 3x the cost.
     bad = make_episode(headlines=["one, two", "b c", "d e"])
     client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
     generate.generate_episode(cfg, TUESDAY, [])
-    result = last_user_content(client.calls[1])[0]
-    assert result["type"] == "tool_result" and result["tool_use_id"] == "toolu_a" and result["is_error"]
-    assert "no comma" in result["content"]
+    light = client.calls[1]
+    assert is_light(light)
+    prompt = light["messages"][0]["content"]
+    assert "must not contain a comma" in prompt and '"one, two"' in prompt
+
+
+def test_missing_source_goes_back_to_the_research_conversation(cfg, fake_claude):
+    # Without web search, a light correction could invent a source: never allowed.
+    bad = make_episode()
+    bad["segments"][0]["sources"] = []
+    client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    full = client.calls[1]
+    assert not is_light(full)
+    assert "web_search" in [t["name"] for t in full["tools"]]
+    result = last_user_content(full)[0]
+    assert result["tool_use_id"] == "toolu_a" and "has no source" in result["content"]
+
+
+def test_too_short_episode_goes_back_to_research(cfg, fake_claude):
+    short = make_episode()
+    short["segments"] = short["segments"][:2]
+    short["story_of_the_day"]["facts"] = "Short facts."
+    short["story_of_the_day"]["read"] = "Short read."
+    client = fake_claude([reply(submit_block(short, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    assert not is_light(client.calls[1])
+
+
+def test_failed_light_correction_resumes_the_research_conversation(cfg, fake_claude):
+    # The pending tool call of the research conversation must be the one answered,
+    # not the light correction's (that would be rejected by the API).
+    bad = make_episode(headlines=["one, two", "b c", "d e"])
+    client = fake_claude([reply(submit_block(bad, "toolu_full")),
+                          reply(submit_block({"title": "t"}, "toolu_light"), stop_reason="max_tokens"),
+                          reply(submit_block(make_episode(), "toolu_full2"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    assert is_light(client.calls[1]) and not is_light(client.calls[2])
+    assert last_user_content(client.calls[2])[0]["tool_use_id"] == "toolu_full"
 
 
 def test_two_correction_rounds_then_give_up(cfg, fake_claude):
     bad = make_episode(question="What should we do " + "x " * 20)
-    fake_claude([reply(submit_block(bad, f"toolu_{i}")) for i in range(3)])
+    client = fake_claude([reply(submit_block(bad, f"toolu_{i}")) for i in range(3)])
     with pytest.raises(SystemExit, match="nothing published"):
         generate.generate_episode(cfg, TUESDAY, [])
+    assert [is_light(c) for c in client.calls] == [False, True, True]
 
 
 def test_truncated_response_is_named_as_such(cfg, fake_claude):

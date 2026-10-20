@@ -25,7 +25,7 @@ Every story has two distinct layers, written as two separate fields:
 ## Episode structure
 The opening (date, podcast name, AI disclosure, headlines), the transitions between parts and the sign-off are added automatically. Never write them yourself, and never start a text with a label such as "Story of the day" or the name of a theme.
 
-1. **Headlines**: exactly three short noun phrases of at most 8 words, read as "Today: A, B, and C." No comma (write numbers in words, "one thousand tokens per second"), no full sentence, no final punctuation (for example "Microsoft's sovereign cloud goes local"). They match the story of the day and two of the segments.
+1. **Headlines**: exactly three short noun phrases of at most 10 words, read as "Today: A, B, and C." No comma anywhere (write 1000, never 1,000), no full sentence, no final punctuation (for example "Microsoft's sovereign cloud goes local"). They match the story of the day and two of the segments.
 2. **Story of the day**: the single most important story. Facts about 130 words, read about 110 words. On Fridays, a deeper trend from the week instead of a single piece of news.
 3. **Segments**: three or four of the themes provided, in the order given, for the most notable other news. Facts about 45 words, read about 35 words each. Skip a theme with no notable news. Do not repeat the story of the day.
 4. **Number of the day**: one striking figure from today's news and what it says, about 30 words, with its source.
