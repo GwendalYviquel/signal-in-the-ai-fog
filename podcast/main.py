@@ -91,6 +91,9 @@ def main() -> None:
         print("Today's preview already exists.")
         return
 
+    if not (dry_run or preview):
+        tts.check_voices(cfg["tts"])  # a few characters: fail before paying for the script
+
     SCRIPTS.mkdir(parents=True, exist_ok=True)
     BUILD.mkdir(exist_ok=True)
     previous = [p.read_text(encoding="utf-8") for p in sorted(SCRIPTS.glob("*.md"))

@@ -54,6 +54,8 @@ def mocks(monkeypatch):
 
     monkeypatch.setattr(generate, "generate_episode", fake_generate)
     monkeypatch.setattr(tts, "synthesize", fake_tts)
+    monkeypatch.setattr(tts, "check_voices", lambda cfg: calls.__setitem__("voice_checks",
+                                                                       calls.get("voice_checks", 0) + 1))
     monkeypatch.setattr(publish, "repo", lambda: "owner/podcast")
     monkeypatch.setattr(publish, "upload_audio",
                         lambda mp3, tag, title, notes: calls["upload"].append(tag) or f"https://x/{tag}/{mp3.name}")
@@ -182,3 +184,24 @@ def test_previous_published_scripts_feed_continuity(repo, mocks):
         (scripts / f"{day}.md").write_text(f"script {day}")
     main.main()
     assert mocks["previous"] == ["script 2026-10-15", "script 2026-10-16", "script 2026-10-19"]
+
+
+def test_voices_are_checked_before_paying_for_the_script(repo, mocks, monkeypatch):
+    def broken(cfg):
+        raise RuntimeError("Voice check failed for: analyst")
+    monkeypatch.setattr(tts, "check_voices", broken)
+    with pytest.raises(RuntimeError, match="analyst"):
+        main.main()
+    assert mocks["generate"] == 0, "Claude must not be called when a voice is unusable"
+
+
+def test_no_voice_check_in_dry_run_or_preview(repo, mocks, monkeypatch):
+    for mode in ("DRY_RUN", "PREVIEW"):
+        monkeypatch.setenv(mode, "true")
+        monkeypatch.setenv("FORCE", "true")
+        main.main()
+        monkeypatch.delenv(mode)
+    assert mocks.get("voice_checks", 0) == 0
+    monkeypatch.delenv("FORCE")
+    main.main()
+    assert mocks["voice_checks"] == 1

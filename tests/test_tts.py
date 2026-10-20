@@ -164,3 +164,20 @@ def test_failure_names_the_voice_and_what_was_already_billed(posts, tmp_path, ca
     assert msg.startswith("ElevenLabs 402")
     assert "request 2, analyst voice analystVoice" in msg and "62 characters already synthesised" in msg
     assert "ElevenLabs request 1: host voice hostVoice, 62 characters, ok" in capsys.readouterr().out
+
+
+def test_voice_check_costs_one_word_per_voice_and_tests_each_independently(posts, capsys):
+    # Learning (2026-10-20): checking voice IDs with full sentences spent 62 credits on the host
+    # voice just to reach the failing analyst voice. One word per voice is enough.
+    sent, statuses = posts
+    statuses += [402, 200]  # host fails, analyst still tested
+    with pytest.raises(RuntimeError, match="Voice check failed for: host"):
+        tts.check_voices(CFG | {"voice_settings": {"stability": 0.5}})
+    assert [s.url.rsplit("/", 1)[1] for s in sent] == ["hostVoice", "analystVoice"]
+    assert all(s.body["text"] == "Hi." and s.body["voice_settings"] == {"stability": 0.5} for s in sent)
+    out = capsys.readouterr().out
+    assert "analyst voice analystVoice: ok" in out and "Voice check cost: 6 characters" in out
+
+
+def test_voice_check_passes_when_every_voice_works(posts):
+    assert tts.check_voices(CFG) == {"host": "ok", "analyst": "ok"}

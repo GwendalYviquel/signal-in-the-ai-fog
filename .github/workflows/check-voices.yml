@@ -1,0 +1,32 @@
+name: Check voices
+
+# Checks that ElevenLabs accepts every configured voice, for a few characters:
+# one word per voice, each voice tested independently. Nothing is published.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["config.yaml"]   # whenever a voice ID may have changed
+
+permissions:
+  contents: read
+
+jobs:
+  voices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check every voice
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+        run: python -m podcast.tts

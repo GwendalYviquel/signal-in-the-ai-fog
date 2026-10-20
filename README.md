@@ -23,6 +23,7 @@ Every episode follows the same format, as a single-voice monologue: opening with
 | Preview | *Preview episode* workflow (manual) | Real script from Claude, published as a **Preview** card on the catalog site (no audio, Spotify link marked as coming soon). No ElevenLabs call, no release, RSS feed untouched, so nothing reaches Spotify. A published episode later replaces its preview. |
 | Publish | Manual run without `dry_run`, or schedule | Full episode: audio, release, RSS feed. |
 | Rehearsal | *Publication rehearsal* workflow (manual) | Checks the publication path on GitHub without ElevenLabs: a silent MP3 is uploaded as a release, downloaded back from its public URL and checked in the feed and catalog (built, never written or deployed), then the release is deleted. Nothing is published or committed. |
+| Voice check | *Check voices* workflow (manual, and on every change of `config.yaml`) | Each configured ElevenLabs voice reads one word (`Hi.`, 3 characters), independently, to prove the API accepts it. Also runs before every real publication, before Claude is called. |
 | Force | `force` option | Regenerates today's episode even if it already exists (or on a weekend), replacing the release. |
 
 The schedule (`cron` in UTC in the workflow) aims to have the episode ready before the morning commute, Monday to Friday.
@@ -49,6 +50,7 @@ tools/make_cover.py                  cover art generation (python tools/make_cov
 .github/workflows/preview-episode.yml  script-only run published to the catalog site
 .github/workflows/tests.yml          test suite on every push
 .github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
+.github/workflows/check-voices.yml   one-word check of every ElevenLabs voice
 tests/                               offline test suite (pytest)
 TESTING.md                           test suite and journal of real runs
 ```

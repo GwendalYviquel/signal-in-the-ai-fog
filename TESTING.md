@@ -26,15 +26,15 @@ python -m pytest
 | `test_validate.py` | 19 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text, lengths |
 | `test_generate.py` | 17 | The Claude loop: submission through the tool, light corrections versus corrections in the research conversation (no invented source), truncated responses, `pause_turn`, every tool call answered, workspace header, private context |
 | `test_assemble.py` | 7 | Spoken script: fixed opening with AI disclosure, order of parts, sign-off by weekday, headline punctuation, the read layer always on the analyst voice |
-| `test_tts.py` | 17 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices |
+| `test_tts.py` | 19 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently |
 | `test_feed_catalog.py` | 5 | RSS feed (valid XML, escaping, enclosure, AI disclosure) and catalog (previews replaced by published episodes) |
-| `test_main.py` | 11 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script |
+| `test_main.py` | 13 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script, voices checked before paying for the script |
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
 | `test_rehearsal.py` | 9 | Rehearsal leaves nothing behind, release deleted even on failure, ElevenLabs key only for the voice check |
 | `test_prompt.py` | 6 | Prompt and checks agree: an episode written exactly to the prompt passes |
 | `test_cover.py` | 7 | Cover meets Spotify and Apple specs, deterministic, every word drawn even without the DejaVu font |
 | `test_site.py` | 12 | Catalog page in a real browser: cards, Spotify button, search, theme filter, stats, deep links, HTML injection, mobile |
-| `test_repo.py` | 18 | Workflows (secrets, triggers, concurrency, dry-run guards), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite |
+| `test_repo.py` | 19 | Workflows (secrets, triggers, concurrency, dry-run guards, voice check only gets the ElevenLabs key), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite |
 
 ## Journal of real runs
 
@@ -51,6 +51,8 @@ python -m pytest
 | 2026-10-20 | [Publication rehearsal](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39460386881) | ✅ | Silent MP3 uploaded as a release with `gh`, downloaded back from its public URL, feed and catalog valid, release and tag deleted | — |
 | 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39488426877) | ❌ | ElevenLabs HTTP 400: *You need to be on the creator tier or above to use this voice* (first host voice). The key itself was accepted | Host voice changed |
 | 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39489527571) | ❌ | ElevenLabs HTTP 402: *Free users cannot use library voices via the API*. First read as a failure of the new host voice; the ElevenLabs dashboard showed 62 credits used, exactly the host sentence: the host voice worked and the **analyst** voice failed. The log could not tell which voice had failed | Every ElevenLabs request is logged (role, voice, characters), and a failure names the voice and what was already billed. Test: `test_failure_names_the_voice_and_what_was_already_billed`. Open: an analyst voice usable on the free plan, or a paid plan |
+
+| 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490313144) | ❌ | New analyst voice: also a library voice, HTTP 402. Thanks to the new log, identified at once: `request 2, analyst voice`. But the host sentence was billed again (62 credits) just to reach the analyst voice | One-word voice check (`Hi.`, 3 characters per voice, each voice tested independently): *Check voices* workflow, run on every change of `config.yaml`, and before every real publication so a broken voice stops the run before Claude is paid. Tests: `test_voice_check_costs_one_word_per_voice_and_tests_each_independently`, `test_voices_are_checked_before_paying_for_the_script` |
 
 The offline suite has also passed on GitHub for every commit since it was added.
 

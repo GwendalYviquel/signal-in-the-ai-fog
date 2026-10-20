@@ -130,3 +130,36 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> N
                     pause = silence_like(audio, pause_seconds) if pause_seconds else b""
                 f.write(audio)
     print(f"Speech synthesis: {total} characters, {len(runs)} voice turns, {requests_count} request(s)")
+
+
+CHECK_TEXT = "Hi."  # 3 characters per voice: enough to prove the API accepts the voice
+
+
+def check_voices(tts_cfg: dict) -> dict[str, str]:
+    """Synthesise one word with each configured voice, independently, so that one failure does
+    not hide another. Returns {role: "ok" or the error}; raises if any voice fails."""
+    headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
+    params = {"output_format": tts_cfg["output_format"]}
+    voices = tts_cfg.get("voices") or {"host": tts_cfg["voice_id"]}
+    results = {}
+    for role, voice in voices.items():
+        body = {"text": CHECK_TEXT, "model_id": tts_cfg["model_id"]}
+        if tts_cfg.get("voice_settings"):
+            body["voice_settings"] = tts_cfg["voice_settings"]
+        try:
+            _post(API.format(voice_id=voice), headers, params, body)
+            results[role] = "ok"
+        except RuntimeError as e:
+            results[role] = str(e)
+        print(f"Voice check, {role} voice {voice}: {results[role]}")
+    print(f"Voice check cost: {len(CHECK_TEXT) * len(voices)} characters")
+    failed = [role for role, r in results.items() if r != "ok"]
+    if failed:
+        raise RuntimeError(f"Voice check failed for: {', '.join(failed)} (see above)")
+    return results
+
+
+if __name__ == "__main__":
+    import yaml
+    cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
+    check_voices(cfg["tts"])
