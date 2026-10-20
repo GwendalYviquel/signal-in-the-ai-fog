@@ -9,7 +9,7 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 A GitHub Action runs four steps:
 
 1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and returns them as JSON, one field per part of the episode, following the editorial line in `prompts/system.md`. The three previous scripts are passed in for continuity from one day to the next and to avoid repetition. The code then validates the episode (structure, theme order, sources, no markdown, no first person, no forbidden terms, length), asks for one correction round if needed, and assembles the spoken script with a fixed opening, transitions and sign-off.
-2. **Speech synthesis**: the text is split into chunks and sent to ElevenLabs, with the neighbouring chunks as context to keep the delivery continuous.
+2. **Speech synthesis**: two ElevenLabs voices share the episode. The host voice reads the opening, the facts, the transitions and the sign-off; the analyst voice reads every read layer, so the listener hears where analysis begins. A short pause marks each change of voice. Texts are split into chunks, with the neighbouring chunks of the same voice as context to keep the delivery continuous.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
 4. **Distribution**: `data/episodes.json` is updated, then the `docs/feed.xml` feed and the `docs/catalog.json` catalog are regenerated and deployed to GitHub Pages.
 

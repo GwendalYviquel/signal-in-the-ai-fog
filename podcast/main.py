@@ -46,8 +46,8 @@ def themes_covered(structured: dict) -> list[str]:
 
 def check_config(cfg: dict, dry_run: bool) -> None:
     to_fill = [k for k, v in cfg["podcast"].items() if v == "TO_FILL"]
-    if not dry_run and cfg["tts"]["voice_id"] == "TO_FILL":
-        to_fill.append("tts.voice_id")
+    voices = cfg["tts"].get("voices") or {"host": cfg["tts"].get("voice_id", "TO_FILL")}
+    to_fill += [f"tts.voices.{role}" for role, v in voices.items() if v == "TO_FILL"]
     if to_fill and not dry_run:
         raise SystemExit(f"config.yaml: fill in before publishing -> {', '.join(to_fill)}")
 
@@ -117,7 +117,7 @@ def main() -> None:
         return
 
     mp3 = BUILD / f"episode-{today}.mp3"
-    tts.synthesize(ep["script"], cfg["tts"], mp3)
+    tts.synthesize(ep["parts"], cfg["tts"], mp3)
 
     tag = f"episode-{today}"
     if force:

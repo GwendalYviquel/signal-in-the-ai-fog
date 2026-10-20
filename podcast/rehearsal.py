@@ -16,15 +16,10 @@ import requests
 import yaml
 from mutagen.mp3 import MP3
 
-from . import catalog, feed, main, publish
-
-# MPEG-1 Layer III frame, 128 kbps at 44.1 kHz, with an empty payload: silence.
-SILENT_FRAME = b"\xff\xfb\x90\x00" + b"\x00" * 413
-FRAMES_PER_SECOND = 44100 / 1152
-
+from . import catalog, feed, main, publish, tts
 
 def silent_mp3(path: Path, seconds: int = 3) -> None:
-    path.write_bytes(SILENT_FRAME * int(seconds * FRAMES_PER_SECOND))
+    path.write_bytes(tts.silence(seconds))
 
 
 def check_download(url: str, size: int, tries: int = 6) -> None:

@@ -40,3 +40,13 @@ def test_sources_are_collected_once(episode):
 
 def test_clean_for_tts():
     assert generate.clean_for_tts("A [Intro] **bold**  claim, see https://x.com") == "A bold claim, see"
+
+
+def test_every_read_goes_to_the_analyst_voice(cfg):
+    ep = make_episode()
+    parts = generate.assemble_parts(ep, cfg, TUESDAY)
+    analyst = [text for role, text in parts if role == generate.ANALYST]
+    reads = [ep["story_of_the_day"]["read"]] + [s["read"] for s in ep["segments"]]
+    assert analyst == reads
+    assert parts[0][0] == generate.HOST and parts[-1][0] == generate.HOST
+    assert generate.assemble(ep, cfg, TUESDAY) == "\n\n".join(text for _, text in parts)

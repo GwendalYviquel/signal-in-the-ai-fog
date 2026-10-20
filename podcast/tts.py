@@ -1,4 +1,4 @@
-"""Speech synthesis with the ElevenLabs API (text split into chunks)."""
+"""Speech synthesis with the ElevenLabs API: two voices, text split into chunks."""
 import os
 import time
 from pathlib import Path
@@ -48,20 +48,77 @@ def _post(url, headers, params, body, retries=3):
         raise RuntimeError(f"ElevenLabs {r.status_code}: {r.text[:300]}")
 
 
-def synthesize(text: str, tts_cfg: dict, out_path: Path) -> None:
+# MPEG-1 Layer III frame at 128 kbps, 44.1 kHz, stereo, with an empty payload: silence.
+SILENT_FRAME = b"\xff\xfb\x90\x00" + b"\x00" * 413
+
+
+def silence(seconds: float) -> bytes:
+    return SILENT_FRAME * round(seconds * 44100 / 1152)
+
+
+_BITRATES = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320]  # MPEG-1 Layer III, kbps
+_SAMPLE_RATES = [44100, 48000, 32000]
+
+
+def silence_like(audio: bytes, seconds: float) -> bytes:
+    """Silence in exactly the same MP3 format (channels, bitrate, rate) as the given audio,
+    so it can be concatenated without glitches. Empty if the format is not recognised."""
+    for i in range(len(audio) - 3):
+        b1, b2, b3 = audio[i + 1], audio[i + 2], audio[i + 3]
+        if audio[i] != 0xFF or (b1 & 0xFE) != 0xFA:  # sync + MPEG-1 + Layer III
+            continue
+        bitrate_idx, rate_idx = b2 >> 4, (b2 >> 2) & 0x3
+        if not 0 < bitrate_idx < 15 or rate_idx == 3:
+            continue
+        rate = _SAMPLE_RATES[rate_idx]
+        header = bytes([0xFF, b1, b2 & 0xFD, b3])  # same header, padding bit cleared
+        frame = header + b"\x00" * (144 * _BITRATES[bitrate_idx] * 1000 // rate - 4)
+        return frame * round(seconds * rate / 1152)
+    return b""
+
+
+def voice_for(role: str, tts_cfg: dict) -> str:
+    voices = tts_cfg.get("voices") or {}
+    return voices.get(role) or voices.get("host") or tts_cfg["voice_id"]
+
+
+def _runs(parts: list[tuple[str, str]], tts_cfg: dict) -> list[tuple[str, str]]:
+    """Merge consecutive parts read by the same voice."""
+    runs = []
+    for role, text in parts:
+        voice = voice_for(role, tts_cfg)
+        if runs and runs[-1][0] == voice:
+            runs[-1] = (voice, runs[-1][1] + "\n\n" + text)
+        else:
+            runs.append((voice, text))
+    return runs
+
+
+def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> None:
+    """parts: (voice role, text) in reading order; roles map to voices in tts_cfg["voices"]."""
     headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
-    url = API.format(voice_id=tts_cfg["voice_id"])
     params = {"output_format": tts_cfg["output_format"]}
-    chunks = split_text(text, tts_cfg["max_chars_per_request"])
-    print(f"Speech synthesis: {len(text)} characters in {len(chunks)} request(s)")
+    pause_seconds, pause = tts_cfg.get("pause_seconds", 0), None
+    runs = _runs(parts, tts_cfg)
+    total = sum(len(text) for _, text in runs)
+    requests_count = 0
     with open(out_path, "wb") as f:
-        for i, chunk in enumerate(chunks):
-            body = {"text": chunk, "model_id": tts_cfg["model_id"]}
-            if tts_cfg.get("voice_settings"):
-                body["voice_settings"] = tts_cfg["voice_settings"]
-            if tts_cfg.get("use_context"):
-                if i > 0:
-                    body["previous_text"] = chunks[i - 1][-500:]
-                if i < len(chunks) - 1:
-                    body["next_text"] = chunks[i + 1][:500]
-            f.write(_post(url, headers, params, body))
+        for n, (voice, text) in enumerate(runs):
+            if n and pause:
+                f.write(pause)  # a short breath when the other voice takes over
+            chunks = split_text(text, tts_cfg["max_chars_per_request"])
+            for i, chunk in enumerate(chunks):
+                body = {"text": chunk, "model_id": tts_cfg["model_id"]}
+                if tts_cfg.get("voice_settings"):
+                    body["voice_settings"] = tts_cfg["voice_settings"]
+                if tts_cfg.get("use_context"):  # continuity within the same voice only
+                    if i > 0:
+                        body["previous_text"] = chunks[i - 1][-500:]
+                    if i < len(chunks) - 1:
+                        body["next_text"] = chunks[i + 1][:500]
+                audio = _post(API.format(voice_id=voice), headers, params, body)
+                if pause is None:
+                    pause = silence_like(audio, pause_seconds) if pause_seconds else b""
+                f.write(audio)
+                requests_count += 1
+    print(f"Speech synthesis: {total} characters, {len(runs)} voice turns, {requests_count} request(s)")

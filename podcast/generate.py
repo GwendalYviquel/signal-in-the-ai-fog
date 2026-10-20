@@ -181,29 +181,37 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     return errors, warnings
 
 
-def assemble(ep: dict, cfg: dict, now) -> str:
-    """Spoken script: fixed opening, transitions and sign-off around the model's texts."""
+HOST, ANALYST = "host", "analyst"  # two voices: the host reads facts, the analyst reads the read layer
+
+
+def assemble_parts(ep: dict, cfg: dict, now) -> list[tuple[str, str]]:
+    """Spoken script as (voice role, text) parts: fixed opening, transitions and sign-off
+    around the model's texts; every read layer goes to the analyst voice."""
     title = cfg["podcast"]["title"]
     day = f"{now:%A}, {now:%B} {now.day}" if now else "today"
     h = [x.strip().rstrip(".,;:!") for x in ep["headlines"]]
     see_you = "on Monday" if now and now.weekday() == 4 else "tomorrow"
     story = ep["story_of_the_day"]
     parts = [
-        f"Good morning, it's {day}. This is {title}, your daily briefing on enterprise AI "
-        f"in production, written and read by AI. Today: {h[0]}, {h[1]}, and {h[2]}.",
-        "First, the story of the day.",
-        story["facts"], story["read"],
+        (HOST, f"Good morning, it's {day}. This is {title}, your daily briefing on enterprise AI "
+               f"in production, written and read by AI. Today: {h[0]}, {h[1]}, and {h[2]}."),
+        (HOST, "First, the story of the day.\n\n" + story["facts"]),
+        (ANALYST, story["read"]),
     ]
     for s in ep["segments"]:
-        parts += [f"Next, {s['theme']}.", s["facts"], s["read"]]
-    parts += [
+        parts += [(HOST, f"Next, {s['theme']}.\n\n{s['facts']}"), (ANALYST, s["read"])]
+    parts.append((HOST, "\n\n".join([
         "The number of the day.", ep["number_of_the_day"]["text"],
         "What to watch.", ep["what_to_watch"],
         "And a question for your team.", ep["question"],
-        f"That's it for today. Sources are in the episode description. "
-        f"This was {title}. See you {see_you}.",
-    ]
-    return clean_for_tts("\n\n".join(parts))
+        f"That's it for today. Sources are in the episode description. This was {title}. See you {see_you}.",
+    ])))
+    return [(voice, clean_for_tts(text)) for voice, text in parts]
+
+
+def assemble(ep: dict, cfg: dict, now) -> str:
+    """The spoken script as one text (archive, catalog, length checks)."""
+    return "\n\n".join(text for _, text in assemble_parts(ep, cfg, now))
 
 
 def collect_sources(ep: dict) -> list[dict]:
@@ -314,6 +322,7 @@ def generate_episode(cfg, now, previous_scripts):
         "title": ep["title"].strip(),
         "summary": ep["summary"].strip(),
         "script": assemble(ep, cfg, now),
+        "parts": assemble_parts(ep, cfg, now),
         "sources": collect_sources(ep),
         "structured": ep,
     }

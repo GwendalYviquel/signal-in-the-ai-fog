@@ -19,7 +19,7 @@ def repo(tmp_path, monkeypatch):
     """A temporary repository layout with a publishable config, wired into podcast.main."""
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     cfg["podcast"].update(author="Test Author", owner_name="Test Owner")
-    cfg["tts"]["voice_id"] = "voice123"
+    cfg["tts"]["voices"] = {"host": "hostVoice", "analyst": "analystVoice"}
     (tmp_path / "config.yaml").write_text(yaml.safe_dump(cfg), encoding="utf-8")
     (tmp_path / "docs").mkdir()
     shutil.copy(ROOT / "docs" / "cover.jpg", tmp_path / "docs" / "cover.jpg")
@@ -44,10 +44,12 @@ def mocks(monkeypatch):
         calls["previous"] = previous
         ep = make_episode()
         return {"title": ep["title"], "summary": ep["summary"], "script": generate.assemble(ep, cfg, now),
-                "sources": generate.collect_sources(ep), "structured": ep}
+                "parts": generate.assemble_parts(ep, cfg, now), "sources": generate.collect_sources(ep),
+                "structured": ep}
 
-    def fake_tts(text, cfg, out):
+    def fake_tts(parts, cfg, out):
         calls["tts"] += 1
+        calls["voices"] = {role for role, _ in parts}
         out.write_bytes(FAKE_MP3)
 
     monkeypatch.setattr(generate, "generate_episode", fake_generate)
@@ -85,7 +87,7 @@ def test_preview_goes_to_the_catalog_only(repo, mocks, monkeypatch):
 
 def test_preview_does_not_need_the_publication_fields(repo, mocks, monkeypatch):
     cfg = yaml.safe_load((repo / "config.yaml").read_text())
-    cfg["tts"]["voice_id"] = "TO_FILL"
+    cfg["tts"]["voices"]["analyst"] = "TO_FILL"
     (repo / "config.yaml").write_text(yaml.safe_dump(cfg))
     monkeypatch.setenv("PREVIEW", "true")
     main.main()
@@ -110,6 +112,7 @@ def test_publish_after_preview(repo, mocks, monkeypatch):
     main.main()
 
     assert mocks["tts"] == 1 and mocks["upload"] == ["episode-2026-10-20"]
+    assert mocks["voices"] == {"host", "analyst"}
     [ep] = read(repo / "data/episodes.json")
     assert ep["guid"] == "owner/podcast#episode-2026-10-20"
     assert ep["audio_url"].endswith("episode-2026-10-20.mp3")
@@ -145,9 +148,9 @@ def test_failed_speech_keeps_the_preview(repo, mocks, monkeypatch):
 
 def test_publish_requires_the_publication_fields(repo, mocks):
     cfg = yaml.safe_load((repo / "config.yaml").read_text())
-    cfg["tts"]["voice_id"] = "TO_FILL"
+    cfg["tts"]["voices"]["analyst"] = "TO_FILL"
     (repo / "config.yaml").write_text(yaml.safe_dump(cfg))
-    with pytest.raises(SystemExit, match="tts.voice_id"):
+    with pytest.raises(SystemExit, match="tts.voices.analyst"):
         main.main()
     assert mocks["generate"] == 0
 
