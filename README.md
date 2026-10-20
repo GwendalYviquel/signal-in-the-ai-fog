@@ -43,7 +43,7 @@ data/episodes.json                   history of published episodes (source of th
 data/scripts/                        archived scripts, one Markdown file per day
 data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
-tools/make_cover.py                  cover art generation
+tools/make_cover.py                  cover art generation (python tools/make_cover.py [output.jpg])
 .github/workflows/daily-episode.yml  daily workflow
 .github/workflows/deploy-site.yml    site deployment when docs/ changes
 .github/workflows/preview-episode.yml  script-only run published to the catalog site
@@ -73,7 +73,7 @@ python -m playwright install chromium   # for the catalog site tests
 python -m pytest
 ```
 
-The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and the pipeline runs on a temporary copy of the data. It covers episode validation, the generation loop (tool submission, correction rounds, truncated responses), script assembly, speech chunking and retries, the RSS feed, the catalog, every run mode end to end, the catalog page in a headless browser (cards, Spotify button, search, filters, stats, deep links, HTML injection, mobile layout), the consistency between the prompt and the checks (an episode written exactly to the prompt must pass), the workflows (triggers, concurrency, dry-run guards), and repository hygiene (secrets wired into workflows, private files ignored, no forbidden term in tracked files when `FORBIDDEN_TERMS` is set). Every bug met in a real run gets a regression test.
+The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and the pipeline runs on a temporary copy of the data. It covers episode validation, the generation loop (tool submission, correction rounds, truncated responses), script assembly, speech chunking and retries, the RSS feed, the catalog, every run mode end to end, the cover art (platform specs, every word drawn, even without the DejaVu font), the catalog page in a headless browser (cards, Spotify button, search, filters, stats, deep links, HTML injection, mobile layout), the consistency between the prompt and the checks (an episode written exactly to the prompt must pass), the workflows (triggers, concurrency, dry-run guards), and repository hygiene (secrets wired into workflows, private files ignored, no forbidden term in tracked files when `FORBIDDEN_TERMS` is set). Every bug met in a real run gets a regression test.
 
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 

@@ -1,2 +1,4 @@
 pytest>=8.0
 playwright>=1.40   # catalog site tests (tests/test_site.py)
+pillow>=10.1      # cover art generator (tools/make_cover.py)
+numpy>=1.24
