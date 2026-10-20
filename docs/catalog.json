@@ -77,6 +77,77 @@
     }
    ],
    "transcript": "Good morning, it's Tuesday, October 20. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Mistral Large 4 awaits its open weights, Mistral's forecasting models run on CPU, and Google's Universal Cart reaches US shoppers.\n\nFirst, the story of the day.\n\nMistral opened a public preview of Mistral Large 4 on October sixth. It is a natively multimodal mixture-of-experts model with about one trillion parameters and a one million token context window. Mistral says it trained it on roughly four thousand Nvidia Grace Blackwell GPUs in its own European data centres. The list price is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens. A two-week launch sale halves that, to sixty-eight cents and two dollars nine, starting from the launch date, so it runs out around now. Open weights are promised by the end of October. As of mid-October they had not shipped, and Mistral had not named the licence. CNBC notes the model still trails the frontier in areas such as coding.\n\nThe read here: treat today's price as a promotion, not a budget line. Plan on the list price. The real question is the licence. If it allows commercial self-hosting, this becomes a credible option for private or sovereign deployment behind your gateway. If not, it is one more API. Either way, run it through your own business evaluations before routing traffic. The benchmark numbers so far come from the vendor. Worth watching what the end of October brings.\n\nNext, Models and vendors.\n\nMistral released Timestral, its first family of time-series forecasting models, in four sizes from five million to two hundred nine million parameters, under a modified MIT licence. Mistral reports the largest ranks first among zero-shot pretrained models on three public forecasting benchmarks. It runs on standard CPUs, with a one-day-ahead forecast in about one hundred forty milliseconds.\n\nWhat this really signals: forecasting is becoming a small-model, open-weight, no-GPU workload. For a retailer's demand and supply chain teams, that is cheap to self-host. The ranking is vendor-reported, so test it against your own sales history and your current baseline.\n\nNext, Regulation.\n\nThe Digital Omnibus on AI, Regulation 2026/1744, has been in force since July twenty-seventh. It moves high-risk obligations for stand-alone systems to December second, 2027, and for embedded products to August second, 2028. Article 50 transparency rules already apply. Systems on the market before August second get a grace period for machine-readable marking of AI-generated content, until December second, 2026.\n\nWhy it matters: the high-risk delay is real, but the marking deadline is not delayed. If you run generative systems that produce text, images or audio for customers, a central gateway is a natural place to implement labelling. Start by inventorying what was already live before August.\n\nNext, Retail and agents.\n\nGoogle began rolling out Universal Cart in the United States on October fifteenth, across Search and the Gemini app. Shoppers save products from several retailers, get price and restock alerts, and check out with Google Pay or on the merchant's site. It runs on Google's Universal Commerce Protocol. Retailers stay the seller of record. American Express also published a framework on October thirteenth for recording shopper intent before agents buy.\n\nThe bigger picture: agent-led checkout is now a live channel, not a pilot, though still US-only. What decides whether your products show up is catalogue quality, live stock and price feeds, and clean handover to your own checkout. Worth auditing those before the channel reaches Europe.\n\nThe number of the day.\n\nForty-three days. That is how long remains, from today, until December second, when the grace period ends for machine-readable marking of AI-generated content on systems already on the market before August.\n\nWhat to watch.\n\nThree dates. The Mistral Large 4 launch discount should end around now, so check your price assumptions. Open weights are promised by the end of October, and the licence terms matter most. On Saturday, October twenty-fourth, AWS plans an exercise to show its European Sovereign Cloud can run without non-EU infrastructure. Beyond that, December second for AI Act marking, and any sign Universal Cart moves beyond the United States.\n\nAnd a question for your team.\n\nIf your gateway had to switch to a European open-weight model next month, which of your business evaluations could you rerun in a day, and which could not?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
+   "date": "2026-10-19",
+   "status": "published",
+   "title": "Argon's Pricing Cliff, Ecosia Leaves Mistral",
+   "summary": "Google's Gemini 4 Argon is now broadly available, but its introductory API price doubles on December first. Also: Mistral Large 4 in preview, Ecosia's switch from Mistral to open models on European servers, new evidence that LLM judges are over-trusted, and the December second AI Act marking deadline.",
+   "headlines": [
+    "Gemini 4 Argon pricing cliff",
+    "Ecosia leaves Mistral for open models",
+    "AI Act marking deadline December second"
+   ],
+   "themes": [
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Quality",
+    "Regulation"
+   ],
+   "duration_seconds": 352,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-19/episode-2026-10-19.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Google AI for Developers: Gemini Developer API pricing",
+     "url": "https://ai.google.dev/gemini-api/docs/pricing"
+    },
+    {
+     "title": "VentureBeat: Google makes Gemini 4 Argon broadly available with limited-time low API pricing",
+     "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
+    },
+    {
+     "title": "Google AI for Developers: What's new in Gemini 4 Argon",
+     "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+    },
+    {
+     "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+    },
+    {
+     "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+     "url": "https://www.lindy.ai/blog/mistral-large-4"
+    },
+    {
+     "title": "Trending Topics: Search Engine Ecosia Swaps Mistral for Chinese A.I.",
+     "url": "https://www.trendingtopics.eu/ecosia-mistral-chinese-ai/"
+    },
+    {
+     "title": "ITdaily: Chinese over European: Ecosia sets Mistral aside",
+     "url": "https://itdaily.com/news/software/ecosia-puts-mistral-aside/"
+    },
+    {
+     "title": "EU-Startups: Ecosia founder clarifies move away from Mistral",
+     "url": "https://www.eu-startups.com/2026/10/ecosia-founder-clarifies-move-away-from-mistral-its-about-open-models-not-china/"
+    },
+    {
+     "title": "Kili Technology: LLM-as-a-Judge Validity: What 541,000 Decisions Reveal",
+     "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge"
+    },
+    {
+     "title": "Artificial Intelligence Act: Digital Omnibus on AI",
+     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/"
+    },
+    {
+     "title": "Faegre Drinker: Commission confirms transparency code of practice as adequate",
+     "url": "https://www.faegredrinker.com/en/insights/publications/2026/7/eu-ai-act-commission-confirms-transparency-code-of-practice-as-adequate-and-publishes-final-version-of-its-guidelines-on-transparency-obligations"
+    },
+    {
+     "title": "DLA Piper: What the EU's new Code of Practice means",
+     "url": "https://www.dlapiper.com/en/insights/publications/2026/07/what-the-eus-new-code-of-practice-means"
+    }
+   ],
+   "transcript": "Good morning, it's Monday, October 19. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Gemini 4 Argon pricing cliff, Ecosia leaves Mistral for open models, and AI Act marking deadline December second.\n\nFirst, the story of the day.\n\nGoogle made Gemini 4 Argon broadly available on October thirteenth. It had announced the model on September thirtieth, with access limited to a cyber defender programme. It is now on the paid Gemini API and in AI Studio, with no free tier. The model ID is gemini-4-argon, with a one-million-token context window. Introductory pricing is two dollars per million input tokens and ten dollars per million output tokens, and output includes thinking tokens. Cached input costs ten cents per million tokens. That introductory rate runs through November thirtieth. From December first, every rate doubles: four dollars per million input tokens, twenty dollars per million output tokens, and twenty cents per million cached tokens.\n\nThe read here: the doubling is a budget event, not a footnote. A team that benchmarks Argon now and builds its business case on the introductory rate will find that case half wrong in December. Rerun your cost-per-task estimates at four dollars and twenty dollars. Make sure your gateway reports spend by model and by use case, so the cliff is visible before the invoice. And keep a cheaper fallback route warm for tasks that do not need long reasoning, since thinking tokens are billed as output. It is also worth checking the expiry dates on any other promotional rates in your catalogue.\n\nNext, Models and vendors.\n\nMistral Large 4 entered public preview on the Mistral API on October sixth. It is a mixture-of-experts model of about one trillion parameters with a one-million-token context. List price is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens. A fifty percent launch discount was set for two weeks from October sixth. Open weights are promised by the end of October, licence not yet named.\n\nWhy it matters: a preview is not a production commitment, and no general availability date has been given. Treat it as a candidate for your evaluation set, not a routing default. The licence will decide whether private or on-premise deployment is possible, so it is worth watching.\n\nNext, Sovereignty and Europe.\n\nBerlin search engine Ecosia switched from OpenAI to Mistral in May, and has now dropped Mistral, according to Politico's reporting this month. Its CEO cited quality, overloaded capacity and cost, and says costs roughly halved. It now runs open models, including Chinese ones, via Melious, a German platform hosting them on servers in eight EU countries.\n\nWhat this really signals: sovereignty is being unbundled. Where a model runs and whether its weights are open can be separate procurement criteria, so a European host for open weights now competes with a European model vendor. One customer's claim is not a benchmark, so run your own evaluation.\n\nNext, Quality.\n\nA Kili Technology analysis published October sixteenth summarises two 2026 preprints. One ran twenty-one LLM judges through about 541000 judgments, and found that raw agreement metrics overstated quality. The other audited annotator pools: expert and crowd labellers split on 23.6 percent of items each pool had called unanimous.\n\nThe bigger picture: percent agreement with humans is what many judge setups report, and it flatters them. Use chance-corrected agreement, and audit who produced your reference labels. This is a vendor's summary of preprints, so read the studies before changing your method.\n\nNext, Regulation.\n\nThe Digital Omnibus on AI has been in force since July twenty-seventh. It moved stand-alone high-risk obligations to December second, 2027, and embedded-product ones to August second, 2028. Article 50 transparency duties applied from August second, 2026. Generative systems already on the market have until December second, 2026 to mark outputs in machine-readable form.\n\nWhy it matters: the high-risk reprieve gets the headlines, but the nearer date is December second. Check whether you are a provider or a deployer for each generative feature, and whether your vendors pass provenance marking through your gateway. Legal should confirm the roles.\n\nThe number of the day.\n\n33 to 41 points: how much raw agreement overstated LLM-judge quality on MT-Bench once chance agreement was removed, across twenty-one judges. Your judge's headline score may be a lot weaker than it looks.\n\nWhat to watch.\n\nThis week, Mistral Large 4's two-week launch discount, counted from October sixth, should lapse, so list prices are likely to apply. Open weights are promised by the end of October, and sources differ on the exact day. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise. Further out: Vertex AI Extensions shuts down after November twenty-sixth, Argon's introductory price ends November thirtieth, and AI Act marking applies December second.\n\nAnd a question for your team.\n\nIf Gemini 4 Argon's price doubles on December first, which of your workloads break their budget, and does your gateway already show spend by model and by team?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
   }
  ]
 }

@@ -61,5 +61,80 @@
     "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-20/episode-2026-10-20.mp3",
     "audio_bytes": 4986072,
     "duration_seconds": 311.6408163265306
+  },
+  {
+    "date": "2026-10-19",
+    "title": "Argon's Pricing Cliff, Ecosia Leaves Mistral",
+    "summary": "Google's Gemini 4 Argon is now broadly available, but its introductory API price doubles on December first. Also: Mistral Large 4 in preview, Ecosia's switch from Mistral to open models on European servers, new evidence that LLM judges are over-trusted, and the December second AI Act marking deadline.",
+    "headlines": [
+      "Gemini 4 Argon pricing cliff",
+      "Ecosia leaves Mistral for open models",
+      "AI Act marking deadline December second"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Quality",
+      "Regulation"
+    ],
+    "sources": [
+      {
+        "title": "Google AI for Developers: Gemini Developer API pricing",
+        "url": "https://ai.google.dev/gemini-api/docs/pricing"
+      },
+      {
+        "title": "VentureBeat: Google makes Gemini 4 Argon broadly available with limited-time low API pricing",
+        "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
+      },
+      {
+        "title": "Google AI for Developers: What's new in Gemini 4 Argon",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      },
+      {
+        "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+        "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+      },
+      {
+        "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+        "url": "https://www.lindy.ai/blog/mistral-large-4"
+      },
+      {
+        "title": "Trending Topics: Search Engine Ecosia Swaps Mistral for Chinese A.I.",
+        "url": "https://www.trendingtopics.eu/ecosia-mistral-chinese-ai/"
+      },
+      {
+        "title": "ITdaily: Chinese over European: Ecosia sets Mistral aside",
+        "url": "https://itdaily.com/news/software/ecosia-puts-mistral-aside/"
+      },
+      {
+        "title": "EU-Startups: Ecosia founder clarifies move away from Mistral",
+        "url": "https://www.eu-startups.com/2026/10/ecosia-founder-clarifies-move-away-from-mistral-its-about-open-models-not-china/"
+      },
+      {
+        "title": "Kili Technology: LLM-as-a-Judge Validity: What 541,000 Decisions Reveal",
+        "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge"
+      },
+      {
+        "title": "Artificial Intelligence Act: Digital Omnibus on AI",
+        "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/"
+      },
+      {
+        "title": "Faegre Drinker: Commission confirms transparency code of practice as adequate",
+        "url": "https://www.faegredrinker.com/en/insights/publications/2026/7/eu-ai-act-commission-confirms-transparency-code-of-practice-as-adequate-and-publishes-final-version-of-its-guidelines-on-transparency-obligations"
+      },
+      {
+        "title": "DLA Piper: What the EU's new Code of Practice means",
+        "url": "https://www.dlapiper.com/en/insights/publications/2026/07/what-the-eus-new-code-of-practice-means"
+      }
+    ],
+    "published_at": "2026-10-19T04:05:00+02:00",
+    "catch_up": {
+      "generated_at": "2026-10-21T00:01:49+02:00",
+      "news_cutoff": "2026-10-19T04:05:00+02:00"
+    },
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-19",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-19/episode-2026-10-19.mp3",
+    "audio_bytes": 5630102,
+    "duration_seconds": 351.89551020408163
   }
 ]
