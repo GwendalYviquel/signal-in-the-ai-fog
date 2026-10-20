@@ -2,8 +2,9 @@
 
 Runs what only a real publication would exercise on GitHub: upload of an MP3 as a
 release asset with gh, download of that asset from its public URL, and the RSS feed
-and catalog built with it. The audio is a few seconds of silence, the feed and catalog
-are only validated (never written or deployed), and the release is always deleted.
+and catalog built with it. The audio is a few seconds of silence, or with WITH_VOICE=true
+two short sentences read by both ElevenLabs voices (a few cents). The feed and catalog are
+only validated (never written or deployed), and the release is always deleted.
 
 Usage: python -m podcast.rehearsal (in GitHub Actions, see .github/workflows/rehearsal.yml)
 """
@@ -32,12 +33,33 @@ def check_download(url: str, size: int, tries: int = 6) -> None:
     raise RuntimeError(f"Audio not downloadable at {url}: HTTP {r.status_code}, {len(r.content)} bytes")
 
 
-def rehearse() -> None:
+VOICE_CHECK = [  # about 170 characters in total: a few cents of ElevenLabs credits
+    ("host", "This is Signal in the AI Fog. A short check of the host voice."),
+    ("analyst", "The read here: the analyst voice takes over after a short pause, as in every episode."),
+]
+
+
+def voice_check(cfg: dict, mp3: Path) -> None:
+    """Both voices through the real ElevenLabs API, with the episode's settings and pause."""
+    tts.synthesize(VOICE_CHECK, cfg["tts"], mp3)
+    info = MP3(mp3).info
+    print(f"Voice check audio: {info.length:.1f} s, {info.channels} channel(s), {info.bitrate // 1000} kbps, "
+          f"{info.sample_rate} Hz")
+    if cfg["tts"].get("pause_seconds") and not tts.silence_like(mp3.read_bytes()[:8192], 0.1):
+        raise RuntimeError("ElevenLabs audio format not recognised: the pause between voices would be missing")
+    if info.length < 3:
+        raise RuntimeError(f"Voice check audio too short ({info.length:.1f} s)")
+
+
+def rehearse(with_voice: bool = False) -> None:
     cfg = yaml.safe_load((main.ROOT / "config.yaml").read_text(encoding="utf-8"))
     tag = f"rehearsal-{os.getenv('GITHUB_RUN_ID', 'local')}"
     main.BUILD.mkdir(exist_ok=True)
     mp3 = main.BUILD / f"{tag}.mp3"
-    silent_mp3(mp3)
+    if with_voice:
+        voice_check(cfg, mp3)
+    else:
+        silent_mp3(mp3)
     now = main.current_time(cfg)
     try:
         audio_url = publish.upload_audio(mp3, tag, "Rehearsal (deleted automatically)",
@@ -71,4 +93,4 @@ def rehearse() -> None:
 
 
 if __name__ == "__main__":
-    rehearse()
+    rehearse(with_voice=os.getenv("WITH_VOICE", "false").lower() == "true")

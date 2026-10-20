@@ -6,6 +6,11 @@ name: Publication rehearsal
 # then the release is always deleted. Nothing is committed.
 on:
   workflow_dispatch:
+    inputs:
+      with_voice:
+        description: "Also check both ElevenLabs voices on two short sentences (about 170 characters)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # create and delete the test release
@@ -37,4 +42,14 @@ jobs:
       - name: Rehearse the publication
         env:
           GH_TOKEN: ${{ github.token }}
+          WITH_VOICE: ${{ inputs.with_voice && 'true' || 'false' }}
+          ELEVENLABS_API_KEY: ${{ inputs.with_voice && secrets.ELEVENLABS_API_KEY || '' }}   # only for the voice check
         run: python -m podcast.rehearsal
+
+      - name: Keep the voice sample
+        if: inputs.with_voice
+        uses: actions/upload-artifact@v4
+        with:
+          name: voice-sample
+          path: build/rehearsal-*.mp3
+          if-no-files-found: ignore

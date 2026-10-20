@@ -64,5 +64,43 @@ def test_undeletable_release_is_reported(repo, gh, monkeypatch):  # noqa: F811
 
 def test_rehearsal_workflow_never_publishes():
     text = (ROOT / ".github/workflows/rehearsal.yml").read_text(encoding="utf-8")
-    for forbidden in ("ELEVENLABS_API_KEY", "ANTHROPIC_API_KEY", "deploy-pages", "git push", "pages: write"):
+    for forbidden in ("ANTHROPIC_API_KEY", "deploy-pages", "git push", "pages: write"):
         assert forbidden not in text
+
+
+def test_elevenlabs_key_only_reaches_the_voice_check():
+    import yaml
+    wf = yaml.safe_load((ROOT / ".github/workflows/rehearsal.yml").read_text(encoding="utf-8"))
+    on = wf.get("on", wf.get(True))
+    assert on["workflow_dispatch"]["inputs"]["with_voice"]["default"] is False
+    step = next(s for s in wf["jobs"]["rehearsal"]["steps"] if s.get("name") == "Rehearse the publication")
+    assert step["env"]["ELEVENLABS_API_KEY"].startswith("${{ inputs.with_voice &&")
+
+
+def test_voice_check_uses_both_voices_and_the_real_audio(repo, gh, monkeypatch, capsys):  # noqa: F811
+    seen = {}
+
+    def fake_tts(parts, cfg, out):
+        seen["roles"] = [role for role, _ in parts]
+        seen["chars"] = sum(len(text) for _, text in parts)
+        out.write_bytes(rehearsal.tts.silence_like(b"\xff\xfb\x90\xc4", 4))  # mono, like ElevenLabs
+    monkeypatch.setattr(rehearsal.tts, "synthesize", fake_tts)
+    rehearsal.rehearse(with_voice=True)
+    assert seen["roles"] == ["host", "analyst"] and seen["chars"] < 250
+    assert "1 channel(s)" in capsys.readouterr().out
+    assert gh["releases"] == set()
+
+
+def test_voice_check_fails_on_unrecognised_audio(repo, gh, monkeypatch):  # noqa: F811
+    # Without a recognised MP3 frame the pause between voices would silently disappear.
+    monkeypatch.setattr(rehearsal.tts, "synthesize", lambda parts, cfg, out: out.write_bytes(b"\x00" * 5000))
+    monkeypatch.setattr(rehearsal, "MP3", lambda path: type("I", (), {"info": type("N", (), {
+        "length": 4.0, "channels": 1, "bitrate": 128000, "sample_rate": 44100})})())
+    with pytest.raises(RuntimeError, match="format not recognised"):
+        rehearsal.rehearse(with_voice=True)
+    assert gh["releases"] == set()
+
+
+def test_without_voice_elevenlabs_is_never_called(repo, gh, monkeypatch):  # noqa: F811
+    monkeypatch.setattr(rehearsal.tts, "synthesize", lambda *a: pytest.fail("ElevenLabs called"))
+    rehearsal.rehearse()
