@@ -54,6 +54,9 @@ python -m pytest
 
 | 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490313144) | ❌ | New analyst voice: also a library voice, HTTP 402. Thanks to the new log, identified at once: `request 2, analyst voice`. But the host sentence was billed again (62 credits) just to reach the analyst voice | One-word voice check (`Hi.`, 3 characters per voice, each voice tested independently): *Check voices* workflow, run on every change of `config.yaml`, and before every real publication so a broken voice stops the run before Claude is paid. Tests: `test_voice_check_costs_one_word_per_voice_and_tests_each_independently`, `test_voices_are_checked_before_paying_for_the_script` |
 
+| 2026-10-20 | [Check voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490668885) | ❌ (expected) | First one-word check: host voice ok, analyst voice HTTP 402. 3 characters billed instead of 62 | — |
+| 2026-10-20 | [Check voices, candidate ID](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490818034) | ✅ | Candidate analyst voice checked without changing the config: ok, 3 characters | Adopted as the analyst voice |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
