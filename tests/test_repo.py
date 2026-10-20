@@ -170,3 +170,11 @@ def test_voice_check_workflow_only_gets_the_elevenlabs_key():
     step = next(s for s in wf["jobs"]["voices"]["steps"] if s.get("name") == "Check every voice")
     assert set(step["env"]) == {"ELEVENLABS_API_KEY", "VOICE_IDS"} and step["run"] == "python -m podcast.tts"
     assert triggers(wf)["push"]["paths"] == ["config.yaml"]
+
+
+def test_spotify_show_url_is_a_show_link(cfg):
+    import re
+    url = cfg["podcast"]["spotify_url"]
+    assert url == "" or re.fullmatch(r"https://open\.spotify\.com/show/[A-Za-z0-9]{22}", url)
+    catalog = __import__("json").loads((ROOT / "docs" / "catalog.json").read_text(encoding="utf-8"))
+    assert catalog["podcast"]["spotify_url"] == url, "regenerate docs/catalog.json after changing spotify_url"
