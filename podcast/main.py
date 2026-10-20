@@ -35,6 +35,10 @@ def to_markdown(ep: dict, day: dt.date) -> str:
             f"## Script\n\n{ep['script']}\n\n## Sources\n\n{sources}\n")
 
 
+def current_time(cfg: dict) -> dt.datetime:
+    return dt.datetime.now(ZoneInfo(cfg["generation"]["timezone"]))
+
+
 def themes_covered(structured: dict) -> list[str]:
     themes = [structured["story_of_the_day"]["theme"]] + [s["theme"] for s in structured["segments"]]
     return list(dict.fromkeys(themes))
@@ -73,7 +77,7 @@ def main() -> None:
     dry_run, preview, force = flag("DRY_RUN"), flag("PREVIEW"), flag("FORCE")
     check_config(cfg, dry_run or preview)
 
-    now = dt.datetime.now(ZoneInfo(cfg["generation"]["timezone"]))
+    now = current_time(cfg)
     today = now.date()
     if today.weekday() >= 5 and not force:
         print("Weekend: no episode.")
@@ -112,8 +116,6 @@ def main() -> None:
         print("PREVIEW: script published to the catalog, no speech synthesis, RSS feed unchanged.")
         return
 
-    (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
-    (PREVIEW_SCRIPTS / f"{today}.md").unlink(missing_ok=True)
     mp3 = BUILD / f"episode-{today}.mp3"
     tts.synthesize(ep["script"], cfg["tts"], mp3)
 
@@ -130,7 +132,10 @@ def main() -> None:
         "duration_seconds": MP3(mp3).info.length,
     })
     save(EPISODES, episodes)
+    # Archived only once published: the next episodes treat archived scripts as already aired.
+    (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
     save(PREVIEWS, previews)  # a published episode replaces its preview
+    (PREVIEW_SCRIPTS / f"{today}.md").unlink(missing_ok=True)  # only once the episode is out
 
     feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
     catalog.write_catalog(cfg, episodes, previews, ROOT / "data", ROOT / "docs" / "catalog.json", base_url)

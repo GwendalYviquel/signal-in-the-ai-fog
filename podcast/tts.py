@@ -8,13 +8,24 @@ import requests
 API = "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
 
 
+def _split_words(text: str, max_chars: int) -> list[str]:
+    parts, current = [], ""
+    for word in text.split():
+        if current and len(current) + 1 + len(word) > max_chars:
+            parts.append(current)
+            current = ""
+        current = f"{current} {word}".strip()
+    return parts + [current] if current else parts
+
+
 def split_text(text: str, max_chars: int) -> list[str]:
     pieces = []
     for para in [p.strip() for p in text.split("\n\n") if p.strip()]:
         if len(para) <= max_chars:
             pieces.append(para)
-        else:  # paragraph too long: split by sentence
-            pieces += [s for s in para.replace(". ", ".\n").splitlines() if s.strip()]
+        else:  # paragraph too long: split by sentence, then by words as a last resort
+            for sentence in [s for s in para.replace(". ", ".\n").splitlines() if s.strip()]:
+                pieces += _split_words(sentence, max_chars) if len(sentence) > max_chars else [sentence]
     chunks, current = [], ""
     for piece in pieces:
         if current and len(current) + len(piece) + 2 > max_chars:

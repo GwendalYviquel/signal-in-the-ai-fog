@@ -45,6 +45,8 @@ tools/make_cover.py                  cover art generation
 .github/workflows/daily-episode.yml  daily workflow
 .github/workflows/deploy-site.yml    site deployment when docs/ changes
 .github/workflows/preview-episode.yml  script-only run published to the catalog site
+.github/workflows/tests.yml          test suite on every push
+tests/                               offline test suite (pytest)
 ```
 
 ### Configuration
@@ -59,6 +61,17 @@ tools/make_cover.py                  cover art generation
 The GitHub Pages home page (`docs/index.html`) lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from `config.yaml` once set, and a Spotify search for the podcast until then.
 
 The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ by `.github/workflows/deploy-site.yml` whenever `docs/` changes, and by the daily workflow after each episode. Hosting is free (GitHub Pages for the site and feed, GitHub releases for the audio).
+
+## Tests
+
+```
+pip install -r requirements.txt -r requirements-dev.txt
+python -m pytest
+```
+
+The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and the pipeline runs on a temporary copy of the data. It covers episode validation, the generation loop (tool submission, correction rounds, truncated responses), script assembly, speech chunking and retries, the RSS feed, the catalog, every run mode end to end, and repository hygiene (secrets wired into workflows, private files ignored, no forbidden term in tracked files when `FORBIDDEN_TERMS` is set). Every bug met in a real run gets a regression test.
+
+Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 
 ## Costs and safeguards
 

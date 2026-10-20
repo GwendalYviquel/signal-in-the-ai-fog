@@ -180,7 +180,7 @@ def assemble(ep: dict, cfg: dict, now) -> str:
     """Spoken script: fixed opening, transitions and sign-off around the model's texts."""
     title = cfg["podcast"]["title"]
     day = f"{now:%A}, {now:%B} {now.day}" if now else "today"
-    h = ep["headlines"]
+    h = [x.strip().rstrip(".,;:!") for x in ep["headlines"]]
     see_you = "on Monday" if now and now.weekday() == 4 else "tomorrow"
     story = ep["story_of_the_day"]
     parts = [
@@ -223,7 +223,8 @@ def _ask(client, gen, system, tools, messages):
         messages.append({"role": "assistant", "content": resp.content})
         if resp.stop_reason != "pause_turn":
             break
-    return next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
+    call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
+    return call, resp.stop_reason == "max_tokens"
 
 
 def generate_episode(cfg, now, previous_scripts):
@@ -241,8 +242,12 @@ def generate_episode(cfg, now, previous_scripts):
 
     attempts = 3  # up to two correction rounds if the episode is invalid
     for attempt in range(attempts):
-        call = _ask(client, gen, system, tools, messages)
-        if call is None:
+        call, truncated = _ask(client, gen, system, tools, messages)
+        if truncated:
+            print(f"Response cut off at max_tokens ({gen['max_tokens']}): consider raising generation.max_tokens")
+            errors, warnings = ["Your response was cut off by the output length limit before the episode was "
+                                "complete. Submit it again, keeping every text within its target length."], []
+        elif call is None:
             errors, warnings = ["No episode submitted: call the submit_episode tool."], []
         else:
             ep = call.input
@@ -261,7 +266,7 @@ def generate_episode(cfg, now, previous_scripts):
                     + "\nFix these points and call submit_episode again with the full corrected episode.")
         if call is None:
             messages.append({"role": "user", "content": feedback})
-        else:
+        else:  # every tool call, even a truncated one, must be answered with a tool_result
             messages.append({"role": "user", "content": [
                 {"type": "tool_result", "tool_use_id": call.id, "content": feedback, "is_error": True}]})
 
