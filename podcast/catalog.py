@@ -1,4 +1,8 @@
-"""Data for the episode catalog site (docs/index.html reads docs/catalog.json)."""
+"""Data for the episode catalog site (docs/index.html reads docs/catalog.json).
+
+The catalog lists published episodes and previews (script only, no audio yet).
+Previews never reach the RSS feed; a published episode replaces its preview.
+"""
 import json
 import re
 from pathlib import Path
@@ -11,21 +15,29 @@ def _transcript(script_md: Path) -> str:
     return m.group(1).strip() if m else ""
 
 
-def build_catalog(cfg: dict, episodes: list[dict], scripts_dir: Path, feed_url: str) -> dict:
+def _item(ep: dict, status: str, script_md: Path) -> dict:
+    return {
+        "date": ep["date"],
+        "status": status,
+        "title": ep["title"],
+        "summary": ep["summary"],
+        "headlines": ep.get("headlines", []),
+        "themes": ep.get("themes", []),
+        "duration_seconds": round(ep.get("duration_seconds", 0)),
+        "audio_url": ep.get("audio_url", ""),
+        "spotify_url": ep.get("spotify_url", ""),
+        "sources": ep.get("sources", []),
+        "transcript": _transcript(script_md),
+    }
+
+
+def build_catalog(cfg: dict, episodes: list[dict], previews: list[dict], data_dir: Path, feed_url: str) -> dict:
     p = cfg["podcast"]
-    items = []
-    for ep in sorted(episodes, key=lambda e: e["date"], reverse=True):
-        items.append({
-            "date": ep["date"],
-            "title": ep["title"],
-            "summary": ep["summary"],
-            "headlines": ep.get("headlines", []),
-            "themes": ep.get("themes", []),
-            "duration_seconds": round(ep.get("duration_seconds", 0)),
-            "audio_url": ep["audio_url"],
-            "sources": ep.get("sources", []),
-            "transcript": _transcript(scripts_dir / f"{ep['date']}.md"),
-        })
+    published_dates = {e["date"] for e in episodes}
+    items = [_item(e, "published", data_dir / "scripts" / f"{e['date']}.md") for e in episodes]
+    items += [_item(e, "preview", data_dir / "previews" / f"{e['date']}.md")
+              for e in previews if e["date"] not in published_dates]
+    items.sort(key=lambda e: e["date"], reverse=True)
     return {
         "podcast": {
             "title": p["title"],
@@ -39,7 +51,8 @@ def build_catalog(cfg: dict, episodes: list[dict], scripts_dir: Path, feed_url: 
     }
 
 
-def write_catalog(cfg: dict, episodes: list[dict], scripts_dir: Path, out_path: Path, base_url: str) -> None:
+def write_catalog(cfg: dict, episodes: list[dict], previews: list[dict], data_dir: Path,
+                  out_path: Path, base_url: str) -> None:
     feed_url = base_url.rstrip("/") + "/feed.xml"
-    data = build_catalog(cfg, episodes, scripts_dir, feed_url)
+    data = build_catalog(cfg, episodes, previews, data_dir, feed_url)
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")

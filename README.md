@@ -20,6 +20,7 @@ Every episode follows the same format, as a single-voice monologue: opening with
 | Mode | Trigger | Effect |
 | --- | --- | --- |
 | Dry run | Manual run, `dry_run` option (default) | Script only, downloadable from the `episode-script` artifact. No ElevenLabs call, nothing published. |
+| Preview | *Preview episode* workflow (manual) | Real script from Claude, published as a **Preview** card on the catalog site (no audio, Spotify link marked as coming soon). No ElevenLabs call, no release, RSS feed untouched, so nothing reaches Spotify. A published episode later replaces its preview. |
 | Publish | Manual run without `dry_run`, or schedule | Full episode: audio, release, RSS feed. |
 | Force | `force` option | Regenerates today's episode even if it already exists (or on a weekend), replacing the release. |
 
@@ -38,10 +39,12 @@ podcast/feed.py                      RSS feed compatible with Spotify and Apple 
 podcast/catalog.py                   data for the episode catalog site
 data/episodes.json                   history of published episodes (source of the RSS feed)
 data/scripts/                        archived scripts, one Markdown file per day
+data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
 tools/make_cover.py                  cover art generation
 .github/workflows/daily-episode.yml  daily workflow
 .github/workflows/deploy-site.yml    site deployment when docs/ changes
+.github/workflows/preview-episode.yml  script-only run published to the catalog site
 ```
 
 ### Configuration
@@ -53,7 +56,7 @@ tools/make_cover.py                  cover art generation
 
 ## Episode catalog
 
-The GitHub Pages home page (`docs/index.html`) lists every episode with its date, duration, summary, headlines, themes, audio player, sources and full transcript. Episodes can be searched (titles, summaries, transcripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Set `podcast.spotify_url` in `config.yaml` to show a Spotify button.
+The GitHub Pages home page (`docs/index.html`) lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Set `podcast.spotify_url` in `config.yaml` to show a Spotify button.
 
 The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ by `.github/workflows/deploy-site.yml` whenever `docs/` changes, and by the daily workflow after each episode. Hosting is free (GitHub Pages for the site and feed, GitHub releases for the audio).
 

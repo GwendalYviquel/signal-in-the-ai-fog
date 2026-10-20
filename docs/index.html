@@ -56,6 +56,8 @@
     color-scheme: dark;
   }
 
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.preview { color: #ffc35c; } }
+  :root[data-theme="dark"] .badge.preview { color: #ffc35c; }
   * { box-sizing: border-box; }
   body {
     margin: 0;
@@ -116,7 +118,26 @@
   .headlines li::marker { color: var(--accent); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
   .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); font-weight: 600; }
+  .card-head { display: flex; gap: 16px; align-items: flex-start; }
+  .thumb { width: 88px; height: 88px; border-radius: 10px; flex: none; object-fit: cover; }
+  .card-body { min-width: 0; flex: 1; }
+  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; }
+  .badge.preview { background: rgba(255, 176, 32, .16); color: #b26b00; }
+  .badge.published { background: rgba(62, 230, 204, .16); color: var(--accent); }
+  .listen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .listen audio { flex: 1 1 260px; }
   audio { width: 100%; height: 40px; }
+  .placeholder {
+    flex: 1 1 260px; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px;
+    border: 1px dashed var(--border); border-radius: 999px; color: var(--muted); font-size: 14px;
+  }
+  .placeholder::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #ffb020; flex: none; }
+  .spotify {
+    display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px;
+    background: #1db954; color: #04130a; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
+  }
+  .spotify:hover { background: #22d160; }
+  .spotify.soon { background: var(--surface-2); color: var(--muted); cursor: default; font-weight: 600; }
   details { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
   summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); }
   summary:hover { color: var(--text); }
@@ -135,6 +156,7 @@
     .hero img { width: 96px; height: 96px; }
     .hero h1 { font-size: 26px; }
     .card { padding: 16px; scroll-margin-top: 150px; }
+    .thumb { width: 64px; height: 64px; }
     .controls { padding: 12px 0 10px; }
     .chips { flex-wrap: nowrap; overflow-x: auto; margin: 10px -16px 0; padding: 0 16px 2px; scrollbar-width: none; }
     .chips::-webkit-scrollbar { display: none; }
@@ -157,7 +179,7 @@
 
 <div class="controls">
   <div class="wrap">
-    <input class="search" id="search" type="search" placeholder="Search titles, summaries, transcripts…" aria-label="Search episodes">
+    <input class="search" id="search" type="search" placeholder="Search titles, summaries, scripts…" aria-label="Search episodes">
     <div class="chips" id="chips" role="group" aria-label="Filter by theme"></div>
   </div>
 </div>
@@ -217,27 +239,42 @@
 
   const card = (ep) => {
     const q = state.query;
+    const isPreview = ep.status === "preview";
     const inTranscript = q && norm(ep.transcript).includes(q);
+    const spotifyUrl = ep.spotify_url || state.data.podcast.spotify_url;
+    const spotify = spotifyUrl && !isPreview
+      ? el("a", { class: "spotify", href: spotifyUrl, target: "_blank", rel: "noopener", text: "Listen on Spotify" })
+      : el("span", { class: "spotify soon", title: "Available once the audio is published", text: "Spotify · coming soon" });
+    const player = ep.audio_url
+      ? el("audio", { controls: "", preload: "none", src: ep.audio_url })
+      : el("div", { class: "placeholder", text: "Audio coming soon · script preview" });
     const sources = el("details", {}, [
       el("summary", { text: `Sources (${ep.sources.length})` }),
       el("ul", {}, ep.sources.map((s) =>
         el("li", {}, el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })))),
     ]);
-    const transcript = ep.transcript ? el("details", inTranscript ? { open: "" } : {}, [
-      el("summary", { text: "Transcript" }),
+    const script = ep.transcript ? el("details", inTranscript ? { open: "" } : {}, [
+      el("summary", { text: "Script" }),
       el("div", { class: "transcript" }, highlighted(ep.transcript, q)),
     ]) : null;
     return el("article", { class: "card", id: ep.date }, [
-      el("div", { class: "meta" }, [el("span", { text: fmtDay(ep.date) }),
-                                    ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null]),
-      el("h2", {}, el("a", { href: `#${ep.date}` }, highlighted(ep.title, q))),
-      el("p", { class: "summary" }, highlighted(ep.summary, q)),
+      el("div", { class: "card-head" }, [
+        el("img", { class: "thumb", src: state.data.podcast.cover || "cover.jpg", alt: "", loading: "lazy" }),
+        el("div", { class: "card-body" }, [
+          el("div", { class: "meta" }, [
+            el("span", { class: `badge ${isPreview ? "preview" : "published"}`, text: isPreview ? "Preview" : "Published" }),
+            el("span", { text: fmtDay(ep.date) }),
+            ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null]),
+          el("h2", {}, el("a", { href: `#${ep.date}` }, highlighted(ep.title, q))),
+          el("p", { class: "summary" }, highlighted(ep.summary, q)),
+        ]),
+      ]),
       ep.headlines.length ? el("ul", { class: "headlines", "aria-label": "Headlines" },
                                ep.headlines.map((h) => el("li", {}, highlighted(h, q)))) : null,
       ep.themes.length ? el("div", { class: "tags" }, ep.themes.map((t) => el("span", { class: "tag", text: t }))) : null,
-      el("audio", { controls: "", preload: "none", src: ep.audio_url }),
+      el("div", { class: "listen" }, [player, spotify]),
+      script,
       ep.sources.length ? sources : null,
-      transcript,
     ]);
   };
 
@@ -281,9 +318,15 @@
     actions.append(rss);
 
     if (episodes.length) {
-      const hours = episodes.reduce((t, e) => t + (e.duration_seconds || 0), 0) / 3600;
+      const published = episodes.filter((e) => e.status !== "preview");
+      const previews = episodes.length - published.length;
+      const hours = published.reduce((t, e) => t + (e.duration_seconds || 0), 0) / 3600;
       const first = fmtDay(episodes[episodes.length - 1].date);
-      $("stats").textContent = `${episodes.length} episode${episodes.length > 1 ? "s" : ""} · ${hours.toFixed(1)} hours of listening · since ${first}`;
+      const parts = [`${published.length} episode${published.length === 1 ? "" : "s"}`];
+      if (previews) parts.push(`${previews} preview${previews === 1 ? "" : "s"}`);
+      if (hours) parts.push(`${hours.toFixed(1)} hours of listening`);
+      parts.push(`since ${first}`);
+      $("stats").textContent = parts.join(" · ");
     }
 
     const used = new Set(episodes.flatMap((e) => e.themes));

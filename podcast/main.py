@@ -2,6 +2,8 @@
 
 Environment variables:
   DRY_RUN=true  only generate the script (no ElevenLabs call, nothing published)
+  PREVIEW=true  generate the script and publish it to the catalog site only
+                (no ElevenLabs call, no release, RSS feed unchanged)
   FORCE=true    regenerate even on weekends or if today's episode already exists
 """
 import datetime as dt
@@ -18,6 +20,8 @@ from . import catalog, feed, generate, publish, tts
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
 SCRIPTS = ROOT / "data" / "scripts"
+PREVIEWS = ROOT / "data" / "previews.json"
+PREVIEW_SCRIPTS = ROOT / "data" / "previews"
 BUILD = ROOT / "build"
 
 
@@ -44,10 +48,30 @@ def check_config(cfg: dict, dry_run: bool) -> None:
         raise SystemExit(f"config.yaml: fill in before publishing -> {', '.join(to_fill)}")
 
 
+def load(path: Path) -> list[dict]:
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+
+
+def save(path: Path, items: list[dict]) -> None:
+    path.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def record(ep: dict, today: dt.date, now: dt.datetime) -> dict:
+    return {
+        "date": today.isoformat(),
+        "title": ep["title"],
+        "summary": ep["summary"],
+        "headlines": ep["structured"]["headlines"],
+        "themes": themes_covered(ep["structured"]),
+        "sources": ep["sources"],
+        "published_at": now.replace(microsecond=0).isoformat(),
+    }
+
+
 def main() -> None:
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
-    dry_run, force = flag("DRY_RUN"), flag("FORCE")
-    check_config(cfg, dry_run)
+    dry_run, preview, force = flag("DRY_RUN"), flag("PREVIEW"), flag("FORCE")
+    check_config(cfg, dry_run or preview)
 
     now = dt.datetime.now(ZoneInfo(cfg["generation"]["timezone"]))
     today = now.date()
@@ -55,9 +79,12 @@ def main() -> None:
         print("Weekend: no episode.")
         return
 
-    episodes = json.loads(EPISODES.read_text(encoding="utf-8")) if EPISODES.exists() else []
+    episodes, previews = load(EPISODES), load(PREVIEWS)
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
         print("Today's episode is already published.")
+        return
+    if preview and any(e["date"] == today.isoformat() for e in previews) and not force:
+        print("Today's preview already exists.")
         return
 
     SCRIPTS.mkdir(parents=True, exist_ok=True)
@@ -73,7 +100,20 @@ def main() -> None:
         print("DRY_RUN: script generated, no speech synthesis or publication.")
         return
 
+    base_url = cfg["podcast"].get("base_url") or publish.pages_url()
+    previews = [e for e in previews if e["date"] != today.isoformat()]
+
+    if preview:
+        # Catalog only, without audio: never added to the RSS feed, so Spotify never sees it.
+        PREVIEW_SCRIPTS.mkdir(parents=True, exist_ok=True)
+        (PREVIEW_SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
+        save(PREVIEWS, previews + [record(ep, today, now)])
+        catalog.write_catalog(cfg, episodes, load(PREVIEWS), ROOT / "data", ROOT / "docs" / "catalog.json", base_url)
+        print("PREVIEW: script published to the catalog, no speech synthesis, RSS feed unchanged.")
+        return
+
     (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
+    (PREVIEW_SCRIPTS / f"{today}.md").unlink(missing_ok=True)
     mp3 = BUILD / f"episode-{today}.mp3"
     tts.synthesize(ep["script"], cfg["tts"], mp3)
 
@@ -83,24 +123,17 @@ def main() -> None:
         episodes = [e for e in episodes if e["date"] != today.isoformat()]
     audio_url = publish.upload_audio(mp3, tag, ep["title"], ep["summary"])
 
-    episodes.append({
-        "date": today.isoformat(),
+    episodes.append(record(ep, today, now) | {
         "guid": f"{publish.repo()}#{tag}",
-        "title": ep["title"],
-        "summary": ep["summary"],
-        "headlines": ep["structured"]["headlines"],
-        "themes": themes_covered(ep["structured"]),
-        "sources": ep["sources"],
-        "published_at": now.replace(microsecond=0).isoformat(),
         "audio_url": audio_url,
         "audio_bytes": mp3.stat().st_size,
         "duration_seconds": MP3(mp3).info.length,
     })
-    EPISODES.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")
+    save(EPISODES, episodes)
+    save(PREVIEWS, previews)  # a published episode replaces its preview
 
-    base_url = cfg["podcast"].get("base_url") or publish.pages_url()
     feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
-    catalog.write_catalog(cfg, episodes, SCRIPTS, ROOT / "docs" / "catalog.json", base_url)
+    catalog.write_catalog(cfg, episodes, previews, ROOT / "data", ROOT / "docs" / "catalog.json", base_url)
     print(f"Episode published: {audio_url}")
 
 

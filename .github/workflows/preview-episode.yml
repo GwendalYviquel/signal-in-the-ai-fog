@@ -1,0 +1,78 @@
+name: Preview episode
+
+# Full run without audio: Claude writes today's script, which is published as a
+# "Preview" card on the catalog site. No ElevenLabs call, no release, and the
+# RSS feed is not touched, so nothing reaches Spotify.
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Regenerate even if today's preview already exists (or on a weekend)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write   # commit the preview script and catalog
+  pages: write      # publish the catalog site
+  id-token: write
+
+concurrency:
+  group: daily-episode   # shared with the daily workflow: never two runs editing data/ at once
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      PREVIEW: "true"
+      FORCE: ${{ inputs.force && 'true' || 'false' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate the script
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken
+          EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python -m podcast.main
+
+      - name: Keep today's script
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-script
+          path: build/*.md
+          if-no-files-found: ignore
+
+      - name: Commit the preview to the repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs
+          git diff --cached --quiet || {
+            git commit -m "Preview $(TZ=Europe/Paris date +%F)"
+            git push
+          }
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy the catalog site
+        id: deploy
+        uses: actions/deploy-pages@v4
