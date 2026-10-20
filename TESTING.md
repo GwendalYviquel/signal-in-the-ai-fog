@@ -76,6 +76,8 @@ python -m pytest
 
 | 2026-10-21 | [Catch-up of October 19](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39504958372) | ✅ (1st attempt) | Monday episode generated two days later with the news cutoff of Monday 4:05. 857 words, 5 min 52 s, dated October 19 in the feed and announced as a catch-up. Overlap check: 3 sources shared with October 20 (Mistral Large 4, AI Act omnibus), expected since the 20th was made without the 19th. Leak check by hand: no date after the cutoff except an upcoming event in What to watch (October 24), nothing from the October 20 announcements. Cost: Claude about $0.83, ElevenLabs 5,357 characters | — |
 
+| 2026-10-21 | [Check Spotify](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39507777909) | ✅ | First check after the show was linked: "The show is not available on Spotify yet". The public show page also answers "Couldn't find that page": Spotify is still reviewing or indexing the new show | Scheduled checks every 15 minutes on weekday mornings will record when it goes live |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
