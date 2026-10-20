@@ -1,4 +1,6 @@
 """Speech synthesis with the ElevenLabs API: two voices, text split into chunks."""
+from __future__ import annotations
+
 import os
 import time
 from pathlib import Path
@@ -130,14 +132,16 @@ def _runs(parts: list[tuple[str, str]], tts_cfg: dict) -> list[tuple[str, str, s
     return runs
 
 
-def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> None:
-    """parts: (voice role, text) in reading order; roles map to voices in tts_cfg["voices"]."""
+def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path, billed: list | None = None) -> int:
+    """parts: (voice role, text) in reading order; roles map to voices in tts_cfg["voices"].
+    Returns the characters billed. billed (optional list) receives the count as it grows, so a
+    caller still knows what was spent when a request fails half-way."""
     headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
     params = {"output_format": tts_cfg["output_format"]}
     pause_seconds, pause = tts_cfg.get("pause_seconds", 0), None
     runs = _runs(parts, tts_cfg)
     total = sum(len(text) for _, _, text in runs)
-    requests_count, billed = 0, 0
+    requests_count, billed_chars = 0, 0
     with open(out_path, "wb") as f:
         for n, (role, voice, text) in enumerate(runs):
             if n and pause:
@@ -157,26 +161,29 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> N
                 except RuntimeError as e:
                     # Name the voice: a failure on the second voice used to look like one on the first.
                     raise RuntimeError(f"{e} [request {requests_count + 1}, {role} voice {voice}, "
-                                       f"{len(chunk)} characters; {billed} characters already "
+                                       f"{len(chunk)} characters; {billed_chars} characters already "
                                        f"synthesised in this run]") from None
                 if not audio:
                     raise RuntimeError(f"ElevenLabs returned no MP3 audio for request {requests_count + 1} "
                                        f"({role} voice {voice}): check tts.output_format")
                 requests_count += 1
-                billed += len(chunk)
+                billed_chars += len(chunk)
+                if billed is not None:
+                    billed[:] = [billed_chars]
                 print(f"ElevenLabs request {requests_count}: {role} voice {voice}, {len(chunk)} characters, ok")
                 if pause is None:
                     pause = silence_like(audio, pause_seconds) if pause_seconds else b""
                 f.write(audio)
     print(f"Speech synthesis: {total} characters, {len(runs)} voice turns, {requests_count} request(s)")
+    return billed_chars
 
 
 CHECK_TEXT = "Hi."  # 3 characters per voice: enough to prove the API accepts the voice
 
 
-def check_voices(tts_cfg: dict) -> dict[str, str]:
+def voice_check_results(tts_cfg: dict) -> dict[str, str]:
     """Synthesise one word with each configured voice, independently, so that one failure does
-    not hide another. Returns {role: "ok" or the error}; raises if any voice fails."""
+    not hide another. Returns {role: "ok" or the error}."""
     headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
     params = {"output_format": tts_cfg["output_format"]}
     voices = tts_cfg.get("voices") or {"host": tts_cfg["voice_id"]}
@@ -191,11 +198,25 @@ def check_voices(tts_cfg: dict) -> dict[str, str]:
         except RuntimeError as e:
             results[role] = str(e)
         print(f"Voice check, {role} voice {voice}: {results[role]}")
-    print(f"Voice check cost: {len(CHECK_TEXT) * len(voices)} characters")
+    print(f"Voice check cost: {len(CHECK_TEXT) * sum(r == 'ok' for r in results.values())} characters "
+          f"(failed requests are not billed)")
+    return results
+
+
+def voice_check_characters(results: dict[str, str]) -> int:
+    return len(CHECK_TEXT) * sum(r == "ok" for r in results.values())  # failed requests are not billed
+
+
+def raise_if_failed(results: dict[str, str]) -> dict[str, str]:
     failed = [role for role, r in results.items() if r != "ok"]
     if failed:
         raise RuntimeError(f"Voice check failed for: {', '.join(failed)} (see above)")
     return results
+
+
+def check_voices(tts_cfg: dict) -> dict[str, str]:
+    """voice_check_results, raising if any voice fails."""
+    return raise_if_failed(voice_check_results(tts_cfg))
 
 
 def candidate_voices(tts_cfg: dict, ids: str) -> dict:
@@ -207,5 +228,11 @@ def candidate_voices(tts_cfg: dict, ids: str) -> dict:
 if __name__ == "__main__":
     import yaml
     cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
+    from . import costs
     ids = os.getenv("VOICE_IDS", "").strip()
-    check_voices(candidate_voices(cfg["tts"], ids) if ids else cfg["tts"])
+    tts_cfg = candidate_voices(cfg["tts"], ids) if ids else cfg["tts"]
+    results = voice_check_results(tts_cfg)
+    costs.record(cfg, "voice check", "ok" if all(r == "ok" for r in results.values()) else "failed",
+                 elevenlabs_characters=voice_check_characters(results),
+                 note=("candidates: " + ids) if ids else "configured voices")
+    raise_if_failed(results)

@@ -5,7 +5,10 @@ Environment variables:
   PREVIEW=true  generate the script and publish it to the catalog site only
                 (no ElevenLabs call, no release, RSS feed unchanged)
   FORCE=true    regenerate even on weekends or if today's episode already exists
+  AS_SCHEDULED=true  news cutoff at today's publish_at, as if run by the schedule
 """
+from __future__ import annotations
+
 import datetime as dt
 import json
 import os
@@ -14,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import catalog, feed, generate, publish, tts
+from . import catalog, costs, feed, generate, publish, tts
 
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
@@ -22,6 +25,7 @@ SCRIPTS = ROOT / "data" / "scripts"
 PREVIEWS = ROOT / "data" / "previews.json"
 PREVIEW_SCRIPTS = ROOT / "data" / "previews"
 BUILD = ROOT / "build"
+COST_LEDGER, COST_REPORT = costs.LEDGER, costs.REPORT
 
 
 def flag(name: str) -> bool:
@@ -84,7 +88,23 @@ def record(ep: dict, today: dt.date, now: dt.datetime) -> dict:
 
 
 def main() -> None:
+    """Run, then record what the run spent in data/costs.json and COSTS.md, even if it failed."""
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
+    dry_run, preview = flag("DRY_RUN"), flag("PREVIEW")
+    mode = "dry run" if dry_run else "preview" if preview else "publish"
+    spend = {"claude": costs.empty_claude_usage(cfg["generation"]["model"]), "voice_check": 0, "speech": [0]}
+    outcome = "failed"
+    try:
+        outcome = run(cfg, spend) or "ok"
+    finally:
+        chars = spend["voice_check"] + spend["speech"][0]
+        if spend["claude"]["api_calls"] or chars:
+            costs.record(cfg, mode, outcome, spend["claude"], chars, ledger=COST_LEDGER, report=COST_REPORT,
+                         note=f"voice check {spend['voice_check']} + episode {spend['speech'][0]} characters"
+                         if mode == "publish" else "")
+
+
+def run(cfg: dict, spend: dict) -> str | None:
     dry_run, preview, force = flag("DRY_RUN"), flag("PREVIEW"), flag("FORCE")
     check_config(cfg, dry_run or preview)
 
@@ -93,6 +113,13 @@ def main() -> None:
     if not scheduled_run_is_due(cfg, cron, now):
         print(f"Cron {cron!r} is the other side of daylight saving time today: nothing to do.")
         return
+    # Editorial time: the news cutoff given to Claude. Scheduled runs (and manual runs with
+    # AS_SCHEDULED) use publish_at, so a late start never moves the cutoff.
+    if cron or flag("AS_SCHEDULED"):
+        h, m = (int(v) for v in cfg["generation"]["publish_at"].split(":"))
+        editorial_now = now.replace(hour=h, minute=m, second=0, microsecond=0)
+    else:
+        editorial_now = now
     today = now.date()
     if today.weekday() >= 5 and not force:
         print("Weekend: no episode.")
@@ -106,15 +133,17 @@ def main() -> None:
         print("Today's preview already exists.")
         return
 
-    if not (dry_run or preview):
-        tts.check_voices(cfg["tts"])  # a few characters: fail before paying for the script
+    if not (dry_run or preview):  # a few characters: fail before paying for the script
+        results = tts.voice_check_results(cfg["tts"])
+        spend["voice_check"] = tts.voice_check_characters(results)
+        tts.raise_if_failed(results)
 
     SCRIPTS.mkdir(parents=True, exist_ok=True)
     BUILD.mkdir(exist_ok=True)
     previous = [p.read_text(encoding="utf-8") for p in sorted(SCRIPTS.glob("*.md"))
                 if p.stem != today.isoformat()][-3:]
 
-    ep = generate.generate_episode(cfg, now, previous)
+    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"])
     md = to_markdown(ep, today)
     (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
     print(md)
@@ -135,7 +164,7 @@ def main() -> None:
         return
 
     mp3 = BUILD / f"episode-{today}.mp3"
-    tts.synthesize(ep["parts"], cfg["tts"], mp3)
+    tts.synthesize(ep["parts"], cfg["tts"], mp3, billed=spend["speech"])
 
     tag = f"episode-{today}"
     if force:

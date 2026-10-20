@@ -11,6 +11,8 @@ from pathlib import Path
 
 import anthropic
 
+from . import costs
+
 ROOT = Path(__file__).resolve().parent.parent
 
 # Word ranges per part: outside them is a warning, not an error (models miscount).
@@ -38,7 +40,9 @@ def build_user_message(cfg, now, previous_scripts):
         variant = "It is Friday: the story of the day is a deeper trend from the week, with more perspective."
     history = "\n\n---\n\n".join(previous_scripts) if previous_scripts else "None."
     return (
-        f"Today is {date_en(now)}. Prepare today's episode.\n"
+        f"Today is {date_en(now)}, {now:%H:%M} Paris time. Prepare today's episode.\n"
+        f"News cutoff: use only news published before {now:%H:%M} Paris time today. Ignore anything "
+        f"published later, even if a search returns it.\n"
         f"{variant}\n\n"
         f"Segment themes, in order:\n{themes}\n\n"
         f"Previous episodes (for continuity on stories to watch and to avoid repetition):\n{history}"
@@ -228,11 +232,12 @@ def collect_sources(ep: dict) -> list[dict]:
     return unique
 
 
-def _ask(client, gen, system, tools, messages):
+def _ask(client, gen, system, tools, messages, usage):
     """Run the turn until the model stops; return the submit_episode call, if any."""
     for _ in range(8):  # web search can pause the turn (pause_turn)
         resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"],
                                       system=system, tools=tools, messages=messages)
+        costs.add_usage(usage, resp)
         messages.append({"role": "assistant", "content": resp.content})
         if resp.stop_reason != "pause_turn":
             break
@@ -263,7 +268,7 @@ def _needs_research(errors: list[str]) -> bool:
                or e.startswith("Episode is too short") for e in errors)
 
 
-def _correct(client, gen, system, ep, errors):
+def _correct(client, gen, system, ep, errors, usage):
     """Light correction round: only the episode and its errors, no research history."""
     messages = [{"role": "user", "content":
                  "Here is today's episode, as you submitted it:\n" + json.dumps(ep, ensure_ascii=False)
@@ -273,11 +278,14 @@ def _correct(client, gen, system, ep, errors):
     resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"], system=system,
                                   tools=[SUBMIT_TOOL], tool_choice={"type": "tool", "name": SUBMIT_TOOL["name"]},
                                   messages=messages)
+    costs.add_usage(usage, resp)
     call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
     return call, resp.stop_reason == "max_tokens"
 
 
-def generate_episode(cfg, now, previous_scripts):
+def generate_episode(cfg, now, previous_scripts, usage=None):
+    """usage: an optional costs.empty_claude_usage() total, filled in even if generation fails."""
+    usage = usage if usage is not None else costs.empty_claude_usage(cfg["generation"]["model"])
     gen = cfg["generation"]
     system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
     system = system.replace("{target_words}", str(gen["target_words"]))
@@ -293,7 +301,7 @@ def generate_episode(cfg, now, previous_scripts):
     # The full conversation does the research; corrections of a complete episode are sent
     # in a separate light conversation (episode + errors only), much cheaper than replaying
     # every search result. The full conversation is resumed only when nothing usable came back.
-    call, truncated = _ask(client, gen, system, tools, messages)
+    call, truncated = _ask(client, gen, system, tools, messages, usage)
     pending = call  # tool call of the full conversation still waiting for its tool_result
     attempts = 3
     for attempt in range(attempts):
@@ -306,7 +314,7 @@ def generate_episode(cfg, now, previous_scripts):
         if attempt == attempts - 1:
             raise SystemExit("The episode is still invalid after the correction rounds: nothing published.")
         if ep is not None:
-            call, truncated = _correct(client, gen, system, ep, errors)
+            call, truncated = _correct(client, gen, system, ep, errors, usage)
             continue
         feedback = ("The episode does not meet the requirements:\n- " + "\n- ".join(errors)
                     + "\nFix these points and call submit_episode again with the full corrected episode.")
@@ -315,7 +323,7 @@ def generate_episode(cfg, now, previous_scripts):
         else:  # every tool call, even a truncated one, must be answered with a tool_result
             messages.append({"role": "user", "content": [
                 {"type": "tool_result", "tool_use_id": pending.id, "content": feedback, "is_error": True}]})
-        call, truncated = _ask(client, gen, system, tools, messages)
+        call, truncated = _ask(client, gen, system, tools, messages, usage)
         pending = call
 
     return {
@@ -325,4 +333,5 @@ def generate_episode(cfg, now, previous_scripts):
         "parts": assemble_parts(ep, cfg, now),
         "sources": collect_sources(ep),
         "structured": ep,
+        "usage": usage,
     }

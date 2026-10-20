@@ -11,6 +11,7 @@ Leaders and engineers who run enterprise AI platforms (product, MLOps, LLMOps, d
 
 ## Research
 - Use web search to find news from the last 24 to 72 hours (on Mondays: since Friday).
+- Respect the news cutoff given in the request: the episode is published at that time, so nothing published later can be in it.
 - Check every date and figure against a source; if sources contradict each other, leave the figure out.
 - Always distinguish an announcement from actual availability in production.
 - State only the most recent status of a story, once. Never stack successive updates ("as of October eighth... as of October fifteenth...").

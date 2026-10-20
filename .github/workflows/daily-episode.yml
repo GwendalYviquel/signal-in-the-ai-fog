@@ -17,6 +17,10 @@ on:
         description: "Regenerate even if today's episode already exists"
         type: boolean
         default: false
+      as_scheduled:
+        description: "News cutoff at today's scheduled time (4:05 Paris), as if run by the schedule"
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # commit scripts + create audio releases
@@ -41,6 +45,7 @@ jobs:
       # On scheduled runs the inputs are empty: real publication.
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
       FORCE: ${{ inputs.force && 'true' || 'false' }}
+      AS_SCHEDULED: ${{ inputs.as_scheduled && 'true' || 'false' }}
       SCHEDULE: ${{ github.event.schedule }}   # which cron line triggered the run, empty when manual
     steps:
       - uses: actions/checkout@v4
@@ -76,17 +81,17 @@ jobs:
           path: build/*.md
           if-no-files-found: ignore
 
-      - name: Commit the episode to the repository
-        if: env.DRY_RUN == 'false'
+      - name: Commit the episode and its costs
+        if: always()   # costs are recorded even when the run fails
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs
-          git diff --cached --quiet || {
-            git commit -m "Episode $(TZ=Europe/Paris date +%F)"
-            git push
-          }
-
+          git add data docs COSTS.md
+          git diff --cached --quiet && exit 0
+          if git diff --cached --name-only | grep -qx "data/episodes.json"; then msg="Episode $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
+          git commit -m "$msg"
+          git pull --rebase origin main
+          git push
       - name: Configure GitHub Pages
         if: env.DRY_RUN == 'false'
         uses: actions/configure-pages@v5

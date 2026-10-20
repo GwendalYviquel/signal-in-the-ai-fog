@@ -74,10 +74,17 @@ def submit_block(ep, id_="toolu_1"):
     return SimpleNamespace(type="tool_use", name="submit_episode", id=id_, input=ep)
 
 
-def reply(*blocks, stop_reason=None):
+def reply(*blocks, stop_reason=None, usage=None):
     if stop_reason is None:
         stop_reason = "tool_use" if any(b.type == "tool_use" for b in blocks) else "end_turn"
-    return SimpleNamespace(content=list(blocks), stop_reason=stop_reason)
+    return SimpleNamespace(content=list(blocks), stop_reason=stop_reason, usage=usage)
+
+
+def usage(input_tokens=0, output_tokens=0, cache_write=0, cache_read=0, searches=0):
+    """The shape of a Messages API usage object."""
+    return SimpleNamespace(input_tokens=input_tokens, output_tokens=output_tokens,
+                           cache_creation_input_tokens=cache_write, cache_read_input_tokens=cache_read,
+                           server_tool_use=SimpleNamespace(web_search_requests=searches))
 
 
 class FakeClient:

@@ -98,8 +98,10 @@ podcast/tts.py                       ElevenLabs speech synthesis
 podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
 podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
 podcast/catalog.py                   data for the episode catalog site
+podcast/costs.py                     cost tracking (Claude tokens, ElevenLabs characters)
 podcast/rehearsal.py                 publication rehearsal
 data/episodes.json                   history of published episodes (source of the RSS feed)
+data/costs.json, COSTS.md            what every run consumed, and its report
 data/scripts/                        archived scripts, one Markdown file per day
 data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
@@ -145,6 +147,9 @@ The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and t
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 
 ## Costs and safeguards
+
+Every run records what it consumed, Claude tokens and web searches (with a dollar estimate) and ElevenLabs characters, in `data/costs.json`; [COSTS.md](COSTS.md) is rebuilt and committed after each run, failed runs and dry runs included, and each run's GitHub summary shows its own cost.
+
 
 - An episode is about 6,000 to 7,000 characters, which is as many ElevenLabs credits with a standard model, for 20 to 23 episodes a month.
 - ElevenLabs is never called in a dry run.

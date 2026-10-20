@@ -176,7 +176,8 @@ def test_voice_check_costs_one_word_per_voice_and_tests_each_independently(posts
     assert [s.url.rsplit("/", 1)[1] for s in sent] == ["hostVoice", "analystVoice"]
     assert all(s.body["text"] == "Hi." and s.body["voice_settings"] == {"stability": 0.5} for s in sent)
     out = capsys.readouterr().out
-    assert "analyst voice analystVoice: ok" in out and "Voice check cost: 6 characters" in out
+    assert "analyst voice analystVoice: ok" in out
+    assert "Voice check cost: 3 characters" in out  # the refused voice is not billed
 
 
 def test_voice_check_passes_when_every_voice_works(posts):

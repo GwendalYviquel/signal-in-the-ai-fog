@@ -17,7 +17,7 @@ import requests
 import yaml
 from mutagen.mp3 import MP3
 
-from . import catalog, feed, main, publish, tts
+from . import catalog, costs, feed, main, publish, tts
 
 def silent_mp3(path: Path, seconds: int = 3) -> None:
     path.write_bytes(tts.silence(seconds))
@@ -39,9 +39,9 @@ VOICE_CHECK = [  # about 170 characters in total: a few cents of ElevenLabs cred
 ]
 
 
-def voice_check(cfg: dict, mp3: Path) -> None:
+def voice_check(cfg: dict, mp3: Path, billed: list) -> None:
     """Both voices through the real ElevenLabs API, with the episode's settings and pause."""
-    tts.synthesize(VOICE_CHECK, cfg["tts"], mp3)
+    tts.synthesize(VOICE_CHECK, cfg["tts"], mp3, billed=billed)
     data = mp3.read_bytes()
     seconds = tts.mp3_duration(data)
     if not seconds or (cfg["tts"].get("pause_seconds") and not tts.silence_like(data[:8192], 0.1)):
@@ -60,8 +60,14 @@ def rehearse(with_voice: bool = False) -> None:
     tag = f"rehearsal-{os.getenv('GITHUB_RUN_ID', 'local')}"
     main.BUILD.mkdir(exist_ok=True)
     mp3 = main.BUILD / f"{tag}.mp3"
+    billed = [0]
     if with_voice:
-        voice_check(cfg, mp3)
+        try:
+            voice_check(cfg, mp3, billed)
+        finally:
+            costs.record(cfg, "rehearsal", "ok" if billed[0] == sum(len(t) for _, t in VOICE_CHECK) else "failed",
+                         elevenlabs_characters=billed[0], ledger=main.COST_LEDGER, report=main.COST_REPORT,
+                         note="voice sample")
     else:
         silent_mp3(mp3)
     now = main.current_time(cfg)

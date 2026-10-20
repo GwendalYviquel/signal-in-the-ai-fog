@@ -26,9 +26,12 @@ def repo(tmp_path, monkeypatch):
     (tmp_path / "data").mkdir()
     for name, path in {"ROOT": tmp_path, "EPISODES": tmp_path / "data/episodes.json",
                        "SCRIPTS": tmp_path / "data/scripts", "PREVIEWS": tmp_path / "data/previews.json",
-                       "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build"}.items():
+                       "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build",
+                       "COST_LEDGER": tmp_path / "data/costs.json", "COST_REPORT": tmp_path / "COSTS.md"}.items():
         monkeypatch.setattr(main, name, path)
-    for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE"):
+    monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
+    for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE", "AS_SCHEDULED"):
         monkeypatch.delenv(var, raising=False)
     monkeypatch.setattr(main, "current_time", lambda cfg: TUESDAY)
     return tmp_path
@@ -39,23 +42,32 @@ def mocks(monkeypatch):
     """Fake generation, speech and GitHub release; records what was called."""
     calls = {"generate": 0, "tts": 0, "upload": [], "delete": []}
 
-    def fake_generate(cfg, now, previous):
+    def fake_generate(cfg, now, previous, usage=None):
         calls["generate"] += 1
         calls["previous"] = previous
+        calls["editorial_now"] = now
+        if usage is not None:  # as if two API calls were made
+            usage.update(api_calls=2, input_tokens=50_000, output_tokens=4_000, web_search_requests=12)
         ep = make_episode()
         return {"title": ep["title"], "summary": ep["summary"], "script": generate.assemble(ep, cfg, now),
                 "parts": generate.assemble_parts(ep, cfg, now), "sources": generate.collect_sources(ep),
                 "structured": ep}
 
-    def fake_tts(parts, cfg, out):
+    def fake_tts(parts, cfg, out, billed=None):
         calls["tts"] += 1
         calls["voices"] = {role for role, _ in parts}
         out.write_bytes(FAKE_MP3)
+        chars = sum(len(text) for _, text in parts)
+        if billed is not None:
+            billed[:] = [chars]
+        return chars
 
     monkeypatch.setattr(generate, "generate_episode", fake_generate)
     monkeypatch.setattr(tts, "synthesize", fake_tts)
-    monkeypatch.setattr(tts, "check_voices", lambda cfg: calls.__setitem__("voice_checks",
-                                                                       calls.get("voice_checks", 0) + 1))
+    def fake_voice_check(cfg):
+        calls["voice_checks"] = calls.get("voice_checks", 0) + 1
+        return {"host": "ok", "analyst": "ok"}
+    monkeypatch.setattr(tts, "voice_check_results", fake_voice_check)
     monkeypatch.setattr(publish, "repo", lambda: "owner/podcast")
     monkeypatch.setattr(publish, "upload_audio",
                         lambda mp3, tag, title, notes: calls["upload"].append(tag) or f"https://x/{tag}/{mp3.name}")
@@ -136,7 +148,7 @@ def test_failed_speech_keeps_the_preview(repo, mocks, monkeypatch):
     main.main()
     monkeypatch.setenv("PREVIEW", "false")
 
-    def failing_tts(text, cfg, out):
+    def failing_tts(text, cfg, out, billed=None):
         raise RuntimeError("ElevenLabs 500")
     monkeypatch.setattr(tts, "synthesize", failing_tts)
     with pytest.raises(RuntimeError):
@@ -187,9 +199,7 @@ def test_previous_published_scripts_feed_continuity(repo, mocks):
 
 
 def test_voices_are_checked_before_paying_for_the_script(repo, mocks, monkeypatch):
-    def broken(cfg):
-        raise RuntimeError("Voice check failed for: analyst")
-    monkeypatch.setattr(tts, "check_voices", broken)
+    monkeypatch.setattr(tts, "voice_check_results", lambda cfg: {"host": "ok", "analyst": "ElevenLabs 402"})
     with pytest.raises(RuntimeError, match="analyst"):
         main.main()
     assert mocks["generate"] == 0, "Claude must not be called when a voice is unusable"

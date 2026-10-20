@@ -28,6 +28,11 @@ generation:
   publish_at: "04:05"
   target_words: 880                  # about 6 minutes spoken
 
+costs:  # for COSTS.md estimates; Claude prices for generation.model, per million tokens
+  priced_model: "claude-sonnet-5-5"  # change the prices below when generation.model changes
+  claude_usd_per_mtok: {input: 2.0, output: 10.0, cache_write: 2.5, cache_read: 0.2}
+  web_search_usd_per_1000: 10.0      # not confirmed in the API reference: check the pricing page
+
 tts:
   voices:                            # ElevenLabs voice IDs
     host: "nPczCjzI2devNBz1zQrb"     # opening, facts, transitions, sign-off

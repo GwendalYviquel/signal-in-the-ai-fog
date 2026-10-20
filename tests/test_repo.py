@@ -112,8 +112,18 @@ def test_daily_manual_run_defaults_to_dry_run():
 
 def test_daily_publication_steps_are_skipped_in_dry_run():
     steps = next(iter(workflow("daily-episode.yml")["jobs"].values()))["steps"]
-    after = steps[[s.get("name") for s in steps].index("Keep today's script") + 1:]
-    assert after and all(s.get("if") == "env.DRY_RUN == 'false'" for s in after)
+    publication = [s for s in steps if "pages" in s.get("uses", "") or s.get("name") == "Deploy the RSS feed"]
+    assert len(publication) == 3 and all(s.get("if") == "env.DRY_RUN == 'false'" for s in publication)
+
+
+@pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml", "rehearsal.yml", "check-voices.yml"])
+def test_costs_are_committed_after_every_run_even_failed(name):
+    # Learning (2026-10-20): costs must be tracked for every run, dry runs and failures included.
+    steps = next(iter(workflow(name)["jobs"].values()))["steps"]
+    commit = next(s for s in steps if s.get("name", "").startswith("Commit"))
+    assert commit["if"].startswith("always()")
+    assert "COSTS.md" in commit["run"] and ("data/costs.json" in commit["run"] or "git add data " in commit["run"])
+    assert "git pull --rebase origin main" in commit["run"]
 
 
 def test_published_data_is_committed_and_deployed():

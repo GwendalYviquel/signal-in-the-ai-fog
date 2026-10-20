@@ -64,8 +64,9 @@ def test_undeletable_release_is_reported(repo, gh, monkeypatch):  # noqa: F811
 
 def test_rehearsal_workflow_never_publishes():
     text = (ROOT / ".github/workflows/rehearsal.yml").read_text(encoding="utf-8")
-    for forbidden in ("ANTHROPIC_API_KEY", "deploy-pages", "git push", "pages: write"):
+    for forbidden in ("ANTHROPIC_API_KEY", "deploy-pages", "pages: write", "git add data docs"):
         assert forbidden not in text
+    assert "git add data/costs.json COSTS.md" in text  # it only commits its own cost
 
 
 def test_elevenlabs_key_only_reaches_the_voice_check():
@@ -80,9 +81,10 @@ def test_elevenlabs_key_only_reaches_the_voice_check():
 def test_voice_check_uses_both_voices_and_the_real_audio(repo, gh, monkeypatch, capsys):  # noqa: F811
     seen = {}
 
-    def fake_tts(parts, cfg, out):
+    def fake_tts(parts, cfg, out, billed=None):
         seen["roles"] = [role for role, _ in parts]
         seen["chars"] = sum(len(text) for _, text in parts)
+        billed[:] = [seen["chars"]]
         out.write_bytes(rehearsal.tts.silence_like(b"\xff\xfb\x90\xc4", 4))  # mono, like ElevenLabs
     monkeypatch.setattr(rehearsal.tts, "synthesize", fake_tts)
     rehearsal.rehearse(with_voice=True)
@@ -93,7 +95,7 @@ def test_voice_check_uses_both_voices_and_the_real_audio(repo, gh, monkeypatch, 
 
 def test_voice_check_fails_on_unrecognised_audio(repo, gh, monkeypatch):  # noqa: F811
     # Without a recognised MP3 frame the pause between voices would silently disappear.
-    monkeypatch.setattr(rehearsal.tts, "synthesize", lambda parts, cfg, out: out.write_bytes(b"\x00" * 5000))
+    monkeypatch.setattr(rehearsal.tts, "synthesize", lambda parts, cfg, out, billed=None: out.write_bytes(b"\x00" * 5000))
     monkeypatch.setattr(rehearsal, "MP3", lambda path: type("I", (), {"info": type("N", (), {
         "length": 4.0, "channels": 1, "bitrate": 128000, "sample_rate": 44100})})())
     with pytest.raises(RuntimeError, match="format not recognised"):

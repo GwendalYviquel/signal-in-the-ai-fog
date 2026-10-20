@@ -1,0 +1,155 @@
+[
+ {
+  "time": "2026-10-14T08:58:00+00:00",
+  "mode": "dry run",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/38538992425",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "API key refused: nothing billed"
+ },
+ {
+  "time": "2026-10-20T14:42:38+00:00",
+  "mode": "preview",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39441708741",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "API key refused: nothing billed"
+ },
+ {
+  "time": "2026-10-20T16:05:01+00:00",
+  "mode": "preview",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39454278765",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking"
+ },
+ {
+  "time": "2026-10-20T16:11:48+00:00",
+  "mode": "preview",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39455278989",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking (2 attempts)"
+ },
+ {
+  "time": "2026-10-20T16:15:12+00:00",
+  "mode": "preview",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39455788344",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking (3 attempts)"
+ },
+ {
+  "time": "2026-10-20T16:25:51+00:00",
+  "mode": "preview",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39457365897",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking (3 attempts)"
+ },
+ {
+  "time": "2026-10-20T16:30:15+00:00",
+  "mode": "preview",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39458009029",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking"
+ },
+ {
+  "time": "2026-10-20T16:32:32+00:00",
+  "mode": "dry run",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39458351634",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "Claude tokens not recorded: before cost tracking"
+ },
+ {
+  "time": "2026-10-20T16:46:31+00:00",
+  "mode": "rehearsal",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39460386881",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "silent audio"
+ },
+ {
+  "time": "2026-10-20T20:01:27+00:00",
+  "mode": "rehearsal",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39488426877",
+  "claude": null,
+  "elevenlabs_characters": 0,
+  "note": "host voice refused (Creator plan): nothing billed"
+ },
+ {
+  "time": "2026-10-20T20:09:08+00:00",
+  "mode": "rehearsal",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39489527571",
+  "claude": null,
+  "elevenlabs_characters": 62,
+  "note": "host ok, analyst voice refused (library voice)"
+ },
+ {
+  "time": "2026-10-20T20:14:44+00:00",
+  "mode": "rehearsal",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490313144",
+  "claude": null,
+  "elevenlabs_characters": 62,
+  "note": "host ok, new analyst voice refused"
+ },
+ {
+  "time": "2026-10-20T20:17:13+00:00",
+  "mode": "voice check",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490668885",
+  "claude": null,
+  "elevenlabs_characters": 3,
+  "note": "configured voices: analyst refused"
+ },
+ {
+  "time": "2026-10-20T20:18:16+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490818034",
+  "claude": null,
+  "elevenlabs_characters": 3,
+  "note": "candidate: XrExE9yKIg1WjnnlVkGX"
+ },
+ {
+  "time": "2026-10-20T20:18:59+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39490918794",
+  "claude": null,
+  "elevenlabs_characters": 6,
+  "note": "configured voices, after the change"
+ },
+ {
+  "time": "2026-10-20T21:04:47+00:00",
+  "mode": "rehearsal",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39497411738",
+  "claude": null,
+  "elevenlabs_characters": 147,
+  "note": "voice sample"
+ },
+ {
+  "time": "2026-10-20T21:34:21+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39501443268",
+  "claude": null,
+  "elevenlabs_characters": 6,
+  "note": "configured voices, after a config.yaml change"
+ }
+]
