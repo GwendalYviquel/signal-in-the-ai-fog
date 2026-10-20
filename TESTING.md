@@ -73,6 +73,8 @@ python -m pytest
 
 | 2026-10-20 | [**First real episode**](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39503302732) | ✅ (1st attempt) | Run as if scheduled (`as_scheduled`, news cutoff 4:05 Paris). Voice check 6 characters, Claude in one attempt (one length warning), 9 ElevenLabs requests over both voices, release, feed and catalog deployed. 753 words, 5 min 12 s, and the feed announces 311 s: the duration fix holds on real audio. Cost: Claude 390,235 input tokens, 8,795 output, 15 searches, about $1.02; ElevenLabs 4,694 characters | Claude input is dominated by web search results: worth trying the newer web search tool with dynamic filtering |
 
+| 2026-10-21 | [Catch-up of October 19](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39504958372) | ✅ (1st attempt) | Monday episode generated two days later with the news cutoff of Monday 4:05. 857 words, 5 min 52 s, dated October 19 in the feed and announced as a catch-up. Overlap check: 3 sources shared with October 20 (Mistral Large 4, AI Act omnibus), expected since the 20th was made without the 19th. Leak check by hand: no date after the cutoff except an upcoming event in What to watch (October 24), nothing from the October 20 announcements. Cost: Claude about $0.83, ElevenLabs 5,357 characters | — |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
