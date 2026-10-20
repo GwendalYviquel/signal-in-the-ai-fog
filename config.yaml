@@ -13,6 +13,7 @@ podcast:
   category: "Technology"
   explicit: false
   cover_file: "cover.jpg"            # in docs/, square, 1400 to 3000 px
+  spotify_url: ""                    # show link once the podcast is on Spotify (catalog site)
   # Leave empty to use https://<owner>.github.io/<repo>/
   base_url: ""
 

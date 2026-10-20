@@ -11,7 +11,7 @@ A GitHub Action runs four steps:
 1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and returns them as JSON, one field per part of the episode, following the editorial line in `prompts/system.md`. The three previous scripts are passed in for continuity from one day to the next and to avoid repetition. The code then validates the episode (structure, theme order, sources, no markdown, no first person, no forbidden terms, length), asks for one correction round if needed, and assembles the spoken script with a fixed opening, transitions and sign-off.
 2. **Speech synthesis**: the text is split into chunks and sent to ElevenLabs, with the neighbouring chunks as context to keep the delivery continuous.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
-4. **Distribution**: `data/episodes.json` is updated, and the `docs/feed.xml` feed is regenerated and deployed to GitHub Pages.
+4. **Distribution**: `data/episodes.json` is updated, then the `docs/feed.xml` feed and the `docs/catalog.json` catalog are regenerated and deployed to GitHub Pages.
 
 Every episode follows the same format, as a single-voice monologue: opening with the headlines, story of the day, three or four themed segments, number of the day, what to watch, question for your team. Each story has two layers: the facts (what happened and its real status: announced, preview or available) and a short read (what it means for a platform team or a retailer), signposted so the listener hears where analysis begins. On Mondays it covers the news since Friday and the week ahead; on Fridays, the story of the day steps back to look at a trend from the week.
 
@@ -35,9 +35,10 @@ podcast/generate.py                  script writing with the Claude API and web 
 podcast/tts.py                       ElevenLabs speech synthesis
 podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
 podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
+podcast/catalog.py                   data for the episode catalog site
 data/episodes.json                   history of published episodes (source of the RSS feed)
 data/scripts/                        archived scripts, one Markdown file per day
-docs/                                GitHub Pages site: feed.xml and cover.jpg
+docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
 tools/make_cover.py                  cover art generation
 .github/workflows/daily-episode.yml  daily workflow
 ```
@@ -48,6 +49,10 @@ tools/make_cover.py                  cover art generation
 - `prompts/system.md` defines the tone, the audience, the source-checking rules and the expected output format (`<title>`, `<summary>`, `<script>`, `<sources>`).
 - The `ANTHROPIC_API_KEY` and `ELEVENLABS_API_KEY` keys are stored as GitHub Actions secrets. No secret is committed.
 - The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken; an episode containing one is rejected.
+
+## Episode catalog
+
+The GitHub Pages home page (`docs/index.html`) lists every episode with its date, duration, summary, headlines, themes, audio player, sources and full transcript. Episodes can be searched (titles, summaries, transcripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Set `podcast.spotify_url` in `config.yaml` to show a Spotify button.
 
 ## Costs and safeguards
 

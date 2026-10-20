@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal in the AI Fog</title>
+<meta name="description" content="Every weekday, a six-minute briefing on enterprise AI in production. Browse, search and listen to every episode.">
+<link rel="icon" href="cover.jpg">
+<link rel="alternate" type="application/rss+xml" title="Signal in the AI Fog" href="feed.xml">
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef0f8;
+    --text: #12142b;
+    --muted: #5a5f7d;
+    --border: #dde0ee;
+    --accent: #0b8f84;
+    --accent-2: #6d3fd6;
+    --accent-soft: rgba(109, 63, 214, 0.10);
+    --chip-on-text: #ffffff;
+    --shadow: 0 1px 2px rgba(18, 20, 43, 0.06), 0 4px 16px rgba(18, 20, 43, 0.05);
+    --hero: linear-gradient(135deg, #1b1446 0%, #3a1d6e 55%, #0b4f66 100%);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0b1e;
+      --surface: #13142e;
+      --surface-2: #1b1c3d;
+      --text: #e9eaf6;
+      --muted: #9a9dbd;
+      --border: #272a52;
+      --accent: #3ee6cc;
+      --accent-2: #a98bff;
+      --accent-soft: rgba(169, 139, 255, 0.14);
+      --chip-on-text: #0a0b1e;
+      --shadow: none;
+      --hero: linear-gradient(135deg, #0d0b2a 0%, #2a1458 55%, #06465f 100%);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b1e;
+    --surface: #13142e;
+    --surface-2: #1b1c3d;
+    --text: #e9eaf6;
+    --muted: #9a9dbd;
+    --border: #272a52;
+    --accent: #3ee6cc;
+    --accent-2: #a98bff;
+    --accent-soft: rgba(169, 139, 255, 0.14);
+    --chip-on-text: #0a0b1e;
+    --shadow: none;
+    --hero: linear-gradient(135deg, #0d0b2a 0%, #2a1458 55%, #06465f 100%);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  /* Hero */
+  header.hero { background: var(--hero); color: #f1f0ff; }
+  .hero .wrap { display: flex; gap: 24px; align-items: center; padding-top: 40px; padding-bottom: 40px; }
+  .hero img { width: 132px; height: 132px; border-radius: 14px; flex: none; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em; }
+  .hero p { margin: 0 0 16px; color: #cfd0ee; max-width: 56ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08); color: #fff;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn:hover { background: rgba(255,255,255,.16); }
+  .btn.primary { background: #3ee6cc; border-color: #3ee6cc; color: #0a0b1e; }
+  .btn.primary:hover { background: #6af0db; }
+  .stats { margin-top: 14px; font-size: 13px; color: #b9bbe0; }
+
+  /* Controls */
+  .controls { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 16px 0 12px; border-bottom: 1px solid var(--border); }
+  .search {
+    width: 100%; padding: 11px 14px; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  }
+  .search:focus { outline: 2px solid var(--accent-2); outline-offset: 1px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    padding: 5px 11px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer;
+    background: var(--surface); color: var(--muted); border: 1px solid var(--border);
+  }
+  .chip:hover { color: var(--text); }
+  .chip[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent-2); color: var(--chip-on-text); }
+
+  /* List */
+  main { padding-bottom: 64px; }
+  .month { margin: 28px 0 10px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 12px; box-shadow: var(--shadow); scroll-margin-top: 140px;
+  }
+  .card:target { outline: 2px solid var(--accent-2); }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--muted); }
+  .card h2 { margin: 4px 0 6px; font-size: 20px; line-height: 1.3; }
+  .card h2 a { color: inherit; text-decoration: none; }
+  .card h2 a:hover { text-decoration: underline; }
+  .summary { margin: 0 0 10px; }
+  .headlines { margin: 0 0 12px; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .headlines li::marker { color: var(--accent); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); font-weight: 600; }
+  audio { width: 100%; height: 40px; }
+  details { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
+  summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); }
+  summary:hover { color: var(--text); }
+  details ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; }
+  details li { margin-bottom: 4px; overflow-wrap: anywhere; }
+  .transcript { margin-top: 8px; font-size: 15px; white-space: pre-line; color: var(--text); background: var(--surface-2); padding: 12px 14px; border-radius: 10px; max-height: 420px; overflow: auto; }
+  mark { background: rgba(62, 230, 204, .35); color: inherit; border-radius: 3px; }
+
+  .empty { text-align: center; color: var(--muted); padding: 56px 16px; }
+  .empty strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 40px; font-size: 13px; color: var(--muted); }
+  .theme-toggle { background: none; border: 0; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+  @media (max-width: 600px) {
+    .hero .wrap { flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
+    .hero img { width: 96px; height: 96px; }
+    .hero h1 { font-size: 26px; }
+    .card { padding: 16px; scroll-margin-top: 150px; }
+    .controls { padding: 12px 0 10px; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; margin: 10px -16px 0; padding: 0 16px 2px; scrollbar-width: none; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: none; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <img src="cover.jpg" alt="Signal in the AI Fog cover art">
+    <div>
+      <h1 id="title">Signal in the AI Fog</h1>
+      <p id="description">Every weekday morning, six minutes on enterprise AI in production.</p>
+      <div class="actions" id="actions"></div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <input class="search" id="search" type="search" placeholder="Search titles, summaries, transcripts…" aria-label="Search episodes">
+    <div class="chips" id="chips" role="group" aria-label="Filter by theme"></div>
+  </div>
+</div>
+
+<main class="wrap" id="list" aria-live="polite"></main>
+
+<footer>
+  <div class="wrap">
+    Scripts are written and voices generated by AI. Sources are listed with every episode.
+    · <button class="theme-toggle" id="themeToggle" type="button">Switch theme</button>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const state = { data: null, query: "", theme: null };
+
+  const el = (tag, props = {}, children = []) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "text") n.textContent = v;
+      else if (k === "class") n.className = v;
+      else n.setAttribute(k, v);
+    }
+    for (const c of [].concat(children)) if (c) n.append(c);
+    return n;
+  };
+
+  const parseDate = (iso) => new Date(iso + "T12:00:00");
+  const fmtDay = (iso) => parseDate(iso).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+  const fmtMonth = (iso) => parseDate(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+  const fmtDuration = (s) => s ? `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s` : "";
+  const norm = (s) => (s || "").toLowerCase();
+
+  // Highlights the search query inside plain text, without ever injecting HTML.
+  const highlighted = (text, query) => {
+    const frag = document.createDocumentFragment();
+    if (!query) { frag.append(text); return frag; }
+    const lower = text.toLowerCase();
+    let i = 0, hit;
+    while ((hit = lower.indexOf(query, i)) !== -1) {
+      frag.append(text.slice(i, hit), el("mark", { text: text.slice(hit, hit + query.length) }));
+      i = hit + query.length;
+    }
+    frag.append(text.slice(i));
+    return frag;
+  };
+
+  const matches = (ep) => {
+    if (state.theme && !ep.themes.includes(state.theme)) return false;
+    if (!state.query) return true;
+    const hay = [ep.title, ep.summary, ep.headlines.join(" "), ep.transcript,
+                 ep.sources.map((s) => s.title).join(" ")].map(norm).join(" ");
+    return hay.includes(state.query);
+  };
+
+  const card = (ep) => {
+    const q = state.query;
+    const inTranscript = q && norm(ep.transcript).includes(q);
+    const sources = el("details", {}, [
+      el("summary", { text: `Sources (${ep.sources.length})` }),
+      el("ul", {}, ep.sources.map((s) =>
+        el("li", {}, el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })))),
+    ]);
+    const transcript = ep.transcript ? el("details", inTranscript ? { open: "" } : {}, [
+      el("summary", { text: "Transcript" }),
+      el("div", { class: "transcript" }, highlighted(ep.transcript, q)),
+    ]) : null;
+    return el("article", { class: "card", id: ep.date }, [
+      el("div", { class: "meta" }, [el("span", { text: fmtDay(ep.date) }),
+                                    ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null]),
+      el("h2", {}, el("a", { href: `#${ep.date}` }, highlighted(ep.title, q))),
+      el("p", { class: "summary" }, highlighted(ep.summary, q)),
+      ep.headlines.length ? el("ul", { class: "headlines", "aria-label": "Headlines" },
+                               ep.headlines.map((h) => el("li", {}, highlighted(h, q)))) : null,
+      ep.themes.length ? el("div", { class: "tags" }, ep.themes.map((t) => el("span", { class: "tag", text: t }))) : null,
+      el("audio", { controls: "", preload: "none", src: ep.audio_url }),
+      ep.sources.length ? sources : null,
+      transcript,
+    ]);
+  };
+
+  const render = () => {
+    const list = $("list");
+    list.replaceChildren();
+    const eps = state.data.episodes;
+    if (!eps.length) {
+      list.append(el("div", { class: "empty" }, [el("strong", { text: "No episodes yet" }),
+        "The first episode is on its way. Subscribe to the feed to get it as soon as it is out."]));
+      return;
+    }
+    const shown = eps.filter(matches);
+    if (!shown.length) {
+      list.append(el("div", { class: "empty" }, [el("strong", { text: "No matching episode" }),
+        "Try another word or clear the theme filter."]));
+      return;
+    }
+    let month = "";
+    for (const ep of shown) {
+      const m = fmtMonth(ep.date);
+      if (m !== month) { month = m; list.append(el("h3", { class: "month", text: m })); }
+      list.append(card(ep));
+    }
+  };
+
+  const renderHeader = () => {
+    const { podcast, episodes } = state.data;
+    document.title = podcast.title;
+    $("title").textContent = podcast.title;
+    $("description").textContent = podcast.description;
+
+    const actions = $("actions");
+    if (podcast.spotify_url) actions.append(el("a", { class: "btn primary", href: podcast.spotify_url, target: "_blank", rel: "noopener", text: "Listen on Spotify" }));
+    const rss = el("button", { class: "btn", type: "button", text: "Copy RSS feed" });
+    rss.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(podcast.feed_url); rss.textContent = "Feed URL copied"; }
+      catch { window.open(podcast.feed_url, "_blank"); }
+      setTimeout(() => (rss.textContent = "Copy RSS feed"), 2000);
+    });
+    actions.append(rss);
+
+    if (episodes.length) {
+      const hours = episodes.reduce((t, e) => t + (e.duration_seconds || 0), 0) / 3600;
+      const first = fmtDay(episodes[episodes.length - 1].date);
+      $("stats").textContent = `${episodes.length} episode${episodes.length > 1 ? "s" : ""} · ${hours.toFixed(1)} hours of listening · since ${first}`;
+    }
+
+    const used = new Set(episodes.flatMap((e) => e.themes));
+    const chips = $("chips");
+    const chip = (label, value) => {
+      const b = el("button", { class: "chip", type: "button", "aria-pressed": String(state.theme === value), text: label });
+      b.addEventListener("click", () => {
+        state.theme = state.theme === value ? null : value;
+        chips.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", String(state.theme === value));
+        render();
+      });
+      return b;
+    };
+    podcast.themes.filter((t) => used.has(t)).forEach((t) => chips.append(chip(t, t)));
+  };
+
+  let timer;
+  $("search").addEventListener("input", (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { state.query = norm(e.target.value.trim()); render(); }, 120);
+  });
+
+  // Theme toggle: remembered per browser, page works without storage.
+  const root = document.documentElement;
+  try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch {}
+  $("themeToggle").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch {}
+  });
+
+  fetch("catalog.json", { cache: "no-cache" })
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((data) => {
+      state.data = data;
+      renderHeader();
+      render();
+      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+    })
+    .catch(() => {
+      state.data = { podcast: { title: "Signal in the AI Fog", description: $("description").textContent,
+                                feed_url: "feed.xml", spotify_url: "", themes: [] }, episodes: [] };
+      renderHeader();
+      render();
+    });
+})();
+</script>
+</body>
+</html>

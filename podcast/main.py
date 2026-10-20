@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 import yaml
 from mutagen.mp3 import MP3
 
-from . import feed, generate, publish, tts
+from . import catalog, feed, generate, publish, tts
 
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
@@ -29,6 +29,11 @@ def to_markdown(ep: dict, day: dt.date) -> str:
     sources = "\n".join(f"- [{s['title']}]({s['url']})" for s in ep["sources"])
     return (f"# {ep['title']}\n\n_{day.isoformat()}_\n\n{ep['summary']}\n\n"
             f"## Script\n\n{ep['script']}\n\n## Sources\n\n{sources}\n")
+
+
+def themes_covered(structured: dict) -> list[str]:
+    themes = [structured["story_of_the_day"]["theme"]] + [s["theme"] for s in structured["segments"]]
+    return list(dict.fromkeys(themes))
 
 
 def check_config(cfg: dict, dry_run: bool) -> None:
@@ -83,6 +88,8 @@ def main() -> None:
         "guid": f"{publish.repo()}#{tag}",
         "title": ep["title"],
         "summary": ep["summary"],
+        "headlines": ep["structured"]["headlines"],
+        "themes": themes_covered(ep["structured"]),
         "sources": ep["sources"],
         "published_at": now.replace(microsecond=0).isoformat(),
         "audio_url": audio_url,
@@ -93,6 +100,7 @@ def main() -> None:
 
     base_url = cfg["podcast"].get("base_url") or publish.pages_url()
     feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
+    catalog.write_catalog(cfg, episodes, SCRIPTS, ROOT / "docs" / "catalog.json", base_url)
     print(f"Episode published: {audio_url}")
 
 
