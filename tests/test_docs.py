@@ -20,11 +20,30 @@ def test_images_exist():
         assert (ROOT / src).exists(), src
 
 
+def tree_paths(tree: str) -> list[str]:
+    """Full paths of an indented tree (├── / │   / └──), one level per 4 characters."""
+    stack, paths = [], []
+    for line in tree.strip().splitlines()[1:]:  # the first line is "."
+        m = re.match(r"^((?:│   |    )*)[├└]── (\S+)", line)
+        assert m, f"not a tree line: {line!r}"
+        depth = len(m.group(1)) // 4
+        stack[depth:] = [m.group(2)]
+        paths.append("".join(stack))
+    return paths
+
+
 def test_paths_in_the_contents_tree_exist():
     tree = README.split("## Repository contents", 1)[1].split("```")[1]
-    paths = [line.split()[0].rstrip(",") for line in tree.strip().splitlines() if line.strip()]
-    missing = [p for p in paths for part in p.split(",") if part and not (ROOT / part).exists()]
-    assert paths and missing == []
+    paths = tree_paths(tree)
+    assert "podcast/main.py" in paths and ".github/workflows/tests.yml" in paths
+    assert [p for p in paths if not (ROOT / p).exists()] == []
+
+
+def test_contents_tree_lists_every_module_and_workflow():
+    paths = tree_paths(README.split("## Repository contents", 1)[1].split("```")[1])
+    for f in list((ROOT / "podcast").glob("*.py")) + list(WORKFLOWS.glob("*.yml")):
+        if f.name != "__init__.py":
+            assert str(f.relative_to(ROOT)) in paths, f"{f.relative_to(ROOT)} is missing from the README tree"
 
 
 def test_workflow_names_in_run_modes_exist():

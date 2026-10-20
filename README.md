@@ -93,38 +93,46 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 ## Repository contents
 
 ```
-config.yaml                          podcast metadata, models, voice, themes covered
-prompts/system.md                    editorial line, episode format, writing rules for the voice
-podcast/main.py                      pipeline (entry point: python -m podcast.main)
-podcast/generate.py                  script writing with the Claude API and web search
-podcast/tts.py                       ElevenLabs speech synthesis
-podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
-podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
-podcast/catalog.py                   data for the episode catalog site
-podcast/costs.py                     cost tracking (Claude tokens, ElevenLabs characters)
-podcast/spotify.py                   Spotify check (public embed page, no key)
-podcast/stats.py                     download counts of the episodes (GitHub releases)
-podcast/rehearsal.py                 publication rehearsal
-data/episodes.json                   history of published episodes (source of the RSS feed)
-data/costs.json, COSTS.md            what every run consumed, and its report
-data/stats.json, STATS.md            daily download counts, and their report
-data/scripts/                        archived scripts, one Markdown file per day
-data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
-docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
-tools/make_cover.py                  cover art generation (python tools/make_cover.py [output.jpg])
-tools/screenshot_site.py             screenshot of the catalog site for this README
-tools/make_diagrams.py               diagrams of this README, light and dark (SVG)
-assets/                              images used by this README
-.github/workflows/daily-episode.yml  daily workflow
-.github/workflows/deploy-site.yml    site deployment when docs/ changes
-.github/workflows/preview-episode.yml  script-only run published to the catalog site
-.github/workflows/tests.yml          test suite on every push
-.github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
-.github/workflows/check-voices.yml   one-word check of every ElevenLabs voice
-.github/workflows/check-spotify.yml  is the latest episode live on Spotify, and after how long
-.github/workflows/stats.yml          daily download counts, STATS.md and the catalog
-tests/                               offline test suite (pytest)
-TESTING.md                           test suite and journal of real runs
+.
+├── config.yaml                     podcast, models, voices, themes, schedule, prices
+├── prompts/
+│   └── system.md                   editorial line, episode format, writing rules for the voice
+├── podcast/                        the pipeline: python -m podcast.main
+│   ├── main.py                     run modes, guards, catch-ups
+│   ├── generate.py                 script writing with Claude and web search, validation
+│   ├── tts.py                      ElevenLabs speech, two voices, voice check
+│   ├── publish.py                  MP3 as a GitHub release (gh CLI)
+│   ├── feed.py                     RSS feed for Spotify and Apple Podcasts
+│   ├── catalog.py                  data of the catalog site
+│   ├── costs.py                    cost tracking: Claude tokens, ElevenLabs characters
+│   ├── stats.py                    download counts of the episodes
+│   ├── spotify.py                  is the latest episode live on Spotify
+│   └── rehearsal.py                publication rehearsal
+├── data/
+│   ├── episodes.json               published episodes, source of the feed
+│   ├── scripts/                    one script per published episode
+│   ├── previews.json               preview episodes (catalog only); scripts in data/previews/
+│   ├── costs.json                  what every run consumed
+│   └── stats.json                  one snapshot of download counts a day
+├── docs/                           GitHub Pages: catalog page, feed.xml, catalog.json, cover.jpg
+├── assets/                         images and diagrams of the README, light and dark
+├── tools/
+│   ├── make_cover.py               cover art
+│   ├── make_diagrams.py            diagrams of the README
+│   └── screenshot_site.py          screenshot of the catalog site
+├── tests/                          offline test suite (pytest)
+├── .github/workflows/
+│   ├── daily-episode.yml           the daily episode: schedule, dry run, catch-up
+│   ├── preview-episode.yml         script only, published to the catalog
+│   ├── check-voices.yml            one word per ElevenLabs voice
+│   ├── rehearsal.yml               publication rehearsal, release deleted afterwards
+│   ├── check-spotify.yml           episode live on Spotify, and after how long
+│   ├── stats.yml                   daily download counts
+│   ├── deploy-site.yml             site deployment when docs/ changes
+│   └── tests.yml                   test suite on every push
+├── COSTS.md                        costs report
+├── STATS.md                        downloads report
+└── TESTING.md                      test suite and journal of real runs
 ```
 
 ### Configuration
