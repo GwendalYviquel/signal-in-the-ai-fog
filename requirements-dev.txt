@@ -1,1 +1,2 @@
 pytest>=8.0
+playwright>=1.40   # catalog site tests (tests/test_site.py)

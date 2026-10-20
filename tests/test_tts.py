@@ -141,3 +141,11 @@ def test_single_voice_config_still_works(posts, tmp_path):
     cfg = {k: v for k, v in CFG.items() if k != "voices"} | {"voice_id": "onlyVoice"}
     tts.synthesize([("host", "A."), ("analyst", "B.")], cfg, tmp_path / "ep.mp3")
     assert {s.url.rsplit("/", 1)[1] for s in sent} == {"onlyVoice"}
+
+
+def test_silence_like_skips_invalid_frame_headers():
+    bad_bitrate = b"\xff\xfb\xf0\x00"  # bitrate index 15 is invalid
+    bad_rate = b"\xff\xfb\x9c\x00"     # sample rate index 3 is reserved
+    good = b"\xff\xfb\x90\xc4"
+    assert tts.silence_like(bad_bitrate + bad_rate, 1.0) == b""
+    assert tts.silence_like(bad_bitrate + good + b"\x00" * 413, 1.0)[:4] == good

@@ -139,3 +139,16 @@ def test_total_length_far_from_target_is_an_error(cfg):
     ep = make_episode()
     ep["story_of_the_day"]["facts"] = text(900)
     assert any(e.startswith("Episode is too long") for e in errors_of(ep, cfg))
+
+
+def test_unknown_segment_theme_lists_the_valid_ones(cfg):
+    ep = make_episode()
+    ep["segments"][0]["theme"] = "Models & Vendors"  # close but not exact
+    errs = errors_of(ep, cfg)
+    assert any(e.startswith("Unknown segment theme; use exactly: Models and vendors, ") for e in errs)
+
+
+def test_segment_needs_both_layers(cfg):
+    ep = make_episode()
+    ep["segments"][1]["read"] = ""
+    assert "Segment 'Platform' needs both facts and read" in errors_of(ep, cfg)

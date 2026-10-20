@@ -80,3 +80,58 @@ def test_no_forbidden_term_in_tracked_files():
 
 def test_prompt_has_the_length_placeholder():
     assert (ROOT / "prompts" / "system.md").read_text(encoding="utf-8").count("{target_words}") == 1
+
+
+def triggers(wf):
+    return wf.get("on", wf.get(True))  # YAML 1.1 reads the "on" key as True
+
+
+@pytest.mark.parametrize("name", sorted(p.name for p in WORKFLOWS.glob("*.yml")))
+def test_every_workflow_parses_and_can_be_started_by_hand(name):
+    wf = workflow(name)
+    assert "workflow_dispatch" in triggers(wf)
+
+
+def test_runs_that_write_data_never_overlap():
+    # Daily, preview and rehearsal runs commit or create releases: one at a time.
+    groups = {workflow(n)["concurrency"]["group"] for n in ("daily-episode.yml", "preview-episode.yml",
+                                                            "rehearsal.yml")}
+    assert groups == {"daily-episode"}
+
+
+def test_daily_schedule_is_weekdays_only():
+    schedules = triggers(workflow("daily-episode.yml")).get("schedule") or []
+    for s in schedules:
+        assert s["cron"].split()[4] == "1-5", "episodes are produced Monday to Friday only"
+
+
+def test_daily_manual_run_defaults_to_dry_run():
+    inputs = triggers(workflow("daily-episode.yml"))["workflow_dispatch"]["inputs"]
+    assert inputs["dry_run"]["default"] is True and inputs["force"]["default"] is False
+
+
+def test_daily_publication_steps_are_skipped_in_dry_run():
+    steps = next(iter(workflow("daily-episode.yml")["jobs"].values()))["steps"]
+    after = steps[[s.get("name") for s in steps].index("Keep today's script") + 1:]
+    assert after and all(s.get("if") == "env.DRY_RUN == 'false'" for s in after)
+
+
+def test_published_data_is_committed_and_deployed():
+    for name in ("daily-episode.yml", "preview-episode.yml"):
+        text = (WORKFLOWS / name).read_text(encoding="utf-8")
+        assert "git add data docs" in text and "actions/deploy-pages" in text
+
+
+def test_site_is_redeployed_when_docs_change():
+    on = triggers(workflow("deploy-site.yml"))
+    assert on["push"]["paths"] == ["docs/**"] and on["push"]["branches"] == ["main"]
+
+
+def test_tests_run_on_every_push():
+    on = triggers(workflow("tests.yml"))
+    assert on["push"]["branches"] == ["main"] and "pull_request" in on
+
+
+def test_site_tests_cannot_be_skipped_in_ci():
+    text = (WORKFLOWS / "tests.yml").read_text(encoding="utf-8")
+    assert "playwright install" in text and 'REQUIRE_BROWSER: "1"' in text

@@ -24,7 +24,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt -r requirements-dev.txt
 
+      - name: Install the browser for the site tests
+        run: python -m playwright install --with-deps chromium
+
       - name: Run tests
         env:
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # also checks the public repo never names them
+          REQUIRE_BROWSER: "1"   # site tests must run here, never be skipped
         run: python -m pytest -q

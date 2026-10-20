@@ -152,3 +152,21 @@ def test_user_message_variants(cfg):
     assert "It is Friday" in generate.build_user_message(cfg, friday, [])
     msg = generate.build_user_message(cfg, TUESDAY, ["previous script"])
     assert "Tuesday, October 20, 2026" in msg and "previous script" in msg
+
+
+def test_missing_layer_goes_back_to_research(cfg, fake_claude):
+    # Writing a missing facts or read layer needs research: not a light correction.
+    bad = make_episode()
+    bad["segments"][0]["facts"] = ""
+    client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    assert not is_light(client.calls[1])
+
+
+def test_malformed_submission_goes_back_to_research(cfg, fake_claude):
+    bad = make_episode()
+    bad["segments"] = ["not an object"]  # passes the presence check, breaks validation
+    client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    result = last_user_content(client.calls[1])[0]
+    assert not is_light(client.calls[1]) and "Malformed episode" in result["content"]
