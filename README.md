@@ -88,6 +88,8 @@ The daily run starts at **4:05 Paris time, every weekday, public holidays includ
 gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
 ```
 
+A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by hand): it reads Spotify's public embed page of the show, compares its latest episode with ours, and records in `data/spotify.json` when each episode was first seen live and how many minutes after publication, to confirm the margin before 7:00.
+
 ## Repository contents
 
 ```
@@ -100,6 +102,7 @@ podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
 podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
 podcast/catalog.py                   data for the episode catalog site
 podcast/costs.py                     cost tracking (Claude tokens, ElevenLabs characters)
+podcast/spotify.py                   Spotify check (public embed page, no key)
 podcast/rehearsal.py                 publication rehearsal
 data/episodes.json                   history of published episodes (source of the RSS feed)
 data/costs.json, COSTS.md            what every run consumed, and its report
@@ -116,6 +119,7 @@ assets/                              images used by this README
 .github/workflows/tests.yml          test suite on every push
 .github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
 .github/workflows/check-voices.yml   one-word check of every ElevenLabs voice
+.github/workflows/check-spotify.yml  is the latest episode live on Spotify, and after how long
 tests/                               offline test suite (pytest)
 TESTING.md                           test suite and journal of real runs
 ```
