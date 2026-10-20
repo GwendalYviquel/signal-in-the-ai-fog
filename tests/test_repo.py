@@ -135,3 +135,11 @@ def test_tests_run_on_every_push():
 def test_site_tests_cannot_be_skipped_in_ci():
     text = (WORKFLOWS / "tests.yml").read_text(encoding="utf-8")
     assert "playwright install" in text and 'REQUIRE_BROWSER: "1"' in text
+
+
+def test_config_is_ready_to_publish(cfg):
+    # main.check_config blocks publication while a TO_FILL placeholder remains.
+    import yaml
+    text = yaml.safe_dump(cfg)
+    assert "TO_FILL" not in text
+    assert cfg["podcast"]["owner_email"] and "@" in cfg["podcast"]["owner_email"]
