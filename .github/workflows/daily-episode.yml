@@ -21,6 +21,10 @@ on:
         description: "News cutoff at today's scheduled time (4:05 Paris), as if run by the schedule"
         type: boolean
         default: false
+      episode_date:
+        description: "Catch up a past weekday (YYYY-MM-DD), with only the news published before 4:05 that day"
+        type: string
+        default: ""
 
 permissions:
   contents: write   # commit scripts + create audio releases
@@ -46,6 +50,7 @@ jobs:
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
       FORCE: ${{ inputs.force && 'true' || 'false' }}
       AS_SCHEDULED: ${{ inputs.as_scheduled && 'true' || 'false' }}
+      EPISODE_DATE: ${{ inputs.episode_date }}
       SCHEDULE: ${{ github.event.schedule }}   # which cron line triggered the run, empty when manual
     steps:
       - uses: actions/checkout@v4

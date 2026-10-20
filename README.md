@@ -70,6 +70,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 - **Dry run**: the script is downloadable from the `episode-script` artifact.
 - **Preview**: the real script is published as a **Preview** card on the catalog site, with an audio placeholder. The RSS feed is never touched, so nothing reaches Spotify; a published episode later replaces its preview.
 - **Rehearsal**: an MP3 is uploaded as a release, downloaded back from its public URL and checked in the feed and catalog, then the release is deleted. Nothing is published or committed. With `with_voice`, both voices read two short sentences (147 characters) and the sample is kept as an artifact.
+- **Catch-up** (`episode_date` option of *Daily episode*): generates a past weekday's episode with that day's news cutoff (4:05 Paris) and only the scripts aired before it; it takes its date in the feed and its description says it is a catch-up. An episode or a release that already exists for that date stops the run before any cost, and stories shared with neighbouring episodes are reported.
 - **Force** (`force` option): regenerates today's episode even if it already exists (or on a weekend), replacing the release.
 
 ### Schedule

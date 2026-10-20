@@ -31,7 +31,7 @@ def repo(tmp_path, monkeypatch):
         monkeypatch.setattr(main, name, path)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
     monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
-    for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE", "AS_SCHEDULED"):
+    for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE", "AS_SCHEDULED", "EPISODE_DATE"):
         monkeypatch.delenv(var, raising=False)
     monkeypatch.setattr(main, "current_time", lambda cfg: TUESDAY)
     return tmp_path
@@ -72,6 +72,7 @@ def mocks(monkeypatch):
     monkeypatch.setattr(publish, "upload_audio",
                         lambda mp3, tag, title, notes: calls["upload"].append(tag) or f"https://x/{tag}/{mp3.name}")
     monkeypatch.setattr(publish, "delete_release", lambda tag: calls["delete"].append(tag))
+    monkeypatch.setattr(publish, "release_exists", lambda tag: tag in calls.get("existing_releases", ()))
     return calls
 
 

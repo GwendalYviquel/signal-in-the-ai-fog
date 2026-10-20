@@ -39,6 +39,7 @@ python -m pytest
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
 | `test_rehearsal.py` | 9 | Rehearsal leaves nothing behind, release deleted even on failure, ElevenLabs key only for the voice check |
 | `test_prompt.py` | 6 | Prompt and checks agree: an episode written exactly to the prompt passes |
+| `test_catch_up.py` | 7 | Catch-up episodes: that day's news cutoff, only the scripts aired before it, its place in the feed, announced as a catch-up; invalid dates stop before any cost; an episode is never published twice; an orphan release stops the run before any cost; overlaps with neighbouring episodes reported |
 | `test_cover.py` | 7 | Cover meets Spotify and Apple specs, deterministic, every word drawn even without the DejaVu font |
 | `test_site.py` | 12 | Catalog page in a real browser: cards, Spotify button, search, theme filter, stats, deep links, HTML injection, mobile |
 | `test_docs.py` | 11 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the schedule diagram matches the crons and the code, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated |

@@ -6,6 +6,7 @@ Environment variables:
                 (no ElevenLabs call, no release, RSS feed unchanged)
   FORCE=true    regenerate even on weekends or if today's episode already exists
   AS_SCHEDULED=true  news cutoff at today's publish_at, as if run by the schedule
+  EPISODE_DATE=YYYY-MM-DD  catch up a past weekday, with that day's news cutoff (publish_at)
 """
 from __future__ import annotations
 
@@ -36,6 +37,42 @@ def to_markdown(ep: dict, day: dt.date) -> str:
     sources = "\n".join(f"- [{s['title']}]({s['url']})" for s in ep["sources"])
     return (f"# {ep['title']}\n\n_{day.isoformat()}_\n\n{ep['summary']}\n\n"
             f"## Script\n\n{ep['script']}\n\n## Sources\n\n{sources}\n")
+
+
+def episode_date(now: dt.datetime) -> dt.date | None:
+    """EPISODE_DATE (YYYY-MM-DD): catch up a past weekday's episode, with that day's news cutoff."""
+    value = os.getenv("EPISODE_DATE", "").strip()
+    if not value:
+        return None
+    try:
+        day = dt.date.fromisoformat(value)
+    except ValueError:
+        raise SystemExit(f"EPISODE_DATE must be YYYY-MM-DD, got {value!r}") from None
+    if day >= now.date():
+        raise SystemExit(f"EPISODE_DATE {day} is not in the past: catch-ups are for earlier days only")
+    if day.weekday() >= 5:
+        raise SystemExit(f"EPISODE_DATE {day} is a weekend day: there is no episode to catch up")
+    return day
+
+
+def report_overlaps(ep: dict, day: dt.date, episodes: list[dict]) -> list[str]:
+    """Stories shared with the nearest published episodes, by source URL. Reported, not blocking:
+    a story may move forward from one day to the next."""
+    urls = {s["url"] for s in ep["sources"]}
+    nearby = sorted(episodes, key=lambda e: abs((dt.date.fromisoformat(e["date"]) - day).days))[:3]
+    found = []
+    for other in nearby:
+        shared = urls & {s["url"] for s in other.get("sources", [])}
+        if shared:
+            found.append(f"{len(shared)} source(s) shared with the episode of {other['date']}: "
+                         + ", ".join(sorted(shared)))
+    for line in found or ["No source shared with the nearest episodes."]:
+        print(f"Overlap check: {line}")
+    summary = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as f:
+            f.write("### Overlap check\n\n" + "\n".join(f"- {line}" for line in found or ["none"]) + "\n\n")
+    return found
 
 
 def current_time(cfg: dict) -> dt.datetime:
@@ -113,22 +150,28 @@ def run(cfg: dict, spend: dict) -> str | None:
     if not scheduled_run_is_due(cfg, cron, now):
         print(f"Cron {cron!r} is the other side of daylight saving time today: nothing to do.")
         return
-    # Editorial time: the news cutoff given to Claude. Scheduled runs (and manual runs with
-    # AS_SCHEDULED) use publish_at, so a late start never moves the cutoff.
-    if cron or flag("AS_SCHEDULED"):
-        h, m = (int(v) for v in cfg["generation"]["publish_at"].split(":"))
+    backfill = episode_date(now)  # a past weekday to catch up, or None
+    # Editorial time: the news cutoff given to Claude. Scheduled runs, catch-ups and manual runs
+    # with AS_SCHEDULED use publish_at, so a late start never moves the cutoff.
+    h, m = (int(v) for v in cfg["generation"]["publish_at"].split(":"))
+    if backfill:
+        editorial_now = dt.datetime.combine(backfill, dt.time(h, m), now.tzinfo)
+    elif cron or flag("AS_SCHEDULED"):
         editorial_now = now.replace(hour=h, minute=m, second=0, microsecond=0)
     else:
         editorial_now = now
-    today = now.date()
+    today = backfill or now.date()
     if today.weekday() >= 5 and not force:
         print("Weekend: no episode.")
         return
 
     episodes, previews = load(EPISODES), load(PREVIEWS)
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
-        print("Today's episode is already published.")
+        print(f"The episode of {today} is already published.")
         return
+    if not (dry_run or preview or force) and publish.release_exists(f"episode-{today}"):
+        # A release without its episode in the data: never publish a second one, never pay twice.
+        raise SystemExit(f"A release episode-{today} already exists: run with force to replace it.")
     if preview and any(e["date"] == today.isoformat() for e in previews) and not force:
         print("Today's preview already exists.")
         return
@@ -140,10 +183,12 @@ def run(cfg: dict, spend: dict) -> str | None:
 
     SCRIPTS.mkdir(parents=True, exist_ok=True)
     BUILD.mkdir(exist_ok=True)
+    # Only episodes aired before this one: a catch-up never sees what was published after its date.
     previous = [p.read_text(encoding="utf-8") for p in sorted(SCRIPTS.glob("*.md"))
-                if p.stem != today.isoformat()][-3:]
+                if p.stem < today.isoformat()][-3:]
 
     ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"])
+    report_overlaps(ep, today, episodes)
     md = to_markdown(ep, today)
     (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
     print(md)
@@ -172,7 +217,10 @@ def run(cfg: dict, spend: dict) -> str | None:
         episodes = [e for e in episodes if e["date"] != today.isoformat()]
     audio_url = publish.upload_audio(mp3, tag, ep["title"], ep["summary"])
 
-    episodes.append(record(ep, today, now) | {
+    published_at = editorial_now if backfill else now  # a catch-up takes its place in the feed
+    extra = {"catch_up": {"generated_at": now.replace(microsecond=0).isoformat(),
+                          "news_cutoff": editorial_now.isoformat()}} if backfill else {}
+    episodes.append(record(ep, today, published_at) | extra | {
         "guid": f"{publish.repo()}#{tag}",
         "audio_url": audio_url,
         "audio_bytes": mp3.stat().st_size,
