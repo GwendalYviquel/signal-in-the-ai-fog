@@ -151,5 +151,14 @@
   "claude": null,
   "elevenlabs_characters": 6,
   "note": "configured voices, after a config.yaml change"
+ },
+ {
+  "time": "2026-10-20T21:48:13+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39503250563",
+  "claude": null,
+  "elevenlabs_characters": 6,
+  "note": "configured voices"
  }
 ]
