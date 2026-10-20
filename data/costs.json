@@ -196,5 +196,14 @@
   },
   "elevenlabs_characters": 5357,
   "note": "voice check 6 + episode 5351 characters"
+ },
+ {
+  "time": "2026-10-20T22:21:32+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39507481340",
+  "claude": null,
+  "elevenlabs_characters": 6,
+  "note": "configured voices"
  }
 ]
