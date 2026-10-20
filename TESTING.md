@@ -70,6 +70,8 @@ python -m pytest
 | 2026-10-20 | [Check voices on push](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions) | ✅ | Automatic check after the analyst voice changed in `config.yaml`: both voices ok, 6 characters | — |
 | 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39497411738) | ✅ but a bug found | Both voices, 147 characters, mono 44.1 kHz, release uploaded, downloaded and deleted. The log said 3.6 s for two sentences: the sample really lasts 9.7 s (370 frames). Each ElevenLabs response starts with an Info header giving its own duration; concatenated, the first one made tools and players read the first chunk's duration. A real episode would have shown a few seconds on Spotify and a wrong seek bar | Info headers and ID3 tags stripped from every chunk; durations computed by counting frames; the rehearsal fails if players would read a duration off by more than 0.5 s. Tests: `test_concatenated_chunks_keep_their_real_duration`, `test_header_frames_are_not_counted_as_sound`, `test_response_without_audio_fails_clearly` |
 
+| 2026-10-20 | [**First real episode**](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39503302732) | ✅ (1st attempt) | Run as if scheduled (`as_scheduled`, news cutoff 4:05 Paris). Voice check 6 characters, Claude in one attempt (one length warning), 9 ElevenLabs requests over both voices, release, feed and catalog deployed. 753 words, 5 min 12 s, and the feed announces 311 s: the duration fix holds on real audio. Cost: Claude 390,235 input tokens, 8,795 output, 15 searches, about $1.02; ElevenLabs 4,694 characters | Claude input is dominated by web search results: worth trying the newer web search tool with dynamic filtering |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
@@ -87,4 +89,4 @@ The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Not covered yet
 
-- A real episode end to end, with ElevenLabs: blocked by the analyst voice, a library voice that the free ElevenLabs plan cannot use through the API (see the last journal entry).
+- The schedule itself: covered by tests on every weekday of 2026 and 2027, but no scheduled run has fired yet (`SCHEDULE_ENABLED` is not set).
