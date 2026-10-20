@@ -137,7 +137,6 @@
     background: #1db954; color: #04130a; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
   }
   .spotify:hover { background: #22d160; }
-  .spotify.soon { background: var(--surface-2); color: var(--muted); cursor: default; font-weight: 600; }
   details { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
   summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); }
   summary:hover { color: var(--text); }
@@ -237,14 +236,16 @@
     return hay.includes(state.query);
   };
 
+  // Show link from config.yaml; until it is set, a Spotify search for the podcast stands in.
+  const spotifyShowUrl = () => state.data.podcast.spotify_url ||
+    `https://open.spotify.com/search/${encodeURIComponent(state.data.podcast.title)}`;
+
   const card = (ep) => {
     const q = state.query;
     const isPreview = ep.status === "preview";
     const inTranscript = q && norm(ep.transcript).includes(q);
-    const spotifyUrl = ep.spotify_url || state.data.podcast.spotify_url;
-    const spotify = spotifyUrl && !isPreview
-      ? el("a", { class: "spotify", href: spotifyUrl, target: "_blank", rel: "noopener", text: "Listen on Spotify" })
-      : el("span", { class: "spotify soon", title: "Available once the audio is published", text: "Spotify · coming soon" });
+    const spotify = el("a", { class: "spotify", href: ep.spotify_url || spotifyShowUrl(), target: "_blank",
+                              rel: "noopener", text: "Listen on Spotify" });
     const player = ep.audio_url
       ? el("audio", { controls: "", preload: "none", src: ep.audio_url })
       : el("div", { class: "placeholder", text: "Audio coming soon · script preview" });
@@ -308,7 +309,7 @@
     $("description").textContent = podcast.description;
 
     const actions = $("actions");
-    if (podcast.spotify_url) actions.append(el("a", { class: "btn primary", href: podcast.spotify_url, target: "_blank", rel: "noopener", text: "Listen on Spotify" }));
+    actions.append(el("a", { class: "btn primary", href: spotifyShowUrl(), target: "_blank", rel: "noopener", text: "Listen on Spotify" }));
     const rss = el("button", { class: "btn", type: "button", text: "Copy RSS feed" });
     rss.addEventListener("click", async () => {
       try { await navigator.clipboard.writeText(podcast.feed_url); rss.textContent = "Feed URL copied"; }
