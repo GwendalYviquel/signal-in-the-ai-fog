@@ -25,11 +25,18 @@ generation:
   target_words: 880                  # about 6 minutes spoken
 
 tts:
-  voice_id: "TO_FILL"                # ElevenLabs voice ID
+  voice_id: "TkBXFhNSp04NiWhhR7jP"   # ElevenLabs voice ID
   model_id: "eleven_multilingual_v2"
   output_format: "mp3_44100_128"
   max_chars_per_request: 4500
   use_context: true                  # previous_text / next_text for continuous delivery
+  # Sent with every request, so episodes sound like tests made on the ElevenLabs platform.
+  voice_settings:
+    stability: 0.55                  # lower: more expressive, higher: steadier and flatter
+    similarity_boost: 0.75           # closeness to the original voice
+    style: 0.1                       # extra emphasis; keep low to avoid artefacts
+    use_speaker_boost: true
+    speed: 1.0                       # 0.7 to 1.2; slightly below 1 for a slower delivery
 
 # Themes covered, in segment order.
 themes:

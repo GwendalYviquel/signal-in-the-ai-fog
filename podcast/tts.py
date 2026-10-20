@@ -57,6 +57,8 @@ def synthesize(text: str, tts_cfg: dict, out_path: Path) -> None:
     with open(out_path, "wb") as f:
         for i, chunk in enumerate(chunks):
             body = {"text": chunk, "model_id": tts_cfg["model_id"]}
+            if tts_cfg.get("voice_settings"):
+                body["voice_settings"] = tts_cfg["voice_settings"]
             if tts_cfg.get("use_context"):
                 if i > 0:
                     body["previous_text"] = chunks[i - 1][-500:]

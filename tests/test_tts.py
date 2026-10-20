@@ -71,3 +71,18 @@ def test_auth_error_fails_immediately(posts, tmp_path):
     with pytest.raises(RuntimeError, match="ElevenLabs 401"):
         tts.synthesize("Short text.", CFG, tmp_path / "ep.mp3")
     assert len(sent) == 1
+
+
+def test_voice_settings_are_sent_with_every_request(posts, tmp_path):
+    sent, _ = posts
+    settings = {"stability": 0.55, "similarity_boost": 0.75, "style": 0.1, "use_speaker_boost": True, "speed": 1.0}
+    text = "\n\n".join(["First paragraph. " * 8, "Second paragraph. " * 8])
+    tts.synthesize(text, CFG | {"voice_settings": settings}, tmp_path / "ep.mp3")
+    assert len(sent) == 2 and all(s.body["voice_settings"] == settings for s in sent)
+
+
+def test_voice_settings_in_config_are_within_elevenlabs_ranges(cfg):
+    vs = cfg["tts"]["voice_settings"]
+    assert all(0 <= vs[k] <= 1 for k in ("stability", "similarity_boost", "style"))
+    assert 0.7 <= vs["speed"] <= 1.2
+    assert cfg["tts"]["voice_id"] != "TO_FILL"
