@@ -69,6 +69,25 @@ def test_episode_diagram_matches_the_prompt():
     assert f"facts ~{t['story facts']} · read ~{t['story read']} words" in episode_svg
 
 
+def test_schedule_diagram_matches_the_workflow_and_the_code(cfg):
+    import datetime as dt
+    from podcast import main
+    wf = yaml.safe_load((WORKFLOWS / "daily-episode.yml").read_text(encoding="utf-8"))
+    crons = {f"{int(s['cron'].split()[1])}:{int(s['cron'].split()[0]):02d} UTC": s["cron"]
+             for s in wf.get("on", wf.get(True))["schedule"]}
+    s = make_diagrams.SCHEDULE
+    assert s["publish_at"] == cfg["generation"]["publish_at"]
+    days = {"Summer time": dt.date(2026, 7, 15), "Winter time": dt.date(2027, 1, 13)}
+    for label, _, runs in s["rows"]:
+        assert {cron for cron, _, _ in runs} == set(crons), "the diagram shows every cron line"
+        for cron, local, publishes in runs:
+            h, m = (int(v) for v in crons[cron].split()[1::-1])
+            day = days[label]
+            planned = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=dt.timezone.utc)
+            assert f"{planned.astimezone(main.ZoneInfo('Europe/Paris')):%H:%M}" == local, (label, cron)
+            assert main.scheduled_run_is_due(cfg, crons[cron], planned) == publishes, (label, cron)
+
+
 FIT = """() => {
   const svg = document.querySelector('svg');
   const [vx, vy, vw, vh] = svg.getAttribute('viewBox').split(' ').map(Number);

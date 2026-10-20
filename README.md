@@ -74,6 +74,13 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 
 ### Schedule
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-schedule-dark.svg">
+    <img src="assets/diagram-schedule-light.svg" alt="Schedule: the run at 4:05 Paris time, about 2 h 40 of margin for Spotify, the 7:00 listen; in summer the 2:05 UTC cron publishes, in winter the 3:05 UTC one" width="100%">
+  </picture>
+</p>
+
 The daily run starts at **4:05 Paris time, every weekday, public holidays included** (`generation.publish_at`). The episode is online about 15 minutes later, which leaves Spotify close to three hours to pick up the feed before a 7:00 listen. GitHub cron runs in UTC, so the workflow has two cron lines, one for summer time and one for winter time; each run reads the cron line that triggered it (not the clock, so a late start is still recognised) and only the one landing on 4:05 in Paris goes on. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
 
 ```
