@@ -6,25 +6,12 @@ How this project is tested, and a log of every real run, successful or not, with
 
 Three layers, from cheapest to most realistic:
 
-```mermaid
-flowchart TB
-    subgraph L1["🧪 Offline suite"]
-        direction LR
-        u0["Every push and<br/>before every run · free"] ~~~ u1["Fakes for Claude,<br/>ElevenLabs and gh"] --> u2["Pipeline on a<br/>temporary copy"] --> u3["Catalog page in<br/>headless Chromium"]
-    end
-    subgraph L2["🧬 Mutation checks"]
-        direction LR
-        m0["For every regression<br/>test · free"] ~~~ m1["Reintroduce<br/>the bug"] --> m2["The suite<br/>must fail"]
-    end
-    subgraph L3["🚀 Real runs on GitHub"]
-        direction LR
-        r0["On demand ·<br/>a few cents"] ~~~ r1["Check voices<br/>3 characters per voice"] --> r2["Preview or dry run<br/>Claude only"] --> r3["Rehearsal<br/>release, then deleted"]
-    end
-    L1 --> L2 --> L3 --> lesson(["Every surprise becomes a fix<br/>and a regression test in the suite"])
-
-    classDef note fill:#fff,stroke:#bbb,color:#555,stroke-dasharray:3 3
-    class u0,m0,r0 note
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-testing-dark.svg">
+    <img src="assets/diagram-testing-light.svg" alt="Testing layers: offline suite, mutation checks, real runs, and every surprise back into the suite" width="100%">
+  </picture>
+</p>
 
 1. **Offline test suite** (`tests/`, pytest). Claude, ElevenLabs and `gh` are replaced by fakes; the pipeline runs on a temporary copy of the data; the catalog page runs in headless Chromium. Runs on every push (`tests.yml`) and before every generation, so a broken commit never produces an episode.
 2. **Mutation checks**. To prove a test really protects against a bug, the bug is reintroduced in a scratch copy of the code and the suite must fail. Every regression test below was checked this way.
@@ -54,7 +41,7 @@ python -m pytest
 | `test_prompt.py` | 6 | Prompt and checks agree: an episode written exactly to the prompt passes |
 | `test_cover.py` | 7 | Cover meets Spotify and Apple specs, deterministic, every word drawn even without the DejaVu font |
 | `test_site.py` | 12 | Catalog page in a real browser: cards, Spotify button, search, theme filter, stats, deep links, HTML injection, mobile |
-| `test_docs.py` | 7 | README and TESTING.md: images and paths exist, workflow names, diagrams of a known type, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the site screenshot can be regenerated |
+| `test_docs.py` | 10 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated |
 | `test_repo.py` | 19 | Workflows (secrets, triggers, concurrency, dry-run guards, voice check only gets the ElevenLabs key), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite |
 
 ## Journal of real runs

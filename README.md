@@ -16,33 +16,12 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 
 ## How it works
 
-```mermaid
-flowchart TB
-    subgraph S1["1 · Checks, every weekday at 7:15 Paris"]
-        direction LR
-        cron(["⏰ GitHub Actions"]) --> tests["🧪 Offline tests"] --> voices["🎙️ Voice check<br/>one word per voice"]
-    end
-    subgraph S2["2 · Writing"]
-        direction LR
-        claude["🤖 Claude + web search<br/>news of the last 24–72 h"] --> valid{"✅ Validation"}
-        valid -- "wording issue" --> light["✏️ Light correction"] --> valid
-        valid -- "missing source" --> claude
-        k1[/"ANTHROPIC_API_KEY<br/>EDITORIAL_CONTEXT<br/>FORBIDDEN_TERMS"/] -.-> claude
-    end
-    subgraph S3["3 · Audio"]
-        direction LR
-        script["📝 Spoken script<br/>fixed opening and sign-off"] --> tts["🔊 ElevenLabs<br/>host + analyst voices"] --> release["📦 GitHub release<br/>MP3"]
-        k2[/"ELEVENLABS_API_KEY"/] -.-> tts
-    end
-    subgraph S4["4 · Distribution"]
-        direction LR
-        feed["📡 RSS feed<br/>+ 🗂️ catalog"] --> pages["🌐 GitHub Pages"] --> spotify(["🎧 Spotify, Apple Podcasts"])
-    end
-    S1 --> S2 --> S3 --> S4
-
-    classDef secret fill:#f4f1ff,stroke:#6d3fd6,color:#3a1d6e,stroke-dasharray:4 3
-    class k1,k2 secret
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-pipeline-dark.svg">
+    <img src="assets/diagram-pipeline-light.svg" alt="Pipeline: checks, writing, audio, distribution, with the secrets each stage uses" width="100%">
+  </picture>
+</p>
 
 A GitHub Action runs four steps:
 
@@ -55,55 +34,25 @@ A GitHub Action runs four steps:
 
 Every episode follows the same structure. Each story has two layers: the facts (what happened and its real status: announced, preview or available), read by the host, and a short read (what it means for a platform team or a retailer), read by the analyst and signposted so the listener hears where analysis begins.
 
-```mermaid
-flowchart TB
-    subgraph A["Opening and story of the day"]
-        direction LR
-        open["Opening<br/>date · AI disclosure<br/>3 headlines"]:::host --> story["Story of the day<br/>facts · ~130 words"]:::host
-        story -- "pause 0.6 s" --> sread["The read<br/>~110 words"]:::analyst
-    end
-    subgraph B["3 or 4 segments, in theme order"]
-        direction LR
-        seg["Segment<br/>facts · ~45 words"]:::host -- "pause" --> segread["The read<br/>~35 words"]:::analyst
-    end
-    subgraph C["Closing"]
-        direction LR
-        tail["Number of the day · What to watch<br/>Question for your team · Sign-off"]:::host
-    end
-    A --> B --> C
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-episode-dark.svg">
+    <img src="assets/diagram-episode-light.svg" alt="Episode timeline: host voice for facts, analyst voice for every read, a pause at each change of voice" width="100%">
+  </picture>
+</p>
 
-    classDef host fill:#e3fbf7,stroke:#0b8f84,color:#0a3d38
-    classDef analyst fill:#efe9ff,stroke:#6d3fd6,color:#3a1d6e
-```
-
-<sub>🟩 host voice &nbsp; 🟪 analyst voice &nbsp; a short pause at each change of voice. On Mondays the episode covers the news since Friday and the week ahead; on Fridays the story of the day steps back to look at a trend from the week.</sub>
+On Mondays the episode covers the news since Friday and the week ahead; on Fridays the story of the day steps back to look at a trend from the week.
 
 ### Generation and corrections
 
 The episode is submitted through a tool, so the JSON is always well formed. A wording problem is fixed in a light conversation (the episode and its errors only, much cheaper than replaying the research); anything that needs new content goes back to the research conversation, so a source is never invented.
 
-```mermaid
-sequenceDiagram
-    autonumber
-    participant W as Workflow
-    participant C as Claude
-    participant V as Validation
-    W->>C: Date, themes, last 3 scripts, editorial line
-    loop Research, up to 15 web searches
-        C->>C: web_search
-    end
-    C->>V: submit_episode
-    alt Valid
-        V-->>W: Episode accepted
-    else Wording issue (headline, first person, markdown...)
-        V->>C: Light correction: episode and errors only, no search
-        C->>V: submit_episode
-    else Needs content (missing source, episode too short)
-        V->>C: Back to the research conversation
-        C->>V: submit_episode
-    end
-    Note over W,V: 3 attempts at most, then nothing is published
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-generation-dark.svg">
+    <img src="assets/diagram-generation-light.svg" alt="Generation loop: research, submit_episode, validation, light correction or back to research, at most 3 attempts" width="100%">
+  </picture>
+</p>
 
 ### Run modes
 
@@ -143,6 +92,7 @@ data/previews.json, data/previews/   preview episodes (catalog only) and their s
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
 tools/make_cover.py                  cover art generation (python tools/make_cover.py [output.jpg])
 tools/screenshot_site.py             screenshot of the catalog site for this README
+tools/make_diagrams.py               diagrams of this README, light and dark (SVG)
 assets/                              images used by this README
 .github/workflows/daily-episode.yml  daily workflow
 .github/workflows/deploy-site.yml    site deployment when docs/ changes
