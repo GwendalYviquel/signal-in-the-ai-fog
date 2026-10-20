@@ -67,6 +67,7 @@ def rehearse(with_voice: bool = False) -> None:
         finally:
             costs.record(cfg, "rehearsal", "ok" if billed[0] == sum(len(t) for _, t in VOICE_CHECK) else "failed",
                          elevenlabs_characters=billed[0], ledger=main.COST_LEDGER, report=main.COST_REPORT,
+                         charts=main.COST_CHARTS,
                          note="voice sample")
     else:
         silent_mp3(mp3)

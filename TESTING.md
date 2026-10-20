@@ -28,6 +28,13 @@ python -m pytest
 
 ## Test suite
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-testplan-dark.svg">
+    <img src="assets/diagram-testplan-light.svg" alt="Test plan: every area of the offline suite with its test files, the mutation checks and the real runs" width="100%">
+  </picture>
+</p>
+
 | File | Tests | What it protects |
 | --- | --- | --- |
 | `test_validate.py` | 19 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text, lengths |
@@ -36,6 +43,7 @@ python -m pytest
 | `test_spotify.py` | 6 | Spotify check on the public embed page (same structure as the real one): show not available yet, previous episode still showing, first time live recorded once with the delay, show link from the config, checks cover the morning in both seasons |
 | `test_stats.py` | 7 | Download stats: only episode MP3s counted, releases read safely across pages, one snapshot a day, STATS.md totals and last 7 days, catalog counts for published episodes only, daily workflow that redeploys the site |
 | `test_tts.py` | 23 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently, candidate IDs checked without changing the config, real duration kept when chunks are concatenated |
+| `test_finops.py` | 6 | FinOps dashboard: month figures and projection, daily spend by kind of run on Paris days (failed runs still cost), round axis maximum, no-episode state, both dashboards rebuilt on every record, committed dashboard matches the ledger |
 | `test_feed_catalog.py` | 5 | RSS feed (valid XML, escaping, enclosure, AI disclosure) and catalog (previews replaced by published episodes) |
 | `test_main.py` | 13 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script, voices checked before paying for the script |
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
@@ -44,7 +52,7 @@ python -m pytest
 | `test_catch_up.py` | 7 | Catch-up episodes: that day's news cutoff, only the scripts aired before it, its place in the feed, announced as a catch-up; invalid dates stop before any cost; an episode is never published twice; an orphan release stops the run before any cost; overlaps with neighbouring episodes reported |
 | `test_cover.py` | 7 | Cover meets Spotify and Apple specs, deterministic, every word drawn even without the DejaVu font |
 | `test_site.py` | 13 | Catalog page in a real browser: cards, Spotify button, search, theme filter, stats, deep links, HTML injection, mobile, download counts |
-| `test_docs.py` | 12 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the schedule diagram matches the crons and the code, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated |
+| `test_docs.py` | 13 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the schedule diagram matches the crons and the code, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated, the test plan covers every test file |
 | `test_schedule.py` | 9 | Every weekday of 2026 and 2027 (both daylight saving changes, every public holiday) publishes exactly once at 4:05 Paris time; the right cron each side of the change; a late start still recognised; the other cron stops before any cost; time left before a 7:00 listen |
 | `test_costs.py` | 12 | Claude usage summed over every call (research pauses, corrections), kept when generation gives up; dollar estimate; prices tied to the model in use; ledger, COSTS.md and step summary; every mode records its spend, a run failing half-way still records what was billed, a refused voice is not counted; the news cutoff of scheduled runs |
 | `test_repo.py` | 21 | Workflows (secrets, triggers, concurrency, dry-run guards, voice check only gets the ElevenLabs key), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite, costs committed after every run, failures included |

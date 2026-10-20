@@ -138,7 +138,7 @@ def test_every_text_fits_its_box_and_nothing_leaves_the_drawing():
             browser = p.chromium.launch()
             page = browser.new_page()
             problems = {}
-            for svg in sorted((ROOT / "assets").glob("diagram-*.svg")):
+            for svg in sorted((ROOT / "assets").glob("*.svg")):  # diagrams and FinOps dashboard
                 page.set_content(svg.read_text(encoding="utf-8"))
                 found = page.evaluate(FIT)
                 if found:
@@ -172,3 +172,9 @@ def test_site_screenshot_can_be_regenerated(tmp_path):
     from PIL import Image
     with Image.open(out) as img:
         assert img.format == "PNG" and img.size == (1280, 860)
+
+
+def test_test_plan_covers_every_test_file():
+    areas = {f for *_, files in make_diagrams.TEST_AREAS for f in files}
+    assert areas == set(make_diagrams.test_counts()), "add the new test file to an area of the test plan"
+    assert make_diagrams.real_runs() >= 1

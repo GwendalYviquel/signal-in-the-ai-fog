@@ -27,7 +27,8 @@ def repo(tmp_path, monkeypatch):
     for name, path in {"ROOT": tmp_path, "EPISODES": tmp_path / "data/episodes.json",
                        "SCRIPTS": tmp_path / "data/scripts", "PREVIEWS": tmp_path / "data/previews.json",
                        "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build",
-                       "COST_LEDGER": tmp_path / "data/costs.json", "COST_REPORT": tmp_path / "COSTS.md"}.items():
+                       "COST_LEDGER": tmp_path / "data/costs.json", "COST_REPORT": tmp_path / "COSTS.md",
+                       "COST_CHARTS": tmp_path / "assets"}.items():
         monkeypatch.setattr(main, name, path)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
     monkeypatch.delenv("GITHUB_RUN_ID", raising=False)

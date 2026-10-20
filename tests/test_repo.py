@@ -123,6 +123,7 @@ def test_costs_are_committed_after_every_run_even_failed(name):
     commit = next(s for s in steps if s.get("name", "").startswith("Commit"))
     assert commit["if"].startswith("always()")
     assert "COSTS.md" in commit["run"] and ("data/costs.json" in commit["run"] or "git add data " in commit["run"])
+    assert "assets/finops-dashboard-*.svg" in commit["run"]
     assert "git pull --rebase origin main" in commit["run"]
 
 

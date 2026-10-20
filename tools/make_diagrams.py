@@ -5,28 +5,13 @@ Usage: python tools/make_diagrams.py
 Every text sits in a group <g class="box"> with its frame rect, so tests can check in a real
 browser that no text overflows its box and nothing leaves the drawing.
 """
+import sys
 from pathlib import Path
-from xml.sax.saxutils import escape
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from podcast.drawing import THEMES, W, Drawing, text_width  # noqa: E402,F401
 
 OUT = Path(__file__).resolve().parent.parent / "assets"
-W = 880  # GitHub's README column: the drawings scale down from here, never up
-FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
-MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
-
-THEMES = {
-    "light": dict(ink="#1f2333", muted="#5b6178", line="#a3a9bf", stage="#ffffff", stage_stroke="#e3e6f0",
-                  card="#f6f7fb", card_stroke="#dfe3ee", host="#e3fbf7", host_stroke="#14a394",
-                  host_ink="#0a4a43", analyst="#efe9ff", analyst_stroke="#7b52e0", analyst_ink="#3a1d6e",
-                  accent="#6d3fd6", accent_ink="#ffffff", ok="#e3fbf7", ok_stroke="#14a394", ok_ink="#0a4a43",
-                  warn="#fff4e0", warn_stroke="#e8a33a", warn_ink="#7a4b00", chip="#f4f1ff",
-                  chip_stroke="#b9a5f2", chip_ink="#4b2a96"),
-    "dark": dict(ink="#e6e8f0", muted="#a0a6bd", line="#5d6480", stage="#0f141d", stage_stroke="#262d3d",
-                 card="#161b26", card_stroke="#2d3446", host="#0e3a35", host_stroke="#3ee6cc",
-                 host_ink="#d6fff8", analyst="#251c46", analyst_stroke="#a98bff", analyst_ink="#ece6ff",
-                 accent="#8f6cf0", accent_ink="#ffffff", ok="#0e3a35", ok_stroke="#3ee6cc", ok_ink="#d6fff8",
-                 warn="#3a2a10", warn_stroke="#e8a33a", warn_ink="#ffd79a", chip="#221a3f",
-                 chip_stroke="#6f58c9", chip_ink="#d8ccff"),
-}
 
 # Content shared with the tests: the secrets each stage uses, and the episode's word targets.
 SECRETS = {"Writing": ["ANTHROPIC_API_KEY", "EDITORIAL_CONTEXT", "FORBIDDEN_TERMS"],
@@ -38,60 +23,6 @@ EPISODE = [  # (part, voice, words): the prompt's targets, 4 segments
 ]
 PROMPT_TARGETS = {"story facts": 130, "story read": 110, "segment facts": 45, "segment read": 35,
                   "number of the day": 30, "what to watch": 60, "question": 25}
-
-
-class Drawing:
-    def __init__(self, height, theme):
-        self.h, self.c, self.parts, self.markers = height, THEMES[theme], [], set()
-
-    def rect(self, x, y, w, h, fill, stroke="none", r=10, dash=None, width=1.2, cls=None):
-        attrs = f' stroke-dasharray="{dash}"' if dash else ""
-        attrs += f' class="{cls}"' if cls else ""
-        self.parts.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{r}" '
-                          f'fill="{fill}" stroke="{stroke}" stroke-width="{width}"{attrs}/>')
-
-    def text(self, x, y, s, size=13, weight=400, color=None, anchor="middle", mono=False):
-        self.parts.append(f'<text x="{x:.1f}" y="{y:.1f}" font-family="{MONO if mono else FONT}" '
-                          f'font-size="{size}" font-weight="{weight}" fill="{color or self.c["ink"]}" '
-                          f'text-anchor="{anchor}">{escape(s)}</text>')
-
-    def box(self, x, y, w, h, lines, fill, stroke="none", r=12, dash=None, align="middle", pad=14,
-            frame_visible=True):
-        """A frame with lines of (text, size, weight, color, mono) centred vertically inside."""
-        self.parts.append('<g class="box">')
-        if frame_visible:
-            self.rect(x, y, w, h, fill, stroke, r, dash, cls="frame")
-        else:
-            self.rect(x, y, w, h, "none", "none", r, cls="frame")
-        heights = [ln[1] * 1.32 for ln in lines]
-        cy = y + (h - sum(heights)) / 2
-        tx = x + w / 2 if align == "middle" else x + pad
-        for (s, size, weight, color, *mono), lh in zip(lines, heights):
-            cy += lh
-            self.text(tx, cy - lh * 0.28, s, size, weight, color, align, bool(mono and mono[0]))
-        self.parts.append("</g>")
-
-    def arrow(self, d, color=None, width=1.6, dash=None, head=True):
-        color = color or self.c["line"]
-        marker = "a" + color.lstrip("#")
-        if head and marker not in self.markers:
-            self.markers.add(marker)
-            self.parts.insert(0, f'<defs><marker id="{marker}" viewBox="0 0 10 10" refX="8.5" refY="5" '
-                                 f'markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
-                                 f'<path d="M0,0 L10,5 L0,10 z" fill="{color}"/></marker></defs>')
-        extra = f' stroke-dasharray="{dash}"' if dash else ""
-        extra += f' marker-end="url(#{marker})"' if head else ""
-        self.parts.append(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="{width}" '
-                          f'stroke-linecap="round" stroke-linejoin="round"{extra}/>')
-
-    def svg(self, title):
-        return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {self.h}" width="{W}" '
-                f'height="{self.h}" role="img" aria-label="{escape(title)}"><title>{escape(title)}</title>'
-                + "".join(self.parts) + "</svg>\n")
-
-
-def text_width(s, size):
-    return len(s) * size * 0.56
 
 
 def pipeline(theme):
@@ -356,7 +287,72 @@ def schedule(theme):
     return d.svg("Schedule: the run at 4:05 Paris time, the margin for Spotify, the 7:00 listen")
 
 
-DIAGRAMS = {"pipeline": pipeline, "episode": episode, "generation": generation, "testing": testing,
+# The test plan: every test file belongs to one area (a test checks none is forgotten).
+TEST_AREAS = [
+    ("Writing", "Claude, validation, prompt", ["validate", "generate", "prompt", "assemble"]),
+    ("Voices", "ElevenLabs, two voices", ["tts"]),
+    ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal"]),
+    ("Schedule", "4:05 Paris, all year", ["schedule"]),
+    ("Money and audience", "costs, downloads, Spotify", ["costs", "finops", "stats", "spotify"]),
+    ("Catalog site", "real browser", ["site"]),
+    ("Visuals and docs", "cover, diagrams, README", ["cover", "docs"]),
+    ("Repository and CI", "workflows, secrets, privacy", ["repo"]),
+]
+TESTS = Path(__file__).resolve().parent.parent / "tests"
+TESTING_MD = Path(__file__).resolve().parent.parent / "TESTING.md"
+
+
+def test_counts() -> dict[str, int]:
+    return {f.stem[5:]: f.read_text(encoding="utf-8").count("\ndef test_") for f in sorted(TESTS.glob("test_*.py"))}
+
+
+def real_runs() -> int:
+    journal = TESTING_MD.read_text(encoding="utf-8").split("## Journal of real runs", 1)[1].split("\n## ", 1)[0]
+    return sum(1 for line in journal.splitlines() if line.startswith("| 20"))
+
+
+def testplan(theme):
+    """Every area of the offline suite with its test files, and the layers around it."""
+    counts = test_counts()
+    cols, gap = 4, 12
+    rows = [TEST_AREAS[i:i + cols] for i in range(0, len(TEST_AREAS), cols)]
+    heights = [62 + 21 * max(len(files) for *_, files in row) + 8 for row in rows]  # each row fits its longest card
+    d = Drawing(80 + sum(heights) + gap * len(rows) + 30, theme)
+    c = d.c
+    total = sum(counts.values())
+    kpis = [(f"{total}", "test functions, offline"), (f"{len(counts)}", "test files"),
+            (f"{real_runs()}", "real runs in the journal"), ("every push", "and before every run")]
+    kw = (W - 2 - 3 * 12) / 4
+    for i, (value, label) in enumerate(kpis):
+        x = 1 + i * (kw + 12)
+        d.box(x, 1, kw, 64, [(value, 22, 750, c["ink"]), (label, 11.5, 500, c["muted"])],
+              c["stage"], c["stage_stroke"], r=14)
+    cw = (W - 2 - (cols - 1) * gap) / cols
+    for i, (title, sub, files) in enumerate(TEST_AREAS):
+        r = i // cols
+        ch = heights[r]
+        x, y = 1 + (i % cols) * (cw + gap), 80 + sum(heights[:r]) + gap * r
+        d.rect(x, y, cw, ch, c["stage"], c["stage_stroke"], r=14)
+        area_total = sum(counts[f] for f in files)
+        d.box(x + 8, y + 10, cw - 58, 40, [(title, 13.5, 700, c["ink"]), (sub, 11, 400, c["muted"])],
+              "none", align="start", pad=4, frame_visible=False)
+        d.box(x + cw - 50, y + 12, 40, 26, [(str(area_total), 13, 700, c["accent_ink"])], c["accent"], c["accent"], r=13)
+        for j, f in enumerate(files):
+            fy = y + 58 + j * 21
+            d.box(x + 10, fy, cw - 20, 18, [(f"test_{f}.py", 11, 500, c["ink"], True)], "none", align="start",
+                  pad=4, frame_visible=False)
+            d.box(x + cw - 44, fy, 34, 18, [(str(counts[f]), 11, 700, c["muted"])], "none", frame_visible=False)
+    ny = 80 + sum(heights) + gap * len(rows)
+    notes = [("Mutation checks", "each regression test fails if its bug returns"),
+             ("Real runs", "voice checks, previews, dry runs, rehearsals, episodes")]
+    nw = (W - 2 - 12) / 2
+    for i, (title, sub) in enumerate(notes):
+        d.box(1 + i * (nw + 12), ny, nw, 22, [(f"{title}: {sub}", 11.5, 600, c["chip_ink"])],
+              c["chip"], c["chip_stroke"], r=11)
+    return d.svg(f"Test plan: {total} offline tests in {len(counts)} files")
+
+
+DIAGRAMS = {"testplan": testplan, "pipeline": pipeline, "episode": episode, "generation": generation, "testing": testing,
             "schedule": schedule}
 
 

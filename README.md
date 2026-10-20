@@ -105,9 +105,11 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── feed.py                     RSS feed for Spotify and Apple Podcasts
 │   ├── catalog.py                  data of the catalog site
 │   ├── costs.py                    cost tracking: Claude tokens, ElevenLabs characters
+│   ├── finops.py                   FinOps dashboard, rebuilt after every run
 │   ├── stats.py                    download counts of the episodes
 │   ├── spotify.py                  is the latest episode live on Spotify
-│   └── rehearsal.py                publication rehearsal
+│   ├── rehearsal.py                publication rehearsal
+│   └── drawing.py                  drawing helpers shared by the diagrams and the dashboard
 ├── data/
 │   ├── episodes.json               published episodes, source of the feed
 │   ├── scripts/                    one script per published episode
@@ -150,6 +152,13 @@ The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ 
 
 ## Tests
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-testplan-dark.svg">
+    <img src="assets/diagram-testplan-light.svg" alt="Test plan: every area of the offline suite with its test files, the mutation checks and the real runs" width="100%">
+  </picture>
+</p>
+
 ```
 pip install -r requirements.txt -r requirements-dev.txt
 python -m playwright install chromium   # for the catalog site tests
@@ -162,15 +171,22 @@ The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and t
 
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 
-## Costs and safeguards
+## FinOps
 
-Every run records what it consumed, Claude tokens and web searches (with a dollar estimate) and ElevenLabs characters, in `data/costs.json`; [COSTS.md](COSTS.md) is rebuilt and committed after each run, failed runs and dry runs included, and each run's GitHub summary shows its own cost.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/finops-dashboard-dark.svg">
+    <img src="assets/finops-dashboard-light.svg" alt="FinOps dashboard: Claude and ElevenLabs this month, cost per published episode, month projection, and spend per day over 30 days" width="100%">
+  </picture>
+</p>
 
+Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in `config.yaml`, and ElevenLabs characters (its credits). The dashboard above and [COSTS.md](COSTS.md) are rebuilt and committed after each run, and each run's GitHub summary shows its own cost.
 
-- An episode is about 6,000 to 7,000 characters, which is as many ElevenLabs credits with a standard model, for 20 to 23 episodes a month.
-- ElevenLabs is never called in a dry run.
-- An episode that is already published is not regenerated, unless `force` is used.
-- No episode is produced on weekends.
+- **One episode** costs about **$1 of Claude** (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**.
+- **Before paying for anything**, the voice check (3 characters per voice) and the duplicate guards stop a run that would fail; wording corrections go to a light conversation without the research.
+- **Never paid twice**: an episode already published is skipped, an orphan release stops the run, and nothing is published on weekends.
+- **Free**: hosting (GitHub Pages and releases), the Spotify check, the download stats and the CI.
+- **Audience**: downloads of each episode in [STATS.md](STATS.md) and on the catalog site; Spotify plays in Spotify for Creators.
 
 ## Transparency
 

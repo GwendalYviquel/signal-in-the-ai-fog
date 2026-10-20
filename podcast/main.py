@@ -26,7 +26,7 @@ SCRIPTS = ROOT / "data" / "scripts"
 PREVIEWS = ROOT / "data" / "previews.json"
 PREVIEW_SCRIPTS = ROOT / "data" / "previews"
 BUILD = ROOT / "build"
-COST_LEDGER, COST_REPORT = costs.LEDGER, costs.REPORT
+COST_LEDGER, COST_REPORT, COST_CHARTS = costs.LEDGER, costs.REPORT, costs.CHARTS
 
 
 def flag(name: str) -> bool:
@@ -137,6 +137,7 @@ def main() -> None:
         chars = spend["voice_check"] + spend["speech"][0]
         if spend["claude"]["api_calls"] or chars:
             costs.record(cfg, mode, outcome, spend["claude"], chars, ledger=COST_LEDGER, report=COST_REPORT,
+                         charts=COST_CHARTS,
                          note=f"voice check {spend['voice_check']} + episode {spend['speech'][0]} characters"
                          if mode == "publish" else "")
 
