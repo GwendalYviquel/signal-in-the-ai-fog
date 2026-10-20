@@ -22,6 +22,7 @@ Every episode follows the same format, as a single-voice monologue: opening with
 | Dry run | Manual run, `dry_run` option (default) | Script only, downloadable from the `episode-script` artifact. No ElevenLabs call, nothing published. |
 | Preview | *Preview episode* workflow (manual) | Real script from Claude, published as a **Preview** card on the catalog site (no audio, Spotify link marked as coming soon). No ElevenLabs call, no release, RSS feed untouched, so nothing reaches Spotify. A published episode later replaces its preview. |
 | Publish | Manual run without `dry_run`, or schedule | Full episode: audio, release, RSS feed. |
+| Rehearsal | *Publication rehearsal* workflow (manual) | Checks the publication path on GitHub without ElevenLabs: a silent MP3 is uploaded as a release, downloaded back from its public URL and checked in the feed and catalog (built, never written or deployed), then the release is deleted. Nothing is published or committed. |
 | Force | `force` option | Regenerates today's episode even if it already exists (or on a weekend), replacing the release. |
 
 The schedule (`cron` in UTC in the workflow) aims to have the episode ready before the morning commute, Monday to Friday.
@@ -37,6 +38,7 @@ podcast/tts.py                       ElevenLabs speech synthesis
 podcast/publish.py                   MP3 upload as a GitHub release (gh CLI)
 podcast/feed.py                      RSS feed compatible with Spotify and Apple Podcasts
 podcast/catalog.py                   data for the episode catalog site
+podcast/rehearsal.py                 publication rehearsal
 data/episodes.json                   history of published episodes (source of the RSS feed)
 data/scripts/                        archived scripts, one Markdown file per day
 data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
@@ -46,6 +48,7 @@ tools/make_cover.py                  cover art generation
 .github/workflows/deploy-site.yml    site deployment when docs/ changes
 .github/workflows/preview-episode.yml  script-only run published to the catalog site
 .github/workflows/tests.yml          test suite on every push
+.github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
 tests/                               offline test suite (pytest)
 ```
 
