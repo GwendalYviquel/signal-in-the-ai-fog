@@ -44,6 +44,7 @@ jobs:
       - name: Generate the script
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}   # optional, for keys not scoped to a workspace
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken
           EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
           GITHUB_REPOSITORY: ${{ github.repository }}

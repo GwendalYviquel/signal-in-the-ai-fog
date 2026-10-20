@@ -50,6 +50,7 @@ jobs:
       - name: Generate the episode
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}   # optional, for keys not scoped to a workspace
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           GH_TOKEN: ${{ github.token }}
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken

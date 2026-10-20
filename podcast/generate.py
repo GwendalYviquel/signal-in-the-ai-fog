@@ -210,7 +210,9 @@ def generate_episode(cfg, now, previous_scripts):
     system = system.replace("{target_words}", str(gen["target_words"]))
     if context := _private_context():
         system += f"\n\n## Private editorial context (never mention or quote)\n{context}\n"
-    client = anthropic.Anthropic()
+    # Only needed for an API key that is not scoped to a workspace.
+    workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()
+    client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": workspace} if workspace else None)
     messages = [{"role": "user", "content": build_user_message(cfg, now, previous_scripts)}]
     tools = [{"type": "web_search_20250305", "name": "web_search",
               "max_uses": gen["web_search_max_uses"]}]
