@@ -1,0 +1,78 @@
+[
+  {
+    "date": "2026-10-20",
+    "title": "Microsoft's sovereign pitch, Mistral's pending weights",
+    "summary": "Microsoft widens its Sovereign Cloud with on-premises AI and EU oversight of engineer access. Mistral Large 4 is still a preview with weights promised, and Mistral's CPU forecasting models get a first retail test. The episode also covers the GDPR omnibus and Google's Universal Cart.",
+    "headlines": [
+      "Microsoft widens its sovereign cloud with on-premises AI",
+      "Mistral Large 4 is live in preview, weights still pending",
+      "GDPR omnibus talks stall on AI training and legitimate interest"
+    ],
+    "themes": [
+      "Sovereignty and Europe",
+      "Models and vendors",
+      "Platform",
+      "Regulation",
+      "Retail and agents"
+    ],
+    "sources": [
+      {
+        "title": "Techzine: Microsoft expands sovereign cloud with on-premises AI and GitHub",
+        "url": "https://www.techzine.eu/news/infrastructure/145115/microsoft-expands-sovereign-cloud-with-on-premises-ai-and-github/"
+      },
+      {
+        "title": "TechAfrica News: Microsoft Expands Sovereign Cloud Capabilities",
+        "url": "https://techafricanews.com/2026/10/20/microsoft-expands-sovereign-cloud-ai-middle-east/"
+      },
+      {
+        "title": "Maddyness: Satya Nadella à Paris",
+        "url": "https://www.maddyness.com/2026/10/20/satya-nadella-a-paris-microsoft-veut-rassurer-leurope-sur-la-souverainete-des-donnees/"
+      },
+      {
+        "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+        "url": "https://www.lindy.ai/blog/mistral-large-4"
+      },
+      {
+        "title": "Eesel: Mistral Large 4 review",
+        "url": "https://www.eesel.ai/blog/mistral-large-4"
+      },
+      {
+        "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+        "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+      },
+      {
+        "title": "Superlinear: Timestral vs TimesFM vs classic forecasting, grocery test",
+        "url": "https://superlinear.eu/insights/articles/timestral-vs-timesfm-ai-forecasting-grocery-benchmark"
+      },
+      {
+        "title": "Timestral.org: What Is Timestral?",
+        "url": "https://timestral.org/blog/what-is-timestral"
+      },
+      {
+        "title": "PPC Land: Explaining Digital Omnibus",
+        "url": "https://ppc.land/digital-omnibus/"
+      },
+      {
+        "title": "EUTechReg: GDPR reform in the Digital Omnibus",
+        "url": "https://research.eutechreg.com/dossiers/gdpr-reform-digital-omnibus/"
+      },
+      {
+        "title": "AI and GPP: Brussels Said Nothing About AI",
+        "url": "https://aiandgpp.com/2026/10/19/european-council-ai-silence-enforcement-courts/"
+      },
+      {
+        "title": "Cooley: Digital AI Omnibus Delays Key Deadlines",
+        "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/"
+      },
+      {
+        "title": "Delante: Google Launches Universal Cart",
+        "url": "https://delante.co/google-universal-cart-search-gemini/"
+      },
+      {
+        "title": "System Design Academy: Mistral Large 4, Release, Open Weights, Price and Hardware",
+        "url": "https://www.systemdesign.academy/explained/mistral-large-4"
+      }
+    ],
+    "published_at": "2026-10-20T18:05:20+02:00"
+  }
+]

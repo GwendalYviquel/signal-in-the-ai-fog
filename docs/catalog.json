@@ -14,5 +14,86 @@
    "Retail and agents"
   ]
  },
- "episodes": []
+ "episodes": [
+  {
+   "date": "2026-10-20",
+   "status": "preview",
+   "title": "Microsoft's sovereign pitch, Mistral's pending weights",
+   "summary": "Microsoft widens its Sovereign Cloud with on-premises AI and EU oversight of engineer access. Mistral Large 4 is still a preview with weights promised, and Mistral's CPU forecasting models get a first retail test. The episode also covers the GDPR omnibus and Google's Universal Cart.",
+   "headlines": [
+    "Microsoft widens its sovereign cloud with on-premises AI",
+    "Mistral Large 4 is live in preview, weights still pending",
+    "GDPR omnibus talks stall on AI training and legitimate interest"
+   ],
+   "themes": [
+    "Sovereignty and Europe",
+    "Models and vendors",
+    "Platform",
+    "Regulation",
+    "Retail and agents"
+   ],
+   "duration_seconds": 0,
+   "audio_url": "",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Techzine: Microsoft expands sovereign cloud with on-premises AI and GitHub",
+     "url": "https://www.techzine.eu/news/infrastructure/145115/microsoft-expands-sovereign-cloud-with-on-premises-ai-and-github/"
+    },
+    {
+     "title": "TechAfrica News: Microsoft Expands Sovereign Cloud Capabilities",
+     "url": "https://techafricanews.com/2026/10/20/microsoft-expands-sovereign-cloud-ai-middle-east/"
+    },
+    {
+     "title": "Maddyness: Satya Nadella à Paris",
+     "url": "https://www.maddyness.com/2026/10/20/satya-nadella-a-paris-microsoft-veut-rassurer-leurope-sur-la-souverainete-des-donnees/"
+    },
+    {
+     "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
+     "url": "https://www.lindy.ai/blog/mistral-large-4"
+    },
+    {
+     "title": "Eesel: Mistral Large 4 review",
+     "url": "https://www.eesel.ai/blog/mistral-large-4"
+    },
+    {
+     "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
+     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+    },
+    {
+     "title": "Superlinear: Timestral vs TimesFM vs classic forecasting, grocery test",
+     "url": "https://superlinear.eu/insights/articles/timestral-vs-timesfm-ai-forecasting-grocery-benchmark"
+    },
+    {
+     "title": "Timestral.org: What Is Timestral?",
+     "url": "https://timestral.org/blog/what-is-timestral"
+    },
+    {
+     "title": "PPC Land: Explaining Digital Omnibus",
+     "url": "https://ppc.land/digital-omnibus/"
+    },
+    {
+     "title": "EUTechReg: GDPR reform in the Digital Omnibus",
+     "url": "https://research.eutechreg.com/dossiers/gdpr-reform-digital-omnibus/"
+    },
+    {
+     "title": "AI and GPP: Brussels Said Nothing About AI",
+     "url": "https://aiandgpp.com/2026/10/19/european-council-ai-silence-enforcement-courts/"
+    },
+    {
+     "title": "Cooley: Digital AI Omnibus Delays Key Deadlines",
+     "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/"
+    },
+    {
+     "title": "Delante: Google Launches Universal Cart",
+     "url": "https://delante.co/google-universal-cart-search-gemini/"
+    },
+    {
+     "title": "System Design Academy: Mistral Large 4, Release, Open Weights, Price and Hardware",
+     "url": "https://www.systemdesign.academy/explained/mistral-large-4"
+    }
+   ],
+   "transcript": "Good morning, it's Tuesday, October 20. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Microsoft widens its sovereign cloud with on-premises AI, Mistral Large 4 is live in preview, weights still pending, and GDPR omnibus talks stall on AI training and legitimate interest.\n\nFirst, the story of the day.\n\nMicrosoft expanded its Sovereign Cloud today, October twentieth, announced in Satya Nadella's keynote at the Frontier Tour in Paris. A Sovereign Control Panel enters public preview in November. It shows the sovereignty status of an environment, flags gaps and risks, and maps workload dependencies. For customers in the EU and EFTA, a feature called Data Guardian lets a European partner monitor when Microsoft engineers log in remotely to production systems. The access is recorded in logs that cannot be altered without detection. External key management through Azure Managed HSM is now generally available. Foundry Local and GitHub Enterprise Local, which run models and coding tools on customer hardware, become generally available in November. Migrating workloads from connected to disconnected mode is in public preview. The partner ecosystem has twenty-nine companies, including Mistral. A French lawyer warned that the word sovereign needs careful handling.\n\nThe read here: Microsoft is selling sovereignty as a spectrum, and much of it is still preview or due in November. For a platform team, the most interesting piece is local inference. Models running on your own hardware, with a hyperscaler as control plane, make a hybrid pattern credible. The open question is whether partner oversight of engineer access satisfies your legal team, or whether you still want a European-operated option for some workloads. Two practical checks follow. First, which routes behind your gateway could be served from a private or disconnected target? Second, can your evaluation suite run inside that same boundary? Do not plan around November features until they are generally available.\n\nNext, Models and vendors.\n\nMistral Large 4 launched on October sixth as a public preview. It is a one-trillion-parameter model. As of October eighth, the weights could not be downloaded, and no licence had been named. Weights are promised by the end of October. As of October fifteenth they were not out, and the licence had not been announced. Launch pricing was fifty percent off for two weeks.\n\nWhy it matters: a preview is not a production commitment. For a gateway team, treat this as a candidate route, not a primary one. The licence will decide whether private deployment is possible at all. The half-price window is closing, so benchmark now, but budget on list price.\n\nNext, Platform.\n\nMistral released Timestral on October fifteenth, a family of time-series models in four sizes, from five million to two hundred nine million parameters. They do zero-shot probabilistic forecasting on CPU. Consultancy Superlinear tested them against a classic method on Walmart and fresh-food data. The new models made up to seven point eight percent less error out of the box. The twenty-eight million model had only point four percent more error than the largest, at about one fifth of the time.\n\nWhat this really signals: forecasting is becoming a cheap, CPU-friendly service rather than a GPU project. For a platform team, that frees accelerator capacity and simplifies hosting. One vendor-independent test is encouraging but not proof. Backtest against your current forecasts, store by store, before replacing anything.\n\nNext, Regulation.\n\nAs of October, the AI Act amendments are law, but the data omnibus has not reached trilogue. The Council's October second text would presume AI training to be a legitimate interest, with the data subject's overriding rights kept. A Coreper vote on the mandate was postponed on October seventh. EU leaders on October sixteenth asked for the simplification packages to be finished by year end. The AI Act grace period for watermarking systems already on the market ends December second.\n\nReading between the lines: GDPR applies unchanged today, and a presumption of legitimate interest, if adopted, would still leave documentation and objection handling with you. For a retailer fine-tuning on customer or store data, keep your balancing tests current. Meanwhile, the December second date is the one that is certain.\n\nNext, Retail and agents.\n\nGoogle announced Universal Cart on October fifteenth, a shared cart across Search and the Gemini app, rolling out in the United States. It builds on a Shopping Graph that Google says holds more than sixty billion product listings. Google first introduced the idea at its I/O conference on May nineteenth. No European date appears in the sources reviewed.\n\nThe bigger picture: the cart is moving out of the retailer's site and into the assistant. What decides visibility there is the quality of product data, stock and delivery information. For a home-improvement retailer, compatibility and substitutes matter most. A European launch is likely to follow, so audit your feeds and APIs now.\n\nThe number of the day.\n\nNearly three times. Mistral Large 4's list price is one dollar thirty-six in and four dollars eighteen out per million tokens, against fifty cents and one fifty for Large 3. Sovereign capability now carries a premium.\n\nWhat to watch.\n\nBy the end of October, Mistral should publish the Large 4 weights and, ideally, the licence. In November, Microsoft's Sovereign Control Panel, Foundry Local and GitHub Enterprise Local are due. This week in Berlin, a German government and Nvidia AI pact is expected to be unveiled, built on Deutsche Telekom's industrial cloud. In Brussels, watch the Council mandate on the GDPR omnibus. December second is the AI Act watermarking deadline.\n\nAnd a question for your team.\n\nIf Mistral's weights arrive under a restrictive licence, which production workloads could your gateway reroute to another model within a day, and have you actually tested that failover?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  }
+ ]
 }
