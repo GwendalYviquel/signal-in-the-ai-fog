@@ -41,6 +41,7 @@ data/scripts/                        archived scripts, one Markdown file per day
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
 tools/make_cover.py                  cover art generation
 .github/workflows/daily-episode.yml  daily workflow
+.github/workflows/deploy-site.yml    site deployment when docs/ changes
 ```
 
 ### Configuration
@@ -53,6 +54,8 @@ tools/make_cover.py                  cover art generation
 ## Episode catalog
 
 The GitHub Pages home page (`docs/index.html`) lists every episode with its date, duration, summary, headlines, themes, audio player, sources and full transcript. Episodes can be searched (titles, summaries, transcripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Set `podcast.spotify_url` in `config.yaml` to show a Spotify button.
+
+The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ by `.github/workflows/deploy-site.yml` whenever `docs/` changes, and by the daily workflow after each episode. Hosting is free (GitHub Pages for the site and feed, GitHub releases for the audio).
 
 ## Costs and safeguards
 
