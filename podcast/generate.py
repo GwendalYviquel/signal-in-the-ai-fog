@@ -1,10 +1,9 @@
 """Episode script writing with the Claude API and web search.
 
-The model returns a JSON object (one field per part of the episode); this module
-validates it and assembles the spoken script with the fixed opening, transitions
-and sign-off, so every episode follows the same structure.
+The model submits the episode through the submit_episode tool (one field per part
+of the episode); this module validates it and assembles the spoken script with the
+fixed opening, transitions and sign-off, so every episode follows the same structure.
 """
-import json
 import os
 import re
 from pathlib import Path
@@ -57,11 +56,29 @@ def clean_for_tts(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
-def parse_json(raw: str) -> dict:
-    start, end = raw.find("{"), raw.rfind("}")
-    if start == -1 or end == -1:
-        raise ValueError("No JSON object in the model response")
-    return json.loads(raw[start:end + 1])
+_SOURCE = {"type": "object", "properties": {"title": {"type": "string"}, "url": {"type": "string"}},
+           "required": ["title", "url"]}
+_STORY = {"type": "object", "properties": {
+    "theme": {"type": "string"}, "facts": {"type": "string"}, "read": {"type": "string"},
+    "sources": {"type": "array", "items": _SOURCE}}, "required": ["theme", "facts", "read", "sources"]}
+
+# The episode is returned through this tool: the API guarantees well-formed JSON input.
+SUBMIT_TOOL = {
+    "name": "submit_episode",
+    "description": "Submit today's episode once the research is done. Call it exactly once per attempt.",
+    "input_schema": {"type": "object", "properties": {
+        "title": {"type": "string"},
+        "summary": {"type": "string"},
+        "headlines": {"type": "array", "items": {"type": "string"}},
+        "story_of_the_day": _STORY,
+        "segments": {"type": "array", "items": _STORY},
+        "number_of_the_day": {"type": "object", "properties": {"text": {"type": "string"}, "source": _SOURCE},
+                              "required": ["text", "source"]},
+        "what_to_watch": {"type": "string"},
+        "question": {"type": "string"},
+    }, "required": ["title", "summary", "headlines", "story_of_the_day", "segments",
+                    "number_of_the_day", "what_to_watch", "question"]},
+}
 
 
 def _private_context() -> str:
@@ -136,8 +153,10 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
             if term.lower() in text.lower():
                 errors.append(f"Forbidden term in {name}")
     for name, text in _spoken_parts(ep):
-        if UNSPEAKABLE.search(text):
-            errors.append(f"Markdown, brackets or links in {name}")
+        if m := UNSPEAKABLE.search(text):
+            around = text[max(0, m.start() - 30):m.end() + 30].replace("\n", " ")
+            errors.append(f"Markdown, brackets or links in {name} ({m.group(0)!r} in \"...{around}...\"): "
+                          "spoken text must not contain * _ # ` [ ] < > { } or URLs")
         if m := FIRST_PERSON.search(text):
             errors.append(f"First person {m.group(0)!r} in {name}")
         for term in forbidden:
@@ -196,16 +215,15 @@ def collect_sources(ep: dict) -> list[dict]:
     return unique
 
 
-def _ask(client, gen, system, tools, messages) -> str:
-    text_parts = []
-    for _ in range(6):  # web search can pause the turn (pause_turn)
+def _ask(client, gen, system, tools, messages):
+    """Run the turn until the model stops; return the submit_episode call, if any."""
+    for _ in range(8):  # web search can pause the turn (pause_turn)
         resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"],
                                       system=system, tools=tools, messages=messages)
-        text_parts += [b.text for b in resp.content if b.type == "text"]
         messages.append({"role": "assistant", "content": resp.content})
         if resp.stop_reason != "pause_turn":
             break
-    return "".join(text_parts)
+    return next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
 
 
 def generate_episode(cfg, now, previous_scripts):
@@ -219,25 +237,33 @@ def generate_episode(cfg, now, previous_scripts):
     client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": workspace} if workspace else None)
     messages = [{"role": "user", "content": build_user_message(cfg, now, previous_scripts)}]
     tools = [{"type": "web_search_20250305", "name": "web_search",
-              "max_uses": gen["web_search_max_uses"]}]
+              "max_uses": gen["web_search_max_uses"]}, SUBMIT_TOOL]
 
-    for attempt in range(2):  # one correction round if the episode is invalid
-        raw = _ask(client, gen, system, tools, messages)
-        try:
-            ep = parse_json(raw)
-            errors, warnings = validate(ep, cfg)
-        except (ValueError, KeyError, TypeError) as e:
-            errors, warnings = [f"Unreadable response: {e}"], []
+    attempts = 3  # up to two correction rounds if the episode is invalid
+    for attempt in range(attempts):
+        call = _ask(client, gen, system, tools, messages)
+        if call is None:
+            errors, warnings = ["No episode submitted: call the submit_episode tool."], []
+        else:
+            ep = call.input
+            try:
+                errors, warnings = validate(ep, cfg)
+            except (KeyError, TypeError, AttributeError, IndexError) as e:
+                errors, warnings = [f"Malformed episode: {e!r}"], []
         for w in warnings:
             print(f"Warning: {w}")
         if not errors:
             break
-        print("Invalid episode:\n- " + "\n- ".join(errors))
-        if attempt == 1:
-            raise SystemExit("The episode is still invalid after a correction round: nothing published.")
-        messages.append({"role": "user", "content":
-                         "The episode does not meet the requirements:\n- " + "\n- ".join(errors)
-                         + "\nFix these points and reply with the full corrected JSON object only."})
+        print(f"Invalid episode (attempt {attempt + 1}):\n- " + "\n- ".join(errors))
+        if attempt == attempts - 1:
+            raise SystemExit("The episode is still invalid after the correction rounds: nothing published.")
+        feedback = ("The episode does not meet the requirements:\n- " + "\n- ".join(errors)
+                    + "\nFix these points and call submit_episode again with the full corrected episode.")
+        if call is None:
+            messages.append({"role": "user", "content": feedback})
+        else:
+            messages.append({"role": "user", "content": [
+                {"type": "tool_result", "tool_use_id": call.id, "content": feedback, "is_error": True}]})
 
     return {
         "title": ep["title"].strip(),

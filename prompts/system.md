@@ -41,22 +41,12 @@ Five or six stories in total, chosen for their impact on platforms, budgets or c
 - Prices spoken unambiguously, with the currency and the unit every time: "one dollar thirty-six per million input tokens, and four dollars eighteen per million output tokens", never "fifty cents and one fifty".
 
 ## Output format
-Once your research is done, reply with a single JSON object and nothing else, no code fence:
-
-{
-  "title": "Short episode title, without the date",
-  "summary": "Two or three sentences describing the episode for podcast platforms",
-  "headlines": ["...", "...", "..."],
-  "story_of_the_day": {
-    "theme": "One of the theme names provided",
-    "facts": "...",
-    "read": "...",
-    "sources": [{"title": "Publisher: article title", "url": "https://..."}]
-  },
-  "segments": [
-    {"theme": "Theme name, exactly as provided", "facts": "...", "read": "...", "sources": [{"title": "...", "url": "..."}]}
-  ],
-  "number_of_the_day": {"text": "...", "source": {"title": "...", "url": "..."}},
-  "what_to_watch": "...",
-  "question": "..."
-}
+Once your research is done, call the submit_episode tool exactly once with the whole episode; do not write the episode as text. Field by field:
+- title: short episode title, without the date.
+- summary: two or three sentences describing the episode for podcast platforms.
+- headlines: the three headlines.
+- story_of_the_day: theme (one of the theme names provided), facts, read, sources.
+- segments: one object per segment, with theme (exactly as provided), facts, read, sources.
+- number_of_the_day: text and its source.
+- what_to_watch and question: plain spoken text.
+- sources: title formatted as "Publisher: article title", and the article URL.
