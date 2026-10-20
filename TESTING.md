@@ -26,7 +26,7 @@ python -m pytest
 | `test_validate.py` | 19 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text, lengths |
 | `test_generate.py` | 17 | The Claude loop: submission through the tool, light corrections versus corrections in the research conversation (no invented source), truncated responses, `pause_turn`, every tool call answered, workspace header, private context |
 | `test_assemble.py` | 7 | Spoken script: fixed opening with AI disclosure, order of parts, sign-off by weekday, headline punctuation, the read layer always on the analyst voice |
-| `test_tts.py` | 16 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices |
+| `test_tts.py` | 17 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices |
 | `test_feed_catalog.py` | 5 | RSS feed (valid XML, escaping, enclosure, AI disclosure) and catalog (previews replaced by published episodes) |
 | `test_main.py` | 11 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script |
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
@@ -50,7 +50,7 @@ python -m pytest
 | 2026-10-20 | [Daily episode, dry run](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39458351634) | ✅ (1st attempt) | Tests then generation in the daily workflow; publication steps skipped as expected | — |
 | 2026-10-20 | [Publication rehearsal](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39460386881) | ✅ | Silent MP3 uploaded as a release with `gh`, downloaded back from its public URL, feed and catalog valid, release and tag deleted | — |
 | 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39488426877) | ❌ | ElevenLabs HTTP 400: *You need to be on the creator tier or above to use this voice* (first host voice). The key itself was accepted | Host voice changed |
-| 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39489527571) | ❌ | ElevenLabs HTTP 402: *Free users cannot use library voices via the API* | Open: a paid ElevenLabs plan, or voices available on the free plan |
+| 2026-10-20 | [Rehearsal with voices](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39489527571) | ❌ | ElevenLabs HTTP 402: *Free users cannot use library voices via the API*. First read as a failure of the new host voice; the ElevenLabs dashboard showed 62 credits used, exactly the host sentence: the host voice worked and the **analyst** voice failed. The log could not tell which voice had failed | Every ElevenLabs request is logged (role, voice, characters), and a failure names the voice and what was already billed. Test: `test_failure_names_the_voice_and_what_was_already_billed`. Open: an analyst voice usable on the free plan, or a paid plan |
 
 The offline suite has also passed on GitHub for every commit since it was added.
 
@@ -69,4 +69,4 @@ The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Not covered yet
 
-- A real episode end to end, with ElevenLabs: blocked by the ElevenLabs plan (see the last journal entry).
+- A real episode end to end, with ElevenLabs: blocked by the analyst voice, a library voice that the free ElevenLabs plan cannot use through the API (see the last journal entry).

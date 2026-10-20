@@ -149,3 +149,18 @@ def test_silence_like_skips_invalid_frame_headers():
     good = b"\xff\xfb\x90\xc4"
     assert tts.silence_like(bad_bitrate + bad_rate, 1.0) == b""
     assert tts.silence_like(bad_bitrate + good + b"\x00" * 413, 1.0)[:4] == good
+
+
+def test_failure_names_the_voice_and_what_was_already_billed(posts, tmp_path, capsys):
+    # Learning (2026-10-20): the host request succeeded (62 credits billed) and the analyst one
+    # failed with 402, but the log could not tell which voice had failed.
+    sent, statuses = posts
+    statuses += [200, 402]
+    parts = [("host", "This is Signal in the AI Fog. A short check of the host voice."),
+             ("analyst", "The read here: the analyst voice takes over.")]
+    with pytest.raises(RuntimeError) as err:
+        tts.synthesize(parts, CFG, tmp_path / "ep.mp3")
+    msg = str(err.value)
+    assert msg.startswith("ElevenLabs 402")
+    assert "request 2, analyst voice analystVoice" in msg and "62 characters already synthesised" in msg
+    assert "ElevenLabs request 1: host voice hostVoice, 62 characters, ok" in capsys.readouterr().out

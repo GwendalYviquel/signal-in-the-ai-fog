@@ -82,15 +82,15 @@ def voice_for(role: str, tts_cfg: dict) -> str:
     return voices.get(role) or voices.get("host") or tts_cfg["voice_id"]
 
 
-def _runs(parts: list[tuple[str, str]], tts_cfg: dict) -> list[tuple[str, str]]:
-    """Merge consecutive parts read by the same voice."""
+def _runs(parts: list[tuple[str, str]], tts_cfg: dict) -> list[tuple[str, str, str]]:
+    """Merge consecutive parts read by the same voice: (role, voice, text)."""
     runs = []
     for role, text in parts:
         voice = voice_for(role, tts_cfg)
-        if runs and runs[-1][0] == voice:
-            runs[-1] = (voice, runs[-1][1] + "\n\n" + text)
+        if runs and runs[-1][1] == voice:
+            runs[-1] = (runs[-1][0], voice, runs[-1][2] + "\n\n" + text)
         else:
-            runs.append((voice, text))
+            runs.append((role, voice, text))
     return runs
 
 
@@ -100,10 +100,10 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> N
     params = {"output_format": tts_cfg["output_format"]}
     pause_seconds, pause = tts_cfg.get("pause_seconds", 0), None
     runs = _runs(parts, tts_cfg)
-    total = sum(len(text) for _, text in runs)
-    requests_count = 0
+    total = sum(len(text) for _, _, text in runs)
+    requests_count, billed = 0, 0
     with open(out_path, "wb") as f:
-        for n, (voice, text) in enumerate(runs):
+        for n, (role, voice, text) in enumerate(runs):
             if n and pause:
                 f.write(pause)  # a short breath when the other voice takes over
             chunks = split_text(text, tts_cfg["max_chars_per_request"])
@@ -116,9 +116,17 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path) -> N
                         body["previous_text"] = chunks[i - 1][-500:]
                     if i < len(chunks) - 1:
                         body["next_text"] = chunks[i + 1][:500]
-                audio = _post(API.format(voice_id=voice), headers, params, body)
+                try:
+                    audio = _post(API.format(voice_id=voice), headers, params, body)
+                except RuntimeError as e:
+                    # Name the voice: a failure on the second voice used to look like one on the first.
+                    raise RuntimeError(f"{e} [request {requests_count + 1}, {role} voice {voice}, "
+                                       f"{len(chunk)} characters; {billed} characters already "
+                                       f"synthesised in this run]") from None
+                requests_count += 1
+                billed += len(chunk)
+                print(f"ElevenLabs request {requests_count}: {role} voice {voice}, {len(chunk)} characters, ok")
                 if pause is None:
                     pause = silence_like(audio, pause_seconds) if pause_seconds else b""
                 f.write(audio)
-                requests_count += 1
     print(f"Speech synthesis: {total} characters, {len(runs)} voice turns, {requests_count} request(s)")
