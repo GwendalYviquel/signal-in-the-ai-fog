@@ -181,3 +181,10 @@ def test_voice_check_costs_one_word_per_voice_and_tests_each_independently(posts
 
 def test_voice_check_passes_when_every_voice_works(posts):
     assert tts.check_voices(CFG) == {"host": "ok", "analyst": "ok"}
+
+
+def test_candidate_voices_can_be_checked_without_changing_the_config(posts):
+    sent, _ = posts
+    results = tts.check_voices(tts.candidate_voices(CFG, " idA , idB,"))
+    assert results == {"candidate 1": "ok", "candidate 2": "ok"}
+    assert [s.url.rsplit("/", 1)[1] for s in sent] == ["idA", "idB"]

@@ -159,7 +159,14 @@ def check_voices(tts_cfg: dict) -> dict[str, str]:
     return results
 
 
+def candidate_voices(tts_cfg: dict, ids: str) -> dict:
+    """Config for checking candidate voice IDs (comma-separated) instead of the configured ones."""
+    candidates = [v.strip() for v in ids.split(",") if v.strip()]
+    return {**tts_cfg, "voices": {f"candidate {i + 1}": v for i, v in enumerate(candidates)}}
+
+
 if __name__ == "__main__":
     import yaml
     cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
-    check_voices(cfg["tts"])
+    ids = os.getenv("VOICE_IDS", "").strip()
+    check_voices(candidate_voices(cfg["tts"], ids) if ids else cfg["tts"])

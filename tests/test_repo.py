@@ -158,5 +158,5 @@ def test_testing_journal_lists_every_test_file_with_its_count():
 def test_voice_check_workflow_only_gets_the_elevenlabs_key():
     wf = workflow("check-voices.yml")
     step = next(s for s in wf["jobs"]["voices"]["steps"] if s.get("name") == "Check every voice")
-    assert set(step["env"]) == {"ELEVENLABS_API_KEY"} and step["run"] == "python -m podcast.tts"
+    assert set(step["env"]) == {"ELEVENLABS_API_KEY", "VOICE_IDS"} and step["run"] == "python -m podcast.tts"
     assert triggers(wf)["push"]["paths"] == ["config.yaml"]

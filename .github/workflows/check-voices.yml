@@ -4,6 +4,11 @@ name: Check voices
 # one word per voice, each voice tested independently. Nothing is published.
 on:
   workflow_dispatch:
+    inputs:
+      voice_ids:
+        description: "Candidate voice IDs to try, comma-separated (empty: the voices in config.yaml)"
+        type: string
+        default: ""
   push:
     branches: [main]
     paths: ["config.yaml"]   # whenever a voice ID may have changed
@@ -29,4 +34,5 @@ jobs:
       - name: Check every voice
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          VOICE_IDS: ${{ inputs.voice_ids }}
         run: python -m podcast.tts
