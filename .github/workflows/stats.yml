@@ -1,0 +1,60 @@
+name: Stats
+
+# Once a day: download counts of the episode MP3s (GitHub releases), kept in data/stats.json,
+# STATS.md rebuilt and shown on the catalog site. Free: GitHub API, no external service.
+on:
+  schedule:
+    - cron: "30 20 * * *"   # every evening, weekends included
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit the stats
+  pages: write      # redeploy the catalog with the counts
+  id-token: write
+
+concurrency:
+  group: daily-episode   # never alongside a run that edits data/ or docs/
+  cancel-in-progress: false
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Count downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m podcast.stats
+
+      - name: Commit the stats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/stats.json STATS.md docs/catalog.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Stats $(TZ=Europe/Paris date +%F)"
+          git pull --rebase origin main
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy the catalog site
+        id: deploy
+        uses: actions/deploy-pages@v4

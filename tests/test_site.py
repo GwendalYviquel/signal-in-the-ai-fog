@@ -122,6 +122,15 @@ def test_spotify_show_and_episode_urls(open_site):
     assert hrefs == ["https://open.spotify.com/episode/xyz", "https://open.spotify.com/show/abc"]
 
 
+def test_download_counts_on_published_cards(open_site):
+    eps = [episode("2026-10-20", "published", downloads=1234), episode("2026-10-19", "published", downloads=1),
+           episode("2026-10-21", "preview", downloads=None)]
+    page = open_site({"podcast": PODCAST, "episodes": eps})
+    assert page.locator("[id='2026-10-20'] .downloads").inner_text() == "1,234 downloads"
+    assert page.locator("[id='2026-10-19'] .downloads").inner_text() == "1 download"
+    assert page.locator("[id='2026-10-21'] .downloads").count() == 0
+
+
 def test_published_card_has_the_player(open_site):
     page = open_site({"podcast": PODCAST, "episodes": [episode("2026-10-20", "published")]})
     card = page.locator("article.card")

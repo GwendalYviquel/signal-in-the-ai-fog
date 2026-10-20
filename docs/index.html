@@ -265,7 +265,9 @@
           el("div", { class: "meta" }, [
             el("span", { class: `badge ${isPreview ? "preview" : "published"}`, text: isPreview ? "Preview" : "Published" }),
             el("span", { text: fmtDay(ep.date) }),
-            ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null]),
+            ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null,
+            ep.downloads ? el("span", { class: "downloads", title: "Downloads of the episode file (site and podcast apps)",
+                                        text: `${ep.downloads.toLocaleString("en-GB")} download${ep.downloads === 1 ? "" : "s"}` }) : null]),
           el("h2", {}, el("a", { href: `#${ep.date}` }, highlighted(ep.title, q))),
           el("p", { class: "summary" }, highlighted(ep.summary, q)),
         ]),

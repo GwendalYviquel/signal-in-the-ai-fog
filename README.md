@@ -103,9 +103,11 @@ podcast/feed.py                      RSS feed compatible with Spotify and Apple 
 podcast/catalog.py                   data for the episode catalog site
 podcast/costs.py                     cost tracking (Claude tokens, ElevenLabs characters)
 podcast/spotify.py                   Spotify check (public embed page, no key)
+podcast/stats.py                     download counts of the episodes (GitHub releases)
 podcast/rehearsal.py                 publication rehearsal
 data/episodes.json                   history of published episodes (source of the RSS feed)
 data/costs.json, COSTS.md            what every run consumed, and its report
+data/stats.json, STATS.md            daily download counts, and their report
 data/scripts/                        archived scripts, one Markdown file per day
 data/previews.json, data/previews/   preview episodes (catalog only) and their scripts
 docs/                                GitHub Pages site: catalog page, feed.xml, catalog.json, cover.jpg
@@ -120,6 +122,7 @@ assets/                              images used by this README
 .github/workflows/rehearsal.yml      publication rehearsal (silent audio, deleted afterwards)
 .github/workflows/check-voices.yml   one-word check of every ElevenLabs voice
 .github/workflows/check-spotify.yml  is the latest episode live on Spotify, and after how long
+.github/workflows/stats.yml          daily download counts, STATS.md and the catalog
 tests/                               offline test suite (pytest)
 TESTING.md                           test suite and journal of real runs
 ```
