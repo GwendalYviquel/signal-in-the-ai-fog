@@ -105,6 +105,8 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-21 | [Watchdog, by hand](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39572193341) | ✅ | First run on GitHub: permissions and `gh` work, *the episode of 2026-10-21 is out*, no catch-up started, nothing sent | — |
 
+| 2026-10-21 | [Watchdog, test notification](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39587951095) | ✅ | First test from GitHub reached the Mac app but not the phone, which was not set up yet; the second reached both | — |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
@@ -132,4 +134,3 @@ The offline suite has also passed on GitHub for every commit since it was added.
 - Labels, topics and follow-ups from the real Claude: the prompt and the checks agree and the rehearsal runs on a real script, but the first real episode with them is the next one. Its labels, topic spelling and follow-up need a read.
 - Chapter accuracy on real audio: times inside a chunk are interpolated by characters; to check against the first real episode by ear.
 - How Spotify and Apple display the chapters and transcript: to check on the first episode that has them.
-- Phone notifications: covered offline; a real one needs the `NTFY_TOPIC` secret.
