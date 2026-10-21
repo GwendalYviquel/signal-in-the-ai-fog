@@ -5,6 +5,8 @@ name: Check Spotify
 # from the 4:05 publication to after the 7:00 listen), and by hand.
 # Free: no API key, Spotify's public embed page. Records data/spotify.json.
 on:
+  # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
+  # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
   schedule:
     - cron: "*/15 2-6 * * 1-5"
   workflow_dispatch:

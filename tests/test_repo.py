@@ -179,3 +179,17 @@ def test_spotify_show_url_is_a_show_link(cfg):
     assert url == "" or re.fullmatch(r"https://open\.spotify\.com/show/[A-Za-z0-9]{22}", url)
     catalog = __import__("json").loads((ROOT / "docs" / "catalog.json").read_text(encoding="utf-8"))
     assert catalog["podcast"]["spotify_url"] == url, "regenerate docs/catalog.json after changing spotify_url"
+
+
+@pytest.mark.parametrize("name", ["daily-episode.yml", "check-spotify.yml", "stats.yml"])
+def test_schedules_are_owned_by_a_github_account(name):
+    # Regression (2026-10-21): no scheduled run ever fired, the first real morning had no episode.
+    # Every commit used veille@example.invalid, an email linked to no GitHub account, and GitHub
+    # does not fire a schedule whose last change was made by such a commit.
+    shallow = subprocess.run(["git", "rev-parse", "--is-shallow-repository"], cwd=ROOT,
+                             capture_output=True, text=True).stdout.strip()
+    if shallow != "false":
+        pytest.skip("needs the full git history (CI checks out a single commit)")
+    email = subprocess.run(["git", "log", "-1", "--format=%ae", "--", f".github/workflows/{name}"],
+                           cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    assert email.endswith("@users.noreply.github.com"), f"last change of {name} authored by {email}"

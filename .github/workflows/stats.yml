@@ -3,6 +3,8 @@ name: Stats
 # Once a day: download counts of the episode MP3s (GitHub releases), kept in data/stats.json,
 # STATS.md rebuilt and shown on the catalog site. Free: GitHub API, no external service.
 on:
+  # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
+  # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
   schedule:
     - cron: "30 20 * * *"   # every evening, weekends included
   workflow_dispatch:

@@ -87,6 +87,8 @@ python -m pytest
 
 | 2026-10-21 | [Check Spotify](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39507777909) | ✅ | First check after the show was linked: "The show is not available on Spotify yet". The public show page also answers "Couldn't find that page": Spotify is still reviewing or indexing the new show | Scheduled checks every 15 minutes on weekday mornings will record when it goes live |
 
+| 2026-10-21 | Daily episode, 4:05 schedule | ❌ | First morning with `SCHEDULE_ENABLED`: no run at all, not even skipped. No schedule of the repository had ever fired (*Check Spotify* every 15 minutes either). Every commit used `veille@example.invalid`, linked to no GitHub account, and GitHub does not fire a schedule last changed by such a commit. Episode caught up by hand with `as_scheduled` | Scheduled workflows re-pushed with the owner's GitHub noreply email. Test: `test_schedules_are_owned_by_a_github_account` |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
@@ -104,4 +106,4 @@ The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Not covered yet
 
-- The schedule itself: covered by tests on every weekday of 2026 and 2027, but no scheduled run has fired yet (`SCHEDULE_ENABLED` is not set).
+- The schedule itself: covered by tests on every weekday of 2026 and 2027, but no scheduled run has fired yet (see the October 21 entry).
