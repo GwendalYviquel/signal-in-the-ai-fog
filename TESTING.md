@@ -101,6 +101,10 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-21 | [Check Spotify, first scheduled run](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39556859595) | ✅ | First schedule ever fired in the repository, about 40 minutes after the workflows were re-pushed with the GitHub noreply email (the 6:15 slot was still missed, the 6:30 one ran 10 minutes late): the email was the cause | Commits keep the noreply email (local git config) |
 
+| 2026-10-21 | [Daily episode, late schedule](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39569430324) | ✅ | First daily schedule after the fix: GitHub started the `5 3` line (winter time) at 8:27 UTC, 5 h 22 late. The code read the cron, not the clock: *the other side of daylight saving time today, nothing to do*. Had it been the right line, the already-published guard would have stopped it | Schedules can start hours late: the watchdog at 5:00 and 6:30 covers it, and the guards make a late run harmless |
+
+| 2026-10-21 | [Watchdog, by hand](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39572193341) | ✅ | First run on GitHub: permissions and `gh` work, *the episode of 2026-10-21 is out*, no catch-up started, nothing sent | — |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
