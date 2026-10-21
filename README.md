@@ -131,6 +131,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── check-spotify.yml           episode live on Spotify, and after how long
 │   ├── stats.yml                   daily download counts
 │   ├── deploy-site.yml             site deployment when docs/ changes
+│   ├── dependabot-merge.yml        Dependabot security updates merged once tested
 │   └── tests.yml                   test suite on every push
 ├── COSTS.md                        costs report
 ├── STATS.md                        downloads report

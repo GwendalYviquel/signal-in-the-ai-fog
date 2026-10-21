@@ -89,6 +89,10 @@ def triggers(wf):
 @pytest.mark.parametrize("name", sorted(p.name for p in WORKFLOWS.glob("*.yml")))
 def test_every_workflow_parses_and_can_be_started_by_hand(name):
     wf = workflow(name)
+    if name == "dependabot-merge.yml":
+        # Only meaningful for a tested Dependabot pull request: nothing to start by hand.
+        assert "workflow_dispatch" not in triggers(wf)
+        return
     assert "workflow_dispatch" in triggers(wf)
 
 
@@ -193,3 +197,18 @@ def test_schedules_are_owned_by_a_github_account(name):
     email = subprocess.run(["git", "log", "-1", "--format=%ae", "--", f".github/workflows/{name}"],
                            cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
     assert email.endswith("@users.noreply.github.com"), f"last change of {name} authored by {email}"
+
+
+def test_dependabot_pull_requests_are_merged_only_once_tested():
+    # Learning (2026-10-21): Dependabot updates merge on their own, so the guards must hold.
+    wf = workflow("dependabot-merge.yml")
+    assert triggers(wf) == {"workflow_run": {"workflows": ["Tests"], "types": ["completed"]}}
+    job = wf["jobs"]["merge"]
+    for guard in ("workflow_run.event == 'pull_request'", "workflow_run.conclusion == 'success'",
+                  "workflow_run.actor.login == 'dependabot[bot]'",
+                  "workflow_run.head_repository.full_name == github.repository"):
+        assert guard in job["if"]
+    # Write access: never check out or run the code of the pull request, merge the exact tested commit.
+    assert all("uses" not in s for s in job["steps"])
+    run = job["steps"][0]["run"]
+    assert '--match-head-commit "$SHA"' in run and "--author app/dependabot" in run

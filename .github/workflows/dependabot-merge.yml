@@ -1,0 +1,37 @@
+name: Dependabot merge
+
+# Dependabot security updates are merged on their own, once the Tests workflow has passed on
+# the pull request. Nothing from the pull request is checked out or run here: this workflow has
+# write access, so it only reads the event and merges the exact commit that was tested.
+# The daily run also runs the tests before any cost, so a broken update stops it before Claude is paid.
+on:
+  workflow_run:
+    workflows: [Tests]
+    types: [completed]
+
+permissions:
+  contents: write        # merge
+  pull-requests: write   # merge and delete the branch
+
+jobs:
+  merge:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      startsWith(github.event.workflow_run.head_branch, 'dependabot/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Merge the tested pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          pr=$(gh pr list --head "$BRANCH" --author app/dependabot --json number,headRefOid \
+                 --jq ".[] | select(.headRefOid == \"$SHA\") | .number")
+          if [ -z "$pr" ]; then echo "No open Dependabot pull request at $SHA: nothing to merge."; exit 0; fi
+          gh pr merge "$pr" --squash --match-head-commit "$SHA" --delete-branch
