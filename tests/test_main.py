@@ -267,3 +267,34 @@ def test_request_carries_open_items_known_topics_and_suggestions(repo, mocks, mo
     main.main()
     assert mocks["request"] == {"open_items": [("2026-10-19", "The vote on Thursday.")], "topics": ["EU AI Act"],
                                 "suggestions": ["#3 Model Context Protocol: worth a look"]}
+
+
+def test_the_next_episode_reads_pending_corrections_and_marks_them_aired(repo, mocks, monkeypatch):
+    from podcast import corrections
+    eps = [{"date": "2026-10-19", "title": "Monday", "summary": "S", "topics": [], "sources": [],
+            "guid": "g", "published_at": "2026-10-19T04:05:00+02:00", "audio_url": "https://a", "audio_bytes": 1,
+            "duration_seconds": 1}]
+    text = "The episode of October nineteenth gave a two-week discount. Mistral set it at one week."
+    corrections.add(eps, "2026-10-19", text, TUESDAY.date())
+    (repo / "data/episodes.json").write_text(json.dumps(eps))
+    main.main()
+    episodes = read(repo / "data/episodes.json")
+    assert episodes[0]["corrections"][0]["aired_in"] == "2026-10-20"
+    assert f"A correction.\n\n{text}" in (repo / "data/scripts/2026-10-20.md").read_text()
+    assert "Correction" in [c["title"] for c in episodes[1]["chapters"]]
+    assert read(repo / "data/scripts/2026-10-20.json")["corrections"][0]["text"] == text
+    page = (repo / "docs/episodes/2026-10-19.html").read_text()
+    assert 'class="correction"' in page and 'href="2026-10-20.html"' in page
+    assert text in (repo / "docs/corrections.html").read_text()
+
+
+def test_a_catch_up_never_reads_corrections(repo, mocks, monkeypatch):
+    from podcast import corrections
+    eps = [{"date": "2026-10-15", "title": "T", "summary": "S", "topics": [], "sources": [], "guid": "g",
+            "published_at": "2026-10-15T04:05:00+02:00", "audio_url": "https://a", "audio_bytes": 1, "duration_seconds": 1}]
+    corrections.add(eps, "2026-10-15", "The episode of October fifteenth said one week. It was in fact two weeks.",
+                    TUESDAY.date())
+    (repo / "data/episodes.json").write_text(json.dumps(eps))
+    monkeypatch.setenv("EPISODE_DATE", "2026-10-16")
+    main.main()
+    assert read(repo / "data/episodes.json")[0]["corrections"][0]["aired_in"] is None

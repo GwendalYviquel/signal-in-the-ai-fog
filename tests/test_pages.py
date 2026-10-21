@@ -64,9 +64,10 @@ def test_everything_from_the_web_is_escaped(build):
     ep = make_episode()
     ep["story_of_the_day"].update(facts=f"Facts {evil}", topics=[f"Topic {evil}"],
                                   sources=[{"title": evil, "url": 'https://x" onmouseover="alert(1)'}])
-    docs = build([item("2026-10-22", title=f"Title {evil}", summary=f"</script>{evil}",
-                       topics=[f"Topic {evil}"])], {"2026-10-22": ep})
-    for page in [docs / "episodes/2026-10-22.html", *(docs / "topics").glob("*.html")]:
+    docs = build([item("2026-10-22", title=f"Title {evil}", summary=f"</script>{evil}", topics=[f"Topic {evil}"],
+                       corrections=[{"added": "2026-10-23", "text": f"Fix {evil}", "aired_in": None}])],
+                 {"2026-10-22": ep})
+    for page in [docs / "episodes/2026-10-22.html", docs / "corrections.html", *(docs / "topics").glob("*.html")]:
         html = page.read_text()
         assert "<img src=x" not in html and 'onmouseover="' not in html, page.name
     ld = re.search(r'<script type="application/ld\+json">(.*?)</script>', (docs / "episodes/2026-10-22.html").read_text(), re.S)

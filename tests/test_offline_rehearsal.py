@@ -71,3 +71,27 @@ def test_episode_page_and_notification(result):
 def test_fixture_is_valid_without_any_correction(result, cfg):
     # The rehearsal goes through the real validation: the fixture stays a valid episode.
     assert result["episode"]["topics"][:2] == ["Mistral", "Voxtral"]
+
+
+def test_a_fact_check_doubt_is_corrected_then_checked_again(result):
+    checks = [r for r in result["requests"] if "output_config" in r]
+    corrections = [r for r in result["requests"] if "output_config" not in r and len(r["messages"]) == 1
+                   and [t["name"] for t in r["tools"]] == ["submit_episode"]]
+    assert len(corrections) == 1 and "Fact-check, story of the day" in corrections[0]["messages"][0]["content"]
+    assert len(checks) == 12  # six parts, checked twice
+    assert all(r["model"] == "claude-haiku-5-5" for r in checks)
+
+
+def test_research_is_cached_with_the_filtering_web_search(result):
+    research = result["requests"][0]
+    assert research["cache_control"] == {"type": "ephemeral"}
+    assert next(t for t in research["tools"] if t["name"] == "web_search")["type"] == "web_search_20260209"
+
+
+def test_the_waiting_correction_is_read_and_shown(result):
+    assert f"A correction.\n\n{rehearsal.CORRECTION}" in result["script"]
+    assert result["corrected"]["corrections"][0]["aired_in"] == "2026-10-22"
+    page = (result["docs"] / "episodes" / "2026-10-20.html").read_text()
+    assert rehearsal.CORRECTION in page and 'href="2026-10-22.html"' in page
+    assert rehearsal.CORRECTION in (result["docs"] / "corrections.html").read_text()
+    assert 'class="primary"' in result["page"]

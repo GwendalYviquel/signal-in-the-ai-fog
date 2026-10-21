@@ -32,7 +32,7 @@ def pipeline(theme):
          [("GitHub Actions", "schedule, watchdog"), ("Offline tests", "before every run"),
           ("Voice check", "one word per voice")]),
         ("2", "Writing", "Claude + validation",
-         [("Claude + web search", "news, open items, topics"), ("Validation", "structure, sources, wording"),
+         [("Claude + web search", "news, open items, topics"), ("Validation", "sources, wording, fact-check"),
           ("Corrections", "light, or back to research")]),
         ("3", "Audio", "two voices",
          [("Spoken script", "fixed opening and sign-off"), ("ElevenLabs", "host and analyst voices"),
@@ -127,8 +127,8 @@ def generation(theme):
           ("web searches", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
         ([("submit_episode", 13, 700, c["accent_ink"], True), ("structured episode", 11.5, 400, c["accent_ink"]),
           ("through a tool", 11.5, 400, c["accent_ink"])], c["accent"], c["accent"]),
-        ([("Validation", 13.5, 700, c["ink"]), ("structure, sources,", 11.5, 400, c["muted"]),
-          ("wording, length", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
+        ([("Validation", 13.5, 700, c["ink"]), ("sources, wording,", 11.5, 400, c["muted"]),
+          ("fact-check (Haiku)", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
         ([("Accepted", 13.5, 700, c["ok_ink"]), ("on to the voices", 11.5, 400, c["ok_ink"])],
          c["ok"], c["ok_stroke"]),
     ]
@@ -289,10 +289,11 @@ def schedule(theme):
 
 # The test plan: every test file belongs to one area (a test checks none is forgotten).
 TEST_AREAS = [
-    ("Writing", "Claude, validation, prompt", ["validate", "generate", "prompt", "assemble", "context"]),
+    ("Writing", "Claude, checks, fact-check", ["validate", "generate", "prompt", "assemble", "context",
+                                                    "factcheck"]),
     ("Voices", "ElevenLabs, chapters", ["tts", "chapters"]),
     ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal",
-                                                   "offline_rehearsal"]),
+                                                   "offline_rehearsal", "corrections"]),
     ("Schedule", "4:05, watchdog, alerts", ["schedule", "watchdog", "notify"]),
     ("Money and audience", "costs, downloads, Spotify", ["costs", "finops", "stats", "spotify"]),
     ("Catalog site", "pages, real browser", ["site", "pages"]),

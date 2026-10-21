@@ -36,13 +36,19 @@ def add_usage(total: dict, response) -> None:
     total["web_search_requests"] += getattr(server, "web_search_requests", 0) or 0
 
 
+def _tokens_usd(usage: dict, per_mtok: dict) -> float:
+    return (usage["input_tokens"] / 1e6 * per_mtok["input"] + usage["output_tokens"] / 1e6 * per_mtok["output"]
+            + usage["cache_creation_input_tokens"] / 1e6 * per_mtok["cache_write"]
+            + usage["cache_read_input_tokens"] / 1e6 * per_mtok["cache_read"])
+
+
 def claude_usd(usage: dict, prices: dict) -> float:
-    per_mtok = prices["claude_usd_per_mtok"]
-    return round(usage["input_tokens"] / 1e6 * per_mtok["input"]
-                 + usage["output_tokens"] / 1e6 * per_mtok["output"]
-                 + usage["cache_creation_input_tokens"] / 1e6 * per_mtok["cache_write"]
-                 + usage["cache_read_input_tokens"] / 1e6 * per_mtok["cache_read"]
-                 + usage["web_search_requests"] / 1000 * prices["web_search_usd_per_1000"], 4)
+    """Generation at its model's prices, plus the fact-check (usage["factcheck"]) at its own."""
+    usd = _tokens_usd(usage, prices["claude_usd_per_mtok"]) \
+        + usage["web_search_requests"] / 1000 * prices["web_search_usd_per_1000"]
+    if (fc := usage.get("factcheck")) and fc.get("api_calls"):
+        usd += _tokens_usd(fc, prices["factcheck_usd_per_mtok"])
+    return round(usd, 4)
 
 
 def run_url() -> str:

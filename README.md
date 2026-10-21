@@ -25,7 +25,7 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 
 A GitHub Action runs four steps:
 
-1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and submits the episode through a `submit_episode` tool, one field per part, following the editorial line in `prompts/system.md`. The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length) and assembles the spoken script with a fixed opening, transitions and sign-off.
+1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and submits the episode through a `submit_episode` tool, one field per part, following the editorial line in `prompts/system.md`. The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length), applies the source rules (primary sources preferred, content aggregators refused, a *confirmed* story cites a primary source), then **fact-checks** it: the code fetches each story's sources and Claude Haiku 5.5 checks every figure, date, name and status of the facts against them. A doubt goes back to a light correction, which may never add a source. The code then assembles the spoken script with a fixed opening, transitions and sign-off, and the corrections waiting to be read.
 2. **Speech synthesis**: two ElevenLabs voices share the episode. The host voice reads the opening, the facts, the transitions and the sign-off; the analyst voice reads every read layer, so the listener hears where analysis begins. A short pause marks each change of voice. Texts are split into chunks, with the neighbouring chunks of the same voice as context to keep the delivery continuous. The start and end of every chunk are recorded, which places the chapters and the timed transcript.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
 4. **Distribution**: `data/episodes.json` is updated, then the `docs/feed.xml` feed (with chapters and transcript), the `docs/catalog.json` catalog, the episode and topic pages are regenerated and deployed to GitHub Pages. A phone notification says the episode is out, or that the run failed.
@@ -44,7 +44,8 @@ Every episode follows the same structure. Each story has two layers: the facts (
 On Mondays the episode covers the news since Friday and the week ahead; on Fridays the story of the day steps back to look at a trend from the week.
 
 - **Follow-up** (optional): when an item from a previous What to watch moved forward (a vote happened, a model shipped), about 40 words on what was expected and what happened, with its source, before the number of the day. Never invented: no follow-up when nothing moved.
-- **Reliability label** for every story, shown on its page: *confirmed* (the company, authority or a primary source), *reported* (credible press, the facts say who reports it) or *unconfirmed* (a rumour or a single weak source, said plainly, and rare).
+- **Reliability label** for every story, shown on its page: *confirmed* (the company, authority or a primary source, which the story must cite), *reported* (credible press, the facts say who reports it) or *unconfirmed* (a rumour or a single weak source, said plainly, and rare). Every source says whether it is **primary** (the organisation's own announcement, documentation, pricing page, filing, regulation text or paper), and its page marks it.
+- **Corrections**: when an episode got something wrong, the next one reads the correction, as written, before the number of the day (see Corrections).
 - **Topics**: one to three per story, the canonical names of the companies, products, laws or subjects ("Mistral", "EU AI Act"). Each topic has its own page on the site.
 
 ### Generation and corrections
@@ -71,6 +72,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 | Publish | *Daily episode* without `dry_run`, or the schedule | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Watchdog | *Watchdog*, 5:00 and 6:30 Paris (and by hand) | only through the catch-up it starts | — | — | — | — |
 | Offline rehearsal | `python tools/offline_rehearsal.py` (local) | 🔸 fixture | 🔸 silence | — | 🔸 on a copy | 🔸 on a copy |
+| Correction | *Add a correction* (manual) | — | — | — | ✅ description | ✅ pages |
 
 - **Voice check**: each configured voice reads `Hi.` (3 characters), independently, to prove the API accepts it; candidate voice IDs can be checked without changing the config. It also runs before every real publication, before Claude is called.
 - **Dry run**: the script is downloadable from the `episode-script` artifact.
@@ -79,7 +81,8 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 - **Catch-up** (`episode_date` option of *Daily episode*): generates a past weekday's episode with that day's news cutoff (4:05 Paris) and only the scripts aired before it; it takes its date in the feed and its description says it is a catch-up. An episode or a release that already exists for that date stops the run before any cost, and stories shared with neighbouring episodes are reported.
 - **Force** (`force` option): regenerates today's episode even if it already exists (or on a weekend), replacing the release.
 - **Watchdog**: if today's episode is not out at 5:00, it starts the daily run as scheduled (real publication, news cutoff at 4:05) and notifies the phone; at 6:30 it checks again. It waits for a run still going, and stops retrying after two failed runs in a day, since each one pays Claude.
-- **Offline rehearsal**: a whole publication on a copy of the repository, free: the real pipeline with Claude answering a fixture (the real script of October 21, with labels, topics and an invented follow-up), ElevenLabs returning silence as long as the text, and no `gh`. It prints the chapters and writes a complete site to `build/rehearsal/docs`, to look at before a change reaches a real episode. A test runs it on every push.
+- **Correction**: see Corrections below. Free: no Claude, no ElevenLabs.
+- **Offline rehearsal**: a whole publication on a copy of the repository, free: the real pipeline with Claude answering a fixture (the real script of October 21, with labels, topics and an invented follow-up), ElevenLabs returning silence as long as the text, and no `gh`. Its fact-check raises one doubt so the light correction and the second check run, and a waiting correction is read. It prints the chapters and writes a complete site to `build/rehearsal/docs`, to look at before a change reaches a real episode. A test runs it on every push.
 
 ### Schedule
 
@@ -113,6 +116,8 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── main.py                     run modes, guards, catch-ups
 │   ├── generate.py                 script writing with Claude and web search, validation
 │   ├── context.py                  open items, known topics, accepted listener suggestions
+│   ├── factcheck.py                every claim of the facts against its own sources (Haiku)
+│   ├── corrections.py              public corrections, read in the next episode
 │   ├── tts.py                      ElevenLabs speech, two voices, voice check, chunk timings
 │   ├── chapters.py                 chapters and timed transcript (WebVTT)
 │   ├── publish.py                  MP3 as a GitHub release (gh CLI)
@@ -135,12 +140,14 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   └── stats.json                  one snapshot of download counts a day
 ├── docs/                           GitHub Pages: catalog page, feed.xml, catalog.json, cover.jpg
 │   ├── episodes/                   one page per episode, with its transcript (.vtt) and chapters (.json)
-│   └── topics/                     one page per topic, and the list of topics
+│   ├── topics/                     one page per topic, and the list of topics
+│   └── corrections.html            every correction
 ├── assets/                         images and diagrams of the README, light and dark
 ├── tools/
 │   ├── make_cover.py               cover art
 │   ├── make_diagrams.py            diagrams of the README
 │   ├── offline_rehearsal.py        a whole publication on a copy, at no cost
+│   ├── api_smoke.py                the real API accepts what the code sends (a few cents)
 │   └── screenshot_site.py          screenshot of the catalog site
 ├── tests/                          offline test suite (pytest); fixtures/ holds a real episode
 ├── .github/ISSUE_TEMPLATE/         feedback and topic suggestion forms
@@ -152,12 +159,14 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── check-spotify.yml           episode live on Spotify, and after how long
 │   ├── stats.yml                   daily download counts
 │   ├── watchdog.yml                5:00 and 6:30 check, catch-up if the episode is missing
+│   ├── correction.yml              add a correction to a published episode
 │   ├── deploy-site.yml             site deployment when docs/ changes
 │   ├── dependabot-merge.yml        Dependabot security updates merged once tested
 │   └── tests.yml                   test suite on every push
 ├── COSTS.md                        costs report
 ├── STATS.md                        downloads report
-└── TESTING.md                      test suite and journal of real runs
+├── TESTING.md                      test suite and journal of real runs
+└── RUNTIME.md                      simulated connectors, and the actions to verify them for real
 ```
 
 ### Configuration
@@ -167,6 +176,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 - The `ANTHROPIC_API_KEY` and `ELEVENLABS_API_KEY` keys are stored as GitHub Actions secrets. No secret is committed.
 - The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken or published (topics included); an episode containing one is rejected.
 - The optional `NTFY_TOPIC` secret is the ntfy topic of the phone notifications.
+- `sources.avoid` lists the sites never cited (content aggregators that rewrite other outlets' news); `factcheck` sets the fact-check model and how much of each page it reads.
 
 ## Episode catalog
 
@@ -179,6 +189,10 @@ Each episode also has **its own page** (`docs/episodes/YYYY-MM-DD.html`), linked
 Pages are generated by `podcast/site.py` after every preview and publication; `python -m podcast.site` rebuilds the catalog and every page from the committed data. Every text is escaped, since titles, topics and sources come from the web.
 
 The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ by `.github/workflows/deploy-site.yml` whenever `docs/` changes, and by the daily workflow after each episode. Hosting is free (GitHub Pages for the site and feed, GitHub releases for the audio).
+
+## Corrections
+
+When an episode got something wrong, run *Add a correction* (Actions tab, or `gh workflow run correction.yml -f episode_date=YYYY-MM-DD -f text="..."`). The text is read aloud as written in the next episode, so it follows the rules of the voice: no first person, no markdown, 8 to 70 words, for example *"The episode of October twentieth said the launch sale ran for two weeks. Mistral set it at one week."* The correction then appears at once on the episode's page, in its description in podcast apps, and on the [corrections page](https://gwendalyviquel.github.io/signal-in-the-ai-fog/corrections.html); its page says which episode read it. A catch-up episode never reads a correction, since it would be published after its own date.
 
 ## Listener feedback
 
@@ -204,7 +218,7 @@ python tools/offline_rehearsal.py       # a whole publication on a copy, free; s
 
 The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and the pipeline runs on a temporary copy of the data. It covers episode validation, the generation loop (tool submission, correction rounds, truncated responses), script assembly, speech chunking and retries, the RSS feed, the catalog, every run mode end to end, the cover art (platform specs, every word drawn, even without the DejaVu font), the catalog page in a headless browser (cards, Spotify button, search, filters, stats, deep links, HTML injection, mobile layout), the consistency between the prompt and the checks (an episode written exactly to the prompt must pass), the workflows (triggers, concurrency, dry-run guards), the chapters and timed transcript, the episode and topic pages (escaping, labels, feedback links, sitemap, stale pages), the watchdog and the notifications, the offline rehearsal end to end, and repository hygiene (secrets wired into workflows, private files ignored, no forbidden term in tracked files when `FORBIDDEN_TERMS` is set, scheduled workflows last changed by a commit linked to a GitHub account). Every bug met in a real run gets a regression test.
 
-[TESTING.md](TESTING.md) details the suite and keeps a journal of every real run, successful or not, with what each one taught us.
+[RUNTIME.md](RUNTIME.md) lists every outside service the suite only simulates, whether it ran for real, and the actions that verify it, in order and with their cost. [TESTING.md](TESTING.md) details the suite and keeps a journal of every real run, successful or not, with what each one taught us.
 
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 
@@ -219,7 +233,7 @@ Tests run on every push (`.github/workflows/tests.yml`) and before every generat
 
 Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in `config.yaml`, and ElevenLabs characters (its credits). The dashboard above and [COSTS.md](COSTS.md) are rebuilt and committed after each run, and each run's GitHub summary shows its own cost.
 
-- **One episode** costs about **$1 of Claude** (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**.
+- **One episode** cost about **$1 of Claude** in the first runs (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**. Since October 22, the research conversation is cached (the history re-sent after a pause or a correction is billed at a tenth) and the web search filters its results before Claude reads them; the fact-check adds about one cent. The new cost per episode is to be measured on the first runs.
 - **Before paying for anything**, the voice check (3 characters per voice) and the duplicate guards stop a run that would fail; wording corrections go to a light conversation without the research.
 - **Never paid twice**: an episode already published is skipped, an orphan release stops the run, and nothing is published on weekends.
 - **Free**: hosting (GitHub Pages and releases), the Spotify check, the download stats and the CI.

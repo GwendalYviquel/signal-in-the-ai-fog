@@ -22,6 +22,8 @@ def marks(structured: dict) -> list[tuple[str, str]]:
         found.append((f"{s['theme']}: {topics[0]}" if topics else s["theme"], f"Next, {s['theme']}."))
     if structured.get("follow_up"):
         found.append(("Follow-up", "A follow-up."))
+    if structured.get("corrections"):
+        found.append(("Correction", "A correction."))
     found += [("Number of the day", "The number of the day."), ("What to watch", "What to watch."),
               ("Question for your team", "And a question for your team.")]
     return found

@@ -26,6 +26,7 @@ def _item(ep: dict, status: str, script_md: Path, downloads: dict) -> dict:
         "topics": ep.get("topics", []),
         "page": f"episodes/{ep['date']}.html",
         "chapters": ep.get("chapters", []),
+        "corrections": ep.get("corrections", []),
         "duration_seconds": round(ep.get("duration_seconds", 0)),
         "downloads": downloads.get(ep["date"]) if status == "published" else None,
         "audio_url": ep.get("audio_url", ""),

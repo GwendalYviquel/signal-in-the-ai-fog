@@ -19,6 +19,8 @@ def test_usage_is_summed_over_every_call_including_corrections(cfg, fake_claude)
     total = costs.empty_claude_usage("claude-sonnet-5-5")
     ep = generate.generate_episode(cfg, TUESDAY, [], usage=total)
     assert ep["usage"] is total
+    fc = total.pop("factcheck")  # no page could be fetched offline: no fact-check call
+    assert fc["model"] == cfg["factcheck"]["model"] and fc["api_calls"] == 0
     assert total == {"model": "claude-sonnet-5-5", "input_tokens": 44_000, "output_tokens": 6_000,
                      "cache_creation_input_tokens": 0, "cache_read_input_tokens": 5_000,
                      "web_search_requests": 10, "api_calls": 3}
@@ -135,3 +137,13 @@ def test_news_cutoff_is_the_scheduled_time(repo, mocks, monkeypatch, cfg):
     assert f"{mocks['editorial_now']:%Y-%m-%d %H:%M}" == "2026-10-20 04:05"
     assert "News cutoff: use only news published before 04:05 Paris time today" in \
         generate.build_user_message(cfg, mocks["editorial_now"], [])
+
+
+def test_fact_check_is_priced_at_its_own_model_and_added_to_claude(cfg):
+    # Learning (2026-10-21): the fact-check runs on Claude Haiku 5.5, twenty times cheaper than generation.
+    assert cfg["costs"]["factcheck_priced_model"] == cfg["factcheck"]["model"]
+    total = costs.empty_claude_usage(cfg["generation"]["model"])
+    total.update(input_tokens=1_000_000, api_calls=1)
+    total["factcheck"] = dict(costs.empty_claude_usage(cfg["factcheck"]["model"]), input_tokens=1_000_000, api_calls=6)
+    assert costs.claude_usd(total, cfg["costs"]) == pytest.approx(
+        cfg["costs"]["claude_usd_per_mtok"]["input"] + cfg["costs"]["factcheck_usd_per_mtok"]["input"])

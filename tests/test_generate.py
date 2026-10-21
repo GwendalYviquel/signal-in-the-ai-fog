@@ -28,9 +28,9 @@ def test_episode_is_submitted_through_the_tool_not_as_text(cfg, fake_claude):
 
 
 def is_light(call):
-    """A light correction: one user message, only the submit tool, forced."""
+    """A light correction: one user message, only the submit tool (asked for in the prompt)."""
     return (len(call["messages"]) == 1 and [t["name"] for t in call["tools"]] == ["submit_episode"]
-            and call.get("tool_choice") == {"type": "tool", "name": "submit_episode"})
+            and "call the submit_episode tool" in call["messages"][0]["content"])
 
 
 def test_wording_errors_are_fixed_in_a_light_correction(cfg, fake_claude):
@@ -170,3 +170,22 @@ def test_malformed_submission_goes_back_to_research(cfg, fake_claude):
     generate.generate_episode(cfg, TUESDAY, [])
     result = last_user_content(client.calls[1])[0]
     assert not is_light(client.calls[1]) and "Malformed episode" in result["content"]
+
+
+def test_research_requests_are_cached_and_use_the_filtering_web_search(cfg, fake_claude):
+    # Learning (2026-10-21): search results dominate the Claude bill (390,235 input tokens for the
+    # first episode) and every pause_turn or correction re-sends them.
+    client = fake_claude([reply(text_block("..."), stop_reason="pause_turn"), reply(submit_block(make_episode()))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    assert all(call["cache_control"] == {"type": "ephemeral"} for call in client.calls)
+    search = next(t for t in client.calls[0]["tools"] if t["name"] == "web_search")
+    assert search["type"] == "web_search_20260209"
+
+
+def test_no_request_forces_the_tool_choice(cfg, fake_claude):
+    # Regression (2026-10-21): the light correction forced tool_choice, which Claude Sonnet 5.5
+    # rejects with HTTP 400. It had never run for real: every episode so far passed first time.
+    bad = make_episode(headlines=["one, two", "b c", "d e"])
+    client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(make_episode(), "toolu_b"))])
+    generate.generate_episode(cfg, TUESDAY, [])
+    assert all("tool_choice" not in call for call in client.calls)

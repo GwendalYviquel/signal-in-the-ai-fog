@@ -18,7 +18,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import catalog, chapters, context, costs, feed, generate, publish, site, tts
+from . import catalog, chapters, context, corrections, costs, feed, generate, publish, site, tts
 
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
@@ -74,6 +74,23 @@ def report_overlaps(ep: dict, day: dt.date, episodes: list[dict]) -> list[str]:
         with open(summary, "a", encoding="utf-8") as f:
             f.write("### Overlap check\n\n" + "\n".join(f"- {line}" for line in found or ["none"]) + "\n\n")
     return found
+
+
+def report_factcheck(ep: dict) -> str:
+    """One line for the log, the run summary and the notification; the doubts that remain."""
+    fc = ep.get("factcheck") or {}
+    if not fc:
+        return ""
+    line = (f"Fact-check: {fc['checked']} claims checked, {len(fc['doubts'])} doubt(s) left, "
+            f"{len(fc['unverifiable'])} part(s) unverifiable")
+    summary = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as f:
+            f.write("### Fact-check\n\n" + line + "\n\n" + "".join(f"- {d}\n" for d in fc["doubts"])
+                    + (f"\nUnverifiable: {', '.join(fc['unverifiable'])}\n" if fc["unverifiable"] else "") + "\n")
+    for d in fc["doubts"]:
+        print(f"Fact-check doubt left: {d}")
+    return line
 
 
 def current_time(cfg: dict) -> dt.datetime:
@@ -206,6 +223,15 @@ def run(cfg: dict, spend: dict) -> str | None:
                "suggestions": context.accepted_suggestions()}
     ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request)
     report_overlaps(ep, today, episodes)
+    report_factcheck(ep)
+    # Corrections of earlier episodes, read as written before the number of the day. Not in a
+    # catch-up: it would read a correction published after its own date.
+    to_read = [] if backfill else corrections.pending(episodes)
+    if to_read:
+        ep["structured"]["corrections"] = [{"episode": c["episode"], "text": c["text"]} for c in to_read]
+        ep["script"] = generate.assemble(ep["structured"], cfg, editorial_now)
+        ep["parts"] = generate.assemble_parts(ep["structured"], cfg, editorial_now)
+        print(f"Corrections read in this episode: {len(to_read)}")
     md = to_markdown(ep, today)
     (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
     print(md)
@@ -253,6 +279,7 @@ def run(cfg: dict, spend: dict) -> str | None:
         "duration_seconds": tts.mp3_duration(mp3.read_bytes()),
         "chapters": marks,
     })
+    corrections.mark_aired(episodes, to_read, today.isoformat())
     save(EPISODES, episodes)
     # Archived only once published: the next episodes treat archived scripts as already aired.
     (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
@@ -267,7 +294,9 @@ def run(cfg: dict, spend: dict) -> str | None:
     page_url = site.episode_url(base_url, today.isoformat())
     (BUILD / "published.json").write_text(json.dumps({  # read by the notification step
         "date": today.isoformat(), "title": ep["title"], "page_url": page_url,
-        "message": " · ".join(ep["structured"]["headlines"])}, ensure_ascii=False), encoding="utf-8")
+        "message": " · ".join(ep["structured"]["headlines"]) + (
+            f"\n⚠ {len(doubts)} fact-check doubt(s) left: check the run summary" if (doubts := (
+                ep.get("factcheck") or {}).get("doubts")) else "")}, ensure_ascii=False), encoding="utf-8")
     print(f"Episode published: {audio_url}")
 
 

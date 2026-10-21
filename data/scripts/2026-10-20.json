@@ -11,22 +11,25 @@
   "theme": "Sovereignty and Europe",
   "facts": "Mistral opened a public preview of Mistral Large 4 on October sixth. It is a natively multimodal mixture-of-experts model with about one trillion parameters and a one million token context window. Mistral says it trained it on roughly four thousand Nvidia Grace Blackwell GPUs in its own European data centres. The list price is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens. A two-week launch sale halves that, to sixty-eight cents and two dollars nine, starting from the launch date, so it runs out around now. Open weights are promised by the end of October. As of mid-October they had not shipped, and Mistral had not named the licence. CNBC notes the model still trails the frontier in areas such as coding.",
   "read": "The read here: treat today's price as a promotion, not a budget line. Plan on the list price. The real question is the licence. If it allows commercial self-hosting, this becomes a credible option for private or sovereign deployment behind your gateway. If not, it is one more API. Either way, run it through your own business evaluations before routing traffic. The benchmark numbers so far come from the vendor. Worth watching what the end of October brings.",
-  "label": "confirmed",
+  "label": "reported",
   "topics": [
    "Mistral"
   ],
   "sources": [
    {
     "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
-    "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+    "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html",
+    "primary": false
    },
    {
     "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
-    "url": "https://www.lindy.ai/blog/mistral-large-4"
+    "url": "https://www.lindy.ai/blog/mistral-large-4",
+    "primary": false
    },
    {
     "title": "Mervin Praison: Mistral Large 4 specs, API pricing and open weights for engineers",
-    "url": "https://mer.vin/news/mistral-large-4-specs-api-pricing-and-open-weights-for-engineers/"
+    "url": "https://mer.vin/news/mistral-large-4-specs-api-pricing-and-open-weights-for-engineers/",
+    "primary": false
    }
   ]
  },
@@ -35,18 +38,20 @@
    "theme": "Models and vendors",
    "facts": "Mistral released Timestral, its first family of time-series forecasting models, in four sizes from five million to two hundred nine million parameters, under a modified MIT licence. Mistral reports the largest ranks first among zero-shot pretrained models on three public forecasting benchmarks. It runs on standard CPUs, with a one-day-ahead forecast in about one hundred forty milliseconds.",
    "read": "What this really signals: forecasting is becoming a small-model, open-weight, no-GPU workload. For a retailer's demand and supply chain teams, that is cheap to self-host. The ranking is vendor-reported, so test it against your own sales history and your current baseline.",
-   "label": "confirmed",
+   "label": "reported",
    "topics": [
     "Mistral"
    ],
    "sources": [
     {
      "title": "MarkTechPost: Mistral AI Releases Timestral, a 209M forecasting model family",
-     "url": "https://www.marktechpost.com/2026/10/18/mistral-timestral-time-series-foundation-model/"
+     "url": "https://www.marktechpost.com/2026/10/18/mistral-timestral-time-series-foundation-model/",
+     "primary": false
     },
     {
      "title": "AI Weekly: Mistral Opens Timestral, 209M Time-Series Model Beating TimesFM-3",
-     "url": "https://aiweekly.co/alerts/mistral-opens-timestral-209m-time-series-model-beating-timesfm-3"
+     "url": "https://aiweekly.co/alerts/mistral-opens-timestral-209m-time-series-model-beating-timesfm-3",
+     "primary": false
     }
    ]
   },
@@ -54,18 +59,20 @@
    "theme": "Regulation",
    "facts": "The Digital Omnibus on AI, Regulation 2026/1744, has been in force since July twenty-seventh. It moves high-risk obligations for stand-alone systems to December second, 2027, and for embedded products to August second, 2028. Article 50 transparency rules already apply. Systems on the market before August second get a grace period for machine-readable marking of AI-generated content, until December second, 2026.",
    "read": "Why it matters: the high-risk delay is real, but the marking deadline is not delayed. If you run generative systems that produce text, images or audio for customers, a central gateway is a natural place to implement labelling. Start by inventorying what was already live before August.",
-   "label": "confirmed",
+   "label": "reported",
    "topics": [
     "EU AI Act"
    ],
    "sources": [
     {
      "title": "Cooley: Digital AI Omnibus Delays Key Deadlines, Introduces New Rules",
-     "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/"
+     "url": "https://cdp.cooley.com/digital-ai-omnibus-delays-key-deadlines-introduces-new-rules/",
+     "primary": false
     },
     {
      "title": "AI Act Service Desk: Digital Omnibus on AI",
-     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/"
+     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/",
+     "primary": false
     }
    ]
   },
@@ -81,15 +88,18 @@
    "sources": [
     {
      "title": "Google: Google's new Universal Cart launches today in the U.S.",
-     "url": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/"
+     "url": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/",
+     "primary": true
     },
     {
      "title": "eWeek: Google Adds Universal Cart to Gemini and Search",
-     "url": "https://www.eweek.com/news/google-universal-cart-gemini-search/"
+     "url": "https://www.eweek.com/news/google-universal-cart-gemini-search/",
+     "primary": false
     },
     {
      "title": "Digital Commerce 360: American Express launches Intent Intelligence framework for AI shopping agents",
-     "url": "https://digitalcommerce360.com/2026/10/16/american-express-ai-framework"
+     "url": "https://digitalcommerce360.com/2026/10/16/american-express-ai-framework",
+     "primary": false
     }
    ]
   }
@@ -98,7 +108,8 @@
   "text": "Forty-three days. That is how long remains, from today, until December second, when the grace period ends for machine-readable marking of AI-generated content on systems already on the market before August.",
   "source": {
    "title": "AI Act Service Desk: Digital Omnibus on AI",
-   "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/"
+   "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/",
+   "primary": false
   }
  },
  "what_to_watch": "Three dates. The Mistral Large 4 launch discount should end around now, so check your price assumptions. Open weights are promised by the end of October, and the licence terms matter most. On Saturday, October twenty-fourth, AWS plans an exercise to show its European Sovereign Cloud can run without non-EU infrastructure. Beyond that, December second for AI Act marking, and any sign Universal Cart moves beyond the United States.",

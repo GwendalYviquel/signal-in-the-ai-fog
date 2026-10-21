@@ -63,8 +63,10 @@ a.tag:hover { text-decoration: underline; }
 .label.confirmed { background: var(--ok-soft); color: var(--ok); }
 .label.reported { background: var(--warn-soft); color: var(--warn); }
 .label.unconfirmed { background: var(--risk-soft); color: var(--risk); }
+.correction { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--warn); background: var(--warn-soft); border-radius: 0 8px 8px 0; }
 .note { font-size: 13px; color: var(--muted); margin: -4px 0 8px; }
 .sources { font-size: 14px; padding-left: 18px; }
+.sources .primary { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--ok); }
 .sources li { overflow-wrap: anywhere; margin-bottom: 4px; }
 .transcript { white-space: pre-line; background: var(--surface-2); padding: 14px 16px; border-radius: 10px; }
 .feedback { margin-top: 32px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }

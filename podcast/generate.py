@@ -8,10 +8,11 @@ import json
 import os
 import re
 from pathlib import Path
+from urllib.parse import urlparse
 
 import anthropic
 
-from . import costs
+from . import costs, factcheck
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -72,8 +73,9 @@ def clean_for_tts(text: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
-_SOURCE = {"type": "object", "properties": {"title": {"type": "string"}, "url": {"type": "string"}},
-           "required": ["title", "url"]}
+_SOURCE = {"type": "object", "properties": {"title": {"type": "string"}, "url": {"type": "string"},
+                                           "primary": {"type": "boolean"}},
+           "required": ["title", "url", "primary"]}
 _STORY = {"type": "object", "properties": {
     "theme": {"type": "string"}, "facts": {"type": "string"}, "read": {"type": "string"},
     "label": {"type": "string", "enum": list(LABELS)},
@@ -82,6 +84,7 @@ _STORY = {"type": "object", "properties": {
     "required": ["theme", "facts", "read", "label", "topics", "sources"]}
 
 # The episode is returned through this tool: the API guarantees well-formed JSON input.
+# Claude Sonnet 5.5 rejects a forced tool_choice (HTTP 400): the call is asked for in the prompt.
 SUBMIT_TOOL = {
     "name": "submit_episode",
     "description": "Submit today's episode once the research is done. Call it exactly once per attempt.",
@@ -129,6 +132,38 @@ def _spoken_parts(ep: dict) -> list[tuple[str, str]]:
 
 def _has_source(sources) -> bool:
     return any(str(s.get("url", "")).startswith("http") for s in sources or [])
+
+
+def _avoided(url: str, cfg: dict) -> bool:
+    host = (urlparse(str(url)).hostname or "").lower()
+    return any(host == d or host.endswith("." + d) for d in cfg.get("sources", {}).get("avoid", []))
+
+
+def _source_policy(ep: dict, cfg: dict) -> list[str]:
+    """Primary sources and avoided sites. Episodes rebuilt after publication predate the policy."""
+    if ep.get("labelled_after_publication"):
+        return []
+    errors = []
+    story = ep["story_of_the_day"]
+    parts = [("story of the day", story)] + [(f"segment {s.get('theme')!r}", s) for s in ep["segments"]]
+    singles = [("number of the day", ep["number_of_the_day"])] + (
+        [("follow-up", ep["follow_up"])] if ep.get("follow_up") else [])
+    for name, part in parts + [(n, {"sources": [p.get("source") or {}]}) for n, p in singles]:
+        sources = part.get("sources") or []
+        for s in sources:
+            if not isinstance(s.get("primary"), bool):
+                errors.append(f"Source without primary true or false in the {name}: {s.get('url')!r}")
+        avoided = [s for s in sources if _avoided(s.get("url", ""), cfg)]
+        kept = [s for s in sources if s not in avoided and _has_source([s])]
+        if avoided and kept:
+            errors.append(f"Source from an avoided site in the {name}: {avoided[0]['url']} (drop it, "
+                          "the other sources stay)")
+        elif avoided:
+            errors.append(f"The {name} has no source outside the avoided sites: {avoided[0]['url']}")
+        if part.get("label") == "confirmed" and not any(s.get("primary") is True for s in kept):
+            errors.append(f"The {name} is labelled confirmed but cites no primary source: label it "
+                          "reported, or cite the primary source")
+    return errors
 
 
 def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
@@ -184,6 +219,7 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     follow_up = ep.get("follow_up")
     if follow_up and not _has_source([follow_up.get("source") or {}]):
         errors.append("The follow-up has no source")
+    errors += _source_policy(ep, cfg)
 
     forbidden = _forbidden_terms()
     published = [("title", ep["title"]), ("summary", ep["summary"])]
@@ -240,6 +276,8 @@ def assemble_parts(ep: dict, cfg: dict, now) -> list[tuple[str, str]]:
         parts += [(HOST, f"Next, {s['theme']}.\n\n{s['facts']}"), (ANALYST, s["read"])]
     if ep.get("follow_up"):
         parts.append((HOST, "A follow-up.\n\n" + ep["follow_up"]["text"]))
+    for c in ep.get("corrections") or []:  # written by the owner, read as written (podcast/corrections.py)
+        parts.append((HOST, "A correction.\n\n" + c["text"]))
     parts.append((HOST, "\n\n".join([
         "The number of the day.", ep["number_of_the_day"]["text"],
         "What to watch.", ep["what_to_watch"],
@@ -266,14 +304,21 @@ def collect_sources(ep: dict) -> list[dict]:
         url = str(s.get("url", ""))
         if url.startswith("http") and url not in seen:
             seen.add(url)
-            unique.append({"title": s.get("title") or url, "url": url})
+            unique.append({"title": s.get("title") or url, "url": url}
+                          | ({"primary": s["primary"]} if isinstance(s.get("primary"), bool) else {}))
     return unique
+
+
+# Prompt caching: every request of the research conversation re-sends the whole history (search
+# results included) after a pause_turn or a correction. Caching the last block of each request
+# bills that history at the cache-read rate (0.1x) on the next one, instead of the full input rate.
+CACHE = {"type": "ephemeral"}
 
 
 def _ask(client, gen, system, tools, messages, usage):
     """Run the turn until the model stops; return the submit_episode call, if any."""
     for _ in range(8):  # web search can pause the turn (pause_turn)
-        resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"],
+        resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"], cache_control=CACHE,
                                       system=system, tools=tools, messages=messages)
         costs.add_usage(usage, resp)
         messages.append({"role": "assistant", "content": resp.content})
@@ -311,11 +356,10 @@ def _correct(client, gen, system, ep, errors, usage):
     messages = [{"role": "user", "content":
                  "Here is today's episode, as you submitted it:\n" + json.dumps(ep, ensure_ascii=False)
                  + "\n\nIt does not meet the requirements:\n- " + "\n- ".join(errors)
-                 + "\n\nFix only these points, keep everything else unchanged, and call submit_episode "
-                   "with the full corrected episode."}]
+                 + "\n\nFix only these points, keep everything else unchanged, never add a source, and call "
+                   "the submit_episode tool with the full corrected episode."}]
     resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"], system=system,
-                                  tools=[SUBMIT_TOOL], tool_choice={"type": "tool", "name": SUBMIT_TOOL["name"]},
-                                  messages=messages)
+                                  tools=[SUBMIT_TOOL], messages=messages)
     costs.add_usage(usage, resp)
     call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
     return call, resp.stop_reason == "max_tokens"
@@ -328,13 +372,14 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None):
     gen = cfg["generation"]
     system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
     system = system.replace("{target_words}", str(gen["target_words"]))
+    system = system.replace("{avoided_sites}", ", ".join(cfg.get("sources", {}).get("avoid", [])) or "none")
     if context := _private_context():
         system += f"\n\n## Private editorial context (never mention or quote)\n{context}\n"
     # Only needed for an API key that is not scoped to a workspace.
     workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()
     client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": workspace} if workspace else None)
     messages = [{"role": "user", "content": build_user_message(cfg, now, previous_scripts, **(request or {}))}]
-    tools = [{"type": "web_search_20250305", "name": "web_search",
+    tools = [{"type": "web_search_20260209", "name": "web_search",  # dynamic filtering: fewer tokens
               "max_uses": gen["web_search_max_uses"]}, SUBMIT_TOOL]
 
     # The full conversation does the research; corrections of a complete episode are sent
@@ -342,17 +387,34 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None):
     # every search result. The full conversation is resumed only when nothing usable came back.
     call, truncated = _ask(client, gen, system, tools, messages, usage)
     pending = call  # tool call of the full conversation still waiting for its tool_result
+    corrected_from = None  # the episode a light correction was asked to fix
+    fc_cfg = cfg.get("factcheck", {})
+    fc_usage = usage.setdefault("factcheck", costs.empty_claude_usage(fc_cfg.get("model", "")))
+    pages: dict = {}  # source pages fetched once per run
+    report = {"errors": [], "checked": 0, "unverifiable": []}
     attempts = 3
     for attempt in range(attempts):
         ep, errors, warnings = _evaluate(call, truncated, cfg, gen)
+        if ep is not None and corrected_from is not None:
+            # A light correction has no web search: a source it adds was not read, so it is refused.
+            added = {s["url"] for s in collect_sources(ep)} - {s["url"] for s in collect_sources(corrected_from)}
+            if added:
+                ep, errors = None, [f"A source was added without research: {', '.join(sorted(added))}. "
+                                    "Find and read every source with web search"]
+        corrected_from = None
         for w in warnings:
             print(f"Warning: {w}")
+        if not errors and fc_cfg.get("enabled"):
+            report = factcheck.check(ep, cfg, client, fc_usage, pages)
+            if report["errors"] and attempt < attempts - 1:
+                errors = report["errors"]  # fixed in a light correction: only what the sources say
         if not errors:
             break
         print(f"Invalid episode (attempt {attempt + 1}):\n- " + "\n- ".join(errors))
         if attempt == attempts - 1:
             raise SystemExit("The episode is still invalid after the correction rounds: nothing published.")
         if ep is not None:
+            corrected_from = ep
             call, truncated = _correct(client, gen, system, ep, errors, usage)
             continue
         feedback = ("The episode does not meet the requirements:\n- " + "\n- ".join(errors)
@@ -373,4 +435,6 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None):
         "sources": collect_sources(ep),
         "structured": ep,
         "usage": usage,
+        "factcheck": {"checked": report["checked"], "doubts": report["errors"],
+                      "unverifiable": report["unverifiable"]},
     }

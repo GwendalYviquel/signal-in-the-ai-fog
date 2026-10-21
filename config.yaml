@@ -31,10 +31,25 @@ generation:
   watchdog_at: ["05:00", "06:30"]
   target_words: 880                  # about 6 minutes spoken
 
+sources:
+  # Sites that rewrite other outlets' news (content aggregators, SEO blogs), seen in the first
+  # episodes: never cited. A story keeps its other sources; with none left, it goes back to research.
+  avoid: ["lindy.ai", "mer.vin", "aiweekly.co"]
+
+factcheck:
+  # Before the voices, every figure, date, name and status in the facts is checked against the
+  # story's own sources (fetched by the code, read by a small model). A doubt goes back to a
+  # light correction; one still there after the last attempt is reported, not blocking.
+  enabled: true
+  model: "claude-haiku-5-5"
+  max_chars_per_source: 40000       # keeps each check under 100K tokens, Haiku's lower price
+
 costs:  # for COSTS.md estimates; Claude prices for generation.model, per million tokens
   priced_model: "claude-sonnet-5-5"  # change the prices below when generation.model changes
   claude_usd_per_mtok: {input: 2.0, output: 10.0, cache_write: 2.5, cache_read: 0.2}
-  web_search_usd_per_1000: 10.0      # not confirmed in the API reference: check the pricing page
+  web_search_usd_per_1000: 10.0
+  factcheck_priced_model: "claude-haiku-5-5"   # change the prices below when factcheck.model changes
+  factcheck_usd_per_mtok: {input: 0.10, output: 0.50, cache_write: 0.125, cache_read: 0.01}      # not confirmed in the API reference: check the pricing page
 
 tts:
   voices:                            # ElevenLabs voice IDs

@@ -188,3 +188,37 @@ def test_follow_up_is_optional_but_needs_a_source_and_spoken_text(cfg):
 def test_follow_up_without_source_goes_back_to_research():
     # A light correction cannot search the web: it would have to invent the source.
     assert generate._needs_research(["The follow-up has no source"])
+
+
+def test_an_avoided_site_is_dropped_when_the_story_has_other_sources(cfg):
+    # Learning (2026-10-21): content aggregators (Lindy, mer.vin, AI Weekly) sat beside the primary sources.
+    ep = make_episode()
+    ep["story_of_the_day"]["sources"].append({"title": "Lindy: rewrite", "url": "https://www.lindy.ai/blog/x", "primary": False})
+    errs = errors_of(ep, cfg)
+    assert any("avoided site in the story of the day: https://www.lindy.ai/blog/x (drop it" in e for e in errs)
+    assert not generate._needs_research(errs)  # dropping a source needs no research
+
+
+def test_a_story_left_with_only_avoided_sites_goes_back_to_research(cfg):
+    ep = make_episode()
+    ep["segments"][0]["sources"] = [{"title": "AI Weekly", "url": "https://aiweekly.co/alerts/x", "primary": False}]
+    errs = errors_of(ep, cfg)
+    assert any("has no source outside the avoided sites" in e for e in errs) and generate._needs_research(errs)
+
+
+def test_confirmed_needs_a_primary_source(cfg):
+    ep = make_episode()
+    ep["segments"][0]["label"] = "confirmed"  # its only source is press
+    assert any("labelled confirmed but cites no primary source" in e for e in errors_of(ep, cfg))
+
+
+def test_every_source_says_whether_it_is_primary(cfg):
+    ep = make_episode()
+    del ep["number_of_the_day"]["source"]["primary"]
+    assert any("Source without primary true or false in the number of the day" in e for e in errors_of(ep, cfg))
+
+
+def test_episodes_rebuilt_after_publication_predate_the_source_rules(cfg):
+    ep = make_episode(labelled_after_publication="2026-10-21")
+    ep["segments"][0]["sources"] = [{"title": "Lindy", "url": "https://lindy.ai/x"}]
+    assert errors_of(ep, cfg) == []

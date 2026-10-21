@@ -20,6 +20,8 @@ def _episode_description(ep: dict, base_url: str = "") -> str:
         cutoff = dt.datetime.fromisoformat(ep["catch_up"]["news_cutoff"])
         lines += [f"Catch-up episode, prepared on {made:%B} {made.day}, {made.year} with only the news "
                   f"published before {cutoff:%H:%M} on {cutoff:%B} {cutoff.day} (Paris time).", ""]
+    for c in ep.get("corrections") or []:
+        lines += [f"Correction ({c['added']}): {c['text']}", ""]
     if len(ep.get("chapters") or []) >= 3:  # Spotify turns these timestamps into chapters
         lines += ["Chapters:"] + [f"{timestamp(c['start'])} {c['title']}" for c in ep["chapters"]] + [""]
     if base_url:

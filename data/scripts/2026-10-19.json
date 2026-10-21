@@ -19,15 +19,18 @@
   "sources": [
    {
     "title": "Google AI for Developers: Gemini Developer API pricing",
-    "url": "https://ai.google.dev/gemini-api/docs/pricing"
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "primary": true
    },
    {
     "title": "VentureBeat: Google makes Gemini 4 Argon broadly available with limited-time low API pricing",
-    "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token"
+    "url": "https://venturebeat.com/technology/google-makes-gemini-4-argon-broadly-available-with-limited-time-low-api-pricing-of-2-10-per-1m-token",
+    "primary": false
    },
    {
     "title": "Google AI for Developers: What's new in Gemini 4 Argon",
-    "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+    "url": "https://ai.google.dev/gemini-api/docs/latest-model",
+    "primary": true
    }
   ]
  },
@@ -36,18 +39,20 @@
    "theme": "Models and vendors",
    "facts": "Mistral Large 4 entered public preview on the Mistral API on October sixth. It is a mixture-of-experts model of about one trillion parameters with a one-million-token context. List price is one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens. A fifty percent launch discount was set for two weeks from October sixth. Open weights are promised by the end of October, licence not yet named.",
    "read": "Why it matters: a preview is not a production commitment, and no general availability date has been given. Treat it as a candidate for your evaluation set, not a routing default. The licence will decide whether private or on-premise deployment is possible, so it is worth watching.",
-   "label": "confirmed",
+   "label": "reported",
    "topics": [
     "Mistral"
    ],
    "sources": [
     {
      "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
-     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html"
+     "url": "https://www.cnbc.com/2026/10/06/mistral-ai-model-le-chonk.html",
+     "primary": false
     },
     {
      "title": "Lindy: What Is Mistral Large 4? Benchmarks, Pricing, and Weights",
-     "url": "https://www.lindy.ai/blog/mistral-large-4"
+     "url": "https://www.lindy.ai/blog/mistral-large-4",
+     "primary": false
     }
    ]
   },
@@ -55,7 +60,7 @@
    "theme": "Sovereignty and Europe",
    "facts": "Berlin search engine Ecosia switched from OpenAI to Mistral in May, and has now dropped Mistral, according to Politico's reporting this month. Its CEO cited quality, overloaded capacity and cost, and says costs roughly halved. It now runs open models, including Chinese ones, via Melious, a German platform hosting them on servers in eight EU countries.",
    "read": "What this really signals: sovereignty is being unbundled. Where a model runs and whether its weights are open can be separate procurement criteria, so a European host for open weights now competes with a European model vendor. One customer's claim is not a benchmark, so run your own evaluation.",
-   "label": "confirmed",
+   "label": "reported",
    "topics": [
     "Ecosia",
     "Mistral"
@@ -63,15 +68,18 @@
    "sources": [
     {
      "title": "Trending Topics: Search Engine Ecosia Swaps Mistral for Chinese A.I.",
-     "url": "https://www.trendingtopics.eu/ecosia-mistral-chinese-ai/"
+     "url": "https://www.trendingtopics.eu/ecosia-mistral-chinese-ai/",
+     "primary": false
     },
     {
      "title": "ITdaily: Chinese over European: Ecosia sets Mistral aside",
-     "url": "https://itdaily.com/news/software/ecosia-puts-mistral-aside/"
+     "url": "https://itdaily.com/news/software/ecosia-puts-mistral-aside/",
+     "primary": false
     },
     {
      "title": "EU-Startups: Ecosia founder clarifies move away from Mistral",
-     "url": "https://www.eu-startups.com/2026/10/ecosia-founder-clarifies-move-away-from-mistral-its-about-open-models-not-china/"
+     "url": "https://www.eu-startups.com/2026/10/ecosia-founder-clarifies-move-away-from-mistral-its-about-open-models-not-china/",
+     "primary": false
     }
    ]
   },
@@ -86,7 +94,8 @@
    "sources": [
     {
      "title": "Kili Technology: LLM-as-a-Judge Validity: What 541,000 Decisions Reveal",
-     "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge"
+     "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge",
+     "primary": true
     }
    ]
   },
@@ -94,22 +103,25 @@
    "theme": "Regulation",
    "facts": "The Digital Omnibus on AI has been in force since July twenty-seventh. It moved stand-alone high-risk obligations to December second, 2027, and embedded-product ones to August second, 2028. Article 50 transparency duties applied from August second, 2026. Generative systems already on the market have until December second, 2026 to mark outputs in machine-readable form.",
    "read": "Why it matters: the high-risk reprieve gets the headlines, but the nearer date is December second. Check whether you are a provider or a deployer for each generative feature, and whether your vendors pass provenance marking through your gateway. Legal should confirm the roles.",
-   "label": "confirmed",
+   "label": "reported",
    "topics": [
     "EU AI Act"
    ],
    "sources": [
     {
      "title": "Artificial Intelligence Act: Digital Omnibus on AI",
-     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/"
+     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/",
+     "primary": false
     },
     {
      "title": "Faegre Drinker: Commission confirms transparency code of practice as adequate",
-     "url": "https://www.faegredrinker.com/en/insights/publications/2026/7/eu-ai-act-commission-confirms-transparency-code-of-practice-as-adequate-and-publishes-final-version-of-its-guidelines-on-transparency-obligations"
+     "url": "https://www.faegredrinker.com/en/insights/publications/2026/7/eu-ai-act-commission-confirms-transparency-code-of-practice-as-adequate-and-publishes-final-version-of-its-guidelines-on-transparency-obligations",
+     "primary": false
     },
     {
      "title": "DLA Piper: What the EU's new Code of Practice means",
-     "url": "https://www.dlapiper.com/en/insights/publications/2026/07/what-the-eus-new-code-of-practice-means"
+     "url": "https://www.dlapiper.com/en/insights/publications/2026/07/what-the-eus-new-code-of-practice-means",
+     "primary": false
     }
    ]
   }
@@ -118,7 +130,8 @@
   "text": "33 to 41 points: how much raw agreement overstated LLM-judge quality on MT-Bench once chance agreement was removed, across twenty-one judges. Your judge's headline score may be a lot weaker than it looks.",
   "source": {
    "title": "Kili Technology: LLM-as-a-Judge Validity: What 541,000 Decisions Reveal",
-   "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge"
+   "url": "https://kili-technology.com/blog/data-story-who-judges-the-judge-llm-as-a-judge",
+   "primary": true
   }
  },
  "what_to_watch": "This week, Mistral Large 4's two-week launch discount, counted from October sixth, should lapse, so list prices are likely to apply. Open weights are promised by the end of October, and sources differ on the exact day. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise. Further out: Vertex AI Extensions shuts down after November twenty-sixth, Argon's introductory price ends November thirtieth, and AI Act marking applies December second.",
