@@ -25,9 +25,9 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 
 | Connector | Used for | In the offline tests | Verified for real | Still to verify |
 | --- | --- | --- | --- | --- |
-| Claude Sonnet 5.5, research turn | writing the episode, web search, `submit_episode` tool | fake client (`tests/conftest.py`) that enforces the API's rules | ✅ 2026-10-20 and 21, with `web_search_20250305` and no caching | **`web_search_20260209`** (filtering) and **`cache_control`**, new on 2026-10-22: accepted, and the saving (`cache_read_input_tokens` in `data/costs.json`) |
-| Claude Sonnet 5.5, light correction | fixing wording without the research | fake client | ❌ **never ran**: every episode passed on the first attempt. It used a forced `tool_choice`, which this model refuses (HTTP 400), fixed on 2026-10-22 | that it is accepted and calls the tool without being forced |
-| Claude Haiku 5.5, fact-check | checking every claim of the facts against its sources | fake answers (`tests/test_factcheck.py`) | ❌ never ran | JSON schema output accepted, cost (expected about one cent), whether its doubts are fair |
+| Claude Sonnet 5.5, research turn | writing the episode, web search, `submit_episode` tool | fake client (`tests/conftest.py`) that enforces the API's rules | ✅ 2026-10-20 and 21; `web_search_20260209` and `cache_control` accepted by the smoke test on 2026-10-22 | the saving on a whole episode (`cache_read_input_tokens` in `data/costs.json`) |
+| Claude Sonnet 5.5, light correction | fixing wording without the research | fake client | 🔸 smoke test ✅ 2026-10-22 (the tool is called unforced); never in an episode yet. It used a forced `tool_choice`, which this model refuses (HTTP 400), fixed on 2026-10-22 | a real correction round in an episode |
+| Claude Haiku 5.5, fact-check | checking every claim of the facts against its sources | fake answers (`tests/test_factcheck.py`) | 🔸 smoke test ✅ 2026-10-22 (JSON schema output, spoken dates matched); never on a whole episode | cost (expected about one cent), whether its doubts are fair |
 | Source pages, fetched by the code | the fact-check's input | network blocked in every test | 🔸 from a Mac: 28 of 29 readable | from a GitHub runner, sites may block datacenter IPs: count the *unverifiable* parts in the run summary |
 | ElevenLabs | the two voices, the voice check | fake HTTP (`tests/test_tts.py`), silence in the rehearsal | ✅ 3 episodes | **chapter times**: estimated inside each audio chunk by characters, to check by ear |
 | `gh release` | hosting the MP3 | faked | ✅ | — |
@@ -40,7 +40,7 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 
 ## Actions, in order
 
-### 1. API smoke test: a few cents
+### 1. API smoke test: a few cents (passed on 2026-10-22, rerun after any change to a request)
 
 Checks on the real API the three request shapes that never ran for real.
 

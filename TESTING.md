@@ -109,6 +109,10 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-21 | [Watchdog, test notification](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39587951095) | ✅ | First test from GitHub reached the Mac app but not the phone, which was not set up yet; the second reached both | — |
 
+| 2026-10-22 | [API smoke test](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39677025724) | ❌ | First call of the new request shapes: the light correction (no forced tool choice) passed on the real API. The fact-check check then failed in the smoke script itself: a hand-built usage counter without `web_search_requests`. The fake answers carried no usage, so no test had seen it | The script uses the pipeline's counter; fake fact-check answers carry usage. Test: `test_the_smoke_test_counts_usage_like_the_pipeline` |
+
+| 2026-10-22 | [API smoke test](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39677269147) | ✅ | All three shapes accepted: light correction calls the tool unforced; Haiku 5.5 fact-check returns the JSON schema and matched *October sixth* with *Oct. 6*; `web_search_20260209` searched once and the cache wrote 7,889 tokens | — |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
