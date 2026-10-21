@@ -98,7 +98,7 @@ gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
 
 A *Watchdog* workflow checks at **5:00 and 6:30 Paris time** that today's episode is out, and starts the catch-up if not (see Run modes). It is a separate workflow with its own schedule, so one dropped or failed daily run is caught before 7:00. If GitHub drops every schedule at once, as it did on October 21 when no commit was linked to a GitHub account, only the phone notification of a missing episode is missing too: check that it arrives each morning.
 
-**Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails.
+**Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails. To check the secret, run *Watchdog* by hand with `test_notification`: it only sends a test.
 
 A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by hand): it reads Spotify's public embed page of the show, compares its latest episode with ours, and records in `data/spotify.json` when each episode was first seen live and how many minutes after publication, to confirm the margin before 7:00.
 

@@ -113,5 +113,17 @@ def test_gh_failure_is_loud(monkeypatch):
 def test_workflow_can_start_runs_and_gets_only_the_notification_secret():
     assert WORKFLOW["permissions"] == {"contents": "read", "actions": "write"}
     step = next(s for s in WORKFLOW["jobs"]["watchdog"]["steps"] if s.get("name") == "Check today's episode")
-    assert set(step["env"]) == {"GH_TOKEN", "NTFY_TOPIC", "SCHEDULE"} and step["run"] == "python -m podcast.watchdog"
+    assert set(step["env"]) == {"GH_TOKEN", "NTFY_TOPIC", "SCHEDULE", "TEST_NOTIFICATION"} and step["run"] == "python -m podcast.watchdog"
     assert "SCHEDULE_ENABLED" in WORKFLOW["jobs"]["watchdog"]["if"]  # paused with the daily schedule
+
+
+def test_test_notification_only_sends_and_fails_without_the_secret(monkeypatch):
+    sent = []
+    monkeypatch.setenv("TEST_NOTIFICATION", "true")
+    monkeypatch.setattr(watchdog, "check", lambda *a: pytest.fail("no check in test mode"))
+    monkeypatch.setattr(watchdog.notify, "send", lambda title, message, **kw: sent.append(title) or True)
+    watchdog.main()
+    assert sent == ["Test from GitHub"]
+    monkeypatch.setattr(watchdog.notify, "send", lambda *a, **kw: False)
+    with pytest.raises(SystemExit, match="NTFY_TOPIC"):
+        watchdog.main()

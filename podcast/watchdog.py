@@ -89,6 +89,11 @@ def check(cfg: dict, cron: str, now_utc: dt.datetime, episodes: list[dict]) -> s
 
 
 def main() -> None:
+    if os.getenv("TEST_NOTIFICATION", "false") == "true":  # manual check of the NTFY_TOPIC secret
+        if not notify.send("Test from GitHub", "Notifications from the workflows reach this phone.",
+                           tags=["white_check_mark"]):
+            raise SystemExit("Test notification not sent: check the NTFY_TOPIC secret")
+        return
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     episodes = json.loads(EPISODES.read_text(encoding="utf-8")) if EPISODES.exists() else []
     decision = check(cfg, os.getenv("SCHEDULE", "").strip(), dt.datetime.now(dt.timezone.utc), episodes)

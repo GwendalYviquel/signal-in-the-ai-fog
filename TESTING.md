@@ -62,7 +62,7 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 | `test_chapters.py` | 7 | Chapters in reading order (follow-up only when there is one), placed inside a chunk by its characters, Podcasting 2.0 JSON, Spotify timestamps, WebVTT with one cue per sentence covering every word |
 | `test_pages.py` | 12 | Episode pages (stories, labels, layers, topics, sources, chapters that seek the player, feedback links pre-filled), fallback to the script, **everything from the web escaped** (JSON-LD included), topic timelines across episodes, slugs shared with the catalog page, stale pages removed, sitemap, committed pages up to date |
 | `test_offline_rehearsal.py` | 7 | The offline rehearsal end to end: repository untouched, request content, chapters, transcript ending with the audio, feed tags, page, notification |
-| `test_watchdog.py` | 12 | Every weekday of 2026 and 2027 checked at 5:00 and 6:30 exactly; episode out, run still going, catch-up started, retries stopped after two failures, weekend, winter crons; the catch-up is a real run with the scheduled cutoff; gh failures are loud; workflow permissions |
+| `test_watchdog.py` | 13 | Every weekday of 2026 and 2027 checked at 5:00 and 6:30 exactly; episode out, run still going, catch-up started, retries stopped after two failures, weekend, winter crons; the catch-up is a real run with the scheduled cutoff; gh failures are loud; workflow permissions; a manual test notification that fails without the secret |
 | `test_notify.py` | 6 | ntfy: nothing without the secret, JSON body, topic never printed, failures never break a run, urgent failure with the run link, quiet when nothing was published |
 
 ## Journal of real runs
