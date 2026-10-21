@@ -45,10 +45,10 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 Checks on the real API the three request shapes that never ran for real.
 
 ```bash
-ANTHROPIC_API_KEY=... ANTHROPIC_WORKSPACE_ID=... python tools/api_smoke.py
+gh workflow run api-smoke.yml
 ```
 
-Expected: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `podcast/generate.py` or `podcast/factcheck.py`.
+It runs on GitHub, where the API key is a secret (it is not on the laptops). Locally, export `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` and run `python tools/api_smoke.py`. Expected in the log: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `podcast/generate.py` or `podcast/factcheck.py`.
 
 ### 2. A preview: about $0.50 to $1 of Claude, no ElevenLabs
 

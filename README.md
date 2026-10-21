@@ -160,6 +160,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── stats.yml                   daily download counts
 │   ├── watchdog.yml                5:00 and 6:30 check, catch-up if the episode is missing
 │   ├── correction.yml              add a correction to a published episode
+│   ├── api-smoke.yml               the real API accepts what the code sends (a few cents)
 │   ├── deploy-site.yml             site deployment when docs/ changes
 │   ├── dependabot-merge.yml        Dependabot security updates merged once tested
 │   └── tests.yml                   test suite on every push

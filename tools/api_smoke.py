@@ -7,7 +7,8 @@ real API accepts what the code sends, before an episode depends on it:
 3. the research tools (web_search_20260209, one search, cache_control).
 Nothing is published and nothing is written, except one line per check on the terminal.
 
-Usage: ANTHROPIC_API_KEY=... python tools/api_smoke.py
+Usage: gh workflow run api-smoke.yml   (on GitHub, with the repository's secrets)
+   or: ANTHROPIC_API_KEY=... python tools/api_smoke.py
 """
 from __future__ import annotations
 
@@ -26,6 +27,9 @@ from podcast import factcheck, generate  # noqa: E402
 
 
 def main() -> int:
+    if not os.getenv("ANTHROPIC_API_KEY"):
+        print("No ANTHROPIC_API_KEY here: run it on GitHub, where the key is a secret: gh workflow run api-smoke.yml")
+        return 2
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
     gen = cfg["generation"]
     workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()

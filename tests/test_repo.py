@@ -249,3 +249,10 @@ def test_issue_forms_match_the_site_links_and_the_suggestion_labels():
 
 def test_local_preview_config_is_not_committed():
     assert git("check-ignore", "-q", ".claude/launch.json").returncode == 0
+
+
+def test_api_smoke_test_gets_only_the_claude_secrets():
+    wf = workflow("api-smoke.yml")
+    step_ = step(wf, "Call the real API")
+    assert set(step_["env"]) == {"ANTHROPIC_API_KEY", "ANTHROPIC_WORKSPACE_ID"}
+    assert step_["run"] == "python tools/api_smoke.py" and wf["permissions"] == {"contents": "read"}
