@@ -7,8 +7,8 @@ import json
 
 import pytest
 
-from conftest import TUESDAY, make_episode, reply, submit_block, text_block
-from podcast import factcheck, generate
+from conftest import TUESDAY, make_episode, reply, submit_block, text_block, usage as api_usage
+from podcast import costs, factcheck, generate
 
 PAGE = "<html><nav>Menu</nav><script>var x=1;</script><p>" + "Mistral priced it at $1.36. " * 60 + "</p></html>"
 
@@ -16,7 +16,7 @@ PAGE = "<html><nav>Menu</nav><script>var x=1;</script><p>" + "Mistral priced it 
 def fc_reply(*claims):
     """A Haiku answer: the claims as structured JSON in the first text block."""
     body = json.dumps({"claims": [{"claim": c, "status": s, "evidence": e} for c, s, e in claims]})
-    return reply(text_block(body))
+    return reply(text_block(body), usage=api_usage(3_000, 200))  # a real answer always carries its usage
 
 
 SUPPORTED = fc_reply(("one dollar thirty-six", "supported", "$1.36"))
@@ -56,8 +56,7 @@ def test_long_pages_are_cut_to_keep_each_check_cheap(monkeypatch):
 def test_every_fact_part_is_checked_against_its_own_sources_only(cfg, fake_claude, pages):
     ep = make_episode(follow_up={"text": "The vote happened.", "source": {"title": "V", "url": "https://v", "primary": True}})
     client = fake_claude([SUPPORTED] * 7)
-    usage = {"input_tokens": 0, "output_tokens": 0, "cache_creation_input_tokens": 0,
-             "cache_read_input_tokens": 0, "web_search_requests": 0, "api_calls": 0}
+    usage = costs.empty_claude_usage("claude-haiku-5-5")
     report = factcheck.check(ep, cfg, client, usage)
     assert report == {"errors": [], "checked": 7, "unverifiable": []}
     assert usage["api_calls"] == 7  # story, four segments, follow-up, number
@@ -74,8 +73,7 @@ def test_doubts_become_correction_requests_with_the_evidence(cfg, fake_claude, p
     client = fake_claude([fc_reply(("two weeks", "contradicted", "a one-week discount"),
                                    ("Mistral", "supported", "Mistral")),
                           fc_reply(("one trillion", "not_found", ""))] + [SUPPORTED] * 4)
-    report = factcheck.check(make_episode(), cfg, client, dict.fromkeys(
-        ["input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens", "api_calls"], 0))
+    report = factcheck.check(make_episode(), cfg, client, costs.empty_claude_usage("claude-haiku-5-5"))
     assert report["errors"] == [
         'Fact-check, story of the day: "two weeks" is contradicted by its sources (the source says: a one-week '
         'discount). Correct it or remove it, using only what the sources say',
@@ -86,8 +84,7 @@ def test_doubts_become_correction_requests_with_the_evidence(cfg, fake_claude, p
 def test_unreadable_sources_or_an_unusable_answer_are_unverifiable_not_errors(cfg, fake_claude, monkeypatch):
     monkeypatch.setattr(factcheck, "fetch", lambda url, cache, n: None if "example.com/a" in url else "Text. " * 200)
     client = fake_claude([reply(text_block("not json"))] + [SUPPORTED] * 4)
-    report = factcheck.check(make_episode(), cfg, client, dict.fromkeys(
-        ["input_tokens", "output_tokens", "cache_creation_input_tokens", "cache_read_input_tokens", "api_calls"], 0))
+    report = factcheck.check(make_episode(), cfg, client, costs.empty_claude_usage("claude-haiku-5-5"))
     assert report["errors"] == [] and report["unverifiable"] == ["story of the day", "segment 'Models and vendors'"]
 
 
@@ -140,3 +137,11 @@ def test_a_cookie_wall_is_not_taken_for_the_article(monkeypatch):
         status_code, text = 200, "<html><p>Please accept cookies to continue.</p></html>"
     monkeypatch.setattr(factcheck.requests, "get", lambda *a, **k: R())
     assert factcheck.fetch("https://wall.example", {}, 1000) is None
+
+
+def test_the_smoke_test_counts_usage_like_the_pipeline():
+    # Regression (2026-10-22): the first real smoke test failed on a hand-built usage dict that lacked
+    # web_search_requests; the fake answers had no usage, so no test saw it.
+    from conftest import ROOT
+    source = (ROOT / "tools" / "api_smoke.py").read_text(encoding="utf-8")
+    assert "costs.empty_claude_usage(" in source and "usage = {" not in source

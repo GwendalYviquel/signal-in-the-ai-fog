@@ -23,7 +23,7 @@ sys.path.insert(0, str(ROOT))
 import anthropic  # noqa: E402
 import yaml  # noqa: E402
 
-from podcast import factcheck, generate  # noqa: E402
+from podcast import costs, factcheck, generate  # noqa: E402
 
 
 def main() -> int:
@@ -52,8 +52,7 @@ def main() -> int:
         report("light correction", False, f"HTTP {e.status_code}: {e.message}")
 
     try:  # 2. fact-check shape
-        usage = {k: 0 for k in ("input_tokens", "output_tokens", "cache_creation_input_tokens",
-                                "cache_read_input_tokens", "api_calls")}
+        usage = costs.empty_claude_usage(cfg["factcheck"]["model"])
         claims = factcheck._ask(client, cfg["factcheck"]["model"], "Acme launched Widget 2 on October sixth.",
                                 [("https://example.com", "On Oct. 6, Acme released Widget 2 to all customers.")], usage)
         report("fact-check", claims is not None, json.dumps(claims)[:200])
