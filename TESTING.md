@@ -89,6 +89,8 @@ python -m pytest
 
 | 2026-10-21 | Daily episode, 4:05 schedule | ❌ | First morning with `SCHEDULE_ENABLED`: no run at all, not even skipped. No schedule of the repository had ever fired (*Check Spotify* every 15 minutes either). Every commit used `veille@example.invalid`, linked to no GitHub account, and GitHub does not fire a schedule last changed by such a commit. Episode caught up by hand with `as_scheduled` | Scheduled workflows re-pushed with the owner's GitHub noreply email. Test: `test_schedules_are_owned_by_a_github_account` |
 
+| 2026-10-21 | [Check Spotify](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39554406512) | ✅ | Run by hand: first episode found live, recorded 19 minutes after publication. Only an upper bound: no scheduled check had run, and the episode was already visible in the Spotify app before | Precise delays once the 15-minute schedule fires |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
