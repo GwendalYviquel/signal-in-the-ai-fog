@@ -136,5 +136,68 @@
     "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-19/episode-2026-10-19.mp3",
     "audio_bytes": 5630102,
     "duration_seconds": 351.89551020408163
+  },
+  {
+    "date": "2026-10-21",
+    "title": "Voxtral 3, Mercury 3 and DeepInfer",
+    "summary": "Mistral launches Voxtral 3, a voice agent stack available on EU-hosted APIs or your own infrastructure. Also: Inception's Mercury 3 diffusion model, DeepSeek's open-sourced inference engine, the EU AI Office's first enforcement requests, and Vercel's gateway data showing open-weight models at 71.5 percent of tokens.",
+    "headlines": [
+      "Mistral's Voxtral 3 voice stack runs EU-hosted",
+      "Inception's Mercury 3 diffusion model goes live",
+      "DeepSeek open-sources its inference engine"
+    ],
+    "themes": [
+      "Sovereignty and Europe",
+      "Models and vendors",
+      "Platform",
+      "Regulation"
+    ],
+    "sources": [
+      {
+        "title": "The Decoder: Mistral AI launches Voxtral 3, a full voice agent stack that listens, thinks, and talks in real time",
+        "url": "https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time"
+      },
+      {
+        "title": "Technobezz: Mistral AI Launches Voxtral 3 With Voice Agent SDK and 50+ Languages",
+        "url": "https://technobezz.com/news/mistral-ai-voxtral-3-voice-agent-sdk"
+      },
+      {
+        "title": "AI Weekly: Mistral Voxtral 3 Posts 4.1% WER on FLEURS, Beating Whisper",
+        "url": "https://aiweekly.co/alerts/mistral-voxtral-3-posts-41-wer-on-fleurs-beating-whisper"
+      },
+      {
+        "title": "Unite.AI: Inception Releases Mercury 3, Its Flagship Diffusion LLM",
+        "url": "https://www.unite.ai/inception-releases-mercury-3-its-flagship-diffusion-llm/"
+      },
+      {
+        "title": "Morningstar (Business Wire): Inception Launches Mercury 3",
+        "url": "https://www.morningstar.com/news/business-wire/20261019090400/inception-launches-mercury-3-setting-a-new-pareto-frontier-in-speed-and-intelligence"
+      },
+      {
+        "title": "SiliconANGLE: DeepSeek open-sources DeepInfer, the inference framework behind its production services",
+        "url": "https://siliconangle.com/2026/10/20/deepseek-open-sources-deepinfer-the-inference-framework-behind-its-production-services/"
+      },
+      {
+        "title": "The Next Web: DeepSeek open-sources DeepInfer, the engine that runs its AI models",
+        "url": "https://thenextweb.com/news/deepseek-deepinfer-open-source-inference-engine"
+      },
+      {
+        "title": "Euronews: EU's AI rules face first enforcement test over lab incidents",
+        "url": "https://www.euronews.com/2026/10/14/eus-ai-rules-face-first-enforcement-test-over-lab-incidents"
+      },
+      {
+        "title": "The Next Web: EU puts the AI Act to the test",
+        "url": "https://thenextweb.com/news/eu-ai-act-openai-anthropic-ai-office-investigation"
+      },
+      {
+        "title": "Vercel: Open weight takes 71.5% of tokens and 23% of spend",
+        "url": "https://vercel.com/blog/ai-gateway-production-index-october-2026"
+      }
+    ],
+    "published_at": "2026-10-21T07:57:48+02:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-21",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-21/episode-2026-10-21.mp3",
+    "audio_bytes": 5243117,
+    "duration_seconds": 327.7061224489796
   }
 ]

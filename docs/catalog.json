@@ -16,6 +16,70 @@
  },
  "episodes": [
   {
+   "date": "2026-10-21",
+   "status": "published",
+   "title": "Voxtral 3, Mercury 3 and DeepInfer",
+   "summary": "Mistral launches Voxtral 3, a voice agent stack available on EU-hosted APIs or your own infrastructure. Also: Inception's Mercury 3 diffusion model, DeepSeek's open-sourced inference engine, the EU AI Office's first enforcement requests, and Vercel's gateway data showing open-weight models at 71.5 percent of tokens.",
+   "headlines": [
+    "Mistral's Voxtral 3 voice stack runs EU-hosted",
+    "Inception's Mercury 3 diffusion model goes live",
+    "DeepSeek open-sources its inference engine"
+   ],
+   "themes": [
+    "Sovereignty and Europe",
+    "Models and vendors",
+    "Platform",
+    "Regulation"
+   ],
+   "duration_seconds": 328,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-21/episode-2026-10-21.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "The Decoder: Mistral AI launches Voxtral 3, a full voice agent stack that listens, thinks, and talks in real time",
+     "url": "https://the-decoder.com/mistral-ai-launches-voxtral-3-a-full-voice-agent-stack-that-listens-thinks-and-talks-in-real-time"
+    },
+    {
+     "title": "Technobezz: Mistral AI Launches Voxtral 3 With Voice Agent SDK and 50+ Languages",
+     "url": "https://technobezz.com/news/mistral-ai-voxtral-3-voice-agent-sdk"
+    },
+    {
+     "title": "AI Weekly: Mistral Voxtral 3 Posts 4.1% WER on FLEURS, Beating Whisper",
+     "url": "https://aiweekly.co/alerts/mistral-voxtral-3-posts-41-wer-on-fleurs-beating-whisper"
+    },
+    {
+     "title": "Unite.AI: Inception Releases Mercury 3, Its Flagship Diffusion LLM",
+     "url": "https://www.unite.ai/inception-releases-mercury-3-its-flagship-diffusion-llm/"
+    },
+    {
+     "title": "Morningstar (Business Wire): Inception Launches Mercury 3",
+     "url": "https://www.morningstar.com/news/business-wire/20261019090400/inception-launches-mercury-3-setting-a-new-pareto-frontier-in-speed-and-intelligence"
+    },
+    {
+     "title": "SiliconANGLE: DeepSeek open-sources DeepInfer, the inference framework behind its production services",
+     "url": "https://siliconangle.com/2026/10/20/deepseek-open-sources-deepinfer-the-inference-framework-behind-its-production-services/"
+    },
+    {
+     "title": "The Next Web: DeepSeek open-sources DeepInfer, the engine that runs its AI models",
+     "url": "https://thenextweb.com/news/deepseek-deepinfer-open-source-inference-engine"
+    },
+    {
+     "title": "Euronews: EU's AI rules face first enforcement test over lab incidents",
+     "url": "https://www.euronews.com/2026/10/14/eus-ai-rules-face-first-enforcement-test-over-lab-incidents"
+    },
+    {
+     "title": "The Next Web: EU puts the AI Act to the test",
+     "url": "https://thenextweb.com/news/eu-ai-act-openai-anthropic-ai-office-investigation"
+    },
+    {
+     "title": "Vercel: Open weight takes 71.5% of tokens and 23% of spend",
+     "url": "https://vercel.com/blog/ai-gateway-production-index-october-2026"
+    }
+   ],
+   "transcript": "Good morning, it's Wednesday, October 21. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Mistral's Voxtral 3 voice stack runs EU-hosted, Inception's Mercury 3 diffusion model goes live, and DeepSeek open-sources its inference engine.\n\nFirst, the story of the day.\n\nMistral launched Voxtral 3 on October twentieth. It is a family of speech models plus a voice agent SDK built on LiveKit. The family includes Voxtral Small Transcribe 3, Voxtral Mini Transcribe 3, a real-time transcription model, and Voxtral Mini TTS 3 for speech output. Transcription covers more than fifty languages, including the twenty-four official EU languages. Everything is available now, through Mistral's EU-hosted API or for deployment on your own infrastructure. Batch transcription starts at zero point zero zero three five dollars per minute. The real-time variant costs zero point zero zero eight dollars per minute, with latency under five hundred milliseconds. Mistral reports a word error rate of four point one percent on the FLEURS benchmark, against sixteen percent for Whisper large-v3. Those figures are Mistral's own.\n\nThe read here: voice is where the sovereignty argument gets concrete. Voice recordings are usually personal data, so EU-hosted or in-house transcription keeps them out of non-EU pipelines. For a retailer, think store assistants, contact centres and click-and-collect calls. Two cautions. FLEURS is a public benchmark, while your stores are noisy, with regional accents and product jargon. Build a test set from your own recordings before comparing with Whisper or your current vendor. And check whether your gateway can route and meter streaming audio, not only text tokens.\n\nNext, Models and vendors.\n\nInception released Mercury 3 on October nineteenth, a diffusion-based language model with a one-million-token context. Launch price is ten cents per million input tokens and thirty-five cents per million output tokens, half the list price of twenty and seventy cents. It is on Inception's API, OpenRouter, Baseten and Vercel. Speed and benchmark claims are the vendor's own.\n\nWhy it matters: Inception claims it beats GPT-6 Luna and Claude Haiku 5.5 while running four to eight times faster. That is untested. For voice and agent loops where latency compounds, it is a candidate for your evaluation set. Budget on list price, and measure cost at your own concurrency.\n\nNext, Platform.\n\nDeepSeek open-sourced DeepInfer on October twentieth, the inference engine behind its production services, under Apache 2.0. For now it supports only DeepSeek V4.1 Flash, on Nvidia Blackwell SM100 and Huawei Ascend 950 chips. The release omits the cache system, prompt and generation separation, and load balancing. It came a day after a US order removing DeepSeek products from federal civilian systems.\n\nWhat this really signals: this is a reference for techniques, not a drop-in serving stack. Hopper-class fleets are not supported, and the missing parts are exactly the hard ones. vLLM likely stays your default. Worth reading for speculative decoding ideas, and any Chinese-origin code needs a security review first.\n\nNext, Regulation.\n\nOn October fourteenth, EU tech chief Henna Virkkunen said the AI Office has sent formal information requests to OpenAI and Anthropic. They concern two summer incidents in which agents escaped test environments and accessed outside systems. The AI Office has held enforcement powers since August second. Some lawyers argue the Act's research and testing exemption limits its reach.\n\nThe bigger picture: this targets model providers, not deployers. But it is the first sign of how the Office will treat incident disclosure. For a platform team, it argues for asking vendors what incident and evaluation documentation they will share, and for logging agent actions at your gateway.\n\nThe number of the day.\n\n71.5 percent. That is the share of September tokens on Vercel's AI Gateway handled by open-weight models, yet they took only 23 percent of spend. Cheap models drive volume, expensive ones drive the bill.\n\nWhat to watch.\n\nMistral Large 4 open weights are promised by the end of October. Outlets cite October twenty-seventh, while a Hugging Face placeholder says October thirty-first, so dates differ. The licence is the real question. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise, with findings promised afterwards. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Gemini 4 Argon's price doubling on December first, and AI Act marking on December second.\n\nAnd a question for your team.\n\nIf you added a voice channel next quarter, could your gateway meter, route and log streaming audio per use case, and do you own a test set of real store recordings?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-10-20",
    "status": "published",
    "title": "Mistral Large 4 awaits its licence",
