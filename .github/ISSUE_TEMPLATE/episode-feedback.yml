@@ -1,0 +1,30 @@
+name: Episode feedback
+description: Was an episode useful? What worked, what did not.
+title: "Feedback: "
+labels: [feedback]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for listening. This issue is **public**: never write anything personal or confidential,
+        such as your employer, your team or internal projects.
+  - type: input
+    id: episode
+    attributes:
+      label: Episode date
+      description: YYYY-MM-DD, filled in when you come from an episode page.
+      placeholder: "2026-10-21"
+    validations:
+      required: true
+  - type: dropdown
+    id: useful
+    attributes:
+      label: Was it useful?
+      options: ["Very useful", "Somewhat useful", "Not useful"]
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What worked, what did not
+      description: A story that mattered, one that did not, the length, the voices, the angle.

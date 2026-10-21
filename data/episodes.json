@@ -14,6 +14,12 @@
       "Regulation",
       "Retail and agents"
     ],
+    "topics": [
+      "Mistral",
+      "EU AI Act",
+      "Google",
+      "Agentic commerce"
+    ],
     "sources": [
       {
         "title": "CNBC: Mistral unveils new AI model it says rivals best open systems from China",
@@ -76,6 +82,14 @@
       "Sovereignty and Europe",
       "Quality",
       "Regulation"
+    ],
+    "topics": [
+      "Google",
+      "Gemini",
+      "Mistral",
+      "Ecosia",
+      "LLM-as-a-judge",
+      "EU AI Act"
     ],
     "sources": [
       {
@@ -151,6 +165,15 @@
       "Models and vendors",
       "Platform",
       "Regulation"
+    ],
+    "topics": [
+      "Mistral",
+      "Voxtral",
+      "Inception",
+      "DeepSeek",
+      "Inference engines",
+      "EU AI Act",
+      "AI Office"
     ],
     "sources": [
       {

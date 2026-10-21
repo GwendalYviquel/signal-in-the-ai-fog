@@ -118,6 +118,10 @@
   .headlines li::marker { color: var(--accent); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
   .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); font-weight: 600; }
+  a.tag { text-decoration: none; background: transparent; color: var(--accent); border: 1px solid var(--border); font-weight: 500; }
+  a.tag::before { content: "# "; opacity: .6; }
+  a.tag:hover { text-decoration: underline; }
+  .page-link { font-size: 14px; font-weight: 600; white-space: nowrap; }
   .card-head { display: flex; gap: 16px; align-items: flex-start; }
   .thumb { width: 88px; height: 88px; border-radius: 10px; flex: none; object-fit: cover; }
   .card-body { min-width: 0; flex: 1; }
@@ -213,6 +217,8 @@
   const fmtMonth = (iso) => parseDate(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
   const fmtDuration = (s) => s ? `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s` : "";
   const norm = (s) => (s || "").toLowerCase();
+  // Same rule as slug() in podcast/site.py, which names the topic pages.
+  const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "topic";
 
   // Highlights the search query inside plain text, without ever injecting HTML.
   const highlighted = (text, query) => {
@@ -231,7 +237,7 @@
   const matches = (ep) => {
     if (state.theme && !ep.themes.includes(state.theme)) return false;
     if (!state.query) return true;
-    const hay = [ep.title, ep.summary, ep.headlines.join(" "), ep.transcript,
+    const hay = [ep.title, ep.summary, ep.headlines.join(" "), ep.transcript, (ep.topics || []).join(" "),
                  ep.sources.map((s) => s.title).join(" ")].map(norm).join(" ");
     return hay.includes(state.query);
   };
@@ -274,8 +280,11 @@
       ]),
       ep.headlines.length ? el("ul", { class: "headlines", "aria-label": "Headlines" },
                                ep.headlines.map((h) => el("li", {}, highlighted(h, q)))) : null,
-      ep.themes.length ? el("div", { class: "tags" }, ep.themes.map((t) => el("span", { class: "tag", text: t }))) : null,
-      el("div", { class: "listen" }, [player, spotify]),
+      ep.themes.length || (ep.topics || []).length ? el("div", { class: "tags" }, [
+        ...ep.themes.map((t) => el("span", { class: "tag", text: t })),
+        ...(ep.topics || []).map((t) => el("a", { class: "tag topic", href: `topics/${slug(t)}.html`, text: t }))]) : null,
+      el("div", { class: "listen" }, [player, spotify,
+        ep.page ? el("a", { class: "page-link", href: ep.page, text: "Episode page →" }) : null]),
       script,
       ep.sources.length ? sources : null,
     ]);
@@ -319,6 +328,8 @@
       setTimeout(() => (rss.textContent = "Copy RSS feed"), 2000);
     });
     actions.append(rss);
+    if (episodes.some((e) => (e.topics || []).length))
+      actions.append(el("a", { class: "btn", href: "topics/index.html", text: "Browse topics" }));
 
     if (episodes.length) {
       const published = episodes.filter((e) => e.status !== "preview");

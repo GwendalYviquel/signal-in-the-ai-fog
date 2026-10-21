@@ -1,7 +1,7 @@
 """Episode validation: what blocks an episode, and what only warns."""
 import pytest
 
-from conftest import make_episode, text
+from conftest import SOURCE, make_episode, text
 from podcast import generate
 
 
@@ -152,3 +152,39 @@ def test_segment_needs_both_layers(cfg):
     ep = make_episode()
     ep["segments"][1]["read"] = ""
     assert "Segment 'Platform' needs both facts and read" in errors_of(ep, cfg)
+
+
+def test_every_story_has_a_known_reliability_label(cfg):
+    ep = make_episode()
+    ep["segments"][0]["label"] = "rumour"
+    del ep["story_of_the_day"]["label"]
+    errs = errors_of(ep, cfg)
+    assert any("Label of the story of the day" in e for e in errs)
+    assert any("Label of the segment 'Models and vendors'" in e and "'rumour'" in e for e in errs)
+
+
+@pytest.mark.parametrize("topics,message", [([], "needs 1 to 3 topics"), (["A", "B", "C", "D"], "needs 1 to 3 topics"),
+                                            (["One two three four five"], "1 to 4 words"),
+                                            (["Platform"], "is a theme name")])
+def test_topics_are_short_subjects_not_themes(cfg, topics, message):
+    ep = make_episode()
+    ep["story_of_the_day"]["topics"] = topics
+    assert any(message in e for e in errors_of(ep, cfg))
+
+
+def test_topics_are_published_so_forbidden_terms_are_checked(cfg, monkeypatch):
+    monkeypatch.setenv("FORBIDDEN_TERMS", "Acme")
+    ep = make_episode()
+    ep["segments"][1]["topics"] = ["Acme stores"]
+    assert "Forbidden term in topic" in errors_of(ep, cfg)
+
+
+def test_follow_up_is_optional_but_needs_a_source_and_spoken_text(cfg):
+    assert errors_of(make_episode(follow_up={"text": text(40), "source": SOURCE}), cfg) == []
+    errs = errors_of(make_episode(follow_up={"text": "See [link] " + text(40), "source": {"title": "S", "url": ""}}), cfg)
+    assert "The follow-up has no source" in errs and any("in follow_up" in e for e in errs)
+
+
+def test_follow_up_without_source_goes_back_to_research():
+    # A light correction cannot search the web: it would have to invent the source.
+    assert generate._needs_research(["The follow-up has no source"])

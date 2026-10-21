@@ -15,7 +15,7 @@ OUT = Path(__file__).resolve().parent.parent / "assets"
 
 # Content shared with the tests: the secrets each stage uses, and the episode's word targets.
 SECRETS = {"Writing": ["ANTHROPIC_API_KEY", "EDITORIAL_CONTEXT", "FORBIDDEN_TERMS"],
-           "Audio": ["ELEVENLABS_API_KEY"]}
+           "Audio": ["ELEVENLABS_API_KEY"], "Distribution": ["NTFY_TOPIC"]}
 EPISODE = [  # (part, voice, words): the prompt's targets, 4 segments
     ("Intro", "host", 45), ("Story of the day", "host", 130), ("The read", "analyst", 110),
     *[part for _ in range(4) for part in (("Facts", "host", 45), ("Read", "analyst", 35))],
@@ -28,17 +28,17 @@ PROMPT_TARGETS = {"story facts": 130, "story read": 110, "segment facts": 45, "s
 def pipeline(theme):
     """Four stages, each a row of steps, with the secrets each one uses."""
     stages = [
-        ("1", "Checks", "weekdays · 7:15 Paris",
-         [("GitHub Actions", "scheduled run"), ("Offline tests", "before every run"),
+        ("1", "Checks", "weekdays, 4:05",
+         [("GitHub Actions", "schedule, watchdog"), ("Offline tests", "before every run"),
           ("Voice check", "one word per voice")]),
         ("2", "Writing", "Claude + validation",
-         [("Claude + web search", "news of the last 24–72 h"), ("Validation", "structure, sources, wording"),
+         [("Claude + web search", "news, open items, topics"), ("Validation", "structure, sources, wording"),
           ("Corrections", "light, or back to research")]),
         ("3", "Audio", "two voices",
          [("Spoken script", "fixed opening and sign-off"), ("ElevenLabs", "host and analyst voices"),
           ("GitHub release", "the episode MP3")]),
         ("4", "Distribution", "free hosting",
-         [("RSS feed", "docs/feed.xml"), ("Catalog site", "docs/catalog.json"),
+         [("RSS feed", "chapters, transcript"), ("Catalog site", "episode and topic pages"),
           ("Spotify · Apple", "read the feed")]),
     ]
     step_h, gap, left = 58, 30, 196
@@ -95,7 +95,7 @@ def episode(theme):
     groups = [("Opening", ["3 headlines", "AI disclosure"], 0, 0),
               ("Story of the day", ["facts ~130 · read ~110 words"], 1, 2),
               ("3 or 4 segments, in theme order", ["facts ~45 · read ~35 words each"], 3, 10),
-              ("Closing", ["number · what to watch", "question · sign-off"], 11, 11)]
+              ("Closing", ["follow-up · number", "watch · question · end"], 11, 11)]
     for title, subs, a, b in groups:
         x0, x1 = xs[a][0] + 3, xs[b][1] - 3
         d.arrow(f"M{x0:.1f},{bar_y + bar_h + 12} L{x0:.1f},{bar_y + bar_h + 18} "
@@ -122,7 +122,7 @@ def generation(theme):
     bw = (W - 2 - 4 * gap) / 5
     steps = [
         ([("Brief", 13.5, 700, c["ink"]), ("date, themes,", 11.5, 400, c["muted"]),
-          ("last 3 scripts", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
+          ("scripts, open items", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
         ([("Claude research", 13.5, 700, c["ink"]), ("up to 15", 11.5, 400, c["muted"]),
           ("web searches", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
         ([("submit_episode", 13, 700, c["accent_ink"], True), ("structured episode", 11.5, 400, c["accent_ink"]),
@@ -289,12 +289,13 @@ def schedule(theme):
 
 # The test plan: every test file belongs to one area (a test checks none is forgotten).
 TEST_AREAS = [
-    ("Writing", "Claude, validation, prompt", ["validate", "generate", "prompt", "assemble"]),
-    ("Voices", "ElevenLabs, two voices", ["tts"]),
-    ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal"]),
-    ("Schedule", "4:05 Paris, all year", ["schedule"]),
+    ("Writing", "Claude, validation, prompt", ["validate", "generate", "prompt", "assemble", "context"]),
+    ("Voices", "ElevenLabs, chapters", ["tts", "chapters"]),
+    ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal",
+                                                   "offline_rehearsal"]),
+    ("Schedule", "4:05, watchdog, alerts", ["schedule", "watchdog", "notify"]),
     ("Money and audience", "costs, downloads, Spotify", ["costs", "finops", "stats", "spotify"]),
-    ("Catalog site", "real browser", ["site"]),
+    ("Catalog site", "pages, real browser", ["site", "pages"]),
     ("Visuals and docs", "cover, diagrams, README", ["cover", "docs"]),
     ("Repository and CI", "workflows, secrets, privacy", ["repo"]),
 ]

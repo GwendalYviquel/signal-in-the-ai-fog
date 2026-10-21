@@ -185,7 +185,7 @@ def test_spotify_show_url_is_a_show_link(cfg):
     assert catalog["podcast"]["spotify_url"] == url, "regenerate docs/catalog.json after changing spotify_url"
 
 
-@pytest.mark.parametrize("name", ["daily-episode.yml", "check-spotify.yml", "stats.yml"])
+@pytest.mark.parametrize("name", sorted(p.name for p in WORKFLOWS.glob("*.yml") if "schedule:" in p.read_text()))
 def test_schedules_are_owned_by_a_github_account(name):
     # Regression (2026-10-21): no scheduled run ever fired, the first real morning had no episode.
     # Every commit used veille@example.invalid, an email linked to no GitHub account, and GitHub
@@ -194,8 +194,12 @@ def test_schedules_are_owned_by_a_github_account(name):
                              capture_output=True, text=True).stdout.strip()
     if shallow != "false":
         pytest.skip("needs the full git history (CI checks out a single commit)")
-    email = subprocess.run(["git", "log", "-1", "--format=%ae", "--", f".github/workflows/{name}"],
-                           cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    path = f".github/workflows/{name}"
+    if git("status", "--porcelain", "--", path).stdout.strip():  # changed: the next commit decides
+        email = git("config", "user.email").stdout.strip()
+    else:
+        email = subprocess.run(["git", "log", "-1", "--format=%ae", "--", path],
+                               cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
     assert email.endswith("@users.noreply.github.com"), f"last change of {name} authored by {email}"
 
 
@@ -212,3 +216,36 @@ def test_dependabot_pull_requests_are_merged_only_once_tested():
     assert all("uses" not in s for s in job["steps"])
     run = job["steps"][0]["run"]
     assert '--match-head-commit "$SHA"' in run and "--author app/dependabot" in run
+
+
+def test_daily_run_notifies_the_phone_after_every_real_run():
+    wf = workflow("daily-episode.yml")
+    notify_step = step(wf, "Notify the phone")
+    assert notify_step["if"] == "always() && env.DRY_RUN == 'false'"  # failures too, never dry runs
+    assert set(notify_step["env"]) == {"NTFY_TOPIC"} and "python -m podcast.notify daily" in notify_step["run"]
+    assert step_names(wf)[-1] == "Notify the phone"
+
+
+@pytest.mark.parametrize("name,step_name", [("daily-episode.yml", "Generate the episode"),
+                                            ("preview-episode.yml", "Generate the script")])
+def test_generation_can_read_the_accepted_suggestions(name, step_name):
+    wf = workflow(name)
+    assert wf["permissions"]["issues"] == "read"
+    assert step(wf, step_name)["env"]["GH_TOKEN"] == "${{ github.token }}"
+
+
+def test_issue_forms_match_the_site_links_and_the_suggestion_labels():
+    from podcast import context
+    forms = ROOT / ".github" / "ISSUE_TEMPLATE"
+    feedback = yaml.safe_load((forms / "episode-feedback.yml").read_text(encoding="utf-8"))
+    suggestion = yaml.safe_load((forms / "topic-suggestion.yml").read_text(encoding="utf-8"))
+    assert "episode" in [f.get("id") for f in feedback["body"]]  # the episode page pre-fills it by this id
+    assert suggestion["labels"] == [context.SUGGESTION_LABELS[0]]  # "accepted" is added by the owner only
+    for form in (feedback, suggestion):
+        assert "public" in form["body"][0]["attributes"]["value"]
+    config = yaml.safe_load((forms / "config.yml").read_text(encoding="utf-8"))
+    assert config["blank_issues_enabled"] is False
+
+
+def test_local_preview_config_is_not_committed():
+    assert git("check-ignore", "-q", ".claude/launch.json").returncode == 0

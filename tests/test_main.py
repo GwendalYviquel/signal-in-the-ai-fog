@@ -7,7 +7,7 @@ import pytest
 import yaml
 
 from conftest import ROOT, SATURDAY, TUESDAY, make_episode
-from podcast import generate, main, publish, tts
+from podcast import context, generate, main, publish, tts
 
 # 60 MPEG-1 Layer III frames (128 kbps, 44.1 kHz): about 1.6 s of valid MP3 for mutagen.
 FRAME = b"\xff\xfb\x90\x00" + b"\x00" * 413
@@ -26,7 +26,7 @@ def repo(tmp_path, monkeypatch):
     (tmp_path / "data").mkdir()
     for name, path in {"ROOT": tmp_path, "EPISODES": tmp_path / "data/episodes.json",
                        "SCRIPTS": tmp_path / "data/scripts", "PREVIEWS": tmp_path / "data/previews.json",
-                       "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build",
+                       "PREVIEW_SCRIPTS": tmp_path / "data/previews", "BUILD": tmp_path / "build", "DOCS": tmp_path / "docs",
                        "COST_LEDGER": tmp_path / "data/costs.json", "COST_REPORT": tmp_path / "COSTS.md",
                        "COST_CHARTS": tmp_path / "assets"}.items():
         monkeypatch.setattr(main, name, path)
@@ -38,14 +38,24 @@ def repo(tmp_path, monkeypatch):
     return tmp_path
 
 
+def test_the_test_repository_redirects_every_path_of_the_pipeline(repo):
+    # Regression (2026-10-21): main.DOCS was added without being redirected here, and a test run
+    # wrote its fake episode into the real docs/feed.xml. Every path main writes must be redirected.
+    from pathlib import Path
+    real = [name for name, value in vars(main).items()
+            if isinstance(value, Path) and ROOT in (value, *value.parents)]
+    assert real == [], f"podcast.main paths still in the real repository during tests: {real}"
+
+
 @pytest.fixture
 def mocks(monkeypatch):
     """Fake generation, speech and GitHub release; records what was called."""
     calls = {"generate": 0, "tts": 0, "upload": [], "delete": []}
 
-    def fake_generate(cfg, now, previous, usage=None):
+    def fake_generate(cfg, now, previous, usage=None, request=None):
         calls["generate"] += 1
         calls["previous"] = previous
+        calls["request"] = request
         calls["editorial_now"] = now
         if usage is not None:  # as if two API calls were made
             usage.update(api_calls=2, input_tokens=50_000, output_tokens=4_000, web_search_requests=12)
@@ -54,10 +64,15 @@ def mocks(monkeypatch):
                 "parts": generate.assemble_parts(ep, cfg, now), "sources": generate.collect_sources(ep),
                 "structured": ep}
 
-    def fake_tts(parts, cfg, out, billed=None):
+    def fake_tts(parts, cfg, out, billed=None, timeline=None):
         calls["tts"] += 1
         calls["voices"] = {role for role, _ in parts}
         out.write_bytes(FAKE_MP3)
+        position = 0.0
+        for _, text in parts:  # one chunk per part, 15 characters a second
+            if timeline is not None:
+                timeline.append({"text": text, "start": position, "end": position + len(text) / 15})
+            position += len(text) / 15
         chars = sum(len(text) for _, text in parts)
         if billed is not None:
             billed[:] = [chars]
@@ -69,6 +84,7 @@ def mocks(monkeypatch):
         calls["voice_checks"] = calls.get("voice_checks", 0) + 1
         return {"host": "ok", "analyst": "ok"}
     monkeypatch.setattr(tts, "voice_check_results", fake_voice_check)
+    monkeypatch.setattr(context, "accepted_suggestions", lambda: calls.get("suggestions", []))  # never gh
     monkeypatch.setattr(publish, "repo", lambda: "owner/podcast")
     monkeypatch.setattr(publish, "upload_audio",
                         lambda mp3, tag, title, notes: calls["upload"].append(tag) or f"https://x/{tag}/{mp3.name}")
@@ -150,7 +166,7 @@ def test_failed_speech_keeps_the_preview(repo, mocks, monkeypatch):
     main.main()
     monkeypatch.setenv("PREVIEW", "false")
 
-    def failing_tts(text, cfg, out, billed=None):
+    def failing_tts(text, cfg, out, billed=None, timeline=None):
         raise RuntimeError("ElevenLabs 500")
     monkeypatch.setattr(tts, "synthesize", failing_tts)
     with pytest.raises(RuntimeError):
@@ -217,3 +233,37 @@ def test_no_voice_check_in_dry_run_or_preview(repo, mocks, monkeypatch):
     monkeypatch.delenv("FORCE")
     main.main()
     assert mocks["voice_checks"] == 1
+
+
+def test_publication_writes_chapters_transcript_pages_and_the_notification(repo, mocks, monkeypatch):
+    monkeypatch.setenv("PREVIEW", "true")
+    main.main()
+    assert (repo / "data/previews/2026-10-20.json").exists()  # a preview page shows the stories too
+    assert (repo / "docs/episodes/2026-10-20.html").exists()
+    monkeypatch.setenv("PREVIEW", "false")
+    main.main()
+
+    [ep] = read(repo / "data/episodes.json")
+    assert ep["topics"] == ["Microsoft", "Sovereign cloud", "Topic 0", "Topic 1", "Topic 2", "Topic 3"]
+    assert [c["title"] for c in ep["chapters"]][:2] == ["Opening", "Story of the day: Microsoft's sovereign cloud goes local"]
+    assert (repo / "docs/episodes/2026-10-20.vtt").read_text().startswith("WEBVTT")
+    assert read(repo / "docs/episodes/2026-10-20.chapters.json")["chapters"][0] == {"startTime": 0.0, "title": "Opening"}
+    assert read(repo / "data/scripts/2026-10-20.json")["story_of_the_day"]["label"] == "confirmed"
+    assert not (repo / "data/previews/2026-10-20.json").exists()  # replaced by the published episode
+    page = (repo / "docs/episodes/2026-10-20.html").read_text()
+    assert "<h2>Chapters</h2>" in page and 'class="label confirmed"' in page
+    assert (repo / "docs/topics/microsoft.html").exists() and (repo / "docs/sitemap.xml").exists()
+    note = read(repo / "build/published.json")
+    assert note["page_url"] == "https://owner.github.io/podcast/episodes/2026-10-20.html"
+
+
+def test_request_carries_open_items_known_topics_and_suggestions(repo, mocks, monkeypatch):
+    (repo / "data/scripts").mkdir(parents=True)
+    (repo / "data/scripts/2026-10-19.md").write_text(
+        "## Script\n\nWhat to watch.\n\nThe vote on Thursday.\n\nAnd a question for your team.\n\nQ?\n\n## Sources\n")
+    (repo / "data/episodes.json").write_text(json.dumps([{"date": "2026-10-19", "topics": ["EU AI Act"]}]))
+    mocks["suggestions"] = ["#3 Model Context Protocol: worth a look"]
+    monkeypatch.setenv("DRY_RUN", "true")
+    main.main()
+    assert mocks["request"] == {"open_items": [("2026-10-19", "The vote on Thursday.")], "topics": ["EU AI Act"],
+                                "suggestions": ["#3 Model Context Protocol: worth a look"]}

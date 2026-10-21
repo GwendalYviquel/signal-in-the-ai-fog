@@ -1,0 +1,23 @@
+name: Topic suggestion
+description: A company, product, regulation or subject the podcast should follow.
+title: "Topic: "
+labels: [topic-suggestion]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggestions are read by the editor. Once marked **accepted**, the next episodes consider them
+        when there is real news about them. This issue is **public**: never write anything personal
+        or confidential.
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: "Model Context Protocol, EU AI Act codes of practice, AI gateways..."
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: One or two sentences, and a link if you have one.

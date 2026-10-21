@@ -31,6 +31,17 @@
     "Platform",
     "Regulation"
    ],
+   "topics": [
+    "Mistral",
+    "Voxtral",
+    "Inception",
+    "DeepSeek",
+    "Inference engines",
+    "EU AI Act",
+    "AI Office"
+   ],
+   "page": "episodes/2026-10-21.html",
+   "chapters": [],
    "duration_seconds": 328,
    "downloads": null,
    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-21/episode-2026-10-21.mp3",
@@ -95,6 +106,14 @@
     "Regulation",
     "Retail and agents"
    ],
+   "topics": [
+    "Mistral",
+    "EU AI Act",
+    "Google",
+    "Agentic commerce"
+   ],
+   "page": "episodes/2026-10-20.html",
+   "chapters": [],
    "duration_seconds": 312,
    "downloads": 3,
    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-20/episode-2026-10-20.mp3",
@@ -159,6 +178,16 @@
     "Quality",
     "Regulation"
    ],
+   "topics": [
+    "Google",
+    "Gemini",
+    "Mistral",
+    "Ecosia",
+    "LLM-as-a-judge",
+    "EU AI Act"
+   ],
+   "page": "episodes/2026-10-19.html",
+   "chapters": [],
    "duration_seconds": 352,
    "downloads": 2,
    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-19/episode-2026-10-19.mp3",

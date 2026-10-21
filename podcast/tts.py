@@ -132,20 +132,23 @@ def _runs(parts: list[tuple[str, str]], tts_cfg: dict) -> list[tuple[str, str, s
     return runs
 
 
-def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path, billed: list | None = None) -> int:
+def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path, billed: list | None = None,
+               timeline: list | None = None) -> int:
     """parts: (voice role, text) in reading order; roles map to voices in tts_cfg["voices"].
     Returns the characters billed. billed (optional list) receives the count as it grows, so a
-    caller still knows what was spent when a request fails half-way."""
+    caller still knows what was spent when a request fails half-way. timeline (optional list)
+    receives {"text", "start", "end"} for every chunk, in seconds: chapters and transcripts."""
     headers = {"xi-api-key": os.environ["ELEVENLABS_API_KEY"], "Content-Type": "application/json"}
     params = {"output_format": tts_cfg["output_format"]}
     pause_seconds, pause = tts_cfg.get("pause_seconds", 0), None
     runs = _runs(parts, tts_cfg)
     total = sum(len(text) for _, _, text in runs)
-    requests_count, billed_chars = 0, 0
+    requests_count, billed_chars, position = 0, 0, 0.0
     with open(out_path, "wb") as f:
         for n, (role, voice, text) in enumerate(runs):
             if n and pause:
                 f.write(pause)  # a short breath when the other voice takes over
+                position += mp3_duration(pause)
             chunks = split_text(text, tts_cfg["max_chars_per_request"])
             for i, chunk in enumerate(chunks):
                 body = {"text": chunk, "model_id": tts_cfg["model_id"]}
@@ -174,6 +177,10 @@ def synthesize(parts: list[tuple[str, str]], tts_cfg: dict, out_path: Path, bill
                 if pause is None:
                     pause = silence_like(audio, pause_seconds) if pause_seconds else b""
                 f.write(audio)
+                length = mp3_duration(audio)
+                if timeline is not None:
+                    timeline.append({"text": chunk, "start": round(position, 2), "end": round(position + length, 2)})
+                position += length
     print(f"Speech synthesis: {total} characters, {len(runs)} voice turns, {requests_count} request(s)")
     return billed_chars
 

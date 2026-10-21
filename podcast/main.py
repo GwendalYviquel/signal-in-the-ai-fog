@@ -18,7 +18,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import catalog, costs, feed, generate, publish, tts
+from . import catalog, chapters, context, costs, feed, generate, publish, site, tts
 
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
@@ -26,6 +26,7 @@ SCRIPTS = ROOT / "data" / "scripts"
 PREVIEWS = ROOT / "data" / "previews.json"
 PREVIEW_SCRIPTS = ROOT / "data" / "previews"
 BUILD = ROOT / "build"
+DOCS = ROOT / "docs"
 COST_LEDGER, COST_REPORT, COST_CHARTS = costs.LEDGER, costs.REPORT, costs.CHARTS
 
 
@@ -112,6 +113,17 @@ def save(path: Path, items: list[dict]) -> None:
     path.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def topics_covered(structured: dict) -> list[str]:
+    stories = [structured["story_of_the_day"]] + structured["segments"]
+    return list(dict.fromkeys(str(t).strip() for s in stories for t in s.get("topics") or []))
+
+
+def save_structured(ep: dict, folder: Path, today: dt.date) -> None:
+    """The episode as Claude submitted it (layers, labels, topics): the episode and topic pages."""
+    (folder / f"{today}.json").write_text(json.dumps(ep["structured"], ensure_ascii=False, indent=1),
+                                          encoding="utf-8")
+
+
 def record(ep: dict, today: dt.date, now: dt.datetime) -> dict:
     return {
         "date": today.isoformat(),
@@ -119,6 +131,7 @@ def record(ep: dict, today: dt.date, now: dt.datetime) -> dict:
         "summary": ep["summary"],
         "headlines": ep["structured"]["headlines"],
         "themes": themes_covered(ep["structured"]),
+        "topics": topics_covered(ep["structured"]),
         "sources": ep["sources"],
         "published_at": now.replace(microsecond=0).isoformat(),
     }
@@ -188,7 +201,10 @@ def run(cfg: dict, spend: dict) -> str | None:
     previous = [p.read_text(encoding="utf-8") for p in sorted(SCRIPTS.glob("*.md"))
                 if p.stem < today.isoformat()][-3:]
 
-    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"])
+    request = {"open_items": context.open_items(SCRIPTS, today.isoformat()),
+               "topics": context.known_topics(episodes),
+               "suggestions": context.accepted_suggestions()}
+    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request)
     report_overlaps(ep, today, episodes)
     md = to_markdown(ep, today)
     (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
@@ -204,13 +220,16 @@ def run(cfg: dict, spend: dict) -> str | None:
         # Catalog only, without audio: never added to the RSS feed, so Spotify never sees it.
         PREVIEW_SCRIPTS.mkdir(parents=True, exist_ok=True)
         (PREVIEW_SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
+        save_structured(ep, PREVIEW_SCRIPTS, today)
         save(PREVIEWS, previews + [record(ep, today, now)])
-        catalog.write_catalog(cfg, episodes, load(PREVIEWS), ROOT / "data", ROOT / "docs" / "catalog.json", base_url)
+        catalog.write_catalog(cfg, episodes, load(PREVIEWS), ROOT / "data", DOCS / "catalog.json", base_url)
+        site.write_site(cfg, DOCS / "catalog.json", ROOT / "data", DOCS, base_url)
         print("PREVIEW: script published to the catalog, no speech synthesis, RSS feed unchanged.")
         return
 
     mp3 = BUILD / f"episode-{today}.mp3"
-    tts.synthesize(ep["parts"], cfg["tts"], mp3, billed=spend["speech"])
+    timeline: list[dict] = []
+    tts.synthesize(ep["parts"], cfg["tts"], mp3, billed=spend["speech"], timeline=timeline)
 
     tag = f"episode-{today}"
     if force:
@@ -221,20 +240,34 @@ def run(cfg: dict, spend: dict) -> str | None:
     published_at = editorial_now if backfill else now  # a catch-up takes its place in the feed
     extra = {"catch_up": {"generated_at": now.replace(microsecond=0).isoformat(),
                           "news_cutoff": editorial_now.isoformat()}} if backfill else {}
+    marks = chapters.build_chapters(ep["structured"], timeline)
+    if timeline:  # timed transcript and chapters, served next to the episode page
+        (DOCS / "episodes").mkdir(parents=True, exist_ok=True)
+        (DOCS / "episodes" / f"{today}.vtt").write_text(chapters.build_vtt(timeline), encoding="utf-8")
+        (DOCS / "episodes" / f"{today}.chapters.json").write_text(
+            json.dumps(chapters.chapters_json(marks), indent=1), encoding="utf-8")
     episodes.append(record(ep, today, published_at) | extra | {
         "guid": f"{publish.repo()}#{tag}",
         "audio_url": audio_url,
         "audio_bytes": mp3.stat().st_size,
         "duration_seconds": tts.mp3_duration(mp3.read_bytes()),
+        "chapters": marks,
     })
     save(EPISODES, episodes)
     # Archived only once published: the next episodes treat archived scripts as already aired.
     (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
+    save_structured(ep, SCRIPTS, today)
     save(PREVIEWS, previews)  # a published episode replaces its preview
     (PREVIEW_SCRIPTS / f"{today}.md").unlink(missing_ok=True)  # only once the episode is out
+    (PREVIEW_SCRIPTS / f"{today}.json").unlink(missing_ok=True)
 
-    feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
-    catalog.write_catalog(cfg, episodes, previews, ROOT / "data", ROOT / "docs" / "catalog.json", base_url)
+    feed.write_feed(cfg, episodes, DOCS / "feed.xml", base_url)
+    catalog.write_catalog(cfg, episodes, previews, ROOT / "data", DOCS / "catalog.json", base_url)
+    site.write_site(cfg, DOCS / "catalog.json", ROOT / "data", DOCS, base_url)
+    page_url = site.episode_url(base_url, today.isoformat())
+    (BUILD / "published.json").write_text(json.dumps({  # read by the notification step
+        "date": today.isoformat(), "title": ep["title"], "page_url": page_url,
+        "message": " · ".join(ep["structured"]["headlines"])}, ensure_ascii=False), encoding="utf-8")
     print(f"Episode published: {audio_url}")
 
 

@@ -50,3 +50,16 @@ def test_every_read_goes_to_the_analyst_voice(cfg):
     assert analyst == reads
     assert parts[0][0] == generate.HOST and parts[-1][0] == generate.HOST
     assert generate.assemble(ep, cfg, TUESDAY) == "\n\n".join(text for _, text in parts)
+
+
+def test_follow_up_is_read_by_the_host_before_the_number_of_the_day(cfg):
+    ep = make_episode(follow_up={"text": "The vote happened.", "source": {"title": "V", "url": "https://v"}})
+    parts = generate.assemble_parts(ep, cfg, TUESDAY)
+    follow = next(i for i, (_, t) in enumerate(parts) if t.startswith("A follow-up."))
+    assert parts[follow] == ("host", "A follow-up.\n\nThe vote happened.")
+    assert parts[follow + 1][1].startswith("The number of the day.")
+    assert {"title": "V", "url": "https://v"} in generate.collect_sources(ep)
+
+
+def test_no_follow_up_no_follow_up_part(cfg):
+    assert "A follow-up." not in generate.assemble(make_episode(), cfg, TUESDAY)

@@ -45,9 +45,11 @@ def make_episode(**overrides) -> dict:
         "headlines": ["Microsoft's sovereign cloud goes local", "Mistral weights still pending",
                       "GDPR omnibus stalls"],
         "story_of_the_day": {"theme": "Sovereignty and Europe", "facts": text(130),
-                             "read": "The read here: " + text(107), "sources": [SOURCE]},
+                             "read": "The read here: " + text(107), "label": "confirmed",
+                             "topics": ["Microsoft", "Sovereign cloud"], "sources": [SOURCE]},
         "segments": [
-            {"theme": t, "facts": text(45), "read": "Why it matters: " + text(32),
+            {"theme": t, "facts": text(45), "read": "Why it matters: " + text(32), "label": "reported",
+             "topics": [f"Topic {i}"],
              "sources": [{"title": f"Source for {t}", "url": f"https://example.com/{i}"}]}
             for i, t in enumerate(("Models and vendors", "Platform", "Regulation", "Retail and agents"))
         ],

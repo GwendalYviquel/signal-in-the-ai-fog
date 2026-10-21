@@ -1,0 +1,54 @@
+"""Phone notifications through ntfy.sh: no account, the topic name is the secret (NTFY_TOPIC).
+
+Never blocks a run: without the secret, or if ntfy is down, it only logs. The topic is never printed.
+
+Usage in a workflow:
+  python -m podcast.notify daily <job status> <run url>   after the daily run
+"""
+from __future__ import annotations
+
+import json
+import os
+import sys
+from pathlib import Path
+
+import requests
+
+NTFY = "https://ntfy.sh/"
+ROOT = Path(__file__).resolve().parent.parent
+PUBLISHED = ROOT / "build" / "published.json"  # written by podcast.main once an episode is out
+
+
+def send(title: str, message: str, priority: int = 3, tags: list[str] | None = None, click: str = "") -> bool:
+    topic = os.getenv("NTFY_TOPIC", "").strip()
+    if not topic:
+        print(f"Notification not sent (NTFY_TOPIC not set): {title}")
+        return False
+    body = {"topic": topic, "title": title, "message": message, "priority": priority, "tags": tags or []}
+    if click:
+        body["click"] = click
+    try:
+        ok = requests.post(NTFY, json=body, timeout=15).status_code == 200
+    except requests.RequestException:
+        ok = False
+    print(f"Notification {'sent' if ok else 'failed'}: {title}")
+    return ok
+
+
+def daily(status: str, run_url: str, published: Path = PUBLISHED) -> bool:
+    """After the daily run: published, or failed. Quiet otherwise (weekend, other cron, already out)."""
+    if status != "success":
+        return send("Episode failed", f"The daily run ended with status {status}. The watchdog retries "
+                    "at 5:00 and 6:30 if no episode is out.", priority=5, tags=["rotating_light"], click=run_url)
+    if not published.exists():
+        return False
+    ep = json.loads(published.read_text(encoding="utf-8"))
+    return send(f"Episode out: {ep['title']}", ep.get("message", ""), tags=["studio_microphone"],
+                click=ep.get("page_url", ""))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 4 and sys.argv[1] == "daily":
+        daily(sys.argv[2], sys.argv[3])
+    else:
+        raise SystemExit("usage: python -m podcast.notify daily <job status> <run url>")

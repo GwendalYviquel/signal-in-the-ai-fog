@@ -32,6 +32,7 @@ permissions:
   contents: write   # commit scripts + create audio releases
   pages: write      # publish the RSS feed
   id-token: write
+  issues: read      # listener suggestions accepted by the owner
 
 concurrency:
   group: daily-episode
@@ -113,3 +114,9 @@ jobs:
         id: deploy
         if: env.DRY_RUN == 'false'
         uses: actions/deploy-pages@v4
+
+      - name: Notify the phone
+        if: always() && env.DRY_RUN == 'false'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}   # optional: no notification without it
+        run: python -m podcast.notify daily "${{ job.status }}" "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

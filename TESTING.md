@@ -14,8 +14,9 @@ Three layers, from cheapest to most realistic:
 </p>
 
 1. **Offline test suite** (`tests/`, pytest). Claude, ElevenLabs and `gh` are replaced by fakes; the pipeline runs on a temporary copy of the data; the catalog page runs in headless Chromium. Runs on every push (`tests.yml`) and before every generation, so a broken commit never produces an episode.
-2. **Mutation checks**. To prove a test really protects against a bug, the bug is reintroduced in a scratch copy of the code and the suite must fail. Every regression test below was checked this way.
-3. **Real runs on GitHub**, in increasing order of what they touch:
+2. **Offline rehearsal** (`python tools/offline_rehearsal.py`, also run by the suite). A whole publication on a copy of the repository with the real pipeline: Claude answers with a fixture (the real script of October 21, with labels, topics and an invented follow-up), ElevenLabs returns silence as long as the text would last, `gh` is replaced. It catches what unit tests miss between the pieces (request, validation, timings, chapters, feed, pages) and writes a complete site to `build/rehearsal/docs` to look at in a browser. Free.
+3. **Mutation checks**. To prove a test really protects against a bug, the bug is reintroduced in a scratch copy of the code and the suite must fail. Every regression test below was checked this way.
+4. **Real runs on GitHub**, in increasing order of what they touch:
    - *Preview episode*: real script from Claude, published as a Preview card on the site; no audio, RSS feed untouched.
    - *Daily episode* with `dry_run`: real script, nothing published.
    - *Publication rehearsal*: real release upload and download, feed and catalog checked, release deleted; with `with_voice`, both ElevenLabs voices read two short sentences.
@@ -24,6 +25,7 @@ Three layers, from cheapest to most realistic:
 pip install -r requirements.txt -r requirements-dev.txt
 python -m playwright install chromium   # for the catalog site tests
 python -m pytest
+python tools/offline_rehearsal.py       # then: python -m http.server --directory build/rehearsal/docs
 ```
 
 ## Test suite
@@ -37,25 +39,31 @@ python -m pytest
 
 | File | Tests | What it protects |
 | --- | --- | --- |
-| `test_validate.py` | 19 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text, lengths |
+| `test_validate.py` | 24 | Episode validation: headlines, themes and their order, sources, unspeakable characters (with the offending extract), first person, forbidden terms in spoken and published text (topics included), lengths, reliability labels, topics, the optional follow-up and its source |
 | `test_generate.py` | 17 | The Claude loop: submission through the tool, light corrections versus corrections in the research conversation (no invented source), truncated responses, `pause_turn`, every tool call answered, workspace header, private context |
-| `test_assemble.py` | 7 | Spoken script: fixed opening with AI disclosure, order of parts, sign-off by weekday, headline punctuation, the read layer always on the analyst voice |
+| `test_assemble.py` | 9 | Spoken script: fixed opening with AI disclosure, order of parts, sign-off by weekday, headline punctuation, the read layer always on the analyst voice, the follow-up read by the host before the number of the day |
 | `test_spotify.py` | 6 | Spotify check on the public embed page (same structure as the real one): show not available yet, previous episode still showing, first time live recorded once with the delay, show link from the config, checks cover the morning in both seasons |
 | `test_stats.py` | 7 | Download stats: only episode MP3s counted, releases read safely across pages, one snapshot a day, STATS.md totals and last 7 days, catalog counts for published episodes only, daily workflow that redeploys the site |
-| `test_tts.py` | 23 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently, candidate IDs checked without changing the config, real duration kept when chunks are concatenated |
+| `test_tts.py` | 24 | ElevenLabs: chunking (long sentences split by words), request shape, voice settings, retries, one voice per part, context never crossing voices, pause in the same audio format as the voices, failures naming the voice, one-word voice check testing each voice independently, candidate IDs checked without changing the config, real duration kept when chunks are concatenated, start and end of every chunk (pauses included) for the chapters |
 | `test_finops.py` | 6 | FinOps dashboard: month figures and projection, daily spend by kind of run on Paris days (failed runs still cost), round axis maximum, no-episode state, both dashboards rebuilt on every record, committed dashboard matches the ledger |
-| `test_feed_catalog.py` | 5 | RSS feed (valid XML, escaping, enclosure, AI disclosure) and catalog (previews replaced by published episodes) |
-| `test_main.py` | 13 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script, voices checked before paying for the script |
+| `test_feed_catalog.py` | 9 | RSS feed (valid XML, escaping, enclosure, AI disclosure), Podcasting 2.0 transcript and chapters, chapter timestamps in the description only from three (Spotify), link to the episode page; catalog (previews replaced by published episodes, page, topics, chapters) |
+| `test_main.py` | 16 | Every run mode end to end: dry run, preview, publication, force, weekend, failed speech keeps the preview and does not archive the script, voices checked before paying for the script; chapters, transcript, structured episode, pages and notification note written at publication; open items, known topics and suggestions in the request; no path of the pipeline left in the real repository during tests |
 | `test_publish.py` | 7 | `gh release` commands, public audio URL, Pages URL, download retries, Paris time |
 | `test_rehearsal.py` | 9 | Rehearsal leaves nothing behind, release deleted even on failure, ElevenLabs key only for the voice check |
-| `test_prompt.py` | 6 | Prompt and checks agree: an episode written exactly to the prompt passes |
+| `test_prompt.py` | 10 | Prompt and checks agree: an episode written exactly to the prompt passes, with or without a follow-up; labels and topic limits stated as checked; what Claude reads is data, never instructions |
 | `test_catch_up.py` | 7 | Catch-up episodes: that day's news cutoff, only the scripts aired before it, its place in the feed, announced as a catch-up; invalid dates stop before any cost; an episode is never published twice; an orphan release stops the run before any cost; overlaps with neighbouring episodes reported |
 | `test_cover.py` | 7 | Cover meets Spotify and Apple specs, deterministic, every word drawn even without the DejaVu font |
 | `test_site.py` | 13 | Catalog page in a real browser: cards, Spotify button, search, theme filter, stats, deep links, HTML injection, mobile, download counts |
-| `test_docs.py` | 13 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the schedule diagram matches the crons and the code, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated, the test plan covers every test file |
+| `test_docs.py` | 14 | README and TESTING.md: images and paths exist, light and dark diagrams, workflow names, committed diagrams match their generator, the pipeline diagram names exactly the secrets the workflow uses, the episode diagram matches the prompt, the schedule diagram matches the crons and the code, **every text fits its box and nothing leaves the drawing** (measured in Chromium), the site screenshot can be regenerated, the test plan covers every test file, the pipeline diagram shows the publication time |
 | `test_schedule.py` | 9 | Every weekday of 2026 and 2027 (both daylight saving changes, every public holiday) publishes exactly once at 4:05 Paris time; the right cron each side of the change; a late start still recognised; the other cron stops before any cost; time left before a 7:00 listen |
 | `test_costs.py` | 12 | Claude usage summed over every call (research pauses, corrections), kept when generation gives up; dollar estimate; prices tied to the model in use; ledger, COSTS.md and step summary; every mode records its spend, a run failing half-way still records what was billed, a refused voice is not counted; the news cutoff of scheduled runs |
-| `test_repo.py` | 23 | Workflows (secrets, triggers, concurrency, dry-run guards, schedules owned by a GitHub account, Dependabot merged only once tested, voice check only gets the ElevenLabs key), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite, costs committed after every run, failures included |
+| `test_repo.py` | 27 | Workflows (secrets, triggers, concurrency, dry-run guards, schedules owned by a GitHub account, Dependabot merged only once tested, voice check only gets the ElevenLabs key), private files ignored, no forbidden term in tracked files, config ready to publish, this journal in sync with the suite, costs committed after every run, failures included, phone notified after every real run, generation can read the accepted suggestions, issue forms match the site links, every scheduled workflow (changed or not) owned by a GitHub account |
+| `test_context.py` | 7 | Request context: open items from the last What to watch before the episode (never later days), parser in step with the assembled script, topics most used first, only open and accepted suggestions, kept short, never blocking |
+| `test_chapters.py` | 7 | Chapters in reading order (follow-up only when there is one), placed inside a chunk by its characters, Podcasting 2.0 JSON, Spotify timestamps, WebVTT with one cue per sentence covering every word |
+| `test_pages.py` | 12 | Episode pages (stories, labels, layers, topics, sources, chapters that seek the player, feedback links pre-filled), fallback to the script, **everything from the web escaped** (JSON-LD included), topic timelines across episodes, slugs shared with the catalog page, stale pages removed, sitemap, committed pages up to date |
+| `test_offline_rehearsal.py` | 7 | The offline rehearsal end to end: repository untouched, request content, chapters, transcript ending with the audio, feed tags, page, notification |
+| `test_watchdog.py` | 12 | Every weekday of 2026 and 2027 checked at 5:00 and 6:30 exactly; episode out, run still going, catch-up started, retries stopped after two failures, weekend, winter crons; the catch-up is a real run with the scheduled cutoff; gh failures are loud; workflow permissions |
+| `test_notify.py` | 6 | ntfy: nothing without the secret, JSON body, topic never printed, failures never break a run, urgent failure with the run link, quiet when nothing was published |
 
 ## Journal of real runs
 
@@ -107,7 +115,17 @@ The offline suite has also passed on GitHub for every commit since it was added.
 | Stereo silence between mono voices | Clicks at each change of voice on some players | `test_pause_between_voice_turns_matches_the_audio_format` |
 | Deep link to an episode never highlighted | Shared links did not show which episode | `test_deep_link_highlights_and_shows_the_episode` |
 | Cover generated without DejaVu font | A cover with no text at all, silently | `test_without_dejavu_the_text_is_still_drawn` |
+| `main.DOCS` added without being redirected in the test repository | A test run wrote its fake episode into the real `docs/feed.xml` (caught before any commit) | `test_the_test_repository_redirects_every_path_of_the_pipeline` |
+| Raw `<` from the web in the schema.org data of a page | A title such as `</script>` could close the script early | `test_everything_from_the_web_is_escaped` |
+| Preview workflow without `gh` access | Previews would silently ignore the accepted suggestions | `test_generation_can_read_the_accepted_suggestions` |
+| Chapter timestamps listed with fewer than three chapters (found by a mutation that survived) | Spotify ignores them, and the description shows a useless list | `test_fewer_than_three_chapters_are_not_listed_in_the_description` |
+| A new scheduled workflow, not committed yet, failed the ownership test | The check could only be run after the commit it is meant to vet | `test_schedules_are_owned_by_a_github_account` (checks the email of the next commit) |
+| Pipeline diagram still showing 7:15 a day after the move to 4:05 | A wrong schedule in the README | `test_pipeline_diagram_shows_the_publication_time` |
 
 ## Not covered yet
 
 - The schedule itself: covered by tests on every weekday of 2026 and 2027; schedules fire since October 21, the first scheduled daily episode is still to come.
+- Labels, topics and follow-ups from the real Claude: the prompt and the checks agree and the rehearsal runs on a real script, but the first real episode with them is the next one. Its labels, topic spelling and follow-up need a read.
+- Chapter accuracy on real audio: times inside a chunk are interpolated by characters; to check against the first real episode by ear.
+- How Spotify and Apple display the chapters and transcript: to check on the first episode that has them.
+- Phone notifications: covered offline; a real one needs the `NTFY_TOPIC` secret.

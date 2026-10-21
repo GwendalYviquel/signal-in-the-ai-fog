@@ -178,3 +178,10 @@ def test_test_plan_covers_every_test_file():
     areas = {f for *_, files in make_diagrams.TEST_AREAS for f in files}
     assert areas == set(make_diagrams.test_counts()), "add the new test file to an area of the test plan"
     assert make_diagrams.real_runs() >= 1
+
+
+def test_pipeline_diagram_shows_the_publication_time(cfg):
+    # Learning (2026-10-21): the diagram still said 7:15 a day after the run moved to 4:05.
+    shown = cfg["generation"]["publish_at"].lstrip("0")
+    for theme in ("light", "dark"):
+        assert f"weekdays, {shown}" in (ROOT / "assets" / f"diagram-pipeline-{theme}.svg").read_text(encoding="utf-8")

@@ -15,6 +15,7 @@ permissions:
   contents: write   # commit the preview script and catalog
   pages: write      # publish the catalog site
   id-token: write
+  issues: read      # listener suggestions accepted by the owner
 
 concurrency:
   group: daily-episode   # shared with the daily workflow: never two runs editing data/ at once
@@ -53,6 +54,7 @@ jobs:
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken
           EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}   # read the accepted listener suggestions
         run: python -m podcast.main
 
       - name: Keep today's script

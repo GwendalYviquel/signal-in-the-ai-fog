@@ -1,0 +1,42 @@
+name: Watchdog
+
+# Is today's episode out after the 4:05 publication? If not, the catch-up run starts on its own
+# and a phone notification says so (podcast/watchdog.py). Four cron lines keep both checks at
+# generation.watchdog_at (5:00 and 6:30 Paris time) all year; the code keeps only the ones
+# matching today's offset. A separate workflow, so a dropped daily schedule is still caught.
+on:
+  # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
+  # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
+  schedule:
+    - cron: "0 3 * * 1-5"    # 5:00 Paris in summer time
+    - cron: "0 4 * * 1-5"    # 5:00 Paris in winter time
+    - cron: "30 4 * * 1-5"   # 6:30 Paris in summer time
+    - cron: "30 5 * * 1-5"   # 6:30 Paris in winter time
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write   # list today's daily runs and start the catch-up
+
+jobs:
+  watchdog:
+    if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check today's episode
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}   # phone notifications, optional
+          SCHEDULE: ${{ github.event.schedule }}
+        run: python -m podcast.watchdog

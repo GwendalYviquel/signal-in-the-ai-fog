@@ -100,7 +100,7 @@ def test_dry_run_and_preview_record_claude_only(repo, mocks, monkeypatch):
 
 
 def test_speech_failing_half_way_still_records_what_was_billed(repo, mocks, monkeypatch):
-    def half(parts, cfg, out, billed=None):
+    def half(parts, cfg, out, billed=None, timeline=None):
         billed[:] = [2_000]
         raise RuntimeError("ElevenLabs 500")
     monkeypatch.setattr(tts, "synthesize", half)

@@ -63,3 +63,39 @@ def test_catalog_podcast_metadata(cfg, tmp_path):
     assert data["episodes"] == []
     assert data["podcast"]["feed_url"] == "https://site.example/feed.xml"
     assert data["podcast"]["themes"] == [t["name"] for t in cfg["themes"]]
+
+
+PODCAST = "{https://podcastindex.org/namespace/1.0}"
+CHAPTERS = [{"start": 0, "title": "Opening"}, {"start": 20.4, "title": "Story of the day: X"},
+            {"start": 75, "title": "Platform: Y"}]
+
+
+def test_episode_with_chapters_has_transcript_chapters_and_timestamps(cfg):
+    xml = feed.build_feed(cfg, [published(chapters=CHAPTERS)], "https://site.example/podcast")
+    item = ET.fromstring(xml).find("channel/item")
+    assert item.find(f"{PODCAST}transcript").attrib == {
+        "url": "https://site.example/podcast/episodes/2026-10-20.vtt", "type": "text/vtt", "language": "en"}
+    assert item.find(f"{PODCAST}chapters").get("url") == "https://site.example/podcast/episodes/2026-10-20.chapters.json"
+    description = item.find("description").text
+    assert "Chapters:\n00:00 Opening\n00:20 Story of the day: X\n01:15 Platform: Y\n" in description  # Spotify format
+    assert "Transcript, topics and sources: https://site.example/podcast/episodes/2026-10-20.html" in description
+    assert item.find("link").text == "https://site.example/podcast/episodes/2026-10-20.html"
+
+
+def test_episode_without_chapters_has_no_podcast_tags(cfg):
+    item = ET.fromstring(feed.build_feed(cfg, [published()], "https://site.example/")).find("channel/item")
+    assert item.find(f"{PODCAST}transcript") is None and item.find(f"{PODCAST}chapters") is None
+    assert "Chapters:" not in item.find("description").text  # Spotify needs at least three timestamps
+
+
+def test_catalog_items_link_their_page_and_topics(cfg, tmp_path):
+    data = catalog.build_catalog(cfg, [published(topics=["Mistral"], chapters=CHAPTERS)], [], tmp_path, "f")
+    [ep] = data["episodes"]
+    assert ep["page"] == "episodes/2026-10-20.html" and ep["topics"] == ["Mistral"] and ep["chapters"] == CHAPTERS
+
+
+def test_fewer_than_three_chapters_are_not_listed_in_the_description(cfg):
+    # Spotify only builds chapters from three timestamps or more, the first at 00:00.
+    item = ET.fromstring(feed.build_feed(cfg, [published(chapters=CHAPTERS[:2])], "https://s/")).find("channel/item")
+    assert "Chapters:" not in item.find("description").text
+    assert item.find(f"{PODCAST}chapters") is not None  # podcast apps still get them

@@ -224,3 +224,17 @@ def test_response_without_audio_fails_clearly(posts, tmp_path, monkeypatch):
     monkeypatch.setattr(tts, "_post", lambda *a: b'{"error": "not audio"}')
     with pytest.raises(RuntimeError, match="returned no MP3 audio for request 1"):
         tts.synthesize([("host", "A.")], CFG, tmp_path / "ep.mp3")
+
+
+def test_timeline_gives_each_chunk_its_place_in_the_episode(posts, tmp_path):
+    # Learning (2026-10-21): chapters and the timed transcript need when each chunk starts.
+    out = tmp_path / "ep.mp3"
+    timeline = []
+    tts.synthesize([("host", "Hello there."), ("analyst", "The read."), ("host", "Bye.")],
+                   dict(CFG, pause_seconds=0.5), out, timeline=timeline)
+    frame = tts.mp3_duration(MONO_FRAME)
+    pause = tts.mp3_duration(tts.silence_like(MONO_FRAME, 0.5))
+    assert [t["text"] for t in timeline] == ["Hello there.", "The read.", "Bye."]
+    assert timeline[0] == {"text": "Hello there.", "start": 0.0, "end": round(frame, 2)}
+    assert timeline[1]["start"] == round(frame + pause, 2)  # the breath between voices is counted
+    assert timeline[2]["end"] == pytest.approx(tts.mp3_duration(out.read_bytes()), abs=0.02)

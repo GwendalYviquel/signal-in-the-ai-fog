@@ -11,3 +11,4 @@ build/
 # Private editorial context (never committed)
 private/
 .DS_Store
+.claude/launch.json
