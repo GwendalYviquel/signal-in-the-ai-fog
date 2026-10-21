@@ -63,6 +63,7 @@ a.tag:hover { text-decoration: underline; }
 .label.confirmed { background: var(--ok-soft); color: var(--ok); }
 .label.reported { background: var(--warn-soft); color: var(--warn); }
 .label.unconfirmed { background: var(--risk-soft); color: var(--risk); }
+.note { font-size: 13px; color: var(--muted); margin: -4px 0 8px; }
 .sources { font-size: 14px; padding-left: 18px; }
 .sources li { overflow-wrap: anywhere; margin-bottom: 4px; }
 .transcript { white-space: pre-line; background: var(--surface-2); padding: 14px 16px; border-radius: 10px; }

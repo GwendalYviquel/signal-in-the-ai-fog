@@ -153,3 +153,32 @@ def test_committed_pages_match_the_generator(tmp_path, cfg):
         for page in (root / "docs" / folder).glob("*.html"):
             assert page.read_text() == (docs / folder / page.name).read_text(), \
                 f"{folder}/{page.name} is stale: run python -m podcast.site"
+
+
+def test_published_episodes_have_structured_data_that_reassembles_into_what_aired(cfg):
+    # Learning (2026-10-21): the first three episodes were rebuilt from their scripts to get labels
+    # and topics. The structured episode must give back, word for word, the script that was read.
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+    from podcast import generate
+    data = site.ROOT / "data"
+    for ep in json.loads((data / "episodes.json").read_text(encoding="utf-8")):
+        path = data / "scripts" / f"{ep['date']}.json"
+        assert path.exists(), f"{ep['date']} has no structured episode"
+        structured = json.loads(path.read_text(encoding="utf-8"))
+        day = dt.datetime.combine(dt.date.fromisoformat(ep["date"]), dt.time(4, 5), ZoneInfo("Europe/Paris"))
+        md = (data / "scripts" / f"{ep['date']}.md").read_text(encoding="utf-8")
+        aired = md.split("## Script\n\n")[1].split("\n\n## Sources")[0]
+        assert generate.assemble(structured, cfg, day) == aired, ep["date"]
+        assert generate.validate(structured, cfg)[0] == [], ep["date"]
+        stories = [structured["story_of_the_day"]] + structured["segments"]
+        assert list(dict.fromkeys(t for s in stories for t in s["topics"])) == ep["topics"], ep["date"]
+        assert {s["url"] for s in generate.collect_sources(structured)} == {s["url"] for s in ep["sources"]}
+
+
+def test_labels_added_after_publication_say_so(build):
+    ep = make_episode(labelled_after_publication="2026-10-21")
+    docs = build([item("2026-10-19")], {"2026-10-19": ep})
+    assert "Reliability labels added after publication" in (docs / "episodes/2026-10-19.html").read_text()
+    docs = build([item("2026-10-20")], {"2026-10-20": make_episode()})
+    assert "added after publication" not in (docs / "episodes/2026-10-20.html").read_text()

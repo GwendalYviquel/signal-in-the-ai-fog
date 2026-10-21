@@ -115,7 +115,9 @@ def _story(heading: str, story: dict) -> str:
 
 
 def _stories(structured: dict) -> str:
-    parts = ["<h2>Stories</h2>", _story(f"Story of the day · {structured['story_of_the_day']['theme']}",
+    note = ('<p class="note">Reliability labels added after publication, from each story\'s sources.</p>'
+            if structured.get("labelled_after_publication") else "")
+    parts = ["<h2>Stories</h2>" + note, _story(f"Story of the day · {structured['story_of_the_day']['theme']}",
                                         structured["story_of_the_day"])]
     parts += [_story(s["theme"], s) for s in structured["segments"]]
     if fu := structured.get("follow_up"):
