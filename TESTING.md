@@ -64,7 +64,7 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 | `test_offline_rehearsal.py` | 10 | The offline rehearsal end to end: repository untouched, request content, chapters, transcript ending with the audio, feed tags, page, notification; a fact-check doubt corrected then checked again, research cached, a waiting correction read and shown |
 | `test_watchdog.py` | 13 | Every weekday of 2026 and 2027 checked at 5:00 and 6:30 exactly; episode out, run still going, catch-up started, retries stopped after two failures, weekend, winter crons; the catch-up is a real run with the scheduled cutoff; gh failures are loud; workflow permissions; a manual test notification that fails without the secret |
 | `test_notify.py` | 6 | ntfy: nothing without the secret, JSON body, topic never printed, failures never break a run, urgent failure with the run link, quiet when nothing was published |
-| `test_factcheck.py` | 12 | Fact-check: page text without scripts or navigation, unreadable pages and cookie walls fetched once and skipped, long pages cut, each part checked against its own sources only (reads never), doubts turned into correction requests with the evidence, unverifiable parts reported, a doubt fixed in a light correction then checked again, a doubt left after the last attempt reported not blocking, a light correction adding a source sent back to research, fact-check can be turned off |
+| `test_factcheck.py` | 13 | Fact-check: page text without scripts or navigation, unreadable pages and cookie walls fetched once and skipped, long pages cut, each part checked against its own sources only (reads never), doubts turned into correction requests with the evidence, unverifiable parts reported, a doubt fixed in a light correction then checked again, a doubt left after the last attempt reported not blocking, a light correction adding a source sent back to research, fact-check can be turned off |
 | `test_corrections.py` | 7 | Corrections: attached to their episode and waiting to be read, spoken as written so the voice rules apply (length, first person, markdown, forbidden terms), only for published episodes, shown in the episode description, read by the host before the number of the day; the workflow uses no paid service, never runs beside an episode run, and passes its inputs through the environment |
 
 ## Journal of real runs
@@ -113,6 +113,10 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-22 | [API smoke test](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39677269147) | ✅ | All three shapes accepted: light correction calls the tool unforced; Haiku 5.5 fact-check returns the JSON schema and matched *October sixth* with *Oct. 6*; `web_search_20260209` searched once and the cache wrote 7,889 tokens | — |
 
+| 2026-10-21 | [Preview](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39678017522) | ✅ (nothing done) | Run at 23:20 Paris: *the episode of 2026-10-21 is already published*, stopped before any cost | Rerun with `force` |
+
+| 2026-10-21 | [Preview, forced](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39678321471) | ✅ (3rd attempt) | First whole episode with caching, the filtering web search and the fact-check. **Claude $0.45 against $1.02**: 204,960 tokens read from the cache, 7,422 at full price. Attempt 1 too short (637 words), back to research. Fact-check (Haiku, 8 calls, under one cent): 36 claims, 8 doubts, fixed in a light correction, then 25 claims and 1 doubt left, reported. Three doubts were statements of absence (*no fine has been announced*), which no source can state. The story of the day cited two personal posts on dev.to | The checker skips statements of absence (`test_the_checker_skips_statements_of_absence`); dev.to added to `sources.avoid`; the preview of a date already published removed by hand |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
@@ -145,6 +149,6 @@ The offline suite has also passed on GitHub for every commit since it was added.
 - Labels, topics and follow-ups from the real Claude: the prompt and the checks agree and the rehearsal runs on a real script, but the first real episode with them is the next one. Its labels, topic spelling and follow-up need a read.
 - Chapter accuracy on real audio: times inside a chunk are interpolated by characters; to check against the first real episode by ear.
 - How Spotify and Apple display the chapters and transcript: to check on the first episode that has them.
-- The fact-check with the real Claude Haiku 5.5 and real pages from a GitHub runner: covered offline (28 of the 29 first sources could be read from a Mac); a first preview will show how many claims it checks and whether its doubts are fair.
-- The savings of prompt caching and of the filtering web search: to measure on the first runs against the $1.02 of the first episode (`cache_read_input_tokens` in the ledger).
+- The fact-check on a published episode: verified on a forced preview (36 claims, every source readable from the runner); whether its doubts stay fair over several episodes.
+- The savings of prompt caching and of the filtering web search: $0.45 on one forced preview against $1.02; to confirm over several episodes.
 - The *Add a correction* workflow on GitHub: covered offline; its first real run will be the first real correction.

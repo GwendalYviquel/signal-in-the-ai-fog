@@ -35,7 +35,9 @@ SCHEMA = {
 
 INSTRUCTIONS = """You check a short news text, written to be read aloud, against its sources.
 List every checkable claim in the text: figures, prices, percentages, dates, version numbers, names of
-products, people and organisations, and statuses (announced, preview, available). For each claim:
+products, people and organisations, and statuses (announced, preview, available). Leave out statements that
+something has not happened or is not known yet ("no fine has been announced", "results are not out"):
+a source cannot state them. For each claim:
 - supported: a source states it. Spoken forms match written ones ("one dollar thirty-six" is $1.36,
   "October sixth" is Oct. 6, "about one trillion" matches 1T or 1.02 trillion).
 - contradicted: a source states something different. Quote it in evidence.

@@ -32,9 +32,10 @@ generation:
   target_words: 880                  # about 6 minutes spoken
 
 sources:
-  # Sites that rewrite other outlets' news (content aggregators, SEO blogs), seen in the first
-  # episodes: never cited. A story keeps its other sources; with none left, it goes back to research.
-  avoid: ["lindy.ai", "mer.vin", "aiweekly.co"]
+  # Sites that rewrite other outlets' news (content aggregators, SEO blogs, personal blog platforms),
+  # seen in real runs: never cited. A story keeps its other sources; with none left, it goes back
+  # to research. dev.to: two personal posts were the sources of a story of the day (2026-10-21 preview).
+  avoid: ["lindy.ai", "mer.vin", "aiweekly.co", "dev.to"]
 
 factcheck:
   # Before the voices, every figure, date, name and status in the facts is checked against the

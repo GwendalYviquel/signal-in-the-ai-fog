@@ -25,10 +25,10 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 
 | Connector | Used for | In the offline tests | Verified for real | Still to verify |
 | --- | --- | --- | --- | --- |
-| Claude Sonnet 5.5, research turn | writing the episode, web search, `submit_episode` tool | fake client (`tests/conftest.py`) that enforces the API's rules | ✅ 2026-10-20 and 21; `web_search_20260209` and `cache_control` accepted by the smoke test on 2026-10-22 | the saving on a whole episode (`cache_read_input_tokens` in `data/costs.json`) |
+| Claude Sonnet 5.5, research turn | writing the episode, web search, `submit_episode` tool | fake client (`tests/conftest.py`) that enforces the API's rules | ✅ 2026-10-20 and 21; `web_search_20260209` and `cache_control` on a forced preview on 2026-10-21: **$0.45 against $1.02**, 205k tokens read from the cache | that the saving holds over several episodes |
 | Claude Sonnet 5.5, light correction | fixing wording without the research | fake client | 🔸 smoke test ✅ 2026-10-22 (the tool is called unforced); never in an episode yet. It used a forced `tool_choice`, which this model refuses (HTTP 400), fixed on 2026-10-22 | a real correction round in an episode |
-| Claude Haiku 5.5, fact-check | checking every claim of the facts against its sources | fake answers (`tests/test_factcheck.py`) | 🔸 smoke test ✅ 2026-10-22 (JSON schema output, spoken dates matched); never on a whole episode | cost (expected about one cent), whether its doubts are fair |
-| Source pages, fetched by the code | the fact-check's input | network blocked in every test | 🔸 from a Mac: 28 of 29 readable | from a GitHub runner, sites may block datacenter IPs: count the *unverifiable* parts in the run summary |
+| Claude Haiku 5.5, fact-check | checking every claim of the facts against its sources | fake answers (`tests/test_factcheck.py`) | ✅ smoke test, then a forced preview on 2026-10-21: 36 claims, 8 doubts then 1, under one cent | whether its doubts stay fair (statements of absence are now skipped) |
+| Source pages, fetched by the code | the fact-check's input | network blocked in every test | ✅ from a GitHub runner on the forced preview: no part unverifiable | from a GitHub runner, sites may block datacenter IPs: count the *unverifiable* parts in the run summary |
 | ElevenLabs | the two voices, the voice check | fake HTTP (`tests/test_tts.py`), silence in the rehearsal | ✅ 3 episodes | **chapter times**: estimated inside each audio chunk by characters, to check by ear |
 | `gh release` | hosting the MP3 | faked | ✅ | — |
 | `gh issue list` | listener suggestions labelled `accepted` | faked | ❌ never ran | that it reads the accepted issues (needs `issues: read`) |
@@ -50,13 +50,13 @@ gh workflow run api-smoke.yml
 
 It runs on GitHub, where the API key is a secret (it is not on the laptops). Locally, export `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` and run `python tools/api_smoke.py`. Expected in the log: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `podcast/generate.py` or `podcast/factcheck.py`.
 
-### 2. A preview: about $0.50 to $1 of Claude, no ElevenLabs
+### 2. A preview: about $0.50 of Claude, no ElevenLabs (done on 2026-10-21, forced)
 
 ```bash
 gh workflow run preview-episode.yml
 ```
 
-In the run summary and log, check:
+Once the day's episode is out, the preview stops before any cost; add `-f force=true` to run it anyway (nothing reaches the site, since the published episode takes precedence; remove the preview from `data/previews.json` and `data/previews/` afterwards). In the run summary and log, check:
 - *Fact-check: N claims checked, D doubt(s), U part(s) unverifiable*: N should be in the tens, U small; read each doubt;
 - the cost line: the Claude cost against $1.02 for the first episode, and `cache_read_input_tokens` above zero in `data/costs.json`;
 - on the preview page (catalog site, Preview card, then its page): labels, primary sources, topics, no cited site from `sources.avoid` in `config.yaml`;

@@ -103,7 +103,7 @@ def test_every_placeholder_of_the_prompt_is_filled(cfg, fake_claude):
     generate.generate_episode(cfg, TUESDAY, [])
     system = client.calls[0]["system"]
     assert not re.search(r"\{[a-z_]+\}", system)
-    assert "lindy.ai, mer.vin, aiweekly.co" in system
+    assert "lindy.ai, mer.vin, aiweekly.co, dev.to" in system
 
 
 def test_prompt_states_the_source_and_fact_check_rules():

@@ -145,3 +145,9 @@ def test_the_smoke_test_counts_usage_like_the_pipeline():
     from conftest import ROOT
     source = (ROOT / "tools" / "api_smoke.py").read_text(encoding="utf-8")
     assert "costs.empty_claude_usage(" in source and "usage = {" not in source
+
+
+def test_the_checker_skips_statements_of_absence():
+    # Learning (2026-10-21 preview): 3 of 8 doubts were sentences no source can state, such as
+    # "no fine has been announced", sending fair facts to a correction.
+    assert "something has not happened or is not known yet" in factcheck.INSTRUCTIONS
