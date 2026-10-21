@@ -91,6 +91,8 @@ python -m pytest
 
 | 2026-10-21 | [Check Spotify](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39554406512) | ✅ | Run by hand: first episode found live, recorded 19 minutes after publication. Only an upper bound: no scheduled check had run, and the episode was already visible in the Spotify app before | Precise delays once the 15-minute schedule fires |
 
+| 2026-10-21 | [Check Spotify, first scheduled run](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39556859595) | ✅ | First schedule ever fired in the repository, about 40 minutes after the workflows were re-pushed with the GitHub noreply email (the 6:15 slot was still missed, the 6:30 one ran 10 minutes late): the email was the cause | Commits keep the noreply email (local git config) |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
@@ -108,4 +110,4 @@ The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Not covered yet
 
-- The schedule itself: covered by tests on every weekday of 2026 and 2027, but no scheduled run has fired yet (see the October 21 entry).
+- The schedule itself: covered by tests on every weekday of 2026 and 2027; schedules fire since October 21, the first scheduled daily episode is still to come.
