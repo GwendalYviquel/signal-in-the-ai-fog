@@ -19,7 +19,7 @@ podcast:
   cover_file: "cover.jpg"            # in docs/hr-news-fr/, square, 1400 to 3000 px (to create)
   cover_kicker: "L'hebdo RH et paie"   # small line above the title (tools/make_cover.py --show)
   cover_palette: ['#0b2a4a', '#1f6f8b', '#e07a5f']   # gradient of the cover, three colours
-  spotify_url: ""                    # set once the show is submitted to Spotify (manual, once)
+  spotify_url: "https://open.spotify.com/show/5DMF3STVdMZiNHCCOcV15E"   # submitted on 2026-10-22
   # Leave empty to use the repository's GitHub Pages site, in the folder site_path.
   base_url: ""
   site_path: "hr-news-fr"
