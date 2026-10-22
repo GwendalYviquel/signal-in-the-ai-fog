@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/sitemap.xml

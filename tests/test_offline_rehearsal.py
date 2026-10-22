@@ -63,7 +63,7 @@ def test_feed_points_to_the_transcript_chapters_and_page(result):
 
 def test_episode_page_and_notification(result):
     page = result["page"]
-    assert 'class="label confirmed"' in page and 'class="label reported"' in page and "<h2>Follow-up</h2>" in page
+    assert 'class="label confirmed"' in page and 'class="label reported"' in page and ">Follow-up</h2>" in page
     assert result["published"]["page_url"].endswith("/episodes/2030-01-15.html")
     assert (result["docs"] / "topics" / "voxtral.html").exists()
 

@@ -1,0 +1,411 @@
+<!doctype html>
+<!-- Template of every show's catalog page: engine/site.py fills the placeholders in double braces. -->
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="icon" href="cover.jpg">
+<link rel="alternate" type="application/rss+xml" title="{{TITLE}}" href="feed.xml">
+<style>
+  :root {
+    --bg: #f5f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef0f8;
+    --text: #12142b;
+    --muted: #5a5f7d;
+    --border: #dde0ee;
+    --accent: #0b8f84;
+    --accent-2: #6d3fd6;
+    --accent-soft: rgba(109, 63, 214, 0.10);
+    --chip-on-text: #ffffff;
+    --shadow: 0 1px 2px rgba(18, 20, 43, 0.06), 0 4px 16px rgba(18, 20, 43, 0.05);
+    --hero: linear-gradient(135deg, #1b1446 0%, #3a1d6e 55%, #0b4f66 100%);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0a0b1e;
+      --surface: #13142e;
+      --surface-2: #1b1c3d;
+      --text: #e9eaf6;
+      --muted: #9a9dbd;
+      --border: #272a52;
+      --accent: #3ee6cc;
+      --accent-2: #a98bff;
+      --accent-soft: rgba(169, 139, 255, 0.14);
+      --chip-on-text: #0a0b1e;
+      --shadow: none;
+      --hero: linear-gradient(135deg, #0d0b2a 0%, #2a1458 55%, #06465f 100%);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a0b1e;
+    --surface: #13142e;
+    --surface-2: #1b1c3d;
+    --text: #e9eaf6;
+    --muted: #9a9dbd;
+    --border: #272a52;
+    --accent: #3ee6cc;
+    --accent-2: #a98bff;
+    --accent-soft: rgba(169, 139, 255, 0.14);
+    --chip-on-text: #0a0b1e;
+    --shadow: none;
+    --hero: linear-gradient(135deg, #0d0b2a 0%, #2a1458 55%, #06465f 100%);
+    color-scheme: dark;
+  }
+
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .badge.preview { color: #ffc35c; } }
+  :root[data-theme="dark"] .badge.preview { color: #ffc35c; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+  /* Hero */
+  header.hero { background: var(--hero); color: #f1f0ff; }
+  .hero .wrap { display: flex; gap: 24px; align-items: center; padding-top: 40px; padding-bottom: 40px; }
+  .hero img { width: 132px; height: 132px; border-radius: 14px; flex: none; box-shadow: 0 8px 30px rgba(0,0,0,.35); }
+  .hero h1 { margin: 0 0 6px; font-size: 32px; line-height: 1.15; letter-spacing: -0.01em; }
+  .hero p { margin: 0 0 16px; color: #cfd0ee; max-width: 56ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 999px; font: inherit; font-size: 14px; font-weight: 600;
+    border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.08); color: #fff;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn:hover { background: rgba(255,255,255,.16); }
+  .btn.primary { background: #3ee6cc; border-color: #3ee6cc; color: #0a0b1e; }
+  .btn.primary:hover { background: #6af0db; }
+  .stats { margin-top: 14px; font-size: 13px; color: #b9bbe0; }
+
+  /* Controls */
+  .controls { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 16px 0 12px; border-bottom: 1px solid var(--border); }
+  .search {
+    width: 100%; padding: 11px 14px; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  }
+  .search:focus { outline: 2px solid var(--accent-2); outline-offset: 1px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    padding: 5px 11px; border-radius: 999px; font: inherit; font-size: 13px; cursor: pointer;
+    background: var(--surface); color: var(--muted); border: 1px solid var(--border);
+  }
+  .chip:hover { color: var(--text); }
+  .chip[aria-pressed="true"] { background: var(--accent-2); border-color: var(--accent-2); color: var(--chip-on-text); }
+
+  /* List */
+  main { padding-bottom: 64px; }
+  .month { margin: 28px 0 10px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 12px; box-shadow: var(--shadow); scroll-margin-top: 140px;
+  }
+  .card:target, .card.is-target { outline: 2px solid var(--accent-2); }
+  .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--muted); }
+  .card h2 { margin: 4px 0 6px; font-size: 20px; line-height: 1.3; }
+  .card h2 a { color: inherit; text-decoration: none; }
+  .card h2 a:hover { text-decoration: underline; }
+  .summary { margin: 0 0 10px; }
+  .headlines { margin: 0 0 12px; padding-left: 18px; color: var(--muted); font-size: 15px; }
+  .headlines li::marker { color: var(--accent); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag { font-size: 12px; padding: 2px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-2); font-weight: 600; }
+  a.tag { text-decoration: none; background: transparent; color: var(--accent); border: 1px solid var(--border); font-weight: 500; }
+  a.tag::before { content: "# "; opacity: .6; }
+  a.tag:hover { text-decoration: underline; }
+  .page-link { font-size: 14px; font-weight: 600; white-space: nowrap; }
+  .card-head { display: flex; gap: 16px; align-items: flex-start; }
+  .thumb { width: 88px; height: 88px; border-radius: 10px; flex: none; object-fit: cover; }
+  .card-body { min-width: 0; flex: 1; }
+  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; }
+  .badge.preview { background: rgba(255, 176, 32, .16); color: #b26b00; }
+  .badge.published { background: rgba(62, 230, 204, .16); color: var(--accent); }
+  .listen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+  .listen audio { flex: 1 1 260px; }
+  audio { width: 100%; height: 40px; }
+  .placeholder {
+    flex: 1 1 260px; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 14px;
+    border: 1px dashed var(--border); border-radius: 999px; color: var(--muted); font-size: 14px;
+  }
+  .placeholder::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #ffb020; flex: none; }
+  .spotify {
+    display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: 999px;
+    background: #1db954; color: #04130a; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap;
+  }
+  .spotify:hover { background: #22d160; }
+  details { margin-top: 10px; border-top: 1px solid var(--border); padding-top: 8px; }
+  summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); }
+  summary:hover { color: var(--text); }
+  details ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; }
+  details li { margin-bottom: 4px; overflow-wrap: anywhere; }
+  .transcript { margin-top: 8px; font-size: 15px; white-space: pre-line; color: var(--text); background: var(--surface-2); padding: 12px 14px; border-radius: 10px; max-height: 420px; overflow: auto; }
+  mark { background: rgba(62, 230, 204, .35); color: inherit; border-radius: 3px; }
+
+  .empty { text-align: center; color: var(--muted); padding: 56px 16px; }
+  .empty strong { display: block; color: var(--text); font-size: 18px; margin-bottom: 4px; }
+  footer { border-top: 1px solid var(--border); padding: 20px 0 40px; font-size: 13px; color: var(--muted); }
+  .theme-toggle { background: none; border: 0; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer; text-decoration: underline; padding: 0; }
+
+  @media (max-width: 600px) {
+    .hero .wrap { flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
+    .hero img { width: 96px; height: 96px; }
+    .hero h1 { font-size: 26px; }
+    .card { padding: 16px; scroll-margin-top: 150px; }
+    .thumb { width: 64px; height: 64px; }
+    .controls { padding: 12px 0 10px; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; margin: 10px -16px 0; padding: 0 16px 2px; scrollbar-width: none; }
+    .chips::-webkit-scrollbar { display: none; }
+    .chip { flex: none; }
+  }
+  .topbar { display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding-top: 12px; font-size: 13px; }
+  .topbar a { color: #cfd0ee; font-weight: 600; text-decoration: none; }
+  .topbar a:hover { text-decoration: underline; }
+  .lang-switch { display: inline-flex; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; overflow: hidden; }
+  .lang-switch button { font: inherit; font-size: 12px; font-weight: 700; padding: 3px 10px; background: transparent; color: #cfd0ee; border: 0; cursor: pointer; }
+  .lang-switch button[aria-pressed="true"] { background: #3ee6cc; color: #0a0b1e; }
+</style>
+<script src="{{SHARED}}i18n.js"></script>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap topbar">
+    <a href="{{SHARED}}shows.html" data-i18n="nav_shows">Shows</a>
+    <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button></div>
+  </div>
+  <div class="wrap">
+    <img src="cover.jpg" alt="">
+    <div>
+      <h1 id="title"></h1>
+      <p id="description"></p>
+      <div class="actions" id="actions"></div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <input class="search" id="search" type="search" placeholder="Search titles, summaries, scripts…" aria-label="Search episodes" data-i18n-placeholder="search" data-i18n-aria-label="search_label">
+    <div class="chips" id="chips" role="group" aria-label="Filter by theme" data-i18n-aria-label="filter_label"></div>
+  </div>
+</div>
+
+<main class="wrap" id="list" aria-live="polite"></main>
+
+<footer>
+  <div class="wrap">
+    <span data-i18n="footer">Scripts are written and voices generated by AI. Sources are listed with every story.</span>
+    · <a href="corrections.html" data-i18n="nav_corrections">Corrections</a>
+    · <button class="theme-toggle" id="themeToggle" type="button" data-i18n="theme_toggle">Switch theme</button>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const state = { data: null, query: "", theme: null };
+
+  const el = (tag, props = {}, children = []) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "text") n.textContent = v;
+      else if (k === "class") n.className = v;
+      else n.setAttribute(k, v);
+    }
+    for (const c of [].concat(children)) if (c) n.append(c);
+    return n;
+  };
+
+  // Interface texts and dates in the visitor's language (docs/i18n.js), episodes as written.
+  const t = (key, vars) => window.I18N.t(key, vars);
+  const fmtDay = (iso) => window.I18N.date(iso, "day");
+  const fmtMonth = (iso) => window.I18N.date(iso, "month");
+  const fmtNumber = (n) => n.toLocaleString(t("locale"));
+  const fmtDuration = (s) => s ? `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s` : "";
+  const norm = (s) => (s || "").toLowerCase();
+  // Same rule as slug() in engine/site.py, which names the topic pages.
+  const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "topic";
+
+  // Highlights the search query inside plain text, without ever injecting HTML.
+  const highlighted = (text, query) => {
+    const frag = document.createDocumentFragment();
+    if (!query) { frag.append(text); return frag; }
+    const lower = text.toLowerCase();
+    let i = 0, hit;
+    while ((hit = lower.indexOf(query, i)) !== -1) {
+      frag.append(text.slice(i, hit), el("mark", { text: text.slice(hit, hit + query.length) }));
+      i = hit + query.length;
+    }
+    frag.append(text.slice(i));
+    return frag;
+  };
+
+  const matches = (ep) => {
+    if (state.theme && !ep.themes.includes(state.theme)) return false;
+    if (!state.query) return true;
+    const hay = [ep.title, ep.summary, ep.headlines.join(" "), ep.transcript, (ep.topics || []).join(" "),
+                 ep.sources.map((s) => s.title).join(" ")].map(norm).join(" ");
+    return hay.includes(state.query);
+  };
+
+  // Show link from the show.yaml; until it is set, a Spotify search for the podcast stands in.
+  const spotifyShowUrl = () => state.data.podcast.spotify_url ||
+    `https://open.spotify.com/search/${encodeURIComponent(state.data.podcast.title)}`;
+
+  const card = (ep) => {
+    const q = state.query;
+    const isPreview = ep.status === "preview";
+    const inTranscript = q && norm(ep.transcript).includes(q);
+    const spotify = el("a", { class: "spotify", href: ep.spotify_url || spotifyShowUrl(), target: "_blank",
+                              rel: "noopener", text: t("listen_spotify") });
+    const player = ep.audio_url
+      ? el("audio", { controls: "", preload: "none", src: ep.audio_url })
+      : el("div", { class: "placeholder", text: t("audio_soon") });
+    const sources = el("details", {}, [
+      el("summary", { text: t("sources_n", { n: ep.sources.length }) }),
+      el("ul", {}, ep.sources.map((s) =>
+        el("li", {}, el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })))),
+    ]);
+    const script = ep.transcript ? el("details", inTranscript ? { open: "" } : {}, [
+      el("summary", { text: t("script") }),
+      el("div", { class: "transcript" }, highlighted(ep.transcript, q)),
+    ]) : null;
+    return el("article", { class: "card", id: ep.date }, [
+      el("div", { class: "card-head" }, [
+        el("img", { class: "thumb", src: state.data.podcast.cover || "cover.jpg", alt: "", loading: "lazy" }),
+        el("div", { class: "card-body" }, [
+          el("div", { class: "meta" }, [
+            el("span", { class: `badge ${isPreview ? "preview" : "published"}`, text: t(isPreview ? "preview" : "published") }),
+            el("span", { text: fmtDay(ep.date) }),
+            ep.duration_seconds ? el("span", { text: fmtDuration(ep.duration_seconds) }) : null,
+            ep.downloads ? el("span", { class: "downloads", title: t("downloads_title"),
+                                        text: t("downloads", { n: ep.downloads }).replace(String(ep.downloads), fmtNumber(ep.downloads)) }) : null]),
+          el("h2", {}, el("a", { href: `#${ep.date}` }, highlighted(ep.title, q))),
+          el("p", { class: "summary" }, highlighted(ep.summary, q)),
+        ]),
+      ]),
+      ep.headlines.length ? el("ul", { class: "headlines", "aria-label": t("headlines") },
+                               ep.headlines.map((h) => el("li", {}, highlighted(h, q)))) : null,
+      ep.themes.length || (ep.topics || []).length ? el("div", { class: "tags" }, [
+        ...ep.themes.map((t) => el("span", { class: "tag", text: t })),
+        ...(ep.topics || []).map((t) => el("a", { class: "tag topic", href: `topics/${slug(t)}.html`, text: t }))]) : null,
+      el("div", { class: "listen" }, [player, spotify,
+        ep.page ? el("a", { class: "page-link", href: ep.page, text: t("episode_page") }) : null]),
+      script,
+      ep.sources.length ? sources : null,
+    ]);
+  };
+
+  const render = () => {
+    const list = $("list");
+    list.replaceChildren();
+    const eps = state.data.episodes;
+    if (!eps.length) {
+      list.append(el("div", { class: "empty" }, [el("strong", { text: t("no_episodes") }), t("no_episodes_text")]));
+      return;
+    }
+    const shown = eps.filter(matches);
+    if (!shown.length) {
+      list.append(el("div", { class: "empty" }, [el("strong", { text: t("no_match") }), t("no_match_text")]));
+      return;
+    }
+    let month = "";
+    for (const ep of shown) {
+      const m = fmtMonth(ep.date);
+      if (m !== month) { month = m; list.append(el("h3", { class: "month", text: m })); }
+      list.append(card(ep));
+    }
+  };
+
+  const renderHeader = () => {
+    const { podcast, episodes } = state.data;
+    document.title = podcast.title;
+    $("title").textContent = podcast.title;
+    $("description").textContent = podcast.description;
+
+    const actions = $("actions");
+    actions.replaceChildren();  // rendered again when the visitor switches language
+    actions.append(el("a", { class: "btn primary", href: spotifyShowUrl(), target: "_blank", rel: "noopener", text: t("listen_spotify") }));
+    const rss = el("button", { class: "btn", type: "button", text: t("copy_rss") });
+    rss.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(podcast.feed_url); rss.textContent = t("feed_copied"); }
+      catch { window.open(podcast.feed_url, "_blank"); }
+      setTimeout(() => (rss.textContent = t("copy_rss")), 2000);
+    });
+    actions.append(rss);
+    if (episodes.some((e) => (e.topics || []).length))
+      actions.append(el("a", { class: "btn", href: "topics/index.html", text: t("browse_topics") }));
+
+    if (episodes.length) {
+      const published = episodes.filter((e) => e.status !== "preview");
+      const previews = episodes.length - published.length;
+      const hours = published.reduce((t, e) => t + (e.duration_seconds || 0), 0) / 3600;
+      const first = fmtDay(episodes[episodes.length - 1].date);
+      const parts = published.length ? [t("episodes_n", { n: published.length })] : [];
+      if (previews) parts.push(t("previews_n", { n: previews }));
+      if (hours) parts.push(t("hours", { h: hours.toLocaleString(t("locale"), { maximumFractionDigits: 1, minimumFractionDigits: 1 }) }));
+      parts.push(t("since", { date: first }));
+      $("stats").textContent = parts.join(" · ");
+    }
+
+    const used = new Set(episodes.flatMap((e) => e.themes));
+    const chips = $("chips");
+    chips.replaceChildren();
+    const chip = (label, value) => {
+      const b = el("button", { class: "chip", type: "button", "aria-pressed": String(state.theme === value), text: label });
+      b.addEventListener("click", () => {
+        state.theme = state.theme === value ? null : value;
+        chips.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", "false"));
+        b.setAttribute("aria-pressed", String(state.theme === value));
+        render();
+      });
+      return b;
+    };
+    podcast.themes.filter((t) => used.has(t)).forEach((t) => chips.append(chip(t, t)));
+  };
+
+  let timer;
+  $("search").addEventListener("input", (e) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { state.query = norm(e.target.value.trim()); render(); }, 120);
+  });
+
+  // Theme toggle: remembered per browser, page works without storage.
+  const root = document.documentElement;
+  try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch {}
+  $("themeToggle").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch {}
+  });
+
+  window.I18N.onChange(() => { if (state.data) { renderHeader(); render(); } });
+  Promise.all([fetch("catalog.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : Promise.reject(r.status))),
+               window.I18N.ready])
+    .then(([data]) => {
+      state.data = data;
+      renderHeader();
+      render();
+      // Cards are created after load, so the browser's own :target never applies to a deep link.
+      const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) { target.classList.add("is-target"); target.scrollIntoView(); }
+    })
+    .catch(() => window.I18N.ready.then(() => {
+      state.data = { podcast: { title: document.title, description: "", feed_url: "feed.xml", spotify_url: "", themes: [] },
+                     episodes: [] };
+      renderHeader();
+      render();
+    }));
+})();
+</script>
+</body>
+</html>

@@ -58,7 +58,13 @@ a.tag:hover { text-decoration: underline; }
 .story h3 { margin: 0 0 6px; font-size: 16px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
 .story .facts { margin: 8px 0; }
 .story .read { margin: 8px 0; padding: 8px 12px; border-left: 3px solid var(--accent-2); background: var(--surface-2); border-radius: 0 8px 8px 0; }
-.story .read::before { content: "The read"; display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-2); }
+.story .read .read-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent-2); }
+.lang-switch { display: inline-flex; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; overflow: hidden; margin-left: 8px; }
+.lang-switch button { font: inherit; font-size: 12px; font-weight: 700; padding: 3px 10px; background: transparent; color: #cfd0ee; border: 0; cursor: pointer; }
+.lang-switch button[aria-pressed="true"] { background: #3ee6cc; color: #0a0b1e; }
+.show-card { display: flex; gap: 16px; align-items: flex-start; }
+.show-card img { border-radius: 10px; flex: none; }
+.show-card h3 a { color: inherit; }
 .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; cursor: help; }
 .label.confirmed { background: var(--ok-soft); color: var(--ok); }
 .label.reported { background: var(--warn-soft); color: var(--warn); }
@@ -82,4 +88,9 @@ a.tag:hover { text-decoration: underline; }
 .topic-list .tag { font-size: 14px; padding: 4px 12px; }
 .count { color: var(--muted); font-weight: 400; }
 footer { border-top: 1px solid var(--border); padding: 20px 0 40px; font-size: 13px; color: var(--muted); }
-@media (max-width: 600px) { h1 { font-size: 24px; } header.bar nav { gap: 10px; } }
+@media (max-width: 600px) {
+  h1 { font-size: 24px; }
+  header.bar .wrap { flex-wrap: wrap; row-gap: 8px; }
+  header.bar .lang-switch { margin-left: auto; }
+  header.bar nav { order: 3; width: 100%; margin-left: 0; gap: 16px; }
+}

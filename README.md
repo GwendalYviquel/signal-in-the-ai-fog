@@ -117,6 +117,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── show.py                     a show: its config, its files, its site folder (SHOW=<slug>)
 │   ├── locale.py                   a show's language and cadence: fixed spoken texts, feed, dates
 │   ├── locales/                    en.yaml, fr.yaml
+│   ├── templates/                  catalog.html, every show's catalog page
 │   ├── main.py                     run modes, guards, catch-ups
 │   ├── generate.py                 script writing with Claude and web search, validation
 │   ├── context.py                  open items, known topics, accepted listener suggestions
@@ -137,16 +138,22 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── rehearsal.py                publication rehearsal
 │   └── drawing.py                  drawing helpers shared by the diagrams and the dashboard
 ├── shows/
-│   └── signal-in-the-ai-fog/       one folder per show
-│       ├── show.yaml               podcast, models, voices, themes, schedule, sources, prices
-│       ├── prompt.md               editorial line, episode format, writing rules for the voice
-│       ├── data/                   episodes, scripts, previews, costs, stats, spotify.json
-│       ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
-│       └── STATS.md                downloads report
+│   ├── signal-in-the-ai-fog/       one folder per show: the first one, in English, daily
+│   │   ├── show.yaml               podcast, models, voices, themes, schedule, sources, prices
+│   │   ├── prompt.md               editorial line, episode format, writing rules for the voice
+│   │   ├── data/                   episodes, scripts, previews, costs, stats, spotify.json
+│   │   ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
+│   │   └── STATS.md                downloads report
+│   ├── hr-news-fr/                 HR news, in French, weekly (in preparation)
+│   └── accounting-news-fr/         accounting news, in French, weekly (in preparation)
 ├── docs/                           GitHub Pages: the first show at the root, the next ones in docs/<slug>/
 │   ├── episodes/                   one page per episode, with its transcript (.vtt) and chapters (.json)
 │   ├── topics/                     one page per topic, and the list of topics
-│   └── corrections.html            every correction
+│   ├── corrections.html            every correction
+│   ├── hr-news-fr/                 the site of another show: same files, in its folder
+│   ├── shows.html                  every show of the engine
+│   ├── i18n.js                     the EN | FR switch, shared by every page
+│   └── i18n.json                   interface texts of every language (generated)
 ├── assets/                         images and diagrams of the README, light and dark
 ├── tools/
 │   ├── make_cover.py               cover art
@@ -186,7 +193,11 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 
 ## Episode catalog
 
-The GitHub Pages home page (`docs/index.html`) lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from the `show.yaml` once set, and a Spotify search for the podcast until then.
+Every show has its catalog: the first show at the site's root (`docs/index.html`), the others in their folder (`docs/<slug>/index.html`), all generated from one template (`engine/templates/catalog.html`). [`docs/shows.html`](https://gwendalyviquel.github.io/signal-in-the-ai-fog/shows.html) lists every show, with its cadence and language.
+
+**Two languages, with a switch.** Each show's pages are written in its language (English or French), and an **EN | FR** switch in the header translates the interface of every page: menus, buttons, headings, labels, dates. The choice is remembered in the browser from page to page and from show to show; episodes always stay in the language they were made in. The interface texts live in `engine/locales/*.yaml` (`site` section), served to the browser as `docs/i18n.json` and applied by `docs/i18n.js`; without JavaScript, a page reads in its show's language.
+
+The catalog lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from the `show.yaml` once set, and a Spotify search for the podcast until then.
 
 Each episode also has **its own page** (`docs/episodes/YYYY-MM-DD.html`), linked from its card and from its description in podcast apps: summary, player, chapters that jump the player to that moment, then every story with its reliability label, its facts and its read, its topics and its sources, the follow-up, the number of the day, What to watch and the question. The first three episodes (October 19 to 21) were rebuilt from their archived scripts, with labels and topics added after publication, as their pages say; a test checks that each one reassembles word for word into the script that aired. Pages carry a canonical link, Open Graph tags and schema.org `PodcastEpisode` data, and `docs/sitemap.xml` lists them all, so search engines can index every episode.
 

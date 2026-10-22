@@ -63,6 +63,12 @@ def short_date(d: dt.date, loc: dict) -> str:
     return names["short_date"].format(month=names["months"][d.month - 1], day=d.day)
 
 
+def page_date(d: dt.date, loc: dict) -> str:
+    names = loc["dates"]
+    return names["page_date"].format(weekday=names["weekdays"][d.weekday()], month=names["months"][d.month - 1],
+                                     day=d.day, year=d.year)
+
+
 def long_date(d: dt.date, loc: dict) -> str:
     names = loc["dates"]
     return names["long_date"].format(month=names["months"][d.month - 1], day=d.day, year=d.year)

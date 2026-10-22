@@ -1,0 +1,18 @@
+{
+ "podcast": {
+  "title": "Signal RH",
+  "description": "Chaque semaine, dix minutes sur l'actualité RH, sociale et paie : droit du travail et jurisprudence, cotisations, conventions collectives, formation, outils RH et IA, et ce qui vient de l'Europe. Pour les responsables RH et les gestionnaires de paie. Script écrit et voix générée par IA.",
+  "cover": "cover.jpg",
+  "feed_url": "https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/feed.xml",
+  "spotify_url": "",
+  "themes": [
+   "Droit du travail",
+   "Paie et cotisations",
+   "Dialogue social",
+   "Formation",
+   "SIRH et IA",
+   "Europe"
+  ]
+ },
+ "episodes": []
+}

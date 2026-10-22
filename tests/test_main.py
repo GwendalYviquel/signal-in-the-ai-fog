@@ -51,7 +51,7 @@ def test_the_test_repository_redirects_every_path_of_the_pipeline(repo):
     assert shows.load().repo == repo
     for info in pkgutil.iter_modules(engine.__path__):
         module = importlib.import_module(f"engine.{info.name}")
-        real = [name for name, value in vars(module).items() if isinstance(value, Path) and name not in ("ROOT", "REPO", "LOCALES")
+        real = [name for name, value in vars(module).items() if isinstance(value, Path) and name not in ("ROOT", "REPO", "LOCALES", "TEMPLATE")
                 and ROOT in (value, *value.parents)]
         assert real == [], f"engine.{info.name} keeps paths into the real repository: {real}"
 
@@ -260,7 +260,7 @@ def test_publication_writes_chapters_transcript_pages_and_the_notification(repo,
     assert read(repo / SHOW / "data/scripts/2026-10-20.json")["story_of_the_day"]["label"] == "confirmed"
     assert not (repo / SHOW / "data/previews/2026-10-20.json").exists()  # replaced by the published episode
     page = (repo / "docs/episodes/2026-10-20.html").read_text()
-    assert "<h2>Chapters</h2>" in page and 'class="label confirmed"' in page
+    assert ">Chapters</h2>" in page and 'class="label confirmed"' in page
     assert (repo / "docs/topics/microsoft.html").exists() and (repo / "docs/sitemap.xml").exists()
     note = read(repo / "build/signal-in-the-ai-fog/published.json")
     assert note["page_url"] == "https://owner.github.io/podcast/episodes/2026-10-20.html"

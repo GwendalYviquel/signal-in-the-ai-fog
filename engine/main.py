@@ -260,6 +260,7 @@ def run(show: shows.Show, spend: dict) -> str | None:
         save(show.previews, previews + [record(ep, today, now)])
         catalog.write_catalog(cfg, episodes, load(show.previews), show.data, show.docs / "catalog.json", base_url)
         site.write_site(cfg, show.docs / "catalog.json", show.data, show.docs, base_url)
+        site.write_shared(show.repo)
         print("PREVIEW: script published to the catalog, no speech synthesis, RSS feed unchanged.")
         return
 
@@ -300,6 +301,7 @@ def run(show: shows.Show, spend: dict) -> str | None:
     feed.write_feed(cfg, episodes, show.docs / "feed.xml", base_url)
     catalog.write_catalog(cfg, episodes, previews, show.data, show.docs / "catalog.json", base_url)
     site.write_site(cfg, show.docs / "catalog.json", show.data, show.docs, base_url)
+    site.write_shared(show.repo)
     page_url = site.episode_url(base_url, today.isoformat())
     (show.build / "published.json").write_text(json.dumps({  # read by the notification step
         "date": today.isoformat(), "title": ep["title"], "page_url": page_url,

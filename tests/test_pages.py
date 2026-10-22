@@ -47,7 +47,7 @@ def test_structured_episode_page_shows_every_story_with_label_layers_topics_and_
     assert ep["story_of_the_day"]["read"] in page and 'class="read"' in page
     assert 'href="../topics/microsoft.html"' in page and 'href="https://example.com/a"' in page
     for heading in ("Follow-up", "Number of the day", "What to watch", "Question for your team"):
-        assert f"<h2>{heading}</h2>" in page
+        assert f">{heading}</h2>" in page
     assert '<link rel="canonical" href="https://owner.github.io/podcast/episodes/2026-10-22.html">' in page
 
 
@@ -185,3 +185,65 @@ def test_labels_added_after_publication_say_so(build):
     assert "Reliability labels added after publication" in (docs / "episodes/2026-10-19.html").read_text()
     docs = build([item("2026-10-20")], {"2026-10-20": make_episode()})
     assert "added after publication" not in (docs / "episodes/2026-10-20.html").read_text()
+
+
+def french_cfg(cfg):
+    import copy
+    fr = copy.deepcopy(cfg)
+    fr["podcast"].update(title="Signal RH", language="fr", site_path="hr-news-fr", description="Chaque semaine.")
+    fr["generation"]["cadence"] = "weekly:monday"
+    return fr
+
+
+def test_a_french_show_gets_french_pages_that_reach_the_shared_files(tmp_path, cfg):
+    # Learning (2026-10-22): a show in a subfolder (docs/<slug>/) still uses docs/pages.css, i18n.js
+    # and shows.html; its pages are written in its language, with keys for the language switch.
+    fr = french_cfg(cfg)
+    docs = tmp_path / "docs" / "hr-news-fr"
+    (tmp_path / "data" / "scripts").mkdir(parents=True)
+    docs.mkdir(parents=True)
+    (tmp_path / "data" / "scripts" / "2026-10-26.json").write_text(json.dumps(make_episode(
+        follow_up={"text": "Suivi.", "source": {"title": "S", "url": "https://s", "primary": True}})))
+    (docs / "catalog.json").write_text(json.dumps({"podcast": dict(PODCAST, title="Signal RH"),
+                                                   "episodes": [item("2026-10-26")]}))
+    site.write_site(fr, docs / "catalog.json", tmp_path / "data", docs, BASE + "hr-news-fr/")
+    page = (docs / "episodes" / "2026-10-26.html").read_text()
+    assert '<html lang="fr">' in page and 'href="../../pages.css"' in page and 'src="../../i18n.js"' in page
+    assert 'href="../../shows.html"' in page and ">Signal RH</a>" in page
+    for text in ('data-i18n="stories">Sujets</h2>', 'data-i18n="story.week">Sujet de la semaine</span>',
+                 'data-i18n="number.week">Chiffre de la semaine</h2>', ">lundi 26 octobre 2026</span>",
+                 'data-i18n="label_confirmed"', ">Confirmé</span>", 'data-i18n="read">L&#x27;analyse</span>'):
+        assert text in page, text
+    catalog = (docs / "index.html").read_text()
+    assert '<html lang="fr">' in catalog and '<script src="../i18n.js"></script>' in catalog
+    assert "<title>Signal RH</title>" in catalog and "{{" not in catalog
+
+
+def test_the_interface_texts_of_every_language_reach_the_browser():
+    data = site.i18n_json()
+    assert set(data) == set(site.languages()) >= {"en", "fr"}
+    assert set(data["en"]) == set(data["fr"])
+    assert data["fr"]["story.week"] == "Sujet de la semaine" and data["en"]["story.day"] == "Story of the day"
+    assert data["en"]["downloads"] == {"one": "{n} download", "other": "{n} downloads"}
+
+
+def test_the_committed_translations_match_the_locales():
+    committed = json.loads((site.ROOT / "docs" / "i18n.json").read_text(encoding="utf-8"))
+    assert committed == site.i18n_json(), "docs/i18n.json is stale: run python -m engine.site"
+
+
+def test_the_shows_page_lists_every_show_the_first_one_first(tmp_path):
+    import yaml
+    for slug_, extra in (("signal-in-the-ai-fog", {"site_path": ""}), ("hr-news-fr", {"language": "fr"})):
+        home = tmp_path / "shows" / slug_
+        home.mkdir(parents=True)
+        (home / "show.yaml").write_text(yaml.safe_dump({
+            "podcast": {"title": slug_.upper(), "description": "<b>D</b>", "cover_file": "cover.jpg", **extra},
+            "generation": {"cadence": "weekdays" if slug_.startswith("signal") else "weekly:monday"}}))
+    site.write_shared(tmp_path)
+    html = (tmp_path / "docs" / "shows.html").read_text()
+    assert html.index("SIGNAL-IN-THE-AI-FOG") < html.index("HR-NEWS-FR")
+    assert 'href="index.html"' in html and 'href="hr-news-fr/index.html"' in html
+    assert ">Every weekday<" in html and ">Every week<" in html and ">In French<" in html
+    assert "<b>" not in html  # descriptions are escaped
+    assert (tmp_path / "docs" / "i18n.json").exists()

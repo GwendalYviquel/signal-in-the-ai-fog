@@ -195,3 +195,31 @@ def test_deep_link_highlights_and_shows_the_episode(open_site):
     assert "is-target" in card.get_attribute("class")
     assert card.evaluate("e => getComputedStyle(e).outlineStyle") == "solid"
     assert page.evaluate("document.getElementById('2026-10-07').getBoundingClientRect().top < innerHeight")
+
+
+def test_language_switch_translates_the_interface_and_is_remembered(open_site):
+    # Learning (2026-10-22): the site serves English and French shows; an EN | FR switch translates
+    # the interface (not the episodes) and is remembered from one page to the next.
+    page = open_site({"podcast": PODCAST, "episodes": [episode("2026-10-20", "published", downloads=1234)]})
+    assert page.locator("a.btn.primary").inner_text() == "Listen on Spotify"
+    page.click('.lang-switch button[data-lang="fr"]')
+    assert page.locator("a.btn.primary").inner_text() == "Écouter sur Spotify"
+    assert page.locator(".badge").first.inner_text().lower() == "publié"
+    assert "oct" in page.locator(".meta span").nth(1).inner_text() and "mar." in page.locator(".meta span").nth(1).inner_text()
+    assert page.get_attribute("#search", "placeholder") == "Chercher dans les titres, résumés, scripts…"
+    assert page.locator('[data-i18n="footer"]').inner_text().startswith("Les scripts sont écrits")
+    assert page.locator(".card h2").inner_text() == "Episode 2026-10-20"  # episodes stay as written
+    page.reload()
+    page.wait_for_selector("#list > *")
+    page.wait_for_function("document.querySelector('a.btn.primary').textContent === 'Écouter sur Spotify'")
+    assert page.get_attribute('.lang-switch button[data-lang="fr"]', "aria-pressed") == "true"
+
+
+def test_generated_pages_follow_the_switch(browser, server):
+    page = browser.new_page()
+    page.goto(server + "episodes/2026-10-21.html")
+    page.wait_for_function("window.I18N && document.documentElement.dataset.uiLang === 'en'")
+    page.click('.lang-switch button[data-lang="fr"]')
+    assert page.locator('h2[data-i18n="stories"]').inner_text() == "Sujets"
+    assert "octobre" in page.locator("[data-date]").first.inner_text()
+    page.close()
