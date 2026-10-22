@@ -20,7 +20,7 @@ podcast:
   cover_file: "cover.jpg"            # in docs/accounting-news-fr/, square, 1400 to 3000 px (to create)
   cover_kicker: "L'hebdo compta et fiscalité"   # small line above the title (tools/make_cover.py --show)
   cover_palette: ['#1b2a1f', '#2f6b4f', '#d4a017']   # gradient of the cover, three colours
-  spotify_url: ""                    # set once the show is submitted to Spotify (manual, once)
+  spotify_url: "https://open.spotify.com/show/3I7wKK8IXhtqvsTzvXEeBt"   # submitted on 2026-10-22
   # Leave empty to use the repository's GitHub Pages site, in the folder site_path.
   base_url: ""
   site_path: "accounting-news-fr"
