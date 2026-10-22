@@ -139,7 +139,10 @@ def scheduled(show: Show) -> bool:
 
 def matrix(which: str, repo: Path | None = None) -> dict:
     """GitHub Actions matrix of the shows to run: "all" (scheduled attempts: the scheduled shows) or one."""
-    names = [s for s in slugs(repo) if scheduled(load(s, repo))] if which == "all" else [which or DEFAULT]
+    # The first show first: one show runs at a time, and a weekly show's longer writing on Mondays
+    # must never delay the daily episode, published at 4:05 for a 7:00 listen.
+    order = sorted(slugs(repo), key=lambda s: (s != DEFAULT, s))
+    names = [s for s in order if scheduled(load(s, repo))] if which == "all" else [which or DEFAULT]
     return {"include": [{"show": s, "context_secret": context_secret(load(s, repo))} for s in names]}
 
 

@@ -43,7 +43,7 @@ generation:
   # Paris times the watchdog checks that the episode is out, and starts the catch-up if not.
   watchdog_at: ["05:11", "06:41"]
   target_words: 1400                 # about ten minutes spoken in French
-  scheduled: false                   # in preparation: no scheduled attempt, no watchdog (engine/show.py)
+  scheduled: true                    # on its schedule and watched (false: no scheduled attempt, no watchdog)
   lengths:                           # word ranges of a weekly French episode (warnings only)
     story facts: [150, 250]
     story read: [120, 200]

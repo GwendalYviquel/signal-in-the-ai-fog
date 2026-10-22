@@ -13,8 +13,8 @@ An engine that writes, voices and publishes news podcasts on its own, and the sh
 | Show | Language | Cadence | Length | Writing | Status |
 | --- | --- | --- | --- | --- | --- |
 | [Signal in the AI Fog](shows/signal-in-the-ai-fog/README.md): enterprise AI in production | English | every weekday | ~6 min | one step | live |
-| [Signal in the HR Fog](shows/hr-news-fr/README.md): HR, payroll and labour law | French | weekly, Monday | ~10 min | two steps (dossier) | in preparation: voices chosen, not scheduled |
-| [Signal in the Tax Fog](shows/accounting-news-fr/README.md): tax, accounting, e-commerce, European rules | French | weekly, Monday | ~10 min | two steps (dossier) | in preparation: voices chosen, not scheduled |
+| [Signal in the HR Fog](shows/hr-news-fr/README.md): HR, payroll and labour law | French | weekly, Monday | ~10 min | two steps (dossier) | scheduled: first episode on October 26 |
+| [Signal in the Tax Fog](shows/accounting-news-fr/README.md): tax, accounting, e-commerce, European rules | French | weekly, Monday | ~10 min | two steps (dossier) | scheduled: first episode on October 26 |
 
 Each show's page gives its editorial line, themes, rhythm, links and what is left before its first episode.
 

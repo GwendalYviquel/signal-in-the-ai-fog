@@ -6,7 +6,7 @@
 
 | | |
 | --- | --- |
-| Status | in preparation: voices chosen, not scheduled yet (`generation.scheduled: false`) |
+| Status | scheduled: first episode on Monday, October 26, 2026 |
 | Language | French |
 | Cadence | weekly, on Monday at 4:05 Paris time, with the news of the last seven days, weekend included |
 | Length | about 10 minutes (`target_words: 1400`) |
@@ -22,9 +22,8 @@ Labour law, payroll and social news, read for practitioners: what changes, from 
 
 Themes, in segment order (`show.yaml`): Droit du travail, Paie et cotisations, IA et travail, Santé et conditions de travail, Emploi et retraite, Dialogue social, Formation, Europe. An episode has at most five segments, on the themes with news that week.
 
-## Before the first episode
+## Going live
 
-1. Optionally, a private editorial context in the `EDITORIAL_CONTEXT_HR_NEWS_FR` secret.
-2. Set `generation.scheduled: true`; the first episode comes out the next Monday.
+Scheduled since October 22, 2026: the first episode comes out on Monday, October 26, at 4:05 Paris time. Then submit its feed to Spotify once, by hand, and set `podcast.spotify_url`. A private editorial context can be added at any time in the `EDITORIAL_CONTEXT_HR_NEWS_FR` secret.
 
 Previews so far (October 22, 2026): about $1 to $2 of Claude each, with the two-step writing.

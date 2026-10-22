@@ -103,5 +103,12 @@ def test_shows_in_preparation_are_never_scheduled():
     for slug in shows.slugs():
         assert (slug in names) == shows.scheduled(shows.load(slug))
     for slug in ("hr-news-fr", "accounting-news-fr"):
-        if slug in shows.slugs() and "TO_FILL" in (shows.load(slug).home / "show.yaml").read_text():
+        if slug in shows.slugs() and ': "TO_FILL"' in (shows.load(slug).home / "show.yaml").read_text():  # a value, not the header
             assert not shows.scheduled(shows.load(slug)), f"{slug} has voices to choose but is scheduled"
+
+
+def test_the_daily_show_runs_first_so_a_weekly_show_never_delays_it():
+    # Learning (2026-10-22): shows ran in alphabetical order, one at a time; on Mondays the two French
+    # weekly shows (two-step writing, about 10 minutes each) would have delayed the 4:05 daily episode.
+    names = [i["show"] for i in shows.matrix("all")["include"]]
+    assert names[0] == shows.DEFAULT
