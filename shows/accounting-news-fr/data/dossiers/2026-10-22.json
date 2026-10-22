@@ -1,0 +1,446 @@
+{
+ "items": [
+  {
+   "title": "PLF 2027 : l'examen des recettes à l'Assemblée est suspendu avant le vote solennel du 3 novembre",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "L'Assemblée nationale a commencé l'examen en séance publique de la première partie (recettes) du projet de loi de finances pour 2027 le 13 octobre 2026 et l'a poursuivi jusqu'au 19 octobre 2026.",
+     "quote": "Du mardi 13 octobre 2026 au lundi 19 octobre 2026, l'Assemblée nationale a commencé l’examen la première partie du projet de loi de finances pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "L'examen reprend du mardi 27 octobre au lundi 2 novembre 2026.",
+     "quote": "se poursuivra du mardi 27 octobre au lundi 2 novembre",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote solennel sur la première partie est inscrit à la séance publique du mardi 3 novembre 2026 après-midi (il n'a donc pas eu lieu le 20 octobre).",
+     "quote": "Le vote solennel sur la première partie du projet de loi de finances pour 2027 est inscrit à l’ordre du jour de la séance publique du mardi 3 novembre, après-midi",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "La motion de rejet préalable déposée par le groupe socialiste a été rejetée le 13 octobre 2026 par 236 voix contre 149 pour.",
+     "quote": "Elle a obtenu 149 voix pour et 236 contre.",
+     "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte initial reconduit en 2027, à l'article 15, la contribution exceptionnelle sur les bénéfices des grandes entreprises (surtaxe d'IS).",
+     "quote": "L'article 15 du PLF reconduit la contribution exceptionnelle sur les bénéfices des grandes entreprises en 2027.",
+     "url": "https://www.juritravail.com/Actualite/budget-2027-que-prevoit-le-projet-de-loi-de-finances/Id/378603",
+     "status": "verified"
+    },
+    {
+     "statement": "Le projet du Gouvernement prévoit une réduction de 30 pour cent de la surtaxe d'IS des grandes entreprises.",
+     "quote": "La réduction de 30 % de la surtaxe d’impôt sur les sociétés applicable aux grandes entreprises",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4656-presentation-plf-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse spécialisée, le rendement de la surtaxe passerait de 7 milliards à 5 milliards d'euros en 2027.",
+     "quote": "son rendement pour l’Etat passerait de 7 milliards à 5 milliards en 2027",
+     "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/budget-2027-ce-que-le-projet-de-loi-de-finances-prevoit-pour-les-entreprises-27545",
+     "status": "verified"
+    },
+    {
+     "statement": "Parmi les amendements adoptés en séance, la presse fiscale rapporte un allongement du plan de règlement du régime de l'apport-cession de 5 à 10 ans.",
+     "quote": "le plan de règlement passerait de 5 à 10 ans.",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4693-amendements-plf-2027-adoptes-deputes-suite.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Un sous-amendement étendrait cette réforme aux apports antérieurs au 7 octobre 2026 (amendement adopté en séance, texte non définitif).",
+     "quote": "étendrait cette réforme aux apports antérieurs au 7 octobre 2026",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4693-amendements-plf-2027-adoptes-deputes-suite.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "primary": true
+    },
+    {
+     "title": "Legifiscal : Amendements PLF 2027 adoptés par les députés : la suite",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4693-amendements-plf-2027-adoptes-deputes-suite.html",
+     "primary": false
+    },
+    {
+     "title": "KPMG Avocats : PLF 2027, la commission des finances de l'Assemblée nationale rejette le texte",
+     "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html",
+     "primary": false
+    },
+    {
+     "title": "franceinfo : Budget 2027, les députés ont entamé l'examen du projet de loi de finances",
+     "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+     "primary": false
+    },
+    {
+     "title": "Daf-mag : Budget 2027, ce que le projet de loi de finances prévoit pour les entreprises",
+     "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/budget-2027-ce-que-le-projet-de-loi-de-finances-prevoit-pour-les-entreprises-27545",
+     "primary": false
+    },
+    {
+     "title": "Legifiscal : PLF 2027, les principales mesures fiscales du projet de budget",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4656-presentation-plf-2027.html",
+     "primary": false
+    },
+    {
+     "title": "Juritravail : Budget 2027, que prévoit le projet de loi de finances",
+     "url": "https://www.juritravail.com/Actualite/budget-2027-que-prevoit-le-projet-de-loi-de-finances/Id/378603",
+     "primary": false
+    }
+   ],
+   "context": "Étape réelle : projet de loi de finances déposé fin septembre 2026 (présenté le 1er octobre selon la presse), première partie rejetée en commission des finances du 7 au 9 octobre, examen en séance publique commencé le 13 octobre, pas de vote solennel avant le 3 novembre. Rien n'est adopté définitivement : les amendements cités sont adoptés en séance sur la première partie seulement, avant seconde partie, Sénat, éventuelle commission mixte paritaire et passage possible du 49.3 (non évoqué dans les sources, ne pas l'affirmer). Pour une direction financière ou un cabinet : surtaxe d'IS (grandes entreprises, seuil et taux exacts contradictoires selon les sources : ne pas les chiffrer), apport-cession, rachats d'actions, impôt minimum mondial. À ce stade, les entreprises ne doivent pas provisionner ni conseiller sur des mesures non votées ; utile de préparer des scénarios pour la clôture 2026. Les sources divergent sur le calendrier théorique (un calendrier prévoyait un vote solennel le 20 octobre et un vote d'ensemble en première lecture le 17 novembre) : seule la page de l'Assemblée fait foi, vote solennel le 3 novembre ; ne pas donner de date pour le vote sur l'ensemble. Le Gouvernement vise un déficit de 5 pour cent du PIB en 2027 (5,4 pour cent en 2026 selon la presse)."
+  },
+  {
+   "title": "Facturation électronique : réception obligatoire depuis le 1er septembre 2026, tolérance sur les sanctions jusqu'à fin 2026",
+   "theme": "Facturation électronique",
+   "facts": [
+    {
+     "statement": "Depuis le 1er septembre 2026, près de 10 millions d'acteurs assujettis à la TVA doivent recevoir leurs factures sous forme électronique via une plateforme agréée (page du ministère de l'Économie).",
+     "quote": "près de 10 millions d’acteurs économiques assujettis à la TVA",
+     "url": "https://www.economie.gouv.fr/actualites/facturation-electronique-la-liste-des-101-premieres-plateformes-agreees-est-disponible",
+     "status": "verified"
+    },
+    {
+     "statement": "Aucun report de dernière minute n'est intervenu au 1er septembre 2026.",
+     "quote": "Aucun report de dernière minute n'est intervenu.",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "verified"
+    },
+    {
+     "statement": "Les grandes entreprises, les ETI et les membres d'un assujetti unique doivent émettre au format électronique et transmettre leurs données de e-reporting dès le 1er septembre 2026.",
+     "quote": "Les grandes entreprises, les ETI et les membres d'un assujetti unique doivent émettre au format électronique les factures relevant de l'obligation",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "verified"
+    },
+    {
+     "statement": "L'émission devient obligatoire pour les micro-entreprises, TPE et PME au 1er septembre 2027.",
+     "quote": "puis pour les micro-entreprises, les très petites entreprises et les PME au 1er septembre 2027",
+     "url": "https://kohenavocats.fr/2026/10/17/facture-electronique-obligatoire-septembre-2026-recevoir-emettre-sanction-paris-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "La phase de tolérance de l'administration ne vaut ni report ni suspension de l'obligation.",
+     "quote": "Elle ne vaut ni report, ni suspension de l'obligation",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "verified"
+    },
+    {
+     "statement": "Amende de 50 euros par facture non émise au format électronique (contre 15 euros auparavant), plafonnée à 15000 euros par an.",
+     "quote": "Le défaut d'émission d'une facture électronique est puni de 50 € par facture, contre 15 € auparavant, dans la limite de 15 000 € par an.",
+     "url": "https://www.treso2.com/blog/reforme-de-la-facturation-electronique-quelles-sont-les-sanctions",
+     "status": "unread"
+    },
+    {
+     "statement": "Défaut de e-reporting : 500 euros par transmission (contre 250 euros auparavant).",
+     "quote": "L'e-reporting manquant coûte 500 € par transmission, contre 250 € auparavant",
+     "url": "https://www.treso2.com/blog/reforme-de-la-facturation-electronique-quelles-sont-les-sanctions",
+     "status": "unread"
+    },
+    {
+     "statement": "Un fournisseur ne peut pas invoquer la réglementation pour imposer à une entité non assujettie d'adhérer à une plateforme agréée.",
+     "quote": "un fournisseur ne peut pas invoquer la réglementation sur la facturation électronique pour imposer à une entité non assujettie d'adhérer à une plateforme agréée",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Ministère de l'Économie : Facturation électronique, la liste des 101 premières plateformes agréées",
+     "url": "https://www.economie.gouv.fr/actualites/facturation-electronique-la-liste-des-101-premieres-plateformes-agreees-est-disponible",
+     "primary": true
+    },
+    {
+     "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "primary": false
+    },
+    {
+     "title": "Qonto : Liste officielle des plateformes agréées, octobre 2026",
+     "url": "https://qonto.com/fr/blog/gestion-entreprise/facturation/liste-des-plateformes-agreees",
+     "primary": false
+    },
+    {
+     "title": "Tréso2 : Réforme de la facturation électronique, quelles sont les sanctions",
+     "url": "https://www.treso2.com/blog/reforme-de-la-facturation-electronique-quelles-sont-les-sanctions",
+     "primary": false
+    },
+    {
+     "title": "Kohen Avocats : Facture électronique obligatoire depuis septembre 2026",
+     "url": "https://kohenavocats.fr/2026/10/17/facture-electronique-obligatoire-septembre-2026-recevoir-emettre-sanction-paris-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Sept semaines après le démarrage : les cabinets accompagnent leurs clients sur le choix de plateforme (réception obligatoire pour tous), les grandes entreprises et ETI émettent déjà. La tolérance annoncée par le ministère couvre la fin 2026 pour les entreprises de bonne foi engagées dans leur mise en conformité ; elle ne repousse pas l'obligation. Prochaine marche : 1er septembre 2027 pour l'émission des PME, TPE et micro-entreprises, d'où l'intérêt de préparer dès l'hiver (choix de plateforme, formats Factur-X UBL CII, processus d'achats et de comptabilisation, e-reporting). Point de vigilance de mission : un client non assujetti n'a pas à être contraint par un fournisseur. Les chiffres de plateformes varient selon les sources (155 au 14 octobre selon Qonto ; 149 immatriculées sur 163 référencées au 21 septembre selon un autre site) : citer 155 avec prudence, source non officielle. Statut reported pour le nombre de plateformes, confirmed pour le calendrier."
+  },
+  {
+   "title": "Règlement ANC 2026-04 : comptabilisation de l'impôt sur les bénéfices et des contributions, homologué",
+   "theme": "Normes comptables",
+   "facts": [
+    {
+     "statement": "L'ANC a adopté en mai 2026 le règlement 2026-04 modifiant le PCG pour préciser la comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent ; il est homologué par arrêté du 12 août 2026.",
+     "quote": "homologué par arrêté du 12 août 2026, qui modifie le PCG afin de préciser les modalités de comptabilisation de l’impôt sur les bénéfices",
+     "url": "https://www.revue-fiduciaire.com/actualite/article/reglement-anc-2026-04-comptabilisation-de-l-impot-sur-les-benefices-et-des-contributions-y-afferentes",
+     "status": "verified"
+    },
+    {
+     "statement": "L'arrêté d'homologation de quatre règlements de l'ANC (2026-01, 2026-02, 2026-03, 2026-04) est paru au Journal officiel du 3 septembre 2026.",
+     "quote": "Objet : homologation de quatre règlements de l'Autorité des normes comptables.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "status": "unread"
+    },
+    {
+     "statement": "Journal officiel numéro 205 du 3 septembre 2026.",
+     "quote": "JORF n°0205 du 3 septembre 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "status": "unread"
+    },
+    {
+     "statement": "L'arrêté entre en vigueur le lendemain de sa publication.",
+     "quote": "l'arrêté entre en vigueur le lendemain de sa publication",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Arrêté du 12 août 2026 portant homologation des règlements ANC 2026-01 à 2026-04",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+     "primary": true
+    },
+    {
+     "title": "Revue Fiduciaire : Règlement ANC 2026-04, comptabilisation de l'impôt sur les bénéfices et des contributions y afférentes",
+     "url": "https://www.revue-fiduciaire.com/actualite/article/reglement-anc-2026-04-comptabilisation-de-l-impot-sur-les-benefices-et-des-contributions-y-afferentes",
+     "primary": false
+    }
+   ],
+   "context": "Texte publié il y a sept semaines mais commenté par la presse comptable le 14 octobre : pertinent pour la préparation de la clôture 2026, notamment pour les entités qui ont à traiter la contribution exceptionnelle sur les bénéfices des grandes entreprises et autres contributions assises sur l'impôt (le règlement vise les contributions rattachées à l'impôt sur les bénéfices). La date d'application et le détail du traitement ne figurent pas dans les extraits lus : à faire vérifier dans le règlement avant de l'annoncer ; ne pas inventer de date. Le lien avec le PLF 2027 (reconduction de la surtaxe d'IS) est un rapprochement d'analyse, pas un fait sourcé."
+  },
+  {
+   "title": "IFRS 18 : application obligatoire dans l'Union européenne aux exercices ouverts à compter du 1er janvier 2027",
+   "theme": "Normes comptables",
+   "facts": [
+    {
+     "statement": "Le règlement de la Commission adoptant IFRS 18 a été publié au Journal officiel de l'Union européenne le 16 février 2026.",
+     "quote": "publishing the Commission Regulation in the Official Journal on 16 February 2026",
+     "url": "https://www.xbrl.org/news/eu-officially-adopts-ifrs-18/",
+     "status": "verified"
+    },
+    {
+     "statement": "La norme s'applique aux exercices ouverts à compter du 1er janvier 2027, avec application rétrospective.",
+     "quote": "annual reporting periods beginning on or after 1 January 2027, with retrospective application required",
+     "url": "https://www.xbrl.org/news/eu-officially-adopts-ifrs-18/",
+     "status": "verified"
+    },
+    {
+     "statement": "Les données comparatives 2026 devront être retraitées, rappelle l'ESMA.",
+     "quote": "reminding issuers that 2026 comparatives will need to be restated",
+     "url": "https://www.xbrl.org/news/eu-officially-adopts-ifrs-18/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'IASB a publié l'ordre du jour de sa réunion de Londres des 27 et 28 octobre 2026, avec six sujets.",
+     "quote": "which will be held in its offices in London on 27-28 October 2026. There are six topics on the agenda.",
+     "url": "https://www.iasplus.com/en/resources/ifrsf/iasb-ifrs-ic/iasb",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "XBRL International : EU officially adopts IFRS 18",
+     "url": "https://www.xbrl.org/news/eu-officially-adopts-ifrs-18/",
+     "primary": false
+    },
+    {
+     "title": "IAS Plus (Deloitte) : International Accounting Standards Board",
+     "url": "https://www.iasplus.com/en/resources/ifrsf/iasb-ifrs-ic/iasb",
+     "primary": false
+    }
+   ],
+   "context": "Pas d'actualité nouvelle sur IFRS 18 cette semaine : rappel utile car les comptes consolidés IFRS des exercices 2027 exigent un exercice 2026 retraité en comparatif ; c'est donc maintenant que se prépare le retraitement (états du compte de résultat par catégories, mesures de performance définies par la direction, systèmes, balisage ESEF pour les cotés). Source primaire EUR-Lex non lue, donc statut reported. L'IASB se réunit à Londres à partir du 27 octobre ; une autre page annonce 26 au 30 octobre : annoncer seulement fin octobre. Ne pas détailler le contenu de l'ordre du jour, non lu."
+  },
+  {
+   "title": "ESRS simplifiées : acte délégué adopté le 3 juillet 2026, application aux exercices ouverts à compter du 1er janvier 2027",
+   "theme": "Durabilité",
+   "facts": [
+    {
+     "statement": "La Commission européenne a adopté le 3 juillet 2026 l'acte délégué final contenant les ESRS simplifiées (ESRS 2026).",
+     "quote": "On 3 July 2026, the European Commission adopted the final delegated act containing the simplified European Sustainability Reporting Standards (ESRS (2026)).",
+     "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202617.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Les entités dans le champ de la CSRD doivent appliquer les ESRS 2026 aux exercices ouverts à compter du 1er janvier 2027.",
+     "quote": "must apply ESRS (2026) for financial years beginning on or after 1 January 2027",
+     "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202617.html",
+     "status": "verified"
+    },
+    {
+     "statement": "La directive Omnibus I est entrée en vigueur le 18 mars 2026 et doit être transposée par les États membres au plus tard le 19 mars 2027.",
+     "quote": "on 18 March 2026, and which will have to be transposed by Member States by 19 March",
+     "url": "https://ec.europa.eu/finance/docs/level-2-measures/csrd-delegated-act-2026-5010_en.pdf",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Commission européenne : Acte délégué CSRD 2026 (ESRS)",
+     "url": "https://ec.europa.eu/finance/docs/level-2-measures/csrd-delegated-act-2026-5010_en.pdf",
+     "primary": true
+    },
+    {
+     "title": "PwC Viewpoint : Simplified ESRS, final delegated act adopted",
+     "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202617.html",
+     "primary": false
+    }
+   ],
+   "context": "Pas de fait daté de la semaine dans mes sources : état des lieux. Pour les groupes restant dans le champ de la CSRD après l'Omnibus I, les ESRS allégées sont la référence pour 2027 ; la transposition française de la directive Omnibus I est attendue d'ici le 19 mars 2027 (étape à surveiller). Le statut exact de la norme volontaire VSME (acte délégué prévu selon la presse avant l'été 2026) n'a pas pu être vérifié : ne pas l'affirmer. Pour les cabinets : accompagner les clients sortis du champ vers la VSME comme référence pour répondre aux demandes de donneurs d'ordre ou banques, sous réserve de la confirmation du statut."
+  },
+  {
+   "title": "Haute autorité de l'audit : mise à jour de la FAQ sur le contrôle légal des comptes et décisions de sanction",
+   "theme": "Audit",
+   "facts": [
+    {
+     "statement": "La H2A a publié le 13 octobre 2026 une mise à jour de sa FAQ sur l'application des dispositions encadrant le contrôle légal des comptes.",
+     "quote": "La H2A publie une mise à jour de la FAQ sur l’application des dispositions encadrant le contrôle légal des comptes",
+     "url": "https://h2a-france.org/publications-et-actualites/faq/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'IAASB tient le 28 octobre 2026 une réunion virtuelle intermédiaire, notamment sur la proposition d'ISA 501 révisée relative aux stocks.",
+     "quote": "On October 28, the IAASB will have a virtual mid-quarter meeting",
+     "url": "https://www.iaasb.org/news-events/2026-10/iaasb-enews-october-2026",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "H2A : FAQ",
+     "url": "https://h2a-france.org/publications-et-actualites/faq/",
+     "primary": true
+    },
+    {
+     "title": "H2A : Décisions de la commission des sanctions",
+     "url": "https://h2a-france.org/commission-des-sanctions/decisions-de-la-commission-des-sanctions/",
+     "primary": true
+    },
+    {
+     "title": "H2A : Accueil",
+     "url": "https://h2a-france.org/",
+     "primary": true
+    },
+    {
+     "title": "IAASB : eNews octobre 2026",
+     "url": "https://www.iaasb.org/news-events/2026-10/iaasb-enews-october-2026",
+     "primary": true
+    }
+   ],
+   "context": "Le contenu précis des questions modifiées dans la FAQ du 13 octobre n'a pas été lu : ne pas le détailler. Pratique : les commissaires aux comptes et cabinets doivent vérifier la FAQ mise à jour avant la clôture 2026 et les diligences associées ; la H2A publie régulièrement des décisions de sanction qui servent de repère de contrôle qualité. Côté normes internationales, l'IAASB travaille sur la série ISA 500 (stocks, confirmations externes) et la revue post-implémentation d'ISA 540 : indicatif du cap des futures normes d'exercice professionnel, sans effet immédiat en France."
+  },
+  {
+   "title": "Impôt minimum mondial : amendements au PLF 2027 sur le seuil d'assujettissement et le mécanisme Side-by-Side",
+   "theme": "Europe",
+   "facts": [],
+   "sources": [
+    {
+     "title": "KPMG Avocats : PLF 2027, la commission des finances de l'Assemblée nationale rejette le texte",
+     "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html",
+     "primary": false
+    }
+   ],
+   "context": "Statut reported (source unique de cabinet, pas de texte officiel lu) ; amendements non adoptés définitivement. Pour un groupe multinational dans le champ du Pilier 2 (directive européenne et sa transposition française), la question est de savoir si la France aligne son droit sur les mesures de sauvegarde négociées au niveau de l'OCDE (Side-by-Side) : à suivre lors de la reprise de l'examen le 27 octobre, et pour la déclaration et le calcul de l'impôt complémentaire en 2026. Ne pas détailler le contenu du Side-by-Side, non sourcé ici."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-10-27",
+   "text": "Reprise de l'examen en séance du PLF 2027 à l'Assemblée"
+  },
+  {
+   "date": "2026-10-27",
+   "text": "Réunion de l'IASB à Londres"
+  },
+  {
+   "date": "2026-10-28",
+   "text": "Réunion intermédiaire de l'IAASB sur l'ISA 501 révisée"
+  },
+  {
+   "date": "2026-11-03",
+   "text": "Vote solennel sur la première partie du PLF 2027"
+  },
+  {
+   "date": "2027-01-01",
+   "text": "Application obligatoire d'IFRS 18 dans l'Union européenne"
+  },
+  {
+   "date": "2027-03-19",
+   "text": "Date limite de transposition de la directive Omnibus I"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Obligation d'émission de factures électroniques pour PME, TPE et micro-entreprises"
+  }
+ ],
+ "checked": {
+  "verified": 23,
+  "unread": 7,
+  "dropped": 8
+ },
+ "dropped": [
+  {
+   "item": "PLF 2027 : l'examen des recettes à l'Assemblée est suspendu avant le vote solennel du 3 novembre",
+   "statement": "En commission des finances, les députés avaient remplacé la taxe sur les rachats d'actions par un droit d'enregistrement de 10 pour cent.",
+   "quote": "la suppression de la taxe sur les rachats d’actions, remplacée par un droit d’enregistrement de 10 % sur ces mêmes opérations",
+   "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html"
+  },
+  {
+   "item": "Facturation électronique : réception obligatoire depuis le 1er septembre 2026, tolérance sur les sanctions jusqu'à fin 2026",
+   "statement": "155 plateformes agréées étaient immatriculées définitivement au 14 octobre 2026 (selon un acteur privé reprenant la liste de la DGFiP).",
+   "quote": "Liste des 155 Plateformes Agréées immatriculées définitivement au 14 octobre 2026.",
+   "url": "https://qonto.com/fr/blog/gestion-entreprise/facturation/liste-des-plateformes-agreees"
+  },
+  {
+   "item": "Haute autorité de l'audit : mise à jour de la FAQ sur le contrôle légal des comptes et décisions de sanction",
+   "statement": "Date de publication : 13 octobre 2026.",
+   "quote": "Publié le: 13 octobre 2026.",
+   "url": "https://h2a-france.org/publications-et-actualites/faq/"
+  },
+  {
+   "item": "Haute autorité de l'audit : mise à jour de la FAQ sur le contrôle légal des comptes et décisions de sanction",
+   "statement": "Deux décisions de la commission des sanctions de la H2A ont été publiées le 12 octobre 2026 (ne pas nommer les personnes), sans recours indiqué.",
+   "quote": "Publié le: 12 octobre 2026. Recours: Non. Type: décision de la commission des sanctions.",
+   "url": "https://h2a-france.org/commission-des-sanctions/decisions-de-la-commission-des-sanctions/"
+  },
+  {
+   "item": "Haute autorité de l'audit : mise à jour de la FAQ sur le contrôle légal des comptes et décisions de sanction",
+   "statement": "La H2A est l'autorité de régulation des commissaires aux comptes et des professionnels certifiant les rapports de durabilité.",
+   "quote": "La Haute autorité de l'audit (H2A) est l'autorité de régulation des commissaires aux comptes et des professionnels certifiant les rapports de durabilité des entreprises en France.",
+   "url": "https://h2a-france.org/"
+  },
+  {
+   "item": "Impôt minimum mondial : amendements au PLF 2027 sur le seuil d'assujettissement et le mécanisme Side-by-Side",
+   "statement": "La commission des finances de l'Assemblée a adopté une modification du seuil d'assujettissement à l'impôt minimum mondial.",
+   "quote": "la modification du seuil d’assujettissement à l’impôt minimum mondial",
+   "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html"
+  },
+  {
+   "item": "Impôt minimum mondial : amendements au PLF 2027 sur le seuil d'assujettissement et le mécanisme Side-by-Side",
+   "statement": "Un amendement du Gouvernement déposé pour la séance publique aménage les modalités d'application de l'impôt minimum mondial et transpose des mesures de sauvegarde dont le mécanisme Side-by-Side.",
+   "quote": "aménager certaines modalités d’application de l’impôt minimum mondial",
+   "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html"
+  },
+  {
+   "item": "Impôt minimum mondial : amendements au PLF 2027 sur le seuil d'assujettissement et le mécanisme Side-by-Side",
+   "statement": "Environ 3900 amendements ont été déposés en vue de la séance publique, dont deux du Gouvernement.",
+   "quote": "Parmi les quelques 3 900 amendements déposés en vue de la séance publique",
+   "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html"
+  }
+ ]
+}

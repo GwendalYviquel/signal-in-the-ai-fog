@@ -1,0 +1,114 @@
+[
+  {
+    "date": "2026-10-22",
+    "title": "Budget 2027 suspendu, facturation électronique et ESRS allégées",
+    "summary": "L'examen des recettes du projet de loi de finances pour 2027 est suspendu avant le vote solennel du trois novembre. L'épisode revient aussi sur le règlement ANC sur l'impôt sur les bénéfices, la réception obligatoire des factures électroniques, les ESRS allégées et la FAQ de la Haute autorité de l'audit.",
+    "headlines": [
+      "Le budget 2027 suspendu avant le vote solennel",
+      "La facturation électronique sept semaines après",
+      "Un règlement ANC sur l'impôt sur les bénéfices"
+    ],
+    "themes": [
+      "Fiscalité",
+      "Normes comptables",
+      "Facturation électronique",
+      "Durabilité",
+      "Audit"
+    ],
+    "topics": [
+      "Loi de finances",
+      "Apport-cession",
+      "Règlement ANC 2026-04",
+      "Plan comptable général",
+      "Réception des factures électroniques",
+      "Plateformes agréées",
+      "ESRS",
+      "CSRD",
+      "Haute autorité de l'audit",
+      "IAASB"
+    ],
+    "sources": [
+      {
+        "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+        "primary": true
+      },
+      {
+        "title": "Legifiscal : Amendements PLF 2027 adoptés par les députés : la suite",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4693-amendements-plf-2027-adoptes-deputes-suite.html",
+        "primary": false
+      },
+      {
+        "title": "KPMG Avocats : PLF 2027, la commission des finances de l'Assemblée nationale rejette le texte",
+        "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/la-commission-des-finances-de-l-assemblee-nationale-rejette-le-texte.html",
+        "primary": false
+      },
+      {
+        "title": "franceinfo : Budget 2027, les députés ont entamé l'examen du projet de loi de finances",
+        "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+        "primary": false
+      },
+      {
+        "title": "Daf-mag : Budget 2027, ce que le projet de loi de finances prévoit pour les entreprises",
+        "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/budget-2027-ce-que-le-projet-de-loi-de-finances-prevoit-pour-les-entreprises-27545",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : PLF 2027, les principales mesures fiscales du projet de budget",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4656-presentation-plf-2027.html",
+        "primary": false
+      },
+      {
+        "title": "Juritravail : Budget 2027, que prévoit le projet de loi de finances",
+        "url": "https://www.juritravail.com/Actualite/budget-2027-que-prevoit-le-projet-de-loi-de-finances/Id/378603",
+        "primary": false
+      },
+      {
+        "title": "Légifrance : Arrêté du 12 août 2026 portant homologation des règlements ANC 2026-01 à 2026-04",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054791025",
+        "primary": true
+      },
+      {
+        "title": "Revue Fiduciaire : Règlement ANC 2026-04, comptabilisation de l'impôt sur les bénéfices et des contributions y afférentes",
+        "url": "https://www.revue-fiduciaire.com/actualite/article/reglement-anc-2026-04-comptabilisation-de-l-impot-sur-les-benefices-et-des-contributions-y-afferentes",
+        "primary": false
+      },
+      {
+        "title": "Ministère de l'Économie : Facturation électronique, la liste des 101 premières plateformes agréées",
+        "url": "https://www.economie.gouv.fr/actualites/facturation-electronique-la-liste-des-101-premieres-plateformes-agreees-est-disponible",
+        "primary": true
+      },
+      {
+        "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+        "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+        "primary": false
+      },
+      {
+        "title": "Kohen Avocats : Facture électronique obligatoire depuis septembre 2026",
+        "url": "https://kohenavocats.fr/2026/10/17/facture-electronique-obligatoire-septembre-2026-recevoir-emettre-sanction-paris-2026/",
+        "primary": false
+      },
+      {
+        "title": "Commission européenne : Acte délégué CSRD 2026 (ESRS)",
+        "url": "https://ec.europa.eu/finance/docs/level-2-measures/csrd-delegated-act-2026-5010_en.pdf",
+        "primary": true
+      },
+      {
+        "title": "PwC Viewpoint : Simplified ESRS, final delegated act adopted",
+        "url": "https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202617.html",
+        "primary": false
+      },
+      {
+        "title": "H2A : FAQ",
+        "url": "https://h2a-france.org/publications-et-actualites/faq/",
+        "primary": true
+      },
+      {
+        "title": "IAASB : eNews octobre 2026",
+        "url": "https://www.iaasb.org/news-events/2026-10/iaasb-enews-october-2026",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-10-22T20:48:29+02:00"
+  }
+]
