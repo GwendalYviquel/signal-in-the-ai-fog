@@ -93,8 +93,8 @@ def test_every_show_has_a_cover_that_meets_the_platform_specs(slug):
 
 
 def test_a_show_cover_is_deterministic_and_draws_its_title():
-    a = make_cover.render_show("Signal RH", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
-    b = make_cover.render_show("Signal RH", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
+    a = make_cover.render_show("Signal in the HR Fog", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
+    b = make_cover.render_show("Signal in the HR Fog", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
     assert a.tobytes() == b.tobytes()
     bright = sum(1 for p in a.convert("L").getdata() if p > 240) / (300 * 300)
     assert bright > 0.03  # the white title and wave are drawn

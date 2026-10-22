@@ -2,13 +2,8 @@
 # Every TO_FILL value must be set before the first published episode (engine/main.py blocks
 # publication while one remains), and generation.scheduled turned on to run it on its schedule.
 
-title_proposals:                     # check availability on podcast platforms before choosing
-  - "Signal Compta"
-  - "Bilan de la semaine"
-  - "Débit Crédit l'hebdo"
-
 podcast:
-  title: "Signal Compta"                 # first of title_proposals until one is chosen
+  title: "Signal in the Tax Fog"
   tagline: "l'actualité comptable et fiscale de la semaine"   # in the spoken opening
   language: "fr"                     # engine/locales/fr.yaml: spoken texts, feed, site
   description: >-

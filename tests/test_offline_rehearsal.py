@@ -117,7 +117,7 @@ def test_a_weekly_french_show_publishes_on_its_day_in_french(french):
     assert [c["title"] for c in ep["chapters"]][:2] == ["Ouverture", "Sujet de la semaine : Le bulletin de paie "
                                                                        "simplifié arrive en janvier"]
     assert french["script"].count("## Script") == 1 and "C'est tout pour cette semaine." in french["script"]
-    assert "Bonjour, ici Signal RH" in french["script"] or "Bonjour, ici " in french["script"]
+    assert "Bonjour, ici Signal in the HR Fog" in french["script"] or "Bonjour, ici " in french["script"]
     item = french["feed"].getroot().find("channel/item")
     assert item.find("guid").text.endswith("#hr-news-fr-2030-01-14")
     assert french["feed"].getroot().find("channel/language").text == "fr"

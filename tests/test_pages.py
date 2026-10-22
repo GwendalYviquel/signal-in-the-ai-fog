@@ -190,7 +190,7 @@ def test_labels_added_after_publication_say_so(build):
 def french_cfg(cfg):
     import copy
     fr = copy.deepcopy(cfg)
-    fr["podcast"].update(title="Signal RH", language="fr", site_path="hr-news-fr", description="Chaque semaine.")
+    fr["podcast"].update(title="Signal in the HR Fog", language="fr", site_path="hr-news-fr", description="Chaque semaine.")
     fr["generation"]["cadence"] = "weekly:monday"
     return fr
 
@@ -204,20 +204,20 @@ def test_a_french_show_gets_french_pages_that_reach_the_shared_files(tmp_path, c
     docs.mkdir(parents=True)
     (tmp_path / "data" / "scripts" / "2026-10-26.json").write_text(json.dumps(make_episode(
         follow_up={"text": "Suivi.", "source": {"title": "S", "url": "https://s", "primary": True}})))
-    (docs / "catalog.json").write_text(json.dumps({"podcast": dict(PODCAST, title="Signal RH"),
+    (docs / "catalog.json").write_text(json.dumps({"podcast": dict(PODCAST, title="Signal in the HR Fog"),
                                                    "episodes": [item("2026-10-26")]}))
     site.write_site(fr, docs / "catalog.json", tmp_path / "data", docs, BASE + "hr-news-fr/")
     page = (docs / "episodes" / "2026-10-26.html").read_text()
     assert '<html lang="fr">' in page and 'href="../../pages.css"' in page and 'src="../../i18n.js"' in page
-    assert 'href="../../index.html"' in page and ">Signal RH</a>" in page  # the button back to the home page
-    assert 'href="../index.html">Signal RH</a>' in page and 'href="../agenda.html"' in page
+    assert 'href="../../index.html"' in page and ">Signal in the HR Fog</a>" in page  # the button back to the home page
+    assert 'href="../index.html">Signal in the HR Fog</a>' in page and 'href="../agenda.html"' in page
     for text in ('data-i18n="stories">Sujets</h2>', 'data-i18n="story.week">Sujet de la semaine</span>',
                  'data-i18n="number.week">Chiffre de la semaine</h2>', ">lundi 26 octobre 2026</span>",
                  'data-i18n="label_confirmed"', ">Confirmé</span>", 'data-i18n="read">L&#x27;analyse</span>'):
         assert text in page, text
     catalog = (docs / "index.html").read_text()
     assert '<html lang="fr">' in catalog and '<script src="../i18n.js"></script>' in catalog
-    assert "<title>Signal RH</title>" in catalog and "{{" not in catalog
+    assert "<title>Signal in the HR Fog</title>" in catalog and "{{" not in catalog
 
 
 def test_the_interface_texts_of_every_language_reach_the_browser():

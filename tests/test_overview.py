@@ -16,7 +16,7 @@ def run(day, mode="publish", outcome="ok", usd=1.0, chars=5000):
 
 def make_repo(tmp_path, ledgers=None, stats=None, episodes=None):
     shows = {"signal-in-the-ai-fog": {"title": "Signal", "site_path": "", "cadence": "weekdays"},
-             "hr-news-fr": {"title": "Signal RH", "site_path": "hr-news-fr", "cadence": "weekly:monday"}}
+             "hr-news-fr": {"title": "Signal in the HR Fog", "site_path": "hr-news-fr", "cadence": "weekly:monday"}}
     for slug, p in shows.items():
         home = tmp_path / "shows" / slug
         (home / "data").mkdir(parents=True)
@@ -39,7 +39,7 @@ def test_costs_report_has_money_per_show_the_shared_credits_and_no_usage_table(t
         stats={"signal-in-the-ai-fog": {"2026-10-22": {"2026-10-20": 10}}})
     text = overview.costs_report(repo, TODAY)
     assert "| [Signal](signal-in-the-ai-fog/COSTS.md) | 2 | 1 | $1.50 | 5,000 |" in text
-    assert "| [Signal RH](hr-news-fr/COSTS.md) | 1 | 1 | $2.00 | 8,000 |" in text
+    assert "| [Signal in the HR Fog](hr-news-fr/COSTS.md) | 1 | 1 | $2.00 | 8,000 |" in text
     assert "**All shows** | **3** | **2** | **$3.50** | **13,000**" in text
     # Projections: 22 weekdays in October 2026 for the daily show, 4 Mondays for the weekly one.
     assert "$22.00 | 110,000 |" in text and "$8.00 | 32,000 |" in text
@@ -60,10 +60,10 @@ def test_usage_report_has_listening_per_show_and_no_money(tmp_path):
     assert signal["per_day"][dt.date(2026, 10, 20)] == 4 and signal["per_day"][dt.date(2026, 10, 22)] == 4
     assert signal["per_day"][dt.date(2026, 10, 10)] == 0  # nothing before the first snapshot
     text = overview.usage_report(rows)
-    assert "| Signal | 2 | 12 | +8 | 6.0 | 2026-10-22 |" in text and "| Signal RH | 0 | 0 | +0 | — | none yet |" in text
+    assert "| Signal | 2 | 12 | +8 | 6.0 | 2026-10-22 |" in text and "| Signal in the HR Fog | 0 | 0 | +0 | — | none yet |" in text
     assert "$" not in text and "Spotify for Creators" in text
     svg = overview.usage_svg(rows, "light")
-    assert "<title>Usage dashboard</title>" in svg and "Signal RH" in svg and "$" not in svg
+    assert "<title>Usage dashboard</title>" in svg and "Signal in the HR Fog" in svg and "$" not in svg
 
 
 def test_reports_are_written_in_the_shows_folder(tmp_path):
@@ -81,7 +81,7 @@ def test_every_run_rebuilds_the_report_of_every_show(tmp_path):
                      "web_search_usd_per_1000": 10}, "generation": {"cadence": "weekly:monday", "model": "m"}}
     costs.record(cfg, "dry run", "ok", elevenlabs_characters=0, ledger=show / "data" / "costs.json",
                  report=show / "COSTS.md", charts=show, now=dt.datetime(2026, 10, 22, 8, tzinfo=dt.timezone.utc))
-    assert "Signal RH" in (repo / "shows" / "COSTS.md").read_text()
+    assert "Signal in the HR Fog" in (repo / "shows" / "COSTS.md").read_text()
 
 
 def test_a_weekly_show_projects_over_its_episode_days():
