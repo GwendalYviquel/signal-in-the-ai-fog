@@ -1,6 +1,6 @@
 name: Stats
 
-# Once a day: download counts of the episode MP3s (GitHub releases), kept in data/stats.json,
+# Once a day: download counts of the episode MP3s (GitHub releases), kept in each show's data/stats.json,
 # STATS.md rebuilt and shown on the catalog site. Free: GitHub API, no external service.
 on:
   # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
@@ -39,13 +39,13 @@ jobs:
       - name: Count downloads
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python -m podcast.stats
+        run: python -m engine.stats
 
       - name: Commit the stats
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/stats.json STATS.md docs/catalog.json
+          git add shows/*/data/stats.json shows/*/STATS.md docs
           git diff --cached --quiet && exit 0
           git commit -m "Stats $(TZ=Europe/Paris date +%F)"
           git pull --rebase origin main

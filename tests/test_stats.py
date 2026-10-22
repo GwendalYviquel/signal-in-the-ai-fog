@@ -6,7 +6,7 @@ from types import SimpleNamespace
 import yaml
 
 from conftest import ROOT
-from podcast import catalog, stats
+from engine import catalog, stats
 
 RELEASES = [
     {"tag_name": "episode-2026-10-20", "assets": [{"name": "episode-2026-10-20.mp3", "download_count": 12}]},
@@ -70,5 +70,6 @@ def test_stats_workflow_runs_daily_and_redeploys_the_site():
     steps = wf["jobs"]["stats"]["steps"]
     assert any(s.get("uses", "").startswith("actions/deploy-pages") for s in steps)
     commit = next(s for s in steps if s.get("name") == "Commit the stats")
-    assert "git pull --rebase origin main" in commit["run"] and "docs/catalog.json" in commit["run"]
+    assert "git pull --rebase origin main" in commit["run"] and "docs" in commit["run"].split()
+    assert "shows/*/data/stats.json" in commit["run"]
     assert wf["concurrency"]["group"] == "daily-episode"

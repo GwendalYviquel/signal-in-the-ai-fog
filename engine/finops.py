@@ -1,6 +1,6 @@
 """FinOps dashboard: what the podcast costs, as SVG in a light and a dark version.
 
-Rebuilt from data/costs.json after every run (podcast/costs.py calls write()):
+Rebuilt from data/costs.json after every run (engine/costs.py calls write()):
 - a KPI row: Claude and ElevenLabs this month, cost per published episode, month projection;
 - two charts, one per unit (never two axes): Claude USD per day and ElevenLabs characters per
   day over the last 30 days, stacked by kind of run.

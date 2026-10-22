@@ -55,14 +55,14 @@ jobs:
           EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
           GITHUB_REPOSITORY: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}   # read the accepted listener suggestions
-        run: python -m podcast.main
+        run: python -m engine.main
 
       - name: Keep today's script
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: episode-script
-          path: build/*.md
+          path: build/**/*.md
           if-no-files-found: ignore
 
       - name: Commit the preview and its costs
@@ -70,9 +70,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs COSTS.md assets/finops-dashboard-*.svg
+          git add shows docs
           git diff --cached --quiet && exit 0
-          if git diff --cached --name-only | grep -qx "data/previews.json"; then msg="Preview $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
+          if git diff --cached --name-only | grep -q "/data/previews.json$"; then msg="Preview $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
           git commit -m "$msg"
           git pull --rebase origin main
           git push

@@ -1,4 +1,4 @@
-"""Fact-check before the voices (podcast/factcheck.py) and its place in the generation loop.
+"""Fact-check before the voices (engine/factcheck.py) and its place in the generation loop.
 
 Learning (2026-10-21): an audience of practitioners notices a wrong figure; a small model reading
 each story's own sources catches it before ElevenLabs is paid.
@@ -8,7 +8,7 @@ import json
 import pytest
 
 from conftest import TUESDAY, make_episode, reply, submit_block, text_block, usage as api_usage
-from podcast import costs, factcheck, generate
+from engine import costs, factcheck, generate
 
 PAGE = "<html><nav>Menu</nav><script>var x=1;</script><p>" + "Mistral priced it at $1.36. " * 60 + "</p></html>"
 

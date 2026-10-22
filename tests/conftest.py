@@ -14,9 +14,10 @@ import pytest
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
+SHOW = "shows/signal-in-the-ai-fog"  # the first show, whose behaviour the engine must keep
 sys.path.insert(0, str(ROOT))
 
-from podcast import generate  # noqa: E402
+from engine import generate  # noqa: E402
 
 PARIS = ZoneInfo("Europe/Paris")
 TUESDAY = dt.datetime(2026, 10, 20, 7, 0, tzinfo=PARIS)
@@ -26,7 +27,7 @@ SATURDAY = dt.datetime(2026, 10, 24, 7, 0, tzinfo=PARIS)
 
 @pytest.fixture
 def cfg():
-    return yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
+    return yaml.safe_load((ROOT / SHOW / "show.yaml").read_text(encoding="utf-8"))
 
 
 def text(n: int, word: str = "lorem") -> str:
@@ -140,7 +141,7 @@ def offline_factcheck(monkeypatch):
     """The suite never reaches the web: fact-check pages cannot be fetched unless a test fakes them.
     Learning (2026-10-21): the first fact-check wiring fetched example.com from the tests."""
     import requests
-    from podcast import factcheck
+    from engine import factcheck
 
     def no_network(*args, **kwargs):
         raise requests.ConnectionError("offline test suite")

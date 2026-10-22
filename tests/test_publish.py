@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from podcast import main, publish, rehearsal
+from engine import main, publish, rehearsal
 
 
 @pytest.fixture

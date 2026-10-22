@@ -3,7 +3,7 @@ import json
 import re
 
 from conftest import TUESDAY, make_episode
-from podcast import chapters, generate
+from engine import chapters, generate
 
 
 def timeline_for(ep, cfg, chars_per_second=15):

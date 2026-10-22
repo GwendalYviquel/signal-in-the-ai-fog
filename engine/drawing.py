@@ -1,5 +1,5 @@
 """Drawing helpers shared by the README diagrams (tools/make_diagrams.py) and the FinOps
-dashboard (podcast/finops.py): same palette, light and dark themes, and boxes whose text can be
+dashboard (engine/finops.py): same palette, light and dark themes, and boxes whose text can be
 checked in a browser (every text sits in a <g class="box"> with its frame rect)."""
 from xml.sax.saxutils import escape
 

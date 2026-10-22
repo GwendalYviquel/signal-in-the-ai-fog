@@ -4,7 +4,7 @@ Spotify's public embed page for a show needs no login: it says "Page not availab
 show is public, then shows the latest episode. Each check compares that episode with the latest
 one in data/episodes.json and records in data/spotify.json when an episode was first seen live.
 
-Usage: python -m podcast.spotify   (see .github/workflows/check-spotify.yml)
+Usage: python -m engine.spotify   (see .github/workflows/check-spotify.yml)
 """
 from __future__ import annotations
 
@@ -17,9 +17,6 @@ from pathlib import Path
 import requests
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-EPISODES = ROOT / "data" / "episodes.json"
-LOG = ROOT / "data" / "spotify.json"
 EMBED = "https://open.spotify.com/embed/show/{show_id}"
 
 
@@ -50,7 +47,7 @@ def fetch(show: str) -> str:
     return r.text
 
 
-def check(cfg: dict, html: str, now: dt.datetime, episodes_path: Path = EPISODES, log_path: Path = LOG) -> str:
+def check(cfg: dict, html: str, now: dt.datetime, episodes_path: Path, log_path: Path) -> str:
     """Compare Spotify with our latest episode; record the first time it is seen live."""
     episodes = json.loads(episodes_path.read_text(encoding="utf-8")) if episodes_path.exists() else []
     log = json.loads(log_path.read_text(encoding="utf-8")) if log_path.exists() else {}
@@ -75,13 +72,19 @@ def check(cfg: dict, html: str, now: dt.datetime, episodes_path: Path = EPISODES
 
 
 def main() -> None:
-    cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
-    status = check(cfg, fetch(show_id(cfg["podcast"]["spotify_url"])), dt.datetime.now(dt.timezone.utc))
-    print(status)
-    summary = os.getenv("GITHUB_STEP_SUMMARY")
-    if summary:
-        with open(summary, "a", encoding="utf-8") as f:
-            f.write(f"### Spotify\n\n{status}\n")
+    """Every show listed on Spotify (podcast.spotify_url set)."""
+    from . import show as shows
+    for slug in shows.slugs():
+        show = shows.load(slug)
+        if not show.cfg["podcast"].get("spotify_url"):
+            continue
+        status = check(show.cfg, fetch(show_id(show.cfg["podcast"]["spotify_url"])), dt.datetime.now(dt.timezone.utc),
+                       show.episodes, show.spotify_log)
+        print(f"{slug}: {status}")
+        summary = os.getenv("GITHUB_STEP_SUMMARY")
+        if summary:
+            with open(summary, "a", encoding="utf-8") as f:
+                f.write(f"### Spotify, {slug}\n\n{status}\n")
 
 
 if __name__ == "__main__":

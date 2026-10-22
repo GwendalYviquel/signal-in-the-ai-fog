@@ -44,14 +44,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           WITH_VOICE: ${{ inputs.with_voice && 'true' || 'false' }}
           ELEVENLABS_API_KEY: ${{ inputs.with_voice && secrets.ELEVENLABS_API_KEY || '' }}   # only for the voice check
-        run: python -m podcast.rehearsal
+        run: python -m engine.rehearsal
 
       - name: Keep the voice sample
         if: inputs.with_voice
         uses: actions/upload-artifact@v4
         with:
           name: voice-sample
-          path: build/rehearsal-*.mp3
+          path: build/**/rehearsal-*.mp3
           if-no-files-found: ignore
 
       - name: Commit the costs
@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/costs.json COSTS.md assets/finops-dashboard-*.svg
+          git add shows/*/data/costs.json shows/*/COSTS.md shows/*/finops-dashboard-*.svg
           git diff --cached --quiet && exit 0
           if git diff --cached --name-only | grep -qx "-"; then msg="Costs $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
           git commit -m "$msg"

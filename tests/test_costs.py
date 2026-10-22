@@ -4,8 +4,8 @@ import json
 
 import pytest
 
-from conftest import TUESDAY, make_episode, reply, submit_block, usage
-from podcast import costs, generate, main, tts
+from conftest import SHOW, TUESDAY, make_episode, reply, submit_block, usage
+from engine import costs, generate, main, tts
 
 from test_main import mocks, repo  # noqa: F401  (temporary repository fixtures)
 
@@ -79,7 +79,7 @@ def test_record_writes_the_ledger_the_report_and_the_step_summary(cfg, tmp_path,
 
 
 def ledger(repo):
-    path = repo / "data" / "costs.json"
+    path = repo / SHOW / "data" / "costs.json"
     return json.loads(path.read_text()) if path.exists() else []
 
 
@@ -89,7 +89,7 @@ def test_a_published_episode_records_claude_and_both_elevenlabs_uses(repo, mocks
     assert run["mode"] == "publish" and run["outcome"] == "ok"
     assert run["claude"]["input_tokens"] == 50_000 and run["claude"]["web_search_requests"] == 12
     assert run["elevenlabs_characters"] > 6 and run["note"].startswith("voice check 6 + episode ")
-    assert (repo / "COSTS.md").exists()
+    assert (repo / SHOW / "COSTS.md").exists()
 
 
 def test_dry_run_and_preview_record_claude_only(repo, mocks, monkeypatch):

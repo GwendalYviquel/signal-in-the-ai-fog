@@ -13,6 +13,7 @@ from urllib.parse import urlparse
 import anthropic
 
 from . import costs, factcheck
+from . import show as shows
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -105,9 +106,9 @@ SUBMIT_TOOL = {
 }
 
 
-def _private_context() -> str:
-    # Kept out of the public repo: EDITORIAL_CONTEXT secret, or a local gitignored file.
-    local = ROOT / "private" / "editorial_context.md"
+def _private_context(show=None) -> str:
+    # Kept out of the public repo: EDITORIAL_CONTEXT secret, or the show's gitignored local file.
+    local = (show or shows.load()).private_context
     text = os.getenv("EDITORIAL_CONTEXT") or (local.read_text(encoding="utf-8") if local.exists() else "")
     return text.strip()
 
@@ -276,7 +277,7 @@ def assemble_parts(ep: dict, cfg: dict, now) -> list[tuple[str, str]]:
         parts += [(HOST, f"Next, {s['theme']}.\n\n{s['facts']}"), (ANALYST, s["read"])]
     if ep.get("follow_up"):
         parts.append((HOST, "A follow-up.\n\n" + ep["follow_up"]["text"]))
-    for c in ep.get("corrections") or []:  # written by the owner, read as written (podcast/corrections.py)
+    for c in ep.get("corrections") or []:  # written by the owner, read as written (engine/corrections.py)
         parts.append((HOST, "A correction.\n\n" + c["text"]))
     parts.append((HOST, "\n\n".join([
         "The number of the day.", ep["number_of_the_day"]["text"],
@@ -365,15 +366,15 @@ def _correct(client, gen, system, ep, errors, usage):
     return call, resp.stop_reason == "max_tokens"
 
 
-def generate_episode(cfg, now, previous_scripts, usage=None, request=None):
+def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=None):
     """usage: an optional costs.empty_claude_usage() total, filled in even if generation fails.
     request: optional open_items, topics and suggestions for the request (see build_user_message)."""
     usage = usage if usage is not None else costs.empty_claude_usage(cfg["generation"]["model"])
     gen = cfg["generation"]
-    system = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
+    system = (show.prompt if show else shows.load().prompt).read_text(encoding="utf-8")
     system = system.replace("{target_words}", str(gen["target_words"]))
     system = system.replace("{avoided_sites}", ", ".join(cfg.get("sources", {}).get("avoid", [])) or "none")
-    if context := _private_context():
+    if context := _private_context(show):
         system += f"\n\n## Private editorial context (never mention or quote)\n{context}\n"
     # Only needed for an API key that is not scoped to a workspace.
     workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()

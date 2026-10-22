@@ -233,9 +233,8 @@ def candidate_voices(tts_cfg: dict, ids: str) -> dict:
 
 
 if __name__ == "__main__":
-    import yaml
-    cfg = yaml.safe_load((Path(__file__).resolve().parent.parent / "config.yaml").read_text(encoding="utf-8"))
-    from . import costs
+    from . import costs, show as shows
+    cfg = shows.load().cfg
     ids = os.getenv("VOICE_IDS", "").strip()
     tts_cfg = candidate_voices(cfg["tts"], ids) if ids else cfg["tts"]
     results = voice_check_results(tts_cfg)

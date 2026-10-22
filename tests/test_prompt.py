@@ -5,10 +5,10 @@ caused correction rounds that cost about three times a normal run.
 """
 import re
 
-from conftest import ROOT, TUESDAY, make_episode
-from podcast import generate
+from conftest import ROOT, SHOW, TUESDAY, make_episode
+from engine import generate
 
-PROMPT = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
+PROMPT = (ROOT / SHOW / "prompt.md").read_text(encoding="utf-8")
 
 
 def prompt_number(pattern):

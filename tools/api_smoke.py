@@ -21,16 +21,16 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 import anthropic  # noqa: E402
-import yaml  # noqa: E402
 
-from podcast import costs, factcheck, generate  # noqa: E402
+from engine import costs, factcheck, generate  # noqa: E402
+from engine import show as shows  # noqa: E402
 
 
 def main() -> int:
     if not os.getenv("ANTHROPIC_API_KEY"):
         print("No ANTHROPIC_API_KEY here: run it on GitHub, where the key is a secret: gh workflow run api-smoke.yml")
         return 2
-    cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
+    cfg = shows.load().cfg  # the show in SHOW, or the first one
     gen = cfg["generation"]
     workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()
     client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": workspace} if workspace else None)

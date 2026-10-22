@@ -2,7 +2,7 @@ name: Add a correction
 
 # An error found after publication: the correction goes on the episode page, in its description in
 # podcast apps and on the corrections page, and the next episode reads it as written
-# (podcast/corrections.py). Free: no Claude, no ElevenLabs.
+# (engine/corrections.py). Free: no Claude, no ElevenLabs.
 on:
   workflow_dispatch:
     inputs:
@@ -48,13 +48,13 @@ jobs:
           EPISODE_DATE: ${{ inputs.episode_date }}
           TEXT: ${{ inputs.text }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: python -m podcast.corrections add "$EPISODE_DATE" "$TEXT"
+        run: python -m engine.corrections add "$EPISODE_DATE" "$TEXT"
 
       - name: Commit the correction
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs
+          git add shows docs
           git commit -m "Correction to the episode of $EPISODE_DATE"
           git pull --rebase origin main
           git push

@@ -1,7 +1,7 @@
 """RSS feed and catalog data."""
 import xml.etree.ElementTree as ET
 
-from podcast import catalog, feed
+from engine import catalog, feed
 
 ITUNES = "{http://www.itunes.com/dtds/podcast-1.0.dtd}"
 

@@ -2,8 +2,8 @@
 import datetime as dt
 import json
 
-from conftest import ROOT
-from podcast import costs, finops
+from conftest import ROOT, SHOW
+from engine import costs, finops
 
 
 def run(time, mode, usd=0.0, chars=0, outcome="ok", note=""):
@@ -56,13 +56,13 @@ def test_each_record_rebuilds_both_dashboards(cfg, tmp_path):
                  now=dt.datetime(2026, 10, 21, 4, tzinfo=dt.timezone.utc), charts=tmp_path / "assets")
     assert sorted(p.name for p in (tmp_path / "assets").iterdir()) == \
         ["finops-dashboard-dark.svg", "finops-dashboard-light.svg"]
-    assert 'srcset="assets/finops-dashboard-dark.svg"' in (tmp_path / "COSTS.md").read_text()
+    assert 'srcset="finops-dashboard-dark.svg"' in (tmp_path / "COSTS.md").read_text()  # beside the report
 
 
 def test_committed_dashboard_matches_the_ledger():
     # The workflows commit the dashboard with the ledger: they must never drift apart.
-    runs = json.loads((ROOT / "data" / "costs.json").read_text(encoding="utf-8"))
+    runs = json.loads((ROOT / SHOW / "data" / "costs.json").read_text(encoding="utf-8"))
     day = finops.paris_day(runs[-1]["time"])
     for theme in ("light", "dark"):
-        committed = (ROOT / "assets" / f"finops-dashboard-{theme}.svg").read_text(encoding="utf-8")
+        committed = (ROOT / SHOW / f"finops-dashboard-{theme}.svg").read_text(encoding="utf-8")
         assert committed == finops.render(runs, day, theme), f"regenerate the {theme} dashboard"

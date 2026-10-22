@@ -6,12 +6,12 @@ on:
   workflow_dispatch:
     inputs:
       voice_ids:
-        description: "Candidate voice IDs to try, comma-separated (empty: the voices in config.yaml)"
+        description: "Candidate voice IDs to try, comma-separated (empty: the voices in the show.yaml)"
         type: string
         default: ""
   push:
     branches: [main]
-    paths: ["config.yaml"]   # whenever a voice ID may have changed
+    paths: ["shows/*/show.yaml"]   # whenever a voice ID may have changed
 
 permissions:
   contents: write   # commit the cost of the check
@@ -35,14 +35,14 @@ jobs:
         env:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           VOICE_IDS: ${{ inputs.voice_ids }}
-        run: python -m podcast.tts
+        run: python -m engine.tts
 
       - name: Commit the costs
         if: always()   # costs are recorded even when the run fails
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/costs.json COSTS.md assets/finops-dashboard-*.svg
+          git add shows/*/data/costs.json shows/*/COSTS.md shows/*/finops-dashboard-*.svg
           git diff --cached --quiet && exit 0
           if git diff --cached --name-only | grep -qx "-"; then msg="Costs $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
           git commit -m "$msg"

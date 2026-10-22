@@ -30,7 +30,8 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from podcast import context, corrections, factcheck, generate, main, publish, tts  # noqa: E402
+from engine import context, corrections, factcheck, generate, main, publish, tts  # noqa: E402
+from engine import show as shows  # noqa: E402
 
 FIXTURE = ROOT / "tests" / "fixtures" / "episode-2026-10-21.json"
 # A Tuesday that will never be a real episode. Regression (2026-10-22): the rehearsal used
@@ -68,24 +69,21 @@ def _silence_for(url, headers, params, body, retries=3):
     return tts.silence(max(len(body["text"]) / 15, 0.1))
 
 
-def rehearse(out: Path) -> dict:
-    """Run the rehearsal into out/ and return what it produced."""
+def rehearse(out: Path, slug: str = shows.DEFAULT) -> dict:
+    """Run the rehearsal of a show into a copy of the repository in out/, and return what it produced."""
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
-    for name in ("config.yaml", "data", "docs", "prompts"):
-        src = ROOT / name
-        (shutil.copytree if src.is_dir() else shutil.copy)(src, out / name)
-    episodes_file = out / "data/episodes.json"
+    shutil.copytree(ROOT / "shows", out / "shows")
+    shutil.copytree(ROOT / "docs", out / "docs")
+    show = shows.load(slug, repo=out)
+    episodes_file = show.episodes
     episodes = json.loads(episodes_file.read_text(encoding="utf-8"))
     corrections.add(episodes, "2026-10-20", CORRECTION, DAY.date())
     episodes_file.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")
     clients = []
     patches = {
-        (main, "ROOT"): out, (main, "EPISODES"): out / "data/episodes.json", (main, "SCRIPTS"): out / "data/scripts",
-        (main, "PREVIEWS"): out / "data/previews.json", (main, "PREVIEW_SCRIPTS"): out / "data/previews",
-        (main, "BUILD"): out / "build", (main, "DOCS"): out / "docs", (main, "COST_LEDGER"): out / "data/costs.json",
-        (main, "COST_REPORT"): out / "COSTS.md", (main, "COST_CHARTS"): out / "assets",
+        (shows, "REPO"): out,
         (main, "current_time"): lambda cfg: DAY,
         (generate.anthropic, "Anthropic"): lambda **kw: clients.append(_Claude()) or clients[-1],
         (tts, "_post"): _silence_for,
@@ -97,7 +95,7 @@ def rehearse(out: Path) -> dict:
         (factcheck, "fetch"): lambda url, cache, n: "Rehearsal source text, as fetched from the page. " * 40,
     }
     saved = {key: getattr(*key) for key in patches}
-    env = {"ELEVENLABS_API_KEY": "rehearsal", "DRY_RUN": "false", "PREVIEW": "false", "FORCE": "false",
+    env = {"SHOW": slug, "ELEVENLABS_API_KEY": "rehearsal", "DRY_RUN": "false", "PREVIEW": "false", "FORCE": "false",
            "AS_SCHEDULED": "true", "SCHEDULE": "", "EPISODE_DATE": "", "GITHUB_STEP_SUMMARY": ""}
     saved_env = {k: os.environ.get(k) for k in env}
     try:
@@ -115,8 +113,8 @@ def rehearse(out: Path) -> dict:
                 os.environ[k] = v
 
     day = DAY.date().isoformat()
-    docs = out / "docs"
-    episode = next(e for e in json.loads((out / "data/episodes.json").read_text(encoding="utf-8")) if e["date"] == day)
+    docs = show.docs
+    episode = next(e for e in json.loads(show.episodes.read_text(encoding="utf-8")) if e["date"] == day)
     return {
         "request": clients[0].requests[0]["messages"][0]["content"],
         "episode": episode,
@@ -124,9 +122,9 @@ def rehearse(out: Path) -> dict:
         "vtt": (docs / "episodes" / f"{day}.vtt").read_text(encoding="utf-8"),
         "chapters": json.loads((docs / "episodes" / f"{day}.chapters.json").read_text(encoding="utf-8")),
         "page": (docs / "episodes" / f"{day}.html").read_text(encoding="utf-8"),
-        "published": json.loads((out / "build" / "published.json").read_text(encoding="utf-8")),
+        "published": json.loads((show.build / "published.json").read_text(encoding="utf-8")),
         "requests": clients[0].requests,
-        "script": (out / "data" / "scripts" / f"{day}.md").read_text(encoding="utf-8"),
+        "script": (show.scripts / f"{day}.md").read_text(encoding="utf-8"),
         "corrected": next(e for e in json.loads(episodes_file.read_text(encoding="utf-8")) if e["date"] == "2026-10-20"),
         "docs": docs,
     }

@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from podcast import tts
+from engine import tts
 
 CFG = {"voices": {"host": "hostVoice", "analyst": "analystVoice"}, "model_id": "eleven_multilingual_v2",
        "output_format": "mp3_44100_128", "max_chars_per_request": 200, "use_context": True}

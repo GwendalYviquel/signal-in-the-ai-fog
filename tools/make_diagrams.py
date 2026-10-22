@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from podcast.drawing import THEMES, W, Drawing, text_width  # noqa: E402,F401
+from engine.drawing import THEMES, W, Drawing, text_width  # noqa: E402,F401
 
 OUT = Path(__file__).resolve().parent.parent / "assets"
 

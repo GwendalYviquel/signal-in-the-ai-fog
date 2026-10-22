@@ -2,7 +2,7 @@
 import pytest
 
 from conftest import SOURCE, make_episode, text
-from podcast import generate
+from engine import generate
 
 
 def errors_of(ep, cfg):

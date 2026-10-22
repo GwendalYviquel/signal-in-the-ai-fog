@@ -217,7 +217,7 @@
   const fmtMonth = (iso) => parseDate(iso).toLocaleDateString("en-GB", { month: "long", year: "numeric" });
   const fmtDuration = (s) => s ? `${Math.floor(s / 60)} min ${String(s % 60).padStart(2, "0")} s` : "";
   const norm = (s) => (s || "").toLowerCase();
-  // Same rule as slug() in podcast/site.py, which names the topic pages.
+  // Same rule as slug() in engine/site.py, which names the topic pages.
   const slug = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "topic";
 
   // Highlights the search query inside plain text, without ever injecting HTML.

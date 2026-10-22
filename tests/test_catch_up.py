@@ -6,7 +6,8 @@ from zoneinfo import ZoneInfo
 
 import pytest
 
-from podcast import main
+from conftest import SHOW
+from engine import main
 
 from test_main import mocks, repo  # noqa: F401  (temporary repository fixtures)
 
@@ -24,7 +25,7 @@ def read(path):
 
 
 def test_catch_up_uses_that_day_and_its_news_cutoff(repo, mocks, tuesday_night, monkeypatch):
-    scripts = repo / "data" / "scripts"
+    scripts = repo / SHOW / "data" / "scripts"
     scripts.mkdir(parents=True)
     for day in ("2026-10-15", "2026-10-16", "2026-10-20"):
         (scripts / f"{day}.md").write_text(f"script {day}")
@@ -34,7 +35,7 @@ def test_catch_up_uses_that_day_and_its_news_cutoff(repo, mocks, tuesday_night, 
     # Only what had aired before the 19th: the 20th's script would be news from the future.
     assert mocks["previous"] == ["script 2026-10-15", "script 2026-10-16"]
     assert mocks["upload"] == ["episode-2026-10-19"]
-    [ep] = read(repo / "data/episodes.json")
+    [ep] = read(repo / SHOW / "data/episodes.json")
     assert ep["date"] == "2026-10-19" and ep["published_at"].startswith("2026-10-19T04:05")
     assert ep["catch_up"]["generated_at"].startswith("2026-10-20T23:40")
 
@@ -59,7 +60,7 @@ def test_invalid_catch_up_dates_stop_before_any_cost(repo, mocks, tuesday_night,
     with pytest.raises(SystemExit, match=message):
         main.main()
     assert mocks["generate"] == 0 and mocks.get("voice_checks", 0) == 0
-    assert not (repo / "data/costs.json").exists()
+    assert not (repo / SHOW / "data/costs.json").exists()
 
 
 def test_an_existing_episode_is_never_published_twice(repo, mocks, tuesday_night, monkeypatch):
@@ -67,7 +68,7 @@ def test_an_existing_episode_is_never_published_twice(repo, mocks, tuesday_night
     main.main()
     main.main()
     assert mocks["generate"] == 1 and mocks["upload"] == ["episode-2026-10-19"]
-    assert len(read(repo / "data/episodes.json")) == 1
+    assert len(read(repo / SHOW / "data/episodes.json")) == 1
 
 
 def test_an_orphan_release_stops_the_run_before_any_cost(repo, mocks, tuesday_night, monkeypatch):
@@ -95,7 +96,7 @@ def test_overlap_with_neighbouring_episodes_is_reported(capsys):
 
 def test_workflow_offers_the_catch_up_date():
     import yaml
-    from conftest import ROOT
+    from conftest import ROOT, SHOW
     wf = yaml.safe_load((ROOT / ".github/workflows/daily-episode.yml").read_text())
     on = wf.get("on", wf.get(True))
     assert on["workflow_dispatch"]["inputs"]["episode_date"]["default"] == ""

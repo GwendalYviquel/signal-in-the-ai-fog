@@ -1,4 +1,4 @@
-"""Episode and topic pages, sitemap (podcast/site.py): built offline into a temporary docs folder."""
+"""Episode and topic pages, sitemap (engine/site.py): built offline into a temporary docs folder."""
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 import pytest
 
 from conftest import make_episode
-from podcast import site
+from engine import site
 
 BASE = "https://owner.github.io/podcast/"
 PODCAST = {"title": "Signal in the AI Fog", "description": "D", "cover": "cover.jpg", "feed_url": BASE + "feed.xml",
@@ -146,14 +146,16 @@ def test_repo_is_read_from_the_pages_url():
 def test_committed_pages_match_the_generator(tmp_path, cfg):
     # docs/episodes and docs/topics are generated: a change to site.py must be followed by a rebuild.
     import shutil
+    from engine import show as shows
     root = site.ROOT
     docs = tmp_path / "docs"
     shutil.copytree(root / "docs", docs)
-    site.write_site(cfg, docs / "catalog.json", root / "data", docs, site._local_base_url(cfg))
+    show = shows.load("signal-in-the-ai-fog")
+    site.write_site(cfg, docs / "catalog.json", show.data, docs, show.base_url(site.local_pages_url()))
     for folder in ("episodes", "topics"):
         for page in (root / "docs" / folder).glob("*.html"):
             assert page.read_text() == (docs / folder / page.name).read_text(), \
-                f"{folder}/{page.name} is stale: run python -m podcast.site"
+                f"{folder}/{page.name} is stale: run python -m engine.site"
 
 
 def test_published_episodes_have_structured_data_that_reassembles_into_what_aired(cfg):
@@ -161,8 +163,8 @@ def test_published_episodes_have_structured_data_that_reassembles_into_what_aire
     # and topics. The structured episode must give back, word for word, the script that was read.
     import datetime as dt
     from zoneinfo import ZoneInfo
-    from podcast import generate
-    data = site.ROOT / "data"
+    from engine import generate
+    data = site.ROOT / "shows" / "signal-in-the-ai-fog" / "data"
     for ep in json.loads((data / "episodes.json").read_text(encoding="utf-8")):
         path = data / "scripts" / f"{ep['date']}.json"
         assert path.exists(), f"{ep['date']} has no structured episode"

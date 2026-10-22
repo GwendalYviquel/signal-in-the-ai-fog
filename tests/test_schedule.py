@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from conftest import ROOT
-from podcast import main
+from engine import main
 
 WORKFLOW = ROOT / ".github" / "workflows" / "daily-episode.yml"
 UTC = dt.timezone.utc
@@ -132,7 +132,7 @@ def test_attempts_stop_after_two_failures_each_paid_claude(repo, mocks, monkeypa
 
 
 def test_failed_attempts_are_counted_from_github_and_never_block_when_it_cannot_answer(monkeypatch):
-    from podcast import watchdog
+    from engine import watchdog
     monkeypatch.setattr(watchdog, "daily_runs_today", lambda day: [
         {"conclusion": "failure"}, {"conclusion": "success"}, {"conclusion": "failure"}, {"conclusion": ""}])
     assert main.failed_attempts_today(dt.date(2026, 10, 22)) == 2

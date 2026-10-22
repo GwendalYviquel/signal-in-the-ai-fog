@@ -3,7 +3,7 @@
 Never blocks a run: without the secret, or if ntfy is down, it only logs. The topic is never printed.
 
 Usage in a workflow:
-  python -m podcast.notify daily <job status> <run url>   after the daily run
+  python -m engine.notify daily <job status> <run url>   after the daily run (SHOW selects the show)
 """
 from __future__ import annotations
 
@@ -15,8 +15,6 @@ from pathlib import Path
 import requests
 
 NTFY = "https://ntfy.sh/"
-ROOT = Path(__file__).resolve().parent.parent
-PUBLISHED = ROOT / "build" / "published.json"  # written by podcast.main once an episode is out
 
 
 def send(title: str, message: str, priority: int = 3, tags: list[str] | None = None, click: str = "") -> bool:
@@ -35,10 +33,13 @@ def send(title: str, message: str, priority: int = 3, tags: list[str] | None = N
     return ok
 
 
-def daily(status: str, run_url: str, published: Path = PUBLISHED) -> bool:
+def daily(status: str, run_url: str, published: Path | None = None) -> bool:
     """After the daily run: published, or failed. Quiet otherwise (weekend, other cron, already out)."""
+    from . import show as shows
+    show = shows.load()
+    published = published or show.build / "published.json"
     if status != "success":
-        return send("Episode failed", f"The daily run ended with status {status}. The next attempt, in "
+        return send(f"Episode failed: {show.cfg['podcast']['title']}", f"The daily run ended with status {status}. The next attempt, in "
                     "15 minutes, retries if no episode is out.", priority=5, tags=["rotating_light"], click=run_url)
     if not published.exists():
         return False
@@ -51,4 +52,4 @@ if __name__ == "__main__":
     if len(sys.argv) == 4 and sys.argv[1] == "daily":
         daily(sys.argv[2], sys.argv[3])
     else:
-        raise SystemExit("usage: python -m podcast.notify daily <job status> <run url>")
+        raise SystemExit("usage: python -m engine.notify daily <job status> <run url>")

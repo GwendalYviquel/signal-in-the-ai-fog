@@ -5,7 +5,7 @@ import subprocess
 import pytest
 import yaml
 
-from conftest import ROOT
+from conftest import ROOT, SHOW
 
 WORKFLOWS = ROOT / ".github" / "workflows"
 GENERATION_ENV = {"ANTHROPIC_API_KEY", "ANTHROPIC_WORKSPACE_ID", "FORBIDDEN_TERMS", "EDITORIAL_CONTEXT"}
@@ -79,7 +79,7 @@ def test_no_forbidden_term_in_tracked_files():
 
 
 def test_prompt_has_the_length_placeholder():
-    assert (ROOT / "prompts" / "system.md").read_text(encoding="utf-8").count("{target_words}") == 1
+    assert (ROOT / SHOW / "prompt.md").read_text(encoding="utf-8").count("{target_words}") == 1
 
 
 def triggers(wf):
@@ -128,15 +128,16 @@ def test_costs_are_committed_after_every_run_even_failed(name):
     steps = next(iter(workflow(name)["jobs"].values()))["steps"]
     commit = next(s for s in steps if s.get("name", "").startswith("Commit"))
     assert commit["if"].startswith("always()")
-    assert "COSTS.md" in commit["run"] and ("data/costs.json" in commit["run"] or "git add data " in commit["run"])
-    assert "assets/finops-dashboard-*.svg" in commit["run"]
+    # The whole shows/ folder, or exactly each show's ledger, report and dashboard.
+    assert "git add shows docs" in commit["run"] or all(
+        part in commit["run"] for part in ("shows/*/data/costs.json", "shows/*/COSTS.md", "shows/*/finops-dashboard-*.svg"))
     assert "git pull --rebase origin main" in commit["run"]
 
 
 def test_published_data_is_committed_and_deployed():
     for name in ("daily-episode.yml", "preview-episode.yml"):
         text = (WORKFLOWS / name).read_text(encoding="utf-8")
-        assert "git add data docs" in text and "actions/deploy-pages" in text
+        assert "git add shows docs" in text and "actions/deploy-pages" in text
 
 
 def test_site_is_redeployed_when_docs_change():
@@ -175,8 +176,8 @@ def test_testing_journal_lists_every_test_file_with_its_count():
 def test_voice_check_workflow_only_gets_the_elevenlabs_key():
     wf = workflow("check-voices.yml")
     step = next(s for s in wf["jobs"]["voices"]["steps"] if s.get("name") == "Check every voice")
-    assert set(step["env"]) == {"ELEVENLABS_API_KEY", "VOICE_IDS"} and step["run"] == "python -m podcast.tts"
-    assert triggers(wf)["push"]["paths"] == ["config.yaml"]
+    assert set(step["env"]) == {"ELEVENLABS_API_KEY", "VOICE_IDS"} and step["run"] == "python -m engine.tts"
+    assert triggers(wf)["push"]["paths"] == ["shows/*/show.yaml"]
 
 
 def test_spotify_show_url_is_a_show_link(cfg):
@@ -224,7 +225,7 @@ def test_daily_run_notifies_the_phone_after_every_real_run():
     wf = workflow("daily-episode.yml")
     notify_step = step(wf, "Notify the phone")
     assert notify_step["if"] == "always() && env.DRY_RUN == 'false'"  # failures too, never dry runs
-    assert set(notify_step["env"]) == {"NTFY_TOPIC"} and "python -m podcast.notify daily" in notify_step["run"]
+    assert set(notify_step["env"]) == {"NTFY_TOPIC"} and "python -m engine.notify daily" in notify_step["run"]
     assert step_names(wf)[-1] == "Notify the phone"
 
 
@@ -237,7 +238,7 @@ def test_generation_can_read_the_accepted_suggestions(name, step_name):
 
 
 def test_issue_forms_match_the_site_links_and_the_suggestion_labels():
-    from podcast import context
+    from engine import context
     forms = ROOT / ".github" / "ISSUE_TEMPLATE"
     feedback = yaml.safe_load((forms / "episode-feedback.yml").read_text(encoding="utf-8"))
     suggestion = yaml.safe_load((forms / "topic-suggestion.yml").read_text(encoding="utf-8"))

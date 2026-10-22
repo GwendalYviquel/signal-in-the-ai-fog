@@ -3,7 +3,7 @@ import json
 
 import requests
 
-from podcast import notify
+from engine import notify
 
 
 class Post:
@@ -52,7 +52,7 @@ def test_daily_run_failure_is_urgent_with_the_run_link(monkeypatch, tmp_path):
     notify.daily("failure", "https://github.com/run/1", published=tmp_path / "none.json")
     [call] = post.calls
     assert call["json"]["priority"] == 5 and call["json"]["click"] == "https://github.com/run/1"
-    assert call["json"]["title"] == "Episode failed"
+    assert call["json"]["title"] == "Episode failed: Signal in the AI Fog"  # which show, now there are several
 
 
 def test_daily_run_success_names_the_episode(monkeypatch, tmp_path):

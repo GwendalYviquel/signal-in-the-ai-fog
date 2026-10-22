@@ -6,7 +6,7 @@ and catalog built with it. The audio is a few seconds of silence, or with WITH_V
 two short sentences read by both ElevenLabs voices (a few cents). The feed and catalog are
 only validated (never written or deployed), and the release is always deleted.
 
-Usage: python -m podcast.rehearsal (in GitHub Actions, see .github/workflows/rehearsal.yml)
+Usage: python -m engine.rehearsal (in GitHub Actions, see .github/workflows/rehearsal.yml)
 """
 import os
 import time
@@ -18,6 +18,7 @@ import yaml
 from mutagen.mp3 import MP3
 
 from . import catalog, costs, feed, main, publish, tts
+from . import show as shows
 
 def silent_mp3(path: Path, seconds: int = 3) -> None:
     path.write_bytes(tts.silence(seconds))
@@ -56,18 +57,19 @@ def voice_check(cfg: dict, mp3: Path, billed: list) -> None:
 
 
 def rehearse(with_voice: bool = False) -> None:
-    cfg = yaml.safe_load((main.ROOT / "config.yaml").read_text(encoding="utf-8"))
+    show = shows.load()
+    cfg = show.cfg
     tag = f"rehearsal-{os.getenv('GITHUB_RUN_ID', 'local')}"
-    main.BUILD.mkdir(exist_ok=True)
-    mp3 = main.BUILD / f"{tag}.mp3"
+    show.build.mkdir(parents=True, exist_ok=True)
+    mp3 = show.build / f"{tag}.mp3"
     billed = [0]
     if with_voice:
         try:
             voice_check(cfg, mp3, billed)
         finally:
             costs.record(cfg, "rehearsal", "ok" if billed[0] == sum(len(t) for _, t in VOICE_CHECK) else "failed",
-                         elevenlabs_characters=billed[0], ledger=main.COST_LEDGER, report=main.COST_REPORT,
-                         charts=main.COST_CHARTS,
+                         elevenlabs_characters=billed[0], ledger=show.cost_ledger, report=show.cost_report,
+                         charts=show.charts,
                          note="voice sample")
     else:
         silent_mp3(mp3)
@@ -85,13 +87,13 @@ def rehearse(with_voice: bool = False) -> None:
             "published_at": now.replace(microsecond=0).isoformat(), "guid": f"{publish.repo()}#{tag}",
             "audio_url": audio_url, "audio_bytes": mp3.stat().st_size, "duration_seconds": tts.mp3_duration(mp3.read_bytes()),
         }
-        episodes = main.load(main.EPISODES) + [episode]
-        base_url = cfg["podcast"].get("base_url") or publish.pages_url()
+        episodes = main.load(show.episodes) + [episode]
+        base_url = show.base_url("" if cfg["podcast"].get("base_url") else publish.pages_url())
         channel = ET.fromstring(feed.build_feed(cfg, episodes, base_url)).find("channel")
         enclosures = [i.find("enclosure").get("url") for i in channel.findall("item")]
         assert audio_url in enclosures, "the feed does not point to the uploaded audio"
         assert base_url.startswith("https://") and base_url.endswith("/"), f"unexpected site URL {base_url}"
-        data = catalog.build_catalog(cfg, episodes, main.load(main.PREVIEWS), main.ROOT / "data",
+        data = catalog.build_catalog(cfg, episodes, main.load(show.previews), show.data,
                                      base_url + "feed.xml")
         assert any(e["audio_url"] == audio_url for e in data["episodes"])
         print(f"Feed and catalog valid ({len(enclosures)} episode(s), site {base_url})")

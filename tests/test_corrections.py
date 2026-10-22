@@ -1,4 +1,4 @@
-"""Public corrections (podcast/corrections.py): on the site, in the feed, read in the next episode."""
+"""Public corrections (engine/corrections.py): on the site, in the feed, read in the next episode."""
 import json
 import xml.etree.ElementTree as ET
 
@@ -6,7 +6,7 @@ import pytest
 import yaml
 
 from conftest import ROOT, TUESDAY
-from podcast import corrections, feed, generate
+from engine import corrections, feed, generate
 
 TEXT = "The episode of October nineteenth gave a two-week discount. Mistral set it at one week."
 
@@ -68,6 +68,6 @@ def test_workflow_adds_it_without_any_paid_service_and_never_beside_an_episode_r
     steps = wf["jobs"]["correction"]["steps"]
     add = next(s for s in steps if s.get("name") == "Add the correction")
     assert set(add["env"]) == {"FORBIDDEN_TERMS", "EPISODE_DATE", "TEXT", "GITHUB_REPOSITORY"}
-    assert add["run"] == 'python -m podcast.corrections add "$EPISODE_DATE" "$TEXT"'  # inputs never in the shell
+    assert add["run"] == 'python -m engine.corrections add "$EPISODE_DATE" "$TEXT"'  # inputs never in the shell
     text = (ROOT / ".github/workflows/correction.yml").read_text(encoding="utf-8")
     assert "ANTHROPIC" not in text and "ELEVENLABS" not in text

@@ -1,7 +1,7 @@
 name: Watchdog
 
 # Is today's episode out after the 4:05 publication? If not, the catch-up run starts on its own
-# and a phone notification says so (podcast/watchdog.py). Four cron lines keep both checks at
+# and a phone notification says so (engine/watchdog.py). Four cron lines keep both checks at
 # generation.watchdog_at (5:11 and 6:41 Paris time, off the top of the hour) all year; the code keeps only the ones
 # matching today's offset. A separate workflow, so a dropped daily schedule is still caught.
 on:
@@ -45,4 +45,4 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}   # phone notifications, optional
           SCHEDULE: ${{ github.event.schedule }}
           TEST_NOTIFICATION: ${{ inputs.test_notification && 'true' || 'false' }}
-        run: python -m podcast.watchdog
+        run: python -m engine.watchdog

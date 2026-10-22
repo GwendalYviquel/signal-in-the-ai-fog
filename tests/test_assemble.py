@@ -1,6 +1,6 @@
 """Spoken script assembly: fixed opening, transitions and sign-off."""
 from conftest import FRIDAY, TUESDAY, make_episode
-from podcast import generate
+from engine import generate
 
 
 def test_fixed_opening_with_ai_disclosure(cfg):

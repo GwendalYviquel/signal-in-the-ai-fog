@@ -25,8 +25,6 @@ import yaml
 
 from . import notify
 
-ROOT = Path(__file__).resolve().parent.parent
-EPISODES = ROOT / "data" / "episodes.json"
 DAILY_WORKFLOW = "daily-episode.yml"
 MAX_FAILED_RUNS = 2
 
@@ -94,8 +92,10 @@ def main() -> None:
                            tags=["white_check_mark"]):
             raise SystemExit("Test notification not sent: check the NTFY_TOPIC secret")
         return
-    cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
-    episodes = json.loads(EPISODES.read_text(encoding="utf-8")) if EPISODES.exists() else []
+    from . import show as shows
+    show = shows.load()
+    cfg = show.cfg
+    episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []
     decision = check(cfg, os.getenv("SCHEDULE", "").strip(), dt.datetime.now(dt.timezone.utc), episodes)
     print(f"Watchdog: {decision}")
 

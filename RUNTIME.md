@@ -14,7 +14,7 @@ Everything runs in GitHub Actions on the public repository; nothing runs on a se
 | *Watchdog* | weekdays 5:11 and 6:41 Paris, or by hand | none (it may start *Daily episode*) |
 | *Preview episode* | by hand | Claude only |
 | *Add a correction* | by hand | none |
-| *Publication rehearsal*, *Check voices* | by hand, or on a change of `config.yaml` | ElevenLabs, a few characters |
+| *Publication rehearsal*, *Check voices* | by hand, or on a change of a `show.yaml` | ElevenLabs, a few characters |
 | *Check Spotify*, *Stats*, *Deploy site*, *Tests*, *Dependabot merge* | schedules, pushes | none |
 
 **Cloudflare Worker** `signal-in-the-ai-fog-scheduler` (Cloudflare dashboard, Workers): its only secret is `GITHUB_TOKEN`, a fine-grained GitHub token for this repository with *Actions: read and write*. **It expires: renew it before its date** (GitHub, Settings, Developer settings, Fine-grained tokens), then `cd scheduler && npx wrangler secret put GITHUB_TOKEN`. An expired token shows as `GitHub answered 401` in the worker's logs (Cloudflare dashboard, the worker, Logs), and only the GitHub attempts are left. Deploy a change: `cd scheduler && npx wrangler deploy`, from a terminal that has `CLOUDFLARE_API_TOKEN` (a Cloudflare API token, template *Edit Cloudflare Workers*; the browser login failed on this Mac). End-to-end check, free: deploy with `--var "TEST_CRON:M H * * *" --triggers "5,35 2,3 * * 1-5" --triggers "5 4 * * 1-5" --triggers "M H * * *"` for a UTC time **at least 15 minutes ahead** (a new cron takes time to propagate); at that time a test notification arrives; then deploy again without the options.
@@ -51,7 +51,7 @@ Checks on the real API the three request shapes that never ran for real.
 gh workflow run api-smoke.yml
 ```
 
-It runs on GitHub, where the API key is a secret (it is not on the laptops). Locally, export `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` and run `python tools/api_smoke.py`. Expected in the log: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `podcast/generate.py` or `podcast/factcheck.py`.
+It runs on GitHub, where the API key is a secret (it is not on the laptops). Locally, export `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` and run `python tools/api_smoke.py`. Expected in the log: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `engine/generate.py` or `engine/factcheck.py`.
 
 ### 2. A preview: about $0.50 of Claude, no ElevenLabs (done on 2026-10-21, forced)
 
@@ -59,10 +59,10 @@ It runs on GitHub, where the API key is a secret (it is not on the laptops). Loc
 gh workflow run preview-episode.yml
 ```
 
-Once the day's episode is out, the preview stops before any cost; add `-f force=true` to run it anyway (nothing reaches the site, since the published episode takes precedence; remove the preview from `data/previews.json` and `data/previews/` afterwards). In the run summary and log, check:
+Once the day's episode is out, the preview stops before any cost; add `-f force=true` to run it anyway (nothing reaches the site, since the published episode takes precedence; remove the preview from the show's `data/previews.json` and `data/previews/` afterwards). In the run summary and log, check:
 - *Fact-check: N claims checked, D doubt(s), U part(s) unverifiable*: N should be in the tens, U small; read each doubt;
 - the cost line: the Claude cost against $1.02 for the first episode, and `cache_read_input_tokens` above zero in `data/costs.json`;
-- on the preview page (catalog site, Preview card, then its page): labels, primary sources, topics, no cited site from `sources.avoid` in `config.yaml`;
+- on the preview page (catalog site, Preview card, then its page): labels, primary sources, topics, no cited site from `sources.avoid` in the `show.yaml`;
 - no HTTP 400 anywhere.
 
 ### 3. The first scheduled episode (the next weekday, 4:05 Paris)
@@ -70,7 +70,7 @@ Once the day's episode is out, the preview stops before any cost; add `-f force=
 - A phone notification "Episode out" by about 4:30 (or a watchdog notification at 5:11). None by 5:00: start the run by hand, `gh workflow run daily-episode.yml -f dry_run=false -f as_scheduled=true`.
 - Listen: do the chapters (description in Spotify, or the episode page) land at the right moments?
 - Read: labels, topics and their spelling against the existing topics, a follow-up if any (it must quote a real earlier What to watch).
-- *Check Spotify* records the delay in `data/spotify.json`.
+- *Check Spotify* records the delay in `shows/signal-in-the-ai-fog/data/spotify.json`.
 
 ### 4. Listener suggestions: free
 
@@ -98,7 +98,7 @@ python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt -r require
 python -m http.server --directory build/rehearsal/docs
 ```
 
-`python -m podcast.site` rebuilds the catalog and every page from the committed data; `python tools/make_diagrams.py` rebuilds the diagrams. Tests fail when either is stale.
+`python -m engine.site` rebuilds the catalog and every page from the committed data; `python tools/make_diagrams.py` rebuilds the diagrams. Tests fail when either is stale.
 
 ## Known limits
 

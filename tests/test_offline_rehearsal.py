@@ -100,5 +100,5 @@ def test_the_waiting_correction_is_read_and_shown(result):
 def test_the_rehearsal_day_is_never_a_real_episode():
     # Regression (2026-10-22): the rehearsal used October 22, which became a real episode.
     import json
-    published = {e["date"] for e in json.loads((ROOT / "data" / "episodes.json").read_text(encoding="utf-8"))}
+    published = {e["date"] for e in json.loads((ROOT / "shows" / "signal-in-the-ai-fog" / "data" / "episodes.json").read_text(encoding="utf-8"))}
     assert rehearsal.DAY.date().isoformat() not in published and rehearsal.DAY.weekday() < 5

@@ -7,7 +7,7 @@ Its text is spoken as written, so it follows the rules of the voice: no first pe
 no forbidden term. Example: "The episode of October twentieth gave Mistral Large 4 a two-week
 discount. Mistral set it at one week."
 
-Usage: python -m podcast.corrections add YYYY-MM-DD "correction text"
+Usage: python -m engine.corrections add YYYY-MM-DD "correction text"
        (adds it, then rebuilds the feed, the catalog and the pages)
 """
 from __future__ import annotations
@@ -66,24 +66,24 @@ def mark_aired(episodes: list[dict], read: list[dict], day: str) -> None:
 
 
 def main(argv: list[str]) -> None:
-    import yaml
     from . import catalog, feed, publish, site
     if len(argv) != 3 or argv[0] != "add":
-        raise SystemExit('usage: python -m podcast.corrections add YYYY-MM-DD "correction text"')
-    cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
-    path = ROOT / "data" / "episodes.json"
+        raise SystemExit('usage: python -m engine.corrections add YYYY-MM-DD "correction text"')
+    from . import show as shows
+    show = shows.load()
+    cfg = show.cfg
+    path = show.episodes
     episodes = json.loads(path.read_text(encoding="utf-8"))
     try:
         add(episodes, argv[1], argv[2], dt.date.today())
     except ValueError as e:
         raise SystemExit(str(e)) from None
     path.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")
-    base_url = cfg["podcast"].get("base_url") or (
-        publish.pages_url() if os.getenv("GITHUB_REPOSITORY") else site._local_base_url(cfg))
-    previews = json.loads((ROOT / "data" / "previews.json").read_text(encoding="utf-8"))
-    feed.write_feed(cfg, episodes, ROOT / "docs" / "feed.xml", base_url)
-    catalog.write_catalog(cfg, episodes, previews, ROOT / "data", ROOT / "docs" / "catalog.json", base_url)
-    site.write_site(cfg, ROOT / "docs" / "catalog.json", ROOT / "data", ROOT / "docs", base_url)
+    base_url = show.base_url(publish.pages_url() if os.getenv("GITHUB_REPOSITORY") else site.local_pages_url())
+    previews = json.loads(show.previews.read_text(encoding="utf-8")) if show.previews.exists() else []
+    feed.write_feed(cfg, episodes, show.docs / "feed.xml", base_url)
+    catalog.write_catalog(cfg, episodes, previews, show.data, show.docs / "catalog.json", base_url)
+    site.write_site(cfg, show.docs / "catalog.json", show.data, show.docs, base_url)
     print(f"Correction added to the episode of {argv[1]}; it will be read in the next episode.")
 
 

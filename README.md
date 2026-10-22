@@ -25,10 +25,10 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 
 A GitHub Action runs four steps:
 
-1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and submits the episode through a `submit_episode` tool, one field per part, following the editorial line in `prompts/system.md`. The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length), applies the source rules (primary sources preferred, content aggregators refused, a *confirmed* story cites a primary source), then **fact-checks** it: the code fetches each story's sources and Claude Haiku 5.5 checks every figure, date, name and status of the facts against them. A doubt goes back to a light correction, which may never add a source. The code then assembles the spoken script with a fixed opening, transitions and sign-off, and the corrections waiting to be read.
+1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and submits the episode through a `submit_episode` tool, one field per part, following the show's editorial line (`shows/<slug>/prompt.md`). The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length), applies the source rules (primary sources preferred, content aggregators refused, a *confirmed* story cites a primary source), then **fact-checks** it: the code fetches each story's sources and Claude Haiku 5.5 checks every figure, date, name and status of the facts against them. A doubt goes back to a light correction, which may never add a source. The code then assembles the spoken script with a fixed opening, transitions and sign-off, and the corrections waiting to be read.
 2. **Speech synthesis**: two ElevenLabs voices share the episode. The host voice reads the opening, the facts, the transitions and the sign-off; the analyst voice reads every read layer, so the listener hears where analysis begins. A short pause marks each change of voice. Texts are split into chunks, with the neighbouring chunks of the same voice as context to keep the delivery continuous. The start and end of every chunk are recorded, which places the chapters and the timed transcript.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
-4. **Distribution**: `data/episodes.json` is updated, then the `docs/feed.xml` feed (with chapters and transcript), the `docs/catalog.json` catalog, the episode and topic pages are regenerated and deployed to GitHub Pages. A phone notification says the episode is out, or that the run failed.
+4. **Distribution**: the show's `data/episodes.json` is updated, then the `docs/feed.xml` feed (with chapters and transcript), the `docs/catalog.json` catalog, the episode and topic pages are regenerated and deployed to GitHub Pages. A phone notification says the episode is out, or that the run failed.
 
 ### Episode format
 
@@ -65,7 +65,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 
 | Mode | Trigger | Claude | ElevenLabs | Release | RSS feed | Catalog site |
 | --- | --- | :---: | :---: | :---: | :---: | :---: |
-| Voice check | *Check voices* (manual, and on every change of `config.yaml`) | — | 🔸 one word per voice | — | — | — |
+| Voice check | *Check voices* (manual, and on every change of a `show.yaml`) | — | 🔸 one word per voice | — | — | — |
 | Dry run | *Daily episode*, `dry_run` (default for manual runs) | ✅ | — | — | — | — |
 | Preview | *Preview episode* (manual) | ✅ | — | — | — | 🔸 Preview card |
 | Rehearsal | *Publication rehearsal* (manual) | — | 🔸 silence, or two sentences with `with_voice` | 🔸 test, deleted | 🔸 checked, not written | 🔸 checked, not written |
@@ -111,10 +111,8 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 
 ```
 .
-├── config.yaml                     podcast, models, voices, themes, schedule, prices
-├── prompts/
-│   └── system.md                   editorial line, episode format, writing rules for the voice
-├── podcast/                        the pipeline: python -m podcast.main
+├── engine/                         the podcast engine, shared by every show: python -m engine.main
+│   ├── show.py                     a show: its config, its files, its site folder (SHOW=<slug>)
 │   ├── main.py                     run modes, guards, catch-ups
 │   ├── generate.py                 script writing with Claude and web search, validation
 │   ├── context.py                  open items, known topics, accepted listener suggestions
@@ -134,13 +132,14 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── spotify.py                  is the latest episode live on Spotify
 │   ├── rehearsal.py                publication rehearsal
 │   └── drawing.py                  drawing helpers shared by the diagrams and the dashboard
-├── data/
-│   ├── episodes.json               published episodes, source of the feed
-│   ├── scripts/                    one script per published episode, and its structured version (JSON)
-│   ├── previews.json               preview episodes (catalog only); scripts in data/previews/
-│   ├── costs.json                  what every run consumed
-│   └── stats.json                  one snapshot of download counts a day
-├── docs/                           GitHub Pages: catalog page, feed.xml, catalog.json, cover.jpg
+├── shows/
+│   └── signal-in-the-ai-fog/       one folder per show
+│       ├── show.yaml               podcast, models, voices, themes, schedule, sources, prices
+│       ├── prompt.md               editorial line, episode format, writing rules for the voice
+│       ├── data/                   episodes, scripts, previews, costs, stats, spotify.json
+│       ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
+│       └── STATS.md                downloads report
+├── docs/                           GitHub Pages: the first show at the root, the next ones in docs/<slug>/
 │   ├── episodes/                   one page per episode, with its transcript (.vtt) and chapters (.json)
 │   ├── topics/                     one page per topic, and the list of topics
 │   └── corrections.html            every correction
@@ -167,16 +166,15 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── deploy-site.yml             site deployment when docs/ changes
 │   ├── dependabot-merge.yml        Dependabot security updates merged once tested
 │   └── tests.yml                   test suite on every push
-├── COSTS.md                        costs report
-├── STATS.md                        downloads report
 ├── TESTING.md                      test suite and journal of real runs
 └── RUNTIME.md                      simulated connectors, and the actions to verify them for real
 ```
 
 ### Configuration
 
-- `config.yaml` holds everything editorial or tunable: title, description, language, Claude model, target length, ElevenLabs voice and model, and the list of themes with their scope. Themes can be changed at any time; they are used in segment order.
-- `prompts/system.md` defines the tone, the audience, the source-checking rules, the reliability labels, topics and follow-ups, and the fields of the `submit_episode` tool.
+- Each show lives in `shows/<slug>/`; `engine/show.py` loads it, and every command takes the show from the `SHOW` environment variable (default: `signal-in-the-ai-fog`). `podcast.site_path` places its site and feed in `docs/` (empty for this first show, whose feed URL must never move) and `podcast.release_prefix` names its releases and GUIDs.
+- `show.yaml` holds everything editorial or tunable: title, description, language, Claude model, target length, ElevenLabs voice and model, and the list of themes with their scope. Themes can be changed at any time; they are used in segment order.
+- `prompt.md` defines the tone, the audience, the source-checking rules, the reliability labels, topics and follow-ups, and the fields of the `submit_episode` tool.
 - The `ANTHROPIC_API_KEY` and `ELEVENLABS_API_KEY` keys are stored as GitHub Actions secrets. No secret is committed.
 - The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken or published (topics included); an episode containing one is rejected.
 - The optional `NTFY_TOPIC` secret is the ntfy topic of the phone notifications.
@@ -184,13 +182,13 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 
 ## Episode catalog
 
-The GitHub Pages home page (`docs/index.html`) lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from `config.yaml` once set, and a Spotify search for the podcast until then.
+The GitHub Pages home page (`docs/index.html`) lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from the `show.yaml` once set, and a Spotify search for the podcast until then.
 
 Each episode also has **its own page** (`docs/episodes/YYYY-MM-DD.html`), linked from its card and from its description in podcast apps: summary, player, chapters that jump the player to that moment, then every story with its reliability label, its facts and its read, its topics and its sources, the follow-up, the number of the day, What to watch and the question. The first three episodes (October 19 to 21) were rebuilt from their archived scripts, with labels and topics added after publication, as their pages say; a test checks that each one reassembles word for word into the script that aired. Pages carry a canonical link, Open Graph tags and schema.org `PodcastEpisode` data, and `docs/sitemap.xml` lists them all, so search engines can index every episode.
 
 **Topic pages** (`docs/topics/`) gather everything said about a company, product, law or subject, as a timeline, newest first, with the label of each story; `docs/topics/index.html` lists every topic by number of mentions.
 
-Pages are generated by `podcast/site.py` after every preview and publication; `python -m podcast.site` rebuilds the catalog and every page from the committed data. Every text is escaped, since titles, topics and sources come from the web.
+Pages are generated by `engine/site.py` after every preview and publication; `python -m engine.site` rebuilds the catalog and every page from the committed data. Every text is escaped, since titles, topics and sources come from the web.
 
 The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ by `.github/workflows/deploy-site.yml` whenever `docs/` changes, and by the daily workflow after each episode. Hosting is free (GitHub Pages for the site and feed, GitHub releases for the audio).
 
@@ -230,18 +228,18 @@ Tests run on every push (`.github/workflows/tests.yml`) and before every generat
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/finops-dashboard-dark.svg">
-    <img src="assets/finops-dashboard-light.svg" alt="FinOps dashboard: Claude and ElevenLabs this month, cost per published episode, month projection, and spend per day over 30 days" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="shows/signal-in-the-ai-fog/finops-dashboard-dark.svg">
+    <img src="shows/signal-in-the-ai-fog/finops-dashboard-light.svg" alt="FinOps dashboard: Claude and ElevenLabs this month, cost per published episode, month projection, and spend per day over 30 days" width="100%">
   </picture>
 </p>
 
-Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in `config.yaml`, and ElevenLabs characters (its credits). The dashboard above and [COSTS.md](COSTS.md) are rebuilt and committed after each run, and each run's GitHub summary shows its own cost.
+Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in `show.yaml`, and ElevenLabs characters (its credits). The dashboard above and [COSTS.md](shows/signal-in-the-ai-fog/COSTS.md) are rebuilt and committed after each run, and each run's GitHub summary shows its own cost.
 
 - **One episode** cost about **$1 of Claude** in the first runs (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**. Since October 22, the research conversation is cached (the history re-sent after a pause or a correction is billed at a tenth) and the web search filters its results before Claude reads them; the fact-check adds about one cent. The new cost per episode is to be measured on the first runs.
 - **Before paying for anything**, the voice check (3 characters per voice) and the duplicate guards stop a run that would fail; wording corrections go to a light conversation without the research.
 - **Never paid twice**: an episode already published is skipped, an orphan release stops the run, and nothing is published on weekends.
 - **Free**: hosting (GitHub Pages and releases), the Spotify check, the download stats and the CI.
-- **Audience**: downloads of each episode in [STATS.md](STATS.md) and on the catalog site; Spotify plays in Spotify for Creators.
+- **Audience**: downloads of each episode in [STATS.md](shows/signal-in-the-ai-fog/STATS.md) and on the catalog site; Spotify plays in Spotify for Creators.
 
 ## Transparency
 

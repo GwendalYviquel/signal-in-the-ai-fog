@@ -9,7 +9,7 @@ import pytest
 import yaml
 
 from conftest import ROOT
-from podcast import watchdog
+from engine import watchdog
 
 PARIS = ZoneInfo("Europe/Paris")
 WORKFLOW = yaml.safe_load((ROOT / ".github/workflows/watchdog.yml").read_text(encoding="utf-8"))
@@ -113,7 +113,7 @@ def test_gh_failure_is_loud(monkeypatch):
 def test_workflow_can_start_runs_and_gets_only_the_notification_secret():
     assert WORKFLOW["permissions"] == {"contents": "read", "actions": "write"}
     step = next(s for s in WORKFLOW["jobs"]["watchdog"]["steps"] if s.get("name") == "Check today's episode")
-    assert set(step["env"]) == {"GH_TOKEN", "NTFY_TOPIC", "SCHEDULE", "TEST_NOTIFICATION"} and step["run"] == "python -m podcast.watchdog"
+    assert set(step["env"]) == {"GH_TOKEN", "NTFY_TOPIC", "SCHEDULE", "TEST_NOTIFICATION"} and step["run"] == "python -m engine.watchdog"
     assert "SCHEDULE_ENABLED" in WORKFLOW["jobs"]["watchdog"]["if"]  # paused with the daily schedule
 
 

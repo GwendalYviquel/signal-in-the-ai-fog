@@ -3,7 +3,7 @@ import pytest
 from mutagen.mp3 import MP3
 
 from conftest import ROOT
-from podcast import publish, rehearsal
+from engine import publish, rehearsal
 
 from test_main import repo  # noqa: F401  (temporary repository fixture)
 
@@ -64,9 +64,9 @@ def test_undeletable_release_is_reported(repo, gh, monkeypatch):  # noqa: F811
 
 def test_rehearsal_workflow_never_publishes():
     text = (ROOT / ".github/workflows/rehearsal.yml").read_text(encoding="utf-8")
-    for forbidden in ("ANTHROPIC_API_KEY", "deploy-pages", "pages: write", "git add data docs"):
+    for forbidden in ("ANTHROPIC_API_KEY", "deploy-pages", "pages: write", "git add shows docs"):
         assert forbidden not in text
-    assert "git add data/costs.json COSTS.md" in text  # it only commits its own cost
+    assert "git add shows/*/data/costs.json shows/*/COSTS.md" in text  # it only commits its own cost
 
 
 def test_elevenlabs_key_only_reaches_the_voice_check():

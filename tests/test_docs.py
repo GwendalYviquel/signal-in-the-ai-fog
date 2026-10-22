@@ -5,7 +5,7 @@ import sys
 import pytest
 import yaml
 
-from conftest import ROOT
+from conftest import ROOT, SHOW
 
 sys.path.insert(0, str(ROOT / "tools"))
 import make_diagrams  # noqa: E402
@@ -35,13 +35,13 @@ def tree_paths(tree: str) -> list[str]:
 def test_paths_in_the_contents_tree_exist():
     tree = README.split("## Repository contents", 1)[1].split("```")[1]
     paths = tree_paths(tree)
-    assert "podcast/main.py" in paths and ".github/workflows/tests.yml" in paths
+    assert "engine/main.py" in paths and ".github/workflows/tests.yml" in paths
     assert [p for p in paths if not (ROOT / p).exists()] == []
 
 
 def test_contents_tree_lists_every_module_and_workflow():
     paths = tree_paths(README.split("## Repository contents", 1)[1].split("```")[1])
-    for f in list((ROOT / "podcast").glob("*.py")) + list(WORKFLOWS.glob("*.yml")):
+    for f in list((ROOT / "engine").glob("*.py")) + list(WORKFLOWS.glob("*.yml")):
         if f.name != "__init__.py":
             assert str(f.relative_to(ROOT)) in paths, f"{f.relative_to(ROOT)} is missing from the README tree"
 
@@ -77,7 +77,7 @@ def test_pipeline_diagram_names_the_secrets_actually_used():
 
 
 def test_episode_diagram_matches_the_prompt():
-    prompt = (ROOT / "prompts" / "system.md").read_text(encoding="utf-8")
+    prompt = (ROOT / SHOW / "prompt.md").read_text(encoding="utf-8")
     for part, words in make_diagrams.PROMPT_TARGETS.items():
         assert f"about {words} words" in prompt, f"diagram says {part} ~{words} words, the prompt does not"
     drawn = {(p, w) for p, _, w in make_diagrams.EPISODE}
@@ -90,7 +90,7 @@ def test_episode_diagram_matches_the_prompt():
 
 def test_schedule_diagram_matches_the_workflow_and_the_code(cfg):
     import datetime as dt
-    from podcast import main
+    from engine import main
     wf = yaml.safe_load((WORKFLOWS / "daily-episode.yml").read_text(encoding="utf-8"))
     s = make_diagrams.SCHEDULE
     assert [x["cron"] for x in wf.get("on", wf.get(True))["schedule"]] == [s["cron"]]

@@ -3,7 +3,7 @@ name: Check Spotify
 # Is the latest episode live on Spotify, and how long did Spotify take? Every 15 minutes
 # from 2:00 to 6:45 UTC on weekdays (4:00 to 8:45 Paris in summer, 3:00 to 7:45 in winter:
 # from the 4:05 publication to after the 7:00 listen), and by hand.
-# Free: no API key, Spotify's public embed page. Records data/spotify.json.
+# Free: no API key, Spotify's public embed page. Records shows/<slug>/data/spotify.json.
 on:
   # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
   # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write   # commit data/spotify.json when an episode is first seen live
+  contents: write   # commit spotify.json when an episode is first seen live
 
 concurrency:
   group: check-spotify
@@ -34,14 +34,14 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Check the latest episode on Spotify
-        run: python -m podcast.spotify
+        run: python -m engine.spotify
 
       - name: Commit the first time an episode is seen live
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/spotify.json 2>/dev/null || exit 0
+          git add shows/*/data/spotify.json 2>/dev/null || exit 0
           git diff --cached --quiet && exit 0
           git commit -m "Spotify: episode seen live"
           git pull --rebase origin main

@@ -37,7 +37,7 @@ def _item(ep: dict, status: str, script_md: Path, downloads: dict) -> dict:
 
 
 def _downloads(stats_json: Path) -> dict:
-    """Latest download counts (data/stats.json, kept by podcast/stats.py), if any."""
+    """Latest download counts (data/stats.json, kept by engine/stats.py), if any."""
     if not stats_json.exists():
         return {}
     snapshots = json.loads(stats_json.read_text(encoding="utf-8")).get("snapshots", {})

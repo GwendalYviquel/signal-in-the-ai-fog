@@ -1,6 +1,7 @@
-"""Pipeline: script (Claude) -> audio (ElevenLabs) -> GitHub release -> RSS feed.
+"""Pipeline of one show: script (Claude) -> audio (ElevenLabs) -> GitHub release -> RSS feed.
 
 Environment variables:
+  SHOW=<slug>   the show (shows/<slug>/), signal-in-the-ai-fog by default
   DRY_RUN=true  only generate the script (no ElevenLabs call, nothing published)
   PREVIEW=true  generate the script and publish it to the catalog site only
                 (no ElevenLabs call, no release, RSS feed unchanged)
@@ -16,18 +17,8 @@ import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-import yaml
-
 from . import catalog, chapters, context, corrections, costs, feed, generate, publish, site, tts, watchdog
-
-ROOT = Path(__file__).resolve().parent.parent
-EPISODES = ROOT / "data" / "episodes.json"
-SCRIPTS = ROOT / "data" / "scripts"
-PREVIEWS = ROOT / "data" / "previews.json"
-PREVIEW_SCRIPTS = ROOT / "data" / "previews"
-BUILD = ROOT / "build"
-DOCS = ROOT / "docs"
-COST_LEDGER, COST_REPORT, COST_CHARTS = costs.LEDGER, costs.REPORT, costs.CHARTS
+from . import show as shows
 
 
 def flag(name: str) -> bool:
@@ -130,7 +121,7 @@ def check_config(cfg: dict, dry_run: bool) -> None:
     voices = cfg["tts"].get("voices") or {"host": cfg["tts"].get("voice_id", "TO_FILL")}
     to_fill += [f"tts.voices.{role}" for role, v in voices.items() if v == "TO_FILL"]
     if to_fill and not dry_run:
-        raise SystemExit(f"config.yaml: fill in before publishing -> {', '.join(to_fill)}")
+        raise SystemExit(f"show.yaml: fill in before publishing -> {', '.join(to_fill)}")
 
 
 def load(path: Path) -> list[dict]:
@@ -165,25 +156,27 @@ def record(ep: dict, today: dt.date, now: dt.datetime) -> dict:
     }
 
 
-def main() -> None:
-    """Run, then record what the run spent in data/costs.json and COSTS.md, even if it failed."""
-    cfg = yaml.safe_load((ROOT / "config.yaml").read_text(encoding="utf-8"))
+def main(show: shows.Show | None = None) -> None:
+    """Run, then record what the run spent in the show's costs.json and COSTS.md, even if it failed."""
+    show = show or shows.load()
+    cfg = show.cfg
     dry_run, preview = flag("DRY_RUN"), flag("PREVIEW")
     mode = "dry run" if dry_run else "preview" if preview else "publish"
     spend = {"claude": costs.empty_claude_usage(cfg["generation"]["model"]), "voice_check": 0, "speech": [0]}
     outcome = "failed"
     try:
-        outcome = run(cfg, spend) or "ok"
+        outcome = run(show, spend) or "ok"
     finally:
         chars = spend["voice_check"] + spend["speech"][0]
         if spend["claude"]["api_calls"] or chars:
-            costs.record(cfg, mode, outcome, spend["claude"], chars, ledger=COST_LEDGER, report=COST_REPORT,
-                         charts=COST_CHARTS,
+            costs.record(cfg, mode, outcome, spend["claude"], chars, ledger=show.cost_ledger,
+                         report=show.cost_report, charts=show.charts,
                          note=f"voice check {spend['voice_check']} + episode {spend['speech'][0]} characters"
                          if mode == "publish" else "")
 
 
-def run(cfg: dict, spend: dict) -> str | None:
+def run(show: shows.Show, spend: dict) -> str | None:
+    cfg = show.cfg
     dry_run, preview, force = flag("DRY_RUN"), flag("PREVIEW"), flag("FORCE")
     check_config(cfg, dry_run or preview)
 
@@ -207,7 +200,7 @@ def run(cfg: dict, spend: dict) -> str | None:
         print("Weekend: no episode.")
         return
 
-    episodes, previews = load(EPISODES), load(PREVIEWS)
+    episodes, previews = load(show.episodes), load(show.previews)
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
         print(f"The episode of {today} is already published.")
         return
@@ -215,7 +208,8 @@ def run(cfg: dict, spend: dict) -> str | None:
         # Each failed attempt paid Claude: after two, the next attempts stop until someone looks.
         print(f"{watchdog.MAX_FAILED_RUNS} attempts already failed today: stopping, see the failed runs.")
         return
-    if not (dry_run or preview or force) and publish.release_exists(f"episode-{today}"):
+    tag = show.tag(today.isoformat())
+    if not (dry_run or preview or force) and publish.release_exists(tag):
         # A release without its episode in the data: never publish a second one, never pay twice.
         raise SystemExit(f"A release episode-{today} already exists: run with force to replace it.")
     if preview and any(e["date"] == today.isoformat() for e in previews) and not force:
@@ -227,16 +221,16 @@ def run(cfg: dict, spend: dict) -> str | None:
         spend["voice_check"] = tts.voice_check_characters(results)
         tts.raise_if_failed(results)
 
-    SCRIPTS.mkdir(parents=True, exist_ok=True)
-    BUILD.mkdir(exist_ok=True)
+    show.scripts.mkdir(parents=True, exist_ok=True)
+    show.build.mkdir(parents=True, exist_ok=True)
     # Only episodes aired before this one: a catch-up never sees what was published after its date.
-    previous = [p.read_text(encoding="utf-8") for p in sorted(SCRIPTS.glob("*.md"))
+    previous = [p.read_text(encoding="utf-8") for p in sorted(show.scripts.glob("*.md"))
                 if p.stem < today.isoformat()][-3:]
 
-    request = {"open_items": context.open_items(SCRIPTS, today.isoformat()),
+    request = {"open_items": context.open_items(show.scripts, today.isoformat()),
                "topics": context.known_topics(episodes),
                "suggestions": context.accepted_suggestions()}
-    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request)
+    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request, show=show)
     report_overlaps(ep, today, episodes)
     report_factcheck(ep)
     # Corrections of earlier episodes, read as written before the number of the day. Not in a
@@ -248,31 +242,30 @@ def run(cfg: dict, spend: dict) -> str | None:
         ep["parts"] = generate.assemble_parts(ep["structured"], cfg, editorial_now)
         print(f"Corrections read in this episode: {len(to_read)}")
     md = to_markdown(ep, today)
-    (BUILD / f"{today}.md").write_text(md, encoding="utf-8")
+    (show.build / f"{today}.md").write_text(md, encoding="utf-8")
     print(md)
     if dry_run:
         print("DRY_RUN: script generated, no speech synthesis or publication.")
         return
 
-    base_url = cfg["podcast"].get("base_url") or publish.pages_url()
+    base_url = show.base_url("" if cfg["podcast"].get("base_url") else publish.pages_url())
     previews = [e for e in previews if e["date"] != today.isoformat()]
 
     if preview:
         # Catalog only, without audio: never added to the RSS feed, so Spotify never sees it.
-        PREVIEW_SCRIPTS.mkdir(parents=True, exist_ok=True)
-        (PREVIEW_SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
-        save_structured(ep, PREVIEW_SCRIPTS, today)
-        save(PREVIEWS, previews + [record(ep, today, now)])
-        catalog.write_catalog(cfg, episodes, load(PREVIEWS), ROOT / "data", DOCS / "catalog.json", base_url)
-        site.write_site(cfg, DOCS / "catalog.json", ROOT / "data", DOCS, base_url)
+        show.preview_scripts.mkdir(parents=True, exist_ok=True)
+        (show.preview_scripts / f"{today}.md").write_text(md, encoding="utf-8")
+        save_structured(ep, show.preview_scripts, today)
+        save(show.previews, previews + [record(ep, today, now)])
+        catalog.write_catalog(cfg, episodes, load(show.previews), show.data, show.docs / "catalog.json", base_url)
+        site.write_site(cfg, show.docs / "catalog.json", show.data, show.docs, base_url)
         print("PREVIEW: script published to the catalog, no speech synthesis, RSS feed unchanged.")
         return
 
-    mp3 = BUILD / f"episode-{today}.mp3"
+    mp3 = show.build / f"{tag}.mp3"
     timeline: list[dict] = []
     tts.synthesize(ep["parts"], cfg["tts"], mp3, billed=spend["speech"], timeline=timeline)
 
-    tag = f"episode-{today}"
     if force:
         publish.delete_release(tag)
         episodes = [e for e in episodes if e["date"] != today.isoformat()]
@@ -283,9 +276,9 @@ def run(cfg: dict, spend: dict) -> str | None:
                           "news_cutoff": editorial_now.isoformat()}} if backfill else {}
     marks = chapters.build_chapters(ep["structured"], timeline)
     if timeline:  # timed transcript and chapters, served next to the episode page
-        (DOCS / "episodes").mkdir(parents=True, exist_ok=True)
-        (DOCS / "episodes" / f"{today}.vtt").write_text(chapters.build_vtt(timeline), encoding="utf-8")
-        (DOCS / "episodes" / f"{today}.chapters.json").write_text(
+        (show.docs / "episodes").mkdir(parents=True, exist_ok=True)
+        (show.docs / "episodes" / f"{today}.vtt").write_text(chapters.build_vtt(timeline), encoding="utf-8")
+        (show.docs / "episodes" / f"{today}.chapters.json").write_text(
             json.dumps(chapters.chapters_json(marks), indent=1), encoding="utf-8")
     episodes.append(record(ep, today, published_at) | extra | {
         "guid": f"{publish.repo()}#{tag}",
@@ -295,19 +288,19 @@ def run(cfg: dict, spend: dict) -> str | None:
         "chapters": marks,
     })
     corrections.mark_aired(episodes, to_read, today.isoformat())
-    save(EPISODES, episodes)
+    save(show.episodes, episodes)
     # Archived only once published: the next episodes treat archived scripts as already aired.
-    (SCRIPTS / f"{today}.md").write_text(md, encoding="utf-8")
-    save_structured(ep, SCRIPTS, today)
-    save(PREVIEWS, previews)  # a published episode replaces its preview
-    (PREVIEW_SCRIPTS / f"{today}.md").unlink(missing_ok=True)  # only once the episode is out
-    (PREVIEW_SCRIPTS / f"{today}.json").unlink(missing_ok=True)
+    (show.scripts / f"{today}.md").write_text(md, encoding="utf-8")
+    save_structured(ep, show.scripts, today)
+    save(show.previews, previews)  # a published episode replaces its preview
+    (show.preview_scripts / f"{today}.md").unlink(missing_ok=True)  # only once the episode is out
+    (show.preview_scripts / f"{today}.json").unlink(missing_ok=True)
 
-    feed.write_feed(cfg, episodes, DOCS / "feed.xml", base_url)
-    catalog.write_catalog(cfg, episodes, previews, ROOT / "data", DOCS / "catalog.json", base_url)
-    site.write_site(cfg, DOCS / "catalog.json", ROOT / "data", DOCS, base_url)
+    feed.write_feed(cfg, episodes, show.docs / "feed.xml", base_url)
+    catalog.write_catalog(cfg, episodes, previews, show.data, show.docs / "catalog.json", base_url)
+    site.write_site(cfg, show.docs / "catalog.json", show.data, show.docs, base_url)
     page_url = site.episode_url(base_url, today.isoformat())
-    (BUILD / "published.json").write_text(json.dumps({  # read by the notification step
+    (show.build / "published.json").write_text(json.dumps({  # read by the notification step
         "date": today.isoformat(), "title": ep["title"], "page_url": page_url,
         "message": " · ".join(ep["structured"]["headlines"]) + (
             f"\n⚠ {len(doubts)} fact-check doubt(s) left: check the run summary" if (doubts := (

@@ -6,7 +6,7 @@ import pytest
 import yaml
 
 from conftest import ROOT
-from podcast import spotify
+from engine import spotify
 
 UTC = dt.timezone.utc
 

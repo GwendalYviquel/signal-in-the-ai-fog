@@ -1,4 +1,4 @@
-# Podcast configuration. Every TO_FILL value must be set before the first published episode.
+# Show configuration (engine/show.py). Every TO_FILL value must be set before the first published episode.
 
 podcast:
   title: "Signal in the AI Fog"
@@ -14,8 +14,10 @@ podcast:
   explicit: false
   cover_file: "cover.jpg"            # in docs/, square, 1400 to 3000 px
   spotify_url: "https://open.spotify.com/show/6yv1oUk4Qdlr4gFp7FYDPZ"   # buttons of the catalog site
-  # Leave empty to use https://<owner>.github.io/<repo>/
+  # Leave empty to use the repository's GitHub Pages site, in the folder site_path.
   base_url: ""
+  site_path: ""                      # at the root of the site: the feed URL Spotify knows never moves
+  release_prefix: "episode"          # releases and GUIDs episode-YYYY-MM-DD: never change for this show
 
 generation:
   model: "claude-sonnet-5-5"
