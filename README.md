@@ -141,6 +141,7 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   ├── generate.py                 script writing with Claude and web search, validation
 │   ├── context.py                  open items, known topics, accepted listener suggestions
 │   ├── factcheck.py                every claim of the facts against its own sources (Haiku)
+│   ├── dossier.py                  research dossier, each fact quoted from its page (generation.dossier)
 │   ├── corrections.py              public corrections, read in the next episode
 │   ├── tts.py                      ElevenLabs speech, two voices, voice check, chunk timings
 │   ├── chapters.py                 chapters and timed transcript (WebVTT)
@@ -215,6 +216,7 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 - The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken or published (topics included); an episode containing one is rejected.
 - The optional `NTFY_TOPIC` secret is the ntfy topic of the phone notifications.
 - `sources.avoid` lists the sites never cited (content aggregators that rewrite other outlets' news); `factcheck` sets the fact-check model and how much of each page it reads.
+- `generation.dossier: true` splits the writing in two steps: a research dossier where every fact comes with the exact words of its page (the code fetches the page and drops a fact whose quote is not there), saved in `data/dossiers/`, then the episode written from that dossier alone, without web search. A rerun the same day reuses the dossier instead of paying the research again. On for the French shows.
 
 ## Episode catalog
 

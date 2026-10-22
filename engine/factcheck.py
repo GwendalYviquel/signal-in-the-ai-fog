@@ -76,7 +76,8 @@ def fetch(url: str, cache: dict, max_chars: int) -> str | None:
     if url not in cache:
         try:
             r = requests.get(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "en"}, timeout=20)
-            text = page_text(r.text) if r.status_code == 200 else ""
+            readable = r.status_code == 200 and "pdf" not in str(getattr(r, "headers", {}).get("content-type", "")).lower()
+            text = page_text(r.text) if readable else ""  # a PDF parsed as HTML is noise: unread
         except requests.RequestException:
             text = ""
         cache[url] = text if len(text.split()) >= MIN_WORDS else None

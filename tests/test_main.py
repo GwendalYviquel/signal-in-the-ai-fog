@@ -61,7 +61,7 @@ def mocks(monkeypatch):
     """Fake generation, speech and GitHub release; records what was called."""
     calls = {"generate": 0, "tts": 0, "upload": [], "delete": []}
 
-    def fake_generate(cfg, now, previous, usage=None, request=None, show=None):
+    def fake_generate(cfg, now, previous, usage=None, request=None, show=None, dossier_path=None):
         calls["generate"] += 1
         calls["previous"] = previous
         calls["request"] = request

@@ -245,7 +245,8 @@ def run(show: shows.Show, spend: dict) -> str | None:
     request = {"open_items": context.open_items(show.scripts, today.isoformat(), cfg=cfg),
                "topics": context.known_topics(episodes),
                "suggestions": context.accepted_suggestions()}
-    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request, show=show)
+    ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request, show=show,
+                                   dossier_path=show.data / "dossiers" / f"{today}.json")
     report_overlaps(ep, today, episodes)
     report_factcheck(ep)
     # Corrections of earlier episodes, read as written before the number of the day. Not in a

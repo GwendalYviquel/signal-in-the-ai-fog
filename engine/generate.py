@@ -13,7 +13,7 @@ from urllib.parse import urlparse
 
 import anthropic
 
-from . import costs, factcheck, locale
+from . import costs, dossier as research, factcheck, locale
 from . import show as shows
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -404,9 +404,10 @@ def _correct(client, gen, system, ep, errors, usage):
     return call, resp.stop_reason == "max_tokens"
 
 
-def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=None):
+def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=None, dossier_path=None):
     """usage: an optional costs.empty_claude_usage() total, filled in even if generation fails.
-    request: optional open_items, topics and suggestions for the request (see build_user_message)."""
+    request: optional open_items, topics and suggestions for the request (see build_user_message).
+    dossier_path: where the research dossier is saved, and reused when it exists (generation.dossier)."""
     usage = usage if usage is not None else costs.empty_claude_usage(cfg["generation"]["model"])
     gen = cfg["generation"]
     system = (show.prompt if show else shows.load().prompt).read_text(encoding="utf-8")
@@ -418,9 +419,26 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
     # Only needed for an API key that is not scoped to a workspace.
     workspace = os.getenv("ANTHROPIC_WORKSPACE_ID", "").strip()
     client = anthropic.Anthropic(default_headers={"anthropic-workspace-id": workspace} if workspace else None)
-    messages = [{"role": "user", "content": build_user_message(cfg, now, previous_scripts, **(request or {}))}]
-    tools = [{"type": "web_search_20260209", "name": "web_search",  # dynamic filtering: fewer tokens
-              "max_uses": gen["web_search_max_uses"]}, SUBMIT_TOOL]
+    user_message = build_user_message(cfg, now, previous_scripts, **(request or {}))
+    fc_cfg = cfg.get("factcheck", {})
+    pages: dict = {}  # source pages fetched once per run
+    dossier = None
+    if gen.get("dossier"):
+        # Two steps (engine/dossier.py): research with web search, then writing from the dossier alone.
+        if dossier_path and dossier_path.exists():
+            dossier = json.loads(dossier_path.read_text(encoding="utf-8"))
+            print(f"Research dossier reused: {dossier_path.name}")
+        else:
+            dossier = research.verify(research.research(client, gen, system, user_message, usage, CACHE),
+                                      fc_cfg.get("max_chars_per_source", 40000), pages)
+            if dossier_path:
+                dossier_path.parent.mkdir(parents=True, exist_ok=True)
+                dossier_path.write_text(json.dumps(dossier, ensure_ascii=False, indent=1), encoding="utf-8")
+        user_message += "\n\n" + research.writing_request(dossier, gen["target_words"])
+    messages = [{"role": "user", "content": user_message}]
+    tools = [SUBMIT_TOOL] if dossier else [
+        {"type": "web_search_20260209", "name": "web_search",  # dynamic filtering: fewer tokens
+         "max_uses": gen["web_search_max_uses"]}, SUBMIT_TOOL]
 
     # The full conversation does the research; corrections of a complete episode are sent
     # in a separate light conversation (episode + errors only), much cheaper than replaying
@@ -428,9 +446,7 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
     call, truncated = _ask(client, gen, system, tools, messages, usage)
     pending = call  # tool call of the full conversation still waiting for its tool_result
     corrected_from = None  # the episode a light correction was asked to fix
-    fc_cfg = cfg.get("factcheck", {})
     fc_usage = usage.setdefault("factcheck", costs.empty_claude_usage(fc_cfg.get("model", "")))
-    pages: dict = {}  # source pages fetched once per run
     report = {"errors": [], "checked": 0, "unverifiable": []}
     attempts = 3
     for attempt in range(attempts):
@@ -441,6 +457,11 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
             if added:
                 ep, errors = None, [f"A source was added without research: {', '.join(sorted(added))}. "
                                     "Find and read every source with web search"]
+        if ep is not None and dossier is not None:
+            outside = {s["url"] for s in collect_sources(ep)} - research.sources(dossier)
+            if outside:
+                ep, errors = None, [f"Sources not in the research dossier: {', '.join(sorted(outside))}. "
+                                    "Cite only the dossier's sources"]
         corrected_from = None
         for w in warnings:
             print(f"Warning: {w}")
@@ -477,4 +498,5 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
         "usage": usage,
         "factcheck": {"checked": report["checked"], "doubts": report["errors"],
                       "unverifiable": report["unverifiable"]},
+        "dossier": dossier["checked"] if dossier else None,
     }

@@ -307,7 +307,7 @@ def schedule(theme):
 # The test plan: every test file belongs to one area (a test checks none is forgotten).
 TEST_AREAS = [
     ("Writing", "Claude, checks, fact-check", ["validate", "generate", "prompt", "assemble", "context",
-                                                    "factcheck", "locale"]),
+                                                    "factcheck", "dossier", "locale"]),
     ("Voices", "ElevenLabs, chapters", ["tts", "chapters"]),
     ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal",
                                                    "offline_rehearsal", "corrections", "show"]),

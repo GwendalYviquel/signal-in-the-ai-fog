@@ -9,7 +9,8 @@ feed, catalog and pages) with only the outside world replaced:
 - gh: no release is created, the listener suggestions are a sample with an injection attempt;
 - the fact-check reads each source as the fixture's own text; its first answer raises a doubt on the
   story of the day, so the light correction and the second check run too;
-- a correction of the October 20 episode is waiting, so the episode reads it.
+- a correction of the October 20 episode is waiting, so the episode reads it;
+- a show with generation.dossier answers the research step with a dossier of the fixture's sources.
 Nothing is sent anywhere and nothing in the repository changes.
 
 Usage: python tools/offline_rehearsal.py [output folder] [show]   (default: build/rehearsal, the first show)
@@ -61,8 +62,22 @@ class _Claude:
             text = SimpleNamespace(type="text", text=json.dumps({"claims": claims}))
             return SimpleNamespace(content=[text], stop_reason="end_turn", usage=use)
         episode = {k: v for k, v in json.loads(self.fixture.read_text(encoding="utf-8")).items() if k != "_note"}
+        if any(t.get("name") == "submit_dossier" for t in kw.get("tools", [])):  # research step (dossier shows)
+            block = SimpleNamespace(type="tool_use", name="submit_dossier", id="toolu_dossier", input=_dossier(episode))
+            return SimpleNamespace(content=[block], stop_reason="tool_use", usage=use)
         block = SimpleNamespace(type="tool_use", name="submit_episode", id="toolu_rehearsal", input=episode)
         return SimpleNamespace(content=[block], stop_reason="tool_use", usage=use)
+
+
+def _dossier(episode: dict) -> dict:
+    """The research dossier behind the fixture: its sources, each fact quoted from the rehearsal page
+    text, and one fact whose quote is not on its page, which the verification drops."""
+    found = generate.collect_sources(episode)
+    quote = "Rehearsal source text, as fetched from the page."
+    items = [{"title": s["title"], "theme": "rehearsal", "sources": [s], "context": "Rehearsal context.",
+              "facts": [{"statement": s["title"], "quote": quote, "url": s["url"]}]} for s in found]
+    items[0]["facts"].append({"statement": "Invented", "quote": "words that no page contains", "url": found[0]["url"]})
+    return {"items": items, "agenda": episode.get("agenda", [])}
 
 
 def _silence_for(url, headers, params, body, retries=3):

@@ -3,7 +3,7 @@
 shows/<slug>/
   show.yaml        podcast, generation, voices, themes, sources, costs
   prompt.md        the editorial line given to Claude
-  data/            episodes.json, scripts/, previews.json, previews/, costs.json, stats.json, spotify.json
+  data/            episodes.json, scripts/, previews.json, previews/, dossiers/, costs.json, stats.json, spotify.json
   COSTS.md, STATS.md, finops-dashboard-{light,dark}.svg
 docs/<site_path>/  the show's site and feed on GitHub Pages ("" keeps a show at the root)
 private/<slug>/editorial_context.md   private audience context, never committed (or a secret)

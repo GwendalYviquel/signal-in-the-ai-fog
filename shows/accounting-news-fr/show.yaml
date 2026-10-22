@@ -30,6 +30,9 @@ generation:
   model: "claude-sonnet-5-5"
   max_tokens: 16000                  # room for the episode after long web searches
   web_search_max_uses: 15
+  # Two steps (engine/dossier.py): a research dossier whose every fact is quoted from its page and
+  # checked by the code, then the episode written from that dossier alone, without web search.
+  dossier: true
   timezone: "Europe/Paris"
   # One episode a week, with the news of the last seven days, published on Monday morning like
   # the first show's weekday episodes (same attempts, same publish time).
