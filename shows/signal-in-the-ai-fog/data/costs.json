@@ -349,5 +349,14 @@
   "claude": null,
   "elevenlabs_characters": 6,
   "note": "configured voices"
+ },
+ {
+  "time": "2026-10-22T16:38:05+00:00",
+  "mode": "voice check",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39815572204",
+  "claude": null,
+  "elevenlabs_characters": 6,
+  "note": "configured voices"
  }
 ]
