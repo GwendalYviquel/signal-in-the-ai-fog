@@ -14,3 +14,8 @@ REPOSITORY = "GwendalYviquel/signal-in-the-ai-fog"
 # (2:05 and 2:35 UTC fall before 4:00 Paris and are skipped by the worker). The first attempt
 # publishes, the next ones stop at once if the episode is out; the GitHub attempts stay as a backup.
 crons = ["5,35 2,3 * * 1-5", "5 4 * * 1-5"]
+
+[observability]
+# Logs in the Cloudflare dashboard (the worker, Logs): each trigger says what it did, and a refusal
+# from GitHub (an expired token: 401) shows as an error.
+enabled = true
