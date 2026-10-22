@@ -231,6 +231,17 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
         if not _has_source(s.get("sources")):
             errors.append(f"Segment {s.get('theme')!r} has no source")
 
+    # Language guard: every published text in the show's language (a French show answered in English
+    # would be read by French voices and shown on a French site).
+    lang = locale.code(cfg)
+    published = [("title", ep["title"]), ("summary", ep["summary"])] + _spoken_parts(ep) + [
+        ("agenda", str(a.get("text", ""))) for a in ep.get("agenda") or [] if isinstance(a, dict)]
+    for name, text in published:
+        found = locale.detect(str(text))
+        if found and found != lang:
+            errors.append(f"The {name} is in {locale.NAMES[found]}: write it in {locale.NAMES[lang]}, "
+                          f"like the whole episode: {str(text)[:80]!r}")
+
     topic_words = locale.of(cfg)["rules"].get("topic_max_words", TOPIC_MAX_WORDS)
     for name, s in [("story of the day", story)] + [(f"segment {s.get('theme')!r}", s) for s in segs]:
         if s.get("label") not in LABELS:
@@ -450,12 +461,13 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
             dossier = json.loads(dossier_path.read_text(encoding="utf-8"))
             print(f"Research dossier reused: {dossier_path.name}")
         else:
-            dossier = research.verify(research.research(client, gen, system, user_message, usage, CACHE),
-                                      fc_cfg.get("max_chars_per_source", 40000), pages)
+            name = locale.NAMES[locale.code(cfg)]
+            dossier = research.verify(research.research(client, gen, system, user_message, usage, CACHE, name),
+                                      fc_cfg.get("max_chars_per_source", 40000), pages, locale.code(cfg))
             if dossier_path:
                 dossier_path.parent.mkdir(parents=True, exist_ok=True)
                 dossier_path.write_text(json.dumps(dossier, ensure_ascii=False, indent=1), encoding="utf-8")
-        user_message += "\n\n" + research.writing_request(dossier, gen["target_words"])
+        user_message += "\n\n" + research.writing_request(dossier, gen["target_words"], locale.NAMES[locale.code(cfg)])
     messages = [{"role": "user", "content": user_message}]
     tools = [SUBMIT_TOOL] if dossier else [
         {"type": "web_search_20260209", "name": "web_search",  # dynamic filtering: fewer tokens

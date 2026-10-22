@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import datetime as dt
 import functools
+import re
 from pathlib import Path
 
 import yaml
@@ -23,6 +24,32 @@ def load(language: str) -> dict:
     if not path.exists():
         raise SystemExit(f"No locale {language!r}: expected {path}")
     return yaml.safe_load(path.read_text(encoding="utf-8"))
+
+
+# Language guard: the most frequent short words of each language. Words both languages use
+# ("on", "a", "de" in names) are left out, so a French text quoting an English product stays French.
+NAMES = {"en": "English", "fr": "French"}
+COMMON = {
+    "en": {"the", "and", "of", "to", "is", "are", "was", "were", "with", "for", "that", "this", "by", "will",
+           "has", "have", "from", "its", "be", "it", "which", "their", "would", "been", "not", "but", "an"},
+    "fr": {"le", "la", "les", "des", "du", "et", "est", "une", "un", "pour", "dans", "que", "qui", "sur", "avec",
+           "au", "aux", "sont", "pas", "ce", "cette", "par", "ne", "plus", "été", "ont", "sera", "leur", "mais"},
+}
+
+
+def code(cfg: dict) -> str:
+    return str(cfg.get("podcast", {}).get("language", "en"))[:2].lower()
+
+
+def detect(text: str) -> str | None:
+    """The language of a text, or None when it is too short or mixed to tell (fewer than three common
+    words, or no language with twice the other's)."""
+    words = re.findall(r"[^\W\d_]+", text.lower())
+    hits = {lang: sum(w in common for w in words) for lang, common in COMMON.items()}
+    best, other = sorted(hits.values(), reverse=True)[:2]
+    if best < 3 or best < 2 * other:
+        return None
+    return max(hits, key=hits.get)
 
 
 def of(cfg: dict) -> dict:
