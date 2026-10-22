@@ -2,7 +2,7 @@
 
 For whoever helps run the podcast in production. The code is covered offline (see [TESTING.md](TESTING.md)), but several outside services are only **simulated** there, and some have **never run for real**. This page lists each of them, and the actions that verify them, in order, with their cost.
 
-Updated on 2026-10-21, before the first scheduled episode.
+Updated on 2026-10-22: the repository is now an engine running several shows (`shows/<slug>/`); two French weekly shows are in preparation.
 
 ## Where things run
 
@@ -31,6 +31,7 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 | Claude Sonnet 5.5, light correction | fixing wording without the research | fake client | 🔸 smoke test ✅ 2026-10-22 (the tool is called unforced); never in an episode yet. It used a forced `tool_choice`, which this model refuses (HTTP 400), fixed on 2026-10-22 | a real correction round in an episode |
 | Claude Haiku 5.5, fact-check | checking every claim of the facts against its sources | fake answers (`tests/test_factcheck.py`) | ✅ smoke test, then a forced preview on 2026-10-21: 36 claims, 8 doubts then 1, under one cent | whether its doubts stay fair (statements of absence are now skipped) |
 | Source pages, fetched by the code | the fact-check's input | network blocked in every test | ✅ from a GitHub runner on the forced preview: no part unverifiable | from a GitHub runner, sites may block datacenter IPs: count the *unverifiable* parts in the run summary |
+| ElevenLabs, French voices | the two French shows | stand-in voices in the offline rehearsal | ❌ not chosen yet | candidates checked with *Check voices* (`voice_ids`), then written in the show's `tts.voices` and heard through *Publication rehearsal* (`with_voice`, `show`); chosen by the owner by ear |
 | ElevenLabs | the two voices, the voice check | fake HTTP (`tests/test_tts.py`), silence in the rehearsal | ✅ 3 episodes | **chapter times**: estimated inside each audio chunk by characters, to check by ear |
 | `gh release` | hosting the MP3 | faked | ✅ | — |
 | `gh issue list` | listener suggestions labelled `accepted` | faked | ❌ never ran | that it reads the accepted issues (needs `issues: read`) |
@@ -40,6 +41,13 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 | ntfy | phone notifications | fake HTTP | ✅ test notifications from GitHub on 2026-10-21 | the first real "Episode out" |
 | Spotify embed page | is the episode live, after how long | a saved copy of the page | ✅ | the delay, measured from the first scheduled episode |
 | Spotify and Apple, reading the feed | chapters (description timestamps and `podcast:chapters`), transcript (`podcast:transcript`) | feed validated as XML | ❌ | how each app shows them on the first episode that has them |
+
+## Several shows
+
+- Every workflow takes the show from `SHOW` (a `show` input on manual workflows, default `signal-in-the-ai-fog`). Scheduled attempts (GitHub or Cloudflare) run **every scheduled show**, one at a time; each publishes only on its own days. A show with `generation.scheduled: false` is never run by a schedule or the watchdog.
+- Per-show secrets: the private context `EDITORIAL_CONTEXT_<SLUG>` (optional); every other secret is shared.
+- Costs: a weekly French episode is about **7,000 ElevenLabs characters** (offline rehearsal), so the two French shows add about **60,000 characters a month** and about $4 of Claude, on top of the first show's 110,000 characters.
+- The two French shows wait for: their names (the titles in `show.yaml` are proposals), their voices, their identity in the feed (owner name and email), a preview each, then `scheduled: true` and a Spotify submission.
 
 ## Actions, in order
 

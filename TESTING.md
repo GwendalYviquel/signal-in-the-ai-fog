@@ -126,6 +126,12 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-22 | [Cloudflare scheduler, test notification](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39758942819) | ✅ | Test cron at 9:53 UTC: the worker started the *Watchdog* in test mode at 9:53:48, through `workflow_dispatch` with the fine-grained token, and the phone got *Test from GitHub*. The whole chain works: Cloudflare cron, token, GitHub API, workflow, ntfy | Test cron removed; the first morning started by Cloudflare is the next weekday |
 
+| 2026-10-22 | Engine restructure, offline rehearsal before and after | ✅ | The repository became an engine (`engine/`, `shows/<slug>/`, locales). The first show's feed, catalog, transcript, chapters, sitemap and spoken script came out byte-identical; pages differ only by their generated-by comment and, later, by the language switch | — |
+
+| 2026-10-22 | [Daily episode, scheduled-style run](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39771721534) | ✅ | First run of the multi-show workflow: the show list, then a job for the first show with its own context secret, which found the day's episode out | — |
+
+| 2026-10-22 | French offline rehearsal (HR show) | ✅ | A weekly French episode published on a Monday, in French, with its own release and site folder. Found: French topic names run longer than four words (*Plafond de la sécurité sociale*), and a weekly French episode is about 7,000 ElevenLabs characters | Topic length per locale (6 words in French); costs corrected in RUNTIME.md. Test: `test_a_weekly_french_show_publishes_on_its_day_in_french` |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)

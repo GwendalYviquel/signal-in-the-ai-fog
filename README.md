@@ -4,7 +4,7 @@
 
 # Signal in the AI Fog
 
-A daily AI news podcast in English, fully generated and published automatically.
+A daily AI news podcast in English, fully generated and published automatically, and the **podcast engine** behind it: the same code runs other shows, each with its own editorial line, language, cadence, voices, feed and site (see [Shows](#shows)).
 
 Every weekday morning, an episode of about six minutes covers enterprise AI in production: models and vendors, European sovereignty, LLMOps and MLOps platforms, quality and evaluation, regulation, retail and agents. The script is written by Claude from a web search, then read by two ElevenLabs voices. Episodes are distributed through an RSS feed that Spotify and other podcast platforms pick up automatically, and listed on a [catalog site](https://gwendalyviquel.github.io/signal-in-the-ai-fog/).
 
@@ -108,6 +108,25 @@ A *Watchdog* workflow checks at **5:11 and 6:41 Paris time** that today's episod
 **Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails. To check the secret, run *Watchdog* by hand with `test_notification`: it only sends a test.
 
 A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by hand): it reads Spotify's public embed page of the show, compares its latest episode with ours, and records in `data/spotify.json` when each episode was first seen live and how many minutes after publication, to confirm the margin before 7:00.
+
+## Shows
+
+| Show | Language | Cadence | Status |
+| --- | --- | --- | --- |
+| [Signal in the AI Fog](https://gwendalyviquel.github.io/signal-in-the-ai-fog/) (`shows/signal-in-the-ai-fog`) | English | every weekday | live |
+| HR news (`shows/hr-news-fr`) | French | weekly, Monday | in preparation: voices to choose |
+| Accounting news (`shows/accounting-news-fr`) | French | weekly, Monday | in preparation: voices to choose |
+
+### Add a show
+
+1. **Folder**: `shows/<slug>/show.yaml` (copy an existing one) and `prompt.md`. In `show.yaml`: title, `tagline` (spoken in the opening), description, `language` (`en` or `fr`: a locale in `engine/locales/`), `site_path` (the show's folder in the site, usually its slug), `release_prefix` (its releases and GUIDs, never changed after the first episode), `context_secret`, `cadence` (`weekdays` or `weekly:<day>`), `publish_at`, `target_words` and, for a longer format, `lengths`; themes, `sources.avoid`, and `scheduled: false` while it is prepared. HTML comments in `prompt.md` are notes for maintainers, never sent to Claude.
+2. **Cover**: `podcast.cover_kicker` and `podcast.cover_palette` (three colours), then `python tools/make_cover.py --show <slug>`.
+3. **Voices**: candidate ElevenLabs voice IDs checked with *Check voices* (`voice_ids`, a few characters each); once written in the show's `tts.voices` (the show is still unscheduled), *Publication rehearsal* with `with_voice` and `show` reads two short sentences with them (about 150 characters), to listen to before keeping them.
+4. **Rehearse for free**: a fixture `tests/fixtures/episode-<slug>.json` in the show's language, then `python tools/offline_rehearsal.py build/rehearsal <slug>`: the whole publication on a copy, site in `build/rehearsal/docs/<site_path>/`.
+5. **Preview** (Claude only, about $0.50): *Preview episode* with `show`, after the day's episode if any (`force`). Read it: labels, sources, topics, fact-check doubts in the run summary.
+6. **Go live**: the private context in the `EDITORIAL_CONTEXT_<SLUG>` secret if any, `scheduled: true`, then the first episode on the show's next day; submit its feed (`docs/<site_path>/feed.xml`) to Spotify once, and set `spotify_url`.
+
+A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.yaml` (a test checks): spoken texts, chapters, feed labels, dates, the first person to avoid, the site's interface.
 
 ## Repository contents
 
