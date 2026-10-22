@@ -9,11 +9,11 @@ The projection runs the cost of a published episode over the month's episode day
 | Show | Runs | Episodes published | Claude (≈ USD) | ElevenLabs characters | Projection, Claude | Projection, characters |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [Signal in the AI Fog](signal-in-the-ai-fog/COSTS.md) | 38 | 4 | $3.52 | 19,884 | $16.87 | 107,244 |
-| [Signal in the Tax Fog](accounting-news-fr/COSTS.md) | 1 | 0 | $1.11 | 0 | $1.11 | 0 |
+| [Signal in the Tax Fog](accounting-news-fr/COSTS.md) | 2 | 0 | $1.24 | 6 | $1.24 | 6 |
 | [Signal in the HR Fog](hr-news-fr/COSTS.md) | 6 | 1 | $3.99 | 8,204 | $0.72 | 32,768 |
-| **All shows** | **45** | **5** | **$8.62** | **28,088** | **$18.70** | **140,012** |
+| **All shows** | **46** | **5** | **$8.75** | **28,094** | **$18.83** | **140,018** |
 
-**ElevenLabs credits are one quota shared by every show**: 28,088 characters used this month, about 140,012 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
+**ElevenLabs credits are one quota shared by every show**: 28,094 characters used this month, about 140,018 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
 
 Credits left: not read yet. Every publication reads them before paying for anything, and stops when they cannot voice the episode.
 
