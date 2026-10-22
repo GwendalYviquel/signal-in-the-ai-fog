@@ -1,0 +1,213 @@
+{
+ "title": "Budget social 2027 en séance, prime carburant à mille euros",
+ "summary": "Le projet de budget de la sécurité sociale pour 2027 est en séance à l'Assemblée, et un décret relève le plafond de la prime carburant. Au programme aussi : un arrêt de la Cour de cassation sur la prévention du harcèlement moral, le report de l'IA à haut risque en emploi, le CPF et France compétences, et la transparence salariale.",
+ "headlines": [
+  "Budget social en séance et prime carburant relevée",
+  "Obligations IA recrutement reportées à décembre deux mille vingt-sept",
+  "Reste à charge CPF majoré dans le projet de budget"
+ ],
+ "story_of_the_day": {
+  "theme": "Paie et cotisations",
+  "facts": "Le projet de loi de financement de la sécurité sociale pour deux mille vingt-sept est examiné en séance publique à l'Assemblée nationale. La commission des affaires sociales a rejeté le texte, si bien que la séance porte sur le texte du Gouvernement. Rien n'est voté. Il restera ensuite le Sénat, la commission mixte paritaire, une lecture définitive, et un éventuel passage devant le Conseil constitutionnel. Côté textes déjà parus, un décret publié au Journal officiel du vingt et un octobre relève le plafond de la prime carburant. La prime, facultative pour l'employeur, peut être exonérée de CSG et de cotisations salariales jusqu'à mille euros, pour les périodes d'activité à compter du premier octobre deux mille vingt-six. Le plafond annuel commun, avec la recharge de véhicules électriques et le forfait mobilités durables, passe temporairement de six cents à mille euros. La limite propre aux frais de carburant passe de trois cents à mille euros. Le relèvement avait été annoncé le vingt-deux septembre par le ministre des PME et du Pouvoir d'achat.",
+  "read": "Ce qu'il faut en retenir : deux temporalités s'opposent. La prime carburant est un texte publié, applicable, avec un effet rétroactif au premier octobre. Le budget social, lui, n'est qu'un projet. Pour un service paie, la prime impose d'abord de décider si l'entreprise la met en place, et par quel véhicule juridique, accord ou décision unilatérale. Ensuite, il faut paramétrer une rubrique exonérée, vérifier le cumul avec le forfait mobilités durables, et régulariser les sommes déjà versées depuis le début du mois. Montants lus en source secondaire : confirmez-les sur le texte. Pour le budget, aucune règle de paie pour deux mille vingt-sept n'est stabilisée avant le vote final. Le plus prudent est de préparer des scénarios sur les règles de CSG et de cotisations applicables en deux mille vingt-sept, en gardant en tête que le texte peut changer à chaque étape.",
+  "label": "confirmed",
+  "topics": [
+   "PLFSS 2027",
+   "Prime carburant",
+   "CSG-CRDS"
+  ],
+  "sources": [
+   {
+    "title": "Assemblée nationale : Projet de loi n° 3211, PLFSS pour 2027",
+    "url": "https://www.assemblee-nationale.fr/dyn/17/textes/l17b3211_projet-loi",
+    "primary": true
+   },
+   {
+    "title": "Assemblée nationale : PLFSS pour 2027, examen et rejet en commission",
+    "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/plfss-pour-2027-examen-et-rejet-du-projet-de-loi-en-commission-des-affaires-sociales",
+    "primary": true
+   },
+   {
+    "title": "Assemblée nationale : Examen du PLFSS pour 2027 en séance publique",
+    "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+    "primary": true
+   },
+   {
+    "title": "EFL : Focus sur les projets de loi de finances et de financement de la sécurité sociale pour 2027",
+    "url": "https://www.efl.fr/actualite/focus-projets-loi-finances-financement-securite-sociale-2027_f3cac8ad4-768b-4c6b-acf4-ee0aad7d69b6",
+    "primary": false
+   },
+   {
+    "title": "Légifrance : Journal officiel du 21 octobre 2026, n° 0246",
+    "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/10/21/0246",
+    "primary": true
+   },
+   {
+    "title": "Toutsurmesfinances : Prime carburant 2026, 1 000 euros sans CSG-CRDS",
+    "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Droit du travail",
+   "facts": "Par un arrêt du sept octobre deux mille vingt-six, la chambre sociale de la Cour de cassation a jugé que l'action en réparation d'un manquement de l'employeur à son obligation de prévention du harcèlement moral se prescrit par deux ans. La décision a été commentée cette semaine par des cabinets d'avocats.",
+   "read": "En pratique : le défaut de prévention se distingue du harcèlement lui-même, avec son propre délai. Pour un employeur, le risque contentieux court donc sur une période identifiable. À vérifier : la traçabilité des actions de prévention, des enquêtes internes et des suites données aux alertes, car ce sont ces éléments qu'un juge examinera pour apprécier le manquement.",
+   "label": "confirmed",
+   "topics": [
+    "Harcèlement moral",
+    "Obligation de prévention"
+   ],
+   "sources": [
+    {
+     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "primary": false
+    },
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "IA et travail",
+   "facts": "Selon des analyses juridiques spécialisées, les obligations de transparence du règlement européen sur l'IA s'appliquent depuis le deux août deux mille vingt-six. Les obligations complètes pour les systèmes à haut risque, dont ceux utilisés en matière d'emploi, sont reportées du deux août deux mille vingt-six au deux décembre deux mille vingt-sept. Pour un outil de tri de CV, cela donne seize mois de délai, pas une exemption.",
+   "read": "La vraie portée : le report n'éteint pas l'obligation, il la décale. Pour un service RH, le bon réflexe est de cartographier les outils de tri de CV, de scoring ou de gestion du personnel. Interrogez les éditeurs sur leur conformité, et anticipez l'information des salariés et du CSE avant tout déploiement. Ce temps gagné sert à s'organiser, pas à attendre.",
+   "label": "reported",
+   "topics": [
+    "Règlement européen sur l'IA",
+    "Recrutement et IA"
+   ],
+   "sources": [
+    {
+     "title": "Iones : AI Act août 2026, obligations et report Omnibus",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "primary": false
+    },
+    {
+     "title": "Village de la Justice : double conformité après le Digital Omnibus",
+     "url": "https://www.village-justice.com/articles/guide-pratique-double-conformite-pour-les-entreprises-apres-digital-omnibus,57912.html",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Dialogue social",
+   "facts": "Selon un cabinet d'avocats commentant un arrêt de la Cour de cassation du sept octobre, l'établissement du procès-verbal est une prérogative exclusive du secrétaire du CSE. L'enregistrement des séances ne peut servir qu'à faciliter sa rédaction, et l'employeur avait agi à d'autres fins. Par ailleurs, deux arrêtés d'extension, datés du huit octobre et du treize octobre, figurent au Journal officiel : l'un concerne un accord de salaires dans les commerces de gros, l'autre des accords régionaux Provence-Alpes-Côte d'Azur dans le bâtiment.",
+   "read": "Concrètement : côté CSE, vérifiez le règlement intérieur, l'usage des enregistrements et des outils de transcription, leur conservation et leur accès. Côté branches, une extension rend l'accord obligatoire pour tous les employeurs du champ. Contrôlez la convention applicable, la date d'effet et la grille, puis comparez les minima au SMIC et à vos NAO.",
+   "label": "confirmed",
+   "topics": [
+    "Procès-verbal du CSE",
+    "Arrêté d'extension"
+   ],
+   "sources": [
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    },
+    {
+     "title": "Kohen Avocats : Désaccord sur la rédaction des procès-verbaux du CSE",
+     "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
+     "primary": false
+    },
+    {
+     "title": "Légifrance : Arrêté du 8 octobre 2026 portant extension d'un accord, commerces de gros",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054977774",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Arrêté du 13 octobre 2026 portant extension d'accords régionaux PACA, bâtiment",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988660",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Formation",
+   "facts": "Selon des sites spécialisés, l'article quatre-vingt-neuf du projet de loi de finances pour deux mille vingt-sept recentre le CPF sur les projets professionnels et les métiers prioritaires. La participation forfaitaire est de cent cinquante euros par formation depuis le deux avril. Mon Compte Formation annonce un complément pouvant atteindre deux cents euros, soit trois cent cinquante euros au total, pour les demandes validées depuis le deux octobre. Cette rétroactivité n'est pas votée. Selon un site spécialisé, l'État ne versera plus rien à France compétences en deux mille vingt-sept. Enfin, l'aide à l'embauche d'un apprenti vaut pour les contrats conclus du huit mars au trente et un décembre deux mille vingt-six.",
+   "read": "Ce qu'il faut en retenir : tout repose sur le vote du budget. Pour un service formation, il s'agit d'informer les salariés du reste à charge possible, de mesurer l'effet sur l'abondement employeur et de relier cela à l'entretien professionnel. Le financement de France compétences, à suivre dans le budget, peut peser sur les contributions des entreprises. Pour l'apprentissage, les contrats signés avant la fin de l'année restent sous le régime d'aide connu. Les montants se vérifient sur les simulateurs officiels et auprès de l'Opco.",
+   "label": "reported",
+   "topics": [
+    "Compte personnel de formation",
+    "France compétences",
+    "Aide à l'embauche d'un apprenti"
+   ],
+   "sources": [
+    {
+     "title": "Axio Formation : Reste à charge CPF 2027",
+     "url": "https://axio-formation.com/blog/reste-a-charge-cpf-2027/",
+     "primary": false
+    },
+    {
+     "title": "OpcoDirect : Reste à charge CPF, 150 euros en 2026, jusqu'à 350 euros en 2027",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "primary": false
+    },
+    {
+     "title": "Clic Campus : Reste à charge CPF, ce qui change en 2027",
+     "url": "https://clic-campus.fr/cpf/reste-a-charge-cpf-2027/",
+     "primary": false
+    },
+    {
+     "title": "CP Formation : France compétences, l'État coupe le robinet, zéro euro en 2027",
+     "url": "https://cpformation.com/france-competences-letat-coupe-le-robinet-zero-euro-en-2027/",
+     "primary": false
+    },
+    {
+     "title": "Ministère de l'Économie : Embauche d'un apprenti, vous avez droit à des aides",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/embauche-dun-apprenti-vous-avez-droit-des-aides",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "Selon un cabinet d'avocats, le projet de loi transposant la directive sur la transparence des rémunérations a été présenté en Conseil des ministres le dix septembre. Le délai de transposition a expiré le sept juin deux mille vingt-six. Le Gouvernement entend transmettre le texte au Sénat avant la fin de l'année, puis à l'Assemblée au début de deux mille vingt-sept. Le seuil de cinquante salariés serait maintenu, alors que la directive vise les employeurs d'au moins cent salariés.",
+   "read": "Pour l'instant, rien n'est adopté et aucune obligation nouvelle n'est opposable à un employeur privé. Mais le contenu se précise. Un service paie peut déjà travailler sur les catégories d'emplois, les critères de classification et les fourchettes de rémunération à l'embauche. Le seuil retenu déterminera qui doit s'y mettre.",
+   "label": "reported",
+   "topics": [
+    "Transparence salariale"
+   ],
+   "sources": [
+    {
+     "title": "Sancy Avocats : Projet de loi transparence salariale, ce que prévoit le texte",
+     "url": "https://www.sancy-avocats.com/academie/projet-loi-transparence-salariale",
+     "primary": false
+    },
+    {
+     "title": "Sancy Avocats : Loi transparence salariale, où en est la France en 2026",
+     "url": "https://www.sancy-avocats.com/academie/loi-transparence-salariale",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Mille euros : c'est le nouveau plafond d'exonération de CSG et de cotisations salariales de la prime carburant, contre trois cents euros auparavant pour les frais de carburant. La mesure est temporaire, facultative, et vaut depuis le premier octobre.",
+  "source": {
+   "title": "Toutsurmesfinances : Prime carburant 2026, 1 000 euros sans CSG-CRDS",
+   "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Première échéance : la suite de l'examen du budget de la sécurité sociale en séance à l'Assemblée, puis le vote. Ensuite viendra le Sénat. Le projet de loi de finances, qui porte le CPF et France compétences, reste à suivre de près. Pour la prime carburant, la presse indique que les sommes doivent être versées d'ici le trente et un décembre deux mille vingt-six. Cette date vaut aussi pour la conclusion des contrats d'apprentissage au régime d'aide actuel. Sur la transparence salariale, le Gouvernement vise le Sénat avant la fin de l'année. Enfin, l'application des obligations de l'IA à haut risque en matière d'emploi est reportée au deux décembre deux mille vingt-sept.",
+ "agenda": [
+  {
+   "date": "2026-12-31",
+   "text": "Date limite de versement de la prime carburant exonérée"
+  },
+  {
+   "date": "2026-12-31",
+   "text": "Date limite de conclusion des contrats d'apprentissage au régime d'aide 2026"
+  },
+  {
+   "date": "2027-12-02",
+   "text": "Application reportée des obligations IA à haut risque en matière d'emploi"
+  }
+ ],
+ "question": "Si les règles de paie de deux mille vingt-sept ne sont pas fixées avant décembre, votre service a-t-il prévu des scénarios, notamment pour les règles de CSG et de cotisations qui pourraient changer ?"
+}

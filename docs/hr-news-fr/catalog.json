@@ -19,42 +19,84 @@
  "episodes": [
   {
    "date": "2026-10-22",
-   "status": "preview",
-   "title": "PLFSS 2027 en séance, prime carburant à mille euros",
-   "summary": "Le projet de loi de financement de la sécurité sociale pour deux mille vingt-sept est examiné en séance à l'Assemblée, sans aucune règle de paie stabilisée. Au programme aussi : la prime carburant relevée à mille euros, une jurisprudence récente sur le harcèlement, les procès-verbaux du CSE, la formation et la transparence salariale.",
+   "status": "published",
+   "title": "Budget social 2027 en séance, prime carburant à mille euros",
+   "summary": "Le projet de budget de la sécurité sociale pour 2027 est en séance à l'Assemblée, et un décret relève le plafond de la prime carburant. Au programme aussi : un arrêt de la Cour de cassation sur la prévention du harcèlement moral, le report de l'IA à haut risque en emploi, le CPF et France compétences, et la transparence salariale.",
    "headlines": [
-    "Le PLFSS 2027 examiné en séance à l'Assemblée",
-    "La prime carburant exonérée jusqu'à mille euros",
-    "Des arrêts récents sur le harcèlement moral"
+    "Budget social en séance et prime carburant relevée",
+    "Obligations IA recrutement reportées à décembre deux mille vingt-sept",
+    "Reste à charge CPF majoré dans le projet de budget"
    ],
    "themes": [
     "Paie et cotisations",
     "Droit du travail",
+    "IA et travail",
     "Dialogue social",
     "Formation",
     "Europe"
    ],
    "topics": [
     "PLFSS 2027",
-    "Prime de partage de la valeur",
-    "CSG sur les indemnités journalières",
+    "Prime carburant",
+    "CSG-CRDS",
     "Harcèlement moral",
     "Obligation de prévention",
-    "Prescription",
-    "Prime carburant",
-    "Forfait mobilités durables",
+    "Règlement européen sur l'IA",
+    "Recrutement et IA",
     "Procès-verbal du CSE",
+    "Arrêté d'extension",
     "Compte personnel de formation",
+    "France compétences",
     "Aide à l'embauche d'un apprenti",
-    "Transparence salariale",
-    "Directive sur la transparence des rémunérations"
+    "Transparence salariale"
    ],
    "page": "episodes/2026-10-22.html",
-   "chapters": [],
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Ouverture"
+    },
+    {
+     "start": 18.6,
+     "title": "Sujet de la semaine : Budget social en séance et prime carburant relevée"
+    },
+    {
+     "start": 140.8,
+     "title": "Droit du travail : Harcèlement moral"
+    },
+    {
+     "start": 182.8,
+     "title": "IA et travail : Règlement européen sur l'IA"
+    },
+    {
+     "start": 233.1,
+     "title": "Dialogue social : Procès-verbal du CSE"
+    },
+    {
+     "start": 288.7,
+     "title": "Formation : Compte personnel de formation"
+    },
+    {
+     "start": 365.0,
+     "title": "Europe : Transparence salariale"
+    },
+    {
+     "start": 415.5,
+     "title": "Chiffre de la semaine"
+    },
+    {
+     "start": 430.4,
+     "title": "À surveiller"
+    },
+    {
+     "start": 467.6,
+     "title": "Question pour votre équipe"
+    }
+   ],
    "corrections": [],
-   "duration_seconds": 0,
+   "duration_seconds": 487,
    "downloads": null,
-   "audio_url": "",
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-10-22/hr-news-fr-2026-10-22.mp3",
    "spotify_url": "",
    "sources": [
     {
@@ -78,16 +120,6 @@
      "primary": false
     },
     {
-     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
-     "url": "https://mimoun-avocat.com/jurisprudence.html",
-     "primary": false
-    },
-    {
-     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
-     "url": "https://juricaf.org/recherche/2026",
-     "primary": true
-    },
-    {
      "title": "Légifrance : Journal officiel du 21 octobre 2026, n° 0246",
      "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/10/21/0246",
      "primary": true
@@ -98,14 +130,39 @@
      "primary": false
     },
     {
-     "title": "Naudrh : Prime carburant et mobilités durables 2026",
-     "url": "https://www.naudrh.com/2026/10/prime-carburant-et-mobilites-durables-2026-le-plafond-de-1-000-autorise-t-il-de-nouvelles-aides-aux-agents-territoriaux.html",
+     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "primary": false
+    },
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    },
+    {
+     "title": "Iones : AI Act août 2026, obligations et report Omnibus",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "primary": false
+    },
+    {
+     "title": "Village de la Justice : double conformité après le Digital Omnibus",
+     "url": "https://www.village-justice.com/articles/guide-pratique-double-conformite-pour-les-entreprises-apres-digital-omnibus,57912.html",
      "primary": false
     },
     {
      "title": "Kohen Avocats : Désaccord sur la rédaction des procès-verbaux du CSE",
      "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
      "primary": false
+    },
+    {
+     "title": "Légifrance : Arrêté du 8 octobre 2026 portant extension d'un accord, commerces de gros",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054977774",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Arrêté du 13 octobre 2026 portant extension d'accords régionaux PACA, bâtiment",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988660",
+     "primary": true
     },
     {
      "title": "Axio Formation : Reste à charge CPF 2027",
@@ -120,6 +177,11 @@
     {
      "title": "Clic Campus : Reste à charge CPF, ce qui change en 2027",
      "url": "https://clic-campus.fr/cpf/reste-a-charge-cpf-2027/",
+     "primary": false
+    },
+    {
+     "title": "CP Formation : France compétences, l'État coupe le robinet, zéro euro en 2027",
+     "url": "https://cpformation.com/france-competences-letat-coupe-le-robinet-zero-euro-en-2027/",
      "primary": false
     },
     {
@@ -138,7 +200,7 @@
      "primary": false
     }
    ],
-   "transcript": "Bonjour, ici Signal in the HR Fog, l'actualité RH et paie de la semaine, écrit et lu par une intelligence artificielle. Au programme de ce jeudi 22 octobre : Le PLFSS 2027 examiné en séance à l'Assemblée, La prime carburant exonérée jusqu'à mille euros et Des arrêts récents sur le harcèlement moral.\n\nD'abord, le sujet de la semaine.\n\nLe projet de loi de financement de la sécurité sociale pour deux mille vingt-sept a été déposé à l'Assemblée nationale le premier octobre. La commission des affaires sociales l'a examiné du lundi douze au vendredi seize octobre, puis l'a rejeté. La séance publique porte donc sur le texte du Gouvernement. Elle a commencé le mardi vingt octobre dans l'après-midi, et la première lecture est annoncée jusqu'au lundi vingt-six octobre. Rien n'est voté. Il restera ensuite le vote de l'Assemblée, le passage au Sénat, une commission mixte paritaire, une lecture définitive et, éventuellement, une saisine du Conseil constitutionnel. Selon la presse spécialisée, notamment EFL, le texte prévoit plusieurs mesures qui touchent la paie. Le régime temporaire d'exonération de CSG et de CRDS de la prime de partage de la valeur, pour les entreprises de moins de cinquante salariés, serait reconduit en deux mille vingt-sept. Le malus pour défaut de négociation sur l'emploi des seniors serait supprimé, sans s'être jamais appliqué. Les indemnités journalières de maladie et d'accident du travail ou de maladie professionnelle seraient soumises à la CSG au taux de droit commun de neuf virgule deux pour cent à partir de deux mille vingt-sept. Le régime social de la renonciation à des jours de repos serait aussi pérennisé.\n\nCe qu'il faut en retenir : aucune règle de paie pour deux mille vingt-sept n'est stable aujourd'hui. Le texte discuté en séance est celui du Gouvernement, il peut encore bouger à l'Assemblée, puis au Sénat, puis en commission mixte paritaire. Pour un service paie, la bonne méthode consiste à préparer des scénarios plutôt qu'un paramétrage. Les mesures citées ne pèsent pas de la même façon. La reconduction de l'exonération sur la prime de partage de la valeur intéresse les petites entreprises qui envisagent une prime en fin d'année ou début d'année prochaine. La CSG sur les indemnités journalières, si elle était votée, toucherait directement les bulletins des salariés en arrêt et les calculs de maintien de salaire, donc la subrogation et la prévoyance. À vérifier : les clauses des accords de prévoyance et les règles de maintien. La suppression du malus seniors est surtout symbolique, puisqu'il ne s'est jamais appliqué. Enfin, la date d'entrée en vigueur de chaque mesure est à lire dans le texte final, pas dans les prévisions. Ne figez rien avant le vote définitif et le passage éventuel devant le Conseil constitutionnel.\n\nEnsuite, Droit du travail.\n\nDans un arrêt du sept octobre deux mille vingt-six, la chambre sociale de la Cour de cassation juge que l'action en réparation d'un manquement à l'obligation de prévention du harcèlement moral se prescrit par deux ans. Cet arrêt est commenté cette semaine par la presse et les cabinets d'avocats.\n\nEn pratique : la décision date d'une quinzaine de jours, mais elle est commentée cette semaine. Elle distingue le délai pour agir sur le défaut de prévention du régime propre au harcèlement lui-même. Pour un employeur, cela fixe la durée pendant laquelle le dossier de prévention peut être scruté. À vérifier : la traçabilité des mesures de prévention et des enquêtes internes, ainsi que leur durée de conservation.\n\nEnsuite, Paie et cotisations.\n\nLe Journal officiel du vingt et un octobre deux mille vingt-six publie un décret relevant le plafond d'exonération de la prime carburant. La prime, facultative pour l'employeur, peut être exonérée de CSG et de cotisations salariales jusqu'à mille euros pour les périodes d'activité à compter du premier octobre. Le plafond commun avec la recharge de véhicules électriques et le forfait mobilités durables passe temporairement de six cents à mille euros. La limite propre au carburant passe de trois cents à mille euros.\n\nPour la paie, ça veut dire : paramétrer les rubriques exonérées, et surtout regarder les primes déjà versées depuis le premier octobre. Une régularisation peut être nécessaire. Autre point : le cumul avec le forfait mobilités durables, puisque le plafond est commun. Reste le mode de mise en place, accord ou décision unilatérale. Les montants proviennent d'une source secondaire : vérifiez-les dans les textes avant de paramétrer.\n\nEnsuite, Dialogue social.\n\nSelon un cabinet d'avocats, un arrêt du sept octobre deux mille vingt-six juge que l'enregistrement des séances du CSE ne sert qu'à rédiger le procès-verbal, établi par le secrétaire. Le litige portait sur un désaccord autour de la rédaction de ces procès-verbaux et sur les limites du pouvoir de l'employeur en la matière.\n\nCe qu'il faut en retenir : si des enregistrements ou des outils de transcription sont utilisés en réunion de CSE, relisez le règlement intérieur, les règles de conservation et l'accès aux fichiers. L'usage doit rester au service du secrétaire, qui établit le procès-verbal. La source étant un cabinet d'avocats, vérifiez le texte de l'arrêt avant d'adapter vos pratiques.\n\nEnsuite, Formation.\n\nSelon la presse spécialisée, l'article quatre-vingt-neuf du projet de loi de finances pour deux mille vingt-sept recentre le CPF sur les projets professionnels et les métiers prioritaires, avec un reste à charge pouvant atteindre trois cent cinquante euros. La participation forfaitaire est de cent cinquante euros depuis le deux avril. Cette rétroactivité n'est pas votée. L'aide à l'apprenti est reconduite pour les contrats conclus jusqu'au trente et un décembre deux mille vingt-six.\n\nConcrètement : le reste à charge du CPF n'est pas encore une règle, mais Mon Compte Formation l'applique déjà à certaines demandes de début octobre. Pour un service formation, il faut informer les salariés et envisager un abondement employeur. Pour l'alternance, les contrats visant l'aide de deux mille vingt-six doivent être signés avant la fin de l'année. Le sort de l'aide en deux mille vingt-sept dépend de la loi de finances.\n\nEnsuite, Europe.\n\nLe projet de loi transposant la directive sur la transparence des rémunérations a été présenté en Conseil des ministres le dix septembre deux mille vingt-six. Il n'est pas adopté. Le délai de transposition a expiré le sept juin. Le Gouvernement entend transmettre le texte au Sénat avant la fin de l'année, puis à l'Assemblée au début de l'année suivante. Selon un cabinet d'avocats, le seuil de cinquante salariés est maintenu alors que la directive vise les employeurs d'au moins cent salariés.\n\nLa vraie portée : aucune obligation nouvelle n'est aujourd'hui opposable à un employeur privé, mais le calendrier se resserre. Pour un service RH, le travail utile porte sur les catégories d'emplois, les critères de classification et les fourchettes de rémunération à l'embauche. Le maintien d'un seuil plus bas que celui de la directive est à surveiller : il élargirait le nombre d'entreprises concernées.\n\nLe chiffre de la semaine.\n\nMille euros : le nouveau plafond d'exonération de la prime carburant, contre trois cents euros auparavant pour le carburant seul. Selon la presse, la mesure est temporaire et vise les périodes d'activité depuis le premier octobre.\n\nÀ surveiller.\n\nPremière échéance : la fin prévue de la première lecture du PLFSS à l'Assemblée, le lundi vingt-six octobre. Suivront le vote, puis le Sénat, sans règle de paie définitive avant la lecture finale. Surveillez aussi le projet de loi de finances, qui porte le reste à charge du CPF. Sur la transparence salariale, le texte doit être transmis au Sénat avant la fin de l'année. Enfin, le trente et un décembre deux mille vingt-six marque deux limites : la fin de la période d'exonération renforcée de la prime carburant et la date limite de conclusion des contrats d'apprentissage au régime d'aide de deux mille vingt-six.\n\nEt une question pour votre équipe.\n\nSi l'exonération de CSG sur la prime de partage de la valeur ou le régime des indemnités journalières changeait au premier janvier, quels paramétrages et quelles clauses de maintien de salaire faudrait-il revoir en premier ?\n\nC'est tout pour cette semaine. Les sources sont dans la description de l'épisode. C'était Signal in the HR Fog. À la semaine prochaine."
+   "transcript": "Bonjour, ici Signal in the HR Fog, l'actualité RH et paie de la semaine, écrit et lu par une intelligence artificielle. Au programme de ce jeudi 22 octobre : Budget social en séance et prime carburant relevée, Obligations IA recrutement reportées à décembre deux mille vingt-sept et Reste à charge CPF majoré dans le projet de budget.\n\nD'abord, le sujet de la semaine.\n\nLe projet de loi de financement de la sécurité sociale pour deux mille vingt-sept est examiné en séance publique à l'Assemblée nationale. La commission des affaires sociales a rejeté le texte, si bien que la séance porte sur le texte du Gouvernement. Rien n'est voté. Il restera ensuite le Sénat, la commission mixte paritaire, une lecture définitive, et un éventuel passage devant le Conseil constitutionnel. Côté textes déjà parus, un décret publié au Journal officiel du vingt et un octobre relève le plafond de la prime carburant. La prime, facultative pour l'employeur, peut être exonérée de CSG et de cotisations salariales jusqu'à mille euros, pour les périodes d'activité à compter du premier octobre deux mille vingt-six. Le plafond annuel commun, avec la recharge de véhicules électriques et le forfait mobilités durables, passe temporairement de six cents à mille euros. La limite propre aux frais de carburant passe de trois cents à mille euros. Le relèvement avait été annoncé le vingt-deux septembre par le ministre des PME et du Pouvoir d'achat.\n\nCe qu'il faut en retenir : deux temporalités s'opposent. La prime carburant est un texte publié, applicable, avec un effet rétroactif au premier octobre. Le budget social, lui, n'est qu'un projet. Pour un service paie, la prime impose d'abord de décider si l'entreprise la met en place, et par quel véhicule juridique, accord ou décision unilatérale. Ensuite, il faut paramétrer une rubrique exonérée, vérifier le cumul avec le forfait mobilités durables, et régulariser les sommes déjà versées depuis le début du mois. Montants lus en source secondaire : confirmez-les sur le texte. Pour le budget, aucune règle de paie pour deux mille vingt-sept n'est stabilisée avant le vote final. Le plus prudent est de préparer des scénarios sur les règles de CSG et de cotisations applicables en deux mille vingt-sept, en gardant en tête que le texte peut changer à chaque étape.\n\nEnsuite, Droit du travail.\n\nPar un arrêt du sept octobre deux mille vingt-six, la chambre sociale de la Cour de cassation a jugé que l'action en réparation d'un manquement de l'employeur à son obligation de prévention du harcèlement moral se prescrit par deux ans. La décision a été commentée cette semaine par des cabinets d'avocats.\n\nEn pratique : le défaut de prévention se distingue du harcèlement lui-même, avec son propre délai. Pour un employeur, le risque contentieux court donc sur une période identifiable. À vérifier : la traçabilité des actions de prévention, des enquêtes internes et des suites données aux alertes, car ce sont ces éléments qu'un juge examinera pour apprécier le manquement.\n\nEnsuite, IA et travail.\n\nSelon des analyses juridiques spécialisées, les obligations de transparence du règlement européen sur l'IA s'appliquent depuis le deux août deux mille vingt-six. Les obligations complètes pour les systèmes à haut risque, dont ceux utilisés en matière d'emploi, sont reportées du deux août deux mille vingt-six au deux décembre deux mille vingt-sept. Pour un outil de tri de CV, cela donne seize mois de délai, pas une exemption.\n\nLa vraie portée : le report n'éteint pas l'obligation, il la décale. Pour un service RH, le bon réflexe est de cartographier les outils de tri de CV, de scoring ou de gestion du personnel. Interrogez les éditeurs sur leur conformité, et anticipez l'information des salariés et du CSE avant tout déploiement. Ce temps gagné sert à s'organiser, pas à attendre.\n\nEnsuite, Dialogue social.\n\nSelon un cabinet d'avocats commentant un arrêt de la Cour de cassation du sept octobre, l'établissement du procès-verbal est une prérogative exclusive du secrétaire du CSE. L'enregistrement des séances ne peut servir qu'à faciliter sa rédaction, et l'employeur avait agi à d'autres fins. Par ailleurs, deux arrêtés d'extension, datés du huit octobre et du treize octobre, figurent au Journal officiel : l'un concerne un accord de salaires dans les commerces de gros, l'autre des accords régionaux Provence-Alpes-Côte d'Azur dans le bâtiment.\n\nConcrètement : côté CSE, vérifiez le règlement intérieur, l'usage des enregistrements et des outils de transcription, leur conservation et leur accès. Côté branches, une extension rend l'accord obligatoire pour tous les employeurs du champ. Contrôlez la convention applicable, la date d'effet et la grille, puis comparez les minima au SMIC et à vos NAO.\n\nEnsuite, Formation.\n\nSelon des sites spécialisés, l'article quatre-vingt-neuf du projet de loi de finances pour deux mille vingt-sept recentre le CPF sur les projets professionnels et les métiers prioritaires. La participation forfaitaire est de cent cinquante euros par formation depuis le deux avril. Mon Compte Formation annonce un complément pouvant atteindre deux cents euros, soit trois cent cinquante euros au total, pour les demandes validées depuis le deux octobre. Cette rétroactivité n'est pas votée. Selon un site spécialisé, l'État ne versera plus rien à France compétences en deux mille vingt-sept. Enfin, l'aide à l'embauche d'un apprenti vaut pour les contrats conclus du huit mars au trente et un décembre deux mille vingt-six.\n\nCe qu'il faut en retenir : tout repose sur le vote du budget. Pour un service formation, il s'agit d'informer les salariés du reste à charge possible, de mesurer l'effet sur l'abondement employeur et de relier cela à l'entretien professionnel. Le financement de France compétences, à suivre dans le budget, peut peser sur les contributions des entreprises. Pour l'apprentissage, les contrats signés avant la fin de l'année restent sous le régime d'aide connu. Les montants se vérifient sur les simulateurs officiels et auprès de l'Opco.\n\nEnsuite, Europe.\n\nSelon un cabinet d'avocats, le projet de loi transposant la directive sur la transparence des rémunérations a été présenté en Conseil des ministres le dix septembre. Le délai de transposition a expiré le sept juin deux mille vingt-six. Le Gouvernement entend transmettre le texte au Sénat avant la fin de l'année, puis à l'Assemblée au début de deux mille vingt-sept. Le seuil de cinquante salariés serait maintenu, alors que la directive vise les employeurs d'au moins cent salariés.\n\nPour l'instant, rien n'est adopté et aucune obligation nouvelle n'est opposable à un employeur privé. Mais le contenu se précise. Un service paie peut déjà travailler sur les catégories d'emplois, les critères de classification et les fourchettes de rémunération à l'embauche. Le seuil retenu déterminera qui doit s'y mettre.\n\nLe chiffre de la semaine.\n\nMille euros : c'est le nouveau plafond d'exonération de CSG et de cotisations salariales de la prime carburant, contre trois cents euros auparavant pour les frais de carburant. La mesure est temporaire, facultative, et vaut depuis le premier octobre.\n\nÀ surveiller.\n\nPremière échéance : la suite de l'examen du budget de la sécurité sociale en séance à l'Assemblée, puis le vote. Ensuite viendra le Sénat. Le projet de loi de finances, qui porte le CPF et France compétences, reste à suivre de près. Pour la prime carburant, la presse indique que les sommes doivent être versées d'ici le trente et un décembre deux mille vingt-six. Cette date vaut aussi pour la conclusion des contrats d'apprentissage au régime d'aide actuel. Sur la transparence salariale, le Gouvernement vise le Sénat avant la fin de l'année. Enfin, l'application des obligations de l'IA à haut risque en matière d'emploi est reportée au deux décembre deux mille vingt-sept.\n\nEt une question pour votre équipe.\n\nSi les règles de paie de deux mille vingt-sept ne sont pas fixées avant décembre, votre service a-t-il prévu des scénarios, notamment pour les règles de CSG et de cotisations qui pourraient changer ?\n\nC'est tout pour cette semaine. Les sources sont dans la description de l'épisode. C'était Signal in the HR Fog. À la semaine prochaine."
   }
  ]
 }
