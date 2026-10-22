@@ -8,9 +8,9 @@ podcast:
   language: "fr"                     # engine/locales/fr.yaml: spoken texts, feed, site
   description: >-
     Chaque semaine, dix minutes sur l'actualité RH, sociale et paie : droit du travail et
-    jurisprudence, cotisations, conventions collectives, formation, outils RH et IA, et ce qui
-    vient de l'Europe. Pour les responsables RH et les gestionnaires de paie. Script écrit et
-    voix générée par IA.
+    jurisprudence, cotisations, ce que l'IA change au travail, santé et conditions de travail,
+    emploi et retraite, conventions collectives, formation, et ce qui vient de l'Europe. Pour les
+    responsables RH et les gestionnaires de paie. Script écrit et voix générée par IA.
   author: "Gwendal Yviquel"          # name displayed as the podcast author
   owner_name: "Gwendal Yviquel"
   owner_email: "gwendal.yviquel.devuse@gmail.com"   # public: Spotify sends the verification code here
@@ -115,14 +115,18 @@ tts:
 # Themes covered, in segment order. The name is spoken in the transition ("Ensuite, <name>.").
 themes:
   - name: "Droit du travail"
-    focus: "Lois, ordonnances et décrets, arrêts de la Cour de cassation et du Conseil d'État, décisions du Conseil constitutionnel, contrat de travail, rupture, temps de travail, santé et sécurité"
+    focus: "Lois, ordonnances et décrets, arrêts de la Cour de cassation et du Conseil d'État, décisions du Conseil constitutionnel, contrat de travail, rupture, temps de travail"
   - name: "Paie et cotisations"
-    focus: "SMIC, plafond de la sécurité sociale, taux et allègements de cotisations, DSN, prélèvement à la source, avantages en nature, frais professionnels, doctrine URSSAF et Bulletin officiel de la sécurité sociale"
+    focus: "SMIC, plafond de la sécurité sociale, taux et allègements de cotisations, DSN, prélèvement à la source, avantages en nature, frais professionnels, épargne salariale, doctrine URSSAF et Bulletin officiel de la sécurité sociale"
+  - name: "IA et travail"
+    focus: "Ce que l'IA change pour les RH et les salariés : obligations du règlement européen sur l'IA pour le recrutement et la gestion du personnel, information et consultation du CSE avant un outil d'IA, recommandations de la CNIL, métiers et compétences transformés, logiciels RH et de paie"
+  - name: "Santé et conditions de travail"
+    focus: "Arrêts maladie et indemnités journalières, accidents du travail, médecine du travail, prévention des risques et santé mentale, télétravail, harcèlement, qualité de vie au travail"
+  - name: "Emploi et retraite"
+    focus: "Assurance chômage, emploi des seniors, retraite et cumul emploi-retraite, ruptures conventionnelles, aides à l'embauche, chiffres de l'emploi"
   - name: "Dialogue social"
     focus: "Conventions et accords de branche, arrêtés d'extension, accords d'entreprise, CSE, négociations annuelles, représentativité"
   - name: "Formation"
     focus: "Compte personnel de formation, alternance et aides à l'apprentissage, France compétences, entretien professionnel, contributions formation"
-  - name: "SIRH et IA"
-    focus: "Logiciels RH et de paie, IA dans le recrutement et la gestion des talents, obligations du règlement européen sur l'IA pour l'emploi, recommandations de la CNIL"
   - name: "Europe"
     focus: "Directives et règlements sociaux et leur transposition (transparence salariale, travail via plateformes, détachement), arrêts de la Cour de justice de l'Union européenne"

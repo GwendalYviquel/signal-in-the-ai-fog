@@ -1,17 +1,18 @@
 {
  "podcast": {
   "title": "Signal in the Tax Fog",
-  "description": "Chaque semaine, dix minutes sur l'actualité comptable, fiscale et de l'audit : loi de finances et doctrine fiscale, normes comptables, facturation électronique, reporting de durabilité, commissariat aux comptes, et ce qui vient de l'Europe. Pour les experts-comptables, les directions financières et les commissaires aux comptes. Script écrit et voix générée par IA.",
+  "description": "Chaque semaine, dix minutes sur l'actualité comptable, fiscale et de l'audit : loi de finances et doctrine fiscale, TVA et douane du e-commerce, règles européennes, facturation électronique, normes comptables, reporting de durabilité et commissariat aux comptes. Pour les experts-comptables, les directions financières et les commissaires aux comptes. Script écrit et voix générée par IA.",
   "cover": "cover.jpg?v=fa8b8c73",
   "feed_url": "https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/feed.xml",
   "spotify_url": "",
   "themes": [
    "Fiscalité",
-   "Normes comptables",
+   "E-commerce",
+   "Europe",
    "Facturation électronique",
+   "Normes comptables",
    "Durabilité",
-   "Audit",
-   "Europe"
+   "Audit"
   ]
  },
  "episodes": [

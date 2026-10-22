@@ -8,9 +8,10 @@ podcast:
   language: "fr"                     # engine/locales/fr.yaml: spoken texts, feed, site
   description: >-
     Chaque semaine, dix minutes sur l'actualité comptable, fiscale et de l'audit : loi de
-    finances et doctrine fiscale, normes comptables, facturation électronique, reporting de
-    durabilité, commissariat aux comptes, et ce qui vient de l'Europe. Pour les experts-comptables,
-    les directions financières et les commissaires aux comptes. Script écrit et voix générée par IA.
+    finances et doctrine fiscale, TVA et douane du e-commerce, règles européennes, facturation
+    électronique, normes comptables, reporting de durabilité et commissariat aux comptes. Pour les
+    experts-comptables, les directions financières et les commissaires aux comptes. Script écrit et
+    voix générée par IA.
   author: "Gwendal Yviquel"          # name displayed as the podcast author
   owner_name: "Gwendal Yviquel"
   owner_email: "gwendal.yviquel.devuse@gmail.com"   # public: Spotify sends the verification code here
@@ -117,15 +118,18 @@ tts:
 
 # Themes covered, in segment order. The name is spoken in the transition ("Ensuite, <name>.").
 themes:
+  # In segment order, the priorities first after tax: e-commerce and European rules.
   - name: "Fiscalité"
     focus: "Projet et loi de finances, loi de financement de la sécurité sociale pour ses volets fiscaux, commentaires BOFiP, rescrits, jurisprudence du Conseil d'État, TVA, impôt sur les sociétés, fiscalité locale, échéances déclaratives"
-  - name: "Normes comptables"
-    focus: "Plan comptable général, règlements et recommandations de l'ANC, normes IFRS et projets de l'IASB, adoption par l'Union européenne, comptes consolidés"
+  - name: "E-commerce"
+    focus: "TVA des ventes à distance, guichet unique OSS et IOSS, responsabilité des places de marché, déclarations des plateformes (DAC7), douane et fin de la franchise des petits colis, e-reporting des ventes aux particuliers, contrôles et redressements du commerce en ligne"
+  - name: "Europe"
+    focus: "Règles européennes qui s'imposent aux comptes et à la fiscalité : TVA à l'ère numérique (ViDA), directives de coopération administrative (DAC8, DAC9), imposition minimale des groupes, réforme douanière, paquets de simplification de la Commission, travaux de l'EFRAG et de l'ESMA, arrêts de la Cour de justice de l'Union européenne"
   - name: "Facturation électronique"
     focus: "Calendrier de la réforme, plateformes agréées, e-reporting, formats et annuaire, obligations de réception et d'émission, préparation des entreprises et des cabinets"
+  - name: "Normes comptables"
+    focus: "Plan comptable général, règlements et recommandations de l'ANC, normes IFRS et projets de l'IASB, adoption par l'Union européenne, comptes consolidés"
   - name: "Durabilité"
     focus: "CSRD et ses simplifications, normes ESRS, norme volontaire VSME pour les PME, taxonomie européenne, devoir de vigilance, assurance des informations de durabilité"
   - name: "Audit"
     focus: "Commissariat aux comptes, Haute autorité de l'audit, normes d'exercice professionnel, seuils de désignation, missions sur les informations de durabilité, profession comptable"
-  - name: "Europe"
-    focus: "Directives fiscales (coopération administrative, imposition minimale des groupes, TVA à l'ère numérique), paquets de simplification de la Commission, travaux de l'EFRAG et de l'ESMA"
