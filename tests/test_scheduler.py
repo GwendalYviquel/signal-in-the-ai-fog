@@ -41,7 +41,9 @@ def test_worker_targets_this_repository_and_the_inputs_the_workflow_has():
 
 
 def test_the_token_is_never_in_the_repository():
-    for path in (ROOT / "scheduler").iterdir():
-        text = path.read_text(encoding="utf-8")
-        assert not re.search(r"github_pat_|ghp_[A-Za-z0-9]{20}", text), path.name
+    # Tracked files only: the local .wrangler/ folder of a deploy is ignored (found on 2026-10-22).
+    tracked = subprocess.run(["git", "ls-files", "scheduler"], cwd=ROOT, capture_output=True, text=True).stdout.split()
+    for name in tracked:
+        text = (ROOT / name).read_text(encoding="utf-8")
+        assert not re.search(r"github_pat_|ghp_[A-Za-z0-9]{20}", text), name
     assert subprocess.run(["git", "check-ignore", "-q", "scheduler/.dev.vars"], cwd=ROOT).returncode == 0
