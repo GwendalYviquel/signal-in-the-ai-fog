@@ -404,6 +404,27 @@ def _correct(client, gen, system, ep, errors, usage):
     return call, resp.stop_reason == "max_tokens"
 
 
+def _fix_contradictions(client, gen, system, cfg, ep, report, usage, fc_usage, pages):
+    """A fact its own source contradicts, still there after the last attempt, gets one more light
+    correction with the source's words. The corrected episode is kept only if it is valid, adds no
+    source and leaves fewer doubts. Learning (2026-10-22): an HR preview aired "October 14" for a
+    vote its source dated October 15."""
+    wrong = [e for e in report["errors"] if "is contradicted by its sources" in e]
+    if not wrong:
+        return ep, report
+    call, truncated = _correct(client, gen, system, ep, wrong, usage)
+    fixed, errors, _ = _evaluate(call, truncated, cfg, gen)
+    if fixed is None or errors or {s["url"] for s in collect_sources(fixed)} - {s["url"] for s in collect_sources(ep)}:
+        print("Contradicted facts: the last correction was not usable, the episode stays as it was")
+        return ep, report
+    again = factcheck.check(fixed, cfg, client, fc_usage, pages)
+    if len(again["errors"]) >= len(report["errors"]):
+        print("Contradicted facts: the last correction left as many doubts, the episode stays as it was")
+        return ep, report
+    print(f"Contradicted facts corrected: {len(report['errors'])} doubt(s) before, {len(again['errors'])} after")
+    return fixed, again
+
+
 def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=None, dossier_path=None):
     """usage: an optional costs.empty_claude_usage() total, filled in even if generation fails.
     request: optional open_items, topics and suggestions for the request (see build_user_message).
@@ -488,6 +509,8 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
         call, truncated = _ask(client, gen, system, tools, messages, usage)
         pending = call
 
+    if fc_cfg.get("enabled"):
+        ep, report = _fix_contradictions(client, gen, system, cfg, ep, report, usage, fc_usage, pages)
     return {
         "title": ep["title"].strip(),
         "summary": ep["summary"].strip(),

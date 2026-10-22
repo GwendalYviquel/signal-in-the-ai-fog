@@ -27,6 +27,8 @@ def pages(monkeypatch):
     """Every source page can be read; records which URLs were fetched."""
     fetched = []
     monkeypatch.setattr(factcheck, "fetch", lambda url, cache, n: fetched.append(url) or "Source text. " * 200)
+    # The test episodes are "lorem" text: their claims count as made by it (in_text has its own tests).
+    monkeypatch.setattr(factcheck, "in_text", lambda claim, text: True)
     return fetched
 
 
@@ -102,12 +104,33 @@ def test_a_doubt_goes_to_a_light_correction_then_the_episode_is_checked_again(cf
 
 def test_a_doubt_still_there_after_the_last_attempt_is_reported_not_blocking(cfg, fake_claude, pages):
     doubt = fc_reply(("two weeks", "contradicted", "one week"))
-    rounds = [reply(submit_block(make_episode(), f"t{i}")) for i in range(3)]
+    rounds = [reply(submit_block(make_episode(), f"t{i}")) for i in range(4)]
     client = fake_claude([rounds[0], doubt] + [SUPPORTED] * 5 + [rounds[1], doubt] + [SUPPORTED] * 5
-                         + [rounds[2], doubt] + [SUPPORTED] * 5)
+                         + [rounds[2], doubt] + [SUPPORTED] * 5
+                         + [rounds[3], doubt] + [SUPPORTED] * 5)  # the last try on the contradicted fact
     ep = generate.generate_episode(cfg, TUESDAY, [])
     assert len(ep["factcheck"]["doubts"]) == 1 and "two weeks" in ep["factcheck"]["doubts"][0]
     assert len(client.responses) == 0
+
+
+def test_a_contradicted_fact_left_at_the_end_gets_one_more_correction(cfg, fake_claude, pages):
+    # Learning (2026-10-22): an HR preview said "October 14" for a vote its source dated October 15.
+    doubt = fc_reply(("two weeks", "contradicted", "one week"))
+    rounds = [reply(submit_block(make_episode(), f"t{i}")) for i in range(4)]
+    client = fake_claude([rounds[0], doubt] + [SUPPORTED] * 5 + [rounds[1], doubt] + [SUPPORTED] * 5
+                         + [rounds[2], doubt] + [SUPPORTED] * 5 + [rounds[3]] + [SUPPORTED] * 6)
+    ep = generate.generate_episode(cfg, TUESDAY, [])
+    assert ep["factcheck"]["doubts"] == []
+    last = client.calls[-7]["messages"][0]["content"]
+    assert "is contradicted by its sources (the source says: one week)" in last and "never add a source" in last
+
+
+def test_only_claims_the_text_makes_are_kept():
+    # Learning (2026-10-22): the checker listed claims of the source pages that the episode never made.
+    text = "La commission a rejeté cette mesure le mercredi quatorze octobre, en première lecture."
+    assert factcheck.in_text("La commission a rejeté cette mesure le mercredi 14 octobre", text)
+    assert not factcheck.in_text("Le PLFSS 2027 autorise les laboratoires à stocker des vaccins", text)
+    assert not factcheck.in_text("Le plafond de déduction d'un PER atteint 37 680 € en 2026", text)
 
 
 def test_a_light_correction_that_adds_a_source_goes_back_to_research(cfg, fake_claude):
