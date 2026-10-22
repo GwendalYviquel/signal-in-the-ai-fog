@@ -78,7 +78,11 @@ def record(cfg: dict, mode: str, outcome: str, claude: dict | None = None, eleve
     ledger.write_text(json.dumps(runs, ensure_ascii=False, indent=1), encoding="utf-8")
     report.write_text(build_report(runs, cfg), encoding="utf-8")
     from . import finops
-    finops.write(runs, charts or report.parent / "assets", now.astimezone(finops.PARIS).date())
+    finops.write(runs, charts or report.parent / "assets", now.astimezone(finops.PARIS).date(), cfg)
+    shows_dir = ledger.parent.parent.parent  # shows/<slug>/data/costs.json: the report of every show
+    if shows_dir.name == "shows":
+        from . import overview
+        overview.write_costs(shows_dir.parent, now.astimezone(finops.PARIS).date())
     summary = os.getenv("GITHUB_STEP_SUMMARY")
     if summary:
         with open(summary, "a", encoding="utf-8") as f:

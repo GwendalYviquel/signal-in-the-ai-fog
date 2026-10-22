@@ -152,6 +152,7 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   ├── watchdog.py                 morning check, catch-up if the episode is missing
 │   ├── costs.py                    cost tracking: Claude tokens, ElevenLabs characters
 │   ├── finops.py                   FinOps dashboard, rebuilt after every run
+│   ├── overview.py                 reports of every show: costs (money) and usage (listening) apart
 │   ├── stats.py                    download counts of the episodes
 │   ├── spotify.py                  is the latest episode live on Spotify
 │   ├── rehearsal.py                publication rehearsal
@@ -163,6 +164,8 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   │   ├── data/                   episodes, scripts, previews, costs, stats, spotify.json
 │   │   ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
 │   │   └── STATS.md                downloads report
+│   ├── COSTS.md                    costs of every show: money only, ElevenLabs credits shared by all
+│   ├── STATS.md                    usage of every show: listening only, and its usage dashboard
 │   ├── hr-news-fr/                 HR news, in French, weekly (in preparation)
 │   └── accounting-news-fr/         accounting news, in French, weekly (in preparation)
 ├── docs/                           GitHub Pages: the first show at the root, the next ones in docs/<slug>/
@@ -276,6 +279,7 @@ Every run records what it consumed, failed runs and dry runs included: Claude to
 - **Never paid twice**: an episode already published is skipped, an orphan release stops the run, and nothing is published on weekends.
 - **Free**: hosting (GitHub Pages and releases), the Spotify check, the download stats and the CI.
 - **Audience**: downloads of each episode in [STATS.md](shows/signal-in-the-ai-fog/STATS.md) and on the catalog site; Spotify plays in Spotify for Creators.
+- **Every show, costs and usage apart** (`engine/overview.py`): [shows/COSTS.md](shows/COSTS.md) is money only, this month per show with its projection (over its own episode days, weekly shows included), the total of ElevenLabs characters (one quota shared by every show), and the cost per episode and per download. [shows/STATS.md](shows/STATS.md) is listening only, with its usage dashboard: downloads per show, last 7 days, per episode, and new downloads per day.
 
 ## Transparency
 

@@ -33,18 +33,20 @@ def usd(run: dict) -> float:
     return run["claude"]["usd"] if run.get("claude") else 0.0
 
 
-def summary(runs: list[dict], today: dt.date) -> dict:
-    """Month-to-date figures, per published episode, and a projection over the month's weekdays."""
+def summary(runs: list[dict], today: dt.date, cfg: dict | None = None) -> dict:
+    """Month-to-date figures, per published episode, and a projection over the month's episode days:
+    every weekday, or the show's day of the week for a weekly show (cfg's generation.cadence)."""
+    from . import locale
     month = [r for r in runs if paris_day(r["time"]).strftime("%Y-%m") == today.strftime("%Y-%m")]
     episodes = [r for r in month if r["mode"] == "publish" and r["outcome"] == "ok"]
     weekdays = sum(1 for d in range(1, calendar.monthrange(today.year, today.month)[1] + 1)
-                   if dt.date(today.year, today.month, d).weekday() < 5)
+                   if locale.is_episode_day(cfg or {}, dt.date(today.year, today.month, d)))
     per_usd = sum(usd(r) for r in episodes) / len(episodes) if episodes else None
     per_chars = sum(r["elevenlabs_characters"] for r in episodes) / len(episodes) if episodes else None
     return {"month": today.strftime("%B %Y"), "claude_usd": sum(usd(r) for r in month),
             "chars": sum(r["elevenlabs_characters"] for r in month), "runs": len(month),
             "episodes": len(episodes), "per_episode_usd": per_usd, "per_episode_chars": per_chars,
-            "weekdays": weekdays,
+            "weekdays": weekdays, "weekly": bool(cfg) and locale.cadence(cfg)[0] == "week",
             "projection_usd": per_usd * weekdays if per_usd is not None else None,
             "projection_chars": per_chars * weekdays if per_chars is not None else None,
             "untracked": sum(1 for r in month if "not recorded" in r.get("note", ""))}
@@ -79,7 +81,8 @@ def bar_path(x, y, w, h, r):
             f"L{x + w - r:.1f},{y:.1f} Q{x + w:.1f},{y:.1f} {x + w:.1f},{y + r:.1f} L{x + w:.1f},{y + h:.1f} Z")
 
 
-def chart(d: Drawing, x0, y0, width, height, title, series, fmt, colors):
+def chart(d: Drawing, x0, y0, width, height, title, series, fmt, colors, kinds=None):
+    kinds = kinds or KINDS
     c = d.c
     d.box(x0, y0, width, 22, [(title, 13, 700, c["ink"])], "none", align="start", pad=3, frame_visible=False)
     top, bottom, left = y0 + 34, y0 + height - 22, x0 + 44
@@ -95,7 +98,7 @@ def chart(d: Drawing, x0, y0, width, height, title, series, fmt, colors):
     for i, (day, values) in enumerate(series):
         x = left + i * slot + (slot - bw) / 2
         y = bottom
-        stacked = [(k, values[k]) for k in KINDS if values[k] > 0]
+        stacked = [(k, values[k]) for k in kinds if values[k] > 0]
         for j, (k, v) in enumerate(stacked):
             h = (bottom - top) * v / vmax
             gap = 2 if j < len(stacked) - 1 else 0  # 2px surface gap between stacked segments
@@ -104,7 +107,7 @@ def chart(d: Drawing, x0, y0, width, height, title, series, fmt, colors):
             label = f"{day:%b} {day.day} · {k}: {fmt(v)}"
             shape = bar_path(x, y + gap, bw, seg_h, 3) if j == len(stacked) - 1 else \
                 f"M{x:.1f},{y + gap:.1f} h{bw:.1f} v{seg_h:.1f} h{-bw:.1f} Z"
-            d.parts.append(f'<path d="{shape}" fill="{colors[KINDS.index(k)]}"><title>{label}</title></path>')
+            d.parts.append(f'<path d="{shape}" fill="{colors[kinds.index(k)]}"><title>{label}</title></path>')
         if i % 7 == len(series) % 7 - 1 or i == len(series) - 1:  # a few date labels, last day included
             lx = min(max(x + bw / 2 - 22, left - 4), x0 + width - 44)
             d.box(lx, bottom + 4, 44, 16, [(f"{day:%b} {day.day}", 10.5, 500, c["muted"])], "none",
@@ -112,8 +115,8 @@ def chart(d: Drawing, x0, y0, width, height, title, series, fmt, colors):
     d.arrow(f"M{left},{bottom} L{x0 + width},{bottom}", c["line"], 1.2, head=False)
 
 
-def render(runs: list[dict], today: dt.date, theme: str) -> str:
-    s = summary(runs, today)
+def render(runs: list[dict], today: dt.date, theme: str, cfg: dict | None = None) -> str:
+    s = summary(runs, today, cfg)
     colors = SERIES[theme]
     d = Drawing(392, theme)
     c = d.c
@@ -130,7 +133,7 @@ def render(runs: list[dict], today: dt.date, theme: str) -> str:
         ("Per published episode", money(s["per_episode_usd"]),
          f"+ {credits(s['per_episode_chars'])} credits" if s["episodes"] else "no episode yet"),
         ("Month projection", money(s["projection_usd"]),
-         f"{credits(s['projection_chars'])} credits · {s['weekdays']} weekdays" if s["episodes"] else "after a first episode"),
+         f"{credits(s['projection_chars'])} credits · {s['weekdays']} {'episodes' if s['weekly'] else 'weekdays'}" if s["episodes"] else "after a first episode"),
     ]
     tw = (W - 2 - 3 * 12) / 4
     for i, (label, value, sub) in enumerate(tiles):
@@ -160,12 +163,12 @@ def render(runs: list[dict], today: dt.date, theme: str) -> str:
     return d.svg(f"FinOps dashboard, {s['month']}")
 
 
-def write(runs: list[dict], out_dir: Path, today: dt.date | None = None) -> list[Path]:
+def write(runs: list[dict], out_dir: Path, today: dt.date | None = None, cfg: dict | None = None) -> list[Path]:
     today = today or dt.datetime.now(PARIS).date()
     out_dir.mkdir(parents=True, exist_ok=True)
     paths = []
     for theme in THEMES:
         path = out_dir / f"finops-dashboard-{theme}.svg"
-        path.write_text(render(runs, today, theme), encoding="utf-8")
+        path.write_text(render(runs, today, theme, cfg), encoding="utf-8")
         paths.append(path)
     return paths

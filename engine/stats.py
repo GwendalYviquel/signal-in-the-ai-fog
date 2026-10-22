@@ -113,6 +113,8 @@ def main() -> None:
         catalog.write_catalog(cfg, episodes, pipeline.load(show.previews), show.data, show.docs / "catalog.json",
                               base_url)
         print(f"{slug}: {sum(latest(data).values())} downloads over {len(latest(data))} episodes")
+    from . import overview
+    overview.write_usage(shows.REPO)  # every show's listening, apart from the costs
 
 
 if __name__ == "__main__":

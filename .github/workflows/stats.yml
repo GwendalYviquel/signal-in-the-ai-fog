@@ -45,7 +45,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add shows/*/data/stats.json shows/*/STATS.md docs
+          git add shows/*/data/stats.json shows/*/STATS.md shows/STATS.md shows/usage-dashboard-*.svg docs
           git diff --cached --quiet && exit 0
           git commit -m "Stats $(TZ=Europe/Paris date +%F)"
           git pull --rebase origin main
