@@ -17,7 +17,7 @@ import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import catalog, chapters, context, corrections, costs, feed, generate, publish, site, tts, watchdog
+from . import catalog, chapters, context, corrections, costs, feed, generate, locale, publish, site, tts, watchdog
 from . import show as shows
 
 
@@ -31,8 +31,8 @@ def to_markdown(ep: dict, day: dt.date) -> str:
             f"## Script\n\n{ep['script']}\n\n## Sources\n\n{sources}\n")
 
 
-def episode_date(now: dt.datetime) -> dt.date | None:
-    """EPISODE_DATE (YYYY-MM-DD): catch up a past weekday's episode, with that day's news cutoff."""
+def episode_date(now: dt.datetime, cfg: dict | None = None) -> dt.date | None:
+    """EPISODE_DATE (YYYY-MM-DD): catch up a past episode day of the show, with that day's news cutoff."""
     value = os.getenv("EPISODE_DATE", "").strip()
     if not value:
         return None
@@ -42,8 +42,9 @@ def episode_date(now: dt.datetime) -> dt.date | None:
         raise SystemExit(f"EPISODE_DATE must be YYYY-MM-DD, got {value!r}") from None
     if day >= now.date():
         raise SystemExit(f"EPISODE_DATE {day} is not in the past: catch-ups are for earlier days only")
-    if day.weekday() >= 5:
-        raise SystemExit(f"EPISODE_DATE {day} is a weekend day: there is no episode to catch up")
+    if not locale.is_episode_day(cfg or {}, day):
+        kind = "a weekend day" if day.weekday() >= 5 else "not an episode day of this show"
+        raise SystemExit(f"EPISODE_DATE {day} is {kind}: there is no episode to catch up")
     return day
 
 
@@ -102,13 +103,13 @@ def scheduled_run_is_due(cfg: dict, cron: str, now_utc: dt.datetime) -> bool:
     return f"{local:%H:%M}" >= cfg["generation"]["publish_at"]
 
 
-def failed_attempts_today(today: dt.date) -> int:
-    """Daily runs that failed today; 0 if GitHub cannot be asked (the attempt then goes on)."""
-    try:
-        return sum(r["conclusion"] == "failure" for r in watchdog.daily_runs_today(today))
-    except (RuntimeError, OSError, ValueError) as e:
-        print(f"Could not count today's failed attempts ({e}): going on.")
-        return 0
+def failed_attempts_today(show: shows.Show, today: dt.date) -> int:
+    """Publication attempts of this show that failed today, after paying for something: its cost
+    ledger records them (committed even when a run fails). Per show, since one run serves several."""
+    tz = ZoneInfo(show.cfg["generation"]["timezone"])
+    return sum(1 for run in costs.load(show.cost_ledger)
+               if run.get("mode") == "publish" and run.get("outcome") == "failed"
+               and dt.datetime.fromisoformat(run["time"]).astimezone(tz).date() == today)
 
 
 def themes_covered(structured: dict) -> list[str]:
@@ -185,7 +186,7 @@ def run(show: shows.Show, spend: dict) -> str | None:
     if not scheduled_run_is_due(cfg, cron, now):
         print(f"Attempt at {now:%H:%M}, before {cfg['generation']['publish_at']} Paris time: nothing to do.")
         return
-    backfill = episode_date(now)  # a past weekday to catch up, or None
+    backfill = episode_date(now, cfg)  # a past weekday to catch up, or None
     # Editorial time: the news cutoff given to Claude. Scheduled runs, catch-ups and manual runs
     # with AS_SCHEDULED use publish_at, so a late start never moves the cutoff.
     h, m = (int(v) for v in cfg["generation"]["publish_at"].split(":"))
@@ -196,15 +197,15 @@ def run(show: shows.Show, spend: dict) -> str | None:
     else:
         editorial_now = now
     today = backfill or now.date()
-    if today.weekday() >= 5 and not force:
-        print("Weekend: no episode.")
+    if not locale.is_episode_day(cfg, today) and not force:
+        print("Weekend: no episode." if today.weekday() >= 5 else f"No episode of {show.slug} on {today:%A}s.")
         return
 
     episodes, previews = load(show.episodes), load(show.previews)
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
         print(f"The episode of {today} is already published.")
         return
-    if cron and failed_attempts_today(today) >= watchdog.MAX_FAILED_RUNS:
+    if cron and failed_attempts_today(show, today) >= watchdog.MAX_FAILED_RUNS:
         # Each failed attempt paid Claude: after two, the next attempts stop until someone looks.
         print(f"{watchdog.MAX_FAILED_RUNS} attempts already failed today: stopping, see the failed runs.")
         return

@@ -26,7 +26,10 @@ def gh(monkeypatch):
     """Fake gh: today's daily runs, and the catch-ups started; notifications recorded."""
     state = {"runs": [], "started": 0, "sent": []}
     monkeypatch.setattr(watchdog, "daily_runs_today", lambda today: state["runs"])
-    monkeypatch.setattr(watchdog, "start_catch_up", lambda: state.__setitem__("started", state["started"] + 1))
+    def start(slug=None):
+        state["started"] += 1
+        state["slug"] = slug
+    monkeypatch.setattr(watchdog, "start_catch_up", start)
     monkeypatch.setattr(watchdog.notify, "send", lambda title, message, **kw: state["sent"].append((title, kw)))
     return state
 
@@ -127,3 +130,22 @@ def test_test_notification_only_sends_and_fails_without_the_secret(monkeypatch):
     monkeypatch.setattr(watchdog.notify, "send", lambda *a, **kw: False)
     with pytest.raises(SystemExit, match="NTFY_TOPIC"):
         watchdog.main()
+
+
+def test_with_several_shows_each_is_checked_and_started_by_name(cfg, gh):
+    # Learning (2026-10-22): the watchdog serves every show; the catch-up names the show, notifications
+    # say which one, and the failed attempts come from that show's own cost ledger.
+    weekly = dict(cfg, podcast=dict(cfg["podcast"], title="Le Fil RH"),
+                  generation=dict(cfg["generation"], cadence="weekly:monday"))
+    assert watchdog.check(weekly, FIVE_SUMMER, utc(WEDNESDAY, FIVE_SUMMER), [], slug="hr") == "not an episode day"
+    monday = dt.date(2026, 10, 19)
+    assert watchdog.check(weekly, FIVE_SUMMER, utc(monday, FIVE_SUMMER), [], slug="hr", failed_today=0) == "started"
+    assert gh["slug"] == "hr" and gh["sent"][-1][0] == "[Le Fil RH] Episode missing: catch-up started"
+    assert watchdog.check(weekly, FIVE_SUMMER, utc(monday, FIVE_SUMMER), [], slug="hr", failed_today=2) == "gave up"
+
+
+def test_the_catch_up_names_the_show(monkeypatch):
+    calls = []
+    monkeypatch.setattr(watchdog, "_gh", lambda *a: calls.append(a) or type("P", (), {"returncode": 0})())
+    watchdog.start_catch_up("hr")
+    assert calls[0][-2:] == ("-f", "show=hr")

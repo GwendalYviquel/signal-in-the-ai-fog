@@ -31,7 +31,7 @@ def repo(tmp_path, monkeypatch):
     monkeypatch.delenv("SHOW", raising=False)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
     monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
-    monkeypatch.setattr(main, "failed_attempts_today", lambda today: 0)  # never asks GitHub
+    monkeypatch.setattr(main, "failed_attempts_today", lambda show, today: 0)
     monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
     for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE", "AS_SCHEDULED", "EPISODE_DATE"):
         monkeypatch.delenv(var, raising=False)

@@ -5,6 +5,10 @@ name: Check voices
 on:
   workflow_dispatch:
     inputs:
+      show:
+        description: "Show (shows/<slug>)"
+        type: string
+        default: "signal-in-the-ai-fog"
       voice_ids:
         description: "Candidate voice IDs to try, comma-separated (empty: the voices in the show.yaml)"
         type: string
@@ -19,6 +23,8 @@ permissions:
 jobs:
   voices:
     runs-on: ubuntu-latest
+    env:
+      SHOW: ${{ inputs.show || 'signal-in-the-ai-fog' }}   # the show (shows/<slug>)
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4

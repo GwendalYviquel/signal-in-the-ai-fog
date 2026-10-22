@@ -40,7 +40,10 @@ def build_user_message(cfg, now, previous_scripts, open_items=None, topics=None,
     suggestions: titles and texts of listener suggestions accepted by the owner (untrusted text)."""
     themes = "\n".join(f"- {t['name']}: {t['focus']}" for t in cfg["themes"])
     variant = ""
-    if now.weekday() == 0:
+    if locale.cadence(cfg)[0] == "week":
+        variant = ("This is a weekly episode: news from the last seven days is eligible, and the What to watch "
+                   "part covers the week ahead.")
+    elif now.weekday() == 0:
         variant = "It is Monday: the What to watch part covers the whole week, and news since Friday is eligible."
     elif now.weekday() == 4:
         variant = "It is Friday: the story of the day is a deeper trend from the week, with more perspective."

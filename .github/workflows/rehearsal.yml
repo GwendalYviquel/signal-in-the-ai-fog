@@ -7,6 +7,10 @@ name: Publication rehearsal
 on:
   workflow_dispatch:
     inputs:
+      show:
+        description: "Show (shows/<slug>)"
+        type: string
+        default: "signal-in-the-ai-fog"
       with_voice:
         description: "Also check both ElevenLabs voices on two short sentences (about 170 characters)"
         type: boolean
@@ -22,6 +26,8 @@ concurrency:
 jobs:
   rehearsal:
     runs-on: ubuntu-latest
+    env:
+      SHOW: ${{ inputs.show || 'signal-in-the-ai-fog' }}   # the show (shows/<slug>)
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4

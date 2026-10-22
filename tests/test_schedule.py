@@ -99,7 +99,8 @@ def test_workflow_passes_the_cron_can_be_paused_and_deploys_only_a_publication()
     wf = workflow()
     job = wf["jobs"]["episode"]
     assert job["env"]["SCHEDULE"] == "${{ github.event.schedule || (inputs.scheduled && 'external') || '' }}"
-    assert job["if"] == "github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'"
+    assert wf["jobs"]["shows"]["if"] == "github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'"
+    assert job["needs"] == "shows" and job["env"]["SHOW"] == "${{ matrix.show }}"
     pages = [s for s in job["steps"] if s.get("name") in ("Configure GitHub Pages", "Upload the RSS feed",
                                                             "Deploy the RSS feed")]
     assert len(pages) == 3 and all(s["if"] == "steps.generate.outputs.published == 'true'" for s in pages)
@@ -123,7 +124,7 @@ def test_an_early_attempt_does_nothing_then_one_publishes_then_the_next_stops(re
 
 def test_attempts_stop_after_two_failures_each_paid_claude(repo, mocks, monkeypatch):  # noqa: F811
     monkeypatch.setenv("SCHEDULE", crons()[0])
-    monkeypatch.setattr(main, "failed_attempts_today", lambda today: 2)
+    monkeypatch.setattr(main, "failed_attempts_today", lambda show, today: 2)
     main.main()
     assert mocks["generate"] == 0 and mocks.get("voice_checks", 0) == 0
     monkeypatch.delenv("SCHEDULE")  # a manual run is never capped
@@ -131,16 +132,21 @@ def test_attempts_stop_after_two_failures_each_paid_claude(repo, mocks, monkeypa
     assert mocks["generate"] == 1
 
 
-def test_failed_attempts_are_counted_from_github_and_never_block_when_it_cannot_answer(monkeypatch):
-    from engine import watchdog
-    monkeypatch.setattr(watchdog, "daily_runs_today", lambda day: [
-        {"conclusion": "failure"}, {"conclusion": "success"}, {"conclusion": "failure"}, {"conclusion": ""}])
-    assert main.failed_attempts_today(dt.date(2026, 10, 22)) == 2
-
-    def broken(day):
-        raise RuntimeError("gh run list failed")
-    monkeypatch.setattr(watchdog, "daily_runs_today", broken)
-    assert main.failed_attempts_today(dt.date(2026, 10, 22)) == 0
+def test_failed_attempts_are_counted_per_show_from_its_cost_ledger(tmp_path):
+    # Learning (2026-10-22): one scheduled run now serves every show, so GitHub's run status cannot
+    # say which show failed; each show's ledger records its own failed, paid attempts.
+    import json
+    from engine import show as shows
+    home = tmp_path / "shows" / "a"
+    (home / "data").mkdir(parents=True)
+    (home / "show.yaml").write_text("podcast: {title: A}\ngeneration: {timezone: Europe/Paris}\n")
+    runs = [{"time": "2026-10-22T02:30:00+00:00", "mode": "publish", "outcome": "failed"},   # 4:30 Paris
+            {"time": "2026-10-22T03:00:00+00:00", "mode": "publish", "outcome": "failed"},
+            {"time": "2026-10-22T03:30:00+00:00", "mode": "preview", "outcome": "failed"},   # not a publication
+            {"time": "2026-10-22T03:40:00+00:00", "mode": "publish", "outcome": "ok"},
+            {"time": "2026-10-21T21:59:00+00:00", "mode": "publish", "outcome": "failed"}]  # 23:59 the day before
+    (home / "data" / "costs.json").write_text(json.dumps(runs))
+    assert main.failed_attempts_today(shows.load("a", tmp_path), dt.date(2026, 10, 22)) == 2
 
 
 from test_main import mocks, repo  # noqa: E402,F401  (temporary repository fixtures)

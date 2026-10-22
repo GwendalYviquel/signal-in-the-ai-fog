@@ -48,39 +48,46 @@ def daily_runs_today(today: dt.date) -> list[dict]:
     return json.loads(out.stdout)
 
 
-def start_catch_up() -> None:
-    out = _gh("workflow", "run", DAILY_WORKFLOW, "-f", "dry_run=false", "-f", "as_scheduled=true")
+def start_catch_up(slug: str | None = None) -> None:
+    show_input = ("-f", f"show={slug}") if slug else ()
+    out = _gh("workflow", "run", DAILY_WORKFLOW, "-f", "dry_run=false", "-f", "as_scheduled=true", *show_input)
     if out.returncode != 0:
         raise RuntimeError(f"gh workflow run failed: {out.stderr.strip()[:200]}")
 
 
-def check(cfg: dict, cron: str, now_utc: dt.datetime, episodes: list[dict]) -> str:
-    """Return what was decided: "not due", "weekend", "published", "running", "gave up" or "started"."""
+def check(cfg: dict, cron: str, now_utc: dt.datetime, episodes: list[dict], slug: str | None = None,
+          failed_today: int | None = None) -> str:
+    """Return what was decided: "not due", "weekend", "published", "running", "gave up" or "started".
+    slug: the show to start (several shows); failed_today: its failed attempts, from its cost ledger."""
+    from . import locale
     gen = cfg["generation"]
+    name = cfg.get("podcast", {}).get("title", "")
+    prefix = f"[{name}] " if slug and name else ""
     tz = gen["timezone"]
     slot = cron_local_time(cron, now_utc, tz) if cron else "manual"
     if cron and slot not in gen["watchdog_at"]:
         return "not due"
     today = now_utc.astimezone(ZoneInfo(tz)).date()
-    if today.weekday() >= 5:
-        return "weekend"
+    if not locale.is_episode_day(cfg, today):
+        return "weekend" if today.weekday() >= 5 else "not an episode day"
     if any(e["date"] == today.isoformat() for e in episodes):
         print(f"Watchdog {slot}: the episode of {today} is out.")
         return "published"
     runs = daily_runs_today(today)
     if running := [r for r in runs if r["status"] in ("queued", "in_progress", "waiting", "pending")]:
-        notify.send("Episode running late", f"No episode yet at {slot} Paris time, a daily run is still going.",
+        notify.send(prefix + "Episode running late", f"No episode yet at {slot} Paris time, a daily run is still going.",
                     tags=["hourglass"], click=running[0]["url"])
         return "running"
     failed = [r for r in runs if r["conclusion"] == "failure"]
-    if len(failed) >= MAX_FAILED_RUNS:
-        notify.send("Episode missing, no more retries",
-                    f"{len(failed)} daily runs failed today: the watchdog stops retrying. Check the last run.",
-                    priority=5, tags=["rotating_light"], click=failed[0]["url"])
+    count = len(failed) if failed_today is None else failed_today
+    if count >= MAX_FAILED_RUNS:
+        notify.send(prefix + "Episode missing, no more retries",
+                    f"{count} attempts failed today: the watchdog stops retrying. Check the last run.",
+                    priority=5, tags=["rotating_light"], click=failed[0]["url"] if failed else "")
         return "gave up"
-    start_catch_up()
-    why = "the scheduled run never started" if not runs else f"{len(failed)} run(s) failed"
-    notify.send("Episode missing: catch-up started",
+    start_catch_up(slug)
+    why = "the scheduled run never started" if not runs else f"{count} attempt(s) failed"
+    notify.send(prefix + "Episode missing: catch-up started",
                 f"No episode at {slot} Paris time ({why}). A real run is starting, with the {gen['publish_at']} "
                 "news cutoff: the episode should be out in about 5 minutes.", priority=4, tags=["warning"])
     return "started"
@@ -92,12 +99,17 @@ def main() -> None:
                            tags=["white_check_mark"]):
             raise SystemExit("Test notification not sent: check the NTFY_TOPIC secret")
         return
-    from . import show as shows
-    show = shows.load()
-    cfg = show.cfg
-    episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []
-    decision = check(cfg, os.getenv("SCHEDULE", "").strip(), dt.datetime.now(dt.timezone.utc), episodes)
-    print(f"Watchdog: {decision}")
+    from . import main as pipeline, show as shows
+    now = dt.datetime.now(dt.timezone.utc)
+    names = shows.slugs()
+    for name in names:  # every show, each on its own cadence
+        show = shows.load(name)
+        episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []
+        today = now.astimezone(ZoneInfo(show.cfg["generation"]["timezone"])).date()
+        decision = check(show.cfg, os.getenv("SCHEDULE", "").strip(), now, episodes,
+                         slug=name if len(names) > 1 else None,
+                         failed_today=pipeline.failed_attempts_today(show, today))
+        print(f"Watchdog, {name}: {decision}")
 
 
 if __name__ == "__main__":

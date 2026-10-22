@@ -6,6 +6,10 @@ name: Preview episode
 on:
   workflow_dispatch:
     inputs:
+      show:
+        description: "Show (shows/<slug>)"
+        type: string
+        default: "signal-in-the-ai-fog"
       force:
         description: "Regenerate even if today's preview already exists (or on a weekend)"
         type: boolean
@@ -22,7 +26,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  shows:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.list.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Name the show's private context secret
+        id: list
+        env:
+          WHICH: ${{ inputs.show }}
+        run: python -m engine.show matrix "$WHICH" >> "$GITHUB_OUTPUT"
+
   preview:
+    needs: shows
+    strategy:
+      matrix: ${{ fromJSON(needs.shows.outputs.matrix) }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment:
@@ -30,6 +59,7 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     env:
       PREVIEW: "true"
+      SHOW: ${{ matrix.show }}
       FORCE: ${{ inputs.force && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
@@ -52,7 +82,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}   # optional, for keys not scoped to a workspace
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken
-          EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
+          EDITORIAL_CONTEXT: ${{ secrets[matrix.context_secret] }}   # the show's private context, never committed
           GITHUB_REPOSITORY: ${{ github.repository }}
           GH_TOKEN: ${{ github.token }}   # read the accepted listener suggestions
         run: python -m engine.main

@@ -19,6 +19,7 @@ podcast:
   base_url: ""
   site_path: ""                      # at the root of the site: the feed URL Spotify knows never moves
   release_prefix: "episode"          # releases and GUIDs episode-YYYY-MM-DD: never change for this show
+  context_secret: "EDITORIAL_CONTEXT"   # GitHub secret of the private editorial context
 
 generation:
   model: "claude-sonnet-5-5"
@@ -29,6 +30,7 @@ generation:
   # 15 minutes on weekday mornings (.github/workflows/daily-episode.yml); the first one at this
   # time or later publishes, about 5 minutes later, leaving Spotify close to 3 hours before a 7:00
   # listen. A test checks every weekday of two years gets an attempt within minutes of it.
+  cadence: "weekdays"                # or "weekly:monday" (engine/locale.py)
   publish_at: "04:05"
   # Paris times the watchdog checks that today's episode is out, and starts the catch-up if not.
   # The four crons in .github/workflows/watchdog.yml must match them: a test checks.

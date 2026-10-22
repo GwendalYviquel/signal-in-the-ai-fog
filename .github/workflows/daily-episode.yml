@@ -11,6 +11,10 @@ on:
     - cron: "7,22,37,52 2-5 * * 1-5"
   workflow_dispatch:
     inputs:
+      show:
+        description: "Show to run (shows/<slug>); scheduled attempts run every show"
+        type: string
+        default: "signal-in-the-ai-fog"
       dry_run:
         description: "Script only (no ElevenLabs credits, nothing published)"
         type: boolean
@@ -44,10 +48,39 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  episode:
+  shows:
     # Scheduled runs only once the SCHEDULE_ENABLED repository variable is "true":
     # gh variable set SCHEDULE_ENABLED --body true   (and --body false to pause)
     if: github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.list.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: List the shows to run
+        id: list
+        env:
+          # A scheduled attempt (GitHub cron, or the Cloudflare scheduler) runs every show, each on its
+          # own cadence; a manual run, the show named.
+          WHICH: ${{ (github.event_name == 'schedule' || inputs.scheduled) && 'all' || inputs.show }}
+        run: python -m engine.show matrix "$WHICH" >> "$GITHUB_OUTPUT"
+
+  episode:
+    needs: shows
+    strategy:
+      matrix: ${{ fromJSON(needs.shows.outputs.matrix) }}
+      max-parallel: 1     # one show at a time: each commits and deploys the site
+      fail-fast: false    # a failing show never stops the others
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment:
@@ -62,6 +95,7 @@ jobs:
       # A scheduled attempt (GitHub cron, or the Cloudflare scheduler): not before publish_at, two
       # failed attempts a day at most. Empty for a manual run.
       SCHEDULE: ${{ github.event.schedule || (inputs.scheduled && 'external') || '' }}
+      SHOW: ${{ matrix.show }}
     steps:
       - uses: actions/checkout@v4
 
@@ -86,14 +120,14 @@ jobs:
           ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
           GH_TOKEN: ${{ github.token }}
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # comma-separated, never spoken
-          EDITORIAL_CONTEXT: ${{ secrets.EDITORIAL_CONTEXT }}   # private audience context, never committed
+          EDITORIAL_CONTEXT: ${{ secrets[matrix.context_secret] }}   # the show's private context, never committed
         run: python -m engine.main
 
       - name: Keep today's script
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: episode-script
+          name: episode-script-${{ matrix.show }}
           path: build/**/*.md
           if-no-files-found: ignore
 
@@ -104,7 +138,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add shows docs
           git diff --cached --quiet && exit 0
-          if git diff --cached --name-only | grep -q "/data/episodes.json$"; then msg="Episode $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
+          if git diff --cached --name-only | grep -q "/data/episodes.json$"; then msg="Episode $(TZ=Europe/Paris date +%F), $SHOW"; else msg="Costs of run ${{ github.run_id }}, $SHOW"; fi
           git commit -m "$msg"
           git pull --rebase origin main
           git push

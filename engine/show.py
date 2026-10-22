@@ -123,3 +123,23 @@ def load(slug: str | None = None, repo: Path | None = None) -> Show:
     if not path.exists():
         raise SystemExit(f"No show {slug!r}: expected {path}. Shows: {', '.join(slugs(repo)) or 'none'}")
     return Show(slug, repo, yaml.safe_load(path.read_text(encoding="utf-8")))
+
+
+def context_secret(show: Show) -> str:
+    """Name of the GitHub secret holding the show's private editorial context."""
+    explicit = show.cfg["podcast"].get("context_secret")
+    return explicit or "EDITORIAL_CONTEXT_" + show.slug.upper().replace("-", "_")
+
+
+def matrix(which: str, repo: Path | None = None) -> dict:
+    """GitHub Actions matrix of the shows to run: "all" (scheduled attempts) or one slug."""
+    names = slugs(repo) if which == "all" else [which or DEFAULT]
+    return {"include": [{"show": s, "context_secret": context_secret(load(s, repo))} for s in names]}
+
+
+if __name__ == "__main__":
+    import json
+    import sys
+    if len(sys.argv) != 3 or sys.argv[1] != "matrix":
+        raise SystemExit("usage: python -m engine.show matrix all|<slug>")
+    print("matrix=" + json.dumps(matrix(sys.argv[2])))

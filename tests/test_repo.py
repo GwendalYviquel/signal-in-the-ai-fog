@@ -15,13 +15,17 @@ def workflow(name):
     return yaml.safe_load((WORKFLOWS / name).read_text(encoding="utf-8"))
 
 
+def main_steps(wf):
+    """Steps of the workflow's main job: the one with the most steps (a show-listing job comes first)."""
+    return max(wf["jobs"].values(), key=lambda job: len(job.get("steps", [])))["steps"]
+
+
 def step(wf, name):
-    steps = next(iter(wf["jobs"].values()))["steps"]
-    return next(s for s in steps if s.get("name") == name)
+    return next(s for s in main_steps(wf) if s.get("name") == name)
 
 
 def step_names(wf):
-    return [s.get("name") for s in next(iter(wf["jobs"].values()))["steps"]]
+    return [s.get("name") for s in main_steps(wf)]
 
 
 @pytest.mark.parametrize("name,step_name", [("daily-episode.yml", "Generate the episode"),
@@ -116,7 +120,7 @@ def test_daily_manual_run_defaults_to_dry_run():
 
 def test_daily_publication_steps_run_only_after_a_publication():
     # Dry runs, early attempts and attempts finding the episode out publish nothing: no deployment.
-    steps = next(iter(workflow("daily-episode.yml")["jobs"].values()))["steps"]
+    steps = main_steps(workflow("daily-episode.yml"))
     publication = [s for s in steps if "pages" in s.get("uses", "") or s.get("name") == "Deploy the RSS feed"]
     assert len(publication) == 3
     assert all(s.get("if") == "steps.generate.outputs.published == 'true'" for s in publication)
@@ -125,7 +129,7 @@ def test_daily_publication_steps_run_only_after_a_publication():
 @pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml", "rehearsal.yml", "check-voices.yml"])
 def test_costs_are_committed_after_every_run_even_failed(name):
     # Learning (2026-10-20): costs must be tracked for every run, dry runs and failures included.
-    steps = next(iter(workflow(name)["jobs"].values()))["steps"]
+    steps = main_steps(workflow(name))
     commit = next(s for s in steps if s.get("name", "").startswith("Commit"))
     assert commit["if"].startswith("always()")
     # The whole shows/ folder, or exactly each show's ledger, report and dashboard.

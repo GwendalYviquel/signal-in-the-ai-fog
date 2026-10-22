@@ -6,6 +6,10 @@ name: Add a correction
 on:
   workflow_dispatch:
     inputs:
+      show:
+        description: "Show (shows/<slug>)"
+        type: string
+        default: "signal-in-the-ai-fog"
       episode_date:
         description: "Date of the episode to correct (YYYY-MM-DD)"
         type: string
@@ -27,6 +31,8 @@ concurrency:
 jobs:
   correction:
     runs-on: ubuntu-latest
+    env:
+      SHOW: ${{ inputs.show || 'signal-in-the-ai-fog' }}   # the show (shows/<slug>)
     timeout-minutes: 10
     environment:
       name: github-pages

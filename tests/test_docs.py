@@ -73,6 +73,8 @@ def test_pipeline_diagram_names_the_secrets_actually_used():
     shown = {s for secrets in make_diagrams.SECRETS.values() for s in secrets}
     daily = (WORKFLOWS / "daily-episode.yml").read_text(encoding="utf-8")
     used = set(re.findall(r"secrets\.([A-Z_]+)", daily)) - {"ANTHROPIC_WORKSPACE_ID"}  # optional, not shown
+    if "secrets[matrix.context_secret]" in daily:  # each show's private context secret
+        used.add("EDITORIAL_CONTEXT")
     assert shown == used
 
 

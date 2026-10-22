@@ -310,7 +310,7 @@ TEST_AREAS = [
                                                     "factcheck", "locale"]),
     ("Voices", "ElevenLabs, chapters", ["tts", "chapters"]),
     ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal",
-                                                   "offline_rehearsal", "corrections"]),
+                                                   "offline_rehearsal", "corrections", "show"]),
     ("Schedule", "4:05, watchdog, alerts", ["schedule", "watchdog", "notify", "scheduler"]),
     ("Money and audience", "costs, downloads, Spotify", ["costs", "finops", "stats", "spotify"]),
     ("Catalog site", "pages, real browser", ["site", "pages"]),
