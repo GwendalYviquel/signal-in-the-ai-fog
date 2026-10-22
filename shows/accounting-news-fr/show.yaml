@@ -101,8 +101,8 @@ costs:  # for COSTS.md estimates; Claude prices for generation.model, per millio
 
 tts:
   voices:                            # ElevenLabs voice IDs
-    host: "TO_FILL"                  # opening, facts, transitions, sign-off: a native French voice
-    analyst: "TO_FILL"               # every read layer (analysis): a second native French voice
+    host: "5OnMHwgTFgvPVwE8jP6B"      # Anaïs, French news and podcasts (library voice): opening, facts, transitions, sign-off
+    analyst: "iCKVfVbyCo5AAswzTkkX"   # Nicolas, French news, deep and steady (library voice): every read layer
   pause_seconds: 0.6                 # breath when the other voice takes over
   model_id: "eleven_multilingual_v2"
   output_format: "mp3_44100_128"

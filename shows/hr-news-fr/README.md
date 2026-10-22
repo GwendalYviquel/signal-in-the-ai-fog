@@ -6,12 +6,12 @@
 
 | | |
 | --- | --- |
-| Status | in preparation: French voices to choose, not scheduled (`generation.scheduled: false`) |
+| Status | in preparation: voices chosen, not scheduled yet (`generation.scheduled: false`) |
 | Language | French |
 | Cadence | weekly, on Monday at 4:05 Paris time, with the news of the last seven days, weekend included |
 | Length | about 10 minutes (`target_words: 1400`) |
 | Writing | two steps (`generation.dossier`): a research dossier where every fact is quoted from its page and checked by the code, then the episode written from it alone; fact-check and light corrections on Claude Haiku |
-| Voices | two French ElevenLabs voices, to choose |
+| Voices | Geneviève (host: a French news anchor) and Pierre (analyst: a French editorial narrator), ElevenLabs library voices, chosen on October 22, 2026 from their descriptions and accepted by *Check voices* |
 | Site | [catalog](https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/), in `docs/hr-news-fr/` |
 | Feed | `docs/hr-news-fr/feed.xml`, to submit to Spotify once after the first episode |
 | Reports | [COSTS.md](COSTS.md) |
@@ -24,8 +24,7 @@ Themes, in segment order (`show.yaml`): Droit du travail, Paie et cotisations, I
 
 ## Before the first episode
 
-1. Choose two French voices (*Check voices*, then *Publication rehearsal* with `with_voice`), and write them in `tts.voices`.
-2. Optionally, a private editorial context in the `EDITORIAL_CONTEXT_HR_NEWS_FR` secret.
-3. Set `generation.scheduled: true`; the first episode comes out the next Monday.
+1. Optionally, a private editorial context in the `EDITORIAL_CONTEXT_HR_NEWS_FR` secret.
+2. Set `generation.scheduled: true`; the first episode comes out the next Monday.
 
 Previews so far (October 22, 2026): about $1 to $2 of Claude each, with the two-step writing.
