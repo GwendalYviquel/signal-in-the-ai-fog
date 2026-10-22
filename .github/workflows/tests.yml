@@ -31,4 +31,5 @@ jobs:
         env:
           FORBIDDEN_TERMS: ${{ secrets.FORBIDDEN_TERMS }}   # also checks the public repo never names them
           REQUIRE_BROWSER: "1"   # site tests must run here, never be skipped
+          REQUIRE_NODE: "1"      # the Cloudflare scheduler tests too
         run: python -m pytest -q

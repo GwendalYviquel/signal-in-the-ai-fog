@@ -12,3 +12,7 @@ build/
 private/
 .DS_Store
 .claude/launch.json
+
+# Cloudflare scheduler: local secrets and wrangler state
+scheduler/.dev.vars
+scheduler/.wrangler/

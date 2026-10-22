@@ -23,6 +23,10 @@ on:
         description: "News cutoff at today's scheduled time (4:05 Paris), as if run by the schedule"
         type: boolean
         default: false
+      scheduled:
+        description: "An attempt from the external scheduler (Cloudflare): same rules as a scheduled one"
+        type: boolean
+        default: false
       episode_date:
         description: "Catch up a past weekday (YYYY-MM-DD), with only the news published before 4:05 that day"
         type: string
@@ -55,7 +59,9 @@ jobs:
       FORCE: ${{ inputs.force && 'true' || 'false' }}
       AS_SCHEDULED: ${{ inputs.as_scheduled && 'true' || 'false' }}
       EPISODE_DATE: ${{ inputs.episode_date }}
-      SCHEDULE: ${{ github.event.schedule }}   # which cron line triggered the run, empty when manual
+      # A scheduled attempt (GitHub cron, or the Cloudflare scheduler): not before publish_at, two
+      # failed attempts a day at most. Empty for a manual run.
+      SCHEDULE: ${{ github.event.schedule || (inputs.scheduled && 'external') || '' }}
     steps:
       - uses: actions/checkout@v4
 

@@ -311,7 +311,7 @@ TEST_AREAS = [
     ("Voices", "ElevenLabs, chapters", ["tts", "chapters"]),
     ("Publication", "every run mode, end to end", ["main", "catch_up", "publish", "feed_catalog", "rehearsal",
                                                    "offline_rehearsal", "corrections"]),
-    ("Schedule", "4:05, watchdog, alerts", ["schedule", "watchdog", "notify"]),
+    ("Schedule", "4:05, watchdog, alerts", ["schedule", "watchdog", "notify", "scheduler"]),
     ("Money and audience", "costs, downloads, Spotify", ["costs", "finops", "stats", "spotify"]),
     ("Catalog site", "pages, real browser", ["site", "pages"]),
     ("Visuals and docs", "cover, diagrams, README", ["cover", "docs"]),

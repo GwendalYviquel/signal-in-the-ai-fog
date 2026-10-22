@@ -98,7 +98,7 @@ def test_manual_runs_are_always_due(cfg):
 def test_workflow_passes_the_cron_can_be_paused_and_deploys_only_a_publication():
     wf = workflow()
     job = wf["jobs"]["episode"]
-    assert job["env"]["SCHEDULE"] == "${{ github.event.schedule }}"
+    assert job["env"]["SCHEDULE"] == "${{ github.event.schedule || (inputs.scheduled && 'external') || '' }}"
     assert job["if"] == "github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'"
     pages = [s for s in job["steps"] if s.get("name") in ("Configure GitHub Pages", "Upload the RSS feed",
                                                             "Deploy the RSS feed")]

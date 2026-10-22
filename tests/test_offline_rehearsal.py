@@ -54,17 +54,17 @@ def test_transcript_ends_with_the_audio(result):
 
 def test_feed_points_to_the_transcript_chapters_and_page(result):
     item = result["feed"].getroot().find("channel/item")
-    assert item.find(f"{PODCAST_NS}transcript").get("url").endswith("/episodes/2026-10-22.vtt")
+    assert item.find(f"{PODCAST_NS}transcript").get("url").endswith("/episodes/2030-01-15.vtt")
     assert item.find(f"{PODCAST_NS}chapters").get("type") == "application/json+chapters"
     description = item.find("description").text
     assert "\nChapters:\n00:00 Opening\n" in description
-    assert item.find("link").text.endswith("/episodes/2026-10-22.html")
+    assert item.find("link").text.endswith("/episodes/2030-01-15.html")
 
 
 def test_episode_page_and_notification(result):
     page = result["page"]
     assert 'class="label confirmed"' in page and 'class="label reported"' in page and "<h2>Follow-up</h2>" in page
-    assert result["published"]["page_url"].endswith("/episodes/2026-10-22.html")
+    assert result["published"]["page_url"].endswith("/episodes/2030-01-15.html")
     assert (result["docs"] / "topics" / "voxtral.html").exists()
 
 
@@ -90,8 +90,15 @@ def test_research_is_cached_with_the_filtering_web_search(result):
 
 def test_the_waiting_correction_is_read_and_shown(result):
     assert f"A correction.\n\n{rehearsal.CORRECTION}" in result["script"]
-    assert result["corrected"]["corrections"][0]["aired_in"] == "2026-10-22"
+    assert result["corrected"]["corrections"][0]["aired_in"] == "2030-01-15"
     page = (result["docs"] / "episodes" / "2026-10-20.html").read_text()
-    assert rehearsal.CORRECTION in page and 'href="2026-10-22.html"' in page
+    assert rehearsal.CORRECTION in page and 'href="2030-01-15.html"' in page
     assert rehearsal.CORRECTION in (result["docs"] / "corrections.html").read_text()
     assert 'class="primary"' in result["page"]
+
+
+def test_the_rehearsal_day_is_never_a_real_episode():
+    # Regression (2026-10-22): the rehearsal used October 22, which became a real episode.
+    import json
+    published = {e["date"] for e in json.loads((ROOT / "data" / "episodes.json").read_text(encoding="utf-8"))}
+    assert rehearsal.DAY.date().isoformat() not in published and rehearsal.DAY.weekday() < 5

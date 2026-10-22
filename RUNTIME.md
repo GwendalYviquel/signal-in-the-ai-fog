@@ -10,12 +10,14 @@ Everything runs in GitHub Actions on the public repository; nothing runs on a se
 
 | Workflow | When | Paid services |
 | --- | --- | --- |
-| *Daily episode* | attempts every 15 min on weekday mornings, the first at 4:05 Paris or later publishes; or by hand | Claude (Sonnet 5.5 + Haiku 5.5), ElevenLabs |
+| *Daily episode* | started at 4:05 Paris by the Cloudflare scheduler (`scheduler/`), retried at 4:35 and 5:05; GitHub attempts every 15 min as a backup; or by hand | Claude (Sonnet 5.5 + Haiku 5.5), ElevenLabs |
 | *Watchdog* | weekdays 5:11 and 6:41 Paris, or by hand | none (it may start *Daily episode*) |
 | *Preview episode* | by hand | Claude only |
 | *Add a correction* | by hand | none |
 | *Publication rehearsal*, *Check voices* | by hand, or on a change of `config.yaml` | ElevenLabs, a few characters |
 | *Check Spotify*, *Stats*, *Deploy site*, *Tests*, *Dependabot merge* | schedules, pushes | none |
+
+**Cloudflare Worker** `signal-in-the-ai-fog-scheduler` (Cloudflare dashboard, Workers): its only secret is `GITHUB_TOKEN`, a fine-grained GitHub token for this repository with *Actions: read and write*. **It expires: renew it before its date** (GitHub, Settings, Developer settings, Fine-grained tokens), then `cd scheduler && npx wrangler secret put GITHUB_TOKEN`. An expired token shows as `GitHub answered 401` in the worker's logs (Cloudflare dashboard, the worker, Logs), and only the GitHub attempts are left. Deploy a change: `cd scheduler && npx wrangler deploy`.
 
 Secrets (Settings, Secrets and variables, Actions): `ANTHROPIC_API_KEY`, `ANTHROPIC_WORKSPACE_ID` (the key is not scoped to a workspace), `ELEVENLABS_API_KEY`, `FORBIDDEN_TERMS` (names never to publish), `EDITORIAL_CONTEXT` (private audience context), `NTFY_TOPIC` (phone notifications). Variable: `SCHEDULE_ENABLED=true` (set it to `false` to pause every schedule).
 
@@ -33,6 +35,7 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 | `gh release` | hosting the MP3 | faked | ✅ | — |
 | `gh issue list` | listener suggestions labelled `accepted` | faked | ❌ never ran | that it reads the accepted issues (needs `issues: read`) |
 | `gh run list`, `gh workflow run` | the watchdog | faked | 🔸 `run list` ✅ (manual watchdog run); it has never started a catch-up | a real catch-up, ideally never needed |
+| Cloudflare Cron Triggers | start the daily workflow on time | Node tests of the worker (`scheduler/worker.test.mjs`): every weekday of two years, the request, the test cron, failures | see the testing journal | a first morning started by it |
 | GitHub Pages | feed, catalog, pages | files written to a temporary folder | ✅ | — |
 | ntfy | phone notifications | fake HTTP | ✅ test notifications from GitHub on 2026-10-21 | the first real "Episode out" |
 | Spotify embed page | is the episode live, after how long | a saved copy of the page | ✅ | the delay, measured from the first scheduled episode |
@@ -99,6 +102,6 @@ python -m http.server --directory build/rehearsal/docs
 
 ## Known limits
 
-- GitHub's schedules are best effort. On October 21 the morning run started five hours late; on October 22 no scheduled run of the morning started at all (daily, watchdog, Spotify check). Attempts every 15 minutes make one dropped run harmless, not a whole morning dropped: then the missing "Episode out" notification is the only sign. If it happens again, an external scheduler (for example cron-job.org calling the `workflow_dispatch` API with a token limited to this repository) is the next step.
+- The Cloudflare token expires (see above). GitHub's schedules are best effort. On October 21 the morning run started five hours late; on October 22 no scheduled run of the morning started at all (daily, watchdog, Spotify check). Attempts every 15 minutes make one dropped run harmless, not a whole morning dropped: then the missing "Episode out" notification is the only sign. If it happens again, an external scheduler (for example cron-job.org calling the `workflow_dispatch` API with a token limited to this repository) is the next step.
 - An accepted suggestion can still be edited by its author afterwards: the prompt treats it as data, never as instructions, and the usual checks apply.
 - The fact-check reads at most `factcheck.max_chars_per_source` characters of each page, and skips pages it cannot read (reported as unverifiable); a doubt left after the last attempt is reported, not blocking.

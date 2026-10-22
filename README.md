@@ -99,6 +99,8 @@ The daily workflow makes **attempts every 15 minutes on weekday mornings, public
 gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
 ```
 
+**On time, with Cloudflare.** GitHub's schedules are best effort, so a free Cloudflare Worker (`scheduler/`, Cron Triggers) starts the daily workflow at **4:05 Paris time**, then at 4:35 and 5:05 (and 5:35, 6:05 in summer), through GitHub's `workflow_dispatch` API, as the *Run workflow* button does. It runs as a scheduled attempt (`scheduled` input): the same guards decide, so a second start finds the episode out and stops at once. Its only secret is a GitHub token limited to this repository with *Actions: read and write*, stored encrypted in Cloudflare; the worker has no public URL. The GitHub attempts above stay as a backup.
+
 A *Watchdog* workflow checks at **5:11 and 6:41 Paris time** that today's episode is out, and starts the catch-up if not (see Run modes): a second, independent chance. If GitHub drops every scheduled run of a morning, as on October 22, the phone notification of a missing episode is missing too: when no "Episode out" has arrived by about 5:00, start the run by hand (`gh workflow run daily-episode.yml -f dry_run=false -f as_scheduled=true`).
 
 **Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails. To check the secret, run *Watchdog* by hand with `test_notification`: it only sends a test.
@@ -150,6 +152,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── api_smoke.py                the real API accepts what the code sends (a few cents)
 │   └── screenshot_site.py          screenshot of the catalog site
 ├── tests/                          offline test suite (pytest); fixtures/ holds a real episode
+├── scheduler/                      Cloudflare Worker that starts the daily episode on time
 ├── .github/ISSUE_TEMPLATE/         feedback and topic suggestion forms
 ├── .github/workflows/
 │   ├── daily-episode.yml           the daily episode: schedule, dry run, catch-up
