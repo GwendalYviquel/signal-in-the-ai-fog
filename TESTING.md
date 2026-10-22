@@ -120,6 +120,10 @@ python tools/offline_rehearsal.py       # then: python -m http.server --director
 
 | 2026-10-22 | Daily episode, schedule | ❌ | No scheduled run of the morning started at all: daily, watchdog and Spotify check. Yet the commits are owned by a GitHub account, and the evening's stats run started (three hours late). GitHub's schedules are best effort, and single runs on the hour were dropped or delayed by hours. [Episode published by hand](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39735125320) at 8:37: Claude $0.40, the fact-check removed a sweeping claim | Attempts every 15 minutes, off the hour, the first at 4:05 or later publishes, a late attempt still publishes, two failed attempts stop the next ones, the site deployed only after a publication; watchdog and Spotify check off the hour. Tests: `test_every_weekday_of_two_years_has_an_attempt_minutes_after_publish_at`, `test_an_attempt_started_hours_late_still_publishes`, `test_attempts_stop_after_two_failures_each_paid_claude` |
 
+| 2026-10-22 | Cloudflare scheduler, first test | ❌ | Test cron at 9:29 UTC, deployed at about 9:24: nothing reached GitHub. Cloudflare says a new cron can take up to 15 minutes to propagate, and the worker kept no logs to tell | Worker logs enabled (`[observability]`); the next test with 18 minutes of margin |
+
+| 2026-10-22 | [Cloudflare scheduler, test notification](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39758942819) | ✅ | Test cron at 9:53 UTC: the worker started the *Watchdog* in test mode at 9:53:48, through `workflow_dispatch` with the fine-grained token, and the phone got *Test from GitHub*. The whole chain works: Cloudflare cron, token, GitHub API, workflow, ntfy | Test cron removed; the first morning started by Cloudflare is the next weekday |
+
 The offline suite has also passed on GitHub for every commit since it was added.
 
 ## Bugs found by writing tests (before any real run hit them)
