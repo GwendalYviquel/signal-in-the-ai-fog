@@ -96,7 +96,8 @@ def test_a_doubt_goes_to_a_light_correction_then_the_episode_is_checked_again(cf
                          + [reply(submit_block(make_episode(summary="Fixed summary of the episode."), "t2"))]
                          + [SUPPORTED] * 6)
     ep = generate.generate_episode(cfg, TUESDAY, [])
-    light = next(c for c in client.calls[1:] if c["model"] == cfg["generation"]["model"])
+    light = next(c for c in client.calls[1:] if c.get("tools"))  # the fact-checks have no tools
+    assert light["model"] == cfg["generation"]["correction_model"]
     assert "two weeks" in light["messages"][0]["content"] and "never add a source" in light["messages"][0]["content"]
     assert ep["summary"] == "Fixed summary of the episode." and ep["factcheck"]["doubts"] == []
     assert ep["usage"]["factcheck"]["api_calls"] == 12

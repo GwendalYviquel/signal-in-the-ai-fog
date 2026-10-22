@@ -402,13 +402,18 @@ def _needs_research(errors: list[str]) -> bool:
 
 
 def _correct(client, gen, system, ep, errors, usage):
-    """Light correction round: only the episode and its errors, no research history."""
+    """Light correction round: only the episode and its errors, no research history. It runs on
+    generation.correction_model when set (a smaller model: fixing listed points needs no research),
+    billed apart in usage["corrections"] at that model's prices."""
+    model = gen.get("correction_model") or gen["model"]
+    if model != gen["model"]:
+        usage = usage.setdefault("corrections", costs.empty_claude_usage(model))
     messages = [{"role": "user", "content":
                  "Here is today's episode, as you submitted it:\n" + json.dumps(ep, ensure_ascii=False)
                  + "\n\nIt does not meet the requirements:\n- " + "\n- ".join(errors)
                  + "\n\nFix only these points, keep everything else unchanged, never add a source, and call "
                    "the submit_episode tool with the full corrected episode."}]
-    resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"], system=system,
+    resp = client.messages.create(model=model, max_tokens=gen["max_tokens"], system=system,
                                   tools=[SUBMIT_TOOL], messages=messages)
     costs.add_usage(usage, resp)
     call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)

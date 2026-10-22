@@ -40,11 +40,14 @@ def _tokens_usd(usage: dict, per_mtok: dict) -> float:
 
 
 def claude_usd(usage: dict, prices: dict) -> float:
-    """Generation at its model's prices, plus the fact-check (usage["factcheck"]) at its own."""
+    """Generation at its model's prices, plus the fact-check (usage["factcheck"]) and the light
+    corrections on a smaller model (usage["corrections"]) at their own."""
     usd = _tokens_usd(usage, prices["claude_usd_per_mtok"]) \
         + usage["web_search_requests"] / 1000 * prices["web_search_usd_per_1000"]
     if (fc := usage.get("factcheck")) and fc.get("api_calls"):
         usd += _tokens_usd(fc, prices["factcheck_usd_per_mtok"])
+    if (fix := usage.get("corrections")) and fix.get("api_calls"):
+        usd += _tokens_usd(fix, prices["correction_usd_per_mtok"])
     return round(usd, 4)
 
 

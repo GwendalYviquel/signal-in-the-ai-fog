@@ -217,6 +217,7 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 - The optional `NTFY_TOPIC` secret is the ntfy topic of the phone notifications.
 - `sources.avoid` lists the sites never cited (content aggregators that rewrite other outlets' news); `factcheck` sets the fact-check model and how much of each page it reads.
 - `generation.dossier: true` splits the writing in two steps: a research dossier where every fact comes with the exact words of its page (the code fetches the page and drops a fact whose quote is not there), saved in `data/dossiers/`, then the episode written from that dossier alone, without web search. A rerun the same day reuses the dossier instead of paying the research again. On for the French shows.
+- `generation.correction_model` runs the light corrections (fixing the points a check listed, no research) on a smaller model, Claude Haiku, priced apart with `costs.correction_usd_per_mtok`. Research and writing stay on `generation.model`.
 - Every step is told the show's language (`podcast.language`): research, writing and fact-check. A published text (title, summary, spoken parts, agenda) clearly in another language is an error sent back for correction (`locale.detect`).
 
 ## Episode catalog

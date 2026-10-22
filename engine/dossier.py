@@ -19,7 +19,7 @@ from . import costs, factcheck, locale
 
 _FACT = {"type": "object", "properties": {
     "statement": {"type": "string", "description": "One checkable fact: a figure, date, name or status."},
-    "quote": {"type": "string", "description": "The exact words of the page that state it, copied verbatim, 5 to 40 words."},
+    "quote": {"type": "string", "description": "The exact words of the page that state it, copied verbatim, 5 to 20 words."},
     "url": {"type": "string", "description": "The page the quote comes from."}},
     "required": ["statement", "quote", "url"]}
 

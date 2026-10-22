@@ -12,6 +12,7 @@ from test_main import mocks, repo  # noqa: F401  (temporary repository fixtures)
 
 def test_usage_is_summed_over_every_call_including_corrections(cfg, fake_claude):
     # Research (paused once), then a light correction: three billed calls.
+    cfg["generation"]["correction_model"] = cfg["generation"]["model"]  # one model: one total to read
     bad = make_episode(headlines=["one, two", "b c", "d e"])
     fake_claude([reply(stop_reason="pause_turn", usage=usage(10_000, 500, searches=6)),
                  reply(submit_block(bad, "t1"), usage=usage(30_000, 3_000, cache_read=5_000, searches=4)),
@@ -28,6 +29,7 @@ def test_usage_is_summed_over_every_call_including_corrections(cfg, fake_claude)
 
 def test_usage_is_kept_when_generation_gives_up(cfg, fake_claude):
     # Claude is paid even when the episode is rejected: the spend must not be lost.
+    cfg["generation"]["correction_model"] = cfg["generation"]["model"]  # one model: one total to read
     bad = make_episode(question="What should we do " + "x " * 20)
     fake_claude([reply(submit_block(bad, f"t{i}"), usage=usage(20_000, 2_000)) for i in range(3)])
     total = costs.empty_claude_usage("m")
@@ -147,3 +149,20 @@ def test_fact_check_is_priced_at_its_own_model_and_added_to_claude(cfg):
     total["factcheck"] = dict(costs.empty_claude_usage(cfg["factcheck"]["model"]), input_tokens=1_000_000, api_calls=6)
     assert costs.claude_usd(total, cfg["costs"]) == pytest.approx(
         cfg["costs"]["claude_usd_per_mtok"]["input"] + cfg["costs"]["factcheck_usd_per_mtok"]["input"])
+
+
+def test_light_corrections_run_on_their_own_model_and_are_priced_at_it(cfg, fake_claude):
+    # Learning (2026-10-22): a two-step HR preview cost $1.96; fixing listed points needs no research,
+    # so the light corrections run on Haiku, priced at Haiku's rates.
+    from conftest import TUESDAY, make_episode, reply, submit_block
+    from engine import generate
+    assert cfg["costs"]["correction_priced_model"] == cfg["generation"]["correction_model"] != cfg["generation"]["model"]
+    cfg["factcheck"]["enabled"] = False
+    bad = make_episode(headlines=["one, two", "b c", "d e"])
+    client = fake_claude([reply(submit_block(bad, "a")), reply(submit_block(make_episode(), "b"))])
+    ep = generate.generate_episode(cfg, TUESDAY, [])
+    assert [c["model"] for c in client.calls] == [cfg["generation"]["model"], cfg["generation"]["correction_model"]]
+    assert ep["usage"]["api_calls"] == 1 and ep["usage"]["corrections"]["api_calls"] == 1
+    total = dict(costs.empty_claude_usage(cfg["generation"]["model"]), api_calls=1)
+    total["corrections"] = dict(costs.empty_claude_usage("h"), output_tokens=1_000_000, api_calls=1)
+    assert costs.claude_usd(total, cfg["costs"]) == pytest.approx(cfg["costs"]["correction_usd_per_mtok"]["output"])

@@ -28,6 +28,7 @@ podcast:
 
 generation:
   model: "claude-sonnet-5-5"
+  correction_model: "claude-haiku-5-5"   # light corrections: fixing listed points needs no research
   max_tokens: 16000                  # room for the episode after long web searches
   web_search_max_uses: 15
   # Two steps (engine/dossier.py): a research dossier whose every fact is quoted from its page and
@@ -94,6 +95,8 @@ costs:  # for COSTS.md estimates; Claude prices for generation.model, per millio
   web_search_usd_per_1000: 10.0
   factcheck_priced_model: "claude-haiku-5-5"   # change the prices below when factcheck.model changes
   factcheck_usd_per_mtok: {input: 0.10, output: 0.50, cache_write: 0.125, cache_read: 0.01}      # not confirmed in the API reference: check the pricing page
+  correction_priced_model: "claude-haiku-5-5"   # change the prices below when generation.correction_model changes
+  correction_usd_per_mtok: {input: 0.10, output: 0.50, cache_write: 0.125, cache_read: 0.01}
 
 tts:
   voices:                            # ElevenLabs voice IDs
