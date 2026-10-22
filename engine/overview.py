@@ -7,10 +7,13 @@
 - shows/STATS.md and shows/usage-dashboard-{light,dark}.svg: listening only, no money. Downloads
   per show, last 7 days, per episode, and new downloads per day over 30 days, stacked by show.
   Rebuilt with the daily stats (engine/stats.py).
+- shows/costs-dashboard-{light,dark}.svg: the money of COSTS.md drawn per show, each show in its
+  own colour (the same in the usage dashboard: colour follows the show, in the order of the shows).
 Each show keeps its own COSTS.md (costs) and STATS.md (usage) in its folder.
 """
 from __future__ import annotations
 
+import calendar
 import datetime as dt
 import json
 from pathlib import Path
@@ -103,6 +106,106 @@ def costs_report(repo: Path, today: dt.date) -> str:
         *lasting,
     ]
     return "\n".join(lines) + "\n"
+
+
+def _bars(d: Drawing, x0, y0, width, title, rows, fmt, total=None, total_label=""):
+    """Horizontal bars, one per show in its colour, the value in ink at the end: magnitude and identity.
+    With total, a single stacked bar instead: each show's share of a shared quota, the rest in grey."""
+    c = d.c
+    d.box(x0, y0, width, 22, [(title, 13, 700, c["ink"])], "none", align="start", pad=3, frame_visible=False)
+    label_w, y = 168, y0 + 32
+    if total is None:
+        vmax = max([v for _, v, _ in rows] + [0]) or 1
+        for name, v, color in rows:
+            d.box(x0, y, label_w - 8, 22, [(name, 12, 600, c["ink"])], "none", align="start", pad=3,
+                  frame_visible=False)
+            bw = max((width - label_w - 90) * v / vmax, 2 if v else 0)
+            if bw:
+                d.parts.append(f'<path d="{finops.bar_path(x0 + label_w, y + 3, bw, 16, 4)}" fill="{color}">'
+                               f'<title>{name}: {fmt(v)}</title></path>')
+            d.box(x0 + label_w + bw + 6, y, 84, 22, [(fmt(v), 12, 650, c["ink"])], "none", align="start", pad=2,
+                  frame_visible=False)
+            y += 30
+        return y
+    x, span = x0, width
+    for name, v, color in rows:
+        w = span * v / total if total else 0
+        if w >= 1:
+            d.rect(x, y, max(w - 2, 1), 22, color, r=4)  # 2px surface gap between segments
+            d.parts.append(f"<!-- {name}: {fmt(v)} -->")
+        x += w
+    if total_label:
+        rest = x0 + width - x
+        if rest >= 1:
+            d.rect(x, y, rest, 22, c["stage_stroke"], r=4)
+        d.box(x0, y + 26, width, 18, [(total_label, 11.5, 500, c["muted"])], "none", align="start", pad=2,
+              frame_visible=False)
+    return y + 48
+
+
+def estimate(runs: list[dict], cfg: dict, today: dt.date, s: dict) -> tuple[float, float, bool]:
+    """(Claude USD, ElevenLabs characters) by the end of the month, and whether it is an estimate (no
+    published episode yet): what was spent so far, plus the month's remaining episode days at the cost
+    of a full run. A full run is the dearer of a published episode and a script run (preview or dry
+    run). Learning (2026-10-22): a published episode that reused its research dossier cost $0.18, and
+    a projection from it alone left out the research every new episode pays."""
+    from . import locale, tts
+    last = dt.date(today.year, today.month, calendar.monthrange(today.year, today.month)[1])
+    left = sum(1 for n in range(1, (last - today).days + 1) if locale.is_episode_day(cfg, today + dt.timedelta(days=n)))
+    scripts = [finops.usd(r) for r in runs if r["mode"] in ("preview", "dry run") and r["outcome"] == "ok"]
+    per_usd = max(s["per_episode_usd"] or 0.0, sum(scripts) / len(scripts) if scripts else 0.0)
+    words = cfg.get("generation", {}).get("target_words")
+    per_chars = s["per_episode_chars"] or (tts.characters_needed([], words) / 1.15 if words else 0.0)
+    return s["claude_usd"] + per_usd * left, s["chars"] + per_chars * left, not s["episodes"]
+
+
+def costs_svg(repo: Path, today: dt.date, theme: str) -> str:
+    """Money per show, each in its colour: this month and its projection (Claude), the shared
+    ElevenLabs quota, and Claude per day over 30 days, stacked by show."""
+    colors = finops.SERIES[theme]
+    shows = _shows(repo)
+    data = []
+    for show in shows:
+        runs = _load(show.cost_ledger, [])
+        s = finops.summary(runs, today, show.cfg)
+        spend = {day: sum(v.values()) for day, v in finops.daily(runs, today, finops.usd)}
+        s["estimate"] = estimate(runs, show.cfg, today, s)
+        data.append((show.cfg["podcast"]["title"], runs, s, spend))
+    palette = [colors[i % len(colors)] for i in range(len(data))]
+    daily_chart = data and any(sum(spend.values()) for *_, spend in data)
+    d = Drawing(140 + 32 + 30 * len(data) + 6 + 80 + (262 if daily_chart else 0), theme)
+    c = d.c
+    # One card per show: its colour as a stripe, then its money this month.
+    cw = (W - 2 - 12 * (len(data) - 1)) / max(len(data), 1)
+    for i, ((name, _, s, _), color) in enumerate(zip(data, palette)):
+        x = 1 + i * (cw + 12)
+        d.rect(x, 1, cw, 112, c["stage"], c["stage_stroke"], r=14)
+        d.rect(x, 1, 6, 112, color, r=3)
+        projection = s["projection_usd"] if s["projection_usd"] is not None else s["claude_usd"]
+        per = f"${s['per_episode_usd']:.2f} per episode" if s["episodes"] else "no episode yet"
+        d.box(x + 14, 8, cw - 22, 98, [(name, 12.5, 700, c["ink"]), (f"${s['claude_usd']:,.2f}", 24, 750, c["ink"]),
+                                       (f"Claude this month · {per}", 11, 400, c["muted"]),
+                                       (f"{s['chars']:,} ElevenLabs characters", 11, 400, c["muted"])],
+              "none", align="start", pad=2, frame_visible=False)
+    y = 140
+    proj = [(name + (" (est.)" if s["estimate"][2] else ""), s["estimate"][0], color)
+            for (name, _, s, _), color in zip(data, palette)]
+    y = _bars(d, 1, y, W - 2, f"Claude, projection to the end of {today:%B}", proj, lambda v: f"${v:,.2f}")
+    chars = [(name, s["estimate"][1], color) for (name, _, s, _), color in zip(data, palette)]
+    read = [r for _, runs, _, _ in data for r in runs if r.get("elevenlabs_credits")]
+    last = max(read, key=lambda r: r["time"])["elevenlabs_credits"] if read else None
+    used = sum(v for _, v, _ in chars)
+    quota = max(last["limit"], used) if last else used
+    shares = " · ".join(f"{name.removeprefix('Signal in the ')} {v:,.0f}" for name, v, _ in chars)
+    note = (f"{used:,.0f} of {last['limit']:,} credits by the end of the month ({shares}): one quota for every show"
+            if last else f"{used:,.0f} characters by the end of the month ({shares}): one quota for every show")
+    y = _bars(d, 1, y + 6, W - 2, "ElevenLabs, projection: each show's share of the shared quota", chars,
+              lambda v: f"{v:,.0f}", total=quota or 1, total_label=note)
+    series = [(day, {name: spend[day] for name, _, _, spend in data}) for day in sorted(data[0][3])] if data else []
+    if daily_chart:
+        finops.chart(d, 1, y + 6, W - 2, 250, f"Claude · USD per day, last {finops.DAYS} days, stacked by show",
+                     series, lambda v: f"${v:.2f}", palette, kinds=[name for name, *_ in data])
+    return d.svg("Costs dashboard, every show")
 
 
 def _credits_line(last: dict | None) -> str:
@@ -208,6 +311,8 @@ def write_costs(repo: Path, today: dt.date | None = None) -> Path:
     today = today or dt.datetime.now(finops.PARIS).date()
     path = repo / "shows" / "COSTS.md"
     path.write_text(costs_report(repo, today), encoding="utf-8")
+    for theme in THEMES:
+        (repo / "shows" / f"costs-dashboard-{theme}.svg").write_text(costs_svg(repo, today, theme), encoding="utf-8")
     return path
 
 

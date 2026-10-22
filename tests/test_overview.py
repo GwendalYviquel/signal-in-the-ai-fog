@@ -89,3 +89,23 @@ def test_a_weekly_show_projects_over_its_episode_days():
     s = finops.summary([run("2026-10-19")], TODAY, weekly)
     assert s["weekdays"] == 4 and s["projection_usd"] == 4.0  # the Mondays of October 2026
     assert "4 episodes" in finops.render([run("2026-10-19")], TODAY, "light", weekly)
+
+
+def test_the_costs_dashboard_gives_each_show_its_colour_and_estimates_a_show_without_episode(tmp_path):
+    # Asked on 2026-10-22: tell at a glance what each show costs. Colour follows the show, in the order of
+    # the shows, the same as in the usage dashboard; a show without an episode yet gets an estimate.
+    repo = make_repo(tmp_path, ledgers={
+        "signal-in-the-ai-fog": [run("2026-10-20"), run("2026-10-21")],
+        "hr-news-fr": [run("2026-10-21", mode="preview", usd=1.5, chars=0)]})
+    show = repo / "shows" / "hr-news-fr" / "show.yaml"
+    cfg = yaml.safe_load(show.read_text())
+    cfg["generation"]["target_words"] = 1400
+    show.write_text(yaml.safe_dump(cfg))
+    svg = overview.costs_svg(repo, TODAY, "light")
+    blue, orange = finops.SERIES["light"][:2]
+    assert f'fill="{blue}"' in svg and f'fill="{orange}"' in svg  # one colour per show
+    assert "Signal in the HR Fog (est.)" in svg and "Signal (est.)" not in svg  # no episode yet: an estimate
+    s = finops.summary([run("2026-10-21", mode="preview", usd=1.5, chars=0)], TODAY, cfg)
+    usd, chars, estimated = overview.estimate([run("2026-10-21", mode="preview", usd=1.5, chars=0)], cfg, TODAY, s)
+    assert estimated and usd == 1.5 + 1.5 * 1 and chars > 9000  # Monday the 26th is left in October
+    assert overview.write_costs(repo, TODAY) and (repo / "shows" / "costs-dashboard-dark.svg").exists()

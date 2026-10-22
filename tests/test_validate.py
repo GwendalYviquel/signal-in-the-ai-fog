@@ -165,7 +165,7 @@ def test_every_story_has_a_known_reliability_label(cfg):
 
 @pytest.mark.parametrize("topics,message", [([], "needs 1 to 3 topics"), (["A", "B", "C", "D"], "needs 1 to 3 topics"),
                                             (["One two three four five"], "1 to 4 words"),
-                                            (["Platform"], "is a theme name")])
+                                            (["Platform"], "is the name of a theme")])
 def test_topics_are_short_subjects_not_themes(cfg, topics, message):
     ep = make_episode()
     ep["story_of_the_day"]["topics"] = topics
@@ -235,3 +235,12 @@ def test_agenda_is_optional_and_a_bad_item_only_warns(cfg):
     assert generate.agenda_date({"date": "2026-12-02", "text": "x"}) == "2026-12-02"
     assert "agenda" in generate.SUBMIT_TOOL["input_schema"]["properties"]
     assert "agenda" not in generate.SUBMIT_TOOL["input_schema"]["required"]
+
+
+def test_a_theme_name_topic_error_asks_for_something_else_than_the_name_it_refuses(cfg):
+    # Learning (2026-10-22): the error said "use the subject itself: 'Facturation électronique'", quoting
+    # the refused name as if it were the answer; three corrections sent it back unchanged.
+    ep = make_episode()
+    ep["story_of_the_day"]["topics"] = ["Platform"]
+    [err] = [e for e in errors_of(ep, cfg) if "name of a theme" in e]
+    assert "more specific than 'Platform'" in err and "use the subject itself" not in err

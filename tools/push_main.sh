@@ -8,7 +8,7 @@ for attempt in 1 2 3; do
   git -c merge.shared.driver=true pull --rebase origin main
   python -m engine.overview >/dev/null
   python -c "from engine import site; site.write_shared()"
-  git add shows/COSTS.md shows/STATS.md shows/usage-dashboard-*.svg docs/index.html docs/i18n.json
+  git add shows/COSTS.md shows/costs-dashboard-*.svg shows/STATS.md shows/usage-dashboard-*.svg docs/index.html docs/i18n.json
   git diff --cached --quiet || git commit -m "Reports shared by every show"
   git push && exit 0
   echo "main moved during the push (attempt $attempt): pulling again"

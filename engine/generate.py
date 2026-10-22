@@ -253,7 +253,11 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
             if not str(topic).strip() or words(str(topic)) > topic_words:
                 errors.append(f"Topic of the {name} must be 1 to {topic_words} words: {topic!r}")
             elif str(topic).strip() in themes:
-                errors.append(f"Topic of the {name} is a theme name, use the subject itself: {topic!r}")
+                # Learning (2026-10-22): "use the subject itself: 'Facturation électronique'" quoted the very
+                # name it refused, and three corrections in a row sent it back unchanged.
+                errors.append(f"Topic {topic!r} of the {name} is the name of a theme, which a topic can never be: "
+                              f"replace it with the precise subject, more specific than {topic!r} (the reform, "
+                              "law, text, product or organisation the story is about)")
     follow_up = ep.get("follow_up")
     if follow_up and not _has_source([follow_up.get("source") or {}]):
         errors.append("The follow-up has no source")

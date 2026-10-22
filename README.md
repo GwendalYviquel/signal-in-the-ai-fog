@@ -172,7 +172,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   │   ├── data/                   episodes, scripts, previews, dossiers, costs, stats, spotify.json
 │   │   ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
 │   │   └── STATS.md                downloads report
-│   ├── COSTS.md                    costs of every show: money only, ElevenLabs credits shared by all
+│   ├── COSTS.md                    costs of every show, one colour per show in costs-dashboard-*.svg
 │   ├── STATS.md                    usage of every show: listening only, and its usage dashboard
 │   ├── hr-news-fr/                 Signal in the HR Fog, in French, weekly (in preparation)
 │   └── accounting-news-fr/         Signal in the Tax Fog, in French, weekly (in preparation)
@@ -276,6 +276,17 @@ The suite runs offline: Claude, ElevenLabs and `gh` are replaced by fakes, and t
 Tests run on every push (`.github/workflows/tests.yml`) and before every generation in the daily and preview workflows, so a broken commit never produces an episode.
 
 ## FinOps
+
+What each show costs, at a glance: one colour per show (blue, orange, green, in the order of the Shows table, the same in the usage dashboard), this month and its projection, each show's share of the ElevenLabs quota they all draw from, and Claude per day stacked by show. A show without a published episode yet is projected from its previews and its target length (marked *est.*). Figures in [shows/COSTS.md](shows/COSTS.md).
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="shows/costs-dashboard-dark.svg">
+    <img src="shows/costs-dashboard-light.svg" alt="Costs of every show, one colour per show: Claude this month and its projection, each show's share of the shared ElevenLabs quota, and Claude per day stacked by show" width="100%">
+  </picture>
+</p>
+
+Each show also has its own dashboard, by kind of run (below, the first show's):
 
 <p align="center">
   <picture>
