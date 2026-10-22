@@ -93,6 +93,10 @@ def mocks(monkeypatch):
         calls["voice_checks"] = calls.get("voice_checks", 0) + 1
         return {"host": "ok", "analyst": "ok"}
     monkeypatch.setattr(tts, "voice_check_results", fake_voice_check)
+    # The account's credits, read before anything is paid; calls["credits"] overrides them.
+    monkeypatch.setattr(tts, "read_credits", lambda: calls.get("credits", {
+        "used": 0, "limit": 100_000, "left": 100_000, "reset": "2026-11-01", "can_extend": False}))
+    monkeypatch.setattr(main.notify, "send", lambda title, message, **kw: calls.setdefault("alerts", []).append(title))
     monkeypatch.setattr(context, "accepted_suggestions", lambda: calls.get("suggestions", []))  # never gh
     monkeypatch.setattr(publish, "repo", lambda: "owner/podcast")
     monkeypatch.setattr(publish, "upload_audio",
@@ -315,3 +319,23 @@ def test_a_dry_run_never_tells_the_workflow_it_published(repo, mocks, monkeypatc
     monkeypatch.setenv("DRY_RUN", "true")
     main.main()
     assert mocks["generate"] == 1 and not output.exists()
+
+
+def test_too_few_elevenlabs_credits_stop_the_run_before_paying_anything(repo, mocks):
+    # The credits are one quota for every show: read before the voice check and Claude, an episode
+    # they cannot voice stops the run for free, with an alert, and counts as a failed attempt.
+    mocks["credits"] = {"used": 98_000, "limit": 100_000, "left": 2_000, "reset": "2026-11-01", "can_extend": False}
+    with pytest.raises(SystemExit, match="ElevenLabs credits too low: 2,000 characters left of 100,000"):
+        main.main()
+    assert mocks["generate"] == 0 and "voice_checks" not in mocks and mocks["tts"] == 0
+    assert mocks["alerts"] == ["ElevenLabs credits too low: Signal in the AI Fog"]
+    run = read(repo / SHOW / "data" / "costs.json")[-1]
+    assert (run["mode"], run["outcome"], run["claude"]) == ("publish", "failed", None)
+    assert run["note"].startswith("ElevenLabs credits too low")
+    assert run["elevenlabs_credits"] == {"left": 2_000, "limit": 100_000, "reset": "2026-11-01"}
+
+
+def test_enough_or_unreadable_credits_let_the_run_go_on(repo, mocks):
+    mocks["credits"] = None  # a key without the user_read permission: never blocks
+    main.main()
+    assert mocks["generate"] == 1 and "alerts" not in mocks

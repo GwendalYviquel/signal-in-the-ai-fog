@@ -17,7 +17,7 @@ import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import catalog, chapters, context, corrections, costs, feed, generate, locale, publish, site, tts, watchdog
+from . import catalog, chapters, context, corrections, costs, feed, generate, locale, notify, publish, site, tts, watchdog
 from . import show as shows
 
 
@@ -104,8 +104,9 @@ def scheduled_run_is_due(cfg: dict, cron: str, now_utc: dt.datetime) -> bool:
 
 
 def failed_attempts_today(show: shows.Show, today: dt.date) -> int:
-    """Publication attempts of this show that failed today, after paying for something: its cost
-    ledger records them (committed even when a run fails). Per show, since one run serves several."""
+    """Publication attempts of this show that failed today, after paying for something or stopped by
+    the credit check: its cost ledger records them (committed even when a run fails). Per show,
+    since one run serves several."""
     tz = ZoneInfo(show.cfg["generation"]["timezone"])
     return sum(1 for run in costs.load(show.cost_ledger)
                if run.get("mode") == "publish" and run.get("outcome") == "failed"
@@ -163,17 +164,20 @@ def main(show: shows.Show | None = None) -> None:
     cfg = show.cfg
     dry_run, preview = flag("DRY_RUN"), flag("PREVIEW")
     mode = "dry run" if dry_run else "preview" if preview else "publish"
-    spend = {"claude": costs.empty_claude_usage(cfg["generation"]["model"]), "voice_check": 0, "speech": [0]}
+    spend = {"claude": costs.empty_claude_usage(cfg["generation"]["model"]), "voice_check": 0, "speech": [0],
+             "credits": None, "blocked": ""}
     outcome = "failed"
     try:
         outcome = run(show, spend) or "ok"
     finally:
         chars = spend["voice_check"] + spend["speech"][0]
-        if spend["claude"]["api_calls"] or chars:
+        # A run stopped by the credit check is recorded too: it counts among the day's failed
+        # attempts, so the scheduled ones stop after two instead of alerting every 15 minutes.
+        if spend["claude"]["api_calls"] or chars or spend["blocked"]:
+            note = (spend["blocked"] or f"voice check {spend['voice_check']} + episode {spend['speech'][0]} characters"
+                    if mode == "publish" else "")
             costs.record(cfg, mode, outcome, spend["claude"], chars, ledger=show.cost_ledger,
-                         report=show.cost_report, charts=show.charts,
-                         note=f"voice check {spend['voice_check']} + episode {spend['speech'][0]} characters"
-                         if mode == "publish" else "")
+                         report=show.cost_report, charts=show.charts, note=note, credits=spend["credits"])
 
 
 def run(show: shows.Show, spend: dict) -> str | None:
@@ -218,6 +222,16 @@ def run(show: shows.Show, spend: dict) -> str | None:
         return
 
     if not (dry_run or preview):  # a few characters: fail before paying for the script
+        credits = spend["credits"] = tts.read_credits()  # one quota for every show
+        needed = tts.characters_needed(costs.load(show.cost_ledger), cfg["generation"]["target_words"])
+        if credits:
+            print(f"ElevenLabs credits: {credits['left']:,} characters left of {credits['limit']:,}, "
+                  f"about {needed:,} needed for this episode")
+        if reason := tts.check_credits(credits, needed):
+            spend["blocked"] = reason
+            notify.send(f"ElevenLabs credits too low: {cfg['podcast']['title']}", reason, priority=5,
+                        tags=["rotating_light"])
+            raise SystemExit(reason)
         results = tts.voice_check_results(cfg["tts"])
         spend["voice_check"] = tts.voice_check_characters(results)
         tts.raise_if_failed(results)

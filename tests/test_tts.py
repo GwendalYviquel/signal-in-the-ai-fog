@@ -238,3 +238,38 @@ def test_timeline_gives_each_chunk_its_place_in_the_episode(posts, tmp_path):
     assert timeline[0] == {"text": "Hello there.", "start": 0.0, "end": round(frame, 2)}
     assert timeline[1]["start"] == round(frame + pause, 2)  # the breath between voices is counted
     assert timeline[2]["end"] == pytest.approx(tts.mp3_duration(out.read_bytes()), abs=0.02)
+
+
+
+def test_credits_are_read_from_the_subscription(monkeypatch):
+    class R:
+        status_code = 200
+        def json(self):
+            return {"character_count": 30_000, "character_limit": 100_000, "next_character_count_reset_unix": 1793491200,
+                    "can_extend_character_limit": True, "allowed_to_extend_character_limit": False}
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "k")
+    monkeypatch.setattr(tts.requests, "get", lambda url, headers, timeout: R())
+    assert tts.read_credits() == {"used": 30_000, "limit": 100_000, "left": 70_000, "reset": "2026-11-01",
+                                  "can_extend": False}
+
+
+def test_unreadable_credits_never_block(monkeypatch):
+    class R:
+        status_code = 401
+        text = '{"detail": {"status": "missing_permissions"}}'
+    monkeypatch.setenv("ELEVENLABS_API_KEY", "k")
+    monkeypatch.setattr(tts.requests, "get", lambda url, headers, timeout: R())
+    assert tts.read_credits() is None and tts.check_credits(None, 10_000) == ""
+
+
+def test_characters_needed_follow_the_show_with_a_margin():
+    runs = [{"mode": "publish", "outcome": "ok", "elevenlabs_characters": 5000},
+            {"mode": "publish", "outcome": "ok", "elevenlabs_characters": 7000},
+            {"mode": "publish", "outcome": "failed", "elevenlabs_characters": 100},
+            {"mode": "dry run", "outcome": "ok", "elevenlabs_characters": 0}]
+    assert tts.characters_needed(runs, 880) == 6900          # average 6000, plus 15 %
+    assert tts.characters_needed([], 1400) == 10465          # a first weekly French episode: 1400 words
+    credits = {"left": 6000, "limit": 100_000, "reset": "2026-11-01", "can_extend": False}
+    assert "6,000 characters left" in tts.check_credits(credits, 6900)
+    assert tts.check_credits(credits, 5000) == ""
+    assert tts.check_credits(dict(credits, can_extend=True), 6900) == ""  # usage-based billing pays the rest

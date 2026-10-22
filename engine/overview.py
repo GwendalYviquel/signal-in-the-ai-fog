@@ -43,9 +43,10 @@ def _published(runs: list[dict]) -> list[dict]:
 
 def costs_report(repo: Path, today: dt.date) -> str:
     rows, total = [], {"runs": 0, "episodes": 0, "usd": 0.0, "chars": 0, "p_usd": 0.0, "p_chars": 0.0}
-    lasting = []
+    lasting, read = [], []
     for show in _shows(repo):
         runs = _load(show.cost_ledger, [])
+        read += [r for r in runs if r.get("elevenlabs_credits")]
         s = finops.summary(runs, today, show.cfg)
         title = show.cfg["podcast"]["title"]
         p_usd = s["projection_usd"] if s["projection_usd"] is not None else s["claude_usd"]
@@ -86,8 +87,9 @@ def costs_report(repo: Path, today: dt.date) -> str:
         "",
         f"**ElevenLabs credits are one quota shared by every show**: {total['chars']:,} characters used this "
         f"month, about {total['p_chars']:,.0f} by the end of the month at this pace. Compare with the plan's "
-        "monthly credits in the ElevenLabs account: when they run out, the voice check stops each run before "
-        "it pays for a script.",
+        "monthly credits in the ElevenLabs account.",
+        "",
+        _credits_line(max(read, key=lambda r: r["time"]) if read else None),
         "",
         "## Per episode and per download, since the first run",
         "",
@@ -101,6 +103,17 @@ def costs_report(repo: Path, today: dt.date) -> str:
         *lasting,
     ]
     return "\n".join(lines) + "\n"
+
+
+def _credits_line(last: dict | None) -> str:
+    if not last:
+        return ("Credits left: not read yet. Every publication reads them before paying for anything, and "
+                "stops when they cannot voice the episode.")
+    c = last["elevenlabs_credits"]
+    reset = f", renewed on {c['reset']}" if c.get("reset") else ""
+    return (f"**Credits left: {c['left']:,} characters of {c['limit']:,}**{reset} (read before the run of "
+            f"{last['time'][:16].replace('T', ' ')} UTC). Every publication reads them before paying for anything, "
+            "and stops when they cannot voice the episode.")
 
 
 def _new_per_day(snapshots: dict[str, dict[str, int]], days: list[dt.date]) -> dict[dt.date, int]:

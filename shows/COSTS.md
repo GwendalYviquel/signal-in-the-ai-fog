@@ -13,7 +13,9 @@ The projection runs the cost of a published episode over the month's episode day
 | Signal RH | 0 | 0 | $0.00 | 0 | $0.00 | 0 |
 | **All shows** | **32** | **4** | **$3.52** | **19,848** | **$16.87** | **107,244** |
 
-**ElevenLabs credits are one quota shared by every show**: 19,848 characters used this month, about 107,244 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account: when they run out, the voice check stops each run before it pays for a script.
+**ElevenLabs credits are one quota shared by every show**: 19,848 characters used this month, about 107,244 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
+
+Credits left: not read yet. Every publication reads them before paying for anything, and stops when they cannot voice the episode.
 
 ## Per episode and per download, since the first run
 

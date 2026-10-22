@@ -62,7 +62,7 @@ def load(path: Path | None = None) -> list[dict]:
 
 def record(cfg: dict, mode: str, outcome: str, claude: dict | None = None, elevenlabs_characters: int = 0,
            note: str = "", ledger: Path | None = None, report: Path | None = None, now: dt.datetime | None = None,
-           charts: Path | None = None) -> dict:
+           charts: Path | None = None, credits: dict | None = None) -> dict:
     """Append one run to the show's ledger, rebuild its report and the GitHub step summary.
     ledger, report and charts default to the current show's (engine/show.py)."""
     if ledger is None or report is None:
@@ -71,6 +71,8 @@ def record(cfg: dict, mode: str, outcome: str, claude: dict | None = None, eleve
     now = now or dt.datetime.now(dt.timezone.utc)
     entry = {"time": now.replace(microsecond=0).isoformat(), "mode": mode, "outcome": outcome,
              "run_url": run_url(), "claude": None, "elevenlabs_characters": elevenlabs_characters, "note": note}
+    if credits:  # the account's ElevenLabs credits read before the run, shared by every show
+        entry["elevenlabs_credits"] = {k: credits[k] for k in ("left", "limit", "reset")}
     if claude and claude["api_calls"]:
         entry["claude"] = dict(claude, usd=claude_usd(claude, cfg["costs"]))
     runs = load(ledger) + [entry]

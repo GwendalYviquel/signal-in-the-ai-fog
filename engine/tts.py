@@ -1,6 +1,7 @@
 """Speech synthesis with the ElevenLabs API: two voices, text split into chunks."""
 from __future__ import annotations
 
+import datetime as dt
 import os
 import time
 from pathlib import Path
@@ -224,6 +225,54 @@ def raise_if_failed(results: dict[str, str]) -> dict[str, str]:
 def check_voices(tts_cfg: dict) -> dict[str, str]:
     """voice_check_results, raising if any voice fails."""
     return raise_if_failed(voice_check_results(tts_cfg))
+
+
+SUBSCRIPTION = "https://api.elevenlabs.io/v1/user/subscription"
+CHARS_PER_WORD = 6.5  # spoken English or French, spaces included: a first episode's estimate
+MARGIN = 1.15         # an episode runs a little longer than the previous ones
+
+
+def read_credits() -> dict | None:
+    """The account's character credits ({used, limit, left, reset, can_extend}), shared by every show,
+    or None when they cannot be read (network, or a key without the user_read permission)."""
+    try:
+        r = requests.get(SUBSCRIPTION, headers={"xi-api-key": os.environ["ELEVENLABS_API_KEY"]}, timeout=30)
+    except requests.RequestException as e:
+        print(f"ElevenLabs credits not read ({type(e).__name__}): the run goes on")
+        return None
+    if r.status_code != 200:
+        print(f"ElevenLabs credits not read (HTTP {r.status_code}: {r.text[:200]}): the run goes on. "
+              "Give the API key the user_read permission to check them before each run.")
+        return None
+    data = r.json()
+    used, limit = int(data.get("character_count") or 0), int(data.get("character_limit") or 0)
+    reset = data.get("next_character_count_reset_unix")
+    return {"used": used, "limit": limit, "left": max(0, limit - used),
+            "reset": dt.datetime.fromtimestamp(reset, dt.timezone.utc).date().isoformat() if reset else "",
+            "can_extend": bool(data.get("can_extend_character_limit") and data.get("allowed_to_extend_character_limit"))}
+
+
+def characters_needed(runs: list[dict], target_words: int) -> int:
+    """Characters an episode of this show needs: its published episodes' average, or an estimate
+    from its target length before the first one, with a margin either way."""
+    published = [r["elevenlabs_characters"] for r in runs
+                 if r.get("mode") == "publish" and r.get("outcome") == "ok" and r.get("elevenlabs_characters")]
+    base = sum(published) / len(published) if published else target_words * CHARS_PER_WORD
+    return round(base * MARGIN)
+
+
+def check_credits(credits: dict | None, needed: int) -> str:
+    """"" when the episode can be voiced (or the credits are unknown), else why it cannot."""
+    if credits is None or credits["left"] >= needed:
+        return ""
+    if credits["can_extend"]:
+        print(f"ElevenLabs: {credits['left']:,} characters left, {needed:,} needed: the plan's usage-based "
+              "billing covers the rest, at extra cost")
+        return ""
+    reset = f", renewed on {credits['reset']}" if credits["reset"] else ""
+    return (f"ElevenLabs credits too low: {credits['left']:,} characters left of {credits['limit']:,}{reset}, "
+            f"about {needed:,} needed for this episode. Nothing was paid: top up or upgrade the ElevenLabs "
+            "plan, then run the catch-up.")
 
 
 def candidate_voices(tts_cfg: dict, ids: str) -> dict:

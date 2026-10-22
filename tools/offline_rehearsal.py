@@ -99,6 +99,9 @@ def rehearse(out: Path, slug: str = shows.DEFAULT) -> dict:
         (main, "current_time"): lambda cfg: day_time,
         (generate.anthropic, "Anthropic"): lambda **kw: clients.append(_Claude(fixture)) or clients[-1],
         (tts, "_post"): _silence_for,
+        # The account's credits: plenty left, as read before a real run (never asked to ElevenLabs).
+        (tts, "read_credits"): lambda: {"used": 20_000, "limit": 100_000, "left": 80_000, "reset": "2030-02-01",
+                                        "can_extend": False},
         (publish, "repo"): lambda: REPO,
         (publish, "release_exists"): lambda tag: False,
         (publish, "delete_release"): lambda tag: None,
