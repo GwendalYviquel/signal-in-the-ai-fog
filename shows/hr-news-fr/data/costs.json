@@ -52,5 +52,32 @@
   },
   "elevenlabs_characters": 0,
   "note": ""
+ },
+ {
+  "time": "2026-10-22T19:06:22+00:00",
+  "mode": "preview",
+  "outcome": "failed",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39836788476",
+  "claude": {
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 11537,
+   "output_tokens": 19356,
+   "cache_creation_input_tokens": 24378,
+   "cache_read_input_tokens": 14639,
+   "web_search_requests": 0,
+   "api_calls": 3,
+   "factcheck": {
+    "model": "claude-haiku-5-5",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "web_search_requests": 0,
+    "api_calls": 0
+   },
+   "usd": 0.2805
+  },
+  "elevenlabs_characters": 0,
+  "note": ""
  }
 ]
