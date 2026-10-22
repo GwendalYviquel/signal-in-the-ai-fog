@@ -287,7 +287,12 @@ if __name__ == "__main__":
     ids = os.getenv("VOICE_IDS", "").strip()
     tts_cfg = candidate_voices(cfg["tts"], ids) if ids else cfg["tts"]
     results = voice_check_results(tts_cfg)
+    # The credits too: a free way to check the key's user_read permission and refresh COSTS.md.
+    credits = read_credits()
+    if credits:
+        print(f"ElevenLabs credits: {credits['left']:,} characters left of {credits['limit']:,}"
+              + (f", renewed on {credits['reset']}" if credits["reset"] else ""))
     costs.record(cfg, "voice check", "ok" if all(r == "ok" for r in results.values()) else "failed",
-                 elevenlabs_characters=voice_check_characters(results),
+                 elevenlabs_characters=voice_check_characters(results), credits=credits,
                  note=("candidates: " + ids) if ids else "configured voices")
     raise_if_failed(results)
