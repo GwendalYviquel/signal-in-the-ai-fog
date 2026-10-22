@@ -30,7 +30,7 @@ def screenshot(out: Path = OUT, color_scheme: str = "light") -> Path:
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page(viewport=VIEWPORT, color_scheme=color_scheme)
-            page.goto(f"http://127.0.0.1:{httpd.server_address[1]}/")
+            page.goto(f"http://127.0.0.1:{httpd.server_address[1]}/episodes.html")  # the first show's catalog
             page.wait_for_selector("#list > *")
             page.wait_for_load_state("networkidle")
             out.parent.mkdir(parents=True, exist_ok=True)

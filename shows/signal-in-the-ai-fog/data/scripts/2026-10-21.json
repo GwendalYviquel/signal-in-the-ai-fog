@@ -110,5 +110,31 @@
   }
  },
  "what_to_watch": "Mistral Large 4 open weights are promised by the end of October. Outlets cite October twenty-seventh, while a Hugging Face placeholder says October thirty-first, so dates differ. The licence is the real question. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise, with findings promised afterwards. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Gemini 4 Argon's price doubling on December first, and AI Act marking on December second.",
- "question": "If you added a voice channel next quarter, could your gateway meter, route and log streaming audio per use case, and do you own a test set of real store recordings?"
+ "question": "If you added a voice channel next quarter, could your gateway meter, route and log streaming audio per use case, and do you own a test set of real store recordings?",
+ "agenda": [
+  {
+   "date": "2026-10-24",
+   "text": "AWS European Sovereign Cloud independence exercise"
+  },
+  {
+   "date": "2026-10-27",
+   "text": "Mistral Large 4 open weights: date cited by outlets"
+  },
+  {
+   "date": "2026-10-31",
+   "text": "Mistral Large 4 open weights: Hugging Face placeholder date"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC AI gigafactory bid deadline"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 4 Argon price doubles"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "EU AI Act marking applies"
+  }
+ ]
 }

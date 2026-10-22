@@ -135,5 +135,23 @@
   }
  },
  "what_to_watch": "This week, Mistral Large 4's two-week launch discount, counted from October sixth, should lapse, so list prices are likely to apply. Open weights are promised by the end of October, and sources differ on the exact day. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise. Further out: Vertex AI Extensions shuts down after November twenty-sixth, Argon's introductory price ends November thirtieth, and AI Act marking applies December second.",
- "question": "If Gemini 4 Argon's price doubles on December first, which of your workloads break their budget, and does your gateway already show spend by model and by team?"
+ "question": "If Gemini 4 Argon's price doubles on December first, which of your workloads break their budget, and does your gateway already show spend by model and by team?",
+ "agenda": [
+  {
+   "date": "2026-10-24",
+   "text": "AWS European Sovereign Cloud independence exercise"
+  },
+  {
+   "date": "2026-11-26",
+   "text": "Vertex AI Extensions shut down after this day"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Argon introductory price ends"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "EU AI Act marking applies"
+  }
+ ]
 }

@@ -1,4 +1,4 @@
-"""The catalog page (docs/index.html) in a real headless browser, with catalog.json mocked.
+"""The catalog page (docs/episodes.html, the first show's) and the home page in a real headless browser, with catalog.json mocked.
 
 Needs Playwright and Chromium (requirements-dev.txt, then `python -m playwright install chromium`).
 Skipped when the browser is missing, unless REQUIRE_BROWSER=1 (set in the CI tests workflow).
@@ -70,7 +70,7 @@ def open_site(browser, server):
         else:
             page.route("**/catalog.json", lambda r: r.fulfill(status=200, content_type="application/json",
                                                                body=json.dumps(catalog)))
-        page.goto(server + hash_)
+        page.goto(server + "episodes.html" + hash_)
         page.wait_for_selector("#list > *")
         page.js_errors = errors
         pages.append(page)
@@ -222,4 +222,36 @@ def test_generated_pages_follow_the_switch(browser, server):
     page.click('.lang-switch button[data-lang="fr"]')
     assert page.locator('h2[data-i18n="stories"]').inner_text() == "Sujets"
     assert "octobre" in page.locator("[data-date]").first.inner_text()
+    page.close()
+
+
+def test_the_home_page_lists_the_shows_and_follows_the_browser_language(browser, server):
+    # docs/index.html is where a visitor picks a show. A French browser sees it in French until the
+    # EN | FR switch is used; the choice is then remembered.
+    page = browser.new_page(locale="fr-FR")
+    page.goto(server)
+    page.wait_for_function("document.documentElement.dataset.uiLang === 'fr'")
+    assert page.inner_text("h1") == "Choisissez une émission"
+    hrefs = page.eval_on_selector_all(".show-card h2 a", "els => els.map((a) => a.getAttribute('href'))")
+    assert hrefs[0] == "episodes.html" and "hr-news-fr/index.html" in hrefs
+    page.click('[data-lang="en"]')
+    assert page.inner_text("h1") == "Pick a show"
+    page.goto(server)
+    page.wait_for_function("document.documentElement.dataset.uiLang === 'en'")
+    page.click(".show-card h2 a >> nth=0")
+    page.wait_for_selector("#list > *")
+    page.click(".topbar .home")
+    page.wait_for_selector(".show-list")
+    page.close()
+
+
+def test_past_agenda_items_move_under_their_own_heading(browser, server):
+    page = browser.new_page()
+    page.route("**/agenda.html", lambda r: r.fulfill(status=200, content_type="text/html", body=(
+        ROOT / "docs" / "agenda.html").read_text(encoding="utf-8").replace(
+        '<ol class="timeline agenda" id="upcoming">',
+        '<ol class="timeline agenda" id="upcoming"><li data-day="2000-01-01">Old</li><li data-day="2999-01-01">Far</li>')))
+    page.goto(server + "agenda.html")
+    assert page.inner_text("#past") .startswith("Old") and "Far" in page.inner_text("#upcoming")
+    assert page.is_visible("#past-title") and page.get_attribute("#past li", "class") == "past"
     page.close()

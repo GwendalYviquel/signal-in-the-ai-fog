@@ -4,6 +4,7 @@ The model submits the episode through the submit_episode tool (one field per par
 of the episode); this module validates it and assembles the spoken script with the
 fixed opening, transitions and sign-off, so every episode follows the same structure.
 """
+import datetime as dt
 import json
 import os
 import re
@@ -108,6 +109,9 @@ SUBMIT_TOOL = {
         "follow_up": {"type": "object", "properties": {"text": {"type": "string"}, "source": _SOURCE},
                       "required": ["text", "source"]},
         "what_to_watch": {"type": "string"},
+        # Not spoken: the dated items of what_to_watch, for the agenda page of the site (engine/site.py).
+        "agenda": {"type": "array", "items": {"type": "object", "properties": {
+            "date": {"type": "string"}, "text": {"type": "string"}}, "required": ["date", "text"]}},
         "question": {"type": "string"},
     }, "required": ["title", "summary", "headlines", "story_of_the_day", "segments",
                     "number_of_the_day", "what_to_watch", "question"]},
@@ -175,6 +179,17 @@ def _source_policy(ep: dict, cfg: dict) -> list[str]:
     return errors
 
 
+def agenda_date(item) -> str:
+    """The ISO date of an agenda item, or "" when it has none (or an impossible one)."""
+    if not isinstance(item, dict) or not str(item.get("text", "")).strip():
+        return ""
+    value = str(item.get("date", "")).strip()
+    try:
+        return value if re.fullmatch(r"\d{4}-\d{2}-\d{2}", value) and dt.date.fromisoformat(value) else ""
+    except ValueError:
+        return ""
+
+
 def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     """Return (errors, warnings). Errors block the episode, warnings are only logged."""
     errors, warnings = [], []
@@ -230,11 +245,15 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     if follow_up and not _has_source([follow_up.get("source") or {}]):
         errors.append("The follow-up has no source")
     errors += _source_policy(ep, cfg)
+    for item in ep.get("agenda") or []:  # optional and never spoken: a bad item is left off the site
+        if not agenda_date(item):
+            warnings.append(f"Agenda item without a YYYY-MM-DD date, left off the site: {item!r}")
 
     forbidden = _forbidden_terms()
     published = [("title", ep["title"]), ("summary", ep["summary"])]
     published += [("topic", str(t)) for s in [story] + segs for t in s.get("topics") or []]
     published += [("source title", s["title"]) for s in collect_sources(ep)]
+    published += [("agenda", str(a.get("text", ""))) for a in ep.get("agenda") or [] if isinstance(a, dict)]
     for name, text in published:  # shown in the RSS feed, never spoken
         for term in forbidden:
             if term.lower() in text.lower():

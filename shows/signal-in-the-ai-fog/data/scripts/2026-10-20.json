@@ -113,5 +113,15 @@
   }
  },
  "what_to_watch": "Three dates. The Mistral Large 4 launch discount should end around now, so check your price assumptions. Open weights are promised by the end of October, and the licence terms matter most. On Saturday, October twenty-fourth, AWS plans an exercise to show its European Sovereign Cloud can run without non-EU infrastructure. Beyond that, December second for AI Act marking, and any sign Universal Cart moves beyond the United States.",
- "question": "If your gateway had to switch to a European open-weight model next month, which of your business evaluations could you rerun in a day, and which could not?"
+ "question": "If your gateway had to switch to a European open-weight model next month, which of your business evaluations could you rerun in a day, and which could not?",
+ "agenda": [
+  {
+   "date": "2026-10-24",
+   "text": "AWS European Sovereign Cloud independence exercise"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "EU AI Act marking applies"
+  }
+ ]
 }

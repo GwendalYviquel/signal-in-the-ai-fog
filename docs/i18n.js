@@ -8,7 +8,10 @@
   const pageLang = document.documentElement.lang || "en";
   let dict = null;
   let lang = pageLang;
-  try { lang = localStorage.getItem(KEY) || pageLang; } catch {}
+  // The home page (data-auto-lang) follows the browser's language until a language is picked.
+  const browserLang = document.documentElement.hasAttribute("data-auto-lang")
+    ? (navigator.language || "").slice(0, 2).toLowerCase() : "";
+  try { lang = localStorage.getItem(KEY) || browserLang || pageLang; } catch { lang = browserLang || pageLang; }
   const listeners = [];
 
   const pick = (key) => (dict && ((dict[lang] || {})[key] ?? (dict[pageLang] || {})[key] ?? (dict.en || {})[key]));

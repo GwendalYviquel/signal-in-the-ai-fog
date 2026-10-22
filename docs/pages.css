@@ -64,7 +64,18 @@ a.tag:hover { text-decoration: underline; }
 .lang-switch button[aria-pressed="true"] { background: #3ee6cc; color: #0a0b1e; }
 .show-card { display: flex; gap: 16px; align-items: flex-start; }
 .show-card img { border-radius: 10px; flex: none; }
-.show-card h3 a { color: inherit; }
+.show-card h2, .show-card h3 { margin: 0 0 4px; font-size: 20px; }
+.show-card h2 a, .show-card h3 a { color: inherit; text-decoration: none; }
+.show-card .facts { margin: 8px 0; }
+.show-card .latest { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
+.show-card .open { display: inline-flex; padding: 6px 14px; border-radius: 999px; background: var(--accent-soft); font-weight: 700; text-decoration: none; font-size: 14px; }
+.show-list { display: grid; gap: 14px; margin: 18px 0 32px; }
+.show-list .show-card { padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+header.bar .home { flex: none; padding: 3px 12px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; font-size: 13px; font-weight: 700; }
+header.bar .home:hover { background: rgba(255,255,255,.12); }
+.home-page header.bar .lang-switch { margin-left: auto; }
+.agenda li.past { opacity: .55; }
+.agenda li a { font-size: 13px; white-space: nowrap; }
 .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; cursor: help; }
 .label.confirmed { background: var(--ok-soft); color: var(--ok); }
 .label.reported { background: var(--warn-soft); color: var(--warn); }
@@ -72,7 +83,7 @@ a.tag:hover { text-decoration: underline; }
 .correction { margin: 12px 0; padding: 10px 14px; border-left: 3px solid var(--warn); background: var(--warn-soft); border-radius: 0 8px 8px 0; }
 .note { font-size: 13px; color: var(--muted); margin: -4px 0 8px; }
 .sources { font-size: 14px; padding-left: 18px; }
-.sources .primary { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--ok); }
+.sources .primary { display: inline-block; margin-left: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: 1px 8px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); cursor: help; }
 .sources li { overflow-wrap: anywhere; margin-bottom: 4px; }
 .transcript { white-space: pre-line; background: var(--surface-2); padding: 14px 16px; border-radius: 10px; }
 .feedback { margin-top: 32px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
@@ -93,4 +104,6 @@ footer { border-top: 1px solid var(--border); padding: 20px 0 40px; font-size: 1
   header.bar .wrap { flex-wrap: wrap; row-gap: 8px; }
   header.bar .lang-switch { margin-left: auto; }
   header.bar nav { order: 3; width: 100%; margin-left: 0; gap: 16px; }
+  .show-card { flex-direction: column; }
+  .show-card img { width: 72px; height: 72px; }
 }

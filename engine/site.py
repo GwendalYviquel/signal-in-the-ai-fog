@@ -1,13 +1,17 @@
 """Static pages of a show's catalog site, from its catalog.json and its structured episodes.
 
 - <docs>/index.html: the catalog page (engine/templates/catalog.html), in the show's language;
+  episodes.html for a show at the root of the site, whose index.html is the home page;
 - <docs>/episodes/<date>.html: one page per episode (search engines and sharing), with chapters,
   every story with its reliability label, facts and read layers, sources and topics, and links
   to give feedback through a GitHub issue form;
 - <docs>/topics/<slug>.html: everything said about a topic across episodes, newest first;
+- <docs>/agenda.html: the dated items of every episode's What to watch, upcoming first, past ones
+  greyed with a link to the episode that announced them;
 - <docs>/topics/index.html, corrections.html, sitemap.xml and robots.txt.
-And, for the whole site (write_shared): docs/shows.html, the list of shows, and docs/i18n.json,
-the interface texts of every language for the EN | FR switch (docs/i18n.js).
+And, for the whole site (write_shared): docs/index.html, the home page where a visitor picks a
+show (every page has a button back to it), and docs/i18n.json, the interface texts of every
+language for the EN | FR switch (docs/i18n.js).
 
 Pages are written in the show's language; their interface texts carry data-i18n keys, so the
 switch can translate them in the browser. Every text is escaped: titles, topics and sources come
@@ -61,6 +65,7 @@ class Ui:
         self.lang = str(cfg.get("podcast", {}).get("language", "en"))[:2].lower()
         site_path = str(cfg.get("podcast", {}).get("site_path", "")).strip("/")
         self.shared = "../" * len(Path(site_path).parts) if site_path else ""  # from the show to docs/
+        self.catalog = catalog_name(cfg)
 
     def key(self, name: str) -> str:
         """A key of the site texts; texts naming the period get the show's cadence ("story.week")."""
@@ -88,13 +93,18 @@ class Ui:
         return f'<div class="lang-switch" role="group" aria-label="Language">{buttons}</div>'
 
 
+def catalog_name(cfg: dict) -> str:
+    """The catalog page's file: index.html, or episodes.html at the root, where index.html is the home page."""
+    return "index.html" if str(cfg.get("podcast", {}).get("site_path", "")).strip("/") else "episodes.html"
+
+
 def languages() -> list[str]:
     return sorted(p.stem for p in locale.LOCALES.glob("*.yaml"))
 
 
 def _page(ui: Ui, title: str, description: str, canonical: str, cover: str, body: str, depth: str = "../",
           extra_head: str = "") -> str:
-    shared = depth + ui.shared  # docs/, where pages.css, i18n.js and shows.html live
+    shared = depth + ui.shared  # docs/, where pages.css, i18n.js and the home page live
     show_title = ui.cfg.get("podcast", {}).get("title", "")
     return f"""<!doctype html>
 {GENERATED}
@@ -117,9 +127,10 @@ def _page(ui: Ui, title: str, description: str, canonical: str, cover: str, body
 {extra_head}</head>
 <body>
 <header class="bar"><div class="wrap">
+  {_home_button(ui, shared)}
   <img src="{depth}cover.jpg" alt="">
-  <a href="{depth}index.html">{escape(show_title)}</a>
-  <nav><a href="{depth}index.html" data-i18n="nav_episodes">{escape(ui.text("nav_episodes"))}</a><a href="{depth}topics/index.html" data-i18n="nav_topics">{escape(ui.text("nav_topics"))}</a><a href="{shared}shows.html" data-i18n="nav_shows">{escape(ui.text("nav_shows"))}</a></nav>
+  <a href="{depth}{ui.catalog}">{escape(show_title)}</a>
+  <nav><a href="{depth}{ui.catalog}" data-i18n="nav_episodes">{escape(ui.text("nav_episodes"))}</a><a href="{depth}agenda.html" data-i18n="nav_agenda">{escape(ui.text("nav_agenda"))}</a><a href="{depth}topics/index.html" data-i18n="nav_topics">{escape(ui.text("nav_topics"))}</a></nav>
   {ui.switch()}
 </div></header>
 <main class="wrap">
@@ -130,6 +141,11 @@ def _page(ui: Ui, title: str, description: str, canonical: str, cover: str, body
 </body>
 </html>
 """
+
+
+def _home_button(ui: Ui, shared: str) -> str:
+    return (f'<a class="home" href="{shared}index.html" data-i18n-title="nav_home_title" '
+            f'title="{escape(ui.text("nav_home_title"))}">← {ui.tag("nav_home")}</a>')
 
 
 def _sources(ui: Ui, sources: list[dict]) -> str:
@@ -326,6 +342,43 @@ def topics_index(ui: Ui, found: dict[str, list[dict]], podcast: dict, base_url: 
                  f"{base}topics/index.html", base + podcast["cover"], body)
 
 
+def agenda_entries(episodes: list[dict], structured: dict[str, dict]) -> list[dict]:
+    """Every dated item of the episodes' agenda, by date; the same item announced again keeps its latest episode."""
+    from .generate import agenda_date
+    found: dict[tuple[str, str], dict] = {}
+    for ep in sorted(episodes, key=lambda e: e["date"]):  # oldest first: a later episode replaces it
+        for item in (structured.get(ep["date"]) or {}).get("agenda") or []:
+            if day := agenda_date(item):
+                text = " ".join(str(item["text"]).split())
+                found[(day, text.lower())] = {"date": day, "text": text, "episode": ep}
+    return sorted(found.values(), key=lambda e: (e["date"], e["text"].lower()))
+
+
+def agenda_page(ui: Ui, entries: list[dict], podcast: dict, base_url: str) -> str:
+    """Items by date. The page stays the same from day to day: the browser moves past items, greyed,
+    under their own heading (most recent first), so a rebuild never depends on the day it runs."""
+    base = base_url.rstrip("/") + "/"
+    rows = "".join(
+        f'<li data-day="{e["date"]}"><div class="when">{ui.date(e["date"])}</div>'
+        f'<strong>{escape(e["text"])}</strong> <a href="episodes/{e["episode"]["date"]}.html">'
+        f'{ui.tag("agenda_from", date=locale.page_date(dt.date.fromisoformat(e["episode"]["date"]), ui.loc))}</a></li>'
+        for e in entries)
+    body = (ui.tag("agenda_title", "h1") + ui.tag("agenda_lede", "p", ' class="lede"')
+            + ui.tag("agenda_upcoming", "h2")
+            + f'<ol class="timeline agenda" id="upcoming">{rows}</ol>'
+            + ui.tag("no_agenda", "p", ' id="no-agenda"' + ("" if not entries else " hidden"))
+            + ui.tag("agenda_past", "h2", ' id="past-title" hidden') + '<ol class="timeline agenda" id="past"></ol>'
+            + '<script>(() => { const d = new Date(), today = new Date(d.getTime() - d.getTimezoneOffset() * 60000)'
+            '.toISOString().slice(0, 10); const past = document.getElementById("past");'
+            ' const done = [...document.querySelectorAll("#upcoming li")].filter((li) => li.dataset.day < today);'
+            ' done.reverse().forEach((li) => { li.classList.add("past"); past.append(li); });'
+            ' if (done.length) document.getElementById("past-title").hidden = false;'
+            ' if (!document.querySelector("#upcoming li")) document.getElementById("no-agenda").hidden = false; })();'
+            '</script>')
+    return _page(ui, f"{ui.text('agenda_title')} · {podcast['title']}", f"{ui.text('agenda_title')}: {podcast['title']}",
+                 f"{base}agenda.html", base + podcast["cover"], body, depth="")
+
+
 def catalog_page(ui: Ui) -> str:
     """The show's catalog page: the template, in the show's language, pointing to the shared files."""
     p = ui.cfg.get("podcast", {})
@@ -351,7 +404,7 @@ def write_site(cfg: dict, catalog_json: Path, data_dir: Path, docs: Path, base_u
     structured = {ep["date"]: st for ep in episodes if (st := _structured(data_dir, ep))}
     base = base_url.rstrip("/") + "/"
 
-    pages: dict[Path, str] = {docs / "index.html": catalog_page(ui)}
+    pages: dict[Path, str] = {docs / ui.catalog: catalog_page(ui)}
     for i, ep in enumerate(episodes):  # newest first
         newer = episodes[i - 1] if i > 0 else None
         older = episodes[i + 1] if i + 1 < len(episodes) else None
@@ -362,6 +415,7 @@ def write_site(cfg: dict, catalog_json: Path, data_dir: Path, docs: Path, base_u
         pages[docs / "topics" / f"{slug(topic)}.html"] = topic_page(ui, topic, entries, podcast, base_url)
     pages[docs / "topics" / "index.html"] = topics_index(ui, found, podcast, base_url)
     pages[docs / "corrections.html"] = corrections_page(ui, episodes, podcast, base_url)
+    pages[docs / "agenda.html"] = agenda_page(ui, agenda_entries(episodes, structured), podcast, base_url)
 
     for folder in ("episodes", "topics"):  # pages of removed episodes or topics
         (docs / folder).mkdir(parents=True, exist_ok=True)
@@ -393,37 +447,71 @@ def i18n_json() -> dict:
     return out
 
 
-def shows_page(shows_cfg: list[tuple[str, dict]], lang: str = "en") -> str:
-    """docs/shows.html: every show of the engine, in the first show's language."""
+def home_page(shows_cfg: list[tuple[str, dict, dict | None]], lang: str = "en") -> str:
+    """docs/index.html: where a visitor picks a show. Written in the first show's language; without a
+    language picked yet, the switch follows the browser's (data-auto-lang, docs/i18n.js)."""
     ui = Ui({"podcast": {"language": lang, "title": ""}})
     cards = []
-    for slug_, cfg in shows_cfg:
+    for slug_, cfg, latest in shows_cfg:
         p = cfg["podcast"]
         folder = str(p.get("site_path", slug_)).strip("/")
         href = f"{folder}/" if folder else ""
+        catalog = href + ("index.html" if folder else "episodes.html")  # see catalog_name
         period = locale.cadence(cfg)[0]
         language = str(p.get("language", "en"))[:2]
-        cards.append(f'<section class="story show-card"><img src="{href}{escape(p["cover_file"])}" alt="" width="96" height="96">'
-                     f'<div><h3><a href="{href}index.html">{escape(p["title"])}</a></h3>'
-                     f'<p class="facts">{escape(" ".join(str(p.get("description", "")).split()))}</p>'
+        last = (f'<p class="latest">{ui.tag("latest_episode")} <a href="{href}episodes/{latest["date"]}.html">'
+                f'{escape(latest["title"])}</a> · {ui.date(latest["date"])}</p>' if latest else
+                f'<p class="latest">{ui.tag("no_episodes")}</p>')
+        cards.append(f'<section class="story show-card"><a href="{catalog}"><img src="{href}{escape(p["cover_file"])}" '
+                     f'alt="" width="96" height="96"></a><div><h2><a href="{catalog}">{escape(p["title"])}</a></h2>'
                      f'<div class="meta">{ui.tag(f"cadence_{period}")} · {ui.tag(f"language_{language}")}</div>'
-                     f'<a href="{href}index.html" data-i18n="open_show">{escape(ui.text("open_show"))}</a></div></section>')
-    body = ui.tag("shows_title", "h1") + ui.tag("shows_lede", "p", ' class="lede"') + "".join(cards)
-    return _page(ui, ui.text("shows_title"), ui.text("shows_lede"), "shows.html", "", body, depth="").replace(
-        '<link rel="icon" href="cover.jpg">', '<link rel="icon" href="cover.jpg">')
+                     f'<p class="facts">{escape(" ".join(str(p.get("description", "")).split()))}</p>{last}'
+                     f'<a class="open" href="{catalog}" data-i18n="open_show">{escape(ui.text("open_show"))}</a></div></section>')
+    return f"""<!doctype html>
+{GENERATED}
+<html lang="{ui.lang}" data-auto-lang>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{escape(ui.text("shows_title"))}</title>
+<meta name="description" content="{escape(ui.text("shows_lede"))}">
+<link rel="stylesheet" href="pages.css">
+<script>try {{ const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; }} catch {{}}</script>
+<script src="i18n.js" defer></script>
+</head>
+<body class="home-page">
+<header class="bar"><div class="wrap">
+  {ui.tag("shows_title", "strong")}
+  {ui.switch()}
+</div></header>
+<main class="wrap">
+{ui.tag("shows_heading", "h1")}{ui.tag("shows_lede", "p", ' class="lede"')}
+<div class="show-list">{"".join(cards)}</div>
+</main>
+<footer><div class="wrap">{ui.tag("footer")}</div></footer>
+</body>
+</html>
+"""
 
 
 def write_shared(repo: Path | None = None) -> None:
-    """The site files shared by every show: docs/i18n.json and docs/shows.html."""
+    """The site files shared by every show: docs/i18n.json and the home page, docs/index.html."""
     from . import show as shows
     repo = repo or shows.REPO
     docs = repo / "docs"
     docs.mkdir(parents=True, exist_ok=True)
     (docs / "i18n.json").write_text(json.dumps(i18n_json(), ensure_ascii=False, indent=1), encoding="utf-8")
     order = sorted(shows.slugs(repo), key=lambda s: (s != shows.DEFAULT, s))  # the first show first
-    listed = [(s, shows.load(s, repo).cfg) for s in order]
+    listed = []
+    for s in order:
+        show = shows.load(s, repo)
+        episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []
+        listed.append((s, show.cfg, max(episodes, key=lambda e: e["date"]) if episodes else None))
     first = shows.load(shows.DEFAULT, repo).cfg if (repo / "shows" / shows.DEFAULT).exists() else {"podcast": {}}
-    (docs / "shows.html").write_text(shows_page(listed, str(first["podcast"].get("language", "en"))), encoding="utf-8")
+    (docs / "index.html").write_text(home_page(listed, str(first["podcast"].get("language", "en"))), encoding="utf-8")
+    old = docs / "shows.html"  # the list of shows before the home page took its place
+    if old.exists() and GENERATED in old.read_text(encoding="utf-8"):
+        old.unlink()
 
 
 def local_pages_url() -> str:

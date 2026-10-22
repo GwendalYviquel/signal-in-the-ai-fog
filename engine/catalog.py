@@ -1,4 +1,4 @@
-"""Data for the episode catalog site (docs/index.html reads docs/catalog.json).
+"""Data for the episode catalog site (each show's catalog page reads its catalog.json).
 
 The catalog lists published episodes and previews (script only, no audio yet).
 Previews never reach the RSS feed; a published episode replaces its preview.

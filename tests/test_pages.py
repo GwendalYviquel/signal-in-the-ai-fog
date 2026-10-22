@@ -108,7 +108,7 @@ def test_topic_pages_gather_stories_from_every_episode_newest_first(build):
 def test_slugs_match_the_catalog_page():
     assert site.slug("EU AI Act") == "eu-ai-act" and site.slug("LLM-as-a-judge") == "llm-as-a-judge"
     assert site.slug("  Café & AI!  ") == "caf-ai" and site.slug("!!!") == "topic"
-    index = (site.ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+    index = (site.ROOT / "docs" / "episodes.html").read_text(encoding="utf-8")  # the first show's catalog
     assert '.replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "topic"' in index
 
 
@@ -197,7 +197,7 @@ def french_cfg(cfg):
 
 def test_a_french_show_gets_french_pages_that_reach_the_shared_files(tmp_path, cfg):
     # Learning (2026-10-22): a show in a subfolder (docs/<slug>/) still uses docs/pages.css, i18n.js
-    # and shows.html; its pages are written in its language, with keys for the language switch.
+    # and the home page; its pages are written in its language, with keys for the language switch.
     fr = french_cfg(cfg)
     docs = tmp_path / "docs" / "hr-news-fr"
     (tmp_path / "data" / "scripts").mkdir(parents=True)
@@ -209,7 +209,8 @@ def test_a_french_show_gets_french_pages_that_reach_the_shared_files(tmp_path, c
     site.write_site(fr, docs / "catalog.json", tmp_path / "data", docs, BASE + "hr-news-fr/")
     page = (docs / "episodes" / "2026-10-26.html").read_text()
     assert '<html lang="fr">' in page and 'href="../../pages.css"' in page and 'src="../../i18n.js"' in page
-    assert 'href="../../shows.html"' in page and ">Signal RH</a>" in page
+    assert 'href="../../index.html"' in page and ">Signal RH</a>" in page  # the button back to the home page
+    assert 'href="../index.html">Signal RH</a>' in page and 'href="../agenda.html"' in page
     for text in ('data-i18n="stories">Sujets</h2>', 'data-i18n="story.week">Sujet de la semaine</span>',
                  'data-i18n="number.week">Chiffre de la semaine</h2>', ">lundi 26 octobre 2026</span>",
                  'data-i18n="label_confirmed"', ">Confirmé</span>", 'data-i18n="read">L&#x27;analyse</span>'):
@@ -232,7 +233,7 @@ def test_the_committed_translations_match_the_locales():
     assert committed == site.i18n_json(), "docs/i18n.json is stale: run python -m engine.site"
 
 
-def test_the_shows_page_lists_every_show_the_first_one_first(tmp_path):
+def test_the_home_page_lists_every_show_the_first_one_first(tmp_path):
     import yaml
     for slug_, extra in (("signal-in-the-ai-fog", {"site_path": ""}), ("hr-news-fr", {"language": "fr"})):
         home = tmp_path / "shows" / slug_
@@ -240,10 +241,60 @@ def test_the_shows_page_lists_every_show_the_first_one_first(tmp_path):
         (home / "show.yaml").write_text(yaml.safe_dump({
             "podcast": {"title": slug_.upper(), "description": "<b>D</b>", "cover_file": "cover.jpg", **extra},
             "generation": {"cadence": "weekdays" if slug_.startswith("signal") else "weekly:monday"}}))
+    (tmp_path / "shows" / "hr-news-fr" / "data").mkdir()
+    (tmp_path / "shows" / "hr-news-fr" / "data" / "episodes.json").write_text(json.dumps(
+        [{"date": "2026-10-26", "title": "Old"}, {"date": "2026-11-02", "title": "<i>New</i>"}]))
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs" / "shows.html").write_text(site.GENERATED)  # the list of shows before the home page
     site.write_shared(tmp_path)
-    html = (tmp_path / "docs" / "shows.html").read_text()
+    html = (tmp_path / "docs" / "index.html").read_text()
     assert html.index("SIGNAL-IN-THE-AI-FOG") < html.index("HR-NEWS-FR")
-    assert 'href="index.html"' in html and 'href="hr-news-fr/index.html"' in html
+    # The first show's catalog is episodes.html: index.html, at the root, is this page.
+    assert 'href="episodes.html"' in html and 'href="hr-news-fr/index.html"' in html
+    assert 'href="hr-news-fr/episodes/2026-11-02.html">&lt;i&gt;New&lt;/i&gt;</a>' in html and "Old" not in html
+    assert "data-auto-lang" in html  # follows the browser's language until one is picked
+    assert not (tmp_path / "docs" / "shows.html").exists()
     assert ">Every weekday<" in html and ">Every week<" in html and ">In French<" in html
     assert "<b>" not in html  # descriptions are escaped
     assert (tmp_path / "docs" / "i18n.json").exists()
+
+
+def test_every_page_has_a_button_back_to_the_home_page_and_the_root_show_keeps_its_urls(build):
+    # The first show sits at the root: its catalog moved to episodes.html when index.html became
+    # the home page; episodes/, topics/, feed.xml and catalog.json keep their URLs.
+    docs = build([item("2026-10-22", topics=["Mistral"])])
+    assert (docs / "episodes.html").exists() and not (docs / "index.html").exists()
+    page = (docs / "episodes" / "2026-10-22.html").read_text()
+    assert 'class="home" href="../index.html"' in page and 'href="../episodes.html">' in page
+    for name in ("agenda.html", "corrections.html", "topics/index.html", "topics/mistral.html"):
+        assert 'class="home" href="' in (docs / name).read_text(), name
+    catalog = (docs / "episodes.html").read_text()
+    assert 'class="home" href="index.html"' in catalog and 'href="agenda.html"' in catalog
+
+
+def test_the_agenda_lists_dated_items_once_with_the_latest_episode(tmp_path, cfg):
+    data, docs = tmp_path / "data", tmp_path / "docs"
+    (data / "scripts").mkdir(parents=True)
+    docs.mkdir()
+    agendas = {"2026-10-21": [{"date": "2026-12-02", "text": "AI Act marking"},
+                              {"date": "2026-11-12", "text": "Bid <deadline>"}],
+               "2026-10-22": [{"date": "2026-12-02", "text": "AI  Act marking"},  # announced again
+                              {"date": "next week", "text": "No exact day"}, {"date": "2026-02-30", "text": "Impossible"}]}
+    for day, agenda in agendas.items():
+        (data / "scripts" / f"{day}.json").write_text(json.dumps(make_episode(agenda=agenda)))
+    (docs / "catalog.json").write_text(json.dumps({"podcast": PODCAST,
+                                                   "episodes": [item("2026-10-22"), item("2026-10-21")]}))
+    site.write_site(cfg, docs / "catalog.json", data, docs, BASE)
+    page = (docs / "agenda.html").read_text()
+    assert re.findall(r'data-day="([^"]+)"', page) == ["2026-11-12", "2026-12-02"]  # by date, once each
+    assert "Bid &lt;deadline&gt;" in page and "No exact day" not in page and "Impossible" not in page
+    assert 'href="episodes/2026-10-22.html"' in page  # the latest episode that announced it
+    assert 'id="past"' in page and "li.dataset.day < today" in page  # past items move in the browser
+
+
+def test_primary_sources_carry_a_badge_official_text_in_french():
+    assert site.i18n_json()["fr"]["primary"] == "Texte officiel"
+    ui = site.Ui({"podcast": {"language": "fr", "site_path": "hr-news-fr"}, "generation": {"cadence": "weekly:monday"}})
+    html = site._sources(ui, [{"title": "JO", "url": "https://legifrance.gouv.fr/x", "primary": True},
+                              {"title": "Press", "url": "https://p", "primary": False}])
+    assert html.count('class="primary"') == 1 and ">Texte officiel</span>" in html

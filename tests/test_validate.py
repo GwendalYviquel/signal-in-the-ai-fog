@@ -222,3 +222,16 @@ def test_episodes_rebuilt_after_publication_predate_the_source_rules(cfg):
     ep = make_episode(labelled_after_publication="2026-10-21")
     ep["segments"][0]["sources"] = [{"title": "Lindy", "url": "https://lindy.ai/x"}]
     assert errors_of(ep, cfg) == []
+
+
+def test_agenda_is_optional_and_a_bad_item_only_warns(cfg):
+    # The agenda (dated items of What to watch) is never spoken: a bad date leaves the item off the
+    # site's agenda page but never blocks an episode.
+    errors, warnings = generate.validate(make_episode(agenda=[
+        {"date": "2026-12-02", "text": "AI Act marking"}, {"date": "early December", "text": "Vague"}]), cfg)
+    assert errors == [] and any("Vague" in w for w in warnings)
+    assert generate.agenda_date({"date": "2026-02-30", "text": "x"}) == ""
+    assert generate.agenda_date({"date": "2026-12-02", "text": " "}) == ""
+    assert generate.agenda_date({"date": "2026-12-02", "text": "x"}) == "2026-12-02"
+    assert "agenda" in generate.SUBMIT_TOOL["input_schema"]["properties"]
+    assert "agenda" not in generate.SUBMIT_TOOL["input_schema"]["required"]

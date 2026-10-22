@@ -84,5 +84,27 @@
   }
  },
  "what_to_watch": "Mistral Large 4 open weights are still promised for the end of October, and the licence is the key detail. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise. Walmart says Agent Profiles arrive within a month. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.",
- "question": "If a shopping agent bought from your site tomorrow, could your systems tell it apart from a human customer, cap its spend and revoke its access?"
+ "question": "If a shopping agent bought from your site tomorrow, could your systems tell it apart from a human customer, cap its spend and revoke its access?",
+ "agenda": [
+  {
+   "date": "2026-10-24",
+   "text": "AWS European Sovereign Cloud independence exercise"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC AI gigafactory bid deadline"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite begins"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 4 Argon price doubles"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "EU AI Act marking applies"
+  }
+ ]
 }

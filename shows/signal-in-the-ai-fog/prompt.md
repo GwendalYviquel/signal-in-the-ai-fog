@@ -66,4 +66,5 @@ Once your research is done, call the submit_episode tool exactly once with the w
 - follow_up: only when an open item moved forward, with its text and source; leave it out otherwise.
 - number_of_the_day: text and its source.
 - what_to_watch and question: plain spoken text.
+- agenda: every item of what_to_watch that has an exact date, as its date (YYYY-MM-DD) and a short noun phrase of at most 12 words ("Mistral Large 4 open weights expected"). Never spoken: it builds the agenda page of the site. Only dates said in what_to_watch; leave out an item whose day is not known.
 - sources: title formatted as "Publisher: article title", the article URL, and primary: true for a primary source (see Research), false for press and analysis.

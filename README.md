@@ -170,7 +170,9 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   ├── topics/                     one page per topic, and the list of topics
 │   ├── corrections.html            every correction
 │   ├── hr-news-fr/                 the site of another show: same files, in its folder
-│   ├── shows.html                  every show of the engine
+│   ├── index.html                  home page: pick a show (every page has a button back to it)
+│   ├── episodes.html               the first show's catalog (its other URLs never moved)
+│   ├── agenda.html                 dates announced in What to watch, upcoming first
 │   ├── i18n.js                     the EN | FR switch, shared by every page
 │   └── i18n.json                   interface texts of every language (generated)
 ├── assets/                         images and diagrams of the README, light and dark
@@ -212,7 +214,7 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 
 ## Episode catalog
 
-Every show has its catalog: the first show at the site's root (`docs/index.html`), the others in their folder (`docs/<slug>/index.html`), all generated from one template (`engine/templates/catalog.html`). [`docs/shows.html`](https://gwendalyviquel.github.io/signal-in-the-ai-fog/shows.html) lists every show, with its cadence and language.
+The site opens on a home page (`docs/index.html`) where a visitor picks a show: each card gives its cadence, language and latest episode, and the page follows the browser's language until the EN | FR switch is used. Every show has its catalog, generated from one template (`engine/templates/catalog.html`): the first show's at `docs/episodes.html` (its feed, episode and topic URLs never moved), the others in their folder (`docs/<slug>/index.html`). Every page has a Home button back to the home page. Each show also has an **agenda** (`agenda.html`): the dated items of every episode's What to watch (the `agenda` field of the episode, never spoken), upcoming first, past dates greyed below with a link to the episode that announced them. Primary sources carry a badge ("Texte officiel" in French).
 
 **Two languages, with a switch.** Each show's pages are written in its language (English or French), and an **EN | FR** switch in the header translates the interface of every page: menus, buttons, headings, labels, dates. The choice is remembered in the browser from page to page and from show to show; episodes always stay in the language they were made in. The interface texts live in `engine/locales/*.yaml` (`site` section), served to the browser as `docs/i18n.json` and applied by `docs/i18n.js`; without JavaScript, a page reads in its show's language.
 

@@ -70,6 +70,7 @@ Une fois ta recherche terminée, appelle l'outil submit_episode exactement une f
 - follow_up : seulement quand un point ouvert a avancé, avec son texte et sa source ; à omettre sinon.
 - number_of_the_day : le chiffre de la semaine, texte et source.
 - what_to_watch et question : texte oral simple.
+- agenda : chaque point de what_to_watch qui a une date exacte, avec sa date (AAAA-MM-JJ) et un groupe nominal court de 12 mots au plus (« Date limite de dépôt de la liasse fiscale »). Jamais lu à l'antenne : il construit la page Agenda du site. Seulement les dates dites dans what_to_watch ; omets un point dont le jour n'est pas connu.
 - sources : title au format « Éditeur : titre de l'article ou du texte », l'URL, et primary: true pour une source primaire (voir Recherche), false pour la presse et l'analyse.
 
 <!--

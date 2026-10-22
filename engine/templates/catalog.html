@@ -159,6 +159,7 @@
     .hero .wrap { flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 28px; padding-bottom: 28px; }
     .hero img { width: 96px; height: 96px; }
     .hero h1 { font-size: 26px; }
+    .hero .topbar { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-top: 12px; padding-bottom: 0; }
     .card { padding: 16px; scroll-margin-top: 150px; }
     .thumb { width: 64px; height: 64px; }
     .controls { padding: 12px 0 10px; }
@@ -169,6 +170,8 @@
   .topbar { display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding-top: 12px; font-size: 13px; }
   .topbar a { color: #cfd0ee; font-weight: 600; text-decoration: none; }
   .topbar a:hover { text-decoration: underline; }
+  .topbar .home { margin-right: auto; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: 3px 12px; color: #fff; }
+  .topbar .links { display: flex; gap: 14px; }
   .lang-switch { display: inline-flex; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; overflow: hidden; }
   .lang-switch button { font: inherit; font-size: 12px; font-weight: 700; padding: 3px 10px; background: transparent; color: #cfd0ee; border: 0; cursor: pointer; }
   .lang-switch button[aria-pressed="true"] { background: #3ee6cc; color: #0a0b1e; }
@@ -178,7 +181,8 @@
 <body>
 <header class="hero">
   <div class="wrap topbar">
-    <a href="{{SHARED}}shows.html" data-i18n="nav_shows">Shows</a>
+    <a class="home" href="{{SHARED}}index.html" title="Back to every show" data-i18n-title="nav_home_title">← <span data-i18n="nav_home">Home</span></a>
+    <nav class="links"><a href="agenda.html" data-i18n="nav_agenda">Agenda</a><a href="topics/index.html" data-i18n="nav_topics">Topics</a></nav>
     <div class="lang-switch" role="group" aria-label="Language"><button type="button" data-lang="en">EN</button><button type="button" data-lang="fr">FR</button></div>
   </div>
   <div class="wrap">
