@@ -15,10 +15,11 @@ Claude estimates use the prices in `config.yaml` (claude-sonnet-5-5: $2.00 per m
 
 | Month | Runs | Episodes published | Claude tokens | Web searches | Claude (≈ USD) | ElevenLabs characters |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026-10 | 1 | 0 | 283,619 | 15 | $0.61 | 0 |
+| 2026-10 | 2 | 0 | 1,051,325 | 30 | $1.57 | 0 |
 
 ## Runs
 
 | Date (UTC) | Mode | Outcome | Claude calls | Input tokens | Output tokens | Web searches | Claude (≈ USD) | ElevenLabs characters | Note |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| [2026-10-22 18:46](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39833133296) | preview | ok | 4 | 726,059 | 41,647 | 15 | $0.96 | 0 |  |
 | [2026-10-22 17:04](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/39818409657) | preview | failed | 3 | 255,116 | 28,503 | 15 | $0.61 | 0 |  |

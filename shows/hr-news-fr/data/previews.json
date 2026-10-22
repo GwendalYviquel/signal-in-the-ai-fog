@@ -1,0 +1,114 @@
+[
+  {
+    "date": "2026-10-22",
+    "title": "PLFSS 2027 : les allègements de cotisations en débat",
+    "summary": "Le projet de loi de financement de la sécurité sociale pour 2027 est en séance à l'Assemblée, avec en point de mire les allègements généraux et l'intéressement. Au programme aussi : les indemnités de rupture, un arrêt sur le licenciement économique, les arrêts AT/MP et la réforme du taux AT/MP par entreprise.",
+    "headlines": [
+      "Allègements de cotisations et intéressement au cœur du PLFSS 2027",
+      "Indemnités de rupture : le plafond unique en débat",
+      "Un taux AT/MP calculé par entreprise dès 2027"
+    ],
+    "themes": [
+      "Paie et cotisations",
+      "Droit du travail"
+    ],
+    "topics": [
+      "PLFSS 2027",
+      "Réduction générale dégressive unique",
+      "Intéressement et participation",
+      "Indemnités de rupture",
+      "Licenciement économique",
+      "Indemnités journalières",
+      "Taux AT/MP",
+      "Tarification des accidents du travail"
+    ],
+    "sources": [
+      {
+        "title": "Assemblée nationale : Examen du projet de loi de financement de la sécurité sociale pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+        "primary": true
+      },
+      {
+        "title": "Assemblée nationale : PLFSS pour 2027, examen et rejet en commission des affaires sociales",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/plfss-pour-2027-examen-et-rejet-du-projet-de-loi-en-commission-des-affaires-sociales",
+        "primary": true
+      },
+      {
+        "title": "France Épargne : Abondement PEE et PEI, le PLFSS 2027 rouvre le débat sur les allègements",
+        "url": "https://www.france-epargne.fr/news/abondement-pee-et-pei-le-plfss-2027-rouvre-mardi-le-debat-sur-les-allegements-de-charges",
+        "primary": false
+      },
+      {
+        "title": "LCP : Budget 2027",
+        "url": "https://lcp.fr/dossiers/budget-2027-440523",
+        "primary": false
+      },
+      {
+        "title": "Legiwatch : PLFSS 2027, contenu et avancement du texte",
+        "url": "https://www.legiwatch.fr/loi/plfss-2027/",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : Budgets 2027, les indemnités de rupture exonérées dans la limite du plafond de la sécurité sociale",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4680-budgets-2027-indemnites-rupture-exonerees-limite-plafond-securite-sociale.html",
+        "primary": false
+      },
+      {
+        "title": "Rydge : PLF et PLFSS 2027, les mesures sociales à retenir",
+        "url": "https://www.rydge.fr/articles-analyses/mesures-sociales-plf-plfss-2027",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : PLF 2027, premiers amendements adoptés en séance",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4689-plf-2027-premiers-amendements-adoptes-seance-assemblee-nationale.html",
+        "primary": false
+      },
+      {
+        "title": "Fiscalonline : PLF 2027 et indemnités de rupture",
+        "url": "https://fiscalonline.com/outils-fiscaux/plf-2027-indemnites-rupture-deputes-excluent-licenciements-plafond",
+        "primary": false
+      },
+      {
+        "title": "Kohen Avocats : Licencié pour motif économique sur une faible baisse du chiffre d'affaires (arrêt du 7 octobre 2026)",
+        "url": "https://kohenavocats.com/licencie-motif-economique-baisse-chiffre-affaires-insuffisante-contester-2026/",
+        "primary": false
+      },
+      {
+        "title": "Herald Avocats : Licenciement économique, respecter le texte ne suffit pas toujours",
+        "url": "https://www.herald-avocats.com/licenciement-economique-respecter-le-texte-ne-suffit-pas-toujours-quand-la-jurisprudence-impose-davantage-a-lemployeur/",
+        "primary": false
+      },
+      {
+        "title": "Force Ouvrière : Difficultés économiques et licenciement",
+        "url": "https://www.force-ouvriere.fr/difficultes-economiques-et-licenciement-une-turbulence-legere-ou",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : Présentation du PLFSS 2027",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4657-presentation-plfss-2027.html",
+        "primary": false
+      },
+      {
+        "title": "CSE Matin : PLFSS 2027, les principales mesures concernant le secteur de l'emploi",
+        "url": "https://www.csematin.com/droits-salaries/qvct-sante/plfss-2027-les-principales-mesures-concernant-le-secteur-de-l-emploi.html",
+        "primary": false
+      },
+      {
+        "title": "Légifrance : Décret n° 2026-951 du 13 octobre 2026 généralisant le calcul des taux de cotisation AT/MP au niveau de l'entreprise",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+        "primary": true
+      },
+      {
+        "title": "La Base Lextenso : AT/MP, généralisation du calcul des taux de cotisation au niveau de l'entreprise",
+        "url": "https://www.labase-lextenso.fr/breves/jo-at-mp-generalisation-du-calcul-des-taux-de-cotisation-au-niveau-de-l-entreprise-BREVEBO588",
+        "primary": false
+      },
+      {
+        "title": "Group GAC : Taux AT/MP 2027, le calcul au niveau de l'entreprise devient obligatoire",
+        "url": "https://group-gac.com/en/taux-at-mp-2027-calcul-entreprise/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-22T20:39:16+02:00"
+  }
+]
