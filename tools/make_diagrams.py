@@ -203,14 +203,20 @@ def testing(theme):
 
 
 # Shared with the tests: the crons of the daily workflow and the Paris time they land on.
-SCHEDULE = {"publish_at": "04:05", "listen_at": "07:00", "run_minutes": 15,
-            "rows": [("Summer time", "UTC+2", [("2:05 UTC", "04:05", True), ("3:05 UTC", "05:05", False)]),
-                     ("Winter time", "UTC+1", [("2:05 UTC", "03:05", False), ("3:05 UTC", "04:05", True)])]}
+SCHEDULE = {"publish_at": "04:05", "listen_at": "07:00", "run_minutes": 5, "cron": "7,22,37,52 2-5 * * 1-5",
+            "rows": [("Summer time", "UTC+2", 2), ("Winter time", "UTC+1", 1)]}
+
+
+def attempt_times(cron: str, offset_hours: int) -> list[str]:
+    """Paris HH:MM of every attempt of a "m1,m2,... h1-h2 * * 1-5" cron line at that UTC offset."""
+    minutes, hours = cron.split()[:2]
+    h0, h1 = (int(v) for v in hours.split("-"))
+    return [f"{h + offset_hours:02d}:{int(m):02d}" for h in range(h0, h1 + 1) for m in minutes.split(",")]
 
 
 def schedule(theme):
-    """A morning in Paris time: the run, the margin left for Spotify, the 7:00 listen, and which
-    of the two cron lines publishes on each side of daylight saving time."""
+    """A morning in Paris time: the attempts, the first one that publishes, the margin left for
+    Spotify and the 7:00 listen, on each side of daylight saving time."""
     d = Drawing(346, theme)
     c = d.c
     x0, x1, h0, h1 = 168, W - 28, 1, 8  # the axis shows 1:00 to 8:00, Paris time; room for its labels
@@ -225,7 +231,8 @@ def schedule(theme):
         return f"{total // 60:02d}:{total % 60:02d}"
 
     pub, listen = SCHEDULE["publish_at"], SCHEDULE["listen_at"]
-    online = minutes_later(pub, SCHEDULE["run_minutes"])
+    first = min(a for a in attempt_times(SCHEDULE["cron"], 2) if a >= pub)
+    online = minutes_later(first, SCHEDULE["run_minutes"])
     margin = (int(listen[:2]) * 60 + int(listen[3:])) - (int(online[:2]) * 60 + int(online[3:]))
     rows_y = [16, 108, 188]
     for y, hgt in zip(rows_y, (78, 66, 66)):
@@ -236,15 +243,15 @@ def schedule(theme):
     d.box(10, y + 10, x0 - 24, 58, [("Every weekday", 14, 700, c["ink"]), ("Paris time", 11.5, 400, c["muted"]),
                                     ("holidays included", 11.5, 400, c["muted"])], "none", align="start",
           pad=8, frame_visible=False)
-    d.box(hx("01:10"), y + 13, hx("03:45") - hx("01:10"), 52,
+    d.box(hx("01:10"), y + 13, hx("03:50") - hx("01:10"), 52,
           [(f"Run · about {SCHEDULE['run_minutes']} min", 12.5, 700, c["ink"]),
-           ("tests, voices, Claude, ElevenLabs,", 11, 400, c["muted"]), ("release, feed and site", 11, 400, c["muted"])],
+           ("tests, voices, Claude, fact-check,", 11, 400, c["muted"]), ("ElevenLabs, release, feed, site", 11, 400, c["muted"])],
           c["card"], c["card_stroke"], r=10)
-    d.arrow(f"M{hx('03:45') + 4:.1f},{y + 39} L{hx(pub) - 4:.1f},{y + 39}")
+    d.arrow(f"M{hx('03:50') + 4:.1f},{y + 39} L{hx(first) - 4:.1f},{y + 39}")
     d.parts.append('<g class="box">')
-    d.rect(hx(pub), y + 17, hx(online) - hx(pub), 44, c["accent"], c["accent"], r=6, cls="frame")
+    d.rect(hx(first), y + 17, max(hx(online) - hx(first), 6), 44, c["accent"], c["accent"], r=4, cls="frame")
     d.parts.append("</g>")
-    d.box(hx(online) + 6, y + 13, hx(listen) - hx(online) - 12, 52,
+    d.box(hx(online) + 8, y + 13, hx(listen) - hx(online) - 14, 52,
           [("Spotify reads the feed", 12.5, 700, c["chip_ink"]),
            (f"about {margin // 60} h {margin % 60:02d} of margin", 11.5, 400, c["chip_ink"])],
           c["chip"], c["chip_stroke"], r=10, dash="4 3")
@@ -252,23 +259,34 @@ def schedule(theme):
           [("Listen", 13.5, 700, c["ok_ink"]), (listen.lstrip("0"), 12, 600, c["ok_ink"])],
           c["ok"], c["ok_stroke"], r=10)
 
-    # Rows 2 and 3: the two cron lines, each side of daylight saving time
-    for (label, offset, runs), y in zip(SCHEDULE["rows"], rows_y[1:]):
-        d.box(10, y + 8, x0 - 24, 50, [(label, 14, 700, c["ink"]), (f"Paris = {offset}", 11.5, 400, c["muted"])],
+    # Rows 2 and 3: the attempts of the one cron line, each side of daylight saving time
+    for (label, offset_label, offset), y in zip(SCHEDULE["rows"], rows_y[1:]):
+        d.box(10, y + 8, x0 - 24, 50, [(label, 14, 700, c["ink"]), (f"Paris = {offset_label}", 11.5, 400, c["muted"])],
               "none", align="start", pad=8, frame_visible=False)
         d.arrow(f"M{x0 - 6},{y + 33} L{x1},{y + 33}", c["stage_stroke"], 1.2, head=False)
-        for cron, local, publishes in runs:
-            x = hx(local)
-            color = c["ok_stroke"] if publishes else c["line"]
-            d.parts.append(f'<circle cx="{x:.1f}" cy="{y + 33}" r="7" fill="{c["ok"] if publishes else c["stage"]}" '
-                           f'stroke="{color}" stroke-width="2"/>')
-            d.box(x - 46, y + 6, 92, 18, [(cron, 11, 600, c["muted"], True)], "none", frame_visible=False)
-            d.box(x - 46, y + 43, 92, 18, [("publishes" if publishes else "skips", 11.5, 700,
-                                            c["ok_ink"] if publishes else c["muted"])], "none", frame_visible=False)
+        times = [a for a in attempt_times(SCHEDULE["cron"], offset) if a <= "08:00"]
+        start = min(a for a in times if a >= pub)
+        for a in times:
+            x = hx(a)
+            if a == start:
+                d.parts.append(f'<circle cx="{x:.1f}" cy="{y + 33}" r="7" fill="{c["ok"]}" stroke="{c["ok_stroke"]}" '
+                               'stroke-width="2"/>')
+            else:
+                d.parts.append(f'<circle cx="{x:.1f}" cy="{y + 33}" r="3.5" fill="{c["stage"]}" '
+                               f'stroke="{c["line"]}" stroke-width="1.5"/>')
+        d.box(hx(start) - 56, y + 6, 112, 18, [(f"{start.lstrip('0')} publishes", 11.5, 700, c["ok_ink"])],
+              "none", frame_visible=False)
+        later = [a for a in times if a > start]
+        d.box(hx(later[0]) - 4, y + 43, hx(later[-1]) - hx(later[0]) + 8, 18,
+              [("then every 15 min: stops at once, episode out", 11, 500, c["muted"])], "none", frame_visible=False)
+        early = [a for a in times if a < pub]
+        if early:
+            d.box(hx(early[0]) - 30, y + 43, hx(early[-1]) - hx(early[0]) + 60, 18,
+                  [("before 4:05: skip", 11, 500, c["muted"])], "none", frame_visible=False)
 
     # Guide at listening time (it crosses no label), then the axis
     axis_y = 276
-    d.arrow(f"M{hx(listen):.1f},{rows_y[0] + 80} L{hx(listen):.1f},{axis_y - 4}", c["ok_stroke"], 1.2,
+    d.arrow(f"M{hx(listen):.1f},{rows_y[0] + 80} L{hx(listen):.1f},{rows_y[1] - 2}", c["ok_stroke"], 1.2,
             dash="3 4", head=False)
     d.arrow(f"M{x0},{axis_y} L{x1},{axis_y}", c["line"], 1.2, head=False)
     for h in range(h0, h1 + 1):
@@ -277,14 +295,13 @@ def schedule(theme):
         d.box(x - 22, axis_y + 8, 44, 18, [(f"{h}:00", 11.5, 500, c["muted"])], "none", frame_visible=False)
 
     # Notes
-    notes = ["the cron line decides, not the clock: a late start still works",
-             "pause: SCHEDULE_ENABLED=false"]
+    notes = ["an attempt started late still publishes", "after 2 failed attempts: stop", "pause: SCHEDULE_ENABLED=false"]
     nx = 1
     for n in notes:
         nw = text_width(n, 11.5) + 26
         d.box(nx, 316, nw, 26, [(n, 11.5, 500, c["chip_ink"])], c["chip"], c["chip_stroke"], r=13)
         nx += nw + 10
-    return d.svg("Schedule: the run at 4:05 Paris time, the margin for Spotify, the 7:00 listen")
+    return d.svg("Schedule: attempts every 15 minutes from 4:05 Paris time, the margin for Spotify, the 7:00 listen")
 
 
 # The test plan: every test file belongs to one area (a test checks none is forgotten).

@@ -18,7 +18,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from . import catalog, chapters, context, corrections, costs, feed, generate, publish, site, tts
+from . import catalog, chapters, context, corrections, costs, feed, generate, publish, site, tts, watchdog
 
 ROOT = Path(__file__).resolve().parent.parent
 EPISODES = ROOT / "data" / "episodes.json"
@@ -98,15 +98,26 @@ def current_time(cfg: dict) -> dt.datetime:
 
 
 def scheduled_run_is_due(cfg: dict, cron: str, now_utc: dt.datetime) -> bool:
-    """GitHub cron runs in UTC; one cron line exists for summer time and one for winter time.
-    A run proceeds only if the cron that triggered it lands on publish_at in Paris today.
-    It reads the cron, not the clock: a run that starts late is still recognised."""
+    """Scheduled runs are attempts every 15 minutes on weekday mornings, one cron line for both
+    seasons. An attempt goes on once it is publish_at or later in Paris; the duplicate guards stop
+    the others once the episode is out. It reads the clock: an attempt GitHub starts hours late
+    still publishes the day's episode, with the news cutoff at publish_at.
+
+    Learning (2026-10-21/22): with one run at 4:05, GitHub dropped the morning's run or started it
+    five hours late, and there was no episode at 7:00."""
     if not cron:
         return True  # manual run
-    minute, hour = (int(v) for v in cron.split()[:2])
-    planned = now_utc.astimezone(dt.timezone.utc).replace(hour=hour, minute=minute, second=0, microsecond=0)
-    local = planned.astimezone(ZoneInfo(cfg["generation"]["timezone"]))
-    return f"{local:%H:%M}" == cfg["generation"]["publish_at"]
+    local = now_utc.astimezone(ZoneInfo(cfg["generation"]["timezone"]))
+    return f"{local:%H:%M}" >= cfg["generation"]["publish_at"]
+
+
+def failed_attempts_today(today: dt.date) -> int:
+    """Daily runs that failed today; 0 if GitHub cannot be asked (the attempt then goes on)."""
+    try:
+        return sum(r["conclusion"] == "failure" for r in watchdog.daily_runs_today(today))
+    except (RuntimeError, OSError, ValueError) as e:
+        print(f"Could not count today's failed attempts ({e}): going on.")
+        return 0
 
 
 def themes_covered(structured: dict) -> list[str]:
@@ -179,7 +190,7 @@ def run(cfg: dict, spend: dict) -> str | None:
     now = current_time(cfg)
     cron = os.getenv("SCHEDULE", "").strip()  # the cron line of a scheduled run, empty otherwise
     if not scheduled_run_is_due(cfg, cron, now):
-        print(f"Cron {cron!r} is the other side of daylight saving time today: nothing to do.")
+        print(f"Attempt at {now:%H:%M}, before {cfg['generation']['publish_at']} Paris time: nothing to do.")
         return
     backfill = episode_date(now)  # a past weekday to catch up, or None
     # Editorial time: the news cutoff given to Claude. Scheduled runs, catch-ups and manual runs
@@ -199,6 +210,10 @@ def run(cfg: dict, spend: dict) -> str | None:
     episodes, previews = load(EPISODES), load(PREVIEWS)
     if any(e["date"] == today.isoformat() for e in episodes) and not force:
         print(f"The episode of {today} is already published.")
+        return
+    if cron and failed_attempts_today(today) >= watchdog.MAX_FAILED_RUNS:
+        # Each failed attempt paid Claude: after two, the next attempts stop until someone looks.
+        print(f"{watchdog.MAX_FAILED_RUNS} attempts already failed today: stopping, see the failed runs.")
         return
     if not (dry_run or preview or force) and publish.release_exists(f"episode-{today}"):
         # A release without its episode in the data: never publish a second one, never pay twice.
@@ -297,6 +312,9 @@ def run(cfg: dict, spend: dict) -> str | None:
         "message": " · ".join(ep["structured"]["headlines"]) + (
             f"\n⚠ {len(doubts)} fact-check doubt(s) left: check the run summary" if (doubts := (
                 ep.get("factcheck") or {}).get("doubts")) else "")}, ensure_ascii=False), encoding="utf-8")
+    if output := os.getenv("GITHUB_OUTPUT"):  # the workflow deploys the site only after a publication
+        with open(output, "a", encoding="utf-8") as f:
+            f.write("published=true\n")
     print(f"Episode published: {audio_url}")
 
 

@@ -70,7 +70,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 | Preview | *Preview episode* (manual) | ✅ | — | — | — | 🔸 Preview card |
 | Rehearsal | *Publication rehearsal* (manual) | — | 🔸 silence, or two sentences with `with_voice` | 🔸 test, deleted | 🔸 checked, not written | 🔸 checked, not written |
 | Publish | *Daily episode* without `dry_run`, or the schedule | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Watchdog | *Watchdog*, 5:00 and 6:30 Paris (and by hand) | only through the catch-up it starts | — | — | — | — |
+| Watchdog | *Watchdog*, 5:11 and 6:41 Paris (and by hand) | only through the catch-up it starts | — | — | — | — |
 | Offline rehearsal | `python tools/offline_rehearsal.py` (local) | 🔸 fixture | 🔸 silence | — | 🔸 on a copy | 🔸 on a copy |
 | Correction | *Add a correction* (manual) | — | — | — | ✅ description | ✅ pages |
 
@@ -80,7 +80,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 - **Rehearsal**: an MP3 is uploaded as a release, downloaded back from its public URL and checked in the feed and catalog, then the release is deleted. Nothing is published or committed. With `with_voice`, both voices read two short sentences (147 characters) and the sample is kept as an artifact.
 - **Catch-up** (`episode_date` option of *Daily episode*): generates a past weekday's episode with that day's news cutoff (4:05 Paris) and only the scripts aired before it; it takes its date in the feed and its description says it is a catch-up. An episode or a release that already exists for that date stops the run before any cost, and stories shared with neighbouring episodes are reported.
 - **Force** (`force` option): regenerates today's episode even if it already exists (or on a weekend), replacing the release.
-- **Watchdog**: if today's episode is not out at 5:00, it starts the daily run as scheduled (real publication, news cutoff at 4:05) and notifies the phone; at 6:30 it checks again. It waits for a run still going, and stops retrying after two failed runs in a day, since each one pays Claude.
+- **Watchdog**: if today's episode is not out at 5:11, it starts the daily run as scheduled (real publication, news cutoff at 4:05) and notifies the phone; at 6:41 it checks again. It waits for a run still going, and stops retrying after two failed runs in a day, since each one pays Claude.
 - **Correction**: see Corrections below. Free: no Claude, no ElevenLabs.
 - **Offline rehearsal**: a whole publication on a copy of the repository, free: the real pipeline with Claude answering a fixture (the real script of October 21, with labels, topics and an invented follow-up), ElevenLabs returning silence as long as the text, and no `gh`. Its fact-check raises one doubt so the light correction and the second check run, and a waiting correction is read. It prints the chapters and writes a complete site to `build/rehearsal/docs`, to look at before a change reaches a real episode. A test runs it on every push.
 
@@ -89,17 +89,17 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-schedule-dark.svg">
-    <img src="assets/diagram-schedule-light.svg" alt="Schedule: the run at 4:05 Paris time, about 2 h 40 of margin for Spotify, the 7:00 listen; in summer the 2:05 UTC cron publishes, in winter the 3:05 UTC one" width="100%">
+    <img src="assets/diagram-schedule-light.svg" alt="Schedule: attempts every 15 minutes on weekday mornings; the first one at 4:05 Paris time or later publishes, about 2 h 48 before a 7:00 listen; the others stop at once" width="100%">
   </picture>
 </p>
 
-The daily run starts at **4:05 Paris time, every weekday, public holidays included** (`generation.publish_at`). The episode is online about 15 minutes later, which leaves Spotify close to three hours to pick up the feed before a 7:00 listen. GitHub cron runs in UTC, so the workflow has two cron lines, one for summer time and one for winter time; each run reads the cron line that triggered it (not the clock, so a late start is still recognised) and only the one landing on 4:05 in Paris goes on. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
+The daily workflow makes **attempts every 15 minutes on weekday mornings, public holidays included**, off the top of the hour (one cron line, `7,22,37,52 2-5 * * 1-5` in UTC, covers both seasons). The first attempt at **4:05 Paris time** (`generation.publish_at`) or later publishes; it is online about 5 minutes later, which leaves Spotify close to three hours before a 7:00 listen. The next attempts find the episode out and stop at once, at no cost; attempts before 4:05 (winter mornings) do nothing. An attempt GitHub starts hours late still publishes the day's episode, with the news cutoff at 4:05. After two failed attempts in a day, the next ones stop, since each paid Claude. Learning of October 21 and 22: with a single run at 4:05, GitHub dropped the morning's run or started it five hours late. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
 
 ```
 gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
 ```
 
-A *Watchdog* workflow checks at **5:00 and 6:30 Paris time** that today's episode is out, and starts the catch-up if not (see Run modes). It is a separate workflow with its own schedule, so one dropped or failed daily run is caught before 7:00. If GitHub drops every schedule at once, as it did on October 21 when no commit was linked to a GitHub account, only the phone notification of a missing episode is missing too: check that it arrives each morning.
+A *Watchdog* workflow checks at **5:11 and 6:41 Paris time** that today's episode is out, and starts the catch-up if not (see Run modes): a second, independent chance. If GitHub drops every scheduled run of a morning, as on October 22, the phone notification of a missing episode is missing too: when no "Episode out" has arrived by about 5:00, start the run by hand (`gh workflow run daily-episode.yml -f dry_run=false -f as_scheduled=true`).
 
 **Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails. To check the secret, run *Watchdog* by hand with `test_notification`: it only sends a test.
 
@@ -158,7 +158,7 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 │   ├── rehearsal.yml               publication rehearsal, release deleted afterwards
 │   ├── check-spotify.yml           episode live on Spotify, and after how long
 │   ├── stats.yml                   daily download counts
-│   ├── watchdog.yml                5:00 and 6:30 check, catch-up if the episode is missing
+│   ├── watchdog.yml                5:11 and 6:41 check, catch-up if the episode is missing
 │   ├── correction.yml              add a correction to a published episode
 │   ├── api-smoke.yml               the real API accepts what the code sends (a few cents)
 │   ├── deploy-site.yml             site deployment when docs/ changes

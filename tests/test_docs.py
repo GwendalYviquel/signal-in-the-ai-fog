@@ -92,19 +92,21 @@ def test_schedule_diagram_matches_the_workflow_and_the_code(cfg):
     import datetime as dt
     from podcast import main
     wf = yaml.safe_load((WORKFLOWS / "daily-episode.yml").read_text(encoding="utf-8"))
-    crons = {f"{int(s['cron'].split()[1])}:{int(s['cron'].split()[0]):02d} UTC": s["cron"]
-             for s in wf.get("on", wf.get(True))["schedule"]}
     s = make_diagrams.SCHEDULE
+    assert [x["cron"] for x in wf.get("on", wf.get(True))["schedule"]] == [s["cron"]]
     assert s["publish_at"] == cfg["generation"]["publish_at"]
     days = {"Summer time": dt.date(2026, 7, 15), "Winter time": dt.date(2027, 1, 13)}
-    for label, _, runs in s["rows"]:
-        assert {cron for cron, _, _ in runs} == set(crons), "the diagram shows every cron line"
-        for cron, local, publishes in runs:
-            h, m = (int(v) for v in crons[cron].split()[1::-1])
-            day = days[label]
-            planned = dt.datetime(day.year, day.month, day.day, h, m, tzinfo=dt.timezone.utc)
-            assert f"{planned.astimezone(main.ZoneInfo('Europe/Paris')):%H:%M}" == local, (label, cron)
-            assert main.scheduled_run_is_due(cfg, crons[cron], planned) == publishes, (label, cron)
+    for label, _, offset in s["rows"]:
+        day = days[label]
+        drawn = make_diagrams.attempt_times(s["cron"], offset)
+        due = []
+        for hhmm in drawn:  # the diagram's Paris times are the cron's UTC times at that offset
+            h, m = (int(v) for v in hhmm.split(":"))
+            utc = dt.datetime(day.year, day.month, day.day, h - offset, m, tzinfo=dt.timezone.utc)
+            assert f"{utc.astimezone(main.ZoneInfo('Europe/Paris')):%H:%M}" == hhmm, (label, hhmm)
+            if main.scheduled_run_is_due(cfg, s["cron"], utc):
+                due.append(hhmm)
+        assert due and due[0] == min(a for a in drawn if a >= s["publish_at"]), label
 
 
 FIT = """() => {

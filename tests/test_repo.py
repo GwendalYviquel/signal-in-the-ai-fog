@@ -114,10 +114,12 @@ def test_daily_manual_run_defaults_to_dry_run():
     assert inputs["dry_run"]["default"] is True and inputs["force"]["default"] is False
 
 
-def test_daily_publication_steps_are_skipped_in_dry_run():
+def test_daily_publication_steps_run_only_after_a_publication():
+    # Dry runs, early attempts and attempts finding the episode out publish nothing: no deployment.
     steps = next(iter(workflow("daily-episode.yml")["jobs"].values()))["steps"]
     publication = [s for s in steps if "pages" in s.get("uses", "") or s.get("name") == "Deploy the RSS feed"]
-    assert len(publication) == 3 and all(s.get("if") == "env.DRY_RUN == 'false'" for s in publication)
+    assert len(publication) == 3
+    assert all(s.get("if") == "steps.generate.outputs.published == 'true'" for s in publication)
 
 
 @pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml", "rehearsal.yml", "check-voices.yml"])

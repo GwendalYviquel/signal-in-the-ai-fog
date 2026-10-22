@@ -1,14 +1,14 @@
 name: Daily episode
 
 on:
-  # GitHub schedules in UTC. Two lines keep the run at 4:05 Paris time all year
-  # (generation.publish_at); the code keeps only the one matching today's offset.
-  # Every weekday, public holidays included.
+  # Attempts every 15 minutes on weekday mornings, off the top of the hour, both seasons (UTC):
+  # summer 4:07-7:52 Paris, winter 3:07-6:52. The first attempt at generation.publish_at (4:05 Paris)
+  # or later publishes; the others stop at once (episode already out). Learning (2026-10-21/22):
+  # GitHub dropped or delayed single scheduled runs by hours. Every weekday, holidays included.
   # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
   # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
   schedule:
-    - cron: "5 2 * * 1-5"   # 4:05 Paris in summer time (UTC+2)
-    - cron: "5 3 * * 1-5"   # 4:05 Paris in winter time (UTC+1)
+    - cron: "7,22,37,52 2-5 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -33,6 +33,7 @@ permissions:
   pages: write      # publish the RSS feed
   id-token: write
   issues: read      # listener suggestions accepted by the owner
+  actions: read     # count today's failed attempts before paying for another
 
 concurrency:
   group: daily-episode
@@ -72,6 +73,7 @@ jobs:
         run: python -m pytest -q
 
       - name: Generate the episode
+        id: generate
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_WORKSPACE_ID: ${{ secrets.ANTHROPIC_WORKSPACE_ID }}   # optional, for keys not scoped to a workspace
@@ -101,18 +103,18 @@ jobs:
           git pull --rebase origin main
           git push
       - name: Configure GitHub Pages
-        if: env.DRY_RUN == 'false'
+        if: steps.generate.outputs.published == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload the RSS feed
-        if: env.DRY_RUN == 'false'
+        if: steps.generate.outputs.published == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
 
       - name: Deploy the RSS feed
         id: deploy
-        if: env.DRY_RUN == 'false'
+        if: steps.generate.outputs.published == 'true'
         uses: actions/deploy-pages@v4
 
       - name: Notify the phone

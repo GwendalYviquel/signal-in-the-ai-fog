@@ -10,8 +10,8 @@ Everything runs in GitHub Actions on the public repository; nothing runs on a se
 
 | Workflow | When | Paid services |
 | --- | --- | --- |
-| *Daily episode* | weekdays 4:05 Paris (two crons, summer and winter), or by hand | Claude (Sonnet 5.5 + Haiku 5.5), ElevenLabs |
-| *Watchdog* | weekdays 5:00 and 6:30 Paris, or by hand | none (it may start *Daily episode*) |
+| *Daily episode* | attempts every 15 min on weekday mornings, the first at 4:05 Paris or later publishes; or by hand | Claude (Sonnet 5.5 + Haiku 5.5), ElevenLabs |
+| *Watchdog* | weekdays 5:11 and 6:41 Paris, or by hand | none (it may start *Daily episode*) |
 | *Preview episode* | by hand | Claude only |
 | *Add a correction* | by hand | none |
 | *Publication rehearsal*, *Check voices* | by hand, or on a change of `config.yaml` | ElevenLabs, a few characters |
@@ -64,7 +64,7 @@ Once the day's episode is out, the preview stops before any cost; add `-f force=
 
 ### 3. The first scheduled episode (the next weekday, 4:05 Paris)
 
-- A phone notification "Episode out" by about 4:30 (or a watchdog notification at 5:00).
+- A phone notification "Episode out" by about 4:30 (or a watchdog notification at 5:11). None by 5:00: start the run by hand, `gh workflow run daily-episode.yml -f dry_run=false -f as_scheduled=true`.
 - Listen: do the chapters (description in Spotify, or the episode page) land at the right moments?
 - Read: labels, topics and their spelling against the existing topics, a follow-up if any (it must quote a real earlier What to watch).
 - *Check Spotify* records the delay in `data/spotify.json`.
@@ -99,6 +99,6 @@ python -m http.server --directory build/rehearsal/docs
 
 ## Known limits
 
-- If GitHub drops every schedule at once, the watchdog is dropped too: the missing phone notification is then the only sign.
+- GitHub's schedules are best effort. On October 21 the morning run started five hours late; on October 22 no scheduled run of the morning started at all (daily, watchdog, Spotify check). Attempts every 15 minutes make one dropped run harmless, not a whole morning dropped: then the missing "Episode out" notification is the only sign. If it happens again, an external scheduler (for example cron-job.org calling the `workflow_dispatch` API with a token limited to this repository) is the next step.
 - An accepted suggestion can still be edited by its author afterwards: the prompt treats it as data, never as instructions, and the usual checks apply.
 - The fact-check reads at most `factcheck.max_chars_per_source` characters of each page, and skips pages it cannot read (reported as unverifiable); a doubt left after the last attempt is reported, not blocking.

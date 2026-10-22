@@ -77,6 +77,6 @@ def test_checks_cover_the_morning_window_in_both_seasons():
     [cron] = [s["cron"] for s in wf.get("on", wf.get(True))["schedule"]]
     minute, hours, *_, days = cron.split()
     first, last = (int(h) for h in hours.split("-"))
-    assert minute == "*/15" and days == "1-5"
+    assert len(minute.split(",")) == 4 and "0" not in minute.split(",") and days == "1-5"  # every 15 min, off the hour
     # Publication at 2:05 UTC in summer and 3:05 UTC in winter; the listen at 5:00 or 6:00 UTC.
     assert first <= 2 and last >= 6

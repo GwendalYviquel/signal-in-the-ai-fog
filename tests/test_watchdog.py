@@ -32,22 +32,22 @@ def gh(monkeypatch):
 
 
 WEDNESDAY = dt.date(2026, 10, 21)  # summer time
-FIVE_SUMMER = "0 3 * * 1-5"
+FIVE_SUMMER = "11 3 * * 1-5"
 
 
-def test_every_weekday_of_2026_and_2027_is_checked_at_5_00_and_6_30(cfg):
+def test_every_weekday_of_2026_and_2027_is_checked_at_both_watchdog_times(cfg):
     # Both daylight saving changes included: exactly the two watchdog times each day.
     day = dt.date(2026, 1, 1)
     while day < dt.date(2028, 1, 1):
         if day.weekday() < 5:
             due = sorted(watchdog.cron_local_time(c, utc(day, c), "Europe/Paris") for c in CRONS
                          if watchdog.cron_local_time(c, utc(day, c), "Europe/Paris") in cfg["generation"]["watchdog_at"])
-            assert due == ["05:00", "06:30"], day
+            assert due == ["05:11", "06:41"], day
         day += dt.timedelta(days=1)
 
 
 def test_the_other_side_of_daylight_saving_does_nothing(cfg, gh):
-    assert watchdog.check(cfg, "0 4 * * 1-5", utc(WEDNESDAY, "0 4 * * 1-5"), []) == "not due"
+    assert watchdog.check(cfg, "11 4 * * 1-5", utc(WEDNESDAY, "11 4 * * 1-5"), []) == "not due"
     assert gh["started"] == 0 and gh["sent"] == []
 
 
@@ -78,7 +78,7 @@ def test_one_failed_run_is_retried(cfg, gh):
 def test_retries_stop_after_two_failures_each_costs_claude(cfg, gh):
     gh["runs"] = [{"status": "completed", "conclusion": "failure", "event": e, "url": f"https://run/{e}"}
                   for e in ("workflow_dispatch", "schedule")]
-    assert watchdog.check(cfg, "30 4 * * 1-5", utc(WEDNESDAY, "30 4 * * 1-5"), []) == "gave up"
+    assert watchdog.check(cfg, "41 4 * * 1-5", utc(WEDNESDAY, "41 4 * * 1-5"), []) == "gave up"
     assert gh["started"] == 0
     [(title, kw)] = gh["sent"]
     assert title == "Episode missing, no more retries" and kw["priority"] == 5
@@ -91,8 +91,8 @@ def test_weekend_needs_no_episode(cfg, gh):
 
 def test_winter_time_uses_the_other_crons(cfg, gh):
     winter = dt.date(2026, 11, 4)
-    assert watchdog.check(cfg, FIVE_SUMMER, utc(winter, FIVE_SUMMER), []) == "not due"  # 4:00 in Paris
-    assert watchdog.check(cfg, "0 4 * * 1-5", utc(winter, "0 4 * * 1-5"), []) == "started"
+    assert watchdog.check(cfg, FIVE_SUMMER, utc(winter, FIVE_SUMMER), []) == "not due"  # 4:11 in Paris
+    assert watchdog.check(cfg, "11 4 * * 1-5", utc(winter, "11 4 * * 1-5"), []) == "started"
 
 
 def test_catch_up_is_a_real_run_with_the_scheduled_news_cutoff(monkeypatch):

@@ -31,6 +31,8 @@ def repo(tmp_path, monkeypatch):
                        "COST_CHARTS": tmp_path / "assets"}.items():
         monkeypatch.setattr(main, name, path)
     monkeypatch.delenv("GITHUB_STEP_SUMMARY", raising=False)
+    monkeypatch.delenv("GITHUB_OUTPUT", raising=False)
+    monkeypatch.setattr(main, "failed_attempts_today", lambda today: 0)  # never asks GitHub
     monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
     for var in ("DRY_RUN", "PREVIEW", "FORCE", "SCHEDULE", "AS_SCHEDULED", "EPISODE_DATE"):
         monkeypatch.delenv(var, raising=False)
@@ -298,3 +300,11 @@ def test_a_catch_up_never_reads_corrections(repo, mocks, monkeypatch):
     monkeypatch.setenv("EPISODE_DATE", "2026-10-16")
     main.main()
     assert read(repo / "data/episodes.json")[0]["corrections"][0]["aired_in"] is None
+
+
+def test_a_dry_run_never_tells_the_workflow_it_published(repo, mocks, monkeypatch):
+    output = repo / "github_output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(output))
+    monkeypatch.setenv("DRY_RUN", "true")
+    main.main()
+    assert mocks["generate"] == 1 and not output.exists()

@@ -2,16 +2,16 @@ name: Watchdog
 
 # Is today's episode out after the 4:05 publication? If not, the catch-up run starts on its own
 # and a phone notification says so (podcast/watchdog.py). Four cron lines keep both checks at
-# generation.watchdog_at (5:00 and 6:30 Paris time) all year; the code keeps only the ones
+# generation.watchdog_at (5:11 and 6:41 Paris time, off the top of the hour) all year; the code keeps only the ones
 # matching today's offset. A separate workflow, so a dropped daily schedule is still caught.
 on:
   # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
   # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
   schedule:
-    - cron: "0 3 * * 1-5"    # 5:00 Paris in summer time
-    - cron: "0 4 * * 1-5"    # 5:00 Paris in winter time
-    - cron: "30 4 * * 1-5"   # 6:30 Paris in summer time
-    - cron: "30 5 * * 1-5"   # 6:30 Paris in winter time
+    - cron: "11 3 * * 1-5"   # 5:11 Paris in summer time
+    - cron: "11 4 * * 1-5"   # 5:11 Paris in winter time
+    - cron: "41 4 * * 1-5"   # 6:41 Paris in summer time
+    - cron: "41 5 * * 1-5"   # 6:41 Paris in winter time
   workflow_dispatch:
     inputs:
       test_notification:

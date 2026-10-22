@@ -38,8 +38,8 @@ def send(title: str, message: str, priority: int = 3, tags: list[str] | None = N
 def daily(status: str, run_url: str, published: Path = PUBLISHED) -> bool:
     """After the daily run: published, or failed. Quiet otherwise (weekend, other cron, already out)."""
     if status != "success":
-        return send("Episode failed", f"The daily run ended with status {status}. The watchdog retries "
-                    "at 5:00 and 6:30 if no episode is out.", priority=5, tags=["rotating_light"], click=run_url)
+        return send("Episode failed", f"The daily run ended with status {status}. The next attempt, in "
+                    "15 minutes, retries if no episode is out.", priority=5, tags=["rotating_light"], click=run_url)
     if not published.exists():
         return False
     ep = json.loads(published.read_text(encoding="utf-8"))

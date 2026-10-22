@@ -22,13 +22,14 @@ generation:
   max_tokens: 16000                  # room for the episode after long web searches
   web_search_max_uses: 15
   timezone: "Europe/Paris"
-  # Paris time the scheduled run starts, all year: the episode is online about 15 minutes later,
-  # leaving Spotify close to 3 hours to pick up the feed before a 7:00 listen. The two crons in
-  # .github/workflows/daily-episode.yml (summer and winter) must match it: a test checks.
+  # News cutoff, and the Paris time from which a scheduled attempt publishes. Attempts run every
+  # 15 minutes on weekday mornings (.github/workflows/daily-episode.yml); the first one at this
+  # time or later publishes, about 5 minutes later, leaving Spotify close to 3 hours before a 7:00
+  # listen. A test checks every weekday of two years gets an attempt within minutes of it.
   publish_at: "04:05"
   # Paris times the watchdog checks that today's episode is out, and starts the catch-up if not.
   # The four crons in .github/workflows/watchdog.yml must match them: a test checks.
-  watchdog_at: ["05:00", "06:30"]
+  watchdog_at: ["05:11", "06:41"]
   target_words: 880                  # about 6 minutes spoken
 
 sources:

@@ -8,7 +8,7 @@ on:
   # GitHub only fires a schedule for a commit linked to a GitHub account: the last commit
   # changing this file must use a GitHub noreply email (see test_schedules_are_owned_by_a_github_account).
   schedule:
-    - cron: "*/15 2-6 * * 1-5"
+    - cron: "7,22,37,52 2-6 * * 1-5"   # off the top of the hour, when GitHub drops the most runs
   workflow_dispatch:
 
 permissions:
