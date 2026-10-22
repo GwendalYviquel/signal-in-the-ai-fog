@@ -10,8 +10,8 @@ The projection runs the cost of a published episode over the month's episode day
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [Signal in the AI Fog](signal-in-the-ai-fog/COSTS.md) | 34 | 4 | $3.52 | 19,860 | $16.87 | 107,244 |
 | [Signal in the Tax Fog](accounting-news-fr/COSTS.md) | 1 | 0 | $1.11 | 0 | $1.11 | 0 |
-| [Signal in the HR Fog](hr-news-fr/COSTS.md) | 3 | 0 | $1.85 | 0 | $1.85 | 0 |
-| **All shows** | **38** | **4** | **$6.48** | **19,860** | **$19.82** | **107,244** |
+| [Signal in the HR Fog](hr-news-fr/COSTS.md) | 4 | 0 | $3.81 | 0 | $3.81 | 0 |
+| **All shows** | **39** | **4** | **$8.44** | **19,860** | **$21.78** | **107,244** |
 
 **ElevenLabs credits are one quota shared by every show**: 19,860 characters used this month, about 107,244 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
 

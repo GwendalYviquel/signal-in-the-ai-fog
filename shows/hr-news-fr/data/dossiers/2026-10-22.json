@@ -1,0 +1,522 @@
+{
+ "items": [
+  {
+   "title": "PLFSS 2027 : rejeté en commission, examiné en séance à l'Assemblée",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Le projet de loi de financement de la sécurité sociale pour 2027 (texte numéro 3211) a été déposé à l'Assemblée le jeudi premier octobre deux mille vingt-six.",
+     "quote": "déposé le jeudi 1er octobre 2026",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/textes/l17b3211_projet-loi",
+     "status": "unread"
+    },
+    {
+     "statement": "La commission des affaires sociales a examiné puis rejeté le texte, du lundi douze au vendredi seize octobre.",
+     "quote": "la commission des affaires sociales a examiné puis",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/plfss-pour-2027-examen-et-rejet-du-projet-de-loi-en-commission-des-affaires-sociales",
+     "status": "unread"
+    },
+    {
+     "statement": "L'examen en séance publique à l'Assemblée a commencé le mardi vingt octobre deux mille vingt-six dans l'après-midi.",
+     "quote": "À partir du mardi 20 octobre 2026 après-midi",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon EFL, le régime temporaire d'exonération de CSG-CRDS de la prime de partage de la valeur pour les entreprises de moins de cinquante salariés serait reconduit en 2027.",
+     "quote": "applicable aux entreprises de moins de 50 salariés serait reconduit en 2027",
+     "url": "https://www.efl.fr/actualite/focus-projets-loi-finances-financement-securite-sociale-2027_f3cac8ad4-768b-4c6b-acf4-ee0aad7d69b6",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon EFL, le malus pour défaut de négociation sur l'emploi des seniors serait supprimé, sans s'être jamais appliqué.",
+     "quote": "serait supprimé, sans s'être jamais appliqué.",
+     "url": "https://www.efl.fr/actualite/focus-projets-loi-finances-financement-securite-sociale-2027_f3cac8ad4-768b-4c6b-acf4-ee0aad7d69b6",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon EFL, les indemnités journalières maladie et AT/MP seraient soumises à la CSG au taux de neuf virgule deux pour cent à partir de 2027.",
+     "quote": "soumises à la CSG au taux de droit commun de 9,2 % à partir de 2027",
+     "url": "https://www.efl.fr/actualite/focus-projets-loi-finances-financement-securite-sociale-2027_f3cac8ad4-768b-4c6b-acf4-ee0aad7d69b6",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Assemblée nationale : Projet de loi n° 3211, PLFSS pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/textes/l17b3211_projet-loi",
+     "primary": true
+    },
+    {
+     "title": "Assemblée nationale : PLFSS pour 2027, examen et rejet en commission",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/plfss-pour-2027-examen-et-rejet-du-projet-de-loi-en-commission-des-affaires-sociales",
+     "primary": true
+    },
+    {
+     "title": "Assemblée nationale : Examen du PLFSS pour 2027 en séance publique",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+     "primary": true
+    },
+    {
+     "title": "Legiwatch : PLFSS 2027, contenu et avancement",
+     "url": "https://www.legiwatch.fr/loi/plfss-2027/",
+     "primary": false
+    },
+    {
+     "title": "EFL : Focus sur les projets de loi de finances et de financement de la sécurité sociale pour 2027",
+     "url": "https://www.efl.fr/actualite/focus-projets-loi-finances-financement-securite-sociale-2027_f3cac8ad4-768b-4c6b-acf4-ee0aad7d69b6",
+     "primary": false
+    }
+   ],
+   "context": "Sujet de la semaine candidat. Étape réelle : projet déposé le 1er octobre, rejeté en commission des affaires sociales (12 au 16 octobre), donc la séance porte sur le texte du Gouvernement ; séance publique depuis le 20 octobre, première lecture annoncée jusqu'au 26 octobre. Ensuite : vote, Sénat, commission mixte paritaire, lecture définitive, éventuel Conseil constitutionnel ; rien n'est voté. Mesures au conditionnel pour paie/RH : reconduction en 2027 de l'exonération de CSG-CRDS de la prime de partage de la valeur (moins de 50 salariés), pérennisation du régime social de la renonciation à des jours de repos, suppression du malus seniors, IJSS maladie et AT/MP soumises à la CSG à 9,2 pour cent dès 2027. Aucune règle de paie 2027 n'est stabilisée avant le vote final : prévoir des scénarios. Ne pas citer de nombre d'amendements (chiffres divergents entre sources). CPF et France compétences relèvent du PLF, traités à part."
+  },
+  {
+   "title": "Prime carburant : plafond d'exonération relevé à mille euros par deux décrets",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Le décret numéro 2026-973 du vingt octobre 2026 procède au déclassement de dispositions législatives du Code de la sécurité sociale.",
+     "quote": "qui procède au déclassement de certaines dispositions législatives du Code de la sécurité sociale",
+     "url": "https://www.naudrh.com/2026/10/prime-carburant-et-mobilites-durables-2026-le-plafond-de-1-000-autorise-t-il-de-nouvelles-aides-aux-agents-territoriaux.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le décret numéro 2026-974 du vingt octobre 2026, fixant les plafonds d'exonération de CSG, est publié au Journal officiel du vingt et un octobre.",
+     "quote": "publié au Journal officiel du 21 octobre",
+     "url": "https://www.naudrh.com/2026/10/prime-carburant-et-mobilites-durables-2026-le-plafond-de-1-000-autorise-t-il-de-nouvelles-aides-aux-agents-territoriaux.html",
+     "status": "unread"
+    },
+    {
+     "statement": "La prime carburant, facultative pour l'employeur, peut être exonérée de CSG et de cotisations salariales dans la limite de mille euros pour les périodes d'activité à compter du premier octobre deux mille vingt-six.",
+     "quote": "dans la limite de 1 000 euros au titre des périodes d’activité courant à compter du 1er octobre 2026",
+     "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+     "status": "verified"
+    },
+    {
+     "statement": "Le plafond annuel commun prime carburant, recharge de véhicules électriques et forfait mobilités durables passe temporairement de six cents à mille euros.",
+     "quote": "passe temporairement de 600 à 1 000 euros",
+     "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+     "status": "verified"
+    },
+    {
+     "statement": "La limite spécifique aux frais de carburant est relevée de trois cents à mille euros.",
+     "quote": "est également relevée de 300 à 1 000 euros",
+     "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+     "status": "verified"
+    },
+    {
+     "statement": "Le relèvement avait été annoncé le vingt-deux septembre par le ministre des PME et du Pouvoir d'achat.",
+     "quote": "Annoncé le 22 septembre par Serge Papin",
+     "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 21 octobre 2026, n° 0246",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/10/21/0246",
+     "primary": true
+    },
+    {
+     "title": "Toutsurmesfinances : Prime carburant 2026, 1 000 euros sans CSG-CRDS",
+     "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre",
+     "primary": false
+    },
+    {
+     "title": "Naudrh : Prime carburant et mobilités durables 2026",
+     "url": "https://www.naudrh.com/2026/10/prime-carburant-et-mobilites-durables-2026-le-plafond-de-1-000-autorise-t-il-de-nouvelles-aides-aux-agents-territoriaux.html",
+     "primary": false
+    }
+   ],
+   "context": "Textes parus (décrets du 20 octobre, JO du 21 octobre). Plafond commun passe temporairement de 600 à 1000 euros, plafond carburant de 300 à 1000 euros ; mesure facultative, périodes d'activité depuis le 1er octobre 2026, sommes versées jusqu'au 31 décembre 2026 selon la presse. Pour la paie : paramétrage des rubriques exonérées, régularisation de primes déjà versées depuis le 1er octobre, cumul avec le forfait mobilités durables, mode de mise en place (accord ou décision unilatérale). Montants lus en source secondaire : formuler avec prudence. Candidat au chiffre de la semaine : mille euros."
+  },
+  {
+   "title": "Cour de cassation : arrêts publiés du 7 octobre sur harcèlement, médecin du travail, salarié protégé",
+   "theme": "Droit du travail",
+   "facts": [
+    {
+     "statement": "Arrêt de la chambre sociale du sept octobre deux mille vingt-six, publié au Bulletin : l'action en réparation du manquement à l'obligation de prévention du harcèlement moral se prescrit par deux ans.",
+     "quote": "se prescrit par deux ans",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "primary": false
+    },
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    }
+   ],
+   "context": "Décisions datées du 7 octobre 2026, hors fenêtre stricte de sept jours (environ quinze jours) mais commentées cette semaine. Points pratiques : prescription de deux ans de l'action en réparation du défaut de prévention du harcèlement, distincte du régime du harcèlement lui-même ; non-respect des préconisations du médecin du travail réparable sans preuve d'un préjudice de santé ; autorisation préalable de l'inspection du travail pour transférer un salarié protégé par convention tripartite. Risque contentieux. Ne pas nommer les parties."
+  },
+  {
+   "title": "Procès-verbaux du CSE : l'enregistrement des séances ne sert qu'à rédiger le procès-verbal",
+   "theme": "Dialogue social",
+   "facts": [
+    {
+     "statement": "L'établissement du procès-verbal est une prérogative exclusive du secrétaire du CSE.",
+     "quote": "prérogative exclusive du secrétaire du comité social et économique",
+     "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un cabinet d'avocats, l'enregistrement ne peut servir qu'à faciliter la rédaction du procès-verbal.",
+     "quote": "ne peut servir à autre chose qu’à faciliter la rédaction du PV",
+     "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "La Cour a relevé que l'employeur avait agi à des fins étrangères à l'établissement des procès-verbaux par le secrétaire.",
+     "quote": "à des fins étrangères à l’obligation légale d’établissement par le secrétaire",
+     "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    },
+    {
+     "title": "Kohen Avocats : Désaccord sur la rédaction des procès-verbaux du CSE",
+     "url": "https://kohenavocats.com/desaccord-redaction-proces-verbal-cse-limites-employeur-octobre-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Arrêt du 7 octobre, commenté cette semaine ; hors fenêtre stricte, à présenter comme décision récente. L'employeur, président du CSE, ne peut utiliser un enregistrement ou une retranscription que pour aider à rédiger le procès-verbal, dont l'établissement revient au secrétaire. À vérifier : règlement intérieur du CSE, outils de transcription ou d'IA en réunion, conservation et accès aux enregistrements."
+  },
+  {
+   "title": "Salaires de branche : extensions d'accords au Journal officiel du 13 et du 16 octobre",
+   "theme": "Dialogue social",
+   "facts": [
+    {
+     "statement": "L'arrêté du treize octobre deux mille vingt-six portant extension d'accords régionaux Provence-Alpes-Côte d'Azur est paru au Journal officiel du seize octobre.",
+     "quote": "JORF n°0242 du 16 octobre 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988660",
+     "status": "unread"
+    },
+    {
+     "statement": "L'accord régional PACA du six juillet deux mille vingt-six relatif aux salaires est rendu obligatoire dans le bâtiment.",
+     "quote": "l'accord régional (Provence-Alpes-Côte d'Azur) du 6 juillet 2026 relatif aux salaires",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988660",
+     "status": "unread"
+    },
+    {
+     "statement": "L'accord du vingt juillet deux mille vingt-six relatif aux salaires dans les commerces de gros est étendu par arrêté du huit octobre, paru au Journal officiel du treize octobre.",
+     "quote": "les stipulations de l'accord du 20 juillet 2026 relatif aux salaires",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054977774",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Arrêté du 8 octobre 2026 portant extension d'un accord, commerces de gros",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054977774",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Arrêté du 13 octobre 2026 portant extension d'accords régionaux PACA, bâtiment",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054988660",
+     "primary": true
+    }
+   ],
+   "context": "Arrêtés d'extension publiés : accord salaires du 20 juillet 2026 dans les commerces de gros (JO du 13 octobre) ; accords régionaux PACA du 6 juillet 2026 sur les salaires dans le bâtiment (JO du 16 octobre). Pour la paie : vérifier la convention applicable, la grille étendue, la date d'effet, comparer les minima de branche au SMIC et aux NAO. L'extension rend l'accord obligatoire à tous les employeurs du champ."
+  },
+  {
+   "title": "CPF : reste à charge majoré dans le projet de loi de finances, rétroactivité contestée",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "L'article quatre-vingt-neuf du projet de loi de finances pour 2027 recentre le CPF sur les projets professionnels et les métiers prioritaires.",
+     "quote": "recentre le compte personnel de formation sur les projets professionnels et les métiers prioritaires",
+     "url": "https://axio-formation.com/blog/reste-a-charge-cpf-2027/",
+     "status": "verified"
+    },
+    {
+     "statement": "La participation forfaitaire est de cent cinquante euros par formation depuis le deux avril deux mille vingt-six.",
+     "quote": "par formation depuis le 2 avril 2026",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Mon Compte Formation annonce un complément pouvant atteindre deux cents euros, soit trois cent cinquante euros au total, pour les demandes validées depuis le deux octobre deux mille vingt-six.",
+     "quote": "au total, pour les demandes validées depuis le 2 octobre 2026",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "La rétroactivité n'est pas votée : le Parlement peut la modifier.",
+     "quote": "Cette rétroactivité n'est pas votée : le Parlement peut la modifier",
+     "url": "https://clic-campus.fr/cpf/reste-a-charge-cpf-2027/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Axio Formation : Reste à charge CPF 2027",
+     "url": "https://axio-formation.com/blog/reste-a-charge-cpf-2027/",
+     "primary": false
+    },
+    {
+     "title": "OpcoDirect : Reste à charge CPF, 150 euros en 2026, jusqu'à 350 euros en 2027",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "primary": false
+    },
+    {
+     "title": "Clic Campus : Reste à charge CPF, ce qui change en 2027",
+     "url": "https://clic-campus.fr/cpf/reste-a-charge-cpf-2027/",
+     "primary": false
+    },
+    {
+     "title": "AEF info : dépêches formation professionnelle",
+     "url": "https://www.aefinfo.fr/depeche/755438-france-competences-lance-deux-enquetes-sur-les-certifications-professionnelles-et-la-qualite-de-lapprentissage",
+     "primary": false
+    }
+   ],
+   "context": "Mesure inscrite à l'article 89 du PLF 2027, non votée ; Mon Compte Formation applique déjà un engagement de paiement éventuel en 2027 aux demandes validées depuis le 2 octobre (une source parle du 1er octobre : dire début octobre). Complément jusqu'à 200 euros, sauf secteurs prioritaires, cofinancement d'au moins 150 euros, VAE, projets de transition professionnelle. Recours annoncés (Conseil d'État selon AEF). Impact RH : abondement employeur, information des salariés, lien avec l'entretien professionnel. Sources secondaires : label reported."
+  },
+  {
+   "title": "France compétences : zéro euro de dotation de l'État en 2027 selon le Jaune budgétaire",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "Selon un site spécialisé, l'État donnait quatre milliards d'euros à France compétences en 2022 et ne donnera rien en 2027.",
+     "quote": "En 2027, il ne donnera rien.",
+     "url": "https://cpformation.com/france-competences-letat-coupe-le-robinet-zero-euro-en-2027/",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon ce site, depuis 2026 les contributions des entreprises couvrent cent pour cent des dépenses de France compétences.",
+     "quote": "les contributions des entreprises couvrent 100 % des dépenses de France compétences",
+     "url": "https://cpformation.com/france-competences-letat-coupe-le-robinet-zero-euro-en-2027/",
+     "status": "unread"
+    },
+    {
+     "statement": "France compétences a mis en ligne le dix-neuf octobre deux mille vingt-six le référentiel unique des niveaux de prise en charge des contrats d'apprentissage, version de septembre.",
+     "quote": "Référentiel unique avec l’ensemble des niveaux de prise en charge des contrats d’apprentissage",
+     "url": "https://www.francecompetences.fr/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "France compétences : actualités et publications",
+     "url": "https://www.francecompetences.fr/",
+     "primary": true
+    },
+    {
+     "title": "CP Formation : France compétences, l'État coupe le robinet, zéro euro en 2027",
+     "url": "https://cpformation.com/france-competences-letat-coupe-le-robinet-zero-euro-en-2027/",
+     "primary": false
+    },
+    {
+     "title": "AEF info : dépêches formation professionnelle",
+     "url": "https://www.aefinfo.fr/depeche/755438-france-competences-lance-deux-enquetes-sur-les-certifications-professionnelles-et-la-qualite-de-lapprentissage",
+     "primary": false
+    }
+   ],
+   "context": "Selon un site spécialisé citant le Jaune, dotation de l'État de 472 millions d'euros en 2026 et zéro en 2027 ; dépenses prévues de 12,2 milliards d'euros en 2026. Candidat au chiffre de la semaine : zéro euro en 2027 contre quatre milliards en 2022 (source secondaire, à présenter comme rapporté). Enjeux : pression sur CPF et alternance, contributions formation des employeurs. Côté primaire : référentiel de prise en charge des contrats d'apprentissage publié le 19 octobre."
+  },
+  {
+   "title": "Aide à l'embauche d'un apprenti : reconduite pour 2026, 2027 en suspens",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "L'aide à l'embauche d'un apprenti est reconduite en 2026 par le décret du six mars deux mille vingt-six.",
+     "quote": "est reconduite en 2026 par le décret n° 2026-168 du 6 mars 2026",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/embauche-dun-apprenti-vous-avez-droit-des-aides",
+     "status": "verified"
+    },
+    {
+     "statement": "Elle s'applique aux contrats d'apprentissage conclus entre le huit mars et le trente et un décembre deux mille vingt-six.",
+     "quote": "contrats d'apprentissage conclus entre le 8 mars 2026 et le 31 décembre 2026",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/embauche-dun-apprenti-vous-avez-droit-des-aides",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Ministère de l'Économie : Embauche d'un apprenti, vous avez droit à des aides",
+     "url": "https://www.economie.gouv.fr/entreprises/gerer-ses-ressources-humaines-et-ses-salaries/embauche-dun-apprenti-vous-avez-droit-des-aides",
+     "primary": true
+    },
+    {
+     "title": "Aurlom : Aides à l'embauche d'un apprenti, 2026 acté, 2027 en suspens",
+     "url": "https://www.aurlom.com/alternance-bts/droits/aides-embauche",
+     "primary": false
+    }
+   ],
+   "context": "Pas de texte nouveau cette semaine : rappel pour les contrats à conclure avant le 31 décembre 2026 ; la suite dépend de la loi de finances 2027. Vérifier les montants auprès des simulateurs officiels et de l'Opco."
+  },
+  {
+   "title": "Règlement européen sur l'IA : haut risque en matière d'emploi reporté au 2 décembre 2027",
+   "theme": "SIRH et IA",
+   "facts": [
+    {
+     "statement": "Les obligations de transparence de l'article 50 du règlement sur l'IA s'appliquent depuis le deux août deux mille vingt-six.",
+     "quote": "L’article 50 s’applique depuis le 2 août 2026.",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "status": "verified"
+    },
+    {
+     "statement": "Les obligations pleines pour les systèmes à haut risque de l'annexe III sont reportées du deux août deux mille vingt-six au deux décembre deux mille vingt-sept.",
+     "quote": "sont reportées du 2 août 2026 au 2 décembre 2027",
+     "url": "https://www.village-justice.com/articles/guide-pratique-double-conformite-pour-les-entreprises-apres-digital-omnibus,57912.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le report donne seize mois de délai pour un outil de tri de CV, pas une exemption.",
+     "quote": "vous gagnez seize mois, pas une exemption.",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Iones : AI Act août 2026, obligations et report Omnibus",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "primary": false
+    },
+    {
+     "title": "Village de la Justice : double conformité après le Digital Omnibus",
+     "url": "https://www.village-justice.com/articles/guide-pratique-double-conformite-pour-les-entreprises-apres-digital-omnibus,57912.html",
+     "primary": false
+    }
+   ],
+   "context": "Pas d'actualité datée de la semaine : point d'étape en sources secondaires (dates de vote divergentes, ne pas les citer). Article 50 applicable depuis le 2 août 2026 ; haut risque de l'annexe III, dont l'emploi, reporté au 2 décembre 2027 ; le report n'est pas une exemption. Pour un service RH : cartographier les outils de tri de CV et de scoring, interroger les éditeurs sur leur conformité, informer salariés et CSE."
+  },
+  {
+   "title": "Transparence salariale : le projet de loi de transposition attend le Parlement",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "Le projet de loi transposant la directive sur la transparence des rémunérations a été présenté en Conseil des ministres le dix septembre deux mille vingt-six.",
+     "quote": "a été présenté en Conseil des ministres le 10 septembre 2026",
+     "url": "https://www.sancy-avocats.com/academie/projet-loi-transparence-salariale",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Gouvernement entend transmettre le texte au Sénat avant la fin de l'année deux mille vingt-six, puis à l'Assemblée au début de l'année suivante.",
+     "quote": "transmettre le texte au Sénat avant la fin de l'année 2026",
+     "url": "https://www.sancy-avocats.com/academie/projet-loi-transparence-salariale",
+     "status": "verified"
+    },
+    {
+     "statement": "Le délai de transposition de la directive a expiré le sept juin deux mille vingt-six.",
+     "quote": "alors que le délai de transposition est expiré depuis le 7 juin",
+     "url": "https://www.sancy-avocats.com/academie/loi-transparence-salariale",
+     "status": "verified"
+    },
+    {
+     "statement": "Le seuil de cinquante salariés est maintenu alors que la directive ne vise que les employeurs d'au moins cent salariés.",
+     "quote": "Le seuil de 50 salariés est maintenu alors que la directive ne vise que les employeurs d'au moins 100 salariés",
+     "url": "https://www.sancy-avocats.com/academie/projet-loi-transparence-salariale",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sancy Avocats : Projet de loi transparence salariale, ce que prévoit le texte",
+     "url": "https://www.sancy-avocats.com/academie/projet-loi-transparence-salariale",
+     "primary": false
+    },
+    {
+     "title": "Sancy Avocats : Loi transparence salariale, où en est la France en 2026",
+     "url": "https://www.sancy-avocats.com/academie/loi-transparence-salariale",
+     "primary": false
+    }
+   ],
+   "context": "Projet présenté le 10 septembre 2026, non adopté ; délai de transposition expiré le 7 juin 2026, donc aucune obligation nouvelle opposable à un employeur privé à ce jour. Calendrier annoncé : Sénat avant fin 2026, Assemblée début 2027. Pas d'actualité datée de cette semaine : sujet de suivi. Pour la paie/RH : catégories d'emplois, critères de classification, fourchettes de rémunération à l'embauche."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-10-26",
+   "text": "Fin prévue de la première lecture du PLFSS 2027 à l'Assemblée nationale"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "Fin du délai pour le marquage lisible par machine des contenus d'IA existants"
+  },
+  {
+   "date": "2026-12-31",
+   "text": "Fin de la période d'exonération renforcée de la prime carburant"
+  },
+  {
+   "date": "2026-12-31",
+   "text": "Date limite de conclusion des contrats d'apprentissage au régime d'aide 2026"
+  },
+  {
+   "date": "2027-12-02",
+   "text": "Application reportée des obligations IA à haut risque en matière d'emploi"
+  }
+ ],
+ "checked": {
+  "verified": 22,
+  "unread": 13,
+  "dropped": 9
+ },
+ "dropped": [
+  {
+   "item": "PLFSS 2027 : rejeté en commission, examiné en séance à l'Assemblée",
+   "statement": "La première lecture à l'Assemblée est prévue jusqu'au vingt-six octobre deux mille vingt-six selon Legiwatch (source secondaire).",
+   "quote": "est prévue jusqu'au 26 octobre 2026",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "PLFSS 2027 : rejeté en commission, examiné en séance à l'Assemblée",
+   "statement": "Le texte vise un déficit des régimes obligatoires de base ramené à douze virgule sept milliards d'euros (source secondaire).",
+   "quote": "à 12,7 milliards d'euros",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Prime carburant : plafond d'exonération relevé à mille euros par deux décrets",
+   "statement": "Sont concernées les sommes versées jusqu'au trente et un décembre deux mille vingt-six, selon la presse spécialisée.",
+   "quote": "pour les sommes versées d'ici le 31 décembre 2026",
+   "url": "https://www.toutsurmesfinances.com/actualites/a/prime-carburant-2026-1-000-euros-sans-csg-crds-avec-effet-des-le-1er-octobre"
+  },
+  {
+   "item": "Cour de cassation : arrêts publiés du 7 octobre sur harcèlement, médecin du travail, salarié protégé",
+   "statement": "Arrêt de la chambre sociale du sept octobre : le seul non-respect des préconisations du médecin du travail ouvre droit à réparation.",
+   "quote": "ouvre droit à réparation",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "Cour de cassation : arrêts publiés du 7 octobre sur harcèlement, médecin du travail, salarié protégé",
+   "statement": "Arrêt de la chambre sociale du sept octobre : le transfert d'un salarié protégé par convention tripartite suppose l'autorisation préalable de l'inspection du travail.",
+   "quote": "suppose l'autorisation préalable de l'inspection du travail",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "Procès-verbaux du CSE : l'enregistrement des séances ne sert qu'à rédiger le procès-verbal",
+   "statement": "Arrêt de la chambre sociale de la Cour de cassation du sept octobre deux mille vingt-six, numéro 813, mention FS-B (publié au Bulletin), rejet.",
+   "quote": "Arrêt du 7 octobre 2026 Rejet M. FLORES, président Arrêt n° 813 FS-B",
+   "url": "https://juricaf.org/recherche/2026"
+  },
+  {
+   "item": "CPF : reste à charge majoré dans le projet de loi de finances, rétroactivité contestée",
+   "statement": "Selon AEF info, deux associations vont saisir le Conseil d'État contre la rétroactivité de la réforme du CPF (dépêche du quatorze octobre).",
+   "quote": "vont saisir le Conseil d'État contre la rétroactivité affichée",
+   "url": "https://www.aefinfo.fr/depeche/755438-france-competences-lance-deux-enquetes-sur-les-certifications-professionnelles-et-la-qualite-de-lapprentissage"
+  },
+  {
+   "item": "France compétences : zéro euro de dotation de l'État en 2027 selon le Jaune budgétaire",
+   "statement": "Le Jaune budgétaire sur la formation professionnelle annexé au PLF 2027 a été publié le treize octobre deux mille vingt-six (dépêche AEF).",
+   "quote": "annexé au PLF 2027 est publié",
+   "url": "https://www.aefinfo.fr/depeche/755438-france-competences-lance-deux-enquetes-sur-les-certifications-professionnelles-et-la-qualite-de-lapprentissage"
+  },
+  {
+   "item": "Aide à l'embauche d'un apprenti : reconduite pour 2026, 2027 en suspens",
+   "statement": "Pour 2027, rien n'est acté selon un site spécialisé.",
+   "quote": "Rien n'est acté à ce jour",
+   "url": "https://www.aurlom.com/alternance-bts/droits/aides-embauche"
+  }
+ ]
+}
