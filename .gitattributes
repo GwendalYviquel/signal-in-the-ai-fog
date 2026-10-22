@@ -1,0 +1,6 @@
+# Files shared by every show, rebuilt after each pull by tools/push_main.sh: never a merge conflict.
+shows/COSTS.md merge=shared
+shows/STATS.md merge=shared
+shows/usage-dashboard-*.svg merge=shared
+docs/index.html merge=shared
+docs/i18n.json merge=shared

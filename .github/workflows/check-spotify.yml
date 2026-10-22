@@ -44,5 +44,4 @@ jobs:
           git add shows/*/data/spotify.json 2>/dev/null || exit 0
           git diff --cached --quiet && exit 0
           git commit -m "Spotify: episode seen live"
-          git pull --rebase origin main
-          git push
+          tools/push_main.sh

@@ -184,7 +184,8 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   ├── make_diagrams.py            diagrams of the README
 │   ├── offline_rehearsal.py        a whole publication on a copy, at no cost
 │   ├── api_smoke.py                the real API accepts what the code sends (a few cents)
-│   └── screenshot_site.py          screenshot of the catalog site
+│   ├── screenshot_site.py          screenshot of the catalog site
+│   └── push_main.sh                every workflow's push: rebuilds the files shared by every show
 ├── tests/                          offline test suite (pytest); fixtures/ holds a real episode
 ├── scheduler/                      Cloudflare Worker that starts the daily episode on time
 ├── .github/ISSUE_TEMPLATE/         feedback and topic suggestion forms

@@ -135,7 +135,7 @@ def test_costs_are_committed_after_every_run_even_failed(name):
     # The whole shows/ folder, or exactly each show's ledger, report and dashboard.
     assert "git add shows docs" in commit["run"] or all(
         part in commit["run"] for part in ("shows/*/data/costs.json", "shows/*/COSTS.md", "shows/*/finops-dashboard-*.svg"))
-    assert "git pull --rebase origin main" in commit["run"]
+    assert "tools/push_main.sh" in commit["run"]
 
 
 def test_published_data_is_committed_and_deployed():
@@ -263,3 +263,15 @@ def test_api_smoke_test_gets_only_the_claude_secrets():
     step_ = step(wf, "Call the real API")
     assert set(step_["env"]) == {"ANTHROPIC_API_KEY", "ANTHROPIC_WORKSPACE_ID"}
     assert step_["run"] == "python tools/api_smoke.py" and wf["permissions"] == {"contents": "read"}
+
+
+def test_every_workflow_pushes_through_the_script_that_rebuilds_the_shared_files():
+    # Learning (2026-10-22): two shows' previews both rewrote shows/COSTS.md and the second push
+    # stopped on a merge conflict, losing its script. Shared files never conflict and are rebuilt.
+    for wf in (ROOT / ".github" / "workflows").glob("*.yml"):
+        text = wf.read_text(encoding="utf-8")
+        assert "git pull --rebase" not in text, f"{wf.name}: push with tools/push_main.sh"
+    script = (ROOT / "tools" / "push_main.sh").read_text(encoding="utf-8")
+    shared = [line.split()[0] for line in (ROOT / ".gitattributes").read_text(encoding="utf-8").splitlines()
+              if line.endswith("merge=shared")]
+    assert shared and all(path in script for path in shared)

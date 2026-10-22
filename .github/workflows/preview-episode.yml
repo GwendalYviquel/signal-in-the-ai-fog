@@ -104,8 +104,7 @@ jobs:
           git diff --cached --quiet && exit 0
           if git diff --cached --name-only | grep -q "/data/previews.json$"; then msg="Preview $(TZ=Europe/Paris date +%F)"; else msg="Costs of run ${{ github.run_id }}"; fi
           git commit -m "$msg"
-          git pull --rebase origin main
-          git push
+          tools/push_main.sh
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3

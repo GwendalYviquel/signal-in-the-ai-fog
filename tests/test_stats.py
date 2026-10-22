@@ -70,6 +70,6 @@ def test_stats_workflow_runs_daily_and_redeploys_the_site():
     steps = wf["jobs"]["stats"]["steps"]
     assert any(s.get("uses", "").startswith("actions/deploy-pages") for s in steps)
     commit = next(s for s in steps if s.get("name") == "Commit the stats")
-    assert "git pull --rebase origin main" in commit["run"] and "docs" in commit["run"].split()
+    assert "tools/push_main.sh" in commit["run"] and "docs" in commit["run"].split()
     assert "shows/*/data/stats.json" in commit["run"]
     assert wf["concurrency"]["group"] == "daily-episode"

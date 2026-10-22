@@ -140,8 +140,7 @@ jobs:
           git diff --cached --quiet && exit 0
           if git diff --cached --name-only | grep -q "/data/episodes.json$"; then msg="Episode $(TZ=Europe/Paris date +%F), $SHOW"; else msg="Costs of run ${{ github.run_id }}, $SHOW"; fi
           git commit -m "$msg"
-          git pull --rebase origin main
-          git push
+          tools/push_main.sh
       - name: Configure GitHub Pages
         if: steps.generate.outputs.published == 'true'
         uses: actions/configure-pages@v5

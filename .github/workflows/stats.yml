@@ -48,8 +48,7 @@ jobs:
           git add shows/*/data/stats.json shows/*/STATS.md shows/STATS.md shows/usage-dashboard-*.svg docs
           git diff --cached --quiet && exit 0
           git commit -m "Stats $(TZ=Europe/Paris date +%F)"
-          git pull --rebase origin main
-          git push
+          tools/push_main.sh
 
       - uses: actions/configure-pages@v5
 

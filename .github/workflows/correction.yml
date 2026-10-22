@@ -62,8 +62,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add shows docs
           git commit -m "Correction to the episode of $EPISODE_DATE"
-          git pull --rebase origin main
-          git push
+          tools/push_main.sh
         env:
           EPISODE_DATE: ${{ inputs.episode_date }}
 
