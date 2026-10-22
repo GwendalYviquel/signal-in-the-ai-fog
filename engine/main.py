@@ -227,7 +227,7 @@ def run(show: shows.Show, spend: dict) -> str | None:
     previous = [p.read_text(encoding="utf-8") for p in sorted(show.scripts.glob("*.md"))
                 if p.stem < today.isoformat()][-3:]
 
-    request = {"open_items": context.open_items(show.scripts, today.isoformat()),
+    request = {"open_items": context.open_items(show.scripts, today.isoformat(), cfg=cfg),
                "topics": context.known_topics(episodes),
                "suggestions": context.accepted_suggestions()}
     ep = generate.generate_episode(cfg, editorial_now, previous, usage=spend["claude"], request=request, show=show)
@@ -274,7 +274,7 @@ def run(show: shows.Show, spend: dict) -> str | None:
     published_at = editorial_now if backfill else now  # a catch-up takes its place in the feed
     extra = {"catch_up": {"generated_at": now.replace(microsecond=0).isoformat(),
                           "news_cutoff": editorial_now.isoformat()}} if backfill else {}
-    marks = chapters.build_chapters(ep["structured"], timeline)
+    marks = chapters.build_chapters(ep["structured"], timeline, cfg)
     if timeline:  # timed transcript and chapters, served next to the episode page
         (show.docs / "episodes").mkdir(parents=True, exist_ok=True)
         (show.docs / "episodes" / f"{today}.vtt").write_text(chapters.build_vtt(timeline), encoding="utf-8")

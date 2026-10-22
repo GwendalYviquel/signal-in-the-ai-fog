@@ -7,18 +7,26 @@ import re
 import subprocess
 from pathlib import Path
 
-WATCH = re.compile(r"What to watch\.\n\n(.*?)\n\nAnd a question for your team\.", re.S)
+from . import locale
+
+def watch_pattern(cfg: dict | None = None) -> re.Pattern:
+    """The What to watch part of an archived script, between the fixed words of the show's locale."""
+    sp = locale.of(cfg or {})["spoken"]
+    return re.compile(re.escape(sp["watch"]) + r"\n\n(.*?)\n\n" + re.escape(sp["question"]), re.S)
+
+
+WATCH = watch_pattern()  # English
 SUGGESTION_LABELS = ("topic-suggestion", "accepted")  # only a maintainer can add "accepted"
 SUGGESTION_MAX_CHARS = 300  # untrusted text from the public: kept short
 
 
-def open_items(scripts_dir: Path, before: str, count: int = 5) -> list[tuple[str, str]]:
+def open_items(scripts_dir: Path, before: str, count: int = 5, cfg: dict | None = None) -> list[tuple[str, str]]:
     """(date, What to watch) of the last aired episodes before that date, oldest first."""
-    items = []
+    items, watch = [], watch_pattern(cfg)
     for path in sorted(scripts_dir.glob("*.md")):
         if path.stem >= before:
             continue
-        if m := WATCH.search(path.read_text(encoding="utf-8")):
+        if m := watch.search(path.read_text(encoding="utf-8")):
             items.append((path.stem, " ".join(m.group(1).split())))
     return items[-count:]
 

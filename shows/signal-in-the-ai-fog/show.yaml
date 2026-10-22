@@ -2,6 +2,8 @@
 
 podcast:
   title: "Signal in the AI Fog"
+  tagline: "your daily briefing on enterprise AI in production"   # in the spoken opening
+  language: "en"                     # engine/locales/<language>.yaml: spoken texts, feed, site
   description: >-
     Every weekday morning, six minutes on enterprise AI in production:
     models and vendors, European sovereignty, LLMOps and MLOps platforms,
@@ -9,7 +11,6 @@ podcast:
   author: "Gwendal Yviquel"          # name displayed as the podcast author
   owner_name: "Gwendal Yviquel"
   owner_email: "gwendal.yviquel.devuse@gmail.com"   # public: Spotify sends the verification code here
-  language: "en"
   category: "Technology"
   explicit: false
   cover_file: "cover.jpg"            # in docs/, square, 1400 to 3000 px

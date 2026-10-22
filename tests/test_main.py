@@ -51,7 +51,7 @@ def test_the_test_repository_redirects_every_path_of_the_pipeline(repo):
     assert shows.load().repo == repo
     for info in pkgutil.iter_modules(engine.__path__):
         module = importlib.import_module(f"engine.{info.name}")
-        real = [name for name, value in vars(module).items() if isinstance(value, Path) and name not in ("ROOT", "REPO")
+        real = [name for name, value in vars(module).items() if isinstance(value, Path) and name not in ("ROOT", "REPO", "LOCALES")
                 and ROOT in (value, *value.parents)]
         assert real == [], f"engine.{info.name} keeps paths into the real repository: {real}"
 

@@ -113,6 +113,8 @@ A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by han
 .
 ├── engine/                         the podcast engine, shared by every show: python -m engine.main
 │   ├── show.py                     a show: its config, its files, its site folder (SHOW=<slug>)
+│   ├── locale.py                   a show's language and cadence: fixed spoken texts, feed, dates
+│   ├── locales/                    en.yaml, fr.yaml
 │   ├── main.py                     run modes, guards, catch-ups
 │   ├── generate.py                 script writing with Claude and web search, validation
 │   ├── context.py                  open items, known topics, accepted listener suggestions

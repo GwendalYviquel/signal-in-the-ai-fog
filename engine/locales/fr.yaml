@@ -1,0 +1,56 @@
+# Textes français du moteur : parlé, flux, chapitres, règles. Mêmes clés que en.yaml (un test vérifie).
+
+dates:
+  weekdays: [lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche]
+  months: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+  spoken_day: "{weekday} {day} {month}"
+  long_date: "{day} {month} {year}"
+  short_date: "{day} {month}"
+
+spoken:
+  opening: "Bonjour, ici {title}, {tagline}, écrit et lu par une intelligence artificielle. Au programme de ce {day} : {h1}, {h2} et {h3}."
+  story:
+    day: "D'abord, le sujet du jour."
+    week: "D'abord, le sujet de la semaine."
+  segment: "Ensuite, {theme}."
+  follow_up: "Retour sur un dossier."
+  correction: "Un rectificatif."
+  number:
+    day: "Le chiffre du jour."
+    week: "Le chiffre de la semaine."
+  watch: "À surveiller."
+  question: "Et une question pour votre équipe."
+  sign_off:
+    day: "C'est tout pour aujourd'hui. Les sources sont dans la description de l'épisode. C'était {title}. À {see_you}."
+    week: "C'est tout pour cette semaine. Les sources sont dans la description de l'épisode. C'était {title}. À {see_you}."
+  see_you:
+    next_day: "demain"
+    monday: "lundi"
+    next_week: "la semaine prochaine"
+  today: "aujourd'hui"
+
+chapters:
+  with: "{name} : {detail}"
+  opening: "Ouverture"
+  story:
+    day: "Sujet du jour"
+    week: "Sujet de la semaine"
+  follow_up: "Retour sur un dossier"
+  correction: "Rectificatif"
+  number:
+    day: "Chiffre du jour"
+    week: "Chiffre de la semaine"
+  watch: "À surveiller"
+  question: "Question pour votre équipe"
+
+feed:
+  disclaimer: "Script écrit et voix générée par une intelligence artificielle."
+  catch_up: "Épisode de rattrapage, préparé le {made} avec uniquement les actualités publiées avant {time} le {cutoff} (heure de Paris)."
+  correction: "Rectificatif ({added}) : {text}"
+  chapters: "Chapitres :"
+  page: "Transcription, thèmes et sources : {url}"
+  sources: "Sources :"
+
+rules:
+  first_person: '\b([Nn]ous|[Nn]otre|[Nn]os)\b'
+  correction_example: "L'épisode du vingt octobre indiquait..."

@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 
 import anthropic
 
-from . import costs, factcheck
+from . import costs, factcheck, locale
 from . import show as shows
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ LABELS = ("confirmed", "reported", "unconfirmed")  # how solid a story is, shown
 TOPICS_MAX, TOPIC_MAX_WORDS = 3, 4
 SEGMENTS_MIN, SEGMENTS_MAX = 2, 5
 HEADLINE_MAX_WORDS = 10
-FIRST_PERSON = re.compile(r"\b(we|We|our|Our|ours|us)\b")  # "US" (country) stays allowed
+FIRST_PERSON = re.compile(locale.load("en")["rules"]["first_person"])  # English; see first_person(cfg)
 UNSPEAKABLE = re.compile(r"[*_#`\[\]<>{}]|https?://")
 
 
@@ -60,6 +60,11 @@ def build_user_message(cfg, now, previous_scripts, open_items=None, topics=None,
         f"only if there is real news about it, and never mention listeners or suggestions):\n{listeners}\n\n"
         f"Previous episodes (for continuity on stories to watch and to avoid repetition):\n{history}"
     )
+
+
+def first_person(cfg: dict) -> re.Pattern:
+    """The forbidden first person of the show's language (we/our in English, nous/notre in French)."""
+    return re.compile(locale.of(cfg)["rules"]["first_person"])
 
 
 def words(text: str) -> int:
@@ -235,7 +240,7 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
             around = text[max(0, m.start() - 30):m.end() + 30].replace("\n", " ")
             errors.append(f"Markdown, brackets or links in {name} ({m.group(0)!r} in \"...{around}...\"): "
                           "spoken text must not contain * _ # ` [ ] < > { } or URLs")
-        if m := FIRST_PERSON.search(text):
+        if m := first_person(cfg).search(text):
             errors.append(f"First person {m.group(0)!r} in {name}")
         for term in forbidden:
             if term.lower() in text.lower():
@@ -262,28 +267,32 @@ HOST, ANALYST = "host", "analyst"  # two voices: the host reads facts, the analy
 def assemble_parts(ep: dict, cfg: dict, now) -> list[tuple[str, str]]:
     """Spoken script as (voice role, text) parts: fixed opening, transitions and sign-off
     around the model's texts; every read layer goes to the analyst voice."""
+    loc = locale.of(cfg)
+    sp = loc["spoken"]
     title = cfg["podcast"]["title"]
-    day = f"{now:%A}, {now:%B} {now.day}" if now else "today"
+    day = locale.spoken_day(now, loc) if now else sp["today"]
     h = [x.strip().rstrip(".,;:!") for x in ep["headlines"]]
-    see_you = "on Monday" if now and now.weekday() == 4 else "tomorrow"
+    period, _ = locale.cadence(cfg)
+    see = sp["see_you"]
+    see_you = see["next_week"] if period == "week" else see["monday"] if now and now.weekday() == 4 else see["next_day"]
     story = ep["story_of_the_day"]
     parts = [
-        (HOST, f"Good morning, it's {day}. This is {title}, your daily briefing on enterprise AI "
-               f"in production, written and read by AI. Today: {h[0]}, {h[1]}, and {h[2]}."),
-        (HOST, "First, the story of the day.\n\n" + story["facts"]),
+        (HOST, sp["opening"].format(day=day, title=title, tagline=cfg["podcast"].get("tagline", ""),
+                                    h1=h[0], h2=h[1], h3=h[2])),
+        (HOST, locale.period_text(sp["story"], cfg) + "\n\n" + story["facts"]),
         (ANALYST, story["read"]),
     ]
     for s in ep["segments"]:
-        parts += [(HOST, f"Next, {s['theme']}.\n\n{s['facts']}"), (ANALYST, s["read"])]
+        parts += [(HOST, sp["segment"].format(theme=s["theme"]) + "\n\n" + s["facts"]), (ANALYST, s["read"])]
     if ep.get("follow_up"):
-        parts.append((HOST, "A follow-up.\n\n" + ep["follow_up"]["text"]))
+        parts.append((HOST, sp["follow_up"] + "\n\n" + ep["follow_up"]["text"]))
     for c in ep.get("corrections") or []:  # written by the owner, read as written (engine/corrections.py)
-        parts.append((HOST, "A correction.\n\n" + c["text"]))
+        parts.append((HOST, sp["correction"] + "\n\n" + c["text"]))
     parts.append((HOST, "\n\n".join([
-        "The number of the day.", ep["number_of_the_day"]["text"],
-        "What to watch.", ep["what_to_watch"],
-        "And a question for your team.", ep["question"],
-        f"That's it for today. Sources are in the episode description. This was {title}. See you {see_you}.",
+        locale.period_text(sp["number"], cfg), ep["number_of_the_day"]["text"],
+        sp["watch"], ep["what_to_watch"],
+        sp["question"], ep["question"],
+        locale.period_text(sp["sign_off"], cfg).format(title=title, see_you=see_you),
     ])))
     return [(voice, clean_for_tts(text)) for voice, text in parts]
 

@@ -18,13 +18,13 @@ import os
 import sys
 from pathlib import Path
 
-from . import generate
+from . import generate, locale
 
 ROOT = Path(__file__).resolve().parent.parent
 MIN_WORDS, MAX_WORDS = 8, 70
 
 
-def problems(text: str) -> list[str]:
+def problems(text: str, cfg: dict | None = None) -> list[str]:
     """What stops a correction from being read aloud as written."""
     found = []
     n = generate.words(text)
@@ -32,20 +32,21 @@ def problems(text: str) -> list[str]:
         found.append(f"{n} words: a correction is {MIN_WORDS} to {MAX_WORDS} words")
     if m := generate.UNSPEAKABLE.search(text):
         found.append(f"{m.group(0)!r} cannot be read aloud: no markdown, brackets or links")
-    if m := generate.FIRST_PERSON.search(text):
-        found.append(f"first person {m.group(0)!r}: write \"The episode of October twentieth said...\"")
+    if m := generate.first_person(cfg or {}).search(text):
+        example = locale.of(cfg or {})["rules"]["correction_example"]
+        found.append(f"first person {m.group(0)!r}: write \"{example}\"")
     if any(term.lower() in text.lower() for term in generate._forbidden_terms()):
         found.append("a forbidden term")
     return found
 
 
-def add(episodes: list[dict], day: str, text: str, today: dt.date) -> dict:
+def add(episodes: list[dict], day: str, text: str, today: dt.date, cfg: dict | None = None) -> dict:
     """Attach a correction to a published episode; raises ValueError with the reason otherwise."""
     target = next((e for e in episodes if e["date"] == day), None)
     if target is None:
         raise ValueError(f"No published episode on {day}")
     text = " ".join(text.split())
-    if issues := problems(text):
+    if issues := problems(text, cfg):
         raise ValueError("Correction not added: " + "; ".join(issues))
     entry = {"added": today.isoformat(), "text": text, "aired_in": None}
     target.setdefault("corrections", []).append(entry)
@@ -75,7 +76,7 @@ def main(argv: list[str]) -> None:
     path = show.episodes
     episodes = json.loads(path.read_text(encoding="utf-8"))
     try:
-        add(episodes, argv[1], argv[2], dt.date.today())
+        add(episodes, argv[1], argv[2], dt.date.today(), cfg)
     except ValueError as e:
         raise SystemExit(str(e)) from None
     path.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -17,7 +17,7 @@ def timeline_for(ep, cfg, chars_per_second=15):
 
 def test_every_part_of_the_episode_is_a_chapter_in_reading_order(cfg):
     ep = make_episode(follow_up={"text": "A follow-up text.", "source": {"title": "S", "url": "https://s"}})
-    found = chapters.build_chapters(ep, timeline_for(ep, cfg))
+    found = chapters.build_chapters(ep, timeline_for(ep, cfg), cfg)
     titles = [c["title"] for c in found]
     assert titles == ["Opening", f"Story of the day: {ep['headlines'][0]}",
                       "Models and vendors: Topic 0", "Platform: Topic 1", "Regulation: Topic 2",
@@ -29,24 +29,24 @@ def test_every_part_of_the_episode_is_a_chapter_in_reading_order(cfg):
 
 def test_no_follow_up_chapter_without_a_follow_up(cfg):
     ep = make_episode()
-    assert "Follow-up" not in [c["title"] for c in chapters.build_chapters(ep, timeline_for(ep, cfg))]
+    assert "Follow-up" not in [c["title"] for c in chapters.build_chapters(ep, timeline_for(ep, cfg), cfg)]
 
 
-def test_chapter_inside_a_chunk_is_placed_by_its_characters():
+def test_chapter_inside_a_chunk_is_placed_by_its_characters(cfg):
     # The host's closing parts share one chunk: What to watch starts part-way through it.
     text = "The number of the day.\n\nTen.\n\nWhat to watch.\n\nThings."
     timeline = [{"text": "Good morning, intro.", "start": 0, "end": 10},
                 {"text": text, "start": 10, "end": 10 + len(text)}]  # one second per character
     ep = make_episode(segments=[])
-    found = {c["title"]: c["start"] for c in chapters.build_chapters(ep, timeline)}
+    found = {c["title"]: c["start"] for c in chapters.build_chapters(ep, timeline, cfg)}
     assert found["Number of the day"] == 10
     assert found["What to watch"] == 10 + text.index("What to watch.")
 
 
-def test_a_part_missing_from_the_audio_is_left_out():
+def test_a_part_missing_from_the_audio_is_left_out(cfg):
     ep = make_episode()
     timeline = [{"text": "Good morning. First, the story of the day. Facts.", "start": 0, "end": 5}]
-    assert [c["title"] for c in chapters.build_chapters(ep, timeline)] == [
+    assert [c["title"] for c in chapters.build_chapters(ep, timeline, cfg)] == [
         "Opening", f"Story of the day: {ep['headlines'][0]}"]
 
 
