@@ -61,7 +61,7 @@ gh workflow run api-smoke.yml
 
 It runs on GitHub, where the API key is a secret (it is not on the laptops). Locally, export `ANTHROPIC_API_KEY` and `ANTHROPIC_WORKSPACE_ID` and run `python tools/api_smoke.py`. Expected in the log: three `OK` lines (light correction, fact-check, web search). A `FAIL` with an HTTP code points at the request to fix in `engine/generate.py` or `engine/factcheck.py`.
 
-### 2. A preview: about $0.50 of Claude, no ElevenLabs (done on 2026-10-21, forced)
+### 2. A preview: about $0.50 of Claude in one step, $1 to $2 in two steps (French shows), no ElevenLabs (done on 2026-10-21 and 2026-10-22, forced)
 
 ```bash
 gh workflow run preview-episode.yml

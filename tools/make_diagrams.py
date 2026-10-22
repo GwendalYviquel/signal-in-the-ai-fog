@@ -28,12 +28,12 @@ PROMPT_TARGETS = {"story facts": 130, "story read": 110, "segment facts": 45, "s
 def pipeline(theme):
     """Four stages, each a row of steps, with the secrets each one uses."""
     stages = [
-        ("1", "Checks", "weekdays, 4:05",
-         [("GitHub Actions", "schedule, watchdog"), ("Offline tests", "before every run"),
+        ("1", "Checks", "show days, 4:05",
+         [("Cloudflare · GitHub", "schedule, watchdog"), ("Offline tests", "before every run"),
           ("Voice check", "one word per voice")]),
         ("2", "Writing", "Claude + validation",
-         [("Claude + web search", "news, open items, topics"), ("Validation", "sources, wording, fact-check"),
-          ("Corrections", "light, or back to research")]),
+         [("Claude + web search", "direct, or a checked dossier"), ("Validation", "language, sources, fact-check"),
+          ("Corrections", "light (Haiku), or research")]),
         ("3", "Audio", "two voices",
          [("Spoken script", "fixed opening and sign-off"), ("ElevenLabs", "host and analyst voices"),
           ("GitHub release", "the episode MP3")]),
@@ -85,7 +85,7 @@ def episode(theme):
     widths = [max(w * room / sum(x for *_, x in EPISODE), 104 if part == "Intro" else 0) for part, _, w in EPISODE]
     widths = [w * room / sum(widths) for w in widths]
     d.text(1, 22, "0:00", 11.5, 500, c["muted"], "start")
-    d.text(W - 1, 22, "about 6 minutes", 11.5, 500, c["muted"], "end")
+    d.text(W - 1, 22, "about 6 min daily · 10 min weekly", 11.5, 500, c["muted"], "end")
     x, xs = 1, []
     for (part, voice, _), w, g in zip(EPISODE, widths, gaps + [0]):
         fill, stroke, ink = c[voice], c[voice + "_stroke"], c[voice + "_ink"]
@@ -123,8 +123,8 @@ def generation(theme):
     steps = [
         ([("Brief", 13.5, 700, c["ink"]), ("date, themes,", 11.5, 400, c["muted"]),
           ("scripts, open items", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
-        ([("Claude research", 13.5, 700, c["ink"]), ("up to 15", 11.5, 400, c["muted"]),
-          ("web searches", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
+        ([("Claude research", 13.5, 700, c["ink"]), ("up to 15 searches;", 11.5, 400, c["muted"]),
+          ("or a checked dossier", 11.5, 400, c["muted"])], c["card"], c["card_stroke"]),
         ([("submit_episode", 13, 700, c["accent_ink"], True), ("structured episode", 11.5, 400, c["accent_ink"]),
           ("through a tool", 11.5, 400, c["accent_ink"])], c["accent"], c["accent"]),
         ([("Validation", 13.5, 700, c["ink"]), ("sources, wording,", 11.5, 400, c["muted"]),
@@ -141,7 +141,7 @@ def generation(theme):
             d.arrow(f"M{x - gap + 4},{by + bh / 2} L{x - 4},{by + bh / 2}")
     bottom = by + bh
     # The second loop starts at the right edge of Validation, beyond the first loop's label.
-    loops = [(centers[3] - 30, centers[2] + 30, 136, "Wording issue", "light correction: episode and errors only",
+    loops = [(centers[3] - 30, centers[2] + 30, 136, "Wording issue", "light correction (Haiku): episode and errors only",
               c["accent"]),
              (centers[3] + bw / 2 - 16, centers[1], 216, "Needs new content",
               "back to research: a source is never invented", c["warn_stroke"])]

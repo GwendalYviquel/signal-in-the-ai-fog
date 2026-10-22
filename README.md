@@ -1,18 +1,39 @@
 <p align="center">
-  <img src="docs/cover.jpg" alt="Signal in the AI Fog cover art" width="220">
+  <img src="docs/cover.jpg" alt="Signal in the AI Fog cover art" width="160">
+  <img src="docs/hr-news-fr/cover.jpg" alt="Signal in the HR Fog cover art" width="160">
+  <img src="docs/accounting-news-fr/cover.jpg" alt="Signal in the Tax Fog cover art" width="160">
 </p>
 
-# Signal in the AI Fog
+# Signal, a podcast engine
 
-A daily AI news podcast in English, fully generated and published automatically, and the **podcast engine** behind it: the same code runs other shows, each with its own editorial line, language, cadence, voices, feed and site (see [Shows](#shows)).
+An engine that writes, voices and publishes news podcasts on its own, and the shows it runs. Each show has its own editorial line, language, cadence, voices, feed and site; the code, the checks and the hosting are shared. Claude researches the news on the web and writes the episode, the code checks every part of it (structure, sources, language, facts against their own pages), two ElevenLabs voices read it, and the episode goes out through an RSS feed that Spotify and other podcast platforms pick up, and on a [catalog site](https://gwendalyviquel.github.io/signal-in-the-ai-fog/). Everything runs in GitHub Actions, for the price of the Claude and ElevenLabs calls only.
 
-Every weekday morning, an episode of about six minutes covers enterprise AI in production: models and vendors, European sovereignty, LLMOps and MLOps platforms, quality and evaluation, regulation, retail and agents. The script is written by Claude from a web search, then read by two ElevenLabs voices. Episodes are distributed through an RSS feed that Spotify and other podcast platforms pick up automatically, and listed on a [catalog site](https://gwendalyviquel.github.io/signal-in-the-ai-fog/).
+## Shows
+
+| Show | Language | Cadence | Length | Writing | Status |
+| --- | --- | --- | --- | --- | --- |
+| [Signal in the AI Fog](shows/signal-in-the-ai-fog/README.md): enterprise AI in production | English | every weekday | ~6 min | one step | live |
+| [Signal in the HR Fog](shows/hr-news-fr/README.md): HR, payroll and labour law | French | weekly, Monday | ~10 min | two steps (dossier) | in preparation: voices to choose |
+| [Signal in the Tax Fog](shows/accounting-news-fr/README.md): tax, accounting, e-commerce, European rules | French | weekly, Monday | ~10 min | two steps (dossier) | in preparation: voices to choose |
+
+Each show's page gives its editorial line, themes, rhythm, links and what is left before its first episode.
 
 <p align="center">
   <a href="https://gwendalyviquel.github.io/signal-in-the-ai-fog/">
     <img src="assets/catalog.png" alt="The episode catalog site" width="760">
   </a>
 </p>
+
+### Add a show
+
+1. **Folder**: `shows/<slug>/show.yaml` (copy an existing one) and `prompt.md`. In `show.yaml`: title, `tagline` (spoken in the opening), description, `language` (`en` or `fr`: a locale in `engine/locales/`), `site_path` (the show's folder in the site, usually its slug), `release_prefix` (its releases and GUIDs, never changed after the first episode), `context_secret`, `cadence` (`weekdays` or `weekly:<day>`), `publish_at`, `target_words` and, for a longer format, `lengths`; themes, `sources.avoid`, and `scheduled: false` while it is prepared. HTML comments in `prompt.md` are notes for maintainers, never sent to Claude. For a show where every figure matters, `generation.dossier: true` (two-step writing). A `README.md` presents the show (editorial line, themes, rhythm, links, status), and its line goes in the Shows table above.
+2. **Cover**: `podcast.cover_kicker` and `podcast.cover_palette` (three colours), then `python tools/make_cover.py --show <slug>`.
+3. **Voices**: candidate ElevenLabs voice IDs checked with *Check voices* (`voice_ids`, a few characters each); once written in the show's `tts.voices` (the show is still unscheduled), *Publication rehearsal* with `with_voice` and `show` reads two short sentences with them (about 150 characters), to listen to before keeping them.
+4. **Rehearse for free**: a fixture `tests/fixtures/episode-<slug>.json` in the show's language, then `python tools/offline_rehearsal.py build/rehearsal <slug>`: the whole publication on a copy, site in `build/rehearsal/docs/<site_path>/`.
+5. **Preview** (Claude only, about $0.50 in one step, $1 to $2 in two): *Preview episode* with `show`, after the day's episode if any (`force`). Read it: labels, sources, topics, fact-check doubts in the run summary.
+6. **Go live**: the private context in the `EDITORIAL_CONTEXT_<SLUG>` secret if any, `scheduled: true`, then the first episode on the show's next day; submit its feed (`docs/<site_path>/feed.xml`) to Spotify once, and set `spotify_url`.
+
+A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.yaml` (a test checks): spoken texts, chapters, feed labels, dates, the first person to avoid, the site's interface.
 
 ## How it works
 
@@ -25,14 +46,14 @@ Every weekday morning, an episode of about six minutes covers enterprise AI in p
 
 A GitHub Action runs four steps:
 
-1. **Writing**: the Claude API, with the web search tool, picks five or six news stories from the last 24 to 72 hours and submits the episode through a `submit_episode` tool, one field per part, following the show's editorial line (`shows/<slug>/prompt.md`). The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length), applies the source rules (primary sources preferred, content aggregators refused, a *confirmed* story cites a primary source), then **fact-checks** it: the code fetches each story's sources and Claude Haiku 5.5 checks every figure, date, name and status of the facts against them. A doubt goes back to a light correction, which may never add a source. The code then assembles the spoken script with a fixed opening, transitions and sign-off, and the corrections waiting to be read.
+1. **Writing**: the Claude API, with the web search tool, picks the news of the show's period (the last 24 to 72 hours for a daily show, the week for a weekly one, the whole weekend on Mondays) and submits the episode through a `submit_episode` tool, one field per part, following the show's editorial line (`shows/<slug>/prompt.md`), in the show's language. A show can also write in **two steps** (`generation.dossier`): a research dossier first, where every fact is quoted from its page and the code drops any fact whose quote is not there, then the episode written from that dossier alone, without web search (see Generation and corrections). The request also carries the three previous scripts (continuity, no repetition), the open items of the last What to watch (for a follow-up), the topics already used (so their spelling stays the same) and the listener suggestions the owner accepted. Everything Claude reads, web pages and suggestions alike, is data, never instructions. The code validates the episode (structure, theme order, sources, reliability labels, topics, no markdown, no first person, no forbidden terms, length, every published text in the show's language), applies the source rules (primary sources preferred, content aggregators refused, a *confirmed* story cites a primary source), then **fact-checks** it: the code fetches each story's sources and Claude Haiku 5.5 checks every figure, date, name and status of the facts against them. A doubt goes back to a light correction, on Claude Haiku, which may never add a source; a fact its source contradicts that is still there at the end gets one last correction with the source's words. The code then assembles the spoken script with a fixed opening, transitions and sign-off, and the corrections waiting to be read.
 2. **Speech synthesis**: two ElevenLabs voices share the episode. The host voice reads the opening, the facts, the transitions and the sign-off; the analyst voice reads every read layer, so the listener hears where analysis begins. A short pause marks each change of voice. Texts are split into chunks, with the neighbouring chunks of the same voice as context to keep the delivery continuous. The start and end of every chunk are recorded, which places the chapters and the timed transcript.
 3. **Hosting**: the MP3 is published as a GitHub *release* asset (`episode-YYYY-MM-DD`).
 4. **Distribution**: the show's `data/episodes.json` is updated, then the `docs/feed.xml` feed (with chapters and transcript), the `docs/catalog.json` catalog, the episode and topic pages are regenerated and deployed to GitHub Pages. A phone notification says the episode is out, or that the run failed.
 
 ### Episode format
 
-Every episode follows the same structure. Each story has two layers: the facts (what happened and its real status: announced, preview or available), read by the host, and a short read (what it means for a platform team or a retailer), read by the analyst and signposted so the listener hears where analysis begins.
+Every episode of every show follows the same structure; a daily show has a *story of the day*, a weekly one a *sujet de la semaine*, and the fixed texts (opening, transitions, sign-off, chapters, dates) come from the show's language (`engine/locales/`). Each story has two layers: the facts (what happened and its real status: announced, preview or available), read by the host, and a short read (what it means for a platform team or a retailer), read by the analyst and signposted so the listener hears where analysis begins. Segments follow the show's themes, in order, one per theme with news.
 
 <p align="center">
   <picture>
@@ -41,7 +62,7 @@ Every episode follows the same structure. Each story has two layers: the facts (
   </picture>
 </p>
 
-On Mondays the episode covers the news since Friday and the week ahead; on Fridays the story of the day steps back to look at a trend from the week.
+A daily show sums up the whole weekend on Mondays (Friday evening to Sunday) and looks at the week ahead; on Fridays its story of the day steps back to a trend of the week. A weekly show covers the last seven days, weekend included, and the week ahead.
 
 - **Follow-up** (optional): when an item from a previous What to watch moved forward (a vote happened, a model shipped), about 40 words on what was expected and what happened, with its source, before the number of the day. Never invented: no follow-up when nothing moved.
 - **Reliability label** for every story, shown on its page: *confirmed* (the company, authority or a primary source, which the story must cite), *reported* (credible press, the facts say who reports it) or *unconfirmed* (a rumour or a single weak source, said plainly, and rare). Every source says whether it is **primary** (the organisation's own announcement, documentation, pricing page, filing, regulation text or paper), and its page marks it.
@@ -50,7 +71,11 @@ On Mondays the episode covers the news since Friday and the week ahead; on Frida
 
 ### Generation and corrections
 
-The episode is submitted through a tool, so the JSON is always well formed. A wording problem is fixed in a light conversation (the episode and its errors only, much cheaper than replaying the research); anything that needs new content goes back to the research conversation, so a source is never invented.
+The episode is submitted through a tool, so the JSON is always well formed. A wording problem is fixed in a light conversation (the episode and its errors only, much cheaper than replaying the research); anything that needs new content goes back to the research conversation, so a source is never invented. Light corrections run on a smaller model (`generation.correction_model`, Claude Haiku): fixing the points a check listed needs no research.
+
+**Two steps, for shows where every figure matters** (`generation.dossier`, the French shows). The research conversation submits a dossier, not an episode: 8 to 12 items on at least four themes, each fact with the exact words of the page that states it. The code fetches every page and keeps a fact only if its quote is there (a page it cannot read, paywall or PDF, keeps its facts marked unread for the fact-check). A dossier too thin after that (fewer than 20 facts or 3 themes) goes back to the research, at most twice, with the themes it misses. A second conversation, without web search, then writes the episode from the dossier alone and may cite only its sources. The dossier is saved in `data/dossiers/<date>.json`: a rerun the same day starts from it, without paying the research again. Learning of October 22: in one step, the fact-check of an HR preview removed 15 figures its sources did not contain, and the episode ended too short.
+
+**Language guard.** Research, writing and fact-check are each told the show's language. A published text (title, summary, every spoken part, agenda) clearly in another language is an error sent back for correction; a fact-check claim is set aside only when it is clearly in the text's language and not in the text.
 
 <p align="center">
   <picture>
@@ -93,7 +118,7 @@ Each mode runs part of the pipeline, from a one-word voice check to a full episo
   </picture>
 </p>
 
-The daily workflow makes **attempts every 15 minutes on weekday mornings, public holidays included**, off the top of the hour (one cron line, `7,22,37,52 2-5 * * 1-5` in UTC, covers both seasons). The first attempt at **4:05 Paris time** (`generation.publish_at`) or later publishes; it is online about 5 minutes later, which leaves Spotify close to three hours before a 7:00 listen. The next attempts find the episode out and stop at once, at no cost; attempts before 4:05 (winter mornings) do nothing. An attempt GitHub starts hours late still publishes the day's episode, with the news cutoff at 4:05. After two failed attempts in a day, the next ones stop, since each paid Claude. Learning of October 21 and 22: with a single run at 4:05, GitHub dropped the morning's run or started it five hours late. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
+Every show publishes at its own `generation.publish_at` (4:05 Paris time for the three shows), on its own days (`generation.cadence`). The daily workflow makes **attempts every 15 minutes on weekday mornings, public holidays included**, off the top of the hour (one cron line, `7,22,37,52 2-5 * * 1-5` in UTC, covers both seasons). The first attempt at **4:05 Paris time** (`generation.publish_at`) or later publishes; it is online about 5 minutes later, which leaves Spotify close to three hours before a 7:00 listen. The next attempts find the episode out and stop at once, at no cost; attempts before 4:05 (winter mornings) do nothing. An attempt GitHub starts hours late still publishes the day's episode, with the news cutoff at 4:05. After two failed attempts in a day, the next ones stop, since each paid Claude. Learning of October 21 and 22, on the first show: with a single run at 4:05, GitHub dropped the morning's run or started it five hours late. Scheduled runs only start once the `SCHEDULE_ENABLED` repository variable is `true`:
 
 ```
 gh variable set SCHEDULE_ENABLED --body true    # --body false to pause
@@ -108,25 +133,6 @@ A *Watchdog* workflow checks at **5:11 and 6:41 Paris time** that today's episod
 **Phone notifications** use [ntfy](https://ntfy.sh): install the ntfy app, subscribe to a hard-to-guess topic name, and store that name as the `NTFY_TOPIC` secret. The daily run notifies when an episode is out (with its page) or when it fails, and the watchdog when it starts a catch-up, waits for a late run or gives up. Without the secret, nothing is sent and nothing fails. To check the secret, run *Watchdog* by hand with `test_notification`: it only sends a test.
 
 A *Check Spotify* workflow runs every 15 minutes on weekday mornings (and by hand): it reads Spotify's public embed page of the show, compares its latest episode with ours, and records in `data/spotify.json` when each episode was first seen live and how many minutes after publication, to confirm the margin before 7:00.
-
-## Shows
-
-| Show | Language | Cadence | Status |
-| --- | --- | --- | --- |
-| [Signal in the AI Fog](https://gwendalyviquel.github.io/signal-in-the-ai-fog/) (`shows/signal-in-the-ai-fog`) | English | every weekday | live |
-| HR news (`shows/hr-news-fr`) | French | weekly, Monday | in preparation: voices to choose |
-| Accounting news (`shows/accounting-news-fr`) | French | weekly, Monday | in preparation: voices to choose |
-
-### Add a show
-
-1. **Folder**: `shows/<slug>/show.yaml` (copy an existing one) and `prompt.md`. In `show.yaml`: title, `tagline` (spoken in the opening), description, `language` (`en` or `fr`: a locale in `engine/locales/`), `site_path` (the show's folder in the site, usually its slug), `release_prefix` (its releases and GUIDs, never changed after the first episode), `context_secret`, `cadence` (`weekdays` or `weekly:<day>`), `publish_at`, `target_words` and, for a longer format, `lengths`; themes, `sources.avoid`, and `scheduled: false` while it is prepared. HTML comments in `prompt.md` are notes for maintainers, never sent to Claude.
-2. **Cover**: `podcast.cover_kicker` and `podcast.cover_palette` (three colours), then `python tools/make_cover.py --show <slug>`.
-3. **Voices**: candidate ElevenLabs voice IDs checked with *Check voices* (`voice_ids`, a few characters each); once written in the show's `tts.voices` (the show is still unscheduled), *Publication rehearsal* with `with_voice` and `show` reads two short sentences with them (about 150 characters), to listen to before keeping them.
-4. **Rehearse for free**: a fixture `tests/fixtures/episode-<slug>.json` in the show's language, then `python tools/offline_rehearsal.py build/rehearsal <slug>`: the whole publication on a copy, site in `build/rehearsal/docs/<site_path>/`.
-5. **Preview** (Claude only, about $0.50): *Preview episode* with `show`, after the day's episode if any (`force`). Read it: labels, sources, topics, fact-check doubts in the run summary.
-6. **Go live**: the private context in the `EDITORIAL_CONTEXT_<SLUG>` secret if any, `scheduled: true`, then the first episode on the show's next day; submit its feed (`docs/<site_path>/feed.xml`) to Spotify once, and set `spotify_url`.
-
-A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.yaml` (a test checks): spoken texts, chapters, feed labels, dates, the first person to avoid, the site's interface.
 
 ## Repository contents
 
@@ -162,13 +168,14 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 │   ├── signal-in-the-ai-fog/       one folder per show: the first one, in English, daily
 │   │   ├── show.yaml               podcast, models, voices, themes, schedule, sources, prices
 │   │   ├── prompt.md               editorial line, episode format, writing rules for the voice
-│   │   ├── data/                   episodes, scripts, previews, costs, stats, spotify.json
+│   │   ├── README.md               the show: editorial line, themes, rhythm, links, status
+│   │   ├── data/                   episodes, scripts, previews, dossiers, costs, stats, spotify.json
 │   │   ├── COSTS.md                costs report, and its FinOps dashboard (finops-dashboard-*.svg)
 │   │   └── STATS.md                downloads report
 │   ├── COSTS.md                    costs of every show: money only, ElevenLabs credits shared by all
 │   ├── STATS.md                    usage of every show: listening only, and its usage dashboard
-│   ├── hr-news-fr/                 HR news, in French, weekly (in preparation)
-│   └── accounting-news-fr/         accounting news, in French, weekly (in preparation)
+│   ├── hr-news-fr/                 Signal in the HR Fog, in French, weekly (in preparation)
+│   └── accounting-news-fr/         Signal in the Tax Fog, in French, weekly (in preparation)
 ├── docs/                           GitHub Pages: the first show at the root, the next ones in docs/<slug>/
 │   ├── episodes/                   one page per episode, with its transcript (.vtt) and chapters (.json)
 │   ├── topics/                     one page per topic, and the list of topics
@@ -216,9 +223,9 @@ A new language is a new `engine/locales/<code>.yaml` with the same keys as `en.y
 - The optional `FORBIDDEN_TERMS` secret is a comma-separated list of names that must never be spoken or published (topics included); an episode containing one is rejected.
 - The optional `NTFY_TOPIC` secret is the ntfy topic of the phone notifications.
 - `sources.avoid` lists the sites never cited (content aggregators that rewrite other outlets' news); `factcheck` sets the fact-check model and how much of each page it reads.
-- `generation.dossier: true` splits the writing in two steps: a research dossier where every fact comes with the exact words of its page (the code fetches the page and drops a fact whose quote is not there), saved in `data/dossiers/`, then the episode written from that dossier alone, without web search. A rerun the same day reuses the dossier instead of paying the research again. On for the French shows.
+- `generation.dossier: true` writes in two steps, research dossier then episode (see Generation and corrections); on for the French shows.
 - `generation.correction_model` runs the light corrections (fixing the points a check listed, no research) on a smaller model, Claude Haiku, priced apart with `costs.correction_usd_per_mtok`. Research and writing stay on `generation.model`.
-- Every step is told the show's language (`podcast.language`): research, writing and fact-check. A published text (title, summary, spoken parts, agenda) clearly in another language is an error sent back for correction (`locale.detect`).
+- `podcast.language` sets the locale of the fixed texts and the site, and the language every step must write in (the language guard, `locale.detect`).
 
 ## Episode catalog
 
@@ -228,7 +235,7 @@ The site opens on a home page (`docs/index.html`) where a visitor picks a show: 
 
 The catalog lists every episode as a card: cover image, status (Published or Preview), date, duration, title, summary, headlines, themes, audio player (or a placeholder for previews), Spotify link, script and sources. Episodes can be searched (titles, summaries, scripts) and filtered by theme, and each one has its own link (`#YYYY-MM-DD`). Every card and the header have a "Listen on Spotify" button: it opens `podcast.spotify_url` from the `show.yaml` once set, and a Spotify search for the podcast until then.
 
-Each episode also has **its own page** (`docs/episodes/YYYY-MM-DD.html`), linked from its card and from its description in podcast apps: summary, player, chapters that jump the player to that moment, then every story with its reliability label, its facts and its read, its topics and its sources, the follow-up, the number of the day, What to watch and the question. The first three episodes (October 19 to 21) were rebuilt from their archived scripts, with labels and topics added after publication, as their pages say; a test checks that each one reassembles word for word into the script that aired. Pages carry a canonical link, Open Graph tags and schema.org `PodcastEpisode` data, and `docs/sitemap.xml` lists them all, so search engines can index every episode.
+Each episode also has **its own page** (`docs/episodes/YYYY-MM-DD.html`), linked from its card and from its description in podcast apps: summary, player, chapters that jump the player to that moment, then every story with its reliability label, its facts and its read, its topics and its sources, the follow-up, the number of the day, What to watch and the question. The first show's first three episodes were rebuilt from their archived scripts (see [its page](shows/signal-in-the-ai-fog/README.md)). Pages carry a canonical link, Open Graph tags and schema.org `PodcastEpisode` data, and `docs/sitemap.xml` lists them all, so search engines can index every episode.
 
 **Topic pages** (`docs/topics/`) gather everything said about a company, product, law or subject, as a timeline, newest first, with the label of each story; `docs/topics/index.html` lists every topic by number of mentions.
 
@@ -238,7 +245,7 @@ The site is published at https://gwendalyviquel.github.io/signal-in-the-ai-fog/ 
 
 ## Corrections
 
-When an episode got something wrong, run *Add a correction* (Actions tab, or `gh workflow run correction.yml -f episode_date=YYYY-MM-DD -f text="..."`). The text is read aloud as written in the next episode, so it follows the rules of the voice: no first person, no markdown, 8 to 70 words, for example *"The episode of October twentieth said the launch sale ran for two weeks. Mistral set it at one week."* The correction then appears at once on the episode's page, in its description in podcast apps, and on the [corrections page](https://gwendalyviquel.github.io/signal-in-the-ai-fog/corrections.html); its page says which episode read it. A catch-up episode never reads a correction, since it would be published after its own date.
+When an episode got something wrong, run *Add a correction* (Actions tab, or `gh workflow run correction.yml -f show=<slug> -f episode_date=YYYY-MM-DD -f text="..."`). The text is in the show's language. It is read aloud as written in the next episode, so it follows the rules of the voice: no first person, no markdown, 8 to 70 words, for example *"The episode of October twentieth said the launch sale ran for two weeks. Mistral set it at one week."* The correction then appears at once on the episode's page, in its description in podcast apps, and on the [corrections page](https://gwendalyviquel.github.io/signal-in-the-ai-fog/corrections.html); its page says which episode read it. A catch-up episode never reads a correction, since it would be published after its own date.
 
 ## Listener feedback
 
@@ -277,9 +284,10 @@ Tests run on every push (`.github/workflows/tests.yml`) and before every generat
   </picture>
 </p>
 
-Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in `show.yaml`, and ElevenLabs characters (its credits). The dashboard above and [COSTS.md](shows/signal-in-the-ai-fog/COSTS.md) are rebuilt and committed after each run, and each run's GitHub summary shows its own cost.
+Every run records what it consumed, failed runs and dry runs included: Claude tokens and web searches, with a dollar estimate from the prices in the show's `show.yaml` (generation, fact-check and corrections each at their own model's prices), and ElevenLabs characters (its credits). Each show has its dashboard and `COSTS.md`, rebuilt and committed after each run (above, the first show's: [COSTS.md](shows/signal-in-the-ai-fog/COSTS.md)), and each run's GitHub summary shows its own cost.
 
-- **One episode** cost about **$1 of Claude** in the first runs (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**. Since October 22, the research conversation is cached (the history re-sent after a pause or a correction is billed at a tenth) and the web search filters its results before Claude reads them; the fact-check adds about one cent. The new cost per episode is to be measured on the first runs.
+- **Signal in the AI Fog**: one episode cost about **$1 of Claude** in the first runs (mostly the web search results it reads) and **5,000 ElevenLabs credits**; a month of weekdays, about **$20 and 110,000 credits**. Since October 22, the research conversation is cached (the history re-sent after a pause or a correction is billed at a tenth) and the web search filters its results before Claude reads them; the fact-check adds about one cent. The new cost per episode is to be measured on the first runs.
+- **French weekly shows** (previews of October 22): about **$1 to $2 of Claude** per episode with the two-step writing, mostly the text Claude writes (the dossier with its quotes, then the episode); light corrections moved to Haiku since. About 10,000 ElevenLabs credits per 10-minute episode, four or five a month each.
 - **Before paying for anything**, the run reads the ElevenLabs credits left (one quota for every show) and stops, with a phone alert, when they cannot voice the episode: the show's average episode plus 15 %, or its target length before a first episode. Such a stop counts as a failed attempt, so the scheduled ones end after two. A key without the `user_read` permission, or a plan with usage-based billing, never blocks. Then the voice check (3 characters per voice) and the duplicate guards stop a run that would fail; wording corrections go to a light conversation without the research.
 - **Never paid twice**: an episode already published is skipped, an orphan release stops the run, and nothing is published on weekends.
 - **Free**: hosting (GitHub Pages and releases), the Spotify check, the download stats and the CI.

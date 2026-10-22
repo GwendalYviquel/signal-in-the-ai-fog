@@ -1,0 +1,31 @@
+<p align="center"><img src="../../docs/accounting-news-fr/cover.jpg" alt="Signal in the Tax Fog cover art" width="200"></p>
+
+# Signal in the Tax Fog
+
+**L'actualité comptable et fiscale de la semaine**: a weekly show in French for chartered accountants, finance departments and statutory auditors.
+
+| | |
+| --- | --- |
+| Status | in preparation: French voices to choose, not scheduled (`generation.scheduled: false`) |
+| Language | French |
+| Cadence | weekly, on Monday at 4:05 Paris time, with the news of the last seven days, weekend included |
+| Length | about 10 minutes (`target_words: 1400`) |
+| Writing | two steps (`generation.dossier`): a research dossier where every fact is quoted from its page and checked by the code, then the episode written from it alone; fact-check and light corrections on Claude Haiku |
+| Voices | two French ElevenLabs voices, to choose |
+| Site | [catalog](https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/), in `docs/accounting-news-fr/` |
+| Feed | `docs/accounting-news-fr/feed.xml`, to submit to Spotify once after the first episode |
+| Reports | [COSTS.md](COSTS.md) |
+
+## Editorial line
+
+Tax, accounting and audit news, read for practitioners: what changes, from which financial year, and what to prepare. Every text is given at its real stage (bill, vote, law, BOFiP commentary, decree), primary sources first (Légifrance, BOFiP, ANC, EUR-Lex). Never individual tax advice. Priorities: **e-commerce** (distance-selling VAT, OSS and IOSS, marketplaces, DAC7, small parcels) and **European rules** (VAT in the digital age, DAC8 and DAC9, customs reform). The full line, in French, is in [prompt.md](prompt.md).
+
+Themes, in segment order (`show.yaml`): Fiscalité, E-commerce, Europe, Facturation électronique, Normes comptables, Durabilité, Audit. An episode has at most five segments, on the themes with news that week.
+
+## Before the first episode
+
+1. Choose two French voices (*Check voices*, then *Publication rehearsal* with `with_voice`), and write them in `tts.voices`.
+2. Optionally, a private editorial context in the `EDITORIAL_CONTEXT_ACCOUNTING_NEWS_FR` secret.
+3. Set `generation.scheduled: true`; the first episode comes out the next Monday.
+
+Previews so far (October 22, 2026): about $1 to $2 of Claude each, with the two-step writing.
