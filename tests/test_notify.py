@@ -49,6 +49,7 @@ def test_daily_run_failure_is_urgent_with_the_run_link(monkeypatch, tmp_path):
     post = Post()
     monkeypatch.setattr(notify.requests, "post", post)
     monkeypatch.setenv("NTFY_TOPIC", "t")
+    monkeypatch.delenv("SHOW", raising=False)  # Learning (2026-10-22): another show's run sets SHOW for the tests
     notify.daily("failure", "https://github.com/run/1", published=tmp_path / "none.json")
     [call] = post.calls
     assert call["json"]["priority"] == 5 and call["json"]["click"] == "https://github.com/run/1"
