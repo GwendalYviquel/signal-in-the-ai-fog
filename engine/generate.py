@@ -42,10 +42,12 @@ def build_user_message(cfg, now, previous_scripts, open_items=None, topics=None,
     themes = "\n".join(f"- {t['name']}: {t['focus']}" for t in cfg["themes"])
     variant = ""
     if locale.cadence(cfg)[0] == "week":
-        variant = ("This is a weekly episode: news from the last seven days is eligible, and the What to watch "
-                   "part covers the week ahead.")
+        variant = ("This is a weekly episode: news from the last seven days is eligible, the weekend just past "
+                   "included, and the What to watch part covers the week ahead.")
     elif now.weekday() == 0:
-        variant = "It is Monday: the What to watch part covers the whole week, and news since Friday is eligible."
+        variant = ("It is Monday: the episode sums up the weekend. News from Friday evening, Saturday and Sunday is "
+                   "eligible, and the weekend's main news must be in the episode (story, segments or follow-up), "
+                   "not only Sunday's. The What to watch part covers the whole week.")
     elif now.weekday() == 4:
         variant = "It is Friday: the story of the day is a deeper trend from the week, with more perspective."
     history = "\n\n---\n\n".join(previous_scripts) if previous_scripts else "None."

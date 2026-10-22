@@ -148,7 +148,7 @@ def test_user_message_variants(cfg):
     import datetime as dt
     monday = TUESDAY - dt.timedelta(days=1)
     friday = TUESDAY + dt.timedelta(days=3)
-    assert "It is Monday" in generate.build_user_message(cfg, monday, [])
+    assert "sums up the weekend" in generate.build_user_message(cfg, monday, [])  # not only Sunday's news
     assert "It is Friday" in generate.build_user_message(cfg, friday, [])
     msg = generate.build_user_message(cfg, TUESDAY, ["previous script"])
     assert "Tuesday, October 20, 2026" in msg and "previous script" in msg

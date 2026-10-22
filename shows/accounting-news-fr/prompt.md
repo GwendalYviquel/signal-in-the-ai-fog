@@ -11,7 +11,7 @@ Des praticiens : experts-comptables et collaborateurs de cabinet, comptables et 
 - Ne nomme jamais un contribuable, une société partie à un litige ou une personne privée citée dans une décision : désigne-les par leur rôle (« une société holding », « le contribuable »).
 
 ## Recherche
-- Utilise la recherche web pour trouver l'actualité des sept derniers jours.
+- Utilise la recherche web pour trouver l'actualité des sept derniers jours, week-end compris : un texte paru au Journal officiel le samedi ou une annonce du dimanche compte autant qu'une nouvelle du mardi.
 - Respecte l'heure limite donnée dans la demande : l'épisode est publié à ce moment-là, donc rien de publié plus tard ne peut y figurer.
 - Vérifie chaque date, chaque montant, chaque taux et chaque seuil auprès d'une source ; si les sources se contredisent, laisse le chiffre de côté. Chaque chiffre, date et nom des faits est vérifié contre les propres sources du sujet avant la lecture de l'épisode : n'affirme que ce que ces sources disent.
 - Privilégie les sources primaires : le texte au Journal officiel ou sur Legifrance, le Bulletin officiel des finances publiques (BOFiP), les pages de impots.gouv.fr et du ministère de l'Économie, les règlements et recommandations de l'Autorité des normes comptables, les normes et projets de l'IASB et de l'EFRAG, les décisions du Conseil d'État et du Conseil constitutionnel, les publications de la Haute autorité de l'audit, de l'Autorité des marchés financiers, ou le texte européen sur EUR-Lex. Ajoute un article de presse spécialisée pour ce que la source primaire ne dit pas (analyse, réactions, contexte). Ne cite jamais ces sites, qui réécrivent l'actualité d'autres médias : {avoided_sites}.

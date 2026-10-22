@@ -127,4 +127,4 @@ def test_a_weekly_french_show_publishes_on_its_day_in_french(french):
 
 def test_the_french_request_asks_for_a_weekly_episode(french):
     request = french["requests"][0]
-    assert "This is a weekly episode" in request["messages"][0]["content"]
+    assert "the weekend just past included" in request["messages"][0]["content"]
