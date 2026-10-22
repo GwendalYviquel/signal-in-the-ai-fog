@@ -461,13 +461,17 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
             dossier = json.loads(dossier_path.read_text(encoding="utf-8"))
             print(f"Research dossier reused: {dossier_path.name}")
         else:
-            name = locale.NAMES[locale.code(cfg)]
-            dossier = research.verify(research.research(client, gen, system, user_message, usage, CACHE, name),
-                                      fc_cfg.get("max_chars_per_source", 40000), pages, locale.code(cfg))
+            name, themes = locale.NAMES[locale.code(cfg)], [t["name"] for t in cfg["themes"]]
+
+            def check(found):
+                found = research.verify(found, fc_cfg.get("max_chars_per_source", 40000), pages, locale.code(cfg))
+                return found, research.gaps(found, themes)
+            dossier = research.research(client, gen, system, user_message, usage, CACHE, name, check)
             if dossier_path:
                 dossier_path.parent.mkdir(parents=True, exist_ok=True)
                 dossier_path.write_text(json.dumps(dossier, ensure_ascii=False, indent=1), encoding="utf-8")
-        user_message += "\n\n" + research.writing_request(dossier, gen["target_words"], locale.NAMES[locale.code(cfg)])
+        user_message += "\n\n" + research.writing_request(dossier, gen["target_words"], locale.NAMES[locale.code(cfg)],
+                                                            [t["name"] for t in cfg["themes"]])
     messages = [{"role": "user", "content": user_message}]
     tools = [SUBMIT_TOOL] if dossier else [
         {"type": "web_search_20260209", "name": "web_search",  # dynamic filtering: fewer tokens

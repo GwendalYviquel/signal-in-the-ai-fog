@@ -73,9 +73,10 @@ def _dossier(episode: dict) -> dict:
     """The research dossier behind the fixture: its sources, each fact quoted from the rehearsal page
     text, and one fact whose quote is not on its page, which the verification drops."""
     found = generate.collect_sources(episode)
+    themes = [episode["story_of_the_day"]["theme"]] + [s["theme"] for s in episode["segments"]]
     quote = "Rehearsal source text, as fetched from the page."
-    items = [{"title": s["title"], "theme": "rehearsal", "sources": [s], "context": "Rehearsal context.",
-              "facts": [{"statement": s["title"], "quote": quote, "url": s["url"]}]} for s in found]
+    items = [{"title": s["title"], "theme": themes[i % len(themes)], "sources": [s], "context": "Rehearsal context.",
+              "facts": [{"statement": s["title"], "quote": quote, "url": s["url"]}] * 3} for i, s in enumerate(found)]
     items[0]["facts"].append({"statement": "Invented", "quote": "words that no page contains", "url": found[0]["url"]})
     return {"items": items, "agenda": episode.get("agenda", [])}
 

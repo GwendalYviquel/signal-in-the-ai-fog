@@ -45,7 +45,8 @@ SUBMIT_DOSSIER = {
 RESEARCH = """Step 1 of 2: research only. Do not write the episode now: a second step will write it from your
 dossier alone, without web search, so anything missing from the dossier cannot be said.
 - Find the news for every segment theme and a candidate for the story, the number and the follow-up:
-  6 to 10 items, enough material for about {target_words} spoken words.
+  8 to 12 items on at least four different segment themes, enough material for about {target_words}
+  spoken words, with at least 25 checkable facts in all.
 - For each item, list its checkable facts one by one (figures, dates, names, statuses, stage of a text). Each
   fact has the exact words of the page that state it (quote, copied verbatim) and that page's URL. The code
   fetches every page and drops a fact whose quote is not on it: never paraphrase in the quote, never quote a
@@ -61,6 +62,8 @@ WRITING = """Step 2 of 2: write today's episode from this research dossier only.
 - State only facts from the dossier; the analysis may draw on each item's context.
 - The sources of each part are the dossier's sources of the items it uses: never another URL.
 - Facts marked "unread" could not be checked against their page: use them only if needed.
+- Segments: at most one per theme, in this order: {themes}. Items of the same theme go together in
+  that theme's one segment; a theme without an item has no segment.
 - Reach about {target_words} words: develop the analysis rather than adding unsourced facts.
 - Write the whole episode in {language}, even where the dossier quotes a page in another language.
 
@@ -111,14 +114,34 @@ def sources(dossier: dict) -> set[str]:
         str(f.get("url", "")) for item in dossier.get("items", []) for f in item.get("facts", [])}
 
 
+MIN_THEMES, MIN_FACTS = 3, 20  # below, after verification: too thin for a full episode
+
+
+def gaps(dossier: dict, themes: list[str]) -> str:
+    """What a verified dossier lacks for a full episode, or "". Learning (2026-10-22): an HR dossier
+    kept 18 facts on two themes; the writing step could not reach the length or the theme order."""
+    covered = {i.get("theme") for i in dossier.get("items", []) if i.get("facts")} & set(themes)
+    facts = sum(len(i.get("facts", [])) for i in dossier.get("items", []))
+    if len(covered) >= min(MIN_THEMES, len(themes)) and facts >= MIN_FACTS:
+        return ""
+    missing = [t for t in themes if t not in covered]
+    return (f"After checking every quote on its page, the dossier keeps {facts} facts on {len(covered)} themes "
+            f"({dossier.get('checked', {}).get('dropped', 0)} dropped: quote not found on the page). It needs at "
+            f"least {MIN_FACTS} facts on {MIN_THEMES} themes. Search the themes not covered ({', '.join(missing)}), "
+            "copy each quote word for word from the page, and call submit_dossier again with the whole dossier: "
+            "the items kept plus the new ones.")
+
+
 def research(client, gen: dict, system: str, request: str, usage: dict, cache_control: dict,
-             language: str = "English") -> dict:
-    """The research conversation: web search, then one submit_dossier call (asked again once)."""
+             language: str = "English", check=None) -> dict:
+    """The research conversation: web search, then submit_dossier. check(dossier) -> (dossier, feedback)
+    verifies a submission; feedback asks for one more round (at most twice), else the dossier is kept."""
     tools = [{"type": "web_search_20260209", "name": "web_search", "max_uses": gen["web_search_max_uses"]},
              SUBMIT_DOSSIER]
     messages = [{"role": "user", "content": request + "\n\n" + RESEARCH.replace(
         "{target_words}", str(gen["target_words"])).replace("{language}", language)}]
-    for attempt in range(2):
+    best = None
+    for attempt in range(3):
         for _ in range(8):  # web search can pause the turn (pause_turn)
             resp = client.messages.create(model=gen["model"], max_tokens=gen["max_tokens"],
                                           cache_control=cache_control, system=system, tools=tools,
@@ -129,17 +152,26 @@ def research(client, gen: dict, system: str, request: str, usage: dict, cache_co
                 break
         call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_DOSSIER["name"]), None)
         if call is not None and resp.stop_reason != "max_tokens" and call.input.get("items"):
-            return json.loads(json.dumps(call.input))  # a plain copy, saved and modified by verify
-        feedback = "No complete dossier submitted: call submit_dossier with every item, keeping quotes short."
+            dossier = json.loads(json.dumps(call.input))  # a plain copy, saved and modified by verify
+            dossier, feedback = check(dossier) if check else (dossier, "")
+            best = dossier
+            if not feedback or attempt == 2:
+                return dossier
+            print(f"Dossier too thin, research continues: {feedback}")
+        else:
+            feedback = "No complete dossier submitted: call submit_dossier with every item, keeping quotes short."
         if call is None:
             messages.append({"role": "user", "content": feedback})
         else:
             messages.append({"role": "user", "content": [
                 {"type": "tool_result", "tool_use_id": call.id, "content": feedback, "is_error": True}]})
-    raise SystemExit("No research dossier after two attempts: nothing written.")
+    if best is not None:
+        return best
+    raise SystemExit("No research dossier after three attempts: nothing written.")
 
 
-def writing_request(dossier: dict, target_words: int, language: str = "English") -> str:
+def writing_request(dossier: dict, target_words: int, language: str = "English", themes: list[str] = ()) -> str:
     shown = {"items": dossier.get("items", []), "agenda": dossier.get("agenda", [])}
     return (WRITING.replace("{target_words}", str(target_words)).replace("{language}", language)
+            .replace("{themes}", ", ".join(themes))
             .replace("{dossier}", json.dumps(shown, ensure_ascii=False, indent=1)))

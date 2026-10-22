@@ -39,7 +39,10 @@ def test_a_quote_copied_from_the_page_is_verified_across_apostrophes_and_case(mo
     assert out["checked"] == {"verified": 1, "unread": 0, "dropped": 0}
 
 
-def dossier_cfg(cfg):
+def dossier_cfg(cfg, monkeypatch=None):
+    if monkeypatch:  # these tests use tiny dossiers: no request for more research
+        monkeypatch.setattr(dossier, "MIN_FACTS", 0)
+        monkeypatch.setattr(dossier, "MIN_THEMES", 0)
     cfg["generation"]["dossier"] = True
     cfg["factcheck"]["enabled"] = False
     return cfg
@@ -52,7 +55,7 @@ def test_research_then_writing_without_web_search_and_the_dossier_is_saved(cfg, 
     items = [item(u, "s'élève à 4 005 euros en 2026", title=u) for u in urls]
     client = fake_claude([reply(dossier_block(items)), reply(submit_block(ep))])
     path = tmp_path / "dossiers" / "2026-10-20.json"
-    out = generate.generate_episode(dossier_cfg(cfg), TUESDAY, [], dossier_path=path)
+    out = generate.generate_episode(dossier_cfg(cfg, monkeypatch), TUESDAY, [], dossier_path=path)
     research, writing = client.calls
     assert {t["name"] for t in research["tools"]} == {"web_search", "submit_dossier"}
     assert [t["name"] for t in writing["tools"]] == ["submit_episode"]  # no web search when writing
@@ -72,7 +75,7 @@ def test_a_source_outside_the_dossier_is_refused(cfg, fake_claude, monkeypatch):
                           reply(submit_block(ep, "toolu_w1")), reply(submit_block(ep, "toolu_w2")),
                           reply(submit_block(ep, "toolu_w3"))])
     try:
-        generate.generate_episode(dossier_cfg(cfg), TUESDAY, [])
+        generate.generate_episode(dossier_cfg(cfg, monkeypatch), TUESDAY, [])
     except SystemExit:
         pass
     feedback = client.calls[2]["messages"][-1]["content"][0]
@@ -84,3 +87,25 @@ def test_a_pdf_is_unread_not_parsed_as_a_page(monkeypatch):
         status_code, text, headers = 200, "%PDF-1.7 " + "stream " * 400, {"content-type": "application/pdf"}
     monkeypatch.setattr(factcheck.requests, "get", lambda *a, **k: R())
     assert factcheck.fetch("https://x/texte.pdf", {}, 1000) is None
+
+
+def test_a_thin_dossier_sends_the_research_back_for_the_themes_not_covered(cfg, fake_claude, monkeypatch):
+    # Learning (2026-10-22): an HR dossier kept 18 facts on two themes; the episode came out short and
+    # with two segments of the same theme.
+    monkeypatch.setattr(factcheck, "fetch", lambda url, cache, n: PAGE)
+    themes = [t["name"] for t in cfg["themes"]]
+    thin = [dict(item("https://a", "4 005 euros"), theme=themes[0])]
+    ep = make_episode()
+    urls = sorted(s["url"] for s in generate.collect_sources(ep))
+    full = [dict(item(u, "4 005 euros"), theme=themes[i % 3]) for i, u in enumerate(urls)]
+    for it in full:
+        it["facts"] *= 7
+    client = fake_claude([reply(dossier_block(thin, "toolu_d1")), reply(dossier_block(full, "toolu_d2")),
+                          reply(submit_block(ep))])
+    cfg["factcheck"]["enabled"] = False
+    cfg["generation"]["dossier"] = True
+    generate.generate_episode(cfg, TUESDAY, [])
+    back = client.calls[1]["messages"][-1]["content"][0]
+    assert back["tool_use_id"] == "toolu_d1" and "keeps 1 facts on 1 themes" in back["content"]
+    assert themes[1] in back["content"] and "Step 2 of 2" in client.calls[2]["messages"][0]["content"]
+    assert "in this order: " + ", ".join(themes) in client.calls[2]["messages"][0]["content"]
