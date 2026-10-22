@@ -298,3 +298,25 @@ def test_primary_sources_carry_a_badge_official_text_in_french():
     html = site._sources(ui, [{"title": "JO", "url": "https://legifrance.gouv.fr/x", "primary": True},
                               {"title": "Press", "url": "https://p", "primary": False}])
     assert html.count('class="primary"') == 1 and ">Texte officiel</span>" in html
+
+
+def test_a_new_cover_gets_a_new_address_so_browsers_drop_the_cached_one(tmp_path, cfg):
+    # Learning (2026-10-22): after a rename the browser kept showing the old cover.jpg from its cache.
+    from engine import catalog
+    docs = tmp_path / "docs"
+    docs.mkdir()
+    assert catalog.cover_url(docs, "cover.jpg") == "cover.jpg"  # no file yet: plain address
+    (docs / "cover.jpg").write_bytes(b"old")
+    old = catalog.cover_url(docs, "cover.jpg")
+    (docs / "cover.jpg").write_bytes(b"new")
+    new = catalog.cover_url(docs, "cover.jpg")
+    assert old.startswith("cover.jpg?v=") and new.startswith("cover.jpg?v=") and old != new
+    (tmp_path / "data").mkdir()
+    catalog.write_catalog(cfg, [], [], tmp_path / "data", docs / "catalog.json", BASE)
+    assert json.loads((docs / "catalog.json").read_text())["podcast"]["cover"] == new
+    site.write_site(cfg, docs / "catalog.json", tmp_path / "data", docs, BASE)
+    for page in ("episodes.html", "agenda.html", "topics/index.html"):
+        html = (docs / page).read_text()
+        assert new in html and '="cover.jpg"' not in html and '="../cover.jpg"' not in html, page
+    home = site.home_page([("signal-in-the-ai-fog", cfg, None)], docs=docs)
+    assert f'src="{new}"' in home

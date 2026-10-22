@@ -3,9 +3,17 @@
 The catalog lists published episodes and previews (script only, no audio yet).
 Previews never reach the RSS feed; a published episode replaces its preview.
 """
+import hashlib
 import json
 import re
 from pathlib import Path
+
+
+def cover_url(docs: Path, cover_file: str) -> str:
+    """The cover's address with a version drawn from its content (cover.jpg?v=1a2b3c4d): a new cover
+    gets a new address, so browsers never show the old one from their cache."""
+    path = docs / cover_file
+    return f"{cover_file}?v={hashlib.sha256(path.read_bytes()).hexdigest()[:8]}" if path.exists() else cover_file
 
 
 def _transcript(script_md: Path) -> str:
@@ -69,4 +77,5 @@ def write_catalog(cfg: dict, episodes: list[dict], previews: list[dict], data_di
                   out_path: Path, base_url: str) -> None:
     feed_url = base_url.rstrip("/") + "/feed.xml"
     data = build_catalog(cfg, episodes, previews, data_dir, feed_url)
+    data["podcast"]["cover"] = cover_url(out_path.parent, cfg["podcast"]["cover_file"])
     out_path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")

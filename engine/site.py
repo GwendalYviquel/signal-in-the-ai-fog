@@ -30,6 +30,7 @@ from pathlib import Path
 from urllib.parse import urlencode
 
 from . import locale
+from .catalog import cover_url
 from .chapters import timestamp
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -66,6 +67,7 @@ class Ui:
         site_path = str(cfg.get("podcast", {}).get("site_path", "")).strip("/")
         self.shared = "../" * len(Path(site_path).parts) if site_path else ""  # from the show to docs/
         self.catalog = catalog_name(cfg)
+        self.cover = "cover.jpg"  # with its version once write_site knows the show's folder
 
     def key(self, name: str) -> str:
         """A key of the site texts; texts naming the period get the show's cadence ("story.week")."""
@@ -120,7 +122,7 @@ def _page(ui: Ui, title: str, description: str, canonical: str, cover: str, body
 <meta property="og:url" content="{escape(canonical)}">
 <meta property="og:image" content="{escape(cover)}">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="{depth}cover.jpg">
+<link rel="icon" href="{depth}{ui.cover}">
 <link rel="stylesheet" href="{shared}pages.css">
 <script>try {{ const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; }} catch {{}}</script>
 <script src="{shared}i18n.js" defer></script>
@@ -128,7 +130,7 @@ def _page(ui: Ui, title: str, description: str, canonical: str, cover: str, body
 <body>
 <header class="bar"><div class="wrap">
   {_home_button(ui, shared)}
-  <img src="{depth}cover.jpg" alt="">
+  <img src="{depth}{ui.cover}" alt="">
   <a href="{depth}{ui.catalog}">{escape(show_title)}</a>
   <nav><a href="{depth}{ui.catalog}" data-i18n="nav_episodes">{escape(ui.text("nav_episodes"))}</a><a href="{depth}agenda.html" data-i18n="nav_agenda">{escape(ui.text("nav_agenda"))}</a><a href="{depth}topics/index.html" data-i18n="nav_topics">{escape(ui.text("nav_topics"))}</a></nav>
   {ui.switch()}
@@ -382,7 +384,7 @@ def agenda_page(ui: Ui, entries: list[dict], podcast: dict, base_url: str) -> st
 def catalog_page(ui: Ui) -> str:
     """The show's catalog page: the template, in the show's language, pointing to the shared files."""
     p = ui.cfg.get("podcast", {})
-    values = {"LANG": ui.lang, "SHARED": ui.shared, "TITLE": escape(p.get("title", "")),
+    values = {"LANG": ui.lang, "SHARED": ui.shared, "COVER": ui.cover, "TITLE": escape(p.get("title", "")),
               "DESCRIPTION": escape(" ".join(str(p.get("description", "")).split()))}
     html = TEMPLATE.read_text(encoding="utf-8")
     for name, value in values.items():
@@ -400,6 +402,7 @@ def write_site(cfg: dict, catalog_json: Path, data_dir: Path, docs: Path, base_u
     catalog = json.loads(catalog_json.read_text(encoding="utf-8"))
     podcast, episodes = catalog["podcast"], catalog["episodes"]
     ui = Ui(cfg)
+    ui.cover = cover_url(docs, str(cfg.get("podcast", {}).get("cover_file", "cover.jpg")))
     repo = repo_from(base_url)
     structured = {ep["date"]: st for ep in episodes if (st := _structured(data_dir, ep))}
     base = base_url.rstrip("/") + "/"
@@ -447,7 +450,7 @@ def i18n_json() -> dict:
     return out
 
 
-def home_page(shows_cfg: list[tuple[str, dict, dict | None]], lang: str = "en") -> str:
+def home_page(shows_cfg: list[tuple[str, dict, dict | None]], lang: str = "en", docs: Path | None = None) -> str:
     """docs/index.html: where a visitor picks a show. Written in the first show's language; without a
     language picked yet, the switch follows the browser's (data-auto-lang, docs/i18n.js)."""
     ui = Ui({"podcast": {"language": lang, "title": ""}})
@@ -462,7 +465,7 @@ def home_page(shows_cfg: list[tuple[str, dict, dict | None]], lang: str = "en") 
         last = (f'<p class="latest">{ui.tag("latest_episode")} <a href="{href}episodes/{latest["date"]}.html">'
                 f'{escape(latest["title"])}</a> · {ui.date(latest["date"])}</p>' if latest else
                 f'<p class="latest">{ui.tag("no_episodes")}</p>')
-        cards.append(f'<section class="story show-card"><a href="{catalog}"><img src="{href}{escape(p["cover_file"])}" '
+        cards.append(f'<section class="story show-card"><a href="{catalog}"><img src="{href}{escape(cover_url(docs / folder, p["cover_file"]) if docs else p["cover_file"])}" '
                      f'alt="" width="96" height="96"></a><div><h2><a href="{catalog}">{escape(p["title"])}</a></h2>'
                      f'<div class="meta">{ui.tag(f"cadence_{period}")} · {ui.tag(f"language_{language}")}</div>'
                      f'<p class="facts">{escape(" ".join(str(p.get("description", "")).split()))}</p>{last}'
@@ -508,7 +511,7 @@ def write_shared(repo: Path | None = None) -> None:
         episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []
         listed.append((s, show.cfg, max(episodes, key=lambda e: e["date"]) if episodes else None))
     first = shows.load(shows.DEFAULT, repo).cfg if (repo / "shows" / shows.DEFAULT).exists() else {"podcast": {}}
-    (docs / "index.html").write_text(home_page(listed, str(first["podcast"].get("language", "en"))), encoding="utf-8")
+    (docs / "index.html").write_text(home_page(listed, str(first["podcast"].get("language", "en")), docs), encoding="utf-8")
     old = docs / "shows.html"  # the list of shows before the home page took its place
     if old.exists() and GENERATED in old.read_text(encoding="utf-8"):
         old.unlink()
