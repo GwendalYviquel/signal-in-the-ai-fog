@@ -80,3 +80,21 @@ def test_main_writes_a_jpeg(tmp_path):
     out = make_cover.main(tmp_path / "cover.jpg", size=300)
     with Image.open(out) as img:
         assert img.format == "JPEG" and img.size == (300, 300)
+
+
+@pytest.mark.parametrize("slug", __import__("engine.show", fromlist=["slugs"]).slugs())
+def test_every_show_has_a_cover_that_meets_the_platform_specs(slug):
+    # Learning (2026-10-22): each show has its own cover, in its site folder.
+    from engine import show as shows
+    show = shows.load(slug)
+    with Image.open(show.docs / show.cfg["podcast"]["cover_file"]) as img:
+        assert img.format == "JPEG" and img.mode == "RGB"
+        assert img.width == img.height and 1400 <= img.width <= 3000
+
+
+def test_a_show_cover_is_deterministic_and_draws_its_title():
+    a = make_cover.render_show("Signal RH", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
+    b = make_cover.render_show("Signal RH", "L'hebdo RH", ["#0b2a4a", "#1f6f8b", "#e07a5f"], 300)
+    assert a.tobytes() == b.tobytes()
+    bright = sum(1 for p in a.convert("L").getdata() if p > 240) / (300 * 300)
+    assert bright > 0.03  # the white title and wave are drawn

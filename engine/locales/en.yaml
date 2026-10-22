@@ -56,3 +56,5 @@ feed:
 rules:
   first_person: '\b(we|We|our|Our|ours|us)\b'   # "US" (the country) stays allowed
   correction_example: "The episode of October twentieth said..."
+  topic_max_words: 4                             # a topic's canonical name ("EU AI Act")
+  unspeakable_symbols: ""                        # symbols the voice reads badly, refused in spoken text

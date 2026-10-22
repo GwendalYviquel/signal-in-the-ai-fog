@@ -74,3 +74,34 @@ def test_manual_workflows_name_their_show(name):
     assert on["workflow_dispatch"]["inputs"]["show"]["default"] == shows.DEFAULT
     text = (WORKFLOWS / name).read_text(encoding="utf-8")
     assert "SHOW: ${{ matrix.show }}" in text or "SHOW: ${{ inputs.show || 'signal-in-the-ai-fog' }}" in text
+
+
+@pytest.mark.parametrize("slug", shows.slugs())
+def test_every_show_is_complete_and_its_prompt_is_filled(slug, fake_claude):
+    # Every show: a config the engine reads, its own prompt with every placeholder filled, no
+    # maintainer note sent to Claude, and a locale that exists.
+    from conftest import TUESDAY, make_episode, reply, submit_block
+    from engine import generate, locale
+    show = shows.load(slug)
+    cfg = show.cfg
+    locale.of(cfg)
+    locale.cadence(cfg)
+    assert cfg["themes"] and all(t["name"] and t["focus"] for t in cfg["themes"])
+    client = fake_claude([reply(submit_block(make_episode()))] * 3)
+    try:  # the English test episode may need corrections on a French show: only the prompt matters here
+        generate.generate_episode(cfg, TUESDAY, [], show=show)
+    except (SystemExit, AssertionError):
+        pass
+    system = client.calls[0]["system"]
+    assert "{" not in system.replace("{}", "") or not __import__("re").search(r"\{[a-z_]+\}", system)
+    assert "<!--" not in system and "Maintainer note" not in system
+
+
+def test_shows_in_preparation_are_never_scheduled():
+    # The French shows wait for their voices: scheduled attempts and the watchdog leave them out.
+    names = [i["show"] for i in shows.matrix("all")["include"]]
+    for slug in shows.slugs():
+        assert (slug in names) == shows.scheduled(shows.load(slug))
+    for slug in ("hr-news-fr", "accounting-news-fr"):
+        if slug in shows.slugs() and "TO_FILL" in (shows.load(slug).home / "show.yaml").read_text():
+            assert not shows.scheduled(shows.load(slug)), f"{slug} has voices to choose but is scheduled"

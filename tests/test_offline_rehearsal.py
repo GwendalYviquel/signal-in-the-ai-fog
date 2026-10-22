@@ -102,3 +102,29 @@ def test_the_rehearsal_day_is_never_a_real_episode():
     import json
     published = {e["date"] for e in json.loads((ROOT / "shows" / "signal-in-the-ai-fog" / "data" / "episodes.json").read_text(encoding="utf-8"))}
     assert rehearsal.DAY.date().isoformat() not in published and rehearsal.DAY.weekday() < 5
+
+
+@pytest.fixture(scope="module")
+def french(tmp_path_factory):
+    return rehearsal.rehearse(tmp_path_factory.mktemp("rehearsal-fr") / "repo", "hr-news-fr")
+
+
+def test_a_weekly_french_show_publishes_on_its_day_in_french(french):
+    # Learning (2026-10-22): the first French rehearsal; French topic names run longer than four words,
+    # and a weekly French episode is about 7,000 ElevenLabs characters.
+    ep = french["episode"]
+    assert ep["date"] == "2030-01-14"  # a Monday, the show's day
+    assert [c["title"] for c in ep["chapters"]][:2] == ["Ouverture", "Sujet de la semaine : Le bulletin de paie "
+                                                                       "simplifié arrive en janvier"]
+    assert french["script"].count("## Script") == 1 and "C'est tout pour cette semaine." in french["script"]
+    assert "Bonjour, ici Signal RH" in french["script"] or "Bonjour, ici " in french["script"]
+    item = french["feed"].getroot().find("channel/item")
+    assert item.find("guid").text.endswith("#hr-news-fr-2030-01-14")
+    assert french["feed"].getroot().find("channel/language").text == "fr"
+    assert french["docs"].name == "hr-news-fr" and (french["docs"] / "episodes" / "2030-01-14.html").exists()
+    assert french["corrected"] is None  # nothing to correct on a new show
+
+
+def test_the_french_request_asks_for_a_weekly_episode(french):
+    request = french["requests"][0]
+    assert "This is a weekly episode" in request["messages"][0]["content"]

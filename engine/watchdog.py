@@ -101,7 +101,7 @@ def main() -> None:
         return
     from . import main as pipeline, show as shows
     now = dt.datetime.now(dt.timezone.utc)
-    names = shows.slugs()
+    names = [s for s in shows.slugs() if shows.scheduled(shows.load(s))]
     for name in names:  # every show, each on its own cadence
         show = shows.load(name)
         episodes = json.loads(show.episodes.read_text(encoding="utf-8")) if show.episodes.exists() else []

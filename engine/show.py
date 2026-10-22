@@ -131,9 +131,15 @@ def context_secret(show: Show) -> str:
     return explicit or "EDITORIAL_CONTEXT_" + show.slug.upper().replace("-", "_")
 
 
+def scheduled(show: Show) -> bool:
+    """Whether scheduled attempts and the watchdog run this show (generation.scheduled, default true).
+    A show still in preparation (voices to choose, first preview to read) stays out of them."""
+    return bool(show.cfg.get("generation", {}).get("scheduled", True))
+
+
 def matrix(which: str, repo: Path | None = None) -> dict:
-    """GitHub Actions matrix of the shows to run: "all" (scheduled attempts) or one slug."""
-    names = slugs(repo) if which == "all" else [which or DEFAULT]
+    """GitHub Actions matrix of the shows to run: "all" (scheduled attempts: the scheduled shows) or one."""
+    names = [s for s in slugs(repo) if scheduled(load(s, repo))] if which == "all" else [which or DEFAULT]
     return {"include": [{"show": s, "context_secret": context_secret(load(s, repo))} for s in names]}
 
 

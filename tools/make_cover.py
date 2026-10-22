@@ -1,6 +1,7 @@
 """Generate the podcast cover art in docs/cover.jpg (3000 x 3000 px, RGB JPEG).
 
 Usage: pip install -r requirements-dev.txt && python tools/make_cover.py [output.jpg]
+       python tools/make_cover.py --show <slug>   (another show's cover, from its show.yaml)
 
 Every coordinate is designed for 3000 px and scaled to the requested size, so the
 same cover can be rendered small and fast (tests) or full size (publication).
@@ -149,6 +150,63 @@ def render(size: int = DESIGN, seed: int = 11) -> Image.Image:
     return img
 
 
+def _hex(color: str) -> tuple[int, int, int]:
+    color = color.lstrip("#")
+    return tuple(int(color[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def render_show(title: str, kicker: str, palette: list[str], size: int = DESIGN, seed: int = 7) -> Image.Image:
+    """Cover of a show other than the first: its colours, its title as large as it fits, a kicker
+    line above and the signal wave below. The same title always gives the same cover."""
+    rng = random.Random(seed)
+    k = size / DESIGN
+    c1, c2, c3 = (np.array(_hex(c), float) for c in palette)
+    yy, xx = np.mgrid[0:size, 0:size]
+    t = ((xx + yy) / (2 * size))[..., None]
+    out = np.where(t < 0.55, c1 + (c2 - c1) * (t / 0.55), c2 + (c3 - c2) * ((t - 0.55) / 0.45))
+    img = Image.fromarray(out.clip(0, 255).astype("uint8"))
+    draw = ImageDraw.Draw(img)
+
+    def centred(text, f, y, color):
+        box = draw.textbbox((0, 0), text, font=f)
+        draw.text(((size - (box[2] - box[0])) / 2 - box[0], y * k - box[1]), text, font=f, fill=color)
+
+    # Title: one or two lines, the largest size that fits 84 % of the width.
+    words = title.upper().split()
+    lines = [title.upper()] if len(words) < 2 else [" ".join(words[:len(words) // 2]), " ".join(words[len(words) // 2:])]
+    fsize = 900
+    while fsize > 100 and max(draw.textlength(line, font=font(fsize * k)) for line in lines) > 0.84 * size:
+        fsize -= 20
+    y = 1250 - (len(lines) - 1) * fsize * 0.55
+    for line in lines:
+        centred(line, font(fsize * k), y, (250, 250, 255))
+        y += fsize * 1.1
+    centred(kicker.upper(), font(130 * k), 520, (235, 240, 255))
+
+    # Signal wave, as on the first show's cover: noise, then a sharp pulse, then calm.
+    pts = []
+    for x in range(250, DESIGN - 250, 8):
+        u = (x - DESIGN / 2) / (DESIGN / 2)
+        noise = (1 - min(1, abs(u + 0.45) * 2.2)) * rng.uniform(-60, 60) if u < -0.1 else 0
+        pulse = math.exp(-((u * 9) ** 2)) * 170 * math.sin(u * 60)
+        pts.append((x * k, (2450 + noise + pulse) * k))
+    draw.line(pts, fill=(255, 255, 255), width=max(1, round(14 * k)))
+    return img
+
+
+def show_cover(slug: str, size: int = DESIGN) -> Path:
+    """Render a show's cover from its show.yaml (podcast.title, podcast.cover_kicker, podcast.cover_palette)."""
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from engine import show as shows
+    show = shows.load(slug)
+    p = show.cfg["podcast"]
+    out = show.docs / p["cover_file"]
+    out.parent.mkdir(parents=True, exist_ok=True)
+    render_show(p["title"], p.get("cover_kicker", ""), p["cover_palette"], size).save(out, "JPEG", quality=92)
+    print(f"Cover saved: {out}")
+    return out
+
+
 def main(out: Path = OUT, size: int = DESIGN) -> Path:
     render(size).save(out, "JPEG", quality=92)
     print(f"Cover saved: {out}")
@@ -156,4 +214,7 @@ def main(out: Path = OUT, size: int = DESIGN) -> Path:
 
 
 if __name__ == "__main__":
-    main(Path(sys.argv[1]) if len(sys.argv) > 1 else OUT)
+    if len(sys.argv) > 2 and sys.argv[1] == "--show":
+        show_cover(sys.argv[2])
+    else:
+        main(Path(sys.argv[1]) if len(sys.argv) > 1 else OUT)

@@ -1,0 +1,130 @@
+# Show configuration (engine/show.py), same sections as shows/signal-in-the-ai-fog/show.yaml.
+# Every TO_FILL value must be set before the first published episode (engine/main.py blocks
+# publication while one remains), and generation.scheduled turned on to run it on its schedule.
+
+title_proposals:                     # check availability on podcast platforms before choosing
+  - "Signal Compta"
+  - "Bilan de la semaine"
+  - "Débit Crédit l'hebdo"
+
+podcast:
+  title: "Signal Compta"                 # first of title_proposals until one is chosen
+  tagline: "l'actualité comptable et fiscale de la semaine"   # in the spoken opening
+  language: "fr"                     # engine/locales/fr.yaml: spoken texts, feed, site
+  description: >-
+    Chaque semaine, dix minutes sur l'actualité comptable, fiscale et de l'audit : loi de
+    finances et doctrine fiscale, normes comptables, facturation électronique, reporting de
+    durabilité, commissariat aux comptes, et ce qui vient de l'Europe. Pour les experts-comptables,
+    les directions financières et les commissaires aux comptes. Script écrit et voix générée par IA.
+  author: "Gwendal Yviquel"          # name displayed as the podcast author
+  owner_name: "Gwendal Yviquel"
+  owner_email: "gwendal.yviquel.devuse@gmail.com"   # public: Spotify sends the verification code here
+  category: "Business"
+  explicit: false
+  cover_file: "cover.jpg"            # in docs/accounting-news-fr/, square, 1400 to 3000 px (to create)
+  cover_kicker: "L'hebdo compta et fiscalité"   # small line above the title (tools/make_cover.py --show)
+  cover_palette: ['#1b2a1f', '#2f6b4f', '#d4a017']   # gradient of the cover, three colours
+  spotify_url: ""                    # set once the show is submitted to Spotify (manual, once)
+  # Leave empty to use the repository's GitHub Pages site, in the folder site_path.
+  base_url: ""
+  site_path: "accounting-news-fr"
+  release_prefix: "accounting-news-fr"   # releases and GUIDs accounting-news-fr-YYYY-MM-DD: never change after the first episode
+  context_secret: "EDITORIAL_CONTEXT_ACCOUNTING_NEWS_FR"   # GitHub secret of the private editorial context
+
+generation:
+  model: "claude-sonnet-5-5"
+  max_tokens: 16000                  # room for the episode after long web searches
+  web_search_max_uses: 15
+  timezone: "Europe/Paris"
+  # One episode a week, with the news of the last seven days, published on Monday morning like
+  # the first show's weekday episodes (same attempts, same publish time).
+  cadence: "weekly:monday"
+  publish_at: "04:05"
+  # Paris times the watchdog checks that the episode is out, and starts the catch-up if not.
+  watchdog_at: ["05:11", "06:41"]
+  target_words: 1400                 # about ten minutes spoken in French
+  scheduled: false                   # in preparation: no scheduled attempt, no watchdog (engine/show.py)
+  lengths:                           # word ranges of a weekly French episode (warnings only)
+    story facts: [150, 250]
+    story read: [120, 200]
+    segment facts: [50, 100]
+    segment read: [35, 75]
+    number_of_the_day: [25, 60]
+    follow_up: [30, 75]
+    what_to_watch: [60, 130]
+    question: [15, 45]
+
+sources:
+  # Primary sources to favour (informational, matched by domain; primary: true when cited).
+  primary:
+    - "legifrance.gouv.fr"
+    - "journal-officiel.gouv.fr"
+    - "bofip.impots.gouv.fr"           # Bulletin officiel des finances publiques
+    - "impots.gouv.fr"
+    - "economie.gouv.fr"               # ministry, including the e-invoicing reform pages
+    - "budget.gouv.fr"
+    - "service-public.fr"              # including entreprendre.service-public.fr
+    - "anc.gouv.fr"                    # Autorité des normes comptables
+    - "conseil-etat.fr"
+    - "conseil-constitutionnel.fr"
+    - "assemblee-nationale.fr"
+    - "senat.fr"
+    - "h3c.fr"                         # Haute autorité de l'audit
+    - "amf-france.org"
+    - "ifrs.org"                       # IASB standards and projects
+    - "efrag.org"
+    - "esma.europa.eu"
+    - "eur-lex.europa.eu"
+    - "finance.ec.europa.eu"
+    - "taxation-customs.ec.europa.eu"
+  # Sites that rewrite other outlets' news (aggregators, personal blog platforms): never cited.
+  # Starting list, to extend with domains seen in real runs (each with a dated comment).
+  avoid: ["news.google.com", "msn.com", "fr.news.yahoo.com", "flipboard.com", "medium.com",
+          "over-blog.com", "linkedin.com"]
+
+factcheck:
+  # Before the voices, every figure, date, name and status in the facts is checked against the
+  # story's own sources (fetched by the code, read by a small model). A doubt goes back to a
+  # light correction; one still there after the last attempt is reported, not blocking.
+  enabled: true
+  model: "claude-haiku-5-5"
+  max_chars_per_source: 40000       # keeps each check under 100K tokens, Haiku's lower price
+
+costs:  # for COSTS.md estimates; Claude prices for generation.model, per million tokens
+  priced_model: "claude-sonnet-5-5"  # change the prices below when generation.model changes
+  claude_usd_per_mtok: {input: 2.0, output: 10.0, cache_write: 2.5, cache_read: 0.2}
+  web_search_usd_per_1000: 10.0
+  factcheck_priced_model: "claude-haiku-5-5"   # change the prices below when factcheck.model changes
+  factcheck_usd_per_mtok: {input: 0.10, output: 0.50, cache_write: 0.125, cache_read: 0.01}      # not confirmed in the API reference: check the pricing page
+
+tts:
+  voices:                            # ElevenLabs voice IDs
+    host: "TO_FILL"                  # opening, facts, transitions, sign-off: a native French voice
+    analyst: "TO_FILL"               # every read layer (analysis): a second native French voice
+  pause_seconds: 0.6                 # breath when the other voice takes over
+  model_id: "eleven_multilingual_v2"
+  output_format: "mp3_44100_128"
+  max_chars_per_request: 4500
+  use_context: true                  # previous_text / next_text for continuous delivery
+  # Sent with every request, so episodes sound like tests made on the ElevenLabs platform.
+  voice_settings:
+    stability: 0.55                  # lower: more expressive, higher: steadier and flatter
+    similarity_boost: 0.75           # closeness to the original voice
+    style: 0.1                       # extra emphasis; keep low to avoid artefacts
+    use_speaker_boost: true
+    speed: 1.0                       # 0.7 to 1.2; slightly below 1 for a slower delivery
+
+# Themes covered, in segment order. The name is spoken in the transition ("Ensuite, <name>.").
+themes:
+  - name: "Fiscalité"
+    focus: "Projet et loi de finances, loi de financement de la sécurité sociale pour ses volets fiscaux, commentaires BOFiP, rescrits, jurisprudence du Conseil d'État, TVA, impôt sur les sociétés, fiscalité locale, échéances déclaratives"
+  - name: "Normes comptables"
+    focus: "Plan comptable général, règlements et recommandations de l'ANC, normes IFRS et projets de l'IASB, adoption par l'Union européenne, comptes consolidés"
+  - name: "Facturation électronique"
+    focus: "Calendrier de la réforme, plateformes agréées, e-reporting, formats et annuaire, obligations de réception et d'émission, préparation des entreprises et des cabinets"
+  - name: "Durabilité"
+    focus: "CSRD et ses simplifications, normes ESRS, norme volontaire VSME pour les PME, taxonomie européenne, devoir de vigilance, assurance des informations de durabilité"
+  - name: "Audit"
+    focus: "Commissariat aux comptes, Haute autorité de l'audit, normes d'exercice professionnel, seuils de désignation, missions sur les informations de durabilité, profession comptable"
+  - name: "Europe"
+    focus: "Directives fiscales (coopération administrative, imposition minimale des groupes, TVA à l'ère numérique), paquets de simplification de la Commission, travaux de l'EFRAG et de l'ESMA"

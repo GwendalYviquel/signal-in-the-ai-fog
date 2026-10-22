@@ -54,3 +54,5 @@ feed:
 rules:
   first_person: '\b([Nn]ous|[Nn]otre|[Nn]os)\b'
   correction_example: "L'épisode du vingt octobre indiquait..."
+  topic_max_words: 6                             # les noms français sont plus longs (« Plafond de la sécurité sociale »)
+  unspeakable_symbols: "€%«»"

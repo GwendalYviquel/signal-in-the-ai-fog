@@ -214,6 +214,7 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
         if not _has_source(s.get("sources")):
             errors.append(f"Segment {s.get('theme')!r} has no source")
 
+    topic_words = locale.of(cfg)["rules"].get("topic_max_words", TOPIC_MAX_WORDS)
     for name, s in [("story of the day", story)] + [(f"segment {s.get('theme')!r}", s) for s in segs]:
         if s.get("label") not in LABELS:
             errors.append(f"Label of the {name} must be one of {', '.join(LABELS)}, got {s.get('label')!r}")
@@ -221,8 +222,8 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
         if not 1 <= len(topics) <= TOPICS_MAX:
             errors.append(f"The {name} needs 1 to {TOPICS_MAX} topics, got {len(topics)}")
         for topic in topics:
-            if not str(topic).strip() or words(str(topic)) > TOPIC_MAX_WORDS:
-                errors.append(f"Topic of the {name} must be 1 to {TOPIC_MAX_WORDS} words: {topic!r}")
+            if not str(topic).strip() or words(str(topic)) > topic_words:
+                errors.append(f"Topic of the {name} must be 1 to {topic_words} words: {topic!r}")
             elif str(topic).strip() in themes:
                 errors.append(f"Topic of the {name} is a theme name, use the subject itself: {topic!r}")
     follow_up = ep.get("follow_up")
@@ -238,18 +239,22 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
         for term in forbidden:
             if term.lower() in text.lower():
                 errors.append(f"Forbidden term in {name}")
+    lengths = {**LENGTHS, **{k: tuple(v) for k, v in cfg.get("generation", {}).get("lengths", {}).items()}}
+    symbols = locale.of(cfg)["rules"].get("unspeakable_symbols", "")
     for name, text in _spoken_parts(ep):
         if m := UNSPEAKABLE.search(text):
             around = text[max(0, m.start() - 30):m.end() + 30].replace("\n", " ")
             errors.append(f"Markdown, brackets or links in {name} ({m.group(0)!r} in \"...{around}...\"): "
                           "spoken text must not contain * _ # ` [ ] < > { } or URLs")
+        if symbols and (m := re.search(f"[{re.escape(symbols)}]", text)):
+            errors.append(f"Symbol {m.group(0)!r} in {name}: the voice reads it badly, write it in words")
         if m := first_person(cfg).search(text):
             errors.append(f"First person {m.group(0)!r} in {name}")
         for term in forbidden:
             if term.lower() in text.lower():
                 errors.append(f"Forbidden term in {name}")
-        if name in LENGTHS:
-            lo, hi = LENGTHS[name]
+        if name in lengths:
+            lo, hi = lengths[name]
             if not lo <= words(text) <= hi:
                 warnings.append(f"{name}: {words(text)} words (expected {lo} to {hi})")
 
@@ -384,6 +389,7 @@ def generate_episode(cfg, now, previous_scripts, usage=None, request=None, show=
     usage = usage if usage is not None else costs.empty_claude_usage(cfg["generation"]["model"])
     gen = cfg["generation"]
     system = (show.prompt if show else shows.load().prompt).read_text(encoding="utf-8")
+    system = re.sub(r"\s*<!--.*?-->", "", system, flags=re.S)  # maintainer notes are not for Claude
     system = system.replace("{target_words}", str(gen["target_words"]))
     system = system.replace("{avoided_sites}", ", ".join(cfg.get("sources", {}).get("avoid", [])) or "none")
     if context := _private_context(show):

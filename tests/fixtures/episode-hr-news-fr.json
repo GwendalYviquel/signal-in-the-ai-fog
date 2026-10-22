@@ -1,0 +1,136 @@
+{
+ "_note": "Rehearsal fixture of a French weekly HR episode: invented, generic content and example.com sources. Never published.",
+ "title": "Bulletin de paie simplifié et forfait jours",
+ "summary": "Le décret sur le bulletin de paie simplifié laisse trois mois aux services paie. Aussi : la Cour de cassation sur le forfait jours, le plafond de la sécurité sociale et la transposition de la transparence salariale.",
+ "headlines": [
+  "Le bulletin de paie simplifié arrive en janvier",
+  "Forfait jours et entretien annuel rappelés à l'ordre",
+  "La transparence salariale entre dans la loi"
+ ],
+ "story_of_the_day": {
+  "theme": "Paie et cotisations",
+  "facts": "Un décret publié au Journal officiel cette semaine fixe les modalités du nouveau bulletin de paie simplifié. Le texte réduit le nombre de lignes obligatoires et regroupe les cotisations par grand risque. Il s'applique aux bulletins émis à partir du premier janvier de l'année prochaine, pour tous les employeurs, quelle que soit leur taille. Les éditeurs de logiciels de paie disposent donc de trois mois pour livrer les mises à jour. Le décret précise aussi que le montant net social doit rester affiché en haut du bulletin, sous une forme lisible. Le ministère du Travail a publié le même jour une page de questions et réponses qui détaille les cas particuliers. On y trouve les salariés à temps partiel, les apprentis et les salariés en arrêt de travail indemnisé. Un arrêté doit encore fixer le modèle de présentation, sans date annoncée à ce stade. Les organisations patronales avaient demandé un délai plus long, sans l'obtenir. Pour les entreprises qui externalisent la paie, la mise à jour passe par le prestataire, qui doit confirmer son calendrier. Le texte ne change ni le montant des cotisations ni leur mode de calcul, seulement leur présentation.",
+  "read": "Concrètement : le vrai sujet est le calendrier, pas le contenu. Trois mois pour paramétrer, tester et former, c'est court, surtout en fin d'année, quand la paie de décembre et les régularisations occupent déjà les équipes. Le premier réflexe est de demander à l'éditeur ou au prestataire sa date de livraison et son plan de recette. Le deuxième est de prévoir un bulletin de test sur quelques profils complexes : temps partiel, apprentis, arrêts de travail, salariés multi-établissements. Le troisième est d'anticiper les questions des salariés, qui verront un bulletin différent dès janvier. Un message court, envoyé avec la paie de décembre, évite une vague de demandes au service paie. Enfin, tant que l'arrêté sur le modèle n'est pas publié, mieux vaut ne rien figer dans les gabarits. C'est probablement le point à surveiller dans les prochaines semaines, avec la date réelle de livraison des éditeurs. Pour un service paie, c'est un projet à part entière, à piloter comme tel.",
+  "label": "confirmed",
+  "topics": [
+   "Bulletin de paie simplifié"
+  ],
+  "sources": [
+   {
+    "title": "Journal officiel : décret sur le bulletin de paie",
+    "url": "https://example.com/jo-bulletin",
+    "primary": true
+   },
+   {
+    "title": "Presse sociale : ce que change le bulletin simplifié",
+    "url": "https://example.com/presse-bulletin",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Droit du travail",
+   "facts": "La Cour de cassation a rendu cette semaine un arrêt publié sur le forfait jours. Elle rappelle que l'employeur doit organiser un entretien annuel portant sur la charge de travail, l'articulation avec la vie personnelle et la rémunération. Faute de cet entretien, la convention de forfait est privée d'effet et le salarié peut réclamer le paiement d'heures supplémentaires. L'arrêt concerne une salariée cadre dont l'entretien n'avait pas eu lieu pendant deux années consécutives. La juridiction confirme une jurisprudence constante.",
+   "read": "En pratique : ce rappel vise la preuve. Un entretien tenu mais non tracé ne protège pas l'employeur. Vérifiez que chaque salarié au forfait a un compte rendu signé pour l'année en cours, et planifiez les entretiens manquants avant la fin de l'année.",
+   "label": "confirmed",
+   "topics": [
+    "Forfait jours"
+   ],
+   "sources": [
+    {
+     "title": "Cour de cassation : arrêt sur le forfait jours",
+     "url": "https://example.com/cassation-forfait",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Paie et cotisations",
+   "facts": "Le plafond annuel de la sécurité sociale pour l'année prochaine a été publié. Il progresse d'environ deux pour cent par rapport à cette année. Le plafond sert de base au calcul de plusieurs cotisations, dont la retraite de base, et de plusieurs seuils d'exonération. La valeur mensuelle s'applique aux périodes d'emploi à partir de janvier. L'URSSAF a mis à jour ses pages de référence le même jour.",
+   "read": "Pour la paie, ça veut dire : une mise à jour de paramètre à faire avant la première paie de janvier. Elle est souvent automatique chez les éditeurs, mais un contrôle sur un bulletin test reste prudent, surtout pour les salariés proches du plafond.",
+   "label": "confirmed",
+   "topics": [
+    "Plafond de la sécurité sociale"
+   ],
+   "sources": [
+    {
+     "title": "URSSAF : plafond de la sécurité sociale",
+     "url": "https://example.com/urssaf-plafond",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Dialogue social",
+   "facts": "Un avenant à la convention collective de la métallurgie sur les salaires minima a été étendu par arrêté cette semaine. L'extension rend l'avenant obligatoire pour toutes les entreprises de la branche, adhérentes ou non à une organisation patronale signataire. Les nouveaux minima s'appliquent dès le premier jour du mois suivant la publication de l'arrêté au Journal officiel.",
+   "read": "Pour la paie, ça veut dire : vérifier dès maintenant les salaires proches des nouveaux minima. Une régularisation rétroactive coûte plus cher en temps qu'un contrôle préventif, et l'écart se voit vite lors d'un contrôle de l'inspection du travail.",
+   "label": "confirmed",
+   "topics": [
+    "Salaires minima de branche"
+   ],
+   "sources": [
+    {
+     "title": "Journal officiel : arrêté d'extension",
+     "url": "https://example.com/jo-extension",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Formation",
+   "facts": "Le montant de l'aide à l'embauche d'un apprenti serait réduit pour les contrats signés à partir du printemps, selon la presse sociale spécialisée. Un projet de décret circulerait parmi les partenaires sociaux. Le montant envisagé baisserait pour les entreprises de plus de deux cent cinquante salariés. Aucun texte n'est publié à ce stade, et la date d'application reste à confirmer.",
+   "read": "Ce qu'il faut en retenir : rien ne change tant que le décret n'est pas paru. Mais pour les recrutements d'apprentis prévus au printemps, mieux vaut chiffrer le budget avec et sans l'aide actuelle.",
+   "label": "reported",
+   "topics": [
+    "Aide à l'apprentissage"
+   ],
+   "sources": [
+    {
+     "title": "Presse sociale : projet de décret sur l'aide à l'apprentissage",
+     "url": "https://example.com/presse-apprentissage",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "La date limite de transposition de la directive sur la transparence salariale approche. Les États membres doivent avoir adopté leurs textes nationaux en juin de l'année prochaine. Le projet de loi français de transposition a été présenté en conseil des ministres cette semaine. Il prévoit l'obligation d'indiquer une fourchette de rémunération dans les offres d'emploi.",
+   "read": "La vraie portée : les offres d'emploi et les grilles de salaire devront être cohérentes et justifiables. Un premier inventaire des écarts par poste, dès maintenant, évite de découvrir les difficultés au moment de publier les fourchettes.",
+   "label": "confirmed",
+   "topics": [
+    "Transparence salariale"
+   ],
+   "sources": [
+    {
+     "title": "EUR-Lex : directive sur la transparence salariale",
+     "url": "https://example.com/eurlex-transparence",
+     "primary": true
+    },
+    {
+     "title": "Ministère du Travail : projet de loi de transposition",
+     "url": "https://example.com/projet-loi",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "follow_up": {
+  "text": "Le décret attendu sur les frais de transport domicile travail, signalé il y a deux semaines, est paru. Il confirme la prise en charge obligatoire de la moitié de l'abonnement, avec un plafond relevé pour les salariés en région.",
+  "source": {
+   "title": "Journal officiel : décret sur les frais de transport",
+   "url": "https://example.com/jo-transport",
+   "primary": true
+  }
+ },
+ "number_of_the_day": {
+  "text": "Trois mois. C'est le délai laissé aux éditeurs de paie pour livrer le bulletin simplifié. Un délai court en fin d'année, qui rend la recette plus importante que jamais.",
+  "source": {
+   "title": "Journal officiel : décret sur le bulletin de paie",
+   "url": "https://example.com/jo-bulletin",
+   "primary": true
+  }
+ },
+ "what_to_watch": "Dans les semaines à venir, plusieurs échéances. L'arrêté fixant le modèle du bulletin simplifié est attendu, sans date. Le projet de loi sur la transparence salariale arrive au Parlement, avec un examen en commission annoncé pour le mois prochain. Le décret sur l'aide à l'apprentissage reste à suivre. Enfin, la campagne de déclaration annuelle des données sociales démarre en janvier, avec les nouveaux paramètres du plafond. Autant de rendez-vous qui touchent directement le calendrier des services paie et RH.",
+ "question": "Votre éditeur de paie vous a-t-il donné sa date de livraison du bulletin simplifié, et qui, dans votre équipe, pilote la recette avant la paie de janvier ?"
+}

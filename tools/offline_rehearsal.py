@@ -12,7 +12,7 @@ feed, catalog and pages) with only the outside world replaced:
 - a correction of the October 20 episode is waiting, so the episode reads it.
 Nothing is sent anywhere and nothing in the repository changes.
 
-Usage: python tools/offline_rehearsal.py [output folder]   (default: build/rehearsal)
+Usage: python tools/offline_rehearsal.py [output folder] [show]   (default: build/rehearsal, the first show)
 Then: python -m http.server --directory <output folder>/docs
 """
 from __future__ import annotations
@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from engine import context, corrections, factcheck, generate, main, publish, tts  # noqa: E402
-from engine import show as shows  # noqa: E402
+from engine import locale, show as shows  # noqa: E402
 
 FIXTURE = ROOT / "tests" / "fixtures" / "episode-2026-10-21.json"
 # A Tuesday that will never be a real episode. Regression (2026-10-22): the rehearsal used
@@ -46,8 +46,8 @@ CORRECTION = ("The episode of October twentieth said the Mistral Large 4 launch 
 class _Claude:
     """Answers the research turn with the fixture, through the submit_episode tool."""
 
-    def __init__(self, **kw):
-        self.requests, self.checks = [], 0
+    def __init__(self, fixture: Path = FIXTURE):
+        self.requests, self.checks, self.fixture = [], 0, fixture
         self.messages = SimpleNamespace(create=self._create)
 
     def _create(self, **kw):
@@ -60,7 +60,7 @@ class _Claude:
             claims = [{"claim": "Voxtral 3 launched on October twentieth", "status": status, "evidence": "October 20"}]
             text = SimpleNamespace(type="text", text=json.dumps({"claims": claims}))
             return SimpleNamespace(content=[text], stop_reason="end_turn", usage=use)
-        episode = {k: v for k, v in json.loads(FIXTURE.read_text(encoding="utf-8")).items() if k != "_note"}
+        episode = {k: v for k, v in json.loads(self.fixture.read_text(encoding="utf-8")).items() if k != "_note"}
         block = SimpleNamespace(type="tool_use", name="submit_episode", id="toolu_rehearsal", input=episode)
         return SimpleNamespace(content=[block], stop_reason="tool_use", usage=use)
 
@@ -76,16 +76,28 @@ def rehearse(out: Path, slug: str = shows.DEFAULT) -> dict:
     out.mkdir(parents=True)
     shutil.copytree(ROOT / "shows", out / "shows")
     shutil.copytree(ROOT / "docs", out / "docs")
+    config = out / "shows" / slug / "show.yaml"  # voices still to choose: stand-ins, in the copy only
+    text = config.read_text(encoding="utf-8")
+    for role in ("host", "analyst"):  # two different stand-ins, or the two voices merge into one turn
+        text = text.replace(f'{role}: "TO_FILL"', f'{role}: "rehearsal-{role}"')
+    config.write_text(text, encoding="utf-8")
     show = shows.load(slug, repo=out)
     episodes_file = show.episodes
-    episodes = json.loads(episodes_file.read_text(encoding="utf-8"))
-    corrections.add(episodes, "2026-10-20", CORRECTION, DAY.date())
-    episodes_file.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")
+    own = ROOT / "tests" / "fixtures" / f"episode-{slug}.json"  # a show's own fixture, in its language
+    fixture = own if own.exists() else FIXTURE
+    day_time = DAY
+    while not locale.is_episode_day(show.cfg, day_time.date()):  # a weekly show: its own day of the week
+        day_time -= dt.timedelta(days=1)
+    episodes = json.loads(episodes_file.read_text(encoding="utf-8")) if episodes_file.exists() else []
+    corrected = "2026-10-20" if any(e["date"] == "2026-10-20" for e in episodes) else None
+    if corrected:  # a correction waiting to be read, on the shows that have that episode
+        corrections.add(episodes, corrected, CORRECTION, day_time.date())
+        episodes_file.write_text(json.dumps(episodes, ensure_ascii=False, indent=2), encoding="utf-8")
     clients = []
     patches = {
         (shows, "REPO"): out,
-        (main, "current_time"): lambda cfg: DAY,
-        (generate.anthropic, "Anthropic"): lambda **kw: clients.append(_Claude()) or clients[-1],
+        (main, "current_time"): lambda cfg: day_time,
+        (generate.anthropic, "Anthropic"): lambda **kw: clients.append(_Claude(fixture)) or clients[-1],
         (tts, "_post"): _silence_for,
         (publish, "repo"): lambda: REPO,
         (publish, "release_exists"): lambda tag: False,
@@ -112,7 +124,7 @@ def rehearse(out: Path, slug: str = shows.DEFAULT) -> dict:
             else:
                 os.environ[k] = v
 
-    day = DAY.date().isoformat()
+    day = day_time.date().isoformat()
     docs = show.docs
     episode = next(e for e in json.loads(show.episodes.read_text(encoding="utf-8")) if e["date"] == day)
     return {
@@ -125,14 +137,14 @@ def rehearse(out: Path, slug: str = shows.DEFAULT) -> dict:
         "published": json.loads((show.build / "published.json").read_text(encoding="utf-8")),
         "requests": clients[0].requests,
         "script": (show.scripts / f"{day}.md").read_text(encoding="utf-8"),
-        "corrected": next(e for e in json.loads(episodes_file.read_text(encoding="utf-8")) if e["date"] == "2026-10-20"),
+        "corrected": next((e for e in json.loads(episodes_file.read_text(encoding="utf-8")) if e["date"] == corrected), None),
         "docs": docs,
     }
 
 
 if __name__ == "__main__":
     target = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "build" / "rehearsal"
-    result = rehearse(target.resolve())
+    result = rehearse(target.resolve(), sys.argv[2] if len(sys.argv) > 2 else shows.DEFAULT)
     ep = result["episode"]
     print(f"\nRehearsal published {ep['date']}: {ep['title']}, {ep['duration_seconds']:.0f} s")
     for c in ep["chapters"]:
