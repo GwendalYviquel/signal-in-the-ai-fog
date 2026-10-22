@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Ouverture"
+  },
+  {
+   "startTime": 15.4,
+   "title": "Sujet de la semaine : Budget 2027 en pause avant le vote du trois novembre"
+  },
+  {
+   "startTime": 145.5,
+   "title": "Facturation \u00e9lectronique : R\u00e9forme de la facturation \u00e9lectronique"
+  },
+  {
+   "startTime": 205.7,
+   "title": "Normes comptables : R\u00e8glement ANC 2026-04"
+  },
+  {
+   "startTime": 266.9,
+   "title": "Durabilit\u00e9 : CSRD"
+  },
+  {
+   "startTime": 309.8,
+   "title": "Audit : Haute autorit\u00e9 de l'audit"
+  },
+  {
+   "startTime": 348.4,
+   "title": "Chiffre de la semaine"
+  },
+  {
+   "startTime": 361.0,
+   "title": "\u00c0 surveiller"
+  },
+  {
+   "startTime": 389.1,
+   "title": "Question pour votre \u00e9quipe"
+  }
+ ]
+}
