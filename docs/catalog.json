@@ -16,6 +16,95 @@
  },
  "episodes": [
   {
+   "date": "2026-10-22",
+   "status": "published",
+   "title": "Walmart's Agent Gateway, Mistral's Compute",
+   "summary": "Walmart announces a gateway and per-agent profiles with spending limits for AI shopping agents. Also: Mistral and NVIDIA expand European compute, Anthropic's Claude Duet agent app, and unconfirmed Microsoft sovereign cloud controls.",
+   "headlines": [
+    "Walmart opens a gateway for shopping agents",
+    "Mistral and NVIDIA expand European compute",
+    "Anthropic unveils its Claude Duet agent app"
+   ],
+   "themes": [
+    "Retail and agents",
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Platform"
+   ],
+   "topics": [
+    "Walmart",
+    "Agentic commerce",
+    "Anthropic",
+    "Claude Duet",
+    "Mistral",
+    "NVIDIA",
+    "Microsoft Sovereign Cloud"
+   ],
+   "page": "episodes/2026-10-22.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 18.1,
+     "title": "Story of the day: Walmart opens a gateway for shopping agents"
+    },
+    {
+     "start": 105.8,
+     "title": "Models and vendors: Anthropic"
+    },
+    {
+     "start": 147.0,
+     "title": "Sovereignty and Europe: Mistral"
+    },
+    {
+     "start": 187.7,
+     "title": "Platform: Microsoft Sovereign Cloud"
+    },
+    {
+     "start": 229.6,
+     "title": "Number of the day"
+    },
+    {
+     "start": 242.5,
+     "title": "What to watch"
+    },
+    {
+     "start": 273.5,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 292,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-22/episode-2026-10-22.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+     "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+     "primary": false
+    },
+    {
+     "title": "Reuters via Investing.com: Anthropic unveils Claude Duet AI agent app",
+     "url": "https://ca.investing.com/news/stock-market-news/anthropic-unveils-claude-duet-ai-agent-app-4894532",
+     "primary": false
+    },
+    {
+     "title": "Mistral AI: Mistral Advances AI for Engineering with NVIDIA",
+     "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/",
+     "primary": true
+    },
+    {
+     "title": "CloudSecScoop: Microsoft adds EU sovereign cloud controls and offline AI tools",
+     "url": "https://cloudsecscoop.com/section/cloud-security/microsoft-adds-eu-sovereign-cloud-controls-and/",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Thursday, October 22. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Walmart opens a gateway for shopping agents, Mistral and NVIDIA expand European compute, and Anthropic unveils its Claude Duet agent app.\n\nFirst, the story of the day.\n\nWalmart has announced a Walmart Agent Gateway for third-party AI shopping agents, plus a feature called Agent Profiles. Today, according to the announcement as reported by Unite.AI, an agent that shops at Walmart signs in with the customer's own account. Agent purchases and human purchases therefore appear mixed together. Walmart says Agent Profiles will launch within the next month. The first time a customer uses an agent through the gateway, Walmart creates a profile for that agent automatically. The customer then authorises it and links it to their account, and chooses a spending limit. They can see purchases made by every agent, and delete a profile at any time. The announcement is a plan, not a live feature: the profiles are not yet available, and the reporting gives no detail on technical standards.\n\nThe read here: this is identity and budget control for agents, arriving at the retailer's side. A retailer that lets agents buy needs to tell them apart from customers, cap their spend and revoke them. Expect that to become the baseline. For a platform team, the lesson mirrors your own gateway: per-agent identity, quotas and an audit trail. Worth watching whether other retailers copy the model, and whether it lands in Europe. Check whether your order and account systems could even label an agent-made purchase today.\n\nNext, Models and vendors.\n\nReuters reported on October twenty-first that Anthropic unveiled Claude Duet, a standalone agent app for professionals and small-business owners. Anthropic says it delivers a daily briefing and handles tasks such as scheduling meetings, building financial forecasts and web apps. The report excerpt gives no pricing or availability details.\n\nWhat this really signals: vendors are shipping finished agent apps, not only models. For a platform team, that is a shadow-usage risk, since staff may adopt it outside your gateway. Worth deciding your policy on standalone agent apps before they spread.\n\nNext, Sovereignty and Europe.\n\nMistral and NVIDIA published a joint announcement on engineering AI. Mistral says it is bringing more NVIDIA-powered infrastructure online, in support of a compute roadmap targeting one gigawatt of capacity by 2030. The page also says weights for the model it describes are planned for the end of October.\n\nWhy it matters: capacity is the constraint behind European sovereignty claims. The excerpt does not name the model, but the timing matches Mistral Large 4's promised weights, so the licence remains the open question. Treat the one gigawatt figure as a target, not capacity.\n\nNext, Platform.\n\nUnconfirmed reports from a single security news site suggest Microsoft's chief executive announced new sovereign cloud controls at a Paris event on October twentieth, including offline processing options. The same report says a Sovereign Control Panel enters public preview at Ignite, running November seventeenth to nineteenth. I found no Microsoft statement to confirm this.\n\nThe bigger picture: if confirmed, it shows hyperscalers answering European demand with controls and offline modes, not new regions. Wait for Microsoft's own documentation before planning around it, then test whether those controls fit your gateway and private inference setup.\n\nThe number of the day.\n\nOne gigawatt. That is the capacity Mistral says its compute roadmap targets by 2030. It is a goal, not installed capacity, but it shows the scale Mistral is planning for.\n\nWhat to watch.\n\nMistral Large 4 open weights are still promised for the end of October, and the licence is the key detail. On Saturday, October twenty-fourth, AWS runs its European Sovereign Cloud independence exercise. Walmart says Agent Profiles arrive within a month. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.\n\nAnd a question for your team.\n\nIf a shopping agent bought from your site tomorrow, could your systems tell it apart from a human customer, cap its spend and revoke its access?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-10-21",
    "status": "published",
    "title": "Voxtral 3, Mercury 3 and DeepInfer",

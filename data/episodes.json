@@ -222,5 +222,91 @@
     "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-21/episode-2026-10-21.mp3",
     "audio_bytes": 5243117,
     "duration_seconds": 327.7061224489796
+  },
+  {
+    "date": "2026-10-22",
+    "title": "Walmart's Agent Gateway, Mistral's Compute",
+    "summary": "Walmart announces a gateway and per-agent profiles with spending limits for AI shopping agents. Also: Mistral and NVIDIA expand European compute, Anthropic's Claude Duet agent app, and unconfirmed Microsoft sovereign cloud controls.",
+    "headlines": [
+      "Walmart opens a gateway for shopping agents",
+      "Mistral and NVIDIA expand European compute",
+      "Anthropic unveils its Claude Duet agent app"
+    ],
+    "themes": [
+      "Retail and agents",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform"
+    ],
+    "topics": [
+      "Walmart",
+      "Agentic commerce",
+      "Anthropic",
+      "Claude Duet",
+      "Mistral",
+      "NVIDIA",
+      "Microsoft Sovereign Cloud"
+    ],
+    "sources": [
+      {
+        "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+        "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+        "primary": false
+      },
+      {
+        "title": "Reuters via Investing.com: Anthropic unveils Claude Duet AI agent app",
+        "url": "https://ca.investing.com/news/stock-market-news/anthropic-unveils-claude-duet-ai-agent-app-4894532",
+        "primary": false
+      },
+      {
+        "title": "Mistral AI: Mistral Advances AI for Engineering with NVIDIA",
+        "url": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/",
+        "primary": true
+      },
+      {
+        "title": "CloudSecScoop: Microsoft adds EU sovereign cloud controls and offline AI tools",
+        "url": "https://cloudsecscoop.com/section/cloud-security/microsoft-adds-eu-sovereign-cloud-controls-and/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-22T08:38:14+02:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-22",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-22/episode-2026-10-22.mp3",
+    "audio_bytes": 4679708,
+    "duration_seconds": 292.4930612244898,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.1,
+        "title": "Story of the day: Walmart opens a gateway for shopping agents"
+      },
+      {
+        "start": 105.8,
+        "title": "Models and vendors: Anthropic"
+      },
+      {
+        "start": 147.0,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 187.7,
+        "title": "Platform: Microsoft Sovereign Cloud"
+      },
+      {
+        "start": 229.6,
+        "title": "Number of the day"
+      },
+      {
+        "start": 242.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 273.5,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

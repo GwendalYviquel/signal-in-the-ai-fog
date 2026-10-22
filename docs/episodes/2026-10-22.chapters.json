@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.1,
+   "title": "Story of the day: Walmart opens a gateway for shopping agents"
+  },
+  {
+   "startTime": 105.8,
+   "title": "Models and vendors: Anthropic"
+  },
+  {
+   "startTime": 147.0,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 187.7,
+   "title": "Platform: Microsoft Sovereign Cloud"
+  },
+  {
+   "startTime": 229.6,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 242.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 273.5,
+   "title": "Question for your team"
+  }
+ ]
+}
