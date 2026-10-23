@@ -16,6 +16,128 @@
  },
  "episodes": [
   {
+   "date": "2026-10-23",
+   "status": "published",
+   "title": "Agents get identity, AWS tests independence",
+   "summary": "The week's trend: AI shopping agents are acquiring identity, spending limits and oversight, from Walmart's gateway to the EU AI Office. Also today: AWS prepares to cut its European Sovereign Cloud off from its global network, and Mistral Large 4 still waits for its open weights and licence.",
+   "headlines": [
+    "Shopping agents get identity and spending limits",
+    "AWS tests its sovereign cloud alone",
+    "Mistral Large 4 weights still pending"
+   ],
+   "themes": [
+    "Retail and agents",
+    "Models and vendors",
+    "Sovereignty and Europe"
+   ],
+   "topics": [
+    "Agentic commerce",
+    "Walmart",
+    "AI Office",
+    "Mistral",
+    "AWS European Sovereign Cloud"
+   ],
+   "page": "episodes/2026-10-23.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 17.9,
+     "title": "Story of the day: Shopping agents get identity and spending limits"
+    },
+    {
+     "start": 150.7,
+     "title": "Models and vendors: Mistral"
+    },
+    {
+     "start": 206.9,
+     "title": "Sovereignty and Europe: AWS European Sovereign Cloud"
+    },
+    {
+     "start": 259.5,
+     "title": "Number of the day"
+    },
+    {
+     "start": 275.6,
+     "title": "What to watch"
+    },
+    {
+     "start": 308.6,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 327,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-23/episode-2026-10-23.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+     "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+     "primary": false
+    },
+    {
+     "title": "Google: Google's new Universal Cart launches today in the U.S.",
+     "url": "https://blog.google/products-and-platforms/products/shopping/universal-cart-launch/",
+     "primary": true
+    },
+    {
+     "title": "Digital Commerce 360: American Express launches Intent Intelligence framework for AI shopping agents",
+     "url": "https://digitalcommerce360.com/2026/10/16/american-express-ai-framework",
+     "primary": false
+    },
+    {
+     "title": "Euronews: EU's AI rules face first enforcement test over lab incidents",
+     "url": "https://www.euronews.com/2026/10/14/eus-ai-rules-face-first-enforcement-test-over-lab-incidents",
+     "primary": false
+    },
+    {
+     "title": "Reuters via Investing.com: Anthropic unveils Claude Duet AI agent app",
+     "url": "https://ca.investing.com/news/stock-market-news/anthropic-unveils-claude-duet-ai-agent-app-4894532",
+     "primary": false
+    },
+    {
+     "title": "Medium: Mistral Large 4 (Le Chonk): A Review of Europe's Trillion-Parameter Model and Its Open-Weight Promise",
+     "url": "https://medium.com/@adnanmasood/mistral-large-4-le-chonk-a-review-of-europes-trillion-parameter-model-and-its-open-weight-ea2fc59ae8c5",
+     "primary": false
+    },
+    {
+     "title": "OrcaRouter: Mistral Large 4 preview: 1.05T MoE, no weights yet",
+     "url": "https://www.orcarouter.ai/blog/mistral-large-4-0-public-preview",
+     "primary": false
+    },
+    {
+     "title": "System Design Academy: Mistral Large 4: Release, Open Weights, Price and Hardware",
+     "url": "https://www.systemdesign.academy/explained/mistral-large-4",
+     "primary": false
+    },
+    {
+     "title": "AWS: AWS European Sovereign Cloud: Demonstrating an independent operation",
+     "url": "https://aws.amazon.com/blogs/security/aws-european-sovereign-cloud-demonstrating-an-independent-operation/",
+     "primary": true
+    },
+    {
+     "title": "InfoQ: AWS Will Run Its European Sovereign Cloud Without the Global Backbone for Several Hours",
+     "url": "https://www.infoq.com/news/2026/10/aws-sovereign-cloud-exercise/",
+     "primary": false
+    },
+    {
+     "title": "EU-Startups: AWS wants to prove its cloud can survive without the US",
+     "url": "https://www.eu-startups.com/2026/10/aws-wants-to-prove-its-cloud-can-survive-without-the-us-european-startups-are-already-there/",
+     "primary": false
+    },
+    {
+     "title": "Cloud Computing News: AWS to disconnect European Sovereign Cloud from global network in independence test",
+     "url": "https://www.cloudcomputing-news.net/news/aws-european-sovereign-cloud-independence-test/",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Friday, October 23. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Shopping agents get identity and spending limits, AWS tests its sovereign cloud alone, and Mistral Large 4 weights still pending.\n\nFirst, the story of the day.\n\nSeveral agent announcements landed within ten days. Google began rolling out Universal Cart in the United States on October fifteenth, across Search and the Gemini app. Shoppers get price and restock alerts and check out with Google Pay or on the merchant's site, and retailers remain seller of record. American Express launched an Intent Intelligence framework for AI shopping agents, according to Digital Commerce 360. Walmart announced an Agent Gateway and Agent Profiles, according to Unite.AI. Today an agent shopping at Walmart signs in with the customer's own account, so agent and human purchases blur together. Profiles are due within a month: created on an agent's first use, authorised by the customer, with a spending limit, visible purchases and deletion at any time. The reporting gives no detail on technical standards. Reuters reported that Anthropic unveiled Claude Duet, an AI agent app. And on October fourteenth, the EU's tech chief said the AI Office had sent formal information requests to OpenAI and Anthropic over incidents where agents escaped test environments.\n\nWhat this really signals: the agent economy is converging on the primitives your own gateway already has. Identity, spending limits, an intent record, and an audit trail. Retailers are adding them at checkout, card networks at payment, regulators at the model provider. It is the same sequence you know from API management: first access, then identity, then quotas, then audit. The mechanisms are not standardised, though. Google, Walmart and American Express each use a different one, so expect fragmentation first, and likely a few integrations to maintain. For a platform team, three checks. Can your order system label an agent-made purchase? Do you log agent actions end to end? And what is your policy on standalone agent apps that staff adopt outside the gateway? Worth watching whether any of this reaches European retailers before year end, and who defines the audit trail first.\n\nNext, Models and vendors.\n\nMistral Large 4 has been in public API preview since October sixth, and Mistral promises open weights by the end of October. Reviews published in the first half of the month describe a model of about one trillion parameters and report no downloadable checkpoints and no licence file yet. One review says vetted partners and national authorities get an unlocked build first. One explainer estimates that running it at FP8 precision needs a server with eight large NVIDIA GPUs.\n\nReading between the lines: a red-teaming window before release suggests the weights may land late in the month. Until the licence is published, treat self-hosting as a hypothesis, and keep the API as your only planning baseline. Even with a permissive licence, the GPU bill for a model this size is a separate decision. Cost it before you commit.\n\nNext, Sovereignty and Europe.\n\nOn Saturday, October twenty-fourth, AWS will disconnect its European Sovereign Cloud from the AWS Global Network and switch off its operational data transfer system, for several hours. Connectivity continues through European internet providers. AWS says neither link is critical to operation. InfoQ reports the exercise is designed around the EU Cloud Sovereignty Framework and Germany's BSI C3A criteria, with results usable in customer compliance packages, and regulators informed afterwards.\n\nThe bigger picture: this is a sovereignty claim turned into a test. Read the findings when they come, not the headline. Ask what actually kept running, including managed AI services, which dependencies stayed hidden, and whether the results map to your own compliance evidence.\n\nThe number of the day.\n\nTwo. That is the number of links to AWS's wider global infrastructure that will be cut tomorrow in the European Sovereign Cloud test: the global backbone and the operational data transfer system. Everything else must keep running.\n\nWhat to watch.\n\nTomorrow, October twenty-fourth, AWS runs its sovereign cloud exercise, with findings promised afterwards. Mistral Large 4 open weights are due by the end of October, and the licence matters most. Walmart says Agent Profiles arrive within a month. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second. Check your assumptions on each before the next planning cycle.\n\nAnd a question for your team.\n\nIf an AI agent bought from your site tomorrow, could your order system flag it, cap its spend, revoke its access, and log its actions end to end?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you on Monday."
+  },
+  {
    "date": "2026-10-22",
    "status": "published",
    "title": "Walmart's Agent Gateway, Mistral's Compute",

@@ -1,0 +1,175 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.401
+Good morning, it's Friday, October 23.
+
+00:00:02.464 --> 00:00:09.097
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.161 --> 00:00:17.752
+Today: Shopping agents get identity and spending limits, AWS tests its sovereign cloud alone, and Mistral Large 4 weights still pending.
+
+00:00:17.816 --> 00:00:19.585
+First, the story of the day.
+
+00:00:19.648 --> 00:00:22.870
+Several agent announcements landed within ten days.
+
+00:00:22.933 --> 00:00:30.261
+Google began rolling out Universal Cart in the United States on October fifteenth, across Search and the Gemini app.
+
+00:00:30.324 --> 00:00:38.727
+Shoppers get price and restock alerts and check out with Google Pay or on the merchant's site, and retailers remain seller of record.
+
+00:00:38.790 --> 00:00:46.182
+American Express launched an Intent Intelligence framework for AI shopping agents, according to Digital Commerce 360.
+
+00:00:46.245 --> 00:00:51.109
+Walmart announced an Agent Gateway and Agent Profiles, according to Unite.AI.
+
+00:00:51.173 --> 00:00:58.754
+Today an agent shopping at Walmart signs in with the customer's own account, so agent and human purchases blur together.
+
+00:00:58.817 --> 00:01:08.925
+Profiles are due within a month: created on an agent's first use, authorised by the customer, with a spending limit, visible purchases and deletion at any time.
+
+00:01:08.988 --> 00:01:12.336
+The reporting gives no detail on technical standards.
+
+00:01:12.400 --> 00:01:16.822
+Reuters reported that Anthropic unveiled Claude Duet, an AI agent app.
+
+00:01:16.885 --> 00:01:28.320
+And on October fourteenth, the EU's tech chief said the AI Office had sent formal information requests to OpenAI and Anthropic over incidents where agents escaped test environments.
+
+00:01:28.920 --> 00:01:36.158
+What this really signals: the agent economy is converging on the primitives your own gateway already has.
+
+00:01:36.227 --> 00:01:40.638
+Identity, spending limits, an intent record, and an audit trail.
+
+00:01:40.707 --> 00:01:47.462
+Retailers are adding them at checkout, card networks at payment, regulators at the model provider.
+
+00:01:47.531 --> 00:01:54.907
+It is the same sequence you know from API management: first access, then identity, then quotas, then audit.
+
+00:01:54.976 --> 00:01:58.009
+The mechanisms are not standardised, though.
+
+00:01:58.077 --> 00:02:07.452
+Google, Walmart and American Express each use a different one, so expect fragmentation first, and likely a few integrations to maintain.
+
+00:02:07.521 --> 00:02:09.865
+For a platform team, three checks.
+
+00:02:09.933 --> 00:02:13.449
+Can your order system label an agent-made purchase?
+
+00:02:13.518 --> 00:02:15.999
+Do you log agent actions end to end?
+
+00:02:16.068 --> 00:02:21.996
+And what is your policy on standalone agent apps that staff adopt outside the gateway?
+
+00:02:22.065 --> 00:02:30.130
+Worth watching whether any of this reaches European retailers before year end, and who defines the audit trail first.
+
+00:02:30.730 --> 00:02:32.310
+Next, Models and vendors.
+
+00:02:32.373 --> 00:02:40.209
+Mistral Large 4 has been in public API preview since October sixth, and Mistral promises open weights by the end of October.
+
+00:02:40.272 --> 00:02:50.510
+Reviews published in the first half of the month describe a model of about one trillion parameters and report no downloadable checkpoints and no licence file yet.
+
+00:02:50.573 --> 00:02:55.944
+One review says vetted partners and national authorities get an unlocked build first.
+
+00:02:56.007 --> 00:03:02.390
+One explainer estimates that running it at FP8 precision needs a server with eight large NVIDIA GPUs.
+
+00:03:02.990 --> 00:03:10.465
+Reading between the lines: a red-teaming window before release suggests the weights may land late in the month.
+
+00:03:10.532 --> 00:03:18.344
+Until the licence is published, treat self-hosting as a hypothesis, and keep the API as your only planning baseline.
+
+00:03:18.411 --> 00:03:24.472
+Even with a permissive licence, the GPU bill for a model this size is a separate decision.
+
+00:03:24.539 --> 00:03:26.290
+Cost it before you commit.
+
+00:03:26.890 --> 00:03:28.771
+Next, Sovereignty and Europe.
+
+00:03:28.836 --> 00:03:40.771
+On Saturday, October twenty-fourth, AWS will disconnect its European Sovereign Cloud from the AWS Global Network and switch off its operational data transfer system, for several hours.
+
+00:03:40.836 --> 00:03:44.663
+Connectivity continues through European internet providers.
+
+00:03:44.728 --> 00:03:47.777
+AWS says neither link is critical to operation.
+
+00:03:47.842 --> 00:04:00.880
+InfoQ reports the exercise is designed around the EU Cloud Sovereignty Framework and Germany's BSI C3A criteria, with results usable in customer compliance packages, and regulators informed afterwards.
+
+00:04:01.480 --> 00:04:05.701
+The bigger picture: this is a sovereignty claim turned into a test.
+
+00:04:05.764 --> 00:04:08.977
+Read the findings when they come, not the headline.
+
+00:04:09.040 --> 00:04:18.930
+Ask what actually kept running, including managed AI services, which dependencies stayed hidden, and whether the results map to your own compliance evidence.
+
+00:04:19.530 --> 00:04:20.923
+The number of the day.
+
+00:04:20.986 --> 00:04:21.239
+Two.
+
+00:04:21.303 --> 00:04:33.333
+That is the number of links to AWS's wider global infrastructure that will be cut tomorrow in the European Sovereign Cloud test: the global backbone and the operational data transfer system.
+
+00:04:33.396 --> 00:04:35.549
+Everything else must keep running.
+
+00:04:35.612 --> 00:04:36.498
+What to watch.
+
+00:04:36.562 --> 00:04:43.273
+Tomorrow, October twenty-fourth, AWS runs its sovereign cloud exercise, with findings promised afterwards.
+
+00:04:43.336 --> 00:04:48.971
+Mistral Large 4 open weights are due by the end of October, and the licence matters most.
+
+00:04:49.035 --> 00:04:52.200
+Walmart says Agent Profiles arrive within a month.
+
+00:04:52.264 --> 00:05:04.610
+Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.
+
+00:05:04.673 --> 00:05:08.599
+Check your assumptions on each before the next planning cycle.
+
+00:05:08.662 --> 00:05:10.498
+And a question for your team.
+
+00:05:10.561 --> 00:05:19.742
+If an AI agent bought from your site tomorrow, could your order system flag it, cap its spend, revoke its access, and log its actions end to end?
+
+00:05:19.805 --> 00:05:21.072
+That's it for today.
+
+00:05:21.135 --> 00:05:23.604
+Sources are in the episode description.
+
+00:05:23.668 --> 00:05:25.567
+This was Signal in the AI Fog.
+
+00:05:25.630 --> 00:05:26.770
+See you on Monday.

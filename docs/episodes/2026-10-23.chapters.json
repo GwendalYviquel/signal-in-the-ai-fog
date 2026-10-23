@@ -1,0 +1,33 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 17.9,
+   "title": "Story of the day: Shopping agents get identity and spending limits"
+  },
+  {
+   "startTime": 150.7,
+   "title": "Models and vendors: Mistral"
+  },
+  {
+   "startTime": 206.9,
+   "title": "Sovereignty and Europe: AWS European Sovereign Cloud"
+  },
+  {
+   "startTime": 259.5,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 275.6,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 308.6,
+   "title": "Question for your team"
+  }
+ ]
+}
