@@ -36,7 +36,7 @@ Rule learnt on 2026-10-21: GitHub only fires the schedules of a workflow whose l
 | `gh release` | hosting the MP3 | faked | ✅ | — |
 | `gh issue list` | listener suggestions labelled `accepted` | faked | ❌ never ran | that it reads the accepted issues (needs `issues: read`) |
 | `gh run list`, `gh workflow run` | the watchdog | faked | 🔸 `run list` ✅ (manual watchdog run); it has never started a catch-up | a real catch-up, ideally never needed |
-| Cloudflare Cron Triggers | start the daily workflow on time | Node tests of the worker (`scheduler/worker.test.mjs`): every weekday of two years, the request, the test cron, failures | ✅ 2026-10-22: a test cron started a workflow through the token, 48 s after its time | a first morning started by it |
+| Cloudflare Cron Triggers | start the daily workflow on time | Node tests of the worker (`scheduler/worker.test.mjs`): every weekday of two years, the request, the test cron, failures | ✅ 2026-10-22: a test cron started a workflow through the token, 48 s after its time; 2026-10-23: crons by day name (`MON-FRI`, after `1-5` skipped Friday), a test cron `43 6 * * FRI` started a workflow at 06:43:57 UTC, then removed | a first morning started by it |
 | GitHub Pages | feed, catalog, pages | files written to a temporary folder | ✅ | — |
 | ntfy | phone notifications | fake HTTP | ✅ test notifications from GitHub on 2026-10-21 | the first real "Episode out" |
 | Spotify embed page | is the episode live, after how long | a saved copy of the page | ✅ | the delay, measured from the first scheduled episode |
