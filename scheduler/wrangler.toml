@@ -13,7 +13,8 @@ REPOSITORY = "GwendalYviquel/signal-in-the-ai-fog"
 # UTC. In summer (Paris = UTC+2): 4:05, 4:35, 5:05, 5:35, 6:05; in winter (UTC+1): 4:05, 4:35, 5:05
 # (2:05 and 2:35 UTC fall before 4:00 Paris and are skipped by the worker). The first attempt
 # publishes, the next ones stop at once if the episode is out; the GitHub attempts stay as a backup.
-crons = ["5,35 2,3 * * 1-5", "5 4 * * 1-5"]
+# Days by name: Cloudflare numbers them from Sunday = 1, so "1-5" would be Sunday to Thursday.
+crons = ["5,35 2,3 * * MON-FRI", "5 4 * * MON-FRI"]
 
 [observability]
 # Logs in the Cloudflare dashboard (the worker, Logs): each trigger says what it did, and a refusal

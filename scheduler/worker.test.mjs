@@ -13,16 +13,34 @@ const expand = (field) => field.split(",").flatMap((part) => {
   return b === undefined ? [a] : Array.from({ length: b - a + 1 }, (_, i) => a + i);
 });
 
-// Every firing of the crons on a UTC date (they all say weekdays 1-5).
+// Day-of-week field as Cloudflare reads it: 1 = Sunday to 7 = Saturday (Quartz), or SUN to SAT.
+// Learning (2026-10-23): "1-5" meant Sunday to Thursday on Cloudflare, not Monday to Friday as in
+// standard cron; Friday's episode was never started. This test read it the standard way and passed.
+const NAMES = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+export const cloudflareDays = (field) => {
+  if (field === "*") return [0, 1, 2, 3, 4, 5, 6];
+  const day = (s) => (NAMES.includes(s.toUpperCase()) ? NAMES.indexOf(s.toUpperCase()) : Number(s) - 1);
+  return field.split(",").flatMap((part) => {
+    const [a, b] = part.split("-").map(day);
+    return b === undefined ? [a] : Array.from({ length: b - a + 1 }, (_, i) => a + i);
+  });
+};
+
+// Every firing of the crons on a UTC date, days read as Cloudflare does.
 function firings(date) {
-  const day = date.getUTCDay();
-  if (day === 0 || day === 6) return [];
   return CRONS.flatMap((cron) => {
-    const [m, h] = cron.split(" ");
+    const [m, h, , , dow] = cron.split(" ");
+    if (!cloudflareDays(dow).includes(date.getUTCDay())) return [];
     return expand(h).flatMap((hh) => expand(m).map((mm) =>
       Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), hh, mm)));
   }).sort((x, y) => x - y);
 }
+
+test("Cloudflare reads day numbers from Sunday = 1: our crons name their days", () => {
+  assert.deepEqual(cloudflareDays("1-5"), [0, 1, 2, 3, 4]); // Sunday to Thursday: the bug of October 23
+  assert.deepEqual(cloudflareDays("MON-FRI"), [1, 2, 3, 4, 5]);
+  for (const cron of CRONS) assert.match(cron.split(" ")[4], /^[A-Z]{3}(-[A-Z]{3})?$/, cron);
+});
 
 test("Paris clock follows daylight saving time", () => {
   assert.deepEqual(parisClock(Date.UTC(2026, 6, 15, 2, 5)), { weekday: "Wed", hhmm: "04:05" });
@@ -41,7 +59,7 @@ test("every weekday of 2026 and 2027 starts the episode at 4:05 Paris, then retr
 });
 
 test("the request starts the daily workflow as a scheduled attempt", () => {
-  const { url, init, test: isTest } = request("5,35 2,3 * * 1-5", ENV);
+  const { url, init, test: isTest } = request("5,35 2,3 * * MON-FRI", ENV);
   assert.equal(url, "https://api.github.com/repos/owner/repo/actions/workflows/daily-episode.yml/dispatches");
   assert.equal(init.method, "POST");
   assert.equal(init.headers.Authorization, "Bearer t0ken");
@@ -59,13 +77,13 @@ test("the test cron only asks for a test notification, at any time", async () =>
 
 test("outside the morning window nothing is sent", async () => {
   const fake = async () => assert.fail("GitHub called");
-  assert.equal(await run("5,35 2,3 * * 1-5", Date.UTC(2027, 0, 13, 2, 35), ENV, fake), "outside the morning window"); // 3:35 Paris
-  assert.equal(await run("5 4 * * 1-5", Date.UTC(2026, 9, 24, 4, 5), ENV, fake), "outside the morning window"); // Saturday
+  assert.equal(await run("5,35 2,3 * * MON-FRI", Date.UTC(2027, 0, 13, 2, 35), ENV, fake), "outside the morning window"); // 3:35 Paris
+  assert.equal(await run("5 4 * * MON-FRI", Date.UTC(2026, 9, 24, 4, 5), ENV, fake), "outside the morning window"); // Saturday
 });
 
 test("a refusal from GitHub is an error, so Cloudflare logs it", async () => {
   const fake = async () => ({ status: 403, text: async () => "Resource not accessible by personal access token" });
-  await assert.rejects(run("5 4 * * 1-5", Date.UTC(2026, 9, 22, 2, 5), ENV, fake), /GitHub answered 403/);
+  await assert.rejects(run("5 4 * * MON-FRI", Date.UTC(2026, 9, 22, 2, 5), ENV, fake), /GitHub answered 403/);
 });
 
 test("the worker has no public endpoint", () => {
