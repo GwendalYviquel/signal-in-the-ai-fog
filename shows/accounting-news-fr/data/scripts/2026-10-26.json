@@ -1,0 +1,189 @@
+{
+ "title": "Budget 2027 en séance, bilan de la facture électronique",
+ "summary": "Le projet de loi de finances pour 2027 reprend en séance à l'Assemblée, avec des suppressions de mesures et un vote solennel fixé au trois novembre. L'épisode fait aussi le point sur le premier bilan de la facturation électronique, les petits colis, les calendriers européens ViDA et DAC8 et la norme volontaire de durabilité de l'EFRAG.",
+ "headlines": [
+  "Le budget 2027 toujours en séance à l'Assemblée",
+  "Un premier bilan de la facturation électronique",
+  "La norme volontaire de durabilité de l'EFRAG"
+ ],
+ "story_of_the_day": {
+  "theme": "Fiscalité",
+  "facts": "L'Assemblée nationale examine en séance la première partie du projet de loi de finances pour deux mille vingt-sept, celle des recettes. Une première séquence a eu lieu du treize au dix-neuf octobre deux mille vingt-six. L'examen reprend du mardi vingt-sept octobre au lundi deux novembre. Le vote solennel sur cette première partie est inscrit au mardi trois novembre, après-midi. L'examen en commission des finances s'est achevé par le rejet global du texte. Selon la presse et des associations qui suivent le texte, les députés ont supprimé le dix-neuf octobre la contribution progressive à l'effort budgétaire, qui devait représenter deux milliards cinq cents millions d'euros d'économies, ainsi que la baisse du fonds de compensation de la TVA des collectivités. Plusieurs amendements avaient néanmoins été adoptés en commission. Le texte n'est pas encore adopté : le Parlement dispose de soixante-dix jours au total.",
+  "read": "Concrètement : ce que la séance défait compte autant que ce qu'elle ajoute. Les suppressions réduisent les économies prévues par le Gouvernement, et elles seront probablement rediscutées dans la suite de la navette. Pour une direction financière, la consigne reste de travailler par scénarios pour la clôture deux mille vingt-six et le budget deux mille vingt-sept, sans rien provisionner sur la base d'un amendement. Pour un cabinet, le point d'attention est la communication : chaque mesure doit être présentée avec son étape réelle, amendement de séance, vote solennel, seconde partie, Sénat. Les clients collectivités concernés par le fonds de compensation de la TVA peuvent être identifiés dès maintenant, sans leur promettre de résultat. Le vote du trois novembre ne dira rien de la seconde partie, et le calendrier a déjà glissé une fois.",
+  "label": "reported",
+  "topics": [
+   "Projet de loi de finances 2027"
+  ],
+  "sources": [
+   {
+    "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+    "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+    "primary": true
+   },
+   {
+    "title": "Gestion de fortune : PLF 2027, l'examen de la partie recettes mis sur pause",
+    "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+    "primary": false
+   },
+   {
+    "title": "AMORCE : PLF 2027, point d'étape sur l'examen du budget à l'Assemblée nationale",
+    "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+    "primary": false
+   },
+   {
+    "title": "L'Argus de l'assurance : Budget 2027, après le rejet en commission des Finances de la partie recettes",
+    "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-apres-le-rejet-en-commission-des-finances-de-la-partie-recettes-le-texte-va-etre-examine-dans-lhemicycle-a-lassemblee-nationale.4ID7V2WIDBD6NDSFETLA4XBZKQ.html",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "E-commerce",
+   "facts": "Depuis le premier juillet deux mille vingt-six, la franchise douanière sur les envois de moins de cent cinquante euros a disparu. Un règlement du Conseil du onze février deux mille vingt-six institue à la place un droit forfaitaire provisoire de trois euros, jusqu'au premier juillet deux mille vingt-huit. La taxe française de deux euros par catégorie d'article est suspendue au profit de ce droit européen. Selon la presse spécialisée, des identifiants de produit deviennent obligatoires dans les données douanières à partir du premier novembre deux mille vingt-six.",
+   "read": "En pratique : la date du premier novembre est rapportée par une seule famille de sources, donc à vérifier avant d'alerter. Pour une entreprise de vente à distance, la question est de savoir si le catalogue et les données transmises aux déclarants sont assez précis. L'effet sur les prix et sur la TVA à l'importation se mesure produit par produit. Un cabinet peut en profiter pour faire le point avec ses clients vendeurs en ligne.",
+   "label": "reported",
+   "topics": [
+    "Franchise des petits colis"
+   ],
+   "sources": [
+    {
+     "title": "CMS Francis Lefebvre : Importation de petits colis dans l'Union européenne, ce qui change pour les opérateurs",
+     "url": "https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs",
+     "primary": false
+    },
+    {
+     "title": "Legifiscal : Taxe petits colis, la France suspend son prélèvement de 2 euros",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4550-taxe-petits-colis-france-suspend-prelevement-2-profit-nouveau-droit-douane-europeen.html",
+     "primary": false
+    },
+    {
+     "title": "Comptableo : Petits colis importés, le droit de douane de 3 euros en 2026",
+     "url": "https://comptableo.com/droit-douane-petits-colis-3-euros-2026/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "Selon la presse spécialisée, le dispositif français de facturation électronique ne couvre que les relations entre assujettis français. Aucun envoi transfrontalier n'est donc obligatoire avant l'entrée en application de la directive européenne sur la TVA à l'ère numérique sur ce point. Côté coopération administrative, les plateformes de crypto-actifs collectent les données depuis le premier janvier deux mille vingt-six et déposent leur premier rapport en deux mille vingt-sept.",
+   "read": "La vraie portée : aucune décision nouvelle cette semaine, mais des calendriers à ne pas perdre de vue. La facturation électronique française n'est qu'une première marche avant le reporting européen. Pour un groupe ou un cabinet, il est utile d'interroger sa plateforme sur sa feuille de route ViDA. Pour les clients actifs en crypto-actifs, les données collectées en deux mille vingt-six alimenteront les déclarations de deux mille vingt-sept.",
+   "label": "reported",
+   "topics": [
+    "ViDA",
+    "DAC8"
+   ],
+   "sources": [
+    {
+     "title": "Legifiscal : La directive ViDA sur la TVA intracommunautaire en 10 questions",
+     "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+     "primary": false
+    },
+    {
+     "title": "Revue de droit fiscal : numéro 43 du 21 octobre 2026",
+     "url": "https://lexiskiosque.fr/catalog/revue-de-droit-fiscal",
+     "primary": false
+    },
+    {
+     "title": "Hashtag Avocats : DAC8 crypto reporting 2026",
+     "url": "https://hashtagavocats.com/en/dac8-crypto-reporting-2026/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Facturation électronique",
+   "facts": "Le ministère de l'Économie a publié le douze octobre deux mille vingt-six un bilan de la réforme : trois entreprises sur quatre y sont déjà engagées. La phase d'écoute et de tolérance de l'administration couvre toute la fin de l'année deux mille vingt-six.",
+   "read": "Ce qu'il faut en retenir : un quart des entreprises n'est pas encore engagée dans la réforme, selon ce bilan. Pour un cabinet, c'est un chantier de relance client à mener avant la fin de la tolérance. Elle n'est pas un report : la réception est déjà obligatoire pour tous. Prochaine étape : l'émission pour les PME, TPE et micro-entreprises, le premier septembre deux mille vingt-sept.",
+   "label": "confirmed",
+   "topics": [
+    "Réforme de la facturation électronique",
+    "E-reporting"
+   ],
+   "sources": [
+    {
+     "title": "Ministère de l'Économie : Tout savoir sur la facturation électronique pour les entreprises",
+     "url": "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+     "primary": true
+    },
+    {
+     "title": "TPE Actu : Facturation électronique, 20 millions de factures, mais un quart des entreprises sans plateforme",
+     "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+     "primary": false
+    },
+    {
+     "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Durabilité",
+   "facts": "L'EFRAG a publié le vingt-deux octobre deux mille vingt-six le compte rendu de son événement du neuf octobre à Bruxelles sur la norme volontaire, issue de la VSME. Il a réuni plus de mille cinq cents inscriptions. Cette norme vise à aider les PME à répondre aux demandes d'information de grandes entreprises, d'investisseurs et d'institutions financières. L'EFRAG publiera en novembre un modèle numérique mis à jour, avec un convertisseur d'Excel vers XBRL. La transposition de la directive Omnibus est attendue au plus tard le dix-neuf mars deux mille vingt-sept.",
+   "read": "Concrètement : pour les clients sortis du champ de la CSRD, cette norme volontaire est le référentiel naturel pour répondre aux banques et aux donneurs d'ordre. Le modèle numérique de novembre intéressera les cabinets qui préparent ces rapports. La transposition française de l'Omnibus reste à surveiller avant mars deux mille vingt-sept, car elle fixera le champ réel.",
+   "label": "confirmed",
+   "topics": [
+    "VSME",
+    "CSRD"
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : Summary report of the From VSME to the Voluntary Standard event",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event",
+     "primary": true
+    },
+    {
+     "title": "EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "primary": true
+    },
+    {
+     "title": "Portail RSE : Les seuils de la CSRD, comprendre les critères d'application",
+     "url": "https://portail-rse.beta.gouv.fr/csrd/seuils-csrd-omnibus-criteres-d-application/",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Plus de soixante-dix milliards d'euros : c'est, selon un cabinet spécialisé, le montant des factures électroniques échangées depuis le premier septembre. Le chiffre dit que la réforme n'est plus un projet, mais un flux réel de transactions.",
+  "source": {
+   "title": "Rydge Conseil : Facturation électronique, obligations 2026, échéance 2027",
+   "url": "https://www.rydge.fr/articles-analyses/facturation-electronique-obligations-2026-2027",
+   "primary": false
+  }
+ },
+ "what_to_watch": "L'examen du projet de loi de finances reprend en séance à l'Assemblée demain, mardi vingt-sept octobre, jusqu'au lundi deux novembre. Le vote solennel sur la première partie est fixé au mardi trois novembre, après-midi. Le mercredi vingt-huit octobre, l'IAASB tient une réunion virtuelle sur la révision d'ISA cinq cent un. Le dimanche premier novembre, les identifiants de produit deviendraient obligatoires pour les petits colis importés, selon la presse spécialisée. En novembre, l'EFRAG publiera son modèle numérique mis à jour pour la norme volontaire. Plus loin, la transposition de l'Omnibus est attendue au plus tard le dix-neuf mars deux mille vingt-sept. L'émission de factures électroniques devient obligatoire pour les PME, TPE et micro-entreprises le premier septembre deux mille vingt-sept.",
+ "agenda": [
+  {
+   "date": "2026-10-27",
+   "text": "Reprise de l'examen en séance de la première partie du PLF 2027"
+  },
+  {
+   "date": "2026-10-28",
+   "text": "Réunion virtuelle de l'IAASB sur la révision d'ISA 501"
+  },
+  {
+   "date": "2026-11-01",
+   "text": "Identifiants de produit obligatoires pour les petits colis importés"
+  },
+  {
+   "date": "2026-11-02",
+   "text": "Fin de la séquence d'examen de la première partie du PLF 2027"
+  },
+  {
+   "date": "2026-11-03",
+   "text": "Vote solennel sur la première partie du PLF 2027"
+  },
+  {
+   "date": "2027-03-19",
+   "text": "Date limite de transposition de la directive Omnibus sur la CSRD"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission de factures électroniques obligatoire pour PME TPE et micro-entreprises"
+  }
+ ],
+ "question": "Parmi vos clients, lesquels n'ont pas encore désigné de plateforme de réception, et quel plan de relance avez-vous prévu avant la fin de la tolérance de l'administration en deux mille vingt-six ?"
+}

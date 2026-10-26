@@ -158,5 +158,162 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-10-26",
+    "title": "Budget 2027 en séance, bilan de la facture électronique",
+    "summary": "Le projet de loi de finances pour 2027 reprend en séance à l'Assemblée, avec des suppressions de mesures et un vote solennel fixé au trois novembre. L'épisode fait aussi le point sur le premier bilan de la facturation électronique, les petits colis, les calendriers européens ViDA et DAC8 et la norme volontaire de durabilité de l'EFRAG.",
+    "headlines": [
+      "Le budget 2027 toujours en séance à l'Assemblée",
+      "Un premier bilan de la facturation électronique",
+      "La norme volontaire de durabilité de l'EFRAG"
+    ],
+    "themes": [
+      "Fiscalité",
+      "E-commerce",
+      "Europe",
+      "Facturation électronique",
+      "Durabilité"
+    ],
+    "topics": [
+      "Projet de loi de finances 2027",
+      "Franchise des petits colis",
+      "ViDA",
+      "DAC8",
+      "Réforme de la facturation électronique",
+      "E-reporting",
+      "VSME",
+      "CSRD"
+    ],
+    "sources": [
+      {
+        "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+        "primary": true
+      },
+      {
+        "title": "Gestion de fortune : PLF 2027, l'examen de la partie recettes mis sur pause",
+        "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+        "primary": false
+      },
+      {
+        "title": "AMORCE : PLF 2027, point d'étape sur l'examen du budget à l'Assemblée nationale",
+        "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+        "primary": false
+      },
+      {
+        "title": "L'Argus de l'assurance : Budget 2027, après le rejet en commission des Finances de la partie recettes",
+        "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-apres-le-rejet-en-commission-des-finances-de-la-partie-recettes-le-texte-va-etre-examine-dans-lhemicycle-a-lassemblee-nationale.4ID7V2WIDBD6NDSFETLA4XBZKQ.html",
+        "primary": false
+      },
+      {
+        "title": "CMS Francis Lefebvre : Importation de petits colis dans l'Union européenne, ce qui change pour les opérateurs",
+        "url": "https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : Taxe petits colis, la France suspend son prélèvement de 2 euros",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4550-taxe-petits-colis-france-suspend-prelevement-2-profit-nouveau-droit-douane-europeen.html",
+        "primary": false
+      },
+      {
+        "title": "Comptableo : Petits colis importés, le droit de douane de 3 euros en 2026",
+        "url": "https://comptableo.com/droit-douane-petits-colis-3-euros-2026/",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : La directive ViDA sur la TVA intracommunautaire en 10 questions",
+        "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+        "primary": false
+      },
+      {
+        "title": "Revue de droit fiscal : numéro 43 du 21 octobre 2026",
+        "url": "https://lexiskiosque.fr/catalog/revue-de-droit-fiscal",
+        "primary": false
+      },
+      {
+        "title": "Hashtag Avocats : DAC8 crypto reporting 2026",
+        "url": "https://hashtagavocats.com/en/dac8-crypto-reporting-2026/",
+        "primary": false
+      },
+      {
+        "title": "Ministère de l'Économie : Tout savoir sur la facturation électronique pour les entreprises",
+        "url": "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+        "primary": true
+      },
+      {
+        "title": "TPE Actu : Facturation électronique, 20 millions de factures, mais un quart des entreprises sans plateforme",
+        "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+        "primary": false
+      },
+      {
+        "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+        "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+        "primary": false
+      },
+      {
+        "title": "EFRAG : Summary report of the From VSME to the Voluntary Standard event",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event",
+        "primary": true
+      },
+      {
+        "title": "EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+        "primary": true
+      },
+      {
+        "title": "Portail RSE : Les seuils de la CSRD, comprendre les critères d'application",
+        "url": "https://portail-rse.beta.gouv.fr/csrd/seuils-csrd-omnibus-criteres-d-application/",
+        "primary": true
+      },
+      {
+        "title": "Rydge Conseil : Facturation électronique, obligations 2026, échéance 2027",
+        "url": "https://www.rydge.fr/articles-analyses/facturation-electronique-obligations-2026-2027",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-26T04:12:34+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-10-26",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-10-26/accounting-news-fr-2026-10-26.mp3",
+    "audio_bytes": 5864160,
+    "duration_seconds": 366.52408163265306,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 14.9,
+        "title": "Sujet de la semaine : Le budget 2027 toujours en séance à l'Assemblée"
+      },
+      {
+        "start": 112.7,
+        "title": "E-commerce : Franchise des petits colis"
+      },
+      {
+        "start": 164.5,
+        "title": "Europe : ViDA"
+      },
+      {
+        "start": 213.1,
+        "title": "Facturation électronique : Réforme de la facturation électronique"
+      },
+      {
+        "start": 249.8,
+        "title": "Durabilité : VSME"
+      },
+      {
+        "start": 300.1,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 312.4,
+        "title": "À surveiller"
+      },
+      {
+        "start": 349.7,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]

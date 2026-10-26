@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Ouverture"
+  },
+  {
+   "startTime": 14.9,
+   "title": "Sujet de la semaine : Le budget 2027 toujours en s\u00e9ance \u00e0 l'Assembl\u00e9e"
+  },
+  {
+   "startTime": 112.7,
+   "title": "E-commerce : Franchise des petits colis"
+  },
+  {
+   "startTime": 164.5,
+   "title": "Europe : ViDA"
+  },
+  {
+   "startTime": 213.1,
+   "title": "Facturation \u00e9lectronique : R\u00e9forme de la facturation \u00e9lectronique"
+  },
+  {
+   "startTime": 249.8,
+   "title": "Durabilit\u00e9 : VSME"
+  },
+  {
+   "startTime": 300.1,
+   "title": "Chiffre de la semaine"
+  },
+  {
+   "startTime": 312.4,
+   "title": "\u00c0 surveiller"
+  },
+  {
+   "startTime": 349.7,
+   "title": "Question pour votre \u00e9quipe"
+  }
+ ]
+}

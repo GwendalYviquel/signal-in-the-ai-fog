@@ -16,6 +16,53 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <item>
+      <title>Budget 2027 en séance, bilan de la facture électronique</title>
+      <description>Le projet de loi de finances pour 2027 reprend en séance à l'Assemblée, avec des suppressions de mesures et un vote solennel fixé au trois novembre. L'épisode fait aussi le point sur le premier bilan de la facturation électronique, les petits colis, les calendriers européens ViDA et DAC8 et la norme volontaire de durabilité de l'EFRAG.
+
+Chapitres :
+00:00 Ouverture
+00:14 Sujet de la semaine : Le budget 2027 toujours en séance à l'Assemblée
+01:52 E-commerce : Franchise des petits colis
+02:44 Europe : ViDA
+03:33 Facturation électronique : Réforme de la facturation électronique
+04:09 Durabilité : VSME
+05:00 Chiffre de la semaine
+05:12 À surveiller
+05:49 Question pour votre équipe
+
+Transcription, thèmes et sources : https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/episodes/2026-10-26.html
+
+Sources :
+- Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027: https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027
+- Gestion de fortune : PLF 2027, l'examen de la partie recettes mis sur pause: https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html
+- AMORCE : PLF 2027, point d'étape sur l'examen du budget à l'Assemblée nationale: https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale
+- L'Argus de l'assurance : Budget 2027, après le rejet en commission des Finances de la partie recettes: https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-apres-le-rejet-en-commission-des-finances-de-la-partie-recettes-le-texte-va-etre-examine-dans-lhemicycle-a-lassemblee-nationale.4ID7V2WIDBD6NDSFETLA4XBZKQ.html
+- CMS Francis Lefebvre : Importation de petits colis dans l'Union européenne, ce qui change pour les opérateurs: https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs
+- Legifiscal : Taxe petits colis, la France suspend son prélèvement de 2 euros: https://www.legifiscal.fr/actualites-fiscales/4550-taxe-petits-colis-france-suspend-prelevement-2-profit-nouveau-droit-douane-europeen.html
+- Comptableo : Petits colis importés, le droit de douane de 3 euros en 2026: https://comptableo.com/droit-douane-petits-colis-3-euros-2026/
+- Legifiscal : La directive ViDA sur la TVA intracommunautaire en 10 questions: https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html
+- Revue de droit fiscal : numéro 43 du 21 octobre 2026: https://lexiskiosque.fr/catalog/revue-de-droit-fiscal
+- Hashtag Avocats : DAC8 crypto reporting 2026: https://hashtagavocats.com/en/dac8-crypto-reporting-2026/
+- Ministère de l'Économie : Tout savoir sur la facturation électronique pour les entreprises: https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises
+- TPE Actu : Facturation électronique, 20 millions de factures, mais un quart des entreprises sans plateforme: https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/
+- Compta-online : Facturation électronique, calendrier, obligations et sanctions: https://www.compta-online.com/facturation-electronique-ao5562
+- EFRAG : Summary report of the From VSME to the Voluntary Standard event: https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event
+- EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard: https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag
+- Portail RSE : Les seuils de la CSRD, comprendre les critères d'application: https://portail-rse.beta.gouv.fr/csrd/seuils-csrd-omnibus-criteres-d-application/
+- Rydge Conseil : Facturation électronique, obligations 2026, échéance 2027: https://www.rydge.fr/articles-analyses/facturation-electronique-obligations-2026-2027
+
+Script écrit et voix générée par une intelligence artificielle.</description>
+      <link>https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/episodes/2026-10-26.html</link>
+      <guid isPermaLink="false">GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-10-26</guid>
+      <pubDate>Mon, 26 Oct 2026 04:12:34 +0100</pubDate>
+      <enclosure url="https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-10-26/accounting-news-fr-2026-10-26.mp3" length="5864160" type="audio/mpeg"/>
+      <itunes:duration>366</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:transcript url="https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/episodes/2026-10-26.vtt" type="text/vtt" language="en"/>
+      <podcast:chapters url="https://gwendalyviquel.github.io/signal-in-the-ai-fog/accounting-news-fr/episodes/2026-10-26.chapters.json" type="application/json+chapters"/>
+    </item>
+    <item>
       <title>Budget 2027 en pause, facture électronique et IFRS 18</title>
       <description>Le projet de loi de finances pour 2027 attend son vote solennel du trois novembre, avec la surtaxe d'IS et l'apport-cession en jeu. L'épisode fait aussi le point sur la facturation électronique sept semaines après le démarrage, sur le règlement ANC sur l'impôt sur les bénéfices, IFRS 18, les ESRS simplifiées et la Haute autorité de l'audit.
 

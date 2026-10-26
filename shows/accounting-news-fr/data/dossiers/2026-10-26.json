@@ -1,0 +1,525 @@
+{
+ "items": [
+  {
+   "title": "Budget 2027 : la première partie du PLF reste en discussion à l'Assemblée, vote solennel reporté au 3 novembre",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "L'Assemblée nationale examine en séance la première partie (recettes) du projet de loi de finances pour 2027 ; la discussion a eu lieu du 13 au 19 octobre 2026.",
+     "quote": "portant sur les recettes.",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "L'examen en séance se poursuit du mardi 27 octobre au lundi 2 novembre 2026.",
+     "quote": "du mardi 27 octobre au lundi 2 novembre",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote solennel sur la première partie est inscrit à la séance publique du mardi 3 novembre 2026, après-midi.",
+     "quote": "mardi 3 novembre, après-midi",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote solennel, initialement prévu le 20 octobre, a été reporté par décision du 19 octobre pour étudier les 2600 amendements restants (environ 800 avaient été discutés après une semaine).",
+     "quote": "un report qui a été décidé le 19 octobre afin d’étudier les 2 600 amendements restants",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Après une semaine de débats, seuls environ 800 amendements avaient été discutés en séance.",
+     "quote": "seuls 800 amendements ont été discutés",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Parlement dispose au total de 70 jours pour se prononcer définitivement sur le PLF.",
+     "quote": "le Parlement dispose de 70 jours pour se prononcer définitivement sur le PLF",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    },
+    {
+     "statement": "La commission des finances de l'Assemblée avait rejeté la première partie le 9 octobre 2026, ses amendements adoptés n'étant donc pas repris pour la séance.",
+     "quote": "avait déjà rejeté le 9 octobre la première partie du budget",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    },
+    {
+     "statement": "La motion de rejet préalable déposée par le groupe socialiste a été repoussée le 13 octobre 2026 par 236 voix contre 149.",
+     "quote": "Elle a obtenu 149 voix pour et 236 contre.",
+     "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le ministre de l'action et des comptes publics est David Amiel ; le rapporteur général de la commission des finances est Philippe Juvin.",
+     "quote": "M. David Amiel, ministre de l’action et des comptes publics",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/session-ordinaire-de-2026-2027/premiere-seance-du-vendredi-16-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Gouvernement vise un déficit public de 5 % du PIB en 2027.",
+     "quote": "L’ambition est de retrouver un déficit à 5% du PIB en 2027.",
+     "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-du-projet-de-loi-de-finances-pour-2027",
+     "primary": true
+    },
+    {
+     "title": "Assemblée nationale : Compte rendu de la première séance du vendredi 16 octobre 2026",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/comptes-rendus/seance/session-ordinaire-de-2026-2027/premiere-seance-du-vendredi-16-octobre-2026",
+     "primary": true
+    },
+    {
+     "title": "Gestion de fortune : PLF 2027, l'examen de la partie recettes mis sur pause",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "primary": false
+    },
+    {
+     "title": "franceinfo : Budget 2027, les députés ont entamé l'examen du projet de loi de finances",
+     "url": "https://www.franceinfo.fr/economie/budget/direct-budget-2027-le-projet-de-loi-de-finances-arrive-dans-l-hemicycle-mardi-en-fin-de-journee_8235388.html",
+     "primary": false
+    },
+    {
+     "title": "Legiwatch : PLF 2027, contenu, amendements et calendrier",
+     "url": "https://www.legiwatch.fr/loi/plf-2027/",
+     "primary": false
+    }
+   ],
+   "context": "Statut : confirmed (calendrier publié par l'Assemblée). Rien n'est adopté : seule la première partie (recettes) est en cours, vote solennel le 3 novembre, puis seconde partie, puis Sénat. Le calendrier a glissé (vote solennel prévu le 20 octobre, reporté). Pour une direction financière : continuer à raisonner en scénarios pour la clôture 2026 et le budget 2027, ne rien provisionner sur la base d'amendements. Pour un cabinet : informer les clients avec l'étape réelle de chaque mesure. Le texte peut encore changer lourdement en séance, au Sénat et en commission mixte paritaire ; un recours au 49-3 n'est qu'une hypothèse non documentée ici."
+  },
+  {
+   "title": "PLF 2027 : suppression en séance de la CPEB, du recul du FCTVA et du plafonnement de l'abattement des retraités",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "Le 19 octobre 2026, les députés ont supprimé la contribution progressive à l'effort budgétaire (CPEB), qui devait représenter 2,5 milliards d'euros d'économies.",
+     "quote": "Le 19 octobre, les députés ont supprimé la contribution progressive à l’effort budgétaire (CPEB)",
+     "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+     "status": "verified"
+    },
+    {
+     "statement": "Les députés ont aussi supprimé la baisse du FCTVA (fonds de compensation de la TVA des collectivités).",
+     "quote": "ainsi que la baisse du FCTVA",
+     "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+     "status": "verified"
+    },
+    {
+     "statement": "Trois amendements du député Charles de Courson durcissent la contribution différentielle sur les hauts revenus (CDHR) : fin de certaines majorations, fin de la modulation selon le foyer, décote d'entrée fortement réduite.",
+     "quote": "Trois amendements adoptés déposés par le député Charles de Courson durcissent la mesure initiale",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    },
+    {
+     "statement": "En séance, un amendement conserve pendant trois ans après le départ du logement l'exonération d'impôt sur la plus-value de la résidence principale.",
+     "quote": "conserver pendant trois ans après le départ du logement l’exonération d’impôt sur la plus-value sur la résidence principale",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "AMORCE : PLF 2027, point d'étape sur l'examen du budget à l'Assemblée nationale",
+     "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+     "primary": false
+    },
+    {
+     "title": "Legiwatch : PLF 2027, contenu, amendements et calendrier",
+     "url": "https://www.legiwatch.fr/loi/plf-2027/",
+     "primary": false
+    },
+    {
+     "title": "Gestion de fortune : PLF 2027, l'examen de la partie recettes mis sur pause",
+     "url": "https://www.gestiondefortune.com/fiscalite-droit/13424-plf-2027-lexamen-de-la-partie-recettes-mis-sur-pause.html",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported (presse spécialisée et suivi parlementaire, pas de texte définitif). Ces suppressions réduisent les économies prévues par le Gouvernement et seront à rediscuter. Pour les collectivités et leurs prestataires comptables, la baisse du FCTVA écartée en séance reste un point à suivre jusqu'au vote final. Rappel : amendements de séance sur la première partie uniquement, avant vote solennel du 3 novembre."
+  },
+  {
+   "title": "PLF 2027 : amendements entreprises et capital (IR-PME, taxe sur les rachats d'actions, taxes sectorielles)",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "En commission des finances, un amendement du président Éric Coquerel a abaissé de 750 millions à 100 millions d'euros de chiffre d'affaires le seuil de la taxe sur les rachats d'actions ; la commission a ensuite rejeté la première partie.",
+     "quote": "abaissant de 750 M€ à 100 M€ de chiffre d’affaires le seuil d’application de la taxe sur les rachats d’actions",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-apres-le-rejet-en-commission-des-finances-de-la-partie-recettes-le-texte-va-etre-examine-dans-lhemicycle-a-lassemblee-nationale.4ID7V2WIDBD6NDSFETLA4XBZKQ.html",
+     "status": "unread"
+    },
+    {
+     "statement": "En commission, ont aussi été adoptés le rétablissement de la taxe sur les emballages plastiques non recyclés et une contribution temporaire sur les superbénéfices des entreprises pétro-gazières.",
+     "quote": "Le rétablissement de la taxe sur les emballages plastiques non recyclés",
+     "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Cryptoast : PLF 2027 en direct, budget, crypto, épargne et votes",
+     "url": "https://cryptoast.fr/plf-2027/",
+     "primary": false
+    },
+    {
+     "title": "L'Argus de l'assurance : Budget 2027, après le rejet en commission des Finances de la partie recettes",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-apres-le-rejet-en-commission-des-finances-de-la-partie-recettes-le-texte-va-etre-examine-dans-lhemicycle-a-lassemblee-nationale.4ID7V2WIDBD6NDSFETLA4XBZKQ.html",
+     "primary": false
+    },
+    {
+     "title": "AMORCE : PLF 2027, point d'étape sur l'examen du budget à l'Assemblée nationale",
+     "url": "https://amorce.asso.fr/actualite/plf-2027-point-d-etape-sur-l-examen-du-budget-a-l-assemblee-nationale",
+     "primary": false
+    },
+    {
+     "title": "Legiwatch : PLF 2027, contenu, amendements et calendrier",
+     "url": "https://www.legiwatch.fr/loi/plf-2027/",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported. Attention : les amendements de commission n'ont pas été retenus pour la séance puisque la commission a rejeté la première partie ; seuls les amendements de séance comptent à ce stade, et aucun n'est définitif. Pour un cabinet : lister les clients potentiellement concernés (investisseurs PME, groupes réalisant des rachats d'actions) sans communiquer de certitude."
+  },
+  {
+   "title": "Facturation électronique : premier bilan de Bercy, 75 % des entreprises ont désigné une plateforme",
+   "theme": "Facturation électronique",
+   "facts": [
+    {
+     "statement": "Bercy a publié le 12 octobre 2026 une actualité sur le bilan de la réforme : trois entreprises sur quatre déjà engagées.",
+     "quote": "trois entreprises sur quatre déjà engagées dans la réforme",
+     "url": "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+     "status": "verified"
+    },
+    {
+     "statement": "Au 4 octobre 2026, 75 % des entreprises déclarant la TVA avaient désigné une plateforme de réception.",
+     "quote": "avaient désigné une plateforme de réception",
+     "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+     "status": "unread"
+    },
+    {
+     "statement": "Plus de 20 millions de factures électroniques ont été échangées depuis le 1er septembre 2026.",
+     "quote": "a franchi le cap des 20 millions de documents échangés depuis son lancement du 1er septembre 2026",
+     "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+     "status": "unread"
+    },
+    {
+     "statement": "Les factures échangées représentent plus de 70 milliards d'euros.",
+     "quote": "plus de 20 millions de factures électroniques circulent pour un montant de plus de 70 milliards d’euros",
+     "url": "https://www.rydge.fr/articles-analyses/facturation-electronique-obligations-2026-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le premier comité de suivi de la réforme s'est réuni le 8 octobre 2026 autour du ministre David Amiel.",
+     "quote": "Le premier comité de suivi de la réforme, réuni le 8 octobre",
+     "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Gouvernement a annoncé que la phase d'écoute et de tolérance de l'administration couvre toute la fin de l'année 2026.",
+     "quote": "la phase d’écoute et de tolérance de l’administration couvre toute la fin de l’année 2026",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "verified"
+    },
+    {
+     "statement": "Depuis le 1er septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques.",
+     "quote": "toutes les entreprises devront être en capacité de recevoir des factures électroniques",
+     "url": "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+     "status": "verified"
+    },
+    {
+     "statement": "L'e-reporting des grandes entreprises et ETI démarre le 1er septembre 2026, et le 1er septembre 2027 pour les autres entités.",
+     "quote": "1^er septembre 2027 pour les autres entités",
+     "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Ministère de l'Économie : Tout savoir sur la facturation électronique pour les entreprises",
+     "url": "https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises",
+     "primary": true
+    },
+    {
+     "title": "TPE Actu : Facturation électronique, 20 millions de factures, mais un quart des entreprises sans plateforme",
+     "url": "https://tpeactu.fr/2026/10/10/facturation-electronique-premier-bilan-octobre-2026/",
+     "primary": false
+    },
+    {
+     "title": "Rydge Conseil : Facturation électronique, obligations 2026, échéance 2027",
+     "url": "https://www.rydge.fr/articles-analyses/facturation-electronique-obligations-2026-2027",
+     "primary": false
+    },
+    {
+     "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "primary": false
+    },
+    {
+     "title": "Kohen Avocats : Facture électronique obligatoire depuis septembre 2026, amende",
+     "url": "https://kohenavocats.fr/2026/10/24/facture-electronique-obligatoire-septembre-2026-amende-entreprise-contester-paris",
+     "primary": false
+    },
+    {
+     "title": "Legifiscal : La directive ViDA sur la TVA intracommunautaire en 10 questions",
+     "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+     "primary": false
+    }
+   ],
+   "context": "Statut : confirmed pour le fait du bilan (page officielle du ministère), chiffres détaillés rapportés par la presse. Un quart des entreprises déclarant la TVA n'avait pas encore désigné de plateforme au 4 octobre : pour un cabinet, c'est un chantier de relance client avant la fin de la tolérance en 2026. L'amende de 50 euros par facture existe dans les textes mais la tolérance annoncée court jusqu'à fin 2026 : ne pas confondre. Prochaine étape : émission obligatoire pour PME, TPE et micro-entreprises le 1er septembre 2027. Lien avec l'épisode du 22 octobre sur la réception."
+  },
+  {
+   "title": "Petits colis : droit forfaitaire de 3 euros depuis le 1er juillet 2026, identifiants de produit au 1er novembre",
+   "theme": "E-commerce",
+   "facts": [
+    {
+     "statement": "Depuis le 1er juillet 2026, la franchise douanière sur les envois de moins de 150 euros a disparu, remplacée par un droit forfaitaire de 3 euros.",
+     "quote": "la franchise douanière sur les envois de moins de 150 euros a disparu",
+     "url": "https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs",
+     "status": "verified"
+    },
+    {
+     "statement": "Le règlement (UE) 2026/382 du Conseil du 11 février 2026 institue ce droit provisoire de 3 euros sur le territoire douanier de l'Union, jusqu'au 1er juillet 2028.",
+     "quote": "un droit forfaitaire provisoire de 3 euros applicable sur le territoire douanier de l’Union",
+     "url": "https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs",
+     "status": "verified"
+    },
+    {
+     "statement": "La taxe française de 2 euros par catégorie d'article, en vigueur depuis le 1er mars 2026, est suspendue au profit du droit européen, en raison de contournements.",
+     "quote": "Une suspension justifiée par les contournements",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4550-taxe-petits-colis-france-suspend-prelevement-2-profit-nouveau-droit-douane-europeen.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse spécialisée, des identifiants de produit deviennent obligatoires dans les données douanières à partir du 1er novembre 2026.",
+     "quote": "Identifiants de produit obligatoires dans les données visées",
+     "url": "https://comptableo.com/droit-douane-petits-colis-3-euros-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "La Commission européenne surveillera dès octobre 2026 les flux pour détecter les contournements du forfait.",
+     "quote": "surveillera les flux pour vérifier que des acteurs ne tentent pas de contourner ce forfait",
+     "url": "https://www.lofficieldesmetiers.fr/e-commerce-lue-met-fin-a-la-franchise-douaniere-pour-les-petits-colis-importes-de-pays-tiers/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "CMS Francis Lefebvre : Importation de petits colis dans l'Union européenne, ce qui change pour les opérateurs",
+     "url": "https://cms.law/fr/fra/legal-updates/importation-de-petits-colis-dans-l-union-europeenne-ce-qui-change-pour-les-operateurs",
+     "primary": false
+    },
+    {
+     "title": "Legifiscal : Taxe petits colis, la France suspend son prélèvement de 2 euros",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4550-taxe-petits-colis-france-suspend-prelevement-2-profit-nouveau-droit-douane-europeen.html",
+     "primary": false
+    },
+    {
+     "title": "Comptableo : Petits colis importés, le droit de douane de 3 euros en 2026",
+     "url": "https://comptableo.com/droit-douane-petits-colis-3-euros-2026/",
+     "primary": false
+    },
+    {
+     "title": "L'Officiel des métiers : E-commerce, l'UE met fin à la franchise douanière",
+     "url": "https://www.lofficieldesmetiers.fr/e-commerce-lue-met-fin-a-la-franchise-douaniere-pour-les-petits-colis-importes-de-pays-tiers/",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported (aucune source primaire lue ; le règlement est cité par la presse). Pas de nouveauté majeure cette semaine hormis l'échéance du 1er novembre 2026, rapportée par une seule source : à présenter avec prudence. Pour une entreprise de vente à distance : vérifier catalogue et données transmises aux déclarants, impact prix et TVA à l'importation. Étape suivante : bascule vers la future plateforme européenne de données douanières, jusqu'au 1er juillet 2028."
+  },
+  {
+   "title": "TVA à l'ère du numérique et DAC8 : calendriers européens à garder en vue",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "Le dispositif français couvre seulement les relations entre assujettis français ; aucun envoi transfrontalier obligatoire avant l'entrée en vigueur de ViDA sur ce point.",
+     "quote": "ne couvre que les relations entre assujettis français",
+     "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le règlement d'exécution sur le régime particulier des transferts de biens propres est révisé (Revue de droit fiscal du 21 octobre 2026).",
+     "quote": "Nouveau régime particulier des transferts de biens propres : le règlement d’exécution est révisé",
+     "url": "https://lexiskiosque.fr/catalog/revue-de-droit-fiscal",
+     "status": "unread"
+    },
+    {
+     "statement": "DAC8 (directive UE 2023/2226) : les plateformes de crypto-actifs collectent les données depuis le 1er janvier 2026 et déposent leur premier rapport en 2027.",
+     "quote": "Providers will file their first report in 2027.",
+     "url": "https://hashtagavocats.com/en/dac8-crypto-reporting-2026/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Donneespersonnelles.fr : Directive ViDA, la TVA européenne à l'ère numérique",
+     "url": "https://donneespersonnelles.fr/directive-vida",
+     "primary": false
+    },
+    {
+     "title": "Legifiscal : La directive ViDA sur la TVA intracommunautaire en 10 questions",
+     "url": "https://www.legifiscal.fr/tva/tva-internationale/directive-vida-tva-intracommunautaire-10-questions.html",
+     "primary": false
+    },
+    {
+     "title": "Revue de droit fiscal : numéro 43 du 21 octobre 2026",
+     "url": "https://lexiskiosque.fr/catalog/revue-de-droit-fiscal",
+     "primary": false
+    },
+    {
+     "title": "Hashtag Avocats : DAC8 crypto reporting 2026",
+     "url": "https://hashtagavocats.com/en/dac8-crypto-reporting-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported (aucune source primaire lue ; sujet de fond, pas de décision européenne nouvelle cette semaine). Utile pour expliquer que la facturation électronique française n'est qu'une première marche avant le reporting numérique européen de 2030 ; pour un groupe ou un cabinet, interroger sa plateforme sur sa feuille de route ViDA. DAC8 : premières déclarations des prestataires en 2027 pour les opérations 2026. À ne pas présenter comme une actualité de la semaine."
+  },
+  {
+   "title": "VSME : l'EFRAG met à jour le guide et prépare un modèle numérique en novembre",
+   "theme": "Durabilité",
+   "facts": [
+    {
+     "statement": "L'EFRAG a publié le 22 octobre 2026 le compte rendu de son événement du 9 octobre à Bruxelles sur la norme volontaire (ex-VSME).",
+     "quote": "held on 9 October 2026 in Brussels",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event",
+     "status": "verified"
+    },
+    {
+     "statement": "L'événement a réuni plus de 1500 inscriptions.",
+     "quote": "more than 1,500 registrations",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event",
+     "status": "verified"
+    },
+    {
+     "statement": "La norme volontaire vise à aider les PME à répondre aux demandes d'information de grandes entreprises, d'investisseurs et d'institutions financières.",
+     "quote": "respond to sustainability information requests from larger companies, investors and financial institutions",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "status": "verified"
+    },
+    {
+     "statement": "L'EFRAG publiera en novembre 2026 un modèle numérique mis à jour, avec convertisseur Excel vers XBRL.",
+     "quote": "Also in November 2026, EFRAG will also release an",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "status": "verified"
+    },
+    {
+     "statement": "Le modèle reflétera les changements de la norme volontaire et ajoutera des fonctions au convertisseur Excel vers XBRL.",
+     "quote": "reflecting the changes introduced by the Voluntary Standard and including additional features in the Excel to XBRL Converter",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "status": "verified"
+    },
+    {
+     "statement": "La transposition de la directive Omnibus relevant les seuils de la CSRD (1000 salariés, 450 millions d'euros de chiffre d'affaires) est attendue au plus tard le 19 mars 2027.",
+     "quote": "attendue au plus tard le 19 mars 2027",
+     "url": "https://portail-rse.beta.gouv.fr/csrd/seuils-csrd-omnibus-criteres-d-application/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : Summary report of the From VSME to the Voluntary Standard event",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-publishes-the-summary-report-of-the-from-vsme-to-the-voluntary-standard-event",
+     "primary": true
+    },
+    {
+     "title": "EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "primary": true
+    },
+    {
+     "title": "Portail RSE : Les seuils de la CSRD, comprendre les critères d'application",
+     "url": "https://portail-rse.beta.gouv.fr/csrd/seuils-csrd-omnibus-criteres-d-application/",
+     "primary": true
+    }
+   ],
+   "context": "Statut : confirmed (pages EFRAG). Les sources divergent sur la date exacte d'adoption de l'acte délégué de la norme volontaire (juillet ou septembre 2026) : ne pas citer de date. Pour un cabinet : la norme volontaire est le référentiel naturel pour répondre aux demandes de clients sortis du champ CSRD ; modèle numérique mis à jour attendu en novembre. Transposition française de l'Omnibus à surveiller avant le 19 mars 2027. Lien avec l'épisode du 22 octobre sur les ESRS simplifiées."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-10-27",
+   "text": "Reprise de l'examen en séance de la première partie du PLF 2027"
+  },
+  {
+   "date": "2026-10-28",
+   "text": "Réunion virtuelle de l'IAASB, révision d'ISA 501"
+  },
+  {
+   "date": "2026-11-01",
+   "text": "Identifiants de produit obligatoires pour les petits colis importés"
+  },
+  {
+   "date": "2026-11-02",
+   "text": "Fin de la séquence d'examen de la première partie du PLF 2027"
+  },
+  {
+   "date": "2026-11-03",
+   "text": "Vote solennel sur la première partie du PLF 2027"
+  },
+  {
+   "date": "2027-03-19",
+   "text": "Date limite de transposition de la directive Omnibus sur la CSRD"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission de factures électroniques obligatoire pour PME TPE et micro-entreprises"
+  }
+ ],
+ "checked": {
+  "verified": 27,
+  "unread": 11,
+  "dropped": 8
+ },
+ "dropped": [
+  {
+   "item": "Budget 2027 : la première partie du PLF reste en discussion à l'Assemblée, vote solennel reporté au 3 novembre",
+   "statement": "Selon un décompte de presse, 9182 amendements ont été déposés et 550 adoptés à ce stade.",
+   "quote": "Sur les 9 182 amendements déposés, 550 ont été adoptés.",
+   "url": "https://www.legiwatch.fr/loi/plf-2027/"
+  },
+  {
+   "item": "PLF 2027 : suppression en séance de la CPEB, du recul du FCTVA et du plafonnement de l'abattement des retraités",
+   "statement": "À l'article 3, un amendement a supprimé la baisse du plafond de l'abattement pour les retraités ; à l'article 35, des amendements ont supprimé la baisse du FCTVA.",
+   "quote": "supprimant la baisse du plafond de l'abattement pour les retraités",
+   "url": "https://www.legiwatch.fr/loi/plf-2027/"
+  },
+  {
+   "item": "PLF 2027 : amendements entreprises et capital (IR-PME, taxe sur les rachats d'actions, taxes sectorielles)",
+   "statement": "L'Assemblée a adopté, selon un suivi de presse, un taux de 25 % (contre 18 %) pour la réduction d'impôt IR-PME.",
+   "quote": "adoption du taux de 25 % (contre 18 %) pour la réduction d'impôt sur les PME",
+   "url": "https://cryptoast.fr/plf-2027/"
+  },
+  {
+   "item": "PLF 2027 : amendements entreprises et capital (IR-PME, taxe sur les rachats d'actions, taxes sectorielles)",
+   "statement": "Un amendement adopté en séance prolonge jusqu'en 2027 l'exonération de la prime de partage de la valeur dans les entreprises de moins de cinquante salariés.",
+   "quote": "la prorogation jusqu'en 2027 de l'exonération de la prime de partage de la valeur dans les entreprises de moins de cinquante salariés",
+   "url": "https://www.legiwatch.fr/loi/plf-2027/"
+  },
+  {
+   "item": "Facturation électronique : premier bilan de Bercy, 75 % des entreprises ont désigné une plateforme",
+   "statement": "L'amende prévue est de 50 euros par facture non conforme, selon un cabinet d'avocats.",
+   "quote": "50 euros d'amende par facture non conforme",
+   "url": "https://kohenavocats.fr/2026/10/24/facture-electronique-obligatoire-septembre-2026-amende-entreprise-contester-paris"
+  },
+  {
+   "item": "TVA à l'ère du numérique et DAC8 : calendriers européens à garder en vue",
+   "statement": "La directive ViDA a été adoptée le 11 mars 2025 et est entrée en vigueur le 14 avril 2025.",
+   "quote": "Adopté le 11 mars 2025 et entré en vigueur le 14 avril 2025",
+   "url": "https://donneespersonnelles.fr/directive-vida"
+  },
+  {
+   "item": "TVA à l'ère du numérique et DAC8 : calendriers européens à garder en vue",
+   "statement": "ViDA imposera une facture structurée sur les flux intracommunautaires au 1er juillet 2030 et obligera la France à faire converger son dispositif au 1er janvier 2035.",
+   "quote": "imposera une facture structurée sur tous les flux intracommunautaires au 1er juillet 2030",
+   "url": "https://donneespersonnelles.fr/directive-vida"
+  },
+  {
+   "item": "TVA à l'ère du numérique et DAC8 : calendriers européens à garder en vue",
+   "statement": "Un État membre peut désormais imposer la facture électronique par loi nationale pour les assujettis établis sur son territoire.",
+   "quote": "un État membre peut désormais imposer la facture électronique par simple loi nationale",
+   "url": "https://donneespersonnelles.fr/directive-vida"
+  }
+ ]
+}
