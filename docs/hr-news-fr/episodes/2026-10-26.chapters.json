@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Ouverture"
+  },
+  {
+   "startTime": 17.1,
+   "title": "Sujet de la semaine : Le budget de la S\u00e9cu rejet\u00e9 \u00e0 l'Assembl\u00e9e"
+  },
+  {
+   "startTime": 150.2,
+   "title": "Droit du travail : Licenciement \u00e9conomique"
+  },
+  {
+   "startTime": 209.5,
+   "title": "Paie et cotisations : Plafond de la s\u00e9curit\u00e9 sociale"
+  },
+  {
+   "startTime": 270.4,
+   "title": "Sant\u00e9 et conditions de travail : Accidents du travail"
+  },
+  {
+   "startTime": 330.2,
+   "title": "Emploi et retraite : Assurance ch\u00f4mage"
+  },
+  {
+   "startTime": 407.5,
+   "title": "Chiffre de la semaine"
+  },
+  {
+   "startTime": 421.6,
+   "title": "\u00c0 surveiller"
+  },
+  {
+   "startTime": 461.8,
+   "title": "Question pour votre \u00e9quipe"
+  }
+ ]
+}

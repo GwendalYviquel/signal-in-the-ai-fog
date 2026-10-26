@@ -1,0 +1,511 @@
+{
+ "items": [
+  {
+   "title": "Budget de la Sécurité sociale 2027 rejeté en première lecture à l'Assemblée",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Le vendredi 23 octobre 2026, l'Assemblée nationale a considéré le projet de loi de financement de la sécurité sociale pour 2027 comme rejeté en première lecture, la partie recettes n'ayant pas été adoptée.",
+     "quote": "l'ensemble du texte est considéré comme rejeté en première lecture.",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/rejet-en-premiere-lecture-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "La partie dépenses n'a pas pu être examinée, faute d'adoption de la partie recettes.",
+     "quote": "Il ne peut être procédé à l'examen de la partie dépenses d'un texte budgétaire",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/rejet-en-premiere-lecture-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote sur la partie recettes a eu lieu le vendredi 23 octobre, par 115 voix contre et 1 voix pour, selon LCP.",
+     "quote": "l'a finalement rejetée, ce vendredi 23 octobre, par 115 voix",
+     "url": "https://lcp.fr/actualites/budget-de-la-secu-l-assemblee-nationale-rejette-la-partie-recettes-l-ensemble-du-texte",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte est transmis au Sénat dans la version initialement présentée par le Gouvernement, et non dans la version issue des débats de l'Assemblée.",
+     "quote": "dans la version initialement présentée par le gouvernement.",
+     "url": "https://lcp.fr/actualites/budget-de-la-secu-l-assemblee-nationale-rejette-la-partie-recettes-l-ensemble-du-texte",
+     "status": "verified"
+    },
+    {
+     "statement": "Au Sénat, le texte est examiné à partir du 9 novembre dans la version du gouvernement.",
+     "quote": "le texte y est examiné le 9 novembre prochain dans la version du gouvernement",
+     "url": "https://www.officiel-thermalisme.com/2026/10/23/plfss-2027-apres-le-rejet-du-texte-par-lassemblee-le-dossier-du-remboursement-des-cures-thermales-passe-au-senat-des-le-9-novembre/",
+     "status": "unread"
+    },
+    {
+     "statement": "Un vote solennel est prévu au Sénat le mercredi 18 novembre 2026.",
+     "quote": "avant un vote solennel prévu le 18 novembre.",
+     "url": "https://www.officiel-thermalisme.com/2026/10/23/plfss-2027-apres-le-rejet-du-texte-par-lassemblee-le-dossier-du-remboursement-des-cures-thermales-passe-au-senat-des-le-9-novembre/",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon LCP, la version issue des débats de l'Assemblée portait le déficit de la Sécurité sociale à 24 milliards d'euros.",
+     "quote": "portait le déficit de la Sécurité sociale à 24 milliards d'euros.",
+     "url": "https://lcp.fr/actualites/budget-de-la-secu-l-assemblee-nationale-rejette-la-partie-recettes-l-ensemble-du-texte",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon une presse spécialisée, si le Parlement ne s'est pas prononcé dans un délai de cinquante jours, les dispositions du projet peuvent être mises en œuvre par ordonnance.",
+     "quote": "Si le Parlement ne s'est pas prononcé dans un délai de cinquante jours, les dispositions du projet peuvent",
+     "url": "https://mandapro.fr/actualites/plfss-2027-rejet-commission-seance-publique",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse spécialisée, les acteurs anticipent un recours à l'article 49 alinéa 3 de la Constitution ou aux ordonnances pour faire adopter le texte.",
+     "quote": "tous anticipent l'utilisation de l'article 49 alinéa 3 de la Constitution ou des ordonnances",
+     "url": "https://www.concourspluripro.fr/exercice-pluriprofessionnel/metiers/plfss-2027-les-deputes-rejettent-la-partie-du-texte-portant-sur",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Assemblée nationale : Rejet, en première lecture, du projet de loi de financement de la sécurité sociale pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/rejet-en-premiere-lecture-du-projet-de-loi-de-financement-de-la-securite-sociale-pour-2027",
+     "primary": true
+    },
+    {
+     "title": "Sénat : L'ordre du jour",
+     "url": "https://www.senat.fr/ordre-du-jour/ordre-du-jour.html",
+     "primary": true
+    },
+    {
+     "title": "LCP : Budget de la Sécu, l'Assemblée nationale rejette la partie recettes",
+     "url": "https://lcp.fr/actualites/budget-de-la-secu-l-assemblee-nationale-rejette-la-partie-recettes-l-ensemble-du-texte",
+     "primary": false
+    },
+    {
+     "title": "Officiel du thermalisme : PLFSS 2027, après le rejet du texte par l'Assemblée",
+     "url": "https://www.officiel-thermalisme.com/2026/10/23/plfss-2027-apres-le-rejet-du-texte-par-lassemblee-le-dossier-du-remboursement-des-cures-thermales-passe-au-senat-des-le-9-novembre/",
+     "primary": false
+    },
+    {
+     "title": "Legiwatch : PLFSS 2027, contenu et avancement à l'Assemblée",
+     "url": "https://www.legiwatch.fr/loi/plfss-2027/",
+     "primary": false
+    },
+    {
+     "title": "Mandapro : Budget de la Sécu 2027, rejeté en commission, le texte arrive en séance",
+     "url": "https://mandapro.fr/actualites/plfss-2027-rejet-commission-seance-publique",
+     "primary": false
+    },
+    {
+     "title": "Concours pluripro : PLFSS 2027, les députés rejettent la partie recettes",
+     "url": "https://www.concourspluripro.fr/exercice-pluriprofessionnel/metiers/plfss-2027-les-deputes-rejettent-la-partie-du-texte-portant-sur",
+     "primary": false
+    }
+   ],
+   "context": "C'est le point ouvert du 22 octobre qui a avancé : la séance devait se conclure par un vote solennel le 27 octobre, mais le rejet de la partie recettes le 23 octobre met fin à la première lecture à l'Assemblée sans examen des dépenses. Aucune mesure du texte n'est adoptée ; les amendements votés tombent et le Sénat repart du texte du Gouvernement à partir du 9 novembre (vote solennel prévu le 18 novembre). Suite : commission mixte paritaire, lecture définitive, éventuel Conseil constitutionnel ; la presse évoque un recours possible au 49 alinéa 3 ou aux ordonnances (non confirmé officiellement). Pour la paie : aucune règle 2027 de CSG, cotisations ou exonérations issue du PLFSS n'est stabilisée ; les mesures sur les arrêts de travail figurent dans le texte initial du Gouvernement (selon la presse). Conseil : prévoir des scénarios de paramétrage en décembre et suivre les mesures au Sénat. Le chiffre de déficit (24 milliards d'euros) est celui du Gouvernement, rapporté par la presse : à attribuer comme tel. Peut servir de sujet de la semaine ou de retour sur dossier (un seul des deux)."
+  },
+  {
+   "title": "Plafond de la sécurité sociale relevé de 1,74 % au 1er janvier 2027",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Par communiqué du 16 octobre 2026, le Bulletin officiel de la Sécurité sociale annonce une revalorisation du plafond de la sécurité sociale de 1,74 % pour 2027.",
+     "quote": "annonce un taux de revalorisation du montant du plafond de la Sécurité sociale pour l’année 2027 de 1,74 %",
+     "url": "https://www.editions-tissot.fr/actualite/droit-du-travail/plafond-de-la-securite-sociale-le-boss-annonce-les-nouveaux-montants",
+     "status": "verified"
+    },
+    {
+     "statement": "Un arrêté fixant le niveau du plafond sera publié au Journal officiel avant la fin de l'année 2026.",
+     "quote": "Un arrêté fixant le niveau du plafond de la Sécurité sociale sera publié",
+     "url": "https://www.editions-tissot.fr/actualite/droit-du-travail/plafond-de-la-securite-sociale-le-boss-annonce-les-nouveaux-montants",
+     "status": "verified"
+    },
+    {
+     "statement": "La page de l'URSSAF intitulée « Plafond annuel de la Sécurité sociale, une augmentation prévue pour 2027 » a été mise à jour le 20 octobre 2026.",
+     "quote": "Plafond annuel de la Sécurité sociale, une augmentation prévue pour 2027",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "status": "verified"
+    },
+    {
+     "statement": "L'URSSAF indique qu'un arrêté sera publié d'ici la fin de l'année.",
+     "quote": "Un arrêté sera publié d’ici la fin de l’année.",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le BOSS précise les montants applicables à partir du 1er janvier 2027.",
+     "quote": "Le BOSS précise également les montants applicables à partir du 1er janvier 2027.",
+     "url": "https://www.editions-tissot.fr/actualite/droit-du-travail/plafond-de-la-securite-sociale-le-boss-annonce-les-nouveaux-montants",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "URSSAF : Plafond annuel de la Sécurité sociale, une augmentation prévue pour 2027",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "primary": true
+    },
+    {
+     "title": "Éditions Tissot : Plafond de la Sécurité sociale 2027, le BOSS annonce les nouveaux montants",
+     "url": "https://www.editions-tissot.fr/actualite/droit-du-travail/plafond-de-la-securite-sociale-le-boss-annonce-les-nouveaux-montants",
+     "primary": false
+    }
+   ],
+   "context": "Le taux de revalorisation de 1,74 % est annoncé par le BOSS (communiqué du 16 octobre 2026) ; le montant exact sera fixé par arrêté avant la fin de l'année. Tant que l'arrêté n'est pas paru, ne pas donner de montant en euros pour 2027 (non vérifié). Impact : tous les seuils indexés sur le plafond (tranches de cotisations, prévoyance, plafonds d'exonération, proratisation) au 1er janvier 2027. Action : préparer la mise à jour des tables de paie, vérifier les accords de prévoyance indexés sur le plafond. Chiffre de la semaine possible : 1,74 pour cent."
+  },
+  {
+   "title": "Taux d'accidents du travail calculés par établissement ou groupe d'établissements dès 2027",
+   "theme": "Santé et conditions de travail",
+   "facts": [
+    {
+     "statement": "Le décret n° 2026-951 du 13 octobre 2026 généralise le calcul des taux de cotisation accidents du travail et maladies professionnelles au niveau de l'entreprise.",
+     "quote": "généralisant le calcul des taux de cotisation au titre des accidents du travail et des maladies professionnelles",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    },
+    {
+     "statement": "Le décret est paru au Journal officiel du 14 octobre 2026 (JORF n° 0240, texte n° 5).",
+     "quote": "JORF n°0240 du 14 octobre 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    },
+    {
+     "statement": "Sont concernés les employeurs du régime général hors Alsace-Moselle soumis à la tarification individuelle ou mixte.",
+     "quote": "employeurs du régime général hors Alsace-Moselle soumis aux règles de tarification",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    },
+    {
+     "statement": "Les taux sont déterminés par groupes de risques pour les entreprises en tarification individuelle et mixte.",
+     "quote": "le décret généralise la détermination des taux de cotisation d'accidents du travail et maladies professionnelles par groupes de risques",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    },
+    {
+     "statement": "Le ou les taux sont déterminés au niveau de l'entreprise pour chaque établissement ou groupe d'établissements d'une même catégorie de risque.",
+     "quote": "pour chaque établissement ou groupe d'établissements appartenant à la même catégorie de risque.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    },
+    {
+     "statement": "Les dispositions s'appliquent aux cotisations accidents du travail et maladies professionnelles dues à compter de l'année 2027.",
+     "quote": "dues à compter de l'année 2027.",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Décret n° 2026-951 du 13 octobre 2026 généralisant le calcul des taux de cotisation AT/MP au niveau de l'entreprise",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054979559",
+     "primary": true
+    }
+   ],
+   "context": "Décret paru le 14 octobre, soit 12 jours avant l'heure limite : à présenter comme un texte récent, pas comme une nouvelle de la semaine. Il concerne les entreprises en tarification individuelle ou mixte (hors Alsace-Moselle) ; applicable aux cotisations AT/MP dues à partir de 2027. Pour un employeur multi-sites : vérifier les notifications de taux de la caisse, la ventilation des taux par établissement ou groupe d'établissements de même catégorie de risque dans le logiciel de paie et la DSN. Lien avec la prévention : le coût AT/MP suit davantage la sinistralité locale. Les modalités détaillées de notification ne sont pas dans les sources : à vérifier."
+  },
+  {
+   "title": "Prévisions de l'Unédic : chômage à 8,8 % en 2027 et solde dégradé en 2026",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "L'Unédic a publié ses prévisions financières d'octobre 2026.",
+     "quote": "Prévisions financières de l'Unédic - octobre 2026",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "L'Unédic anticipe un taux de chômage de 8,6 % en 2026 puis 8,8 % en 2027 et 2028.",
+     "quote": "qui atteindrait 8,6 % en 2026 et 8,8 % en 2027 et 2028",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Le nombre de chômeurs indemnisés resterait stable, autour de 2,6 millions de personnes jusqu'en 2028.",
+     "quote": "autour de 2,6 millions de personnes et ce jusqu’en 2028",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon l'Unédic, cette stabilité s'explique par les changements réglementaires, dont l'avenant 2026 relatif aux ruptures conventionnelles individuelles.",
+     "quote": "avenant 2026 relatif aux ruptures conventionnelles individuelles",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "L'Unédic prévoit une croissance française de 0,4 % en 2026.",
+     "quote": "La croissance française ralentirait en 2026 (+0,4 %)",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Le solde du régime se dégraderait en 2026, à moins 2,3 milliards d'euros.",
+     "quote": "En 2026, le solde se dégraderait sensiblement (-2,3 Md€)",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Les prélèvements de l'État sur les recettes de l'Unédic ont mis un coup d'arrêt à son désendettement, selon l'Unédic.",
+     "quote": "Les prélèvements de l’État sur les recettes de l’Unédic ont mis un coup d’arrêt à son désendettement.",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Unédic : Prévisions financières de l'Unédic, octobre 2026",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "primary": true
+    }
+   ],
+   "context": "Publication de l'Unédic d'il y a environ cinq jours. Il s'agit de prévisions, pas de décisions : pas de changement de règles immédiat, mais un contexte pour le risque de nouveaux prélèvements de l'État et les discussions à venir sur les règles d'assurance chômage. Les chiffres sont ceux de l'Unédic et peuvent différer de ceux de l'INSEE (non vérifiés ici). Chiffre de la semaine possible : 2,6 millions de chômeurs indemnisés, ou 8,8 % de taux de chômage anticipé en 2027."
+  },
+  {
+   "title": "Rupture conventionnelle : indemnisation chômage réduite depuis le 1er septembre 2026",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Selon un site spécialisé, la loi transposant l'avenant n° 3 au protocole d'assurance chômage a été définitivement adoptée le 2 juin 2026.",
+     "quote": "a été définitivement adoptée le 2 juin 2026.",
+     "url": "https://gascogne-occitane.cerfrance.fr/actualites/rupture-conventionnelle-ce-qui-change",
+     "status": "verified"
+    },
+    {
+     "statement": "À partir du 1er septembre 2026, les salariés quittant l'entreprise par rupture conventionnelle sont indemnisés moins longtemps, selon ce site.",
+     "quote": "À partir du 1er septembre 2026, les salariés qui quittent leur entreprise dans le cadre",
+     "url": "https://gascogne-occitane.cerfrance.fr/actualites/rupture-conventionnelle-ce-qui-change",
+     "status": "verified"
+    },
+    {
+     "statement": "La date de fin de contrat retenue dans la convention détermine le régime applicable.",
+     "quote": "C'est la date de fin de contrat retenue dans la convention qui détermine le régime applicable.",
+     "url": "https://campus.agea.fr/actualites/rupture-conventionnelle-ce-qui-change-au-1er-septembre-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Depuis le 1er janvier 2026, la contribution patronale spécifique sur les indemnités de rupture conventionnelle est passée de 30 % à 40 %, selon ce site.",
+     "quote": "Depuis le 1er janvier 2026, le taux de la contribution patronale spécifique due sur les indemnités",
+     "url": "https://campus.agea.fr/actualites/rupture-conventionnelle-ce-qui-change-au-1er-septembre-2026",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Cerfrance Gascogne-Occitane : Rupture conventionnelle, ce qui change à la rentrée 2026",
+     "url": "https://gascogne-occitane.cerfrance.fr/actualites/rupture-conventionnelle-ce-qui-change",
+     "primary": false
+    },
+    {
+     "title": "Campus AGEA : Rupture conventionnelle, ce qui change au 1er septembre 2026",
+     "url": "https://campus.agea.fr/actualites/rupture-conventionnelle-ce-qui-change-au-1er-septembre-2026",
+     "primary": false
+    },
+    {
+     "title": "Unédic : Prévisions financières de l'Unédic, octobre 2026",
+     "url": "https://www.unedic.org/publications/previsions-financieres-de-lunedic-octobre-2026",
+     "primary": true
+    }
+   ],
+   "context": "Pas une nouveauté de la semaine : rappel à lier aux prévisions de l'Unédic, qui citent l'avenant 2026 sur les ruptures conventionnelles individuelles parmi les facteurs de stabilité du nombre d'indemnisés. Sources secondaires uniquement pour les dates : à présenter prudemment. Pour le service RH : informer les salariés concernés, vérifier la date de fin de contrat inscrite dans la convention, intégrer la contribution patronale à 40 % dans le coût de la rupture. Les durées exactes d'indemnisation ne sont pas vérifiées dans le dossier."
+  },
+  {
+   "title": "Licenciement économique : une baisse du chiffre d'affaires ne suffit pas, selon la Cour de cassation",
+   "theme": "Droit du travail",
+   "facts": [],
+   "sources": [
+    {
+     "title": "Juricaf : arrêts de la Cour de cassation d'octobre 2026",
+     "url": "https://juricaf.org/recherche/2026",
+     "primary": true
+    },
+    {
+     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "primary": false
+    }
+   ],
+   "context": "Arrêt du 7 octobre 2026, soit 19 jours avant l'heure limite ; commenté par des cabinets ces derniers jours. Le statut de publication au Bulletin n'est pas établi par les sources : ne pas l'affirmer. Selon le cabinet, une baisse du chiffre d'affaires sur la durée légale ne caractérise pas à elle seule des difficultés économiques : pour un employeur, vérifier la motivation de la lettre de licenciement et les indicateurs économiques mobilisés. Pas de conseil individuel."
+  },
+  {
+   "title": "Salarié licencié pour un motif nul et départ en retraite : plus de réintégration, mais indemnisation",
+   "theme": "Droit du travail",
+   "facts": [],
+   "sources": [
+    {
+     "title": "Mimoun Avocat : Jurisprudence, dernières décisions de la Cour de cassation",
+     "url": "https://mimoun-avocat.com/jurisprudence.html",
+     "primary": false
+    }
+   ],
+   "context": "Arrêt du 7 octobre 2026, publié au bulletin selon le cabinet qui le recense ; source secondaire uniquement, la décision n'a pas été lue. Effet pratique : en cas de licenciement nul, le salarié qui a fait valoir ses droits à la retraite ne peut plus demander la réintégration mais est indemnisé jusqu'à cette date ; à intégrer dans l'évaluation du risque financier d'un contentieux sur licenciement nul. À présenter prudemment."
+  },
+  {
+   "title": "DSN 2027 : cahier technique 2027.1.2 et bascule en janvier 2027",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Net-entreprises met à disposition la documentation de la norme DSN 2027, dont le cahier technique 2027.1.2 publié le 9 septembre 2026.",
+     "quote": "le cahier technique 2027.1.2 publié le 9 septembre 2026",
+     "url": "https://bulletinspaie.com/evolutions-paie-rh/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un site spécialisé, le passage à la nomenclature NAF 2025 figure parmi les principaux changements techniques déjà documentés pour 2027.",
+     "quote": "le passage à la nomenclature NAF 2025 sont les principaux changements techniques déjà documentés",
+     "url": "https://bulletinspaie.com/evolutions-paie-rh/",
+     "status": "verified"
+    },
+    {
+     "statement": "La note différentielle entre les cahiers techniques 2026.1.2 et 2027.1.1 permet d'identifier les changements à anticiper à compter du 1er janvier 2027.",
+     "quote": "Ce document permet d’identifier rapidement les changements à anticiper à compter du 1er janvier 2027.",
+     "url": "https://www.legisocial.fr/actualites-sociales/7992-dsn-evolutions-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un organisme de formation, la norme 2027 touche notamment la proratisation du plafond de la sécurité sociale et le calcul de certaines cotisations.",
+     "quote": "la proratisation du plafond de Sécurité sociale, le calcul de certaines cotisations",
+     "url": "https://www.cnfce.com/actualites/dsn-2027-changements",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Bulletins paie : Évolutions paie et RH 2027, le guide essentiel de rentrée",
+     "url": "https://bulletinspaie.com/evolutions-paie-rh/",
+     "primary": false
+    },
+    {
+     "title": "LégiSocial : DSN, quelles sont les évolutions en 2027",
+     "url": "https://www.legisocial.fr/actualites-sociales/7992-dsn-evolutions-2027.html",
+     "primary": false
+    },
+    {
+     "title": "CNFCE : DSN 2027, ce que les services paie doivent anticiper",
+     "url": "https://www.cnfce.com/actualites/dsn-2027-changements",
+     "primary": false
+    },
+    {
+     "title": "Apogea : DSN 2027, nouveautés, calendrier et préparation",
+     "url": "https://www.apogea.fr/dsn-2027/",
+     "primary": false
+    }
+   ],
+   "context": "Pas une actualité de la semaine mais une échéance proche : la norme DSN 2027 s'applique à la paie de janvier 2027. Action : demander à l'éditeur de paie la version logicielle, rejouer des tests, vérifier le passage à la nomenclature NAF 2025. À croiser avec le nouveau plafond de la sécurité sociale et les taux AT/MP par établissement : trois paramètres 2027 à anticiper. Sources de presse spécialisée et d'éditeurs ; à vérifier sur net-entreprises."
+  },
+  {
+   "title": "Prime carburant : décrets du 20 octobre, plafond de 1 000 euros",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Deux décrets du 20 octobre 2026 sont parus au Journal officiel du 21 octobre 2026 pour relever temporairement le plafond social de la prime carburant.",
+     "quote": "Deux décrets publiés au Journal officiel du 21 octobre 2026 portent temporairement à 1 000 € le plafond social",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le décret n° 2026-974 fixe à 1 000 euros par an et par salarié la limite exceptionnelle d'exonération sociale pour les frais de carburant.",
+     "quote": "fixe à 1 000 € par an et par salarié la limite exceptionnelle",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon ce site, l'effet porte sur les cotisations dues pour les périodes d'activité courant depuis le 1er octobre 2026.",
+     "quote": "avec effet sur les cotisations et contributions dues pour les périodes d’activité courant depuis le 1er octobre",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "Un plafond d'exonération sociale de 1 000 euros ne doit pas être assimilé automatiquement à une exonération d'impôt, selon ce site.",
+     "quote": "ne doit donc pas être assimilé automatiquement à une exonération d’impôt de 1 000 €",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "status": "verified"
+    },
+    {
+     "statement": "Ce site consacre une section à la décision et au paiement avant le 31 décembre.",
+     "quote": "comment décider et payer avant le 31 décembre",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Décret n° 2026-974 du 20 octobre 2026 fixant les plafonds (prime carburant)",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055002925",
+     "primary": true
+    },
+    {
+     "title": "TPE actu : Prime carburant à 1 000 euros, ce que changent les deux décrets",
+     "url": "https://tpeactu.fr/2026/10/21/prime-carburant-1000-euros-decrets-octobre-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Sujet déjà traité dans l'épisode précédent (22 octobre) : à ne mentionner que brièvement, par exemple dans À surveiller. Le décret est paru, aucune autre avancée détectée. Le site de presse alerte sur la fiscalité, distincte de l'exonération sociale. Date limite de versement : 31 décembre 2026 selon la presse."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Début de l'examen du PLFSS 2027 au Sénat"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Scrutin solennel au Sénat sur le PLFSS 2027"
+  },
+  {
+   "date": "2026-12-31",
+   "text": "Date limite de versement de la prime carburant exonérée"
+  },
+  {
+   "date": "2027-01-01",
+   "text": "Plafond de la sécurité sociale revalorisé, taux AT/MP par établissement et DSN 2027"
+  }
+ ],
+ "checked": {
+  "verified": 32,
+  "unread": 8,
+  "dropped": 8
+ },
+ "dropped": [
+  {
+   "item": "Budget de la Sécurité sociale 2027 rejeté en première lecture à l'Assemblée",
+   "statement": "Le Sénat a inscrit à son ordre du jour un scrutin public solennel sur le PLFSS 2027, sous réserve de la transmission du texte.",
+   "quote": "scrutin public solennel sur le projet de loi de financement de la sécurité sociale pour 2027",
+   "url": "https://www.senat.fr/ordre-du-jour/ordre-du-jour.html"
+  },
+  {
+   "item": "Budget de la Sécurité sociale 2027 rejeté en première lecture à l'Assemblée",
+   "statement": "Le 20 octobre 2026, l'Assemblée avait rejeté une motion de rejet préalable par 259 voix contre 128.",
+   "quote": "Le 20 octobre 2026, l'Assemblée a rejeté une motion de rejet préalable par 259 voix contre 128.",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Licenciement économique : une baisse du chiffre d'affaires ne suffit pas, selon la Cour de cassation",
+   "statement": "La chambre sociale de la Cour de cassation, en formation de section, a rendu le 7 octobre 2026 un arrêt sur le motif économique du licenciement (article L. 1233-3, 1° du Code du travail).",
+   "quote": "France, Cour de cassation, Chambre sociale - formation de section, 07 octobre 2026, 25-10.107.",
+   "url": "https://juricaf.org/recherche/2026"
+  },
+  {
+   "item": "Licenciement économique : une baisse du chiffre d'affaires ne suffit pas, selon la Cour de cassation",
+   "statement": "Selon un cabinet d'avocats, l'arrêt du 7 octobre 2026 juge qu'une baisse du chiffre d'affaires constatée sur la durée légale ne caractérise pas à elle seule des difficultés économiques.",
+   "quote": "Une baisse du chiffre d'affaires constatée sur la durée légale ne caractérise pas à elle seule des difficultés économiques",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "Licenciement économique : une baisse du chiffre d'affaires ne suffit pas, selon la Cour de cassation",
+   "statement": "La page du cabinet qui recense la décision a été mise à jour le 18 octobre 2026.",
+   "quote": "Dernière mise à jour le 18 octobre 2026",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "Salarié licencié pour un motif nul et départ en retraite : plus de réintégration, mais indemnisation",
+   "statement": "Selon un cabinet d'avocats, un arrêt de la chambre sociale du 7 octobre 2026 juge qu'un salarié licencié pour un motif nul qui a fait valoir ses droits à la retraite ne peut plus être réintégré mais est indemnisé jusqu'à cette date.",
+   "quote": "licencié pour un motif nul qui a fait valoir ses droits à la retraite ne peut plus être réintégré",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "Salarié licencié pour un motif nul et départ en retraite : plus de réintégration, mais indemnisation",
+   "statement": "Cet arrêt est indiqué comme publié au bulletin par ce cabinet.",
+   "quote": "Droit du travail Publié au bulletin 7 octobre 2026",
+   "url": "https://mimoun-avocat.com/jurisprudence.html"
+  },
+  {
+   "item": "DSN 2027 : cahier technique 2027.1.2 et bascule en janvier 2027",
+   "statement": "Selon un éditeur, la DSN 2027 est la version applicable à partir de la paie de janvier 2027, portée par la norme P27.",
+   "quote": "applicable à partir de la paie de janvier 2027, portée par la norme P27",
+   "url": "https://www.apogea.fr/dsn-2027/"
+  }
+ ]
+}
