@@ -1,0 +1,144 @@
+{
+ "title": "AWS cuts the cable, Nanbeige opens a coder",
+ "summary": "AWS scheduled its European Sovereign Cloud independence exercise for Saturday, and findings are still to come. Also: Nanbeige's open 33 billion parameter agentic coder, a report of H100 rental prices up nearly 40 percent, and new detail on Walmart's agent pricing parity.",
+ "headlines": [
+  "AWS runs its sovereign cloud on its own",
+  "Nanbeige opens a 33 billion parameter coder",
+  "H100 rental prices up nearly 40 percent"
+ ],
+ "story_of_the_day": {
+  "theme": "Sovereignty and Europe",
+  "facts": "AWS announced on September twenty-eighth that on Saturday, October twenty-fourth, it would run its European Sovereign Cloud without its global links. For several hours the region is disconnected from the AWS Global Network backbone, and traffic is rerouted over European internet providers. A dedicated system for limited operational data transfers is switched off entirely. A team made up only of EU residents operates the region, on its own hardware and software. AWS says neither link is operation-critical. It says the exercise is designed to be consistent with the European Commission's Cloud Sovereignty Framework and Germany's BSI C3A criteria, and that it will share an update with regulators and customers afterwards. I found no published findings before the cutoff. One blog notes that an independent tracker, the European Sovereignty Index, scored the test zero on ownership and jurisdiction, which it does not change.",
+  "read": "The read here: this tests operations, not ownership. Both matter, and only one was on the table Saturday. When the findings land, read the detail, not the headline. Ask what actually kept running, whether managed AI services were in scope, which dependencies surfaced, and whether the evidence maps to your own compliance file. Then ask the harder question about jurisdiction, because the test does not answer it. For a platform team, the practical step is the same either way: make sure your gateway can route workloads to a sovereign region and fail over cleanly, and that you know which models are available there.",
+  "label": "confirmed",
+  "topics": [
+   "AWS European Sovereign Cloud"
+  ],
+  "sources": [
+   {
+    "title": "AWS: AWS European Sovereign Cloud: Demonstrating an independent operation",
+    "url": "https://aws.amazon.com/blogs/security/aws-european-sovereign-cloud-demonstrating-an-independent-operation/",
+    "primary": true
+   },
+   {
+    "title": "InfoQ: AWS Will Run Its European Sovereign Cloud Without the Global Backbone for Several Hours",
+    "url": "https://www.infoq.com/news/2026/10/aws-sovereign-cloud-exercise/",
+    "primary": false
+   },
+   {
+    "title": "Cybersecurity Journal: AWS Schedules October 24 Test of Sovereign Cloud Independence",
+    "url": "https://cybersecurityjournal.us/news/aws-sovereign-cloud-october-independence-exercise",
+    "primary": false
+   },
+   {
+    "title": "Hamvero: AWS Will Unplug Its European Cloud for a Few Hours",
+    "url": "https://www.hamvero.space/blog/aws-european-sovereign-cloud-independence-test/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "Nanbeige, a Chinese lab backed by the recruitment company BOSS Zhipin, published Nanbeige4.3-33B on Hugging Face on October twenty-fourth, according to Startup Fortune. It is a dense model of about 33 billion parameters, with a 512000 token context window, under the Apache 2.0 licence. The lab's own model card claims it beats Alibaba's Qwen3.8-27B on agentic coding benchmarks. No third party has reproduced the results.",
+   "read": "Why it matters: a permissive licence and a size that fits a single node make this a cheap candidate for a self-hosted agent or coding tier. But every number is self-reported. Run it on your own evaluation set, and test for looping on long tool chains, before it touches a routing table.",
+   "label": "reported",
+   "topics": [
+    "Nanbeige",
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "Pasquale Pillitteri: Nanbeige4.3-33B arrives open source and takes on Qwen3.8-27B in coding",
+     "url": "https://pasqualepillitteri.it/en/news/27138/nanbeige-4-3-33b-open-source-en",
+     "primary": false
+    },
+    {
+     "title": "Startup Fortune: Nanbeige's New 33B Open Model Takes Aim at Qwen and Gemma on Coding",
+     "url": "https://startupfortune.com/nanbeiges-new-33b-open-model-takes-aim-at-qwen-and-gemma-on-coding/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "Startup Fortune reports that H100 rental prices have climbed nearly 40 percent in five months. Citing SemiAnalysis, it says one-year H100 rental pricing rose from roughly one dollar seventy per GPU-hour. It makes the point in an article about Nanbeige's release, as a reason why running models yourself has become expensive. I found no second source.",
+   "read": "The bigger picture: treat this as a signal, not a measurement. Still, if GPU rental keeps rising, the break-even between hosted tokens and self-hosting moves. Re-run your cost per million tokens at your own utilisation, and check what your capacity commitments assume.",
+   "label": "reported",
+   "topics": [
+    "GPU pricing",
+    "Inference engines"
+   ],
+   "sources": [
+    {
+     "title": "Startup Fortune: Nanbeige's New 33B Open Model Takes Aim at Qwen and Gemma on Coding",
+     "url": "https://startupfortune.com/nanbeiges-new-33b-open-model-takes-aim-at-qwen-and-gemma-on-coding/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "New detail on Walmart's agent tools, announced on Wednesday. Reports say that Agent Profiles and the Agent Gateway cover Walmart and Sam's Club, and that agents get the same prices, promotions and delivery fees as customers on Walmart.com. PYMNTS adds spending limits and separate purchase records. Agent Profiles are due within a month.",
+   "read": "Reading between the lines: price parity means no agent-only pricing, so the competition shifts to product data quality and availability. For a retailer, that makes catalogue accuracy and stock APIs the real interface for agents. Worth checking how yours behave under machine traffic.",
+   "label": "reported",
+   "topics": [
+    "Walmart",
+    "Agentic commerce"
+   ],
+   "sources": [
+    {
+     "title": "Retail Insight Network: Walmart introduces AI agent tools for automated shopping",
+     "url": "https://www.retail-insight-network.com/news/walmart-ai-agent-tools-automated-shopping/",
+     "primary": false
+    },
+    {
+     "title": "PYMNTS: Walmart and Amazon Expand AI Agents' Roles in Shopping and Work",
+     "url": "https://www.pymnts.com/news/retail/2026/walmart-and-amazon-expand-ai-agents-roles-in-shopping-and-work/",
+     "primary": false
+    },
+    {
+     "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+     "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "65.5 against 42.5. That is Nanbeige's self-reported DeepSWE score for its new 33 billion parameter model, versus Qwen3.8-27B. A big claimed gap, so test it on your own tasks first.",
+  "source": {
+   "title": "Startup Fortune: Nanbeige's New 33B Open Model Takes Aim at Qwen and Gemma on Coding",
+   "url": "https://startupfortune.com/nanbeiges-new-33b-open-model-takes-aim-at-qwen-and-gemma-on-coding/",
+   "primary": false
+  }
+ },
+ "what_to_watch": "This week, AWS findings from its sovereign cloud exercise. Mistral Large 4 open weights are promised by the end of October: outlets cite October twenty-seventh, a Hugging Face placeholder says October thirty-first, and the licence matters most. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.",
+ "agenda": [
+  {
+   "date": "2026-10-27",
+   "text": "Mistral Large 4 open weights, date cited by outlets"
+  },
+  {
+   "date": "2026-10-31",
+   "text": "Mistral Large 4 open weights, Hugging Face placeholder date"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC gigafactory bid deadline"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite begins"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 4 Argon price doubling"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations apply"
+  }
+ ],
+ "question": "If GPU rental prices rise another quarter, which of your self-hosted workloads would you move back to hosted tokens, and do you have the cost data to decide?"
+}

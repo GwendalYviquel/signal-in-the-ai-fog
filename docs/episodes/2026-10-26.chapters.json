@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.3,
+   "title": "Story of the day: AWS runs its sovereign cloud on its own"
+  },
+  {
+   "startTime": 121.7,
+   "title": "Models and vendors: Nanbeige"
+  },
+  {
+   "startTime": 174.3,
+   "title": "Platform: GPU pricing"
+  },
+  {
+   "startTime": 218.1,
+   "title": "Retail and agents: Walmart"
+  },
+  {
+   "startTime": 262.3,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 275.8,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 305.7,
+   "title": "Question for your team"
+  }
+ ]
+}

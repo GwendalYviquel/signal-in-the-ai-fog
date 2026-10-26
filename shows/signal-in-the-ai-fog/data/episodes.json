@@ -427,5 +427,116 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-10-26",
+    "title": "AWS cuts the cable, Nanbeige opens a coder",
+    "summary": "AWS scheduled its European Sovereign Cloud independence exercise for Saturday, and findings are still to come. Also: Nanbeige's open 33 billion parameter agentic coder, a report of H100 rental prices up nearly 40 percent, and new detail on Walmart's agent pricing parity.",
+    "headlines": [
+      "AWS runs its sovereign cloud on its own",
+      "Nanbeige opens a 33 billion parameter coder",
+      "H100 rental prices up nearly 40 percent"
+    ],
+    "themes": [
+      "Sovereignty and Europe",
+      "Models and vendors",
+      "Platform",
+      "Retail and agents"
+    ],
+    "topics": [
+      "AWS European Sovereign Cloud",
+      "Nanbeige",
+      "Open-weight models",
+      "GPU pricing",
+      "Inference engines",
+      "Walmart",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "AWS: AWS European Sovereign Cloud: Demonstrating an independent operation",
+        "url": "https://aws.amazon.com/blogs/security/aws-european-sovereign-cloud-demonstrating-an-independent-operation/",
+        "primary": true
+      },
+      {
+        "title": "InfoQ: AWS Will Run Its European Sovereign Cloud Without the Global Backbone for Several Hours",
+        "url": "https://www.infoq.com/news/2026/10/aws-sovereign-cloud-exercise/",
+        "primary": false
+      },
+      {
+        "title": "Cybersecurity Journal: AWS Schedules October 24 Test of Sovereign Cloud Independence",
+        "url": "https://cybersecurityjournal.us/news/aws-sovereign-cloud-october-independence-exercise",
+        "primary": false
+      },
+      {
+        "title": "Hamvero: AWS Will Unplug Its European Cloud for a Few Hours",
+        "url": "https://www.hamvero.space/blog/aws-european-sovereign-cloud-independence-test/",
+        "primary": false
+      },
+      {
+        "title": "Pasquale Pillitteri: Nanbeige4.3-33B arrives open source and takes on Qwen3.8-27B in coding",
+        "url": "https://pasqualepillitteri.it/en/news/27138/nanbeige-4-3-33b-open-source-en",
+        "primary": false
+      },
+      {
+        "title": "Startup Fortune: Nanbeige's New 33B Open Model Takes Aim at Qwen and Gemma on Coding",
+        "url": "https://startupfortune.com/nanbeiges-new-33b-open-model-takes-aim-at-qwen-and-gemma-on-coding/",
+        "primary": false
+      },
+      {
+        "title": "Retail Insight Network: Walmart introduces AI agent tools for automated shopping",
+        "url": "https://www.retail-insight-network.com/news/walmart-ai-agent-tools-automated-shopping/",
+        "primary": false
+      },
+      {
+        "title": "PYMNTS: Walmart and Amazon Expand AI Agents' Roles in Shopping and Work",
+        "url": "https://www.pymnts.com/news/retail/2026/walmart-and-amazon-expand-ai-agents-roles-in-shopping-and-work/",
+        "primary": false
+      },
+      {
+        "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+        "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-26T04:06:29+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-26",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-26/episode-2026-10-26.mp3",
+    "audio_bytes": 5202993,
+    "duration_seconds": 325.19836734693877,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.3,
+        "title": "Story of the day: AWS runs its sovereign cloud on its own"
+      },
+      {
+        "start": 121.7,
+        "title": "Models and vendors: Nanbeige"
+      },
+      {
+        "start": 174.3,
+        "title": "Platform: GPU pricing"
+      },
+      {
+        "start": 218.1,
+        "title": "Retail and agents: Walmart"
+      },
+      {
+        "start": 262.3,
+        "title": "Number of the day"
+      },
+      {
+        "start": 275.8,
+        "title": "What to watch"
+      },
+      {
+        "start": 305.7,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
