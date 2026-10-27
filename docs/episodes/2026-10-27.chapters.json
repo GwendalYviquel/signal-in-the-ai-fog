@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 19.4,
+   "title": "Story of the day: llm-d 1.0 brings distributed inference to Kubernetes"
+  },
+  {
+   "startTime": 115.7,
+   "title": "Models and vendors: OpenAI"
+  },
+  {
+   "startTime": 156.6,
+   "title": "Sovereignty and Europe: AWS European Sovereign Cloud"
+  },
+  {
+   "startTime": 197.8,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 227.2,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 243.3,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 277.0,
+   "title": "Question for your team"
+  }
+ ]
+}

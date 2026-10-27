@@ -538,5 +538,110 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-10-27",
+    "title": "llm-d 1.0, OpenAI on Google Cloud, AI Act dates",
+    "summary": "llm-d 1.0 brings open, Kubernetes-native distributed inference to production, with vendor-reported gains for agentic workloads. Also: OpenAI models heading to Google Cloud's Model Garden, AWS's sovereign cloud test reportedly done, and the AI Act dates that matter next.",
+    "headlines": [
+      "llm-d 1.0 brings distributed inference to Kubernetes",
+      "OpenAI models head to Google Cloud",
+      "AWS sovereign cloud test reportedly completed"
+    ],
+    "themes": [
+      "Platform",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Regulation"
+    ],
+    "topics": [
+      "llm-d",
+      "Inference engines",
+      "Google",
+      "OpenAI",
+      "AWS European Sovereign Cloud",
+      "EU AI Act"
+    ],
+    "sources": [
+      {
+        "title": "Google Cloud: Announcing llm-d 1.0: Open distributed inference for agents on Google Cloud TPUs and GPUs",
+        "url": "https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference",
+        "primary": true
+      },
+      {
+        "title": "IBM Newsroom: llm-d 1.0 Advances Open, Cost-Efficient AI Inference for Production Scale",
+        "url": "https://newsroom.ibm.com/2026-10-20-llm-d-1-0-advances-open,-cost-efficient-ai-inference-for-production-scale",
+        "primary": true
+      },
+      {
+        "title": "OpenAI: OpenAI models are coming to Google Cloud",
+        "url": "https://openai.com/index/openai-models-google-cloud/",
+        "primary": true
+      },
+      {
+        "title": "AWS: AWS European Sovereign Cloud: Demonstrating an independent operation",
+        "url": "https://aws.amazon.com/blogs/security/aws-european-sovereign-cloud-demonstrating-an-independent-operation/",
+        "primary": true
+      },
+      {
+        "title": "La Ecuación Digital: AWS pone a prueba hasta dónde llega su nube soberana europea",
+        "url": "https://laecuaciondigital.com/tecnologias/cloud-computing/aws-nube-soberana-europea-prueba",
+        "primary": false
+      },
+      {
+        "title": "NEOTEO: AWS's European sovereign cloud test: plan and reported status",
+        "url": "https://www.neoteo.com/en/awss-european-sovereign-cloud-test-plan-and-reported-status",
+        "primary": false
+      },
+      {
+        "title": "European Commission: AI Act",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "primary": true
+      },
+      {
+        "title": "PPC Land: EU AI Act",
+        "url": "https://ppc.land/eu-ai-act/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-27T04:07:10+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-27",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-27/episode-2026-10-27.mp3",
+    "audio_bytes": 4739058,
+    "duration_seconds": 296.20244897959185,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 19.4,
+        "title": "Story of the day: llm-d 1.0 brings distributed inference to Kubernetes"
+      },
+      {
+        "start": 115.7,
+        "title": "Models and vendors: OpenAI"
+      },
+      {
+        "start": 156.6,
+        "title": "Sovereignty and Europe: AWS European Sovereign Cloud"
+      },
+      {
+        "start": 197.8,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 227.2,
+        "title": "Number of the day"
+      },
+      {
+        "start": 243.3,
+        "title": "What to watch"
+      },
+      {
+        "start": 277.0,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

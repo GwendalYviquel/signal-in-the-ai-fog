@@ -16,6 +16,114 @@
  },
  "episodes": [
   {
+   "date": "2026-10-27",
+   "status": "published",
+   "title": "llm-d 1.0, OpenAI on Google Cloud, AI Act dates",
+   "summary": "llm-d 1.0 brings open, Kubernetes-native distributed inference to production, with vendor-reported gains for agentic workloads. Also: OpenAI models heading to Google Cloud's Model Garden, AWS's sovereign cloud test reportedly done, and the AI Act dates that matter next.",
+   "headlines": [
+    "llm-d 1.0 brings distributed inference to Kubernetes",
+    "OpenAI models head to Google Cloud",
+    "AWS sovereign cloud test reportedly completed"
+   ],
+   "themes": [
+    "Platform",
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Regulation"
+   ],
+   "topics": [
+    "llm-d",
+    "Inference engines",
+    "Google",
+    "OpenAI",
+    "AWS European Sovereign Cloud",
+    "EU AI Act"
+   ],
+   "page": "episodes/2026-10-27.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 19.4,
+     "title": "Story of the day: llm-d 1.0 brings distributed inference to Kubernetes"
+    },
+    {
+     "start": 115.7,
+     "title": "Models and vendors: OpenAI"
+    },
+    {
+     "start": 156.6,
+     "title": "Sovereignty and Europe: AWS European Sovereign Cloud"
+    },
+    {
+     "start": 197.8,
+     "title": "Regulation: EU AI Act"
+    },
+    {
+     "start": 227.2,
+     "title": "Number of the day"
+    },
+    {
+     "start": 243.3,
+     "title": "What to watch"
+    },
+    {
+     "start": 277.0,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 296,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-27/episode-2026-10-27.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Google Cloud: Announcing llm-d 1.0: Open distributed inference for agents on Google Cloud TPUs and GPUs",
+     "url": "https://cloud.google.com/blog/topics/ai-infrastructure/llm-d-1-0-an-open-source-stack-for-distributed-inference",
+     "primary": true
+    },
+    {
+     "title": "IBM Newsroom: llm-d 1.0 Advances Open, Cost-Efficient AI Inference for Production Scale",
+     "url": "https://newsroom.ibm.com/2026-10-20-llm-d-1-0-advances-open,-cost-efficient-ai-inference-for-production-scale",
+     "primary": true
+    },
+    {
+     "title": "OpenAI: OpenAI models are coming to Google Cloud",
+     "url": "https://openai.com/index/openai-models-google-cloud/",
+     "primary": true
+    },
+    {
+     "title": "AWS: AWS European Sovereign Cloud: Demonstrating an independent operation",
+     "url": "https://aws.amazon.com/blogs/security/aws-european-sovereign-cloud-demonstrating-an-independent-operation/",
+     "primary": true
+    },
+    {
+     "title": "La Ecuación Digital: AWS pone a prueba hasta dónde llega su nube soberana europea",
+     "url": "https://laecuaciondigital.com/tecnologias/cloud-computing/aws-nube-soberana-europea-prueba",
+     "primary": false
+    },
+    {
+     "title": "NEOTEO: AWS's European sovereign cloud test: plan and reported status",
+     "url": "https://www.neoteo.com/en/awss-european-sovereign-cloud-test-plan-and-reported-status",
+     "primary": false
+    },
+    {
+     "title": "European Commission: AI Act",
+     "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+     "primary": true
+    },
+    {
+     "title": "PPC Land: EU AI Act",
+     "url": "https://ppc.land/eu-ai-act/",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Tuesday, October 27. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: llm-d 1.0 brings distributed inference to Kubernetes, OpenAI models head to Google Cloud, and AWS sovereign cloud test reportedly completed.\n\nFirst, the story of the day.\n\nllm-d 1.0 was released on October twentieth at the PyTorch Conference. It is an open-source, Kubernetes-native stack for distributed LLM inference, co-founded by Google with Red Hat, IBM and others, with more than 500 contributors. Google says that on an agentic coding workload on its Ironwood TPUs, prefix-aware routing plus host memory offload cut median time to first token by more than 85 percent, and raised throughput 2.4 times, compared with a plain Kubernetes Service. IBM's release describes the core as validated for day-two production deployments. It cites demonstrations of up to five to ten times lower cost for context-heavy agentic workloads, and three times higher output throughput. These are vendor-reported results on specific workloads. The software is released. I found no independent benchmarks.\n\nThe read here: inference routing is becoming a platform concern, not a model-server detail. Prefix-aware routing sends a request to a replica that already holds the context, which matters when agents resend long prompts. The gain depends on traffic: shared prefixes benefit, short chat much less. For a team running Kubernetes, this is worth a pilot against your current serving setup, measured on your own traffic and accelerators, not Google's TPUs. Being open source, it also gives you control over where it runs, which helps if you self-host open-weight models, a question that could return this week.\n\nNext, Models and vendors.\n\nOn October twenty-first, OpenAI announced a partnership with Google Cloud to bring its frontier models and Codex agentic workflows into Google Cloud's Model Garden, available through Google Cloud Marketplace. The announcement text I could read gives no availability date, model list or pricing.\n\nReading between the lines: for teams on Vertex AI, OpenAI models could sit beside Gemini and others under one cloud contract and one set of controls. Until dates, regions and prices appear, treat it as a direction, not a routing option. Check data-residency terms first.\n\nNext, Sovereignty and Europe.\n\nLa Ecuación Digital reported on October twenty-fifth that AWS carried out its European Sovereign Cloud exercise on October twenty-fourth, running without the global backbone for several hours. AWS had said it would share an update with customers and regulators afterwards. I found no published findings or incident details.\n\nWhat this really signals: a completed test is not yet evidence. When AWS publishes, look for what failed, whether managed AI services were in scope, and how the results map to your compliance file. Operations were tested. Ownership and jurisdiction are separate questions.\n\nNext, Regulation.\n\nPPC Land reports that generative systems already on the market have until December second to meet the marking duty, the same day new bans start.\n\nWhy it matters: December second is the nearest hard date. If you run generative features that predate August, check whether their outputs are marked. High-risk dates moved by a year, but transparency duties are not waiting. Worth putting marking work into the next quarter's plan.\n\nThe number of the day.\n\nMore than 85 percent. That is the cut in median time to first token Google reports from llm-d's prefix-aware routing and memory offload, on one agentic coding workload. It is Google's own measurement, so test it as a ceiling.\n\nWhat to watch.\n\nMistral Large 4 open weights are due by the end of October. Outlets cite today, October twenty-seventh, while a Hugging Face placeholder says October thirty-first. The licence matters most. Watch for AWS's sovereign cloud findings, and Walmart's Agent Profiles, promised within a month of October twenty-first. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.\n\nAnd a question for your team.\n\nCould you pilot prefix-aware routing on your own inference traffic, and which metric, time to first token or cost per request, would decide whether it stays?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-10-26",
    "status": "published",
    "title": "AWS cuts the cable, Nanbeige opens a coder",
