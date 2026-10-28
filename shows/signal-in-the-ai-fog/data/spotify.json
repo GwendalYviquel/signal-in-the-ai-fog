@@ -18,5 +18,10 @@
   "title": "llm-d 1.0, OpenAI on Google Cloud, AI Act dates",
   "first_seen_live": "2026-10-27T07:44:21+00:00",
   "minutes_after_publication": 277
+ },
+ "2026-10-28": {
+  "title": "Mistral's weights miss the date",
+  "first_seen_live": "2026-10-28T08:22:12+00:00",
+  "minutes_after_publication": 316
  }
 }
