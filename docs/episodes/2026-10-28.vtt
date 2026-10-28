@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.632
+Good morning, it's Wednesday, October 28.
+
+00:00:02.696 --> 00:00:09.436
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.500 --> 00:00:18.230
+Today: Mistral Large 4 weights miss their date, EuroHPC gigafactory bids due November twelfth, and AI Act marking deadline draws closer.
+
+00:00:18.294 --> 00:00:20.091
+First, the story of the day.
+
+00:00:20.155 --> 00:00:27.666
+Mistral Large 4 has been in public API preview since October sixth, with open weights promised by the end of October.
+
+00:00:27.730 --> 00:00:33.443
+Secondary write-ups describe a mixture-of-experts model of about one trillion parameters.
+
+00:00:33.507 --> 00:00:38.449
+Reuters had been cited as pointing to October twenty-seventh for the weights.
+
+00:00:38.514 --> 00:00:46.666
+According to Forkast, which checked the primary pages on the afternoon of Tuesday, October twenty-seventh, nothing had changed.
+
+00:00:46.730 --> 00:00:51.287
+The Hugging Face placeholder still counts down to October thirty-first.
+
+00:00:51.352 --> 00:00:54.561
+Mistral's own page says only the end of the month.
+
+00:00:54.625 --> 00:00:58.862
+And the licence file on the model page returned a not-found error.
+
+00:00:58.926 --> 00:01:06.243
+A study note based on secondary write-ups says the previous generation, Mistral Large 3, shipped under Apache 2.0.
+
+00:01:06.308 --> 00:01:10.737
+It adds that one outlet expects a custom Mistral licence for Large 4.
+
+00:01:10.801 --> 00:01:12.021
+That is unverified.
+
+00:01:12.085 --> 00:01:15.230
+I found no statement from Mistral on the licence.
+
+00:01:15.830 --> 00:01:20.642
+The read here: the date is a distraction, the licence is the decision.
+
+00:01:20.710 --> 00:01:28.546
+An Apache-style licence makes Large 4 a real sovereign option you can host, fine-tune and put behind your gateway.
+
+00:01:28.615 --> 00:01:37.001
+A custom licence with usage limits makes it a different asset, and legal has to read it before engineering plans anything.
+
+00:01:37.070 --> 00:01:42.156
+Until the file exists, keep the hosted API as your only planning baseline.
+
+00:01:42.225 --> 00:01:43.531
+Note also the size.
+
+00:01:43.600 --> 00:01:50.680
+In a model like this, a router picks only a few experts per token, but every expert must sit in memory.
+
+00:01:50.749 --> 00:01:59.341
+So even with permissive terms, the GPU bill is a separate budget line, and it arrives while rental prices are under pressure.
+
+00:01:59.410 --> 00:02:05.184
+Prepare your evaluation set now, so a comparison can start the day the weights land.
+
+00:02:05.252 --> 00:02:10.820
+And decide in advance what result would justify self-hosting rather than the API.
+
+00:02:11.420 --> 00:02:13.045
+Next, Models and vendors.
+
+00:02:13.110 --> 00:02:21.753
+Interesting Engineering reports that OpenAI has released GPT-6.1 Terra, a model said to match GPT-6 Astra at a much lower token cost.
+
+00:02:21.818 --> 00:02:25.977
+Another outlet headlines the same release as half the API price.
+
+00:02:26.042 --> 00:02:31.046
+The two headlines disagree on the size of the cut, so I leave the figure out.
+
+00:02:31.111 --> 00:02:35.790
+I could not confirm availability or prices on OpenAI's own pricing page.
+
+00:02:36.400 --> 00:02:42.800
+Why it matters: if the claim holds, Terra is a candidate for the cheaper tier of your routing table.
+
+00:02:42.864 --> 00:02:45.040
+Do not move traffic on a headline.
+
+00:02:45.104 --> 00:02:51.888
+Check the official price list, then run your own evaluation set against Astra before changing any default.
+
+00:02:51.952 --> 00:02:58.160
+This is exactly the case where a gateway with per-route quality and cost tracking earns its keep.
+
+00:02:58.760 --> 00:03:00.679
+Next, Sovereignty and Europe.
+
+00:03:00.745 --> 00:03:05.178
+EuroHPC launched its AI Gigafactories call on July thirtieth, 2026.
+
+00:03:05.244 --> 00:03:15.434
+Outlets describe a tender worth more than thirty billion euros, for several European sites of up to 150 megawatts each, with bids due on November twelfth.
+
+00:03:15.500 --> 00:03:20.330
+No winners are known, and the selection process comes after the deadline.
+
+00:03:20.930 --> 00:03:28.592
+Reading between the lines: gigafactories are about future European training and inference capacity, not next quarter's.
+
+00:03:28.656 --> 00:03:34.129
+Still, the consortia that bid will shape who offers sovereign GPU capacity in Europe.
+
+00:03:34.193 --> 00:03:43.400
+For a platform team, the practical question is which of them will sell inference, and under what terms, when your own capacity plan is renewed.
+
+00:03:44.000 --> 00:03:45.143
+Next, Regulation.
+
+00:03:45.210 --> 00:04:00.606
+Compliance guides published in recent weeks, including a Cloud Security Alliance research note and a SaaS-focused guide, flag December second, 2026 as the end of the grace period for marking AI-generated content under the AI Act.
+
+00:04:00.673 --> 00:04:11.430
+Separately, the Digital Omnibus on AI, published in the Official Journal on July twenty-fourth, 2026, delays high-risk obligations to 2027, according to aiacto.
+
+00:04:12.030 --> 00:04:16.594
+The bigger picture: the high-risk delay does not cover transparency.
+
+00:04:16.661 --> 00:04:23.037
+If you ship generative features that predate August, December second is your nearest hard date.
+
+00:04:23.104 --> 00:04:29.480
+Inventory those features, decide who owns marking, and plan the work before the quarter closes.
+
+00:04:30.080 --> 00:04:31.443
+The number of the day.
+
+00:04:31.504 --> 00:04:32.124
+Four days.
+
+00:04:32.186 --> 00:04:41.166
+That is the gap between the October twenty-seventh date cited by Reuters and the October thirty-first date on Mistral's Hugging Face placeholder.
+
+00:04:41.228 --> 00:04:45.192
+Only one of them can be right, and neither comes with a licence.
+
+00:04:45.254 --> 00:04:46.121
+What to watch.
+
+00:04:46.183 --> 00:04:54.172
+Mistral Large 4 open weights: the Hugging Face placeholder says October thirty-first, and the licence file is what to read first.
+
+00:04:54.234 --> 00:04:58.631
+AWS has still not published findings from its sovereign cloud exercise.
+
+00:04:58.693 --> 00:05:03.152
+Walmart's Agent Profiles are due within a month of October twenty-first.
+
+00:05:03.214 --> 00:05:15.291
+Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.
+
+00:05:15.353 --> 00:05:17.149
+And a question for your team.
+
+00:05:17.211 --> 00:05:26.377
+If Mistral Large 4 ships next week under a restrictive licence, which of your planned workloads would still need it, and who signs off on the terms?
+
+00:05:26.439 --> 00:05:27.678
+That's it for today.
+
+00:05:27.740 --> 00:05:30.155
+Sources are in the episode description.
+
+00:05:30.217 --> 00:05:32.075
+This was Signal in the AI Fog.
+
+00:05:32.137 --> 00:05:33.190
+See you tomorrow.

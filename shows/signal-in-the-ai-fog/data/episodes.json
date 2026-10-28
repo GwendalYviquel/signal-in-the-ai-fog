@@ -643,5 +643,118 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-10-28",
+    "title": "Mistral's weights miss the date",
+    "summary": "Mistral Large 4 open weights did not arrive on the date outlets cited, and the licence file is still missing. Also today: OpenAI's reported GPT-6.1 Terra price cut, the EuroHPC gigafactory deadline, and the December second AI Act marking date.",
+    "headlines": [
+      "Mistral Large 4 weights miss their date",
+      "EuroHPC gigafactory bids due November twelfth",
+      "AI Act marking deadline draws closer"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Regulation"
+    ],
+    "topics": [
+      "Mistral",
+      "Open-weight models",
+      "OpenAI",
+      "EuroHPC",
+      "EU AI Act"
+    ],
+    "sources": [
+      {
+        "title": "Forkast: The Reported Date Arrived and the Weights Did Not",
+        "url": "https://forkast.news/the-reported-date-arrived-and-the-weights-did-not/",
+        "primary": false
+      },
+      {
+        "title": "GitHub ai-daily-study-notes: Mistral Large 4, a 1T-parameter open-weights model whose weights are due this week",
+        "url": "https://github.com/Simran308/ai-daily-study-notes/issues/20",
+        "primary": false
+      },
+      {
+        "title": "TechCrunch: Mistral's new 1T model aims to leapfrog closed and open rivals",
+        "url": "https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/",
+        "primary": false
+      },
+      {
+        "title": "Interesting Engineering: OpenAI's GPT-6.1 Terra matches GPT-6 Astra at 10% of the token cost",
+        "url": "https://interestingengineering.com/ai-robotics/openai-gpt-6-1-terra-50-percent-cheaper",
+        "primary": false
+      },
+      {
+        "title": "DataNorth: OpenAI's new model at half the API price",
+        "url": "https://datanorth.ai/news/openai-gpt-6-1-terra",
+        "primary": false
+      },
+      {
+        "title": "EuroHPC JU: The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+        "primary": true
+      },
+      {
+        "title": "DC Market Insights: The EU's 30 billion euro AI gigafactory tender wants 7 sites of up to 150 MW. Bids are due 12 November",
+        "url": "https://www.dcmarketinsights.com/news/the-eus-e30-billion-ai-gigafactory-tender-wants-7-sites-of-up-to-150-mw-bids-are-due-12-november",
+        "primary": false
+      },
+      {
+        "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+        "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+        "primary": false
+      },
+      {
+        "title": "Codeflamme: EU AI Act Dec 2, 2026 AI Content Marking Deadline for SaaS Generative Features",
+        "url": "https://www.codeflamme.com/insights/eu-ai-act-december-2-ai-content-marking-deadline-for-saas-generative-features",
+        "primary": false
+      },
+      {
+        "title": "Aiacto: Digital Omnibus Adopted: AI Act High-Risk Delayed to 2027",
+        "url": "https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-28T04:06:16+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-28",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-28/episode-2026-10-28.mp3",
+    "audio_bytes": 5330889,
+    "duration_seconds": 333.1918367346939,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.3,
+        "title": "Story of the day: Mistral Large 4 weights miss their date"
+      },
+      {
+        "start": 131.4,
+        "title": "Models and vendors: OpenAI"
+      },
+      {
+        "start": 178.8,
+        "title": "Sovereignty and Europe: EuroHPC"
+      },
+      {
+        "start": 224.0,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 270.1,
+        "title": "Number of the day"
+      },
+      {
+        "start": 285.3,
+        "title": "What to watch"
+      },
+      {
+        "start": 315.3,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

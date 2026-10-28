@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.3,
+   "title": "Story of the day: Mistral Large 4 weights miss their date"
+  },
+  {
+   "startTime": 131.4,
+   "title": "Models and vendors: OpenAI"
+  },
+  {
+   "startTime": 178.8,
+   "title": "Sovereignty and Europe: EuroHPC"
+  },
+  {
+   "startTime": 224.0,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 270.1,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 285.3,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 315.3,
+   "title": "Question for your team"
+  }
+ ]
+}
