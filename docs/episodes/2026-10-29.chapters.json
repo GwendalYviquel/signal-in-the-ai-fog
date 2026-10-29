@@ -1,0 +1,45 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 20.5,
+   "title": "Story of the day: OpenAI's GPT-6.1 Terra halves mid-tier prices"
+  },
+  {
+   "startTime": 123.8,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 182.3,
+   "title": "Platform: AI cost control"
+  },
+  {
+   "startTime": 212.6,
+   "title": "Quality: Artificial Analysis"
+  },
+  {
+   "startTime": 262.5,
+   "title": "Retail and agents: Walmart"
+  },
+  {
+   "startTime": 316.4,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 330.1,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 347.0,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 377.8,
+   "title": "Question for your team"
+  }
+ ]
+}

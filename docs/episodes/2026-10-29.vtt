@@ -1,0 +1,214 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.715
+Good morning, it's Thursday, October 29.
+
+00:00:02.782 --> 00:00:09.908
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.976 --> 00:00:20.427
+Today: OpenAI's GPT-6.1 Terra halves mid-tier prices, Mistral Large 4 weights still lack a licence, and Artificial Analysis index shifts to private tests.
+
+00:00:20.495 --> 00:00:22.395
+First, the story of the day.
+
+00:00:22.463 --> 00:00:26.670
+OpenAI released GPT-6.1 Terra on Monday, October twenty-sixth.
+
+00:00:26.738 --> 00:00:29.656
+It is the middle model of the GPT-6 family.
+
+00:00:29.724 --> 00:00:39.497
+It is rolling out to Plus, Pro, Enterprise and Edu users in ChatGPT Work and Codex, and developers can call it through the API as gpt-6.1-terra.
+
+00:00:39.565 --> 00:00:44.654
+OpenAI says standard API prices are fifty percent lower than GPT-5.6 Terra.
+
+00:00:44.722 --> 00:00:55.580
+It also says the model matches GPT-6 Astra on its Agents' Last Exam benchmark at one-tenth the price per token, and finishes tasks more than three times faster.
+
+00:00:55.648 --> 00:01:06.846
+Help Net Security lists the API price at one dollar per million input tokens, five cents per million cached input tokens, and five dollars per million output tokens.
+
+00:01:06.914 --> 00:01:12.546
+OpenAI says Terra meets the Critical cyber threshold in its Preparedness Framework.
+
+00:01:12.614 --> 00:01:17.840
+Its example of high-volume work is reading invoices into accounting software.
+
+00:01:17.908 --> 00:01:20.690
+The performance figures are OpenAI's own.
+
+00:01:21.290 --> 00:01:26.727
+The read here: last week's two headlines were both right, about different baselines.
+
+00:01:26.792 --> 00:01:29.640
+Fifty percent is against the previous Terra.
+
+00:01:29.705 --> 00:01:31.453
+One-tenth is against Astra.
+
+00:01:31.517 --> 00:01:39.544
+For routing, that makes Terra a serious candidate default for high-volume agent tasks, with a published rate card behind it.
+
+00:01:39.608 --> 00:01:49.577
+But the benchmark is OpenAI's, and the Critical cyber rating means your security team should read the safety documentation before you enable computer use.
+
+00:01:49.642 --> 00:01:58.833
+For a platform team: add the model to your gateway, shadow-test it on your own tasks, and compare cost per completed task, not cost per token.
+
+00:01:58.898 --> 00:02:03.170
+A cut like this will likely pressure other vendors' mid tiers too.
+
+00:02:03.770 --> 00:02:05.593
+Next, Sovereignty and Europe.
+
+00:02:05.656 --> 00:02:17.979
+ActuIA reports that on the evening of October twenty-eighth, Mistral Large 4's Hugging Face repository still showed an estimated weights date of October thirty-first, with no files and no licence.
+
+00:02:18.042 --> 00:02:27.221
+Mistral had said on October sixth that the weights, for a one trillion parameter model with 49 billion active, would come by the end of the month.
+
+00:02:27.284 --> 00:02:37.280
+Artificial Analysis lists its standard preview API price at one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens.
+
+00:02:37.880 --> 00:02:42.317
+What this really signals: two days left, and still no licence.
+
+00:02:42.388 --> 00:02:45.537
+Treat Saturday as a possibility, not a plan.
+
+00:02:45.609 --> 00:02:50.976
+Legal and engineering should read the licence together, the day it appears.
+
+00:02:51.047 --> 00:03:01.710
+Until then, the API price is your baseline for any self-hosting comparison, and a model this size needs serious GPU memory, so run those numbers now.
+
+00:03:02.310 --> 00:03:03.265
+Next, Platform.
+
+00:03:03.329 --> 00:03:11.350
+Fox News' live blog reports that Amazon is telling its software engineers to stop tokenmaxxing and to use AI more judiciously.
+
+00:03:11.950 --> 00:03:16.846
+The bigger picture: token consumption has become a management topic.
+
+00:03:16.918 --> 00:03:21.383
+Pushing usage up drives adoption, then someone reads the bill.
+
+00:03:21.455 --> 00:03:24.767
+Treat this as a signal, given the thin detail.
+
+00:03:24.839 --> 00:03:32.040
+For a platform team, per-team quotas and cost per outcome at the gateway turn that debate into data.
+
+00:03:32.640 --> 00:03:33.532
+Next, Quality.
+
+00:03:33.596 --> 00:03:38.694
+ActuIA reports that Artificial Analysis has published version five of its index.
+
+00:03:38.758 --> 00:03:49.018
+Sixty percent of it now rests on tests whose questions or answers stay secret, after an earlier increase aimed at stopping models being tuned to the leaderboard.
+
+00:03:49.082 --> 00:03:52.778
+Open-weight models lose between twelve and sixteen points.
+
+00:03:52.842 --> 00:03:58.768
+Mistral Large 4 falls from thirty-eight to twenty-five, below Claude Haiku 5.5 at thirty-six.
+
+00:03:58.832 --> 00:04:01.190
+Claude Opus 5.5 stays at fifty-eight.
+
+00:04:01.790 --> 00:04:08.822
+Reading between the lines: moving to private tests is sensible, but it shows how unstable rankings are.
+
+00:04:08.890 --> 00:04:12.099
+The models did not change, and the scores fell.
+
+00:04:12.167 --> 00:04:15.581
+Never base a routing decision on one public index.
+
+00:04:15.649 --> 00:04:21.930
+Your own private business evaluation set is the only benchmark that does not move under you.
+
+00:04:22.530 --> 00:04:24.091
+Next, Retail and agents.
+
+00:04:24.156 --> 00:04:35.343
+Walmart announced on October twenty-first that Agent Profiles will launch within a month, with a beta Agent Gateway and terms for agents shopping at Walmart and Sam's Club.
+
+00:04:35.408 --> 00:04:39.441
+Today, agent purchases sit mixed with a customer's own orders.
+
+00:04:39.506 --> 00:04:48.677
+Profiles will let customers approve purchases, set spending limits and see which were made by an agent, says Walmart executive Daniel Danker.
+
+00:04:48.742 --> 00:04:53.880
+Digital Commerce 360 says Walmart has not named the supported agents at launch.
+
+00:04:54.480 --> 00:04:58.216
+Why it matters: the useful lesson is the separation.
+
+00:04:58.288 --> 00:05:04.036
+Agent identity, spending limits and purchase records become first-class objects.
+
+00:05:04.108 --> 00:05:12.659
+For a retailer, that frames your own design question: how do you identify an agent, cap it, and report on its activity?
+
+00:05:12.730 --> 00:05:15.820
+Watch which agents are supported at launch.
+
+00:05:16.420 --> 00:05:17.168
+A follow-up.
+
+00:05:17.231 --> 00:05:23.465
+Mistral Large 4 weights were promised by the end of October, and the placeholder points to Saturday.
+
+00:05:23.527 --> 00:05:29.949
+The licence file is still missing from the repository, so the open-weight release has not happened yet.
+
+00:05:30.012 --> 00:05:31.383
+The number of the day.
+
+00:05:31.445 --> 00:05:32.443
+Thirteen points.
+
+00:05:32.505 --> 00:05:41.359
+That is how far Mistral Large 4 falls on the new Artificial Analysis index, from thirty-eight to twenty-five, with the model itself unchanged.
+
+00:05:41.421 --> 00:05:46.845
+Sixty percent of the index now rests on secret tests, so keep a private evaluation set.
+
+00:05:46.907 --> 00:05:47.780
+What to watch.
+
+00:05:47.843 --> 00:05:56.509
+Mistral Large 4 open weights: the Hugging Face placeholder says Saturday, October thirty-first, and the licence file is what to read first.
+
+00:05:56.571 --> 00:06:00.998
+AWS has still not published findings from its sovereign cloud exercise.
+
+00:06:01.060 --> 00:06:05.549
+Walmart's Agent Profiles are due within a month of October twenty-first.
+
+00:06:05.611 --> 00:06:17.769
+Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.
+
+00:06:17.831 --> 00:06:19.639
+And a question for your team.
+
+00:06:19.702 --> 00:06:28.742
+Which of your mid-tier routes could move to GPT-6.1 Terra, and do you have a private evaluation set that would prove it before any traffic moves?
+
+00:06:28.804 --> 00:06:30.051
+That's it for today.
+
+00:06:30.114 --> 00:06:32.545
+Sources are in the episode description.
+
+00:06:32.607 --> 00:06:34.478
+This was Signal in the AI Fog.
+
+00:06:34.540 --> 00:06:35.600
+See you tomorrow.

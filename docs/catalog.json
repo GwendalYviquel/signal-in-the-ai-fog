@@ -16,6 +16,134 @@
  },
  "episodes": [
   {
+   "date": "2026-10-29",
+   "status": "published",
+   "title": "Terra cuts prices, Mistral still has no licence",
+   "summary": "OpenAI's GPT-6.1 Terra arrives with a 50 percent lower API price and a published rate card. Mistral Large 4 still has no weights or licence, and Artificial Analysis moves its index mostly to private tests. Also: Amazon's push to curb heavy AI use, and Walmart's pending Agent Profiles.",
+   "headlines": [
+    "OpenAI's GPT-6.1 Terra halves mid-tier prices",
+    "Mistral Large 4 weights still lack a licence",
+    "Artificial Analysis index shifts to private tests"
+   ],
+   "themes": [
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Platform",
+    "Quality",
+    "Retail and agents"
+   ],
+   "topics": [
+    "OpenAI",
+    "Mistral",
+    "Open-weight models",
+    "AI cost control",
+    "Artificial Analysis",
+    "Walmart",
+    "Agentic commerce"
+   ],
+   "page": "episodes/2026-10-29.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 20.5,
+     "title": "Story of the day: OpenAI's GPT-6.1 Terra halves mid-tier prices"
+    },
+    {
+     "start": 123.8,
+     "title": "Sovereignty and Europe: Mistral"
+    },
+    {
+     "start": 182.3,
+     "title": "Platform: AI cost control"
+    },
+    {
+     "start": 212.6,
+     "title": "Quality: Artificial Analysis"
+    },
+    {
+     "start": 262.5,
+     "title": "Retail and agents: Walmart"
+    },
+    {
+     "start": 316.4,
+     "title": "Follow-up"
+    },
+    {
+     "start": 330.1,
+     "title": "Number of the day"
+    },
+    {
+     "start": 347.0,
+     "title": "What to watch"
+    },
+    {
+     "start": 377.8,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 396,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-29/episode-2026-10-29.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "OpenAI Community: GPT-6.1 Terra, delivering fast and capable computer use at a lower price",
+     "url": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+     "primary": true
+    },
+    {
+     "title": "OpenAI on X: GPT-6.1 Terra announcement",
+     "url": "https://x.com/OpenAI/status/2114780711664398349",
+     "primary": true
+    },
+    {
+     "title": "Help Net Security: GPT-6.1 Terra meets OpenAI's Critical cyber threshold, and it's cheaper than GPT-5.6 Terra",
+     "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+     "primary": false
+    },
+    {
+     "title": "Decrypt: OpenAI Launches GPT-6.1 Terra, Its Half-Good AI Model at Half the Price",
+     "url": "https://decrypt.co/381883/openai-launches-gpt-6-1-terra-half-good-half-price",
+     "primary": false
+    },
+    {
+     "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+     "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+     "primary": false
+    },
+    {
+     "title": "Artificial Analysis: Mistral has released Mistral Large 4, making France home to the most intelligent model outside the US and China",
+     "url": "https://artificialanalysis.ai/articles/mistral-large-4-france-ai",
+     "primary": false
+    },
+    {
+     "title": "Fox News: Amazon relaxes push for AI use as Anthropic reveals shocking stats",
+     "url": "https://www.foxnews.com/live-news/ai-news-anthropic-openai-october-28",
+     "primary": false
+    },
+    {
+     "title": "Digital Commerce 360: Walmart unveils AI agent shopping controls, spending limits",
+     "url": "https://www.digitalcommerce360.com/2026/10/23/walmart-unveils-ai-agent-shopping-controls-spending-limits/",
+     "primary": false
+    },
+    {
+     "title": "EcomCrew: Walmart Just Opened Its Store to AI Shopping Bots",
+     "url": "https://www.ecomcrew.com/walmart-just-opened-its-store-to-ai-shopping-bots/",
+     "primary": false
+    },
+    {
+     "title": "MediaPost: Walmart Defines Agent Shopping In Move Toward AI-Driven Retail",
+     "url": "https://www.mediapost.com/publications/article/418914/walmart-defines-agent-shopping-in-move-toward-ai-d.html",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Thursday, October 29. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: OpenAI's GPT-6.1 Terra halves mid-tier prices, Mistral Large 4 weights still lack a licence, and Artificial Analysis index shifts to private tests.\n\nFirst, the story of the day.\n\nOpenAI released GPT-6.1 Terra on Monday, October twenty-sixth. It is the middle model of the GPT-6 family. It is rolling out to Plus, Pro, Enterprise and Edu users in ChatGPT Work and Codex, and developers can call it through the API as gpt-6.1-terra. OpenAI says standard API prices are fifty percent lower than GPT-5.6 Terra. It also says the model matches GPT-6 Astra on its Agents' Last Exam benchmark at one-tenth the price per token, and finishes tasks more than three times faster. Help Net Security lists the API price at one dollar per million input tokens, five cents per million cached input tokens, and five dollars per million output tokens. OpenAI says Terra meets the Critical cyber threshold in its Preparedness Framework. Its example of high-volume work is reading invoices into accounting software. The performance figures are OpenAI's own.\n\nThe read here: last week's two headlines were both right, about different baselines. Fifty percent is against the previous Terra. One-tenth is against Astra. For routing, that makes Terra a serious candidate default for high-volume agent tasks, with a published rate card behind it. But the benchmark is OpenAI's, and the Critical cyber rating means your security team should read the safety documentation before you enable computer use. For a platform team: add the model to your gateway, shadow-test it on your own tasks, and compare cost per completed task, not cost per token. A cut like this will likely pressure other vendors' mid tiers too.\n\nNext, Sovereignty and Europe.\n\nActuIA reports that on the evening of October twenty-eighth, Mistral Large 4's Hugging Face repository still showed an estimated weights date of October thirty-first, with no files and no licence. Mistral had said on October sixth that the weights, for a one trillion parameter model with 49 billion active, would come by the end of the month. Artificial Analysis lists its standard preview API price at one dollar thirty-six per million input tokens and four dollars eighteen per million output tokens.\n\nWhat this really signals: two days left, and still no licence. Treat Saturday as a possibility, not a plan. Legal and engineering should read the licence together, the day it appears. Until then, the API price is your baseline for any self-hosting comparison, and a model this size needs serious GPU memory, so run those numbers now.\n\nNext, Platform.\n\nFox News' live blog reports that Amazon is telling its software engineers to stop tokenmaxxing and to use AI more judiciously.\n\nThe bigger picture: token consumption has become a management topic. Pushing usage up drives adoption, then someone reads the bill. Treat this as a signal, given the thin detail. For a platform team, per-team quotas and cost per outcome at the gateway turn that debate into data.\n\nNext, Quality.\n\nActuIA reports that Artificial Analysis has published version five of its index. Sixty percent of it now rests on tests whose questions or answers stay secret, after an earlier increase aimed at stopping models being tuned to the leaderboard. Open-weight models lose between twelve and sixteen points. Mistral Large 4 falls from thirty-eight to twenty-five, below Claude Haiku 5.5 at thirty-six. Claude Opus 5.5 stays at fifty-eight.\n\nReading between the lines: moving to private tests is sensible, but it shows how unstable rankings are. The models did not change, and the scores fell. Never base a routing decision on one public index. Your own private business evaluation set is the only benchmark that does not move under you.\n\nNext, Retail and agents.\n\nWalmart announced on October twenty-first that Agent Profiles will launch within a month, with a beta Agent Gateway and terms for agents shopping at Walmart and Sam's Club. Today, agent purchases sit mixed with a customer's own orders. Profiles will let customers approve purchases, set spending limits and see which were made by an agent, says Walmart executive Daniel Danker. Digital Commerce 360 says Walmart has not named the supported agents at launch.\n\nWhy it matters: the useful lesson is the separation. Agent identity, spending limits and purchase records become first-class objects. For a retailer, that frames your own design question: how do you identify an agent, cap it, and report on its activity? Watch which agents are supported at launch.\n\nA follow-up.\n\nMistral Large 4 weights were promised by the end of October, and the placeholder points to Saturday. The licence file is still missing from the repository, so the open-weight release has not happened yet.\n\nThe number of the day.\n\nThirteen points. That is how far Mistral Large 4 falls on the new Artificial Analysis index, from thirty-eight to twenty-five, with the model itself unchanged. Sixty percent of the index now rests on secret tests, so keep a private evaluation set.\n\nWhat to watch.\n\nMistral Large 4 open weights: the Hugging Face placeholder says Saturday, October thirty-first, and the licence file is what to read first. AWS has still not published findings from its sovereign cloud exercise. Walmart's Agent Profiles are due within a month of October twenty-first. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, Argon's price doubling on December first, and AI Act marking on December second.\n\nAnd a question for your team.\n\nWhich of your mid-tier routes could move to GPT-6.1 Terra, and do you have a private evaluation set that would prove it before any traffic moves?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-10-28",
    "status": "published",
    "title": "Mistral's weights miss the date",

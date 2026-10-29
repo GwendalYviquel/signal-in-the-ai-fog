@@ -756,5 +756,130 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-10-29",
+    "title": "Terra cuts prices, Mistral still has no licence",
+    "summary": "OpenAI's GPT-6.1 Terra arrives with a 50 percent lower API price and a published rate card. Mistral Large 4 still has no weights or licence, and Artificial Analysis moves its index mostly to private tests. Also: Amazon's push to curb heavy AI use, and Walmart's pending Agent Profiles.",
+    "headlines": [
+      "OpenAI's GPT-6.1 Terra halves mid-tier prices",
+      "Mistral Large 4 weights still lack a licence",
+      "Artificial Analysis index shifts to private tests"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform",
+      "Quality",
+      "Retail and agents"
+    ],
+    "topics": [
+      "OpenAI",
+      "Mistral",
+      "Open-weight models",
+      "AI cost control",
+      "Artificial Analysis",
+      "Walmart",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "OpenAI Community: GPT-6.1 Terra, delivering fast and capable computer use at a lower price",
+        "url": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+        "primary": true
+      },
+      {
+        "title": "OpenAI on X: GPT-6.1 Terra announcement",
+        "url": "https://x.com/OpenAI/status/2114780711664398349",
+        "primary": true
+      },
+      {
+        "title": "Help Net Security: GPT-6.1 Terra meets OpenAI's Critical cyber threshold, and it's cheaper than GPT-5.6 Terra",
+        "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+        "primary": false
+      },
+      {
+        "title": "Decrypt: OpenAI Launches GPT-6.1 Terra, Its Half-Good AI Model at Half the Price",
+        "url": "https://decrypt.co/381883/openai-launches-gpt-6-1-terra-half-good-half-price",
+        "primary": false
+      },
+      {
+        "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+        "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+        "primary": false
+      },
+      {
+        "title": "Artificial Analysis: Mistral has released Mistral Large 4, making France home to the most intelligent model outside the US and China",
+        "url": "https://artificialanalysis.ai/articles/mistral-large-4-france-ai",
+        "primary": false
+      },
+      {
+        "title": "Fox News: Amazon relaxes push for AI use as Anthropic reveals shocking stats",
+        "url": "https://www.foxnews.com/live-news/ai-news-anthropic-openai-october-28",
+        "primary": false
+      },
+      {
+        "title": "Digital Commerce 360: Walmart unveils AI agent shopping controls, spending limits",
+        "url": "https://www.digitalcommerce360.com/2026/10/23/walmart-unveils-ai-agent-shopping-controls-spending-limits/",
+        "primary": false
+      },
+      {
+        "title": "EcomCrew: Walmart Just Opened Its Store to AI Shopping Bots",
+        "url": "https://www.ecomcrew.com/walmart-just-opened-its-store-to-ai-shopping-bots/",
+        "primary": false
+      },
+      {
+        "title": "MediaPost: Walmart Defines Agent Shopping In Move Toward AI-Driven Retail",
+        "url": "https://www.mediapost.com/publications/article/418914/walmart-defines-agent-shopping-in-move-toward-ai-d.html",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-10-29T04:06:18+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-29",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-29/episode-2026-10-29.mp3",
+    "audio_bytes": 6329347,
+    "duration_seconds": 395.5983673469388,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 20.5,
+        "title": "Story of the day: OpenAI's GPT-6.1 Terra halves mid-tier prices"
+      },
+      {
+        "start": 123.8,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 182.3,
+        "title": "Platform: AI cost control"
+      },
+      {
+        "start": 212.6,
+        "title": "Quality: Artificial Analysis"
+      },
+      {
+        "start": 262.5,
+        "title": "Retail and agents: Walmart"
+      },
+      {
+        "start": 316.4,
+        "title": "Follow-up"
+      },
+      {
+        "start": 330.1,
+        "title": "Number of the day"
+      },
+      {
+        "start": 347.0,
+        "title": "What to watch"
+      },
+      {
+        "start": 377.8,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
