@@ -881,5 +881,114 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-10-30",
+    "title": "Prices fall, weights land, scoreboards shift",
+    "summary": "The week in frontier models: OpenAI's GPT-6.1 Terra and Mistral Large 4 both pushed prices down, while Artificial Analysis reshuffled its index. Mistral's open weights arrived two days early, with a licence catch. Also: the Foundry route for European deployment, self-hosting options, and what independent tests say about the vendor's claims.",
+    "headlines": [
+      "Frontier prices fall while model scoreboards shift",
+      "Mistral Large 4 weights ship with a licence catch",
+      "Independent tests temper Mistral's Large 4 claims"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform",
+      "Quality"
+    ],
+    "topics": [
+      "OpenAI",
+      "Mistral",
+      "Artificial Analysis",
+      "Open-weight models",
+      "Inference engines"
+    ],
+    "sources": [
+      {
+        "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+        "url": "https://mistral.ai/news/mistral-large-4-oss/",
+        "primary": true
+      },
+      {
+        "title": "OpenAI Community: GPT-6.1 Terra, delivering fast and capable computer use at a lower price",
+        "url": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+        "primary": true
+      },
+      {
+        "title": "Help Net Security: GPT-6.1 Terra meets OpenAI's Critical cyber threshold, and it's cheaper than GPT-5.6 Terra",
+        "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+        "primary": false
+      },
+      {
+        "title": "Techstrong: Mistral AI Releases Flagship Large 4 Open Weights to Bolster Enterprise Cybersecurity, Model Sovereignty",
+        "url": "https://techstrong.ai/articles/mistral-ai-releases-flagship-large-4-open-weights-to-bolster-enterprise-cybersecurity-model-sovereignty/",
+        "primary": false
+      },
+      {
+        "title": "The Decoder: Paris-based Mistral releases Le Chonk, a strong coding model that still trails China overall",
+        "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+        "primary": false
+      },
+      {
+        "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+        "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+        "primary": false
+      },
+      {
+        "title": "Hugging Face: LICENSE, mistralai/Mistral-Large-4-1T-A52B",
+        "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/blob/main/LICENSE",
+        "primary": true
+      },
+      {
+        "title": "Microsoft Tech Community: Mistral Large 4 in Microsoft Foundry: Build sovereign AI within a consistent platform experience",
+        "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/mistral-large-4-in-microsoft-foundry-build-sovereign-ai-within-a-consistent-plat/4568546",
+        "primary": true
+      },
+      {
+        "title": "Hugging Face: Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+        "url": "https://huggingface.co/blog/mistral-large4",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-10-30T09:14:57+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-10-30",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-10-30/episode-2026-10-30.mp3",
+    "audio_bytes": 5428274,
+    "duration_seconds": 339.2783673469388,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 19.7,
+        "title": "Story of the day: Frontier prices fall while model scoreboards shift"
+      },
+      {
+        "start": 115.8,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 175.9,
+        "title": "Platform: Mistral"
+      },
+      {
+        "start": 230.2,
+        "title": "Quality: Mistral"
+      },
+      {
+        "start": 277.5,
+        "title": "Number of the day"
+      },
+      {
+        "start": 292.7,
+        "title": "What to watch"
+      },
+      {
+        "start": 319.8,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

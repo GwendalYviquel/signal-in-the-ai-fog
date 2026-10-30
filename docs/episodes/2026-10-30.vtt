@@ -1,0 +1,184 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.413
+Good morning, it's Friday, October 30.
+
+00:00:02.477 --> 00:00:09.146
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.209 --> 00:00:19.625
+Today: Frontier prices fall while model scoreboards shift, Mistral Large 4 weights ship with a licence catch, and Independent tests temper Mistral's Large 4 claims.
+
+00:00:19.688 --> 00:00:21.467
+First, the story of the day.
+
+00:00:21.530 --> 00:00:23.880
+Three things landed within four days.
+
+00:00:23.943 --> 00:00:32.898
+OpenAI released GPT-6.1 Terra, listed by Help Net Security at one dollar per million input tokens and five dollars per million output tokens.
+
+00:00:32.962 --> 00:00:41.409
+On Thursday, October twenty-ninth, Mistral released the weights of an improved Mistral Large 4, the model previewed on October sixth.
+
+00:00:41.472 --> 00:00:51.507
+According to Techstrong, Mistral also halved its direct API rates, to seventy US cents per million input tokens and two dollars ten per million output tokens.
+
+00:00:51.570 --> 00:01:00.970
+The Decoder reports that an average task on an independent index now costs two dollars six cents, down from five dollars fifty-four for the preview.
+
+00:01:01.034 --> 00:01:12.910
+Meanwhile, ActuIA reports that version five of the Artificial Analysis index now rests sixty percent on secret tests, and that Large 4's score on it fell from thirty-eight to twenty-five.
+
+00:01:13.510 --> 00:01:18.505
+The bigger picture: price per token is no longer the number that matters.
+
+00:01:18.574 --> 00:01:28.974
+Terra and Large 4 both pushed rates down, and Mistral says its gains in reasoning efficiency lower inference costs, which is where the real saving sits.
+
+00:01:29.043 --> 00:01:33.764
+At the same time, the public scoreboards moved under everyone's feet.
+
+00:01:33.833 --> 00:01:41.907
+So the stable assets are yours: a private evaluation set, and a gateway that records cost per completed task by route.
+
+00:01:41.975 --> 00:01:49.639
+For a platform team, it is worth re-running that evaluation against current prices every month, not once a year.
+
+00:01:49.707 --> 00:01:55.250
+More cuts are likely, and mid-tier answers from other vendors are worth watching.
+
+00:01:55.850 --> 00:01:57.717
+Next, Sovereignty and Europe.
+
+00:01:57.782 --> 00:02:05.508
+The Mistral Large 4 weights are on Hugging Face under the Mistral Ecosystem Open-Weight License, a modified MIT licence.
+
+00:02:05.572 --> 00:02:09.371
+You may use, modify, fine-tune and commercialise the model.
+
+00:02:09.436 --> 00:02:18.450
+One condition applies: a licensee or affiliate that operates a model-as-a-service business needs a separate commercial licence from Mistral.
+
+00:02:18.514 --> 00:02:27.850
+Microsoft says Large 4 reaches Foundry in public preview in the coming days, in Sweden Central, with Global Standard and EU DataZone deployments.
+
+00:02:28.450 --> 00:02:34.323
+What this really signals: the licence question from earlier this week now has an answer.
+
+00:02:34.390 --> 00:02:38.528
+It is permissive for internal use, with a catch for resellers.
+
+00:02:38.595 --> 00:02:45.469
+The word affiliates deserves a legal read, especially if a group serves AI to subsidiaries or partners.
+
+00:02:45.536 --> 00:02:49.807
+The Foundry route gives a managed option with EU data residency.
+
+00:02:49.874 --> 00:02:55.280
+Residency is not the same as jurisdiction, so keep that in your sovereignty file.
+
+00:02:55.880 --> 00:02:56.858
+Next, Platform.
+
+00:02:56.923 --> 00:03:05.466
+Mistral says you can download the Large 4 weights from Hugging Face and deploy them on your own infrastructure with vLLM or SGLang.
+
+00:03:05.531 --> 00:03:10.357
+The model is also in Mistral Studio, on the Mistral API and on OpenRouter.
+
+00:03:10.422 --> 00:03:15.443
+Hugging Face notes community GGUF builds from Unsloth and the llama.cpp team.
+
+00:03:15.508 --> 00:03:22.160
+The API lists seventy US cents per million input tokens and two dollars ten per million output tokens.
+
+00:03:22.760 --> 00:03:31.300
+Reading between the lines: Large 4 is now one model with three routes, each with its own cost and data-handling profile.
+
+00:03:31.371 --> 00:03:37.634
+Add them as separate entries in your gateway, and score them on the same evaluation set.
+
+00:03:37.705 --> 00:03:44.537
+At these API rates, self-hosting a trillion-parameter model is hard to justify on savings alone.
+
+00:03:44.608 --> 00:03:49.590
+Justify it on control, or on very high volume, with GPU costs counted.
+
+00:03:50.190 --> 00:03:51.109
+Next, Quality.
+
+00:03:51.175 --> 00:03:55.115
+Mistral calls Large 4 the best open-weight model for coding.
+
+00:03:55.181 --> 00:03:59.055
+The Decoder's reading of independent results is more mixed.
+
+00:03:59.121 --> 00:04:03.783
+Large 4 leads open models on coding but trails Claude by a wide margin.
+
+00:04:03.849 --> 00:04:07.855
+It ranks third among open models in cyber defence, not first.
+
+00:04:07.920 --> 00:04:14.750
+It is cheaper per index task, though its token use sits slightly above the median for comparable models.
+
+00:04:15.350 --> 00:04:22.262
+Why it matters: a vendor claim and an independent verdict rarely match, and that is normal.
+
+00:04:22.337 --> 00:04:28.186
+Run Large 4 on your own tasks and measure tokens per task, not only accuracy.
+
+00:04:28.262 --> 00:04:31.148
+A verbose model can eat the price cut.
+
+00:04:31.224 --> 00:04:36.920
+Treat the vendor's ranking as a hypothesis for your evaluation set to test.
+
+00:04:37.520 --> 00:04:38.946
+The number of the day.
+
+00:04:39.011 --> 00:04:40.436
+Two dollars six cents.
+
+00:04:40.501 --> 00:04:49.639
+That is the average cost of one index task with Mistral Large 4, down from five dollars fifty-four for the preview, according to The Decoder.
+
+00:04:49.704 --> 00:04:52.620
+Cost per task moved more than the list price.
+
+00:04:52.685 --> 00:04:53.592
+What to watch.
+
+00:04:53.657 --> 00:05:00.396
+Large 4 arriving in Microsoft Foundry, promised within days, and whether the EU DataZone option is live.
+
+00:05:00.461 --> 00:05:05.062
+AWS has still not published findings from its sovereign cloud exercise.
+
+00:05:05.127 --> 00:05:09.793
+Walmart's Agent Profiles are due within a month of October twenty-first.
+
+00:05:09.858 --> 00:05:19.773
+Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, and AI Act marking on December second.
+
+00:05:19.838 --> 00:05:21.718
+And a question for your team.
+
+00:05:21.782 --> 00:05:25.541
+Large 4 is now three routes: API, Foundry and self-hosted.
+
+00:05:25.606 --> 00:05:32.087
+Which evaluation set and which cost per completed task would decide between them for your workloads?
+
+00:05:32.151 --> 00:05:33.447
+That's it for today.
+
+00:05:33.512 --> 00:05:36.040
+Sources are in the episode description.
+
+00:05:36.105 --> 00:05:38.049
+This was Signal in the AI Fog.
+
+00:05:38.113 --> 00:05:39.280
+See you on Monday.

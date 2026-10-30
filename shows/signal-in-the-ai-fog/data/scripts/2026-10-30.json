@@ -1,0 +1,154 @@
+{
+ "title": "Prices fall, weights land, scoreboards shift",
+ "summary": "The week in frontier models: OpenAI's GPT-6.1 Terra and Mistral Large 4 both pushed prices down, while Artificial Analysis reshuffled its index. Mistral's open weights arrived two days early, with a licence catch. Also: the Foundry route for European deployment, self-hosting options, and what independent tests say about the vendor's claims.",
+ "headlines": [
+  "Frontier prices fall while model scoreboards shift",
+  "Mistral Large 4 weights ship with a licence catch",
+  "Independent tests temper Mistral's Large 4 claims"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Three things landed within four days. OpenAI released GPT-6.1 Terra, listed by Help Net Security at one dollar per million input tokens and five dollars per million output tokens. On Thursday, October twenty-ninth, Mistral released the weights of an improved Mistral Large 4, the model previewed on October sixth. According to Techstrong, Mistral also halved its direct API rates, to seventy US cents per million input tokens and two dollars ten per million output tokens. The Decoder reports that an average task on an independent index now costs two dollars six cents, down from five dollars fifty-four for the preview. Meanwhile, ActuIA reports that version five of the Artificial Analysis index now rests sixty percent on secret tests, and that Large 4's score on it fell from thirty-eight to twenty-five.",
+  "read": "The bigger picture: price per token is no longer the number that matters. Terra and Large 4 both pushed rates down, and Mistral says its gains in reasoning efficiency lower inference costs, which is where the real saving sits. At the same time, the public scoreboards moved under everyone's feet. So the stable assets are yours: a private evaluation set, and a gateway that records cost per completed task by route. For a platform team, it is worth re-running that evaluation against current prices every month, not once a year. More cuts are likely, and mid-tier answers from other vendors are worth watching.",
+  "label": "confirmed",
+  "topics": [
+   "OpenAI",
+   "Mistral",
+   "Artificial Analysis"
+  ],
+  "sources": [
+   {
+    "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+    "url": "https://mistral.ai/news/mistral-large-4-oss/",
+    "primary": true
+   },
+   {
+    "title": "OpenAI Community: GPT-6.1 Terra, delivering fast and capable computer use at a lower price",
+    "url": "https://community.openai.com/t/gpt-6-1-terra-delivering-fast-and-capable-computer-use-at-a-lower-price/1409900",
+    "primary": true
+   },
+   {
+    "title": "Help Net Security: GPT-6.1 Terra meets OpenAI's Critical cyber threshold, and it's cheaper than GPT-5.6 Terra",
+    "url": "https://www.helpnetsecurity.com/2026/10/27/gpt-6-1-terra-released/",
+    "primary": false
+   },
+   {
+    "title": "Techstrong: Mistral AI Releases Flagship Large 4 Open Weights to Bolster Enterprise Cybersecurity, Model Sovereignty",
+    "url": "https://techstrong.ai/articles/mistral-ai-releases-flagship-large-4-open-weights-to-bolster-enterprise-cybersecurity-model-sovereignty/",
+    "primary": false
+   },
+   {
+    "title": "The Decoder: Paris-based Mistral releases Le Chonk, a strong coding model that still trails China overall",
+    "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+    "primary": false
+   },
+   {
+    "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+    "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "The Mistral Large 4 weights are on Hugging Face under the Mistral Ecosystem Open-Weight License, a modified MIT licence. You may use, modify, fine-tune and commercialise the model. One condition applies: a licensee or affiliate that operates a model-as-a-service business needs a separate commercial licence from Mistral. Microsoft says Large 4 reaches Foundry in public preview in the coming days, in Sweden Central, with Global Standard and EU DataZone deployments.",
+   "read": "What this really signals: the licence question from earlier this week now has an answer. It is permissive for internal use, with a catch for resellers. The word affiliates deserves a legal read, especially if a group serves AI to subsidiaries or partners. The Foundry route gives a managed option with EU data residency. Residency is not the same as jurisdiction, so keep that in your sovereignty file.",
+   "label": "confirmed",
+   "topics": [
+    "Mistral",
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "Hugging Face: LICENSE, mistralai/Mistral-Large-4-1T-A52B",
+     "url": "https://huggingface.co/mistralai/Mistral-Large-4-1T-A52B/blob/main/LICENSE",
+     "primary": true
+    },
+    {
+     "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    },
+    {
+     "title": "Microsoft Tech Community: Mistral Large 4 in Microsoft Foundry: Build sovereign AI within a consistent platform experience",
+     "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/mistral-large-4-in-microsoft-foundry-build-sovereign-ai-within-a-consistent-plat/4568546",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "Mistral says you can download the Large 4 weights from Hugging Face and deploy them on your own infrastructure with vLLM or SGLang. The model is also in Mistral Studio, on the Mistral API and on OpenRouter. Hugging Face notes community GGUF builds from Unsloth and the llama.cpp team. The API lists seventy US cents per million input tokens and two dollars ten per million output tokens.",
+   "read": "Reading between the lines: Large 4 is now one model with three routes, each with its own cost and data-handling profile. Add them as separate entries in your gateway, and score them on the same evaluation set. At these API rates, self-hosting a trillion-parameter model is hard to justify on savings alone. Justify it on control, or on very high volume, with GPU costs counted.",
+   "label": "confirmed",
+   "topics": [
+    "Mistral",
+    "Inference engines"
+   ],
+   "sources": [
+    {
+     "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    },
+    {
+     "title": "Hugging Face: Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+     "url": "https://huggingface.co/blog/mistral-large4",
+     "primary": true
+    },
+    {
+     "title": "Techstrong: Mistral AI Releases Flagship Large 4 Open Weights to Bolster Enterprise Cybersecurity, Model Sovereignty",
+     "url": "https://techstrong.ai/articles/mistral-ai-releases-flagship-large-4-open-weights-to-bolster-enterprise-cybersecurity-model-sovereignty/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Quality",
+   "facts": "Mistral calls Large 4 the best open-weight model for coding. The Decoder's reading of independent results is more mixed. Large 4 leads open models on coding but trails Claude by a wide margin. It ranks third among open models in cyber defence, not first. It is cheaper per index task, though its token use sits slightly above the median for comparable models.",
+   "read": "Why it matters: a vendor claim and an independent verdict rarely match, and that is normal. Run Large 4 on your own tasks and measure tokens per task, not only accuracy. A verbose model can eat the price cut. Treat the vendor's ranking as a hypothesis for your evaluation set to test.",
+   "label": "reported",
+   "topics": [
+    "Mistral",
+    "Artificial Analysis"
+   ],
+   "sources": [
+    {
+     "title": "The Decoder: Paris-based Mistral releases Le Chonk, a strong coding model that still trails China overall",
+     "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+     "primary": false
+    },
+    {
+     "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Two dollars six cents. That is the average cost of one index task with Mistral Large 4, down from five dollars fifty-four for the preview, according to The Decoder. Cost per task moved more than the list price.",
+  "source": {
+   "title": "The Decoder: Paris-based Mistral releases Le Chonk, a strong coding model that still trails China overall",
+   "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Large 4 arriving in Microsoft Foundry, promised within days, and whether the EU DataZone option is live. AWS has still not published findings from its sovereign cloud exercise. Walmart's Agent Profiles are due within a month of October twenty-first. Further out: the EuroHPC gigafactory bid deadline on November twelfth, Microsoft Ignite from November seventeenth, and AI Act marking on December second.",
+ "agenda": [
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC AI Gigafactories bid deadline"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite begins"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking deadline for existing generative systems"
+  }
+ ],
+ "question": "Large 4 is now three routes: API, Foundry and self-hosted. Which evaluation set and which cost per completed task would decide between them for your workloads?"
+}
