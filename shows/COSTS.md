@@ -10,12 +10,12 @@ The projection runs the cost of a published episode over the month's episode day
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | [Signal in the AI Fog](signal-in-the-ai-fog/COSTS.md) | 1 | 1 | $0.56 | 5,412 | $11.75 | 113,652 |
 | [Signal in the Tax Fog](accounting-news-fr/COSTS.md) | 1 | 1 | $1.25 | 8,026 | $6.24 | 40,130 |
-| [Signal in the HR Fog](hr-news-fr/COSTS.md) | 0 | 0 | $0.00 | 0 | $0.00 | 0 |
-| **All shows** | **2** | **2** | **$1.81** | **13,438** | **$17.99** | **153,782** |
+| [Signal in the HR Fog](hr-news-fr/COSTS.md) | 1 | 0 | $1.11 | 6 | $1.11 | 6 |
+| **All shows** | **3** | **2** | **$2.91** | **13,444** | **$19.09** | **153,788** |
 
-**ElevenLabs credits are one quota shared by every show**: 13,438 characters used this month, about 153,782 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
+**ElevenLabs credits are one quota shared by every show**: 13,444 characters used this month, about 153,788 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
 
-**Credits left: 122,674 characters of 127,282**, renewed on 2026-11-30 (read before the run of 2026-11-02 03:20 UTC). Every publication reads them before paying for anything, and stops when they cannot voice the episode.
+**Credits left: 119,145 characters of 127,282**, renewed on 2026-11-30 (read before the run of 2026-11-02 03:28 UTC). Every publication reads them before paying for anything, and stops when they cannot voice the episode.
 
 ## Per episode and per download, since the first run
 
@@ -25,4 +25,4 @@ Every run counts, failed ones and checks included: they are part of what an epis
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Signal in the AI Fog | 11 | $0.68 | 5,067 | 32 | $0.234 |
 | Signal in the Tax Fog | 3 | $1.21 | 7,714 | 5 | $0.725 |
-| Signal in the HR Fog | 2 | $2.85 | 8,238 | 6 | $0.952 |
+| Signal in the HR Fog | 2 | $3.41 | 8,240 | 6 | $1.136 |
