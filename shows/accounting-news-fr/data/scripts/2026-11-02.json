@@ -1,0 +1,190 @@
+{
+ "title": "Budget 2027 sans surtaxe d'IS à ce stade, petits colis et IFRS 18",
+ "summary": "L'Assemblée a supprimé en séance la reconduction de la surtaxe d'IS des grandes entreprises, avant un vote solennel décisif sur les recettes. L'épisode traite aussi des nouveaux frais sur les petits colis, du calendrier DAC8, de la facturation électronique et de l'entrée en vigueur d'IFRS 18 l'année prochaine.",
+ "headlines": [
+  "Le budget 2027 sans surtaxe d'IS à ce stade",
+  "Les nouveaux frais sur les petits colis",
+  "IFRS 18 et son entrée en vigueur l'année prochaine"
+ ],
+ "story_of_the_day": {
+  "theme": "Fiscalité",
+  "facts": "L'Assemblée nationale examine la première partie du projet de loi de finances pour deux mille vingt-sept, celle des recettes, du mardi vingt-sept octobre au lundi deux novembre deux mille vingt-six. Le vingt-sept octobre, les députés ont voté la suppression de l'article quinze, qui reconduisait pour une troisième année la contribution exceptionnelle sur les bénéfices des grandes entreprises. Cet article rétablissait aussi, pour l'exercice deux mille vingt-six, la contribution des grandes entreprises de transport maritime, au taux de huit pour cent du résultat d'exploitation. Elle disparaîtrait avec lui. Dans la nuit du vingt-sept au vingt-huit octobre, un amendement taxant les multinationales sur la part de leurs bénéfices mondiaux réalisée en France a été adopté par soixante-quatorze voix contre soixante-douze. Le rapporteur général a jugé que les conventions fiscales interdisent ce que visait cet amendement. Les vingt-neuf et trente octobre, d'autres amendements ont été adoptés. Pour l'exit tax, le délai de dégrèvement passerait de deux ans, ou cinq ans au-delà d'environ deux millions cinq cent soixante-dix mille euros, à quinze ans. Le suramortissement serait plafonné à dix pour cent du chiffre d'affaires. La taxe sur les conversions de crypto vers stablecoins, votée le seize octobre, reste dans le texte. Le vote solennel sur la première partie est prévu le mardi trois novembre, après-midi. Selon la presse, un rejet renverrait le texte au Sénat dans sa version d'origine. L'exécutif pourrait alors recourir à l'article quarante-neuf trois de la Constitution ou aux ordonnances. Le vote sur l'ensemble du texte est prévu le dix-sept novembre.",
+  "read": "La vraie portée : rien de tout cela n'est acquis. Selon la presse, si la première partie est rejetée mardi, les amendements de séance tombent avec elle, y compris la suppression de la surtaxe. Pour une direction financière, la contribution deux mille vingt-sept reste donc une hypothèse de budget et de trésorerie, pas une charge à provisionner. Mieux vaut bâtir deux scénarios, avec et sans surtaxe, et suivre aussi le sort de la contribution des armateurs pour deux mille vingt-six. Le lien avec le règlement ANC deux mille vingt-six tiret zéro quatre reste d'actualité : il encadre la comptabilisation des contributions assises sur l'impôt, si elles sont finalement votées. Pour un cabinet, la règle est de présenter chaque mesure avec son étape réelle : amendement de séance, vote solennel, Sénat. Les clients concernés par l'exit tax, le suramortissement ou les crédits d'impôt peuvent être repérés dès maintenant, sans rien leur promettre. L'amendement sur les bénéfices mondiaux semble, lui, peu susceptible d'aboutir au vu des conventions fiscales.",
+  "label": "reported",
+  "topics": [
+   "Projet de loi de finances 2027",
+   "Contribution exceptionnelle sur les bénéfices"
+  ],
+  "sources": [
+   {
+    "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+    "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+    "primary": true
+   },
+   {
+    "title": "Legifiscal : Contribution exceptionnelle sur les bénéfices des grandes entreprises, les députés suppriment sa reconduction en 2027",
+    "url": "https://www.legifiscal.fr/actualites-fiscales/4706-contribution-exceptionnelle-benefices-grandes-entreprises-deputes-suppriment-reconduction-2027.html",
+    "primary": false
+   },
+   {
+    "title": "LCP : Budget 2027, l'Assemblée vote un dispositif contre l'optimisation fiscale agressive",
+    "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-vote-un-dispositif-pour-contrer-l-optimisation-fiscale-agressive",
+    "primary": false
+   },
+   {
+    "title": "Le JDF : Budget 2027, l'Assemblée supprime la surtaxe des grandes entreprises",
+    "url": "https://lejdf.fr/budget-2027-l-assemblee-supprime-la-surtaxe-des-grandes-entreprises-e312e3/",
+    "primary": false
+   },
+   {
+    "title": "Politique Matin : Budget 2027, l'Assemblée vote contre la prolongation de la surtaxe",
+    "url": "https://www.politiquematin.fr/budget-2027-assemblee-vote-suppression-surtaxe-grandes-entreprises",
+    "primary": false
+   },
+   {
+    "title": "Legifiscal : PLF 2027, LMNP, exit tax, Dutreil, les amendements adoptés les 29 et 30 octobre",
+    "url": "https://www.legifiscal.fr/actualites-fiscales/4713-plf-2027-lmnp-exit-tax-dutreil-amendements-adoptes-29-30-octobre.html",
+    "primary": false
+   },
+   {
+    "title": "Journal du Coin : PLF 2027, la surtaxe des grandes entreprises tombe, la taxe stablecoins résiste",
+    "url": "https://journalducoin.com/economie/budget-2027-surtaxe-grandes-entreprises-supprimee-is-multinationales-deux-voix/",
+    "primary": false
+   },
+   {
+    "title": "franceinfo : Où en sont les débats sur le PLF et le PLFSS 2027",
+    "url": "https://www.franceinfo.fr/economie/budget/ou-en-sont-les-debats-sur-le-plf-et-le-plfss-2027-suivez-les-etapes-de-l-examen-du-budget-a-l-assemblee-et-au-senat_8254234.html",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "E-commerce",
+   "facts": "Selon la page de la douane, un droit de douane forfaitaire de trois euros par catégorie d'article s'applique depuis le premier juillet deux mille vingt-six aux ventes à distance d'une valeur de cent cinquante euros ou moins. Depuis le premier novembre deux mille vingt-six, des frais de traitement de deux euros par catégorie d'article s'y ajoutent, sans seuil de valeur, pour financer le renforcement des contrôles. La taxe française de deux euros, instaurée en mars, a été abrogée le premier juillet. Selon la presse spécialisée, le prélèvement pèse sur la plateforme, le vendeur ou son intermédiaire. Des sources non officielles rapportent aussi un identifiant de produit obligatoire en novembre.",
+   "read": "Concrètement : pour un colis de cent cinquante euros ou moins, la douane et la presse donnent un exemple à cinq euros, trois de droit et deux de frais, quel que soit le nombre d'articles d'une même catégorie. Pour une entreprise de vente à distance, il faut vérifier qui supporte le prélèvement dans les conditions de vente et les contrats de marketplace. Les données de catalogue transmises aux déclarants méritent aussi une relecture. L'identifiant de produit, lui, repose sur des sources non officielles : à vérifier avant d'alerter vos clients.",
+   "label": "confirmed",
+   "topics": [
+    "Franchise des petits colis"
+   ],
+   "sources": [
+    {
+     "title": "Douane : Petits colis, ce qui change pour vos achats en ligne",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "primary": true
+    },
+    {
+     "title": "Kohen Avocats : Taxe petits colis, que doivent préparer les e-commerçants avant le 1er novembre",
+     "url": "https://kohenavocats.fr/2026/10/27/taxe-petits-colis-e-commercants-obligations-1er-novembre-2026/",
+     "primary": false
+    },
+    {
+     "title": "Conex : Taxe petits colis, 2 euros de frais de traitement et PID obligatoire au 1er novembre 2026",
+     "url": "https://www.conex.net/fr/fr/taxe-petits-colis-2-e-de-frais-de-traitement-et-pid-obligatoire-au-1er-novembre-2026/",
+     "primary": false
+    },
+    {
+     "title": "E-commerce Nation : Taxe petits colis, nouveaux frais de 2 euros au 1er novembre 2026",
+     "url": "https://www.ecommerce-nation.fr/taxe-petits-colis-2-euros-novembre-2026/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "Selon un cabinet de conseil, les plateformes de crypto-actifs doivent, depuis le premier janvier deux mille vingt-six, collecter et déclarer les transactions de leurs utilisateurs à l'administration fiscale. Par ailleurs, un cabinet d'avocats évoque une redevance européenne pour frais de gestion, qui compléterait le droit de trois euros à compter du premier novembre deux mille vingt-six. Il précise que la taxe française avait été créée par la loi de finances pour deux mille vingt-six.",
+   "read": "En pratique : le dossier est plus faible qu'il n'y paraît, faute de texte européen lu. La redevance citée par ce cabinet semble recouper les frais de deux euros décrits par la douane, mais le point reste à confirmer. Pour DAC8, l'enjeu est ailleurs : les clients actifs en crypto-actifs voient leurs transactions collectées dès cette année, ce qui justifie de rassembler leurs historiques avant les déclarations de deux mille vingt-sept.",
+   "label": "reported",
+   "topics": [
+    "DAC8"
+   ],
+   "sources": [
+    {
+     "title": "BM Fiduciaire : Cryptoactifs 2026, DAC8, CARF et déclaration",
+     "url": "https://www.bmfiduciaire.fr/cryptoactifs-dac8-carf-2026/",
+     "primary": false
+    },
+    {
+     "title": "Kohen Avocats : Taxe petits colis, que doivent préparer les e-commerçants",
+     "url": "https://kohenavocats.fr/2026/10/27/taxe-petits-colis-e-commercants-obligations-1er-novembre-2026/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Facturation électronique",
+   "facts": "Selon la presse spécialisée, la réforme est entrée en vigueur le premier septembre deux mille vingt-six, avec réception obligatoire pour toutes les entreprises et aucune sanction en deux mille vingt-six. Un numéro unique de la DGFiP est disponible depuis le huit octobre deux mille vingt-six pour accompagner les professionnels, notamment sur la facturation électronique. L'émission devient obligatoire pour les PME, TPE et micro-entreprises le premier septembre deux mille vingt-sept.",
+   "read": "Ce qu'il faut en retenir : peu de nouveauté cette semaine, mais un point pratique. Le numéro unique de la DGFiP peut servir de relais pour les clients qui hésitent encore. L'absence de sanction en deux mille vingt-six n'est pas un report : la réception est déjà due. Pour un cabinet, l'hiver reste la bonne période pour fixer plateforme, formats et circuit des factures d'achat avant l'émission de deux mille vingt-sept.",
+   "label": "reported",
+   "topics": [
+    "Réforme de la facturation électronique"
+   ],
+   "sources": [
+    {
+     "title": "Portail Auto-entrepreneur : Facturation électronique obligatoire, guide 2026-2027",
+     "url": "https://www.portail-autoentrepreneur.fr/academie/gestion-auto-entreprise/facturation/facture-electronique-obligatoire",
+     "primary": false
+    },
+    {
+     "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Normes comptables",
+   "facts": "Selon l'IASB, la norme IFRS dix-huit entrera en vigueur l'année prochaine, deux mille vingt-sept.",
+   "read": "En pratique : pour un groupe qui consolide en IFRS, la préparation de la première application d'IFRS dix-huit ne doit pas attendre l'entrée en vigueur de la norme. À suivre : les prochaines publications de l'IASB sur ce sujet.",
+   "label": "confirmed",
+   "topics": [
+    "IFRS 18"
+   ],
+   "sources": [
+    {
+     "title": "IFRS Foundation : IASB Update, novembre 2026 CMAC",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "primary": true
+    },
+    {
+     "title": "IFRS Foundation : 2026 World Standard-setters Conference debrief",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/10/2026-world-standard-setters-conference/",
+     "primary": true
+    },
+    {
+     "title": "IAS Plus : actualités IASB",
+     "url": "https://www.iasplus.com/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Soixante-quatorze voix contre soixante-douze : c'est l'écart qui a fait adopter, dans la nuit du vingt-sept au vingt-huit octobre, l'amendement sur les bénéfices mondiaux des multinationales. Deux voix d'écart, pour un amendement dont le rapporteur général estime qu'il se heurte aux conventions fiscales.",
+  "source": {
+   "title": "LCP : Budget 2027, l'Assemblée vote un dispositif contre l'optimisation fiscale agressive",
+   "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-vote-un-dispositif-pour-contrer-l-optimisation-fiscale-agressive",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Le mardi trois novembre, après-midi, l'Assemblée vote solennellement sur la première partie du projet de loi de finances. Son issue conditionne le sort des amendements adoptés en séance et l'examen du volet dépenses. Le vote sur l'ensemble du texte est prévu le mardi dix-sept novembre. Le projet de loi de financement de la Sécurité sociale, rejeté sur sa partie recettes, part au Sénat, avec un examen attendu à partir du lundi neuf novembre selon la presse. Côté normes, IFRS dix-huit entrera en vigueur l'année prochaine, et les prochaines publications de l'IASB sur ce sujet sont à suivre. L'émission de factures électroniques devient obligatoire pour les PME le premier septembre deux mille vingt-sept.",
+ "question": "Si la surtaxe d'IS est finalement rétablie pour deux mille vingt-sept, quel scénario de trésorerie avez-vous prêt, et quels clients concernés par l'exit tax ou le suramortissement faudrait-il prévenir en premier ?",
+ "agenda": [
+  {
+   "date": "2026-11-03",
+   "text": "Vote solennel sur la première partie du projet de loi de finances 2027"
+  },
+  {
+   "date": "2026-11-09",
+   "text": "Début attendu de l'examen du budget de la Sécurité sociale au Sénat"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Vote sur l'ensemble du projet de loi de finances à l'Assemblée"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission obligatoire de factures électroniques pour les PME et TPE"
+  }
+ ]
+}

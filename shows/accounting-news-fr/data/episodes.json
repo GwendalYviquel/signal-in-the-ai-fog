@@ -315,5 +315,165 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "title": "Budget 2027 sans surtaxe d'IS à ce stade, petits colis et IFRS 18",
+    "summary": "L'Assemblée a supprimé en séance la reconduction de la surtaxe d'IS des grandes entreprises, avant un vote solennel décisif sur les recettes. L'épisode traite aussi des nouveaux frais sur les petits colis, du calendrier DAC8, de la facturation électronique et de l'entrée en vigueur d'IFRS 18 l'année prochaine.",
+    "headlines": [
+      "Le budget 2027 sans surtaxe d'IS à ce stade",
+      "Les nouveaux frais sur les petits colis",
+      "IFRS 18 et son entrée en vigueur l'année prochaine"
+    ],
+    "themes": [
+      "Fiscalité",
+      "E-commerce",
+      "Europe",
+      "Facturation électronique",
+      "Normes comptables"
+    ],
+    "topics": [
+      "Projet de loi de finances 2027",
+      "Contribution exceptionnelle sur les bénéfices",
+      "Franchise des petits colis",
+      "DAC8",
+      "Réforme de la facturation électronique",
+      "IFRS 18"
+    ],
+    "sources": [
+      {
+        "title": "Assemblée nationale : Examen de la première partie du projet de loi de finances pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+        "primary": true
+      },
+      {
+        "title": "Legifiscal : Contribution exceptionnelle sur les bénéfices des grandes entreprises, les députés suppriment sa reconduction en 2027",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4706-contribution-exceptionnelle-benefices-grandes-entreprises-deputes-suppriment-reconduction-2027.html",
+        "primary": false
+      },
+      {
+        "title": "LCP : Budget 2027, l'Assemblée vote un dispositif contre l'optimisation fiscale agressive",
+        "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-vote-un-dispositif-pour-contrer-l-optimisation-fiscale-agressive",
+        "primary": false
+      },
+      {
+        "title": "Le JDF : Budget 2027, l'Assemblée supprime la surtaxe des grandes entreprises",
+        "url": "https://lejdf.fr/budget-2027-l-assemblee-supprime-la-surtaxe-des-grandes-entreprises-e312e3/",
+        "primary": false
+      },
+      {
+        "title": "Politique Matin : Budget 2027, l'Assemblée vote contre la prolongation de la surtaxe",
+        "url": "https://www.politiquematin.fr/budget-2027-assemblee-vote-suppression-surtaxe-grandes-entreprises",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : PLF 2027, LMNP, exit tax, Dutreil, les amendements adoptés les 29 et 30 octobre",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4713-plf-2027-lmnp-exit-tax-dutreil-amendements-adoptes-29-30-octobre.html",
+        "primary": false
+      },
+      {
+        "title": "Journal du Coin : PLF 2027, la surtaxe des grandes entreprises tombe, la taxe stablecoins résiste",
+        "url": "https://journalducoin.com/economie/budget-2027-surtaxe-grandes-entreprises-supprimee-is-multinationales-deux-voix/",
+        "primary": false
+      },
+      {
+        "title": "franceinfo : Où en sont les débats sur le PLF et le PLFSS 2027",
+        "url": "https://www.franceinfo.fr/economie/budget/ou-en-sont-les-debats-sur-le-plf-et-le-plfss-2027-suivez-les-etapes-de-l-examen-du-budget-a-l-assemblee-et-au-senat_8254234.html",
+        "primary": false
+      },
+      {
+        "title": "Douane : Petits colis, ce qui change pour vos achats en ligne",
+        "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+        "primary": true
+      },
+      {
+        "title": "Kohen Avocats : Taxe petits colis, que doivent préparer les e-commerçants avant le 1er novembre",
+        "url": "https://kohenavocats.fr/2026/10/27/taxe-petits-colis-e-commercants-obligations-1er-novembre-2026/",
+        "primary": false
+      },
+      {
+        "title": "Conex : Taxe petits colis, 2 euros de frais de traitement et PID obligatoire au 1er novembre 2026",
+        "url": "https://www.conex.net/fr/fr/taxe-petits-colis-2-e-de-frais-de-traitement-et-pid-obligatoire-au-1er-novembre-2026/",
+        "primary": false
+      },
+      {
+        "title": "E-commerce Nation : Taxe petits colis, nouveaux frais de 2 euros au 1er novembre 2026",
+        "url": "https://www.ecommerce-nation.fr/taxe-petits-colis-2-euros-novembre-2026/",
+        "primary": false
+      },
+      {
+        "title": "BM Fiduciaire : Cryptoactifs 2026, DAC8, CARF et déclaration",
+        "url": "https://www.bmfiduciaire.fr/cryptoactifs-dac8-carf-2026/",
+        "primary": false
+      },
+      {
+        "title": "Portail Auto-entrepreneur : Facturation électronique obligatoire, guide 2026-2027",
+        "url": "https://www.portail-autoentrepreneur.fr/academie/gestion-auto-entreprise/facturation/facture-electronique-obligatoire",
+        "primary": false
+      },
+      {
+        "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+        "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+        "primary": false
+      },
+      {
+        "title": "IFRS Foundation : IASB Update, novembre 2026 CMAC",
+        "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+        "primary": true
+      },
+      {
+        "title": "IFRS Foundation : 2026 World Standard-setters Conference debrief",
+        "url": "https://www.ifrs.org/news-and-events/news/2026/10/2026-world-standard-setters-conference/",
+        "primary": true
+      },
+      {
+        "title": "IAS Plus : actualités IASB",
+        "url": "https://www.iasplus.com/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-02T04:12:37+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-11-02",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-11-02/accounting-news-fr-2026-11-02.mp3",
+    "audio_bytes": 6559225,
+    "duration_seconds": 409.9657142857143,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 14.5,
+        "title": "Sujet de la semaine : Le budget 2027 sans surtaxe d'IS à ce stade"
+      },
+      {
+        "start": 156.7,
+        "title": "E-commerce : Franchise des petits colis"
+      },
+      {
+        "start": 220.6,
+        "title": "Europe : DAC8"
+      },
+      {
+        "start": 272.1,
+        "title": "Facturation électronique : Réforme de la facturation électronique"
+      },
+      {
+        "start": 322.4,
+        "title": "Normes comptables : IFRS 18"
+      },
+      {
+        "start": 343.2,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 358.6,
+        "title": "À surveiller"
+      },
+      {
+        "start": 392.1,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]
