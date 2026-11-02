@@ -1,0 +1,198 @@
+{
+ "title": "Indemnités AT/MP plafonnées, arrêts longs limités",
+ "summary": "Depuis le premier novembre, les indemnités journalières d'accident du travail sont plafonnées bien plus bas pour les accidents nouveaux. Au programme aussi : le budget de la Sécu au Sénat, l'omnibus numérique sur l'IA, les arrêts maladie en ALD limités à un an, le CPF et la transparence salariale.",
+ "headlines": [
+  "Les indemnités journalières d'accident du travail plafonnées au premier novembre",
+  "Arrêts maladie longs limités à un an pour certaines affections",
+  "Le report de l'IA à haut risque en emploi confirmé"
+ ],
+ "story_of_the_day": {
+  "theme": "Paie et cotisations",
+  "facts": "Le décret du trente septembre deux mille vingt-six, paru au Journal officiel du premier octobre, fixe une nouvelle limite maximale pour la rémunération qui sert de base au calcul des indemnités journalières d'accident du travail et de maladie professionnelle. Elle s'applique aux arrêts résultant d'un accident du travail ou d'une maladie professionnelle survenu à compter du premier novembre deux mille vingt-six. Selon plusieurs sources spécialisées concordantes, le salaire journalier de référence plafonné passe de quatre cent euros quatre-vingt-deux à cent huit euros soixante-deux, sur la base du plafond de la sécurité sociale de deux mille vingt-six. L'indemnité journalière ne peut plus dépasser soixante-cinq euros dix-sept par jour pendant les vingt-huit premiers jours d'arrêt, contre deux cent quarante euros quarante-neuf auparavant. Les arrêts liés à un accident survenu avant le premier novembre gardent l'ancien plafond, même s'ils se prolongent. Selon une source spécialisée, la mesure ne touche que les salaires les plus élevés. Pour le maintien de salaire et la prévoyance, le coût réel dépend des garanties applicables à chaque salarié. Le texte est publié, et la règle s'applique depuis le premier novembre.",
+  "read": "Ce qu'il faut en retenir : le critère n'est pas la date de l'arrêt, mais la date de survenance de l'accident ou de la maladie. Un service paie va donc gérer deux régimes en parallèle, selon le sinistre. Pour les salariés les mieux rémunérés, l'indemnité versée par la caisse baisse nettement. Si l'employeur maintient le salaire en subrogation, il perçoit moins d'indemnités et son reste à charge augmente. Trois vérifications s'imposent. D'abord, le paramétrage des indemnités journalières d'accident du travail dans le logiciel de paie, avec la bonne date de référence. Ensuite, l'attestation de salaire et les calculs de subrogation. Enfin, la lecture des accords de prévoyance et des conventions collectives qui prévoient un complément : leur effet dépend des garanties de chaque salarié. Le sujet rejoint la généralisation des taux d'accidents du travail par établissement au premier janvier deux mille vingt-sept : le coût des accidents pèse de plus en plus sur l'employeur. À surveiller, les précisions de l'assurance maladie et l'évolution de la prévoyance.",
+  "label": "confirmed",
+  "topics": [
+   "Accidents du travail",
+   "Indemnités journalières"
+  ],
+  "sources": [
+   {
+    "title": "Légifrance : Décret n° 2026-909 du 30 septembre 2026 fixant la limite maximale de la rémunération servant de base au calcul des indemnités journalières AT/MP",
+    "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054930447",
+    "primary": true
+   },
+   {
+    "title": "Lexweb Solutions : Accident du travail, indemnités plafonnées au 1er novembre 2026",
+    "url": "https://www.lexweb-solutions.com/guides/droit-du-travail/accident-du-travail-indemnites-plafond/",
+    "primary": false
+   },
+   {
+    "title": "Mon Suivi Médical : Accident du travail, indemnités journalières plafonnées au 1er novembre 2026",
+    "url": "https://monsuivimedical.fr/blog/accident-du-travail-indemnites-journalieres-plafonnees-1er-novembre-2026",
+    "primary": false
+   },
+   {
+    "title": "Stéphane Larue : Accident du travail, indemnités plafonnées dès le 1er novembre",
+    "url": "https://stephanelarue.com/accident-du-travail-indemnites-plafonnees-65-euros-par-jour-des-le-1er-novembre/",
+    "primary": false
+   },
+   {
+    "title": "Santexpertise : Décret IJ AT/MP, nouveau plafond au 1er novembre 2026",
+    "url": "https://www.santexpertise.com/actualites/decret-ij-at-mp-plafond-salaire-reference-novembre-2026/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Droit du travail",
+   "facts": "Le projet de loi de financement de la sécurité sociale pour deux mille vingt-sept, rejeté en première lecture à l'Assemblée, arrive au Sénat. Selon NosParlementaires, le Sénat en reprend l'examen le neuf novembre, à partir du texte initial, articles contestés compris. La commission des affaires sociales a auditionné la branche accidents du travail le vingt-deux octobre.",
+   "read": "En pratique : le budget n'est toujours pas adopté, et aucune règle de paie pour deux mille vingt-sept n'en est stabilisée. Le Sénat repartant du texte du Gouvernement, le contenu final reste ouvert. Le plus utile reste de préparer en décembre des scénarios de paramétrage pour la CSG, les cotisations et les exonérations.",
+   "label": "confirmed",
+   "topics": [
+    "PLFSS 2027"
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Financement de la sécurité sociale pour 2027, dossier législatif",
+     "url": "https://www.senat.fr/dossier-legislatif/plfss2027.html",
+     "primary": true
+    },
+    {
+     "title": "Sénat : Actualités de la commission des affaires sociales 2026-2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/commissions/commission-des-affaires-sociales/actualites-de-la-commission-des-affaires-sociales-2026-2027.html",
+     "primary": true
+    },
+    {
+     "title": "NosParlementaires : Calendrier du PLFSS 2027, le Sénat prend la main le 9 novembre",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "IA et travail",
+   "facts": "Selon des sources juridiques spécialisées, le règlement européen dit omnibus numérique sur l'IA a été publié au Journal officiel de l'Union le vingt-quatre juillet deux mille vingt-six et est en vigueur depuis le vingt-sept juillet. Les systèmes à haut risque, dont ceux utilisés en matière d'emploi, sont reportés au deux décembre deux mille vingt-sept. Le marquage des contenus générés par les systèmes déjà sur le marché passe au deux décembre deux mille vingt-six. L'obligation de maîtrise de l'IA est reformulée : prendre des mesures pour la favoriser. Deux pratiques interdites s'ajoutent à partir du deux décembre deux mille vingt-six.",
+   "read": "La vraie portée : le report décale l'obligation, il ne l'éteint pas. L'assouplissement de la maîtrise de l'IA ne dispense pas de former les utilisateurs d'outils RH. Un service RH peut cartographier ses outils de tri de CV ou d'évaluation, interroger les éditeurs sur leur calendrier de conformité, et prévoir l'information du CSE avant tout déploiement. La date du deux décembre deux mille vingt-six, dans un mois, est à noter. Ces éléments viennent de sources secondaires : à confirmer sur le texte européen.",
+   "label": "reported",
+   "topics": [
+    "Règlement européen sur l'IA",
+    "Recrutement et IA"
+   ],
+   "sources": [
+    {
+     "title": "Aiacto : Digital Omnibus adopted, AI Act high-risk delayed to 2027",
+     "url": "https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027",
+     "primary": false
+    },
+    {
+     "title": "Iones : AI Act août 2026, obligations et report Omnibus",
+     "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+     "primary": false
+    },
+    {
+     "title": "Leto : AI Act 2026, guide complet de conformité IA",
+     "url": "https://www.leto.legal/guides/ai-act-conformite",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Santé et conditions de travail",
+   "facts": "Selon la page officielle Code du travail numérique, un décret réduit de trois ans à un an la durée maximale de versement des indemnités journalières pour certaines affections de longue durée. Il est applicable depuis le quinze octobre. Pour les affections ouvrant droit à une prise en charge à cent pour cent, la durée reste de trois ans. Les salariés en arrêt depuis plus de six mois au quinze octobre restent soumis aux anciennes règles. Depuis le dix-neuf septembre, un assuré peut être sanctionné s'il cherche à obtenir un arrêt non justifié.",
+   "read": "Ce qu'il faut en retenir : le texte n'est pas neuf, mais son effet est récent. Pour un service paie, les arrêts longs prescrits depuis le quinze octobre peuvent voir les indemnités s'arrêter après un an. Il faut anticiper le relais par la prévoyance, vérifier la durée de garantie dans les contrats et conventions, et suivre avec la médecine du travail la reprise ou l'inaptitude. Les salariés concernés auront besoin d'être informés.",
+   "label": "confirmed",
+   "topics": [
+    "Arrêt maladie",
+    "Indemnités journalières"
+   ],
+   "sources": [
+    {
+     "title": "Code du travail numérique (ministère du Travail) : Indemnisation arrêt maladie, ce qui change au 15 octobre 2026",
+     "url": "https://code.travail.gouv.fr/actualite/indemnisation-arret-maladie-ce-qui-change-au-15-octobre-2026",
+     "primary": true
+    },
+    {
+     "title": "CDG 64 : Indemnités journalières, baisse de la durée maximale d'indemnisation",
+     "url": "http://www.cdg-64.fr/accueil/actualites/news/detail/News/indemnites-journalieres-baisse-de-la-duree-maximale-dindemnisation-pour-les-assures-atteints-dun-1/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Formation",
+   "facts": "Selon NosParlementaires, l'article quatre-vingt-neuf du projet de loi de finances pour deux mille vingt-sept majore la participation du titulaire du CPF pour les formations non prioritaires financées par le seul titulaire. La seconde partie du projet, qui contient cet article, est discutée en séance entre le vingt-sept octobre et le seize novembre. Toujours selon cette source, le chiffre de trois cent cinquante euros annoncé ne figure pas dans le projet. Le Gouvernement chiffre le gain de la mesure à trois cent cinquante millions d'euros en deux mille vingt-sept. Rien n'est adopté.",
+   "read": "Concrètement : tant que le texte n'est pas voté, le reste à charge reste incertain, et les montants annoncés ne se trouvent pas dans la loi en projet. Un service formation peut préparer l'information des salariés, mesurer l'effet possible sur les abondements employeur, et relier le sujet à l'entretien professionnel. Source unique de presse : prudence sur les chiffres.",
+   "label": "reported",
+   "topics": [
+    "Compte personnel de formation"
+   ],
+   "sources": [
+    {
+     "title": "NosParlementaires : CPF à 350 euros, rétroactif, sans montant dans la loi",
+     "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "Le projet de loi transposant la directive européenne sur la transparence des rémunérations a été enregistré à la présidence du Sénat le dix septembre deux mille vingt-six. Selon une mise à jour du vingt-sept octobre, le dossier du Sénat ne mentionne aucune date d'examen. Selon des sources spécialisées, la procédure accélérée limiterait le texte à une lecture par chambre. Le projet imposerait aux employeurs d'au moins cinquante salariés de déclarer sept indicateurs d'écarts, avec deux mois pour répondre à une demande d'information.",
+   "read": "Pour l'instant, rien n'est adopté et aucune obligation nouvelle n'est opposable à un employeur privé. Le délai de transposition est dépassé, mais le calendrier parlementaire reste flou. Un service paie peut avancer sur les catégories d'emplois, les critères de classification, les fourchettes de rémunération à l'embauche et les indicateurs d'écarts. Les détails viennent de sources secondaires : à confirmer sur le texte du Sénat.",
+   "label": "reported",
+   "topics": [
+    "Transparence salariale"
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi n° 944 portant transposition de la directive (UE) 2023/970",
+     "url": "https://www.senat.fr/leg/pjl25-944.html",
+     "primary": true
+    },
+    {
+     "title": "Mozaik : Transparence des salaires, ce que change la loi",
+     "url": "https://www.mozaik.co/transparence-salariale-cse/",
+     "primary": false
+    },
+    {
+     "title": "Katchme : Transparence des salaires, quand la loi s'applique",
+     "url": "https://www.katchme.fr/transparence-salaires-entree-en-vigueur/",
+     "primary": false
+    },
+    {
+     "title": "Stéphane Larue : Transparence salariale, le projet de loi attend au Sénat",
+     "url": "https://stephanelarue.com/transparence-salariale-salaire-affiche-des-l-offre-le-projet-de-loi-attend-au-senat/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Soixante-cinq euros dix-sept par jour : c'est le plafond de l'indemnité journalière d'accident du travail pendant les vingt-huit premiers jours, pour les accidents survenus depuis le premier novembre. Il était de deux cent quarante euros quarante-neuf auparavant.",
+  "source": {
+   "title": "Mon Suivi Médical : Accident du travail, indemnités journalières plafonnées au 1er novembre 2026",
+   "url": "https://monsuivimedical.fr/blog/accident-du-travail-indemnites-journalieres-plafonnees-1er-novembre-2026",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Première échéance : le neuf novembre, début de l'examen du budget de la sécurité sociale au Sénat, à partir du texte du Gouvernement. Le seize novembre, selon la presse parlementaire, la discussion en séance de la seconde partie du projet de loi de finances doit s'achever : c'est là que figure l'article sur le CPF. Le deux décembre deux mille vingt-six, le marquage des contenus générés par l'IA s'applique aux systèmes existants, avec deux pratiques interdites. Le deux décembre deux mille vingt-sept, ce sera le tour des obligations IA à haut risque en matière d'emploi. Sur la transparence salariale, aucune date d'examen au Sénat n'est connue. Pour les accidents du travail, suivez les précisions de l'assurance maladie.",
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Début de l'examen du budget de la sécurité sociale au Sénat"
+  },
+  {
+   "date": "2026-11-16",
+   "text": "Fin prévue de la discussion en séance de la seconde partie du projet de loi de finances"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "Échéance du marquage des contenus générés par l'IA pour les systèmes existants"
+  },
+  {
+   "date": "2027-12-02",
+   "text": "Application reportée des obligations IA à haut risque en matière d'emploi"
+  }
+ ],
+ "question": "Pour un accident du travail survenu depuis le premier novembre, votre service sait-il recalculer le maintien de salaire et la subrogation avec le nouveau plafond, et vérifier ce que la prévoyance complète ?"
+}

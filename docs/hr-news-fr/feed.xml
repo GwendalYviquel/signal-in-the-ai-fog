@@ -16,6 +16,55 @@
     <itunes:explicit>false</itunes:explicit>
     <itunes:type>episodic</itunes:type>
     <item>
+      <title>Indemnités AT/MP plafonnées, arrêts longs limités</title>
+      <description>Depuis le premier novembre, les indemnités journalières d'accident du travail sont plafonnées bien plus bas pour les accidents nouveaux. Au programme aussi : le budget de la Sécu au Sénat, l'omnibus numérique sur l'IA, les arrêts maladie en ALD limités à un an, le CPF et la transparence salariale.
+
+Chapitres :
+00:00 Ouverture
+00:18 Sujet de la semaine : Les indemnités journalières d'accident du travail plafonnées au premier novembre
+02:36 Droit du travail : PLFSS 2027
+03:21 IA et travail : Règlement européen sur l'IA
+04:35 Santé et conditions de travail : Arrêt maladie
+05:34 Formation : Compte personnel de formation
+06:30 Europe : Transparence salariale
+07:31 Chiffre de la semaine
+07:47 À surveiller
+08:27 Question pour votre équipe
+
+Transcription, thèmes et sources : https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/episodes/2026-11-02.html
+
+Sources :
+- Légifrance : Décret n° 2026-909 du 30 septembre 2026 fixant la limite maximale de la rémunération servant de base au calcul des indemnités journalières AT/MP: https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054930447
+- Lexweb Solutions : Accident du travail, indemnités plafonnées au 1er novembre 2026: https://www.lexweb-solutions.com/guides/droit-du-travail/accident-du-travail-indemnites-plafond/
+- Mon Suivi Médical : Accident du travail, indemnités journalières plafonnées au 1er novembre 2026: https://monsuivimedical.fr/blog/accident-du-travail-indemnites-journalieres-plafonnees-1er-novembre-2026
+- Stéphane Larue : Accident du travail, indemnités plafonnées dès le 1er novembre: https://stephanelarue.com/accident-du-travail-indemnites-plafonnees-65-euros-par-jour-des-le-1er-novembre/
+- Santexpertise : Décret IJ AT/MP, nouveau plafond au 1er novembre 2026: https://www.santexpertise.com/actualites/decret-ij-at-mp-plafond-salaire-reference-novembre-2026/
+- Sénat : Financement de la sécurité sociale pour 2027, dossier législatif: https://www.senat.fr/dossier-legislatif/plfss2027.html
+- Sénat : Actualités de la commission des affaires sociales 2026-2027: https://www.senat.fr/travaux-parlementaires/commissions/commission-des-affaires-sociales/actualites-de-la-commission-des-affaires-sociales-2026-2027.html
+- NosParlementaires : Calendrier du PLFSS 2027, le Sénat prend la main le 9 novembre: https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date
+- Aiacto : Digital Omnibus adopted, AI Act high-risk delayed to 2027: https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027
+- Iones : AI Act août 2026, obligations et report Omnibus: https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/
+- Leto : AI Act 2026, guide complet de conformité IA: https://www.leto.legal/guides/ai-act-conformite
+- Code du travail numérique (ministère du Travail) : Indemnisation arrêt maladie, ce qui change au 15 octobre 2026: https://code.travail.gouv.fr/actualite/indemnisation-arret-maladie-ce-qui-change-au-15-octobre-2026
+- CDG 64 : Indemnités journalières, baisse de la durée maximale d'indemnisation: http://www.cdg-64.fr/accueil/actualites/news/detail/News/indemnites-journalieres-baisse-de-la-duree-maximale-dindemnisation-pour-les-assures-atteints-dun-1/
+- NosParlementaires : CPF à 350 euros, rétroactif, sans montant dans la loi: https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif
+- Sénat : Projet de loi n° 944 portant transposition de la directive (UE) 2023/970: https://www.senat.fr/leg/pjl25-944.html
+- Mozaik : Transparence des salaires, ce que change la loi: https://www.mozaik.co/transparence-salariale-cse/
+- Katchme : Transparence des salaires, quand la loi s'applique: https://www.katchme.fr/transparence-salaires-entree-en-vigueur/
+- Stéphane Larue : Transparence salariale, le projet de loi attend au Sénat: https://stephanelarue.com/transparence-salariale-salaire-affiche-des-l-offre-le-projet-de-loi-attend-au-senat/
+
+Script écrit et voix générée par une intelligence artificielle.</description>
+      <link>https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/episodes/2026-11-02.html</link>
+      <guid isPermaLink="false">GwendalYviquel/signal-in-the-ai-fog#hr-news-fr-2026-11-02</guid>
+      <pubDate>Mon, 02 Nov 2026 04:37:30 +0100</pubDate>
+      <enclosure url="https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-11-02/hr-news-fr-2026-11-02.mp3" length="8455462" type="audio/mpeg"/>
+      <itunes:duration>528</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>false</itunes:explicit>
+      <podcast:transcript url="https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/episodes/2026-11-02.vtt" type="text/vtt" language="en"/>
+      <podcast:chapters url="https://gwendalyviquel.github.io/signal-in-the-ai-fog/hr-news-fr/episodes/2026-11-02.chapters.json" type="application/json+chapters"/>
+    </item>
+    <item>
       <title>Budget de la Sécu rejeté, paramètres de paie 2027</title>
       <description>L'Assemblée a rejeté en première lecture le budget de la sécurité sociale pour 2027, qui repart du texte du Gouvernement au Sénat. Au programme aussi : le plafond de la sécurité sociale, les taux d'accidents du travail par établissement, deux arrêts de la Cour de cassation et les prévisions de l'Unédic.
 

@@ -326,5 +326,172 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "title": "Indemnités AT/MP plafonnées, arrêts longs limités",
+    "summary": "Depuis le premier novembre, les indemnités journalières d'accident du travail sont plafonnées bien plus bas pour les accidents nouveaux. Au programme aussi : le budget de la Sécu au Sénat, l'omnibus numérique sur l'IA, les arrêts maladie en ALD limités à un an, le CPF et la transparence salariale.",
+    "headlines": [
+      "Les indemnités journalières d'accident du travail plafonnées au premier novembre",
+      "Arrêts maladie longs limités à un an pour certaines affections",
+      "Le report de l'IA à haut risque en emploi confirmé"
+    ],
+    "themes": [
+      "Paie et cotisations",
+      "Droit du travail",
+      "IA et travail",
+      "Santé et conditions de travail",
+      "Formation",
+      "Europe"
+    ],
+    "topics": [
+      "Accidents du travail",
+      "Indemnités journalières",
+      "PLFSS 2027",
+      "Règlement européen sur l'IA",
+      "Recrutement et IA",
+      "Arrêt maladie",
+      "Compte personnel de formation",
+      "Transparence salariale"
+    ],
+    "sources": [
+      {
+        "title": "Légifrance : Décret n° 2026-909 du 30 septembre 2026 fixant la limite maximale de la rémunération servant de base au calcul des indemnités journalières AT/MP",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054930447",
+        "primary": true
+      },
+      {
+        "title": "Lexweb Solutions : Accident du travail, indemnités plafonnées au 1er novembre 2026",
+        "url": "https://www.lexweb-solutions.com/guides/droit-du-travail/accident-du-travail-indemnites-plafond/",
+        "primary": false
+      },
+      {
+        "title": "Mon Suivi Médical : Accident du travail, indemnités journalières plafonnées au 1er novembre 2026",
+        "url": "https://monsuivimedical.fr/blog/accident-du-travail-indemnites-journalieres-plafonnees-1er-novembre-2026",
+        "primary": false
+      },
+      {
+        "title": "Stéphane Larue : Accident du travail, indemnités plafonnées dès le 1er novembre",
+        "url": "https://stephanelarue.com/accident-du-travail-indemnites-plafonnees-65-euros-par-jour-des-le-1er-novembre/",
+        "primary": false
+      },
+      {
+        "title": "Santexpertise : Décret IJ AT/MP, nouveau plafond au 1er novembre 2026",
+        "url": "https://www.santexpertise.com/actualites/decret-ij-at-mp-plafond-salaire-reference-novembre-2026/",
+        "primary": false
+      },
+      {
+        "title": "Sénat : Financement de la sécurité sociale pour 2027, dossier législatif",
+        "url": "https://www.senat.fr/dossier-legislatif/plfss2027.html",
+        "primary": true
+      },
+      {
+        "title": "Sénat : Actualités de la commission des affaires sociales 2026-2027",
+        "url": "https://www.senat.fr/travaux-parlementaires/commissions/commission-des-affaires-sociales/actualites-de-la-commission-des-affaires-sociales-2026-2027.html",
+        "primary": true
+      },
+      {
+        "title": "NosParlementaires : Calendrier du PLFSS 2027, le Sénat prend la main le 9 novembre",
+        "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+        "primary": false
+      },
+      {
+        "title": "Aiacto : Digital Omnibus adopted, AI Act high-risk delayed to 2027",
+        "url": "https://www.aiacto.eu/en/blog/digital-omnibus-ai-act-report-2027",
+        "primary": false
+      },
+      {
+        "title": "Iones : AI Act août 2026, obligations et report Omnibus",
+        "url": "https://iones.io/insights/ai-act-obligations-aout-2026-omnibus/",
+        "primary": false
+      },
+      {
+        "title": "Leto : AI Act 2026, guide complet de conformité IA",
+        "url": "https://www.leto.legal/guides/ai-act-conformite",
+        "primary": false
+      },
+      {
+        "title": "Code du travail numérique (ministère du Travail) : Indemnisation arrêt maladie, ce qui change au 15 octobre 2026",
+        "url": "https://code.travail.gouv.fr/actualite/indemnisation-arret-maladie-ce-qui-change-au-15-octobre-2026",
+        "primary": true
+      },
+      {
+        "title": "CDG 64 : Indemnités journalières, baisse de la durée maximale d'indemnisation",
+        "url": "http://www.cdg-64.fr/accueil/actualites/news/detail/News/indemnites-journalieres-baisse-de-la-duree-maximale-dindemnisation-pour-les-assures-atteints-dun-1/",
+        "primary": false
+      },
+      {
+        "title": "NosParlementaires : CPF à 350 euros, rétroactif, sans montant dans la loi",
+        "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+        "primary": false
+      },
+      {
+        "title": "Sénat : Projet de loi n° 944 portant transposition de la directive (UE) 2023/970",
+        "url": "https://www.senat.fr/leg/pjl25-944.html",
+        "primary": true
+      },
+      {
+        "title": "Mozaik : Transparence des salaires, ce que change la loi",
+        "url": "https://www.mozaik.co/transparence-salariale-cse/",
+        "primary": false
+      },
+      {
+        "title": "Katchme : Transparence des salaires, quand la loi s'applique",
+        "url": "https://www.katchme.fr/transparence-salaires-entree-en-vigueur/",
+        "primary": false
+      },
+      {
+        "title": "Stéphane Larue : Transparence salariale, le projet de loi attend au Sénat",
+        "url": "https://stephanelarue.com/transparence-salariale-salaire-affiche-des-l-offre-le-projet-de-loi-attend-au-senat/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-02T04:37:30+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#hr-news-fr-2026-11-02",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-11-02/hr-news-fr-2026-11-02.mp3",
+    "audio_bytes": 8455462,
+    "duration_seconds": 528.4832653061225,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 18.9,
+        "title": "Sujet de la semaine : Les indemnités journalières d'accident du travail plafonnées au premier novembre"
+      },
+      {
+        "start": 156.1,
+        "title": "Droit du travail : PLFSS 2027"
+      },
+      {
+        "start": 201.6,
+        "title": "IA et travail : Règlement européen sur l'IA"
+      },
+      {
+        "start": 275.9,
+        "title": "Santé et conditions de travail : Arrêt maladie"
+      },
+      {
+        "start": 334.6,
+        "title": "Formation : Compte personnel de formation"
+      },
+      {
+        "start": 390.5,
+        "title": "Europe : Transparence salariale"
+      },
+      {
+        "start": 451.4,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 467.3,
+        "title": "À surveiller"
+      },
+      {
+        "start": 507.8,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]
