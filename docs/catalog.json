@@ -16,6 +16,139 @@
  },
  "episodes": [
   {
+   "date": "2026-11-02",
+   "status": "published",
+   "title": "One model, six routes",
+   "summary": "Mistral Large 4 can now be reached through six routes, from Mistral's own API to Microsoft Foundry. Also: a Gemini retirement date on November nineteenth, the exact AI Act high-risk dates, and Amazon blocking Meta's shopping agent while Walmart opens its doors.",
+   "headlines": [
+    "Mistral Large 4 reaches six routes",
+    "Gemini 3.6 Flash retires November nineteenth",
+    "Amazon blocks Meta's shopping agent"
+   ],
+   "themes": [
+    "Platform",
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Regulation",
+    "Retail and agents"
+   ],
+   "topics": [
+    "Mistral",
+    "AI gateways",
+    "AI cost control",
+    "Google",
+    "Gemini",
+    "Microsoft Foundry",
+    "EU AI Act",
+    "Digital Omnibus",
+    "Agentic commerce",
+    "Walmart",
+    "Amazon"
+   ],
+   "page": "episodes/2026-11-02.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 18.9,
+     "title": "Story of the day: Mistral Large 4 reaches six routes"
+    },
+    {
+     "start": 86.6,
+     "title": "Models and vendors: Google"
+    },
+    {
+     "start": 142.2,
+     "title": "Sovereignty and Europe: Mistral"
+    },
+    {
+     "start": 191.0,
+     "title": "Regulation: EU AI Act"
+    },
+    {
+     "start": 241.9,
+     "title": "Retail and agents: Agentic commerce"
+    },
+    {
+     "start": 296.9,
+     "title": "Number of the day"
+    },
+    {
+     "start": 310.7,
+     "title": "What to watch"
+    },
+    {
+     "start": 340.7,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 361,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-02/episode-2026-11-02.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Mistral AI: Mistral Large 4 (Le Chonk) is now open weight",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    },
+    {
+     "title": "Vercel: Mistral Large 4 now available on AI Gateway",
+     "url": "https://vercel.com/changelog/mistral-large-4-now-available-on-ai-gateway",
+     "primary": true
+    },
+    {
+     "title": "Vercel: Mistral Large 4 model page",
+     "url": "https://vercel.com/ai-gateway/models/mistral-large-4.md",
+     "primary": true
+    },
+    {
+     "title": "TechRepublic: Mistral Releases 1-Trillion-Parameter AI Model for Cybersecurity",
+     "url": "https://www.techrepublic.com/article/news-mistral-large-4-ai-cybersecurity-open-weights/",
+     "primary": false
+    },
+    {
+     "title": "Artificial Analysis: Mistral has released Mistral Large 4, making France home to the most intelligent model outside the US and China",
+     "url": "https://artificialanalysis.ai/articles/mistral-large-4-france-ai",
+     "primary": false
+    },
+    {
+     "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+     "primary": true
+    },
+    {
+     "title": "Microsoft Tech Community: Mistral Large 4 in Microsoft Foundry: Build sovereign AI within a consistent platform experience",
+     "url": "https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/mistral-large-4-in-microsoft-foundry-build-sovereign-ai-within-a-consistent-plat/4568546",
+     "primary": true
+    },
+    {
+     "title": "European Commission: AI Omnibus enters into force",
+     "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+     "primary": true
+    },
+    {
+     "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+     "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+     "primary": false
+    },
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "PYMNTS: Walmart and Home Depot Set the Rules for AI Shoppers",
+     "url": "https://www.pymnts.com/commerce/ecommerce/2026/walmart-and-home-depot-set-the-rules-for-ai-shoppers/",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Monday, November 2. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Mistral Large 4 reaches six routes, Gemini 3.6 Flash retires November nineteenth, and Amazon blocks Meta's shopping agent.\n\nFirst, the story of the day.\n\nMistral says Large 4 is now open weight, and can be reached through Mistral Studio, its own API, OpenRouter, NVIDIA-hosted endpoints, an NVIDIA NIM container served with vLLM, and Microsoft Foundry. Vercel has added the model to its AI Gateway, with a context window of 1,048,576 tokens, which is just over one million. Vercel's model page, which is undated, still calls the model a public preview. It lists pricing of seventy cents per million input tokens and two dollars ten per million output tokens.\n\nThe read here: one open-weight model now has six public routes, and each one has its own data handling. Price metadata is the part to watch. A gateway that estimates cost from a hand-fed price table is only as good as its last update, and a vendor rate change shows up as a billing surprise. For a platform team: pull prices from vendor sources on a schedule, alert when catalogue and invoice diverge, and give each route its own gateway entry and approval.\n\nNext, Models and vendors.\n\nGoogle's model lifecycle page for its enterprise agent platform lists gemini-3.6-flash, released July twenty-first, retiring on November nineteenth, with gemini-3.8-flash as the replacement. The older gemini-2.5-pro and gemini-2.5-flash reached their listed retirement date on October twentieth. gemini-4-argon, released October thirteenth, has no retirement before October thirteenth, 2027.\n\nWhy it matters: a retirement seventeen days out is a deadline, not a footnote. Search your gateway logs for any route still pinned to the 3.6 Flash identifier. The replacement is not a guaranteed drop-in, so re-run your evaluation set on 3.8 Flash before you switch the default. Pinned model identifiers deserve an owner and an expiry date.\n\nNext, Sovereignty and Europe.\n\nMicrosoft's Foundry post says Mistral Large 4 reaches Foundry in public preview in the coming days, in the Sweden Central region, with Global Standard and EU DataZone deployment options. It tells customers to select the model card once live. Mistral's own page already describes the model as available through Foundry. I found no confirmation that the EU DataZone option is live.\n\nReading between the lines: the two vendors disagree on timing, which is normal in a staged rollout. Before anyone tells a risk team the model is available in the EU, open the model card and check which deployment types are really offered. Global Standard and EU DataZone serve different residency needs, so record which one each workload uses.\n\nNext, Regulation.\n\nThe European Commission says the AI Omnibus entered into force on July twenty-seventh, 2026. High-risk rules for Annex III systems now apply from December second, 2027. Rules for high-risk AI embedded in regulated physical products apply from August second, 2028. Separately, compliance guides, including a Cloud Security Alliance note, flag December second, 2026 as the end of the grace period for marking AI-generated content.\n\nThe bigger picture: two clocks run at different speeds. High-risk gives you another year. Transparency does not, and December second is about four weeks away. For a retailer, generated product text and images are the obvious candidates for marking. Name an owner this week, and list every generative feature already in production.\n\nNext, Retail and agents.\n\nWalmart announced on October twenty-first that Agent Profiles will launch within a month, alongside an Agent Gateway and terms for agents. PYMNTS reports customers can cap an agent at fifty, one hundred or two hundred dollars, or approve every order. PYMNTS also reports that Amazon blocked Meta's Muse agent less than two weeks after launch, saying Meta never secured permission. Home Depot said it will admit agents that identify themselves, and is in talks with Meta.\n\nWhy it matters: agent access is becoming a retailer's policy decision, not a technical default. Walmart opens a door with identity, caps and terms. Amazon shuts out agents that arrive unannounced, while Home Depot makes identification the condition. For a retailer, decide which agents you admit, how they authenticate and what they can see, before one shows up in your traffic.\n\nThe number of the day.\n\nSix. Mistral Large 4 can be reached through six distinct routes, from Mistral's own API to Microsoft Foundry. Each route is its own data-handling decision, and its own price to check.\n\nWhat to watch.\n\nWalmart's Agent Profiles, due this month. Large 4 live in Foundry, with the EU DataZone option. Anthropic's IPO marketing, which Bloomberg says could start the week of November ninth. EuroHPC gigafactory bids, due November twelfth. Microsoft Ignite from November seventeenth. Gemini 3.6 Flash retiring on November nineteenth. AI Act marking on December second. And I found no published AWS findings yet from its sovereign cloud exercise.\n\nAnd a question for your team.\n\nDoes your gateway take model prices from vendor sources or from a hand-maintained table, and how quickly would you notice a gap between its cost estimates and the invoice?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-10-30",
    "status": "published",
    "title": "Prices fall, weights land, scoreboards shift",

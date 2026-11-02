@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.9,
+   "title": "Story of the day: Mistral Large 4 reaches six routes"
+  },
+  {
+   "startTime": 86.6,
+   "title": "Models and vendors: Google"
+  },
+  {
+   "startTime": 142.2,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 191.0,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 241.9,
+   "title": "Retail and agents: Agentic commerce"
+  },
+  {
+   "startTime": 296.9,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 310.7,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 340.7,
+   "title": "Question for your team"
+  }
+ ]
+}

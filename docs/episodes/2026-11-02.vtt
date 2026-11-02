@@ -1,0 +1,199 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.607
+Good morning, it's Monday, November 2.
+
+00:00:02.675 --> 00:00:09.879
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.947 --> 00:00:18.797
+Today: Mistral Large 4 reaches six routes, Gemini 3.6 Flash retires November nineteenth, and Amazon blocks Meta's shopping agent.
+
+00:00:18.865 --> 00:00:20.786
+First, the story of the day.
+
+00:00:20.855 --> 00:00:34.438
+Mistral says Large 4 is now open weight, and can be reached through Mistral Studio, its own API, OpenRouter, NVIDIA-hosted endpoints, an NVIDIA NIM container served with vLLM, and Microsoft Foundry.
+
+00:00:34.507 --> 00:00:42.739
+Vercel has added the model to its AI Gateway, with a context window of 1,048,576 tokens, which is just over one million.
+
+00:00:42.807 --> 00:00:48.158
+Vercel's model page, which is undated, still calls the model a public preview.
+
+00:00:48.227 --> 00:00:55.430
+It lists pricing of seventy cents per million input tokens and two dollars ten per million output tokens.
+
+00:00:56.030 --> 00:01:02.789
+The read here: one open-weight model now has six public routes, and each one has its own data handling.
+
+00:01:02.855 --> 00:01:05.217
+Price metadata is the part to watch.
+
+00:01:05.283 --> 00:01:15.126
+A gateway that estimates cost from a hand-fed price table is only as good as its last update, and a vendor rate change shows up as a billing surprise.
+
+00:01:15.192 --> 00:01:26.020
+For a platform team: pull prices from vendor sources on a schedule, alert when catalogue and invoice diverge, and give each route its own gateway entry and approval.
+
+00:01:26.620 --> 00:01:28.449
+Next, Models and vendors.
+
+00:01:28.522 --> 00:01:42.424
+Google's model lifecycle page for its enterprise agent platform lists gemini-3.6-flash, released July twenty-first, retiring on November nineteenth, with gemini-3.8-flash as the replacement.
+
+00:01:42.497 --> 00:01:50.106
+The older gemini-2.5-pro and gemini-2.5-flash reached their listed retirement date on October twentieth.
+
+00:01:50.179 --> 00:01:57.130
+gemini-4-argon, released October thirteenth, has no retirement before October thirteenth, 2027.
+
+00:01:57.730 --> 00:02:03.215
+Why it matters: a retirement seventeen days out is a deadline, not a footnote.
+
+00:02:03.286 --> 00:02:08.911
+Search your gateway logs for any route still pinned to the 3.6 Flash identifier.
+
+00:02:08.982 --> 00:02:17.280
+The replacement is not a guaranteed drop-in, so re-run your evaluation set on 3.8 Flash before you switch the default.
+
+00:02:17.350 --> 00:02:21.640
+Pinned model identifiers deserve an owner and an expiry date.
+
+00:02:22.240 --> 00:02:24.044
+Next, Sovereignty and Europe.
+
+00:02:24.106 --> 00:02:35.675
+Microsoft's Foundry post says Mistral Large 4 reaches Foundry in public preview in the coming days, in the Sweden Central region, with Global Standard and EU DataZone deployment options.
+
+00:02:35.738 --> 00:02:39.096
+It tells customers to select the model card once live.
+
+00:02:39.159 --> 00:02:43.886
+Mistral's own page already describes the model as available through Foundry.
+
+00:02:43.948 --> 00:02:47.680
+I found no confirmation that the EU DataZone option is live.
+
+00:02:48.280 --> 00:02:54.659
+Reading between the lines: the two vendors disagree on timing, which is normal in a staged rollout.
+
+00:02:54.723 --> 00:03:03.615
+Before anyone tells a risk team the model is available in the EU, open the model card and check which deployment types are really offered.
+
+00:03:03.679 --> 00:03:10.380
+Global Standard and EU DataZone serve different residency needs, so record which one each workload uses.
+
+00:03:10.980 --> 00:03:12.055
+Next, Regulation.
+
+00:03:12.118 --> 00:03:17.933
+The European Commission says the AI Omnibus entered into force on July twenty-seventh, 2026.
+
+00:03:17.996 --> 00:03:22.736
+High-risk rules for Annex III systems now apply from December second, 2027.
+
+00:03:22.800 --> 00:03:28.741
+Rules for high-risk AI embedded in regulated physical products apply from August second, 2028.
+
+00:03:28.804 --> 00:03:39.170
+Separately, compliance guides, including a Cloud Security Alliance note, flag December second, 2026 as the end of the grace period for marking AI-generated content.
+
+00:03:39.770 --> 00:03:43.362
+The bigger picture: two clocks run at different speeds.
+
+00:03:43.427 --> 00:03:45.582
+High-risk gives you another year.
+
+00:03:45.647 --> 00:03:50.088
+Transparency does not, and December second is about four weeks away.
+
+00:03:50.153 --> 00:03:55.965
+For a retailer, generated product text and images are the obvious candidates for marking.
+
+00:03:56.030 --> 00:04:01.320
+Name an owner this week, and list every generative feature already in production.
+
+00:04:01.920 --> 00:04:03.304
+Next, Retail and agents.
+
+00:04:03.362 --> 00:04:11.321
+Walmart announced on October twenty-first that Agent Profiles will launch within a month, alongside an Agent Gateway and terms for agents.
+
+00:04:11.379 --> 00:04:17.781
+PYMNTS reports customers can cap an agent at fifty, one hundred or two hundred dollars, or approve every order.
+
+00:04:17.839 --> 00:04:25.279
+PYMNTS also reports that Amazon blocked Meta's Muse agent less than two weeks after launch, saying Meta never secured permission.
+
+00:04:25.337 --> 00:04:30.470
+Home Depot said it will admit agents that identify themselves, and is in talks with Meta.
+
+00:04:31.070 --> 00:04:37.406
+Why it matters: agent access is becoming a retailer's policy decision, not a technical default.
+
+00:04:37.473 --> 00:04:40.874
+Walmart opens a door with identity, caps and terms.
+
+00:04:40.941 --> 00:04:47.677
+Amazon shuts out agents that arrive unannounced, while Home Depot makes identification the condition.
+
+00:04:47.743 --> 00:04:56.280
+For a retailer, decide which agents you admit, how they authenticate and what they can see, before one shows up in your traffic.
+
+00:04:56.880 --> 00:04:58.341
+The number of the day.
+
+00:04:58.408 --> 00:04:58.674
+Six.
+
+00:04:58.740 --> 00:05:05.648
+Mistral Large 4 can be reached through six distinct routes, from Mistral's own API to Microsoft Foundry.
+
+00:05:05.715 --> 00:05:10.564
+Each route is its own data-handling decision, and its own price to check.
+
+00:05:10.630 --> 00:05:11.560
+What to watch.
+
+00:05:11.627 --> 00:05:14.350
+Walmart's Agent Profiles, due this month.
+
+00:05:14.417 --> 00:05:17.937
+Large 4 live in Foundry, with the EU DataZone option.
+
+00:05:18.004 --> 00:05:23.783
+Anthropic's IPO marketing, which Bloomberg says could start the week of November ninth.
+
+00:05:23.849 --> 00:05:26.971
+EuroHPC gigafactory bids, due November twelfth.
+
+00:05:27.038 --> 00:05:29.894
+Microsoft Ignite from November seventeenth.
+
+00:05:29.960 --> 00:05:33.215
+Gemini 3.6 Flash retiring on November nineteenth.
+
+00:05:33.282 --> 00:05:35.540
+AI Act marking on December second.
+
+00:05:35.607 --> 00:05:40.655
+And I found no published AWS findings yet from its sovereign cloud exercise.
+
+00:05:40.721 --> 00:05:42.648
+And a question for your team.
+
+00:05:42.714 --> 00:05:54.073
+Does your gateway take model prices from vendor sources or from a hand-maintained table, and how quickly would you notice a gap between its cost estimates and the invoice?
+
+00:05:54.140 --> 00:05:55.468
+That's it for today.
+
+00:05:55.534 --> 00:05:58.125
+Sources are in the episode description.
+
+00:05:58.192 --> 00:06:00.184
+This was Signal in the AI Fog.
+
+00:06:00.251 --> 00:06:01.380
+See you tomorrow.
