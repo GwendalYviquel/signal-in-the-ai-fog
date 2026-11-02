@@ -252,6 +252,7 @@ def test_past_agenda_items_move_under_their_own_heading(browser, server):
         '<ol class="timeline agenda" id="upcoming">',
         '<ol class="timeline agenda" id="upcoming"><li data-day="2000-01-01">Old</li><li data-day="2999-01-01">Far</li>')))
     page.goto(server + "agenda.html")
-    assert page.inner_text("#past") .startswith("Old") and "Far" in page.inner_text("#upcoming")
-    assert page.is_visible("#past-title") and page.get_attribute("#past li", "class") == "past"
+    # Regression (2026-11-02): the real agenda now has past items too, listed before "Old".
+    assert "Old" in page.inner_text("#past") and "Far" in page.inner_text("#upcoming")
+    assert page.is_visible("#past-title") and page.get_attribute('#past li[data-day="2000-01-01"]', "class") == "past"
     page.close()

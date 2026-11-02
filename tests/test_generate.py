@@ -44,6 +44,18 @@ def test_wording_errors_are_fixed_in_a_light_correction(cfg, fake_claude):
     assert "must not contain a comma" in prompt and '"one, two"' in prompt
 
 
+def test_a_light_correction_that_leaves_out_fields_keeps_them_unchanged(cfg, fake_claude):
+    # Regression (2026-11-02): asked to shorten one headline, the light correction sent the episode back
+    # without its segments; "Missing field: segments" resumed the research, which wrote the same
+    # headline again, and the HR episode failed after $1.11 of Claude.
+    bad = make_episode(headlines=["one, two", "b c", "d e"])
+    partial = {k: v for k, v in make_episode().items() if k != "segments"}
+    client = fake_claude([reply(submit_block(bad, "toolu_a")), reply(submit_block(partial, "toolu_b"))])
+    ep = generate.generate_episode(cfg, TUESDAY, [])
+    assert len(client.calls) == 2 and is_light(client.calls[1])
+    assert ep["structured"]["segments"] == bad["segments"] and ep["structured"]["headlines"] == partial["headlines"]
+
+
 def test_missing_source_goes_back_to_the_research_conversation(cfg, fake_claude):
     # Without web search, a light correction could invent a source: never allowed.
     bad = make_episode()

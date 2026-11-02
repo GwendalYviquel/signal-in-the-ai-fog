@@ -59,6 +59,7 @@ rules:
   correction_example: "The episode of October twentieth said..."
   topic_max_words: 4                             # a topic's canonical name ("EU AI Act")
   unspeakable_symbols: ""                        # symbols the voice reads badly, refused in spoken text
+  number_words: ""                              # numbers are written in digits in English headlines
 
 # Interface of the catalog site and the pages. Served to the browser in docs/i18n.json, so that
 # the EN | FR switch can translate the interface of any show; episode content stays as written.

@@ -110,6 +110,8 @@ python -m http.server --directory build/rehearsal/docs
 
 ## Known limits
 
+- Spend limits. On 2026-10-30 the Anthropic console's monthly limit stopped both morning attempts (HTTP 400, *You have reached your specified API usage limits*), nothing billed. With the three shows, keep it at $40 or more (about $12 for the first show, $9 to $17 for the two weekly shows, plus previews). ElevenLabs: about 170,000 characters a month for the three shows; the run reads the credits left and stops before any voice when they are short.
+- Several shows publish in one scheduled run (Mondays): each uploads and deploys its own Pages artifact, `github-pages-<show>` (two artifacts with the same name made the deployment fail on 2026-11-02).
 - The Cloudflare token expires (see above). GitHub's schedules are best effort. On October 21 the morning run started five hours late; on October 22 no scheduled run of the morning started at all (daily, watchdog, Spotify check). Attempts every 15 minutes make one dropped run harmless, not a whole morning dropped: then the missing "Episode out" notification is the only sign. If it happens again, an external scheduler (for example cron-job.org calling the `workflow_dispatch` API with a token limited to this repository) is the next step.
 - An accepted suggestion can still be edited by its author afterwards: the prompt treats it as data, never as instructions, and the usual checks apply.
 - The fact-check reads at most `factcheck.max_chars_per_source` characters of each page, and skips pages it cannot read (reported as unverifiable); a doubt left after the last attempt is reported, not blocking.

@@ -53,6 +53,17 @@ def test_headline_numbers_must_be_spelled_out(cfg):
     assert not errors_of(make_episode(headlines=["Mercury 3 passes one thousand tokens", "b c", "d e"]), cfg)
 
 
+def test_a_number_written_out_is_one_word_of_a_french_headline():
+    # Regression (2026-11-02): the HR prompt asks for numbers in words, and "L'IA à haut risque en emploi
+    # reportée à décembre deux mille vingt-sept" was refused at 12 words, twice, failing the episode.
+    from engine import locale
+    fr = locale.load("fr")["rules"]["number_words"]
+    assert generate.headline_words("L'IA à haut risque en emploi reportée à décembre deux mille vingt-sept", fr) == 10
+    assert generate.headline_words("Trois mille huit cent soixante-quatre euros de plafond", fr) == 4
+    assert generate.headline_words("Une réforme et un décret", fr) == 5  # articles and "et" alone stay words
+    assert generate.headline_words("one thousand tokens", "") == 3  # English: every word counts
+
+
 # --- Themes and sources -----------------------------------------------------------
 
 def test_unknown_story_theme(cfg):

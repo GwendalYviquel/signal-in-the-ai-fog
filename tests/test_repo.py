@@ -144,6 +144,18 @@ def test_published_data_is_committed_and_deployed():
         assert "git add shows docs" in text and "actions/deploy-pages" in text
 
 
+@pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml"])
+def test_each_show_of_a_run_deploys_its_own_pages_artifact(name):
+    # Regression (2026-11-02): Signal and the accounting show both published in the 4:05 run; the
+    # second upload was another artifact named "github-pages", the deployment refused the run
+    # ("Multiple artifacts named github-pages"), and the accounting episode was reported failed.
+    steps = main_steps(workflow(name))
+    upload = next(s for s in steps if "upload-pages-artifact" in s.get("uses", ""))
+    deploy = next(s for s in steps if "deploy-pages" in s.get("uses", ""))
+    assert "${{ matrix.show }}" in upload["with"]["name"]
+    assert deploy["with"]["artifact_name"] == upload["with"]["name"]
+
+
 def test_site_is_redeployed_when_docs_change():
     on = triggers(workflow("deploy-site.yml"))
     assert on["push"]["paths"] == ["docs/**"] and on["push"]["branches"] == ["main"]

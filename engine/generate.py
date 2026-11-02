@@ -9,6 +9,7 @@ import json
 import os
 import re
 from pathlib import Path
+from types import SimpleNamespace
 from urllib.parse import urlparse
 
 import anthropic
@@ -28,6 +29,8 @@ LABELS = ("confirmed", "reported", "unconfirmed")  # how solid a story is, shown
 TOPICS_MAX, TOPIC_MAX_WORDS = 3, 4
 SEGMENTS_MIN, SEGMENTS_MAX = 2, 5
 HEADLINE_MAX_WORDS = 10
+REQUIRED_FIELDS = ("title", "summary", "headlines", "story_of_the_day", "segments",
+                   "number_of_the_day", "what_to_watch", "question")
 FIRST_PERSON = re.compile(locale.load("en")["rules"]["first_person"])  # English; see first_person(cfg)
 UNSPEAKABLE = re.compile(r"[*_#`\[\]<>{}]|https?://")
 
@@ -75,6 +78,19 @@ def first_person(cfg: dict) -> re.Pattern:
 
 def words(text: str) -> int:
     return len(text.split())
+
+
+def headline_words(text: str, number_words: str = "") -> int:
+    """Words of a headline, a number written out counting as one (Regression 2026-11-02: "reportée
+    à décembre deux mille vingt-sept" made a French headline of 12 words, refused twice)."""
+    vocabulary = set(number_words.split())
+    count, in_number = 0, False
+    for w in text.split():
+        number = bool(vocabulary) and all(part in vocabulary for part in w.lower().split("-"))
+        number = number and (in_number or w.lower() != "et")  # "vingt et un", but "réforme et un décret"
+        count += not (number and in_number)
+        in_number = number
+    return count
 
 
 def clean_for_tts(text: str) -> str:
@@ -195,8 +211,7 @@ def agenda_date(item) -> str:
 def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
     """Return (errors, warnings). Errors block the episode, warnings are only logged."""
     errors, warnings = [], []
-    for key in ("title", "summary", "headlines", "story_of_the_day", "segments",
-                "number_of_the_day", "what_to_watch", "question"):
+    for key in REQUIRED_FIELDS:
         if not ep.get(key):
             errors.append(f"Missing field: {key}")
     if errors:
@@ -204,11 +219,12 @@ def validate(ep: dict, cfg: dict) -> tuple[list[str], list[str]]:
 
     if len(ep["headlines"]) != 3:
         errors.append(f"Expected 3 headlines, got {len(ep['headlines'])}")
+    number_words = locale.of(cfg)["rules"].get("number_words", "")
     for h in ep["headlines"]:
         if "," in h:
             errors.append(f"Headline must not contain a comma (write 1000, not 1,000): {h!r}")
-        if words(h) > HEADLINE_MAX_WORDS:
-            errors.append(f"Headline has {words(h)} words, max {HEADLINE_MAX_WORDS}: {h!r}")
+        if headline_words(h, number_words) > HEADLINE_MAX_WORDS:
+            errors.append(f"Headline has {headline_words(h, number_words)} words, max {HEADLINE_MAX_WORDS}: {h!r}")
 
     themes = [t["name"] for t in cfg["themes"]]
     story = ep["story_of_the_day"]
@@ -421,6 +437,13 @@ def _correct(client, gen, system, ep, errors, usage):
                                   tools=[SUBMIT_TOOL], messages=messages)
     costs.add_usage(usage, resp)
     call = next((b for b in resp.content if b.type == "tool_use" and b.name == SUBMIT_TOOL["name"]), None)
+    if call is not None and isinstance(call.input, dict):
+        # Regression (2026-11-02): a light correction of one headline came back without its segments,
+        # and the "missing field" sent the episode back to research. What it leaves out is unchanged.
+        kept = {k: ep[k] for k in REQUIRED_FIELDS if ep.get(k) and not call.input.get(k)}
+        if kept:
+            print(f"Light correction: unchanged fields kept from the episode ({', '.join(kept)})")
+            call = SimpleNamespace(type=call.type, name=call.name, id=call.id, input={**call.input, **kept})
     return call, resp.stop_reason == "max_tokens"
 
 

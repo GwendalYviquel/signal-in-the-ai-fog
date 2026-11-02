@@ -150,11 +150,14 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs
+          name: github-pages-${{ matrix.show }}   # one per show: two shows publish in one run
 
       - name: Deploy the RSS feed
         id: deploy
         if: steps.generate.outputs.published == 'true'
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ matrix.show }}
 
       - name: Notify the phone
         if: always() && env.DRY_RUN == 'false'

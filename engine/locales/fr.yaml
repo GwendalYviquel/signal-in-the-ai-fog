@@ -57,6 +57,8 @@ rules:
   correction_example: "L'épisode du vingt octobre indiquait..."
   topic_max_words: 6                             # les noms français sont plus longs (« Plafond de la sécurité sociale »)
   unspeakable_symbols: "€%«»"
+  # A number written out ("deux mille vingt-sept", as the prompt asks) is one word of a headline.
+  number_words: "zéro un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize vingt trente quarante cinquante soixante cent cents mille et"
 
 site:
   locale: "fr-FR"
