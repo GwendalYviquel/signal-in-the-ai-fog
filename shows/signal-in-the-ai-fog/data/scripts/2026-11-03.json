@@ -1,0 +1,148 @@
+{
+ "title": "Anthropic's filing, Gemini's clock",
+ "summary": "Anthropic's IPO filing turns a model vendor into a disclosed counterparty, and marketing could start the week of November ninth. Also: Gemini 3.6 Flash retires on November nineteenth, the AI Act marking date is four weeks away, and agent gateways keep spreading while Walmart's Agent Profiles are still pending.",
+ "headlines": [
+  "Anthropic's IPO filing puts vendor risk on the table",
+  "Gemini 3.6 Flash retires November nineteenth",
+  "AI Act marking date is four weeks away"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "CBS News reports that Anthropic has filed for an IPO. CNBC's coverage of the filing cites revenue retention of 900 percent and first-half losses of about 80 billion dollars. Digiday says the filing shows a fast-growing advertising bill. According to reports, marketing for the offering could begin the week of November ninth. None of this is final: the timing is reported, not announced by the company, and I have not seen the filing text itself. Separately, ActuIA's coverage of the Artificial Analysis index version five puts Claude Opus 5.5 at 58 and Claude Haiku 5.5 at 36.",
+  "read": "The read here: a public filing turns a vendor into a counterparty you can analyse. For a platform team, the interesting parts are the ones a model card never shows: compute commitments, customer concentration, how revenue splits between API and subscriptions. That is useful input for vendor risk files. It does not change today's availability or pricing. What it likely does is sharpen two habits. Keep a second vendor warm behind your gateway for every critical route. And ask for price protection and long deprecation notice in contracts. Worth watching: the week of November ninth.",
+  "label": "reported",
+  "topics": [
+   "Anthropic",
+   "Claude Duet"
+  ],
+  "sources": [
+   {
+    "title": "CBS News: Anthropic files for IPO, touting AI's ability to improve how humans live",
+    "url": "https://www.cbsnews.com/news/anthropic-ipo-plans-ai-safety/",
+    "primary": false
+   },
+   {
+    "title": "CNBC: Anthropic's IPO plans: 900% revenue retention, but $80 billion in first-half losses",
+    "url": "https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html",
+    "primary": false
+   },
+   {
+    "title": "Digiday: Anthropic's ad bill is soaring, according to IPO filing",
+    "url": "https://digiday.com/marketing/anthropics-ad-bill-is-soaring-according-to-ipo-filing/",
+    "primary": false
+   },
+   {
+    "title": "The Motley Fool: Anthropic Could Begin Marketing Its IPO the Week of Nov. 9",
+    "url": "https://www.fool.com/investing/2026/10/29/anthropic-could-begin-marketing-its-ipo-the-week-o/",
+    "primary": false
+   },
+   {
+    "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+    "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Platform",
+   "facts": "Google's model lifecycle page for its enterprise agent platform lists gemini-3.6-flash as retiring on November nineteenth, with gemini-3.8-flash as the replacement. Help Net Security covered the launch of Gemini 3.8 Flash on September third.",
+   "read": "Why it matters: since that launch was covered in early September, you can test the replacement now, not in the final days before retirement. Search gateway logs for pinned 3.6 identifiers, and run your own evaluation set on 3.8 Flash. Compare cost per completed task, not list price. Give every pinned identifier an owner and an expiry date.",
+   "label": "confirmed",
+   "topics": [
+    "Gemini",
+    "Google",
+    "AI gateways"
+   ],
+   "sources": [
+    {
+     "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+     "primary": true
+    },
+    {
+     "title": "Help Net Security: Google's Gemini 3.8 Flash takes on bigger AI models at a lower cost",
+     "url": "https://www.helpnetsecurity.com/2026/09/03/google-gemini-3-8-flash/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Regulation",
+   "facts": "The European Commission says the AI Omnibus entered into force on July twenty-seventh, 2026. High-risk rules for Annex III systems now apply from December second, 2027. Rules for high-risk AI embedded in regulated products apply from August second, 2028. A Cloud Security Alliance note flags December second, 2026 as the end of the grace period for marking AI-generated content.",
+   "read": "The bigger picture: high-risk got a year of breathing room, marking did not. December second is twenty-nine days away. For a retailer, generated product text, images and chat answers are the first places to look. Build the inventory of generative features now, and name one owner for marking. Check the exact scope with legal.",
+   "label": "confirmed",
+   "topics": [
+    "EU AI Act",
+    "Digital Omnibus"
+   ],
+   "sources": [
+    {
+     "title": "European Commission: AI Omnibus enters into force",
+     "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+     "primary": true
+    },
+    {
+     "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+     "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "Insurify published a release announcing an AI Agent Gateway built around the Model Context Protocol, WebMCP and what it calls agent pathways. Walmart said on October twenty-first that its Agent Profiles would launch within a month. I found no launch notice by this morning.",
+   "read": "What this really signals: the front door for agents is becoming a product, from retail to insurance. The pattern is the same. Identify the agent, expose structured actions, set limits. For a retailer, the question is less which protocol wins and more whether product data and stock APIs are clean enough to expose. Likely, but unproven, that standards converge.",
+   "label": "confirmed",
+   "topics": [
+    "Agentic commerce",
+    "Model Context Protocol",
+    "Walmart"
+   ],
+   "sources": [
+    {
+     "title": "Insurify: Insurify Launches AI Agent Gateway: MCP, WebMCP, and AI Agent Pathways",
+     "url": "https://insurify.com/press/news/insurify-launches-ai-agent-gateway/",
+     "primary": true
+    },
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "November nineteenth. That is the retirement date for Gemini 3.6 Flash, according to Google's lifecycle page. Any pinned route still on it needs a tested replacement before then.",
+  "source": {
+   "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+   "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+   "primary": true
+  }
+ },
+ "what_to_watch": "Anthropic's IPO marketing, which reports say could start the week of November ninth. EuroHPC gigafactory bids, due November twelfth. Microsoft Ignite from November seventeenth. Gemini 3.6 Flash retiring on November nineteenth. Walmart's Agent Profiles, due within a month of October twenty-first. Mistral Large 4 live in Foundry with the EU DataZone option. And AI Act marking on December second.",
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Anthropic IPO marketing could start this week"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC AI gigafactory bid deadline"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite begins"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "Gemini 3.6 Flash retires"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking grace period ends"
+  }
+ ],
+ "question": "Which production routes are pinned to a model identifier with a retirement date, who owns each one, and when did you last run your evaluation set on its replacement?"
+}

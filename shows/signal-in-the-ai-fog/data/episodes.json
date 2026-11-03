@@ -1120,5 +1120,129 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-03",
+    "title": "Anthropic's filing, Gemini's clock",
+    "summary": "Anthropic's IPO filing turns a model vendor into a disclosed counterparty, and marketing could start the week of November ninth. Also: Gemini 3.6 Flash retires on November nineteenth, the AI Act marking date is four weeks away, and agent gateways keep spreading while Walmart's Agent Profiles are still pending.",
+    "headlines": [
+      "Anthropic's IPO filing puts vendor risk on the table",
+      "Gemini 3.6 Flash retires November nineteenth",
+      "AI Act marking date is four weeks away"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Platform",
+      "Regulation",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Anthropic",
+      "Claude Duet",
+      "Gemini",
+      "Google",
+      "AI gateways",
+      "EU AI Act",
+      "Digital Omnibus",
+      "Agentic commerce",
+      "Model Context Protocol",
+      "Walmart"
+    ],
+    "sources": [
+      {
+        "title": "CBS News: Anthropic files for IPO, touting AI's ability to improve how humans live",
+        "url": "https://www.cbsnews.com/news/anthropic-ipo-plans-ai-safety/",
+        "primary": false
+      },
+      {
+        "title": "CNBC: Anthropic's IPO plans: 900% revenue retention, but $80 billion in first-half losses",
+        "url": "https://www.cnbc.com/2026/10/26/anthropic-ipo-live-updates-ai-s-1-filing.html",
+        "primary": false
+      },
+      {
+        "title": "Digiday: Anthropic's ad bill is soaring, according to IPO filing",
+        "url": "https://digiday.com/marketing/anthropics-ad-bill-is-soaring-according-to-ipo-filing/",
+        "primary": false
+      },
+      {
+        "title": "The Motley Fool: Anthropic Could Begin Marketing Its IPO the Week of Nov. 9",
+        "url": "https://www.fool.com/investing/2026/10/29/anthropic-could-begin-marketing-its-ipo-the-week-o/",
+        "primary": false
+      },
+      {
+        "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+        "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+        "primary": false
+      },
+      {
+        "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+        "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+        "primary": true
+      },
+      {
+        "title": "Help Net Security: Google's Gemini 3.8 Flash takes on bigger AI models at a lower cost",
+        "url": "https://www.helpnetsecurity.com/2026/09/03/google-gemini-3-8-flash/",
+        "primary": false
+      },
+      {
+        "title": "European Commission: AI Omnibus enters into force",
+        "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+        "primary": true
+      },
+      {
+        "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+        "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+        "primary": false
+      },
+      {
+        "title": "Insurify: Insurify Launches AI Agent Gateway: MCP, WebMCP, and AI Agent Pathways",
+        "url": "https://insurify.com/press/news/insurify-launches-ai-agent-gateway/",
+        "primary": true
+      },
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-03T04:06:17+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-03",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-03/episode-2026-11-03.mp3",
+    "audio_bytes": 4824740,
+    "duration_seconds": 301.5575510204082,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 20.3,
+        "title": "Story of the day: Anthropic's IPO filing puts vendor risk on the table"
+      },
+      {
+        "start": 101.5,
+        "title": "Platform: Gemini"
+      },
+      {
+        "start": 145.7,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 194.4,
+        "title": "Retail and agents: Agentic commerce"
+      },
+      {
+        "start": 242.6,
+        "title": "Number of the day"
+      },
+      {
+        "start": 255.6,
+        "title": "What to watch"
+      },
+      {
+        "start": 282.0,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

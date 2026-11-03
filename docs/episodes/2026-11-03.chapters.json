@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 20.3,
+   "title": "Story of the day: Anthropic's IPO filing puts vendor risk on the table"
+  },
+  {
+   "startTime": 101.5,
+   "title": "Platform: Gemini"
+  },
+  {
+   "startTime": 145.7,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 194.4,
+   "title": "Retail and agents: Agentic commerce"
+  },
+  {
+   "startTime": 242.6,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 255.6,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 282.0,
+   "title": "Question for your team"
+  }
+ ]
+}
