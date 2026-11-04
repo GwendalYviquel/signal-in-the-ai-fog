@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.1,
+   "title": "Story of the day: Walmart's agent identity layer still pending"
+  },
+  {
+   "startTime": 123.5,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 173.6,
+   "title": "Quality: Mistral"
+  },
+  {
+   "startTime": 218.0,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 258.4,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 272.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 300.2,
+   "title": "Question for your team"
+  }
+ ]
+}

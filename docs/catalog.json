@@ -16,6 +16,120 @@
  },
  "episodes": [
   {
+   "date": "2026-11-04",
+   "status": "published",
+   "title": "Who is shopping: Walmart's agent identity layer",
+   "summary": "Walmart's Agent Profiles are still pending, and they target a gap many retailers share: agent purchases that look like customer purchases. Also today: a thinly sourced warning on export controls, a Mistral efficiency claim worth testing yourself, and the AI Act marking deadline on December second.",
+   "headlines": [
+    "Walmart's agent identity layer still pending",
+    "Mistral's CEO warns on export controls",
+    "AI Act marking deadline December second"
+   ],
+   "themes": [
+    "Retail and agents",
+    "Sovereignty and Europe",
+    "Quality",
+    "Regulation"
+   ],
+   "topics": [
+    "Walmart",
+    "Agentic commerce",
+    "Model Context Protocol",
+    "Mistral",
+    "Open-weight models",
+    "EU AI Act",
+    "Digital Omnibus"
+   ],
+   "page": "episodes/2026-11-04.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 18.1,
+     "title": "Story of the day: Walmart's agent identity layer still pending"
+    },
+    {
+     "start": 123.5,
+     "title": "Sovereignty and Europe: Mistral"
+    },
+    {
+     "start": 173.6,
+     "title": "Quality: Mistral"
+    },
+    {
+     "start": 218.0,
+     "title": "Regulation: EU AI Act"
+    },
+    {
+     "start": 258.4,
+     "title": "Number of the day"
+    },
+    {
+     "start": 272.5,
+     "title": "What to watch"
+    },
+    {
+     "start": 300.2,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 318,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-04/episode-2026-11-04.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+     "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+     "primary": false
+    },
+    {
+     "title": "MediaPost: Walmart Defines Agent Shopping In Move Toward AI-Driven Retail",
+     "url": "https://www.mediapost.com/publications/article/418914/walmart-defines-agent-shopping-in-move-toward-ai-d.html",
+     "primary": false
+    },
+    {
+     "title": "Dig.watch: Walmart announces AI agent and gateway shopping tools",
+     "url": "https://dig.watch/updates/walmart-announces-ai-agent-shopping-tools",
+     "primary": false
+    },
+    {
+     "title": "EcomCrew: Walmart Just Opened Its Store to AI Shopping Bots",
+     "url": "https://www.ecomcrew.com/walmart-just-opened-its-store-to-ai-shopping-bots/",
+     "primary": false
+    },
+    {
+     "title": "Emergent: Mistral AI Chief Warns of US, Chinese AI Export Controls",
+     "url": "https://emergent.sh/news/mistral-ai-chief-warns-us-chinese-ai-export",
+     "primary": false
+    },
+    {
+     "title": "TechCrunch: Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity",
+     "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
+     "primary": false
+    },
+    {
+     "title": "European Commission: AI Omnibus enters into force",
+     "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+     "primary": true
+    },
+    {
+     "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+     "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Wednesday, November 4. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Walmart's agent identity layer still pending, Mistral's CEO warns on export controls, and AI Act marking deadline December second.\n\nFirst, the story of the day.\n\nWalmart announced on October twenty-first that Agent Profiles will launch within the next month. Today, according to Walmart, an AI agent shopping for a customer signs in with the customer's own account. Agent Profiles change that. The first time an agent shops through the Walmart Agent Gateway, Walmart creates a profile for it automatically. The customer then links it by signing in to their Walmart account. Purchases made by each agent then appear separately from the customer's own orders. The customer can cap spending, require approval, and delete the profile. Reports say the gateway is in beta, works over the Model Context Protocol, and that agent builders must request access. Dig.watch lists ChatGPT, Gemini and Meta's Muse as assistants that can connect. Walmart says prices are the same for an agent as for a person. By this morning I found no launch notice for Agent Profiles.\n\nThe read here: the interesting part is attribution, not permissions. Until agents have their own identity, a retailer cannot tell an agent order from a human one. Conversion, returns, basket size and fraud signals get blended into one number. For a retailer, the lesson is generic. Decide how agent traffic will be identified in your own logs and analytics before volume arrives. Keep a baseline for human sessions now, so you can compare later. Then ask whether your product and stock APIs are clean enough to hand to an outside agent, because the gateway is only as good as the data behind it. Worth watching: whether Walmart ships on time, and what its first reports show.\n\nNext, Sovereignty and Europe.\n\nAccording to Emergent, a statement officially launched on November second, 2026, has Mistral's chief executive warning that American and Chinese export controls could fragment the global AI ecosystem. The outlet says the statement comes as governments worldwide tighten oversight of AI.\n\nThe read here: treat this as reported by one press outlet, and check it against a primary Mistral statement before you rely on it. If it is accurate, it matters for the sovereignty file: European models still run on hardware that European policy does not control. For a platform team, the practical question is whether a European model on European soil is also insulated from supply shocks. Worth watching for any effect on GPU access.\n\nNext, Quality.\n\nAccording to TechCrunch, Mistral says Mistral Large 4 performs comparably to the Chinese open-weight model GLM-5.3, particularly on cyber tasks. Mistral also says Large 4 uses forty-seven percent fewer tokens per task. TechCrunch relays these as the company's own claims, published when the weights were released on October twenty-ninth.\n\nWhy it matters: tokens per task is the right metric, and it is also the easiest to flatter with a chosen comparison. Measure it on your own tasks, against the model you actually run today. Count the output tokens, the retries and the tool calls. A vendor figure is a hypothesis for your evaluation set to confirm or reject.\n\nNext, Regulation.\n\nThe European Commission says the AI Omnibus entered into force on July twenty-seventh, 2026, pushing Annex III high-risk rules to December second, 2027. A Cloud Security Alliance note says the grace period for marking AI-generated content ends on December second, 2026.\n\nThe bigger picture: the high-risk delay is the headline, but the marking date is the one still on the calendar. For a retailer, list every generative feature in production, from product descriptions to chat answers and images. Name one owner, and confirm the exact scope with legal.\n\nThe number of the day.\n\nForty-seven percent. That is how many fewer tokens per task Mistral claims Large 4 uses, according to TechCrunch. It is a vendor figure, so measure it on your own tasks before you count it as a saving.\n\nWhat to watch.\n\nAnthropic's IPO marketing, which reports say could start the week of November ninth. EuroHPC gigafactory bids, due November twelfth. Microsoft Ignite from November seventeenth. Gemini 3.6 Flash retiring on November nineteenth. AI Act marking on December second. Walmart's Agent Profiles, due within a month of October twenty-first. And Mistral Large 4 live in Foundry with the EU DataZone option, which I still could not confirm.\n\nAnd a question for your team.\n\nIf an AI agent bought from your site tomorrow, could you tell it apart from a human customer in your logs, and what would you measure first?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-11-03",
    "status": "published",
    "title": "Anthropic's filing, Gemini's clock",

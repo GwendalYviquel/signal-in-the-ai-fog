@@ -1244,5 +1244,116 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-04",
+    "title": "Who is shopping: Walmart's agent identity layer",
+    "summary": "Walmart's Agent Profiles are still pending, and they target a gap many retailers share: agent purchases that look like customer purchases. Also today: a thinly sourced warning on export controls, a Mistral efficiency claim worth testing yourself, and the AI Act marking deadline on December second.",
+    "headlines": [
+      "Walmart's agent identity layer still pending",
+      "Mistral's CEO warns on export controls",
+      "AI Act marking deadline December second"
+    ],
+    "themes": [
+      "Retail and agents",
+      "Sovereignty and Europe",
+      "Quality",
+      "Regulation"
+    ],
+    "topics": [
+      "Walmart",
+      "Agentic commerce",
+      "Model Context Protocol",
+      "Mistral",
+      "Open-weight models",
+      "EU AI Act",
+      "Digital Omnibus"
+    ],
+    "sources": [
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      },
+      {
+        "title": "Unite.AI: Walmart Introduces Agent Profiles, Gateway for AI Shopping Agents",
+        "url": "https://www.unite.ai/walmart-introduces-agent-profiles-gateway-for-ai-shopping-agents/",
+        "primary": false
+      },
+      {
+        "title": "MediaPost: Walmart Defines Agent Shopping In Move Toward AI-Driven Retail",
+        "url": "https://www.mediapost.com/publications/article/418914/walmart-defines-agent-shopping-in-move-toward-ai-d.html",
+        "primary": false
+      },
+      {
+        "title": "Dig.watch: Walmart announces AI agent and gateway shopping tools",
+        "url": "https://dig.watch/updates/walmart-announces-ai-agent-shopping-tools",
+        "primary": false
+      },
+      {
+        "title": "EcomCrew: Walmart Just Opened Its Store to AI Shopping Bots",
+        "url": "https://www.ecomcrew.com/walmart-just-opened-its-store-to-ai-shopping-bots/",
+        "primary": false
+      },
+      {
+        "title": "Emergent: Mistral AI Chief Warns of US, Chinese AI Export Controls",
+        "url": "https://emergent.sh/news/mistral-ai-chief-warns-us-chinese-ai-export",
+        "primary": false
+      },
+      {
+        "title": "TechCrunch: Mistral releases weights for its trillion-parameter AI model, targeting cybersecurity",
+        "url": "https://techcrunch.com/2026/10/29/mistral-releases-weights-for-its-trillion-parameter-ai-model-targeting-cybersecurity/",
+        "primary": false
+      },
+      {
+        "title": "European Commission: AI Omnibus enters into force",
+        "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+        "primary": true
+      },
+      {
+        "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+        "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-04T04:36:22+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-04",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-04/episode-2026-11-04.mp3",
+    "audio_bytes": 5082619,
+    "duration_seconds": 317.67510204081634,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.1,
+        "title": "Story of the day: Walmart's agent identity layer still pending"
+      },
+      {
+        "start": 123.5,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 173.6,
+        "title": "Quality: Mistral"
+      },
+      {
+        "start": 218.0,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 258.4,
+        "title": "Number of the day"
+      },
+      {
+        "start": 272.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 300.2,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
