@@ -1355,5 +1355,129 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-05",
+    "title": "Carbon is announced, not available",
+    "summary": "Google's Gemini 4 Carbon tops a benchmark but is limited to vetted cyber defenders, with a price path that doubles. Also: EuroHPC gigafactory bids due next week, a Mistral EU endpoint premium, a rebased benchmark index, and retailers weighing agents against ad revenue.",
+    "headlines": [
+      "Gemini 4 Carbon announced but gated",
+      "EuroHPC gigafactory bids due next week",
+      "Shopping agents versus retail media revenue"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform",
+      "Quality",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Gemini",
+      "Google",
+      "Artificial Analysis",
+      "EuroHPC",
+      "Sovereign AI infrastructure",
+      "Mistral",
+      "AI cost control",
+      "Agentic commerce",
+      "Walmart",
+      "Amazon"
+    ],
+    "sources": [
+      {
+        "title": "Google: Gemini 4 Carbon, our next frontier model",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "primary": true
+      },
+      {
+        "title": "gHacks: Google Launches Gemini 4 Carbon for Cyber Defenders First, With API Pricing From $2 per Million Tokens",
+        "url": "https://www.ghacks.net/2026/10/31/google-launches-gemini-4-carbon-for-cyber-defenders-first-with-api-pricing-from-2-per-million-tokens/",
+        "primary": false
+      },
+      {
+        "title": "MyClaw: Gemini 4 Carbon Review: Price, Benchmarks, and High Thinking",
+        "url": "https://myclaw.ai/blog/gemini-4-carbon-review",
+        "primary": false
+      },
+      {
+        "title": "EuroHPC JU: The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+        "primary": true
+      },
+      {
+        "title": "Sullivan & Cromwell: EuroHPC Joint Undertaking Launches AI Gigafactories Call",
+        "url": "https://www.sullcrom.com/insights/memo/2026/October/EuroHPC-Joint-Undertaking-Launches-AI-Gigafactories-Call",
+        "primary": false
+      },
+      {
+        "title": "DataNorth: Mistral Large 4 is now open weight: free to run in-house, but it needs at least four B200 GPUs",
+        "url": "https://datanorth.ai/news/mistral-large-4-open-weights",
+        "primary": false
+      },
+      {
+        "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+        "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+        "primary": false
+      },
+      {
+        "title": "FashionNetwork (Reuters): Is agent-driven commerce a threat to major online retailers?",
+        "url": "https://us.fashionnetwork.com/news/Is-agent-driven-commerce-a-threat-to-major-online-retailers-,1881993.html",
+        "primary": false
+      },
+      {
+        "title": "Reuters via WinCountry: Analysis-AI shopping agents could threaten Amazon and Walmart's ad business",
+        "url": "https://wincountry.com/2026/11/04/analysis-ai-shopping-agents-could-threaten-amazon-and-walmarts-ad-business/",
+        "primary": false
+      },
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-05T04:06:25+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-05",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-05/episode-2026-11-05.mp3",
+    "audio_bytes": 5640970,
+    "duration_seconds": 352.57469387755106,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.0,
+        "title": "Story of the day: Gemini 4 Carbon announced but gated"
+      },
+      {
+        "start": 120.8,
+        "title": "Sovereignty and Europe: EuroHPC"
+      },
+      {
+        "start": 168.9,
+        "title": "Platform: Mistral"
+      },
+      {
+        "start": 210.6,
+        "title": "Quality: Artificial Analysis"
+      },
+      {
+        "start": 248.4,
+        "title": "Retail and agents: Agentic commerce"
+      },
+      {
+        "start": 288.7,
+        "title": "Number of the day"
+      },
+      {
+        "start": 303.4,
+        "title": "What to watch"
+      },
+      {
+        "start": 332.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

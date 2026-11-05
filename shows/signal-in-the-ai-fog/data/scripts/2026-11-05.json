@@ -1,0 +1,168 @@
+{
+ "title": "Carbon is announced, not available",
+ "summary": "Google's Gemini 4 Carbon tops a benchmark but is limited to vetted cyber defenders, with a price path that doubles. Also: EuroHPC gigafactory bids due next week, a Mistral EU endpoint premium, a rebased benchmark index, and retailers weighing agents against ad revenue.",
+ "headlines": [
+  "Gemini 4 Carbon announced but gated",
+  "EuroHPC gigafactory bids due next week",
+  "Shopping agents versus retail media revenue"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Google announced Gemini 4 Carbon on October twenty-eighth and calls it its strongest model. Google says it ranks first on version five of the Artificial Analysis Intelligence Index, at 59. It is not on the public Gemini API. Google says access starts with a subset of cyber defenders in its Fairwind program, then more trusted partners, before developers, businesses and consumers, with no date given. Announced pricing is an introductory two dollars per million input tokens and ten dollars per million output tokens, with cached input ninety-five percent cheaper. Press coverage says a footnote raises this to four dollars per million input tokens and twenty dollars per million output tokens afterwards, and that Google has not said when the introductory period ends. For Argon, the pricing page lists the introductory rate through November thirtieth, with the higher rate from December first.",
+  "read": "What this really signals: a model can top a leaderboard and still be impossible to buy. Carbon is a benchmark result today, not a production option. The price path matters more for budgets. A rate that doubles on a date you do not control breaks any forecast built on the introductory figure. For a platform team, do three things. Budget on the higher price, not the launch price. Keep the gateway route for Carbon disabled until it is generally available. And put the end of every introductory rate in a calendar with an owner. Worth watching: whether Google publishes an end date for Carbon's introductory window, and when developers get access.",
+  "label": "confirmed",
+  "topics": [
+   "Gemini",
+   "Google",
+   "Artificial Analysis"
+  ],
+  "sources": [
+   {
+    "title": "Google: Gemini 4 Carbon, our next frontier model",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+    "primary": true
+   },
+   {
+    "title": "gHacks: Google Launches Gemini 4 Carbon for Cyber Defenders First, With API Pricing From $2 per Million Tokens",
+    "url": "https://www.ghacks.net/2026/10/31/google-launches-gemini-4-carbon-for-cyber-defenders-first-with-api-pricing-from-2-per-million-tokens/",
+    "primary": false
+   },
+   {
+    "title": "MyClaw: Gemini 4 Carbon Review: Price, Benchmarks, and High Thinking",
+    "url": "https://myclaw.ai/blog/gemini-4-carbon-review",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "The EuroHPC Joint Undertaking's call for up to seven AI gigafactories closes on November twelfth at 16:00 Luxembourg time. Consortia or special purpose vehicles can bid. Each site must offer roughly three to four times the compute of the JUPITER supercomputer. According to a Sullivan and Cromwell memo, the call does not generally bar non-EU debt or equity financing.",
+   "read": "The bigger picture: this is where European capacity gets decided, but selection comes after the bid. For a platform team, nothing here is rentable yet. Likely years away. Worth watching which consortia name model vendors and cloud partners, and whether the financing rules shape who controls the capacity.",
+   "label": "confirmed",
+   "topics": [
+    "EuroHPC",
+    "Sovereign AI infrastructure"
+   ],
+   "sources": [
+    {
+     "title": "EuroHPC JU: The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+     "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+     "primary": true
+    },
+    {
+     "title": "Sullivan & Cromwell: EuroHPC Joint Undertaking Launches AI Gigafactories Call",
+     "url": "https://www.sullcrom.com/insights/memo/2026/October/EuroHPC-Joint-Undertaking-Launches-AI-Gigafactories-Call",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "According to the analyst site DataNorth, Mistral's default API address makes no promise about where prompts are processed. Its EU endpoint processes in European servers at one point one times the list price. The site says Mistral's documentation does not list which models run in which region, and that account and billing data can still be handled outside the region.",
+   "read": "Why it matters: region becomes a price line. A gateway should treat the default and EU routes as separate entries, with their own price, approval and logs. Ask the EU endpoint for its model list before promising residency. Verify these claims against Mistral's documentation.",
+   "label": "reported",
+   "topics": [
+    "Mistral",
+    "AI cost control"
+   ],
+   "sources": [
+    {
+     "title": "DataNorth: Mistral Large 4 is now open weight: free to run in-house, but it needs at least four B200 GPUs",
+     "url": "https://datanorth.ai/news/mistral-large-4-open-weights",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Quality",
+   "facts": "Google says Gemini 4 Carbon ranks first on version five of the Artificial Analysis Intelligence Index, at 59. ActuIA reports that on the same new version, Mistral Large 4 falls from 38 to 25.",
+   "read": "The read here: a rebased index changes every number at once. Scores from different index versions are not comparable, so a vendor slide quoting one needs its version. Use public indexes to shortlist, then decide on your own evaluation set, with the version recorded next to each score.",
+   "label": "reported",
+   "topics": [
+    "Artificial Analysis",
+    "Mistral"
+   ],
+   "sources": [
+    {
+     "title": "Google: Gemini 4 Carbon, our next frontier model",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+     "primary": true
+    },
+    {
+     "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+     "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "According to Reuters, shopping agents pose a dilemma for retailers such as Walmart and Amazon: how to admit them without hurting advertising revenue and the customer data behind it. Reuters says Amazon has blocked Meta's Muse agent, while Walmart partners with it. Walmart announced its agent infrastructure on October twenty-first.",
+   "read": "What this really signals: agent access is also a revenue question. Sponsored placements assume a human sees the page. For a retailer, ask what an agent sees, what it can be shown, and who gets paid for influence. Settle this before agent traffic is large.",
+   "label": "reported",
+   "topics": [
+    "Agentic commerce",
+    "Walmart",
+    "Amazon"
+   ],
+   "sources": [
+    {
+     "title": "FashionNetwork (Reuters): Is agent-driven commerce a threat to major online retailers?",
+     "url": "https://us.fashionnetwork.com/news/Is-agent-driven-commerce-a-threat-to-major-online-retailers-,1881993.html",
+     "primary": false
+    },
+    {
+     "title": "Reuters via WinCountry: Analysis-AI shopping agents could threaten Amazon and Walmart's ad business",
+     "url": "https://wincountry.com/2026/11/04/analysis-ai-shopping-agents-could-threaten-amazon-and-walmarts-ad-business/",
+     "primary": false
+    },
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Ten to twenty percent. That is Morgan Stanley's July estimate, cited by Reuters, for the share of US e-commerce spending agents could handle by 2030. It is a forecast, not a measurement.",
+  "source": {
+   "title": "FashionNetwork (Reuters): Is agent-driven commerce a threat to major online retailers?",
+   "url": "https://us.fashionnetwork.com/news/Is-agent-driven-commerce-a-threat-to-major-online-retailers-,1881993.html",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Anthropic's IPO marketing, which reports say could start the week of November ninth. EuroHPC bids, due November twelfth. Microsoft Ignite from November seventeenth. Gemini 3.6 Flash retiring on November nineteenth. Walmart's Agent Profiles, due by about November twenty-first. Argon's introductory price ending November thirtieth. AI Act marking on December second. And any date for wider Carbon access.",
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Anthropic IPO marketing could start this week"
+  },
+  {
+   "date": "2026-11-12",
+   "text": "EuroHPC AI gigafactory bids due"
+  },
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite begins"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "Gemini 3.6 Flash retires"
+  },
+  {
+   "date": "2026-11-21",
+   "text": "Walmart Agent Profiles expected by about this date"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Gemini 4 Argon introductory price ends"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations apply"
+  }
+ ],
+ "question": "If a vendor's introductory price doubled on a date you do not control, which of your budgets, quotas or alerts would catch it before the invoice does?"
+}

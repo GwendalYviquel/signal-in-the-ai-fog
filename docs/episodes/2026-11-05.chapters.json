@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.0,
+   "title": "Story of the day: Gemini 4 Carbon announced but gated"
+  },
+  {
+   "startTime": 120.8,
+   "title": "Sovereignty and Europe: EuroHPC"
+  },
+  {
+   "startTime": 168.9,
+   "title": "Platform: Mistral"
+  },
+  {
+   "startTime": 210.6,
+   "title": "Quality: Artificial Analysis"
+  },
+  {
+   "startTime": 248.4,
+   "title": "Retail and agents: Agentic commerce"
+  },
+  {
+   "startTime": 288.7,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 303.4,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 332.4,
+   "title": "Question for your team"
+  }
+ ]
+}

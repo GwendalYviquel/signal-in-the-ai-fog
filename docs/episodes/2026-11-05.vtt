@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.561
+Good morning, it's Thursday, November 5.
+
+00:00:02.625 --> 00:00:09.346
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.410 --> 00:00:17.861
+Today: Gemini 4 Carbon announced but gated, EuroHPC gigafactory bids due next week, and Shopping agents versus retail media revenue.
+
+00:00:17.925 --> 00:00:19.717
+First, the story of the day.
+
+00:00:19.781 --> 00:00:25.607
+Google announced Gemini 4 Carbon on October twenty-eighth and calls it its strongest model.
+
+00:00:25.671 --> 00:00:31.816
+Google says it ranks first on version five of the Artificial Analysis Intelligence Index, at 59.
+
+00:00:31.880 --> 00:00:34.121
+It is not on the public Gemini API.
+
+00:00:34.185 --> 00:00:45.452
+Google says access starts with a subset of cyber defenders in its Fairwind program, then more trusted partners, before developers, businesses and consumers, with no date given.
+
+00:00:45.516 --> 00:00:55.951
+Announced pricing is an introductory two dollars per million input tokens and ten dollars per million output tokens, with cached input ninety-five percent cheaper.
+
+00:00:56.015 --> 00:01:09.074
+Press coverage says a footnote raises this to four dollars per million input tokens and twenty dollars per million output tokens afterwards, and that Google has not said when the introductory period ends.
+
+00:01:09.138 --> 00:01:17.140
+For Argon, the pricing page lists the introductory rate through November thirtieth, with the higher rate from December first.
+
+00:01:17.740 --> 00:01:23.452
+What this really signals: a model can top a leaderboard and still be impossible to buy.
+
+00:01:23.518 --> 00:01:27.457
+Carbon is a benchmark result today, not a production option.
+
+00:01:27.523 --> 00:01:30.149
+The price path matters more for budgets.
+
+00:01:30.215 --> 00:01:36.912
+A rate that doubles on a date you do not control breaks any forecast built on the introductory figure.
+
+00:01:36.977 --> 00:01:39.407
+For a platform team, do three things.
+
+00:01:39.472 --> 00:01:42.690
+Budget on the higher price, not the launch price.
+
+00:01:42.755 --> 00:01:47.680
+Keep the gateway route for Carbon disabled until it is generally available.
+
+00:01:47.745 --> 00:01:52.407
+And put the end of every introductory rate in a calendar with an owner.
+
+00:01:52.472 --> 00:02:00.220
+Worth watching: whether Google publishes an end date for Carbon's introductory window, and when developers get access.
+
+00:02:00.820 --> 00:02:02.774
+Next, Sovereignty and Europe.
+
+00:02:02.842 --> 00:02:11.063
+The EuroHPC Joint Undertaking's call for up to seven AI gigafactories closes on November twelfth at 16:00 Luxembourg time.
+
+00:02:11.130 --> 00:02:14.230
+Consortia or special purpose vehicles can bid.
+
+00:02:14.297 --> 00:02:20.362
+Each site must offer roughly three to four times the compute of the JUPITER supercomputer.
+
+00:02:20.430 --> 00:02:27.640
+According to a Sullivan and Cromwell memo, the call does not generally bar non-EU debt or equity financing.
+
+00:02:28.240 --> 00:02:34.827
+The bigger picture: this is where European capacity gets decided, but selection comes after the bid.
+
+00:02:34.893 --> 00:02:38.186
+For a platform team, nothing here is rentable yet.
+
+00:02:38.252 --> 00:02:39.438
+Likely years away.
+
+00:02:39.504 --> 00:02:48.330
+Worth watching which consortia name model vendors and cloud partners, and whether the financing rules shape who controls the capacity.
+
+00:02:48.930 --> 00:02:49.789
+Next, Platform.
+
+00:02:49.847 --> 00:02:56.836
+According to the analyst site DataNorth, Mistral's default API address makes no promise about where prompts are processed.
+
+00:02:56.894 --> 00:03:01.706
+Its EU endpoint processes in European servers at one point one times the list price.
+
+00:03:01.763 --> 00:03:10.930
+The site says Mistral's documentation does not list which models run in which region, and that account and billing data can still be handled outside the region.
+
+00:03:11.530 --> 00:03:14.477
+Why it matters: region becomes a price line.
+
+00:03:14.544 --> 00:03:21.912
+A gateway should treat the default and EU routes as separate entries, with their own price, approval and logs.
+
+00:03:21.979 --> 00:03:26.400
+Ask the EU endpoint for its model list before promising residency.
+
+00:03:26.467 --> 00:03:29.950
+Verify these claims against Mistral's documentation.
+
+00:03:30.550 --> 00:03:31.707
+Next, Quality.
+
+00:03:31.790 --> 00:03:40.801
+Google says Gemini 4 Carbon ranks first on version five of the Artificial Analysis Intelligence Index, at 59.
+
+00:03:40.884 --> 00:03:47.580
+ActuIA reports that on the same new version, Mistral Large 4 falls from 38 to 25.
+
+00:03:48.180 --> 00:03:52.304
+The read here: a rebased index changes every number at once.
+
+00:03:52.373 --> 00:03:59.590
+Scores from different index versions are not comparable, so a vendor slide quoting one needs its version.
+
+00:03:59.659 --> 00:04:07.770
+Use public indexes to shortlist, then decide on your own evaluation set, with the version recorded next to each score.
+
+00:04:08.370 --> 00:04:09.849
+Next, Retail and agents.
+
+00:04:09.911 --> 00:04:21.065
+According to Reuters, shopping agents pose a dilemma for retailers such as Walmart and Amazon: how to admit them without hurting advertising revenue and the customer data behind it.
+
+00:04:21.126 --> 00:04:26.180
+Reuters says Amazon has blocked Meta's Muse agent, while Walmart partners with it.
+
+00:04:26.241 --> 00:04:30.370
+Walmart announced its agent infrastructure on October twenty-first.
+
+00:04:30.970 --> 00:04:35.411
+What this really signals: agent access is also a revenue question.
+
+00:04:35.479 --> 00:04:38.843
+Sponsored placements assume a human sees the page.
+
+00:04:38.911 --> 00:04:45.236
+For a retailer, ask what an agent sees, what it can be shown, and who gets paid for influence.
+
+00:04:45.304 --> 00:04:48.130
+Settle this before agent traffic is large.
+
+00:04:48.730 --> 00:04:50.258
+The number of the day.
+
+00:04:50.328 --> 00:04:51.856
+Ten to twenty percent.
+
+00:04:51.925 --> 00:05:00.678
+That is Morgan Stanley's July estimate, cited by Reuters, for the share of US e-commerce spending agents could handle by 2030.
+
+00:05:00.748 --> 00:05:03.249
+It is a forecast, not a measurement.
+
+00:05:03.318 --> 00:05:04.291
+What to watch.
+
+00:05:04.360 --> 00:05:10.195
+Anthropic's IPO marketing, which reports say could start the week of November ninth.
+
+00:05:10.265 --> 00:05:12.696
+EuroHPC bids, due November twelfth.
+
+00:05:12.766 --> 00:05:15.753
+Microsoft Ignite from November seventeenth.
+
+00:05:15.822 --> 00:05:19.226
+Gemini 3.6 Flash retiring on November nineteenth.
+
+00:05:19.295 --> 00:05:23.533
+Walmart's Agent Profiles, due by about November twenty-first.
+
+00:05:23.602 --> 00:05:27.284
+Argon's introductory price ending November thirtieth.
+
+00:05:27.354 --> 00:05:29.715
+AI Act marking on December second.
+
+00:05:29.785 --> 00:05:32.355
+And any date for wider Carbon access.
+
+00:05:32.425 --> 00:05:34.439
+And a question for your team.
+
+00:05:34.509 --> 00:05:44.929
+If a vendor's introductory price doubled on a date you do not control, which of your budgets, quotas or alerts would catch it before the invoice does?
+
+00:05:44.998 --> 00:05:46.387
+That's it for today.
+
+00:05:46.457 --> 00:05:49.166
+Sources are in the episode description.
+
+00:05:49.236 --> 00:05:51.320
+This was Signal in the AI Fog.
+
+00:05:51.389 --> 00:05:52.570
+See you tomorrow.
