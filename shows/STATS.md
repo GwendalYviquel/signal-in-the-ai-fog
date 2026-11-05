@@ -13,6 +13,6 @@ Downloads of each episode's MP3: the catalog site's player, podcast apps reading
 
 | Show | Episodes published | Downloads | Last 7 days | Per episode | Snapshot |
 | --- | ---: | ---: | ---: | ---: | --- |
-| [Signal in the AI Fog](signal-in-the-ai-fog/STATS.md) | 13 | 38 | +20 | 2.9 | 2026-11-05 |
+| [Signal in the AI Fog](signal-in-the-ai-fog/STATS.md) | 14 | 38 | +20 | 2.7 | 2026-11-05 |
 | [Signal in the Tax Fog](accounting-news-fr/STATS.md) | 3 | 7 | +5 | 2.3 | 2026-11-05 |
 | [Signal in the HR Fog](hr-news-fr/STATS.md) | 3 | 8 | +5 | 2.7 | 2026-11-05 |
