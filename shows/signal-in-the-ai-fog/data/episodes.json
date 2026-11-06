@@ -1479,5 +1479,122 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-06",
+    "title": "Models are leases, not purchases",
+    "summary": "This week's pattern: model identifiers, prices and benchmark scales all moved on dates you do not control, as Google's Flash lifecycle shows. Also: what self-hosting Mistral Large 4 takes, LLMjacking against enterprise AI keys, a vendor security benchmark to treat as a hypothesis, and a Foundry follow-up.",
+    "headlines": [
+      "Model shelf lives keep shrinking",
+      "LLMjacking targets enterprise AI keys",
+      "What self-hosting Mistral Large 4 takes"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform",
+      "Quality"
+    ],
+    "topics": [
+      "Gemini",
+      "Google",
+      "Artificial Analysis",
+      "Mistral",
+      "Open-weight models",
+      "Sovereign AI infrastructure",
+      "AI gateways",
+      "AI cost control",
+      "DeepSeek"
+    ],
+    "sources": [
+      {
+        "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+        "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+        "primary": true
+      },
+      {
+        "title": "Google AI for Developers: Gemini deprecations",
+        "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+        "primary": true
+      },
+      {
+        "title": "Google: Gemini 4 Carbon, our next frontier model",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+        "primary": true
+      },
+      {
+        "title": "gHacks: Google Launches Gemini 4 Carbon for Cyber Defenders First, With API Pricing From $2 per Million Tokens",
+        "url": "https://www.ghacks.net/2026/10/31/google-launches-gemini-4-carbon-for-cyber-defenders-first-with-api-pricing-from-2-per-million-tokens/",
+        "primary": false
+      },
+      {
+        "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+        "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+        "primary": false
+      },
+      {
+        "title": "Mistral: Mistral Large 4 (Le Chonk) is now open weight",
+        "url": "https://mistral.ai/news/mistral-large-4-oss/",
+        "primary": true
+      },
+      {
+        "title": "SmartScope: Mistral Large 4: Local PC Requirements, Weight Sizes, License, and API Pricing",
+        "url": "https://smartscope.blog/en/blog/mistral-large-4-local-pc-requirements-weight-sizes-2026/",
+        "primary": false
+      },
+      {
+        "title": "DataNorth: Mistral Large 4 is now open weight: free to run in-house, but it needs at least four B200 GPUs",
+        "url": "https://datanorth.ai/news/mistral-large-4-open-weights",
+        "primary": false
+      },
+      {
+        "title": "TechRadar: Hackers are using 'LLMjacking attacks' to hijack company AI usage and run up huge cloud bills",
+        "url": "https://techradar.com/pro/security/hackers-are-using-llmjacking-attacks-to-hijack-company-ai-usage-and-run-up-huge-cloud-bills",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-06T04:06:11+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-06",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-06/episode-2026-11-06.mp3",
+    "audio_bytes": 5350116,
+    "duration_seconds": 334.3934693877551,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.9,
+        "title": "Story of the day: Model shelf lives keep shrinking"
+      },
+      {
+        "start": 120.4,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 167.4,
+        "title": "Platform: AI gateways"
+      },
+      {
+        "start": 210.0,
+        "title": "Quality: Mistral"
+      },
+      {
+        "start": 252.5,
+        "title": "Follow-up"
+      },
+      {
+        "start": 268.8,
+        "title": "Number of the day"
+      },
+      {
+        "start": 285.6,
+        "title": "What to watch"
+      },
+      {
+        "start": 314.2,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

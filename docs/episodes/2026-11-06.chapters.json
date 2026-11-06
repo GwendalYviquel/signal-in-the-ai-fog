@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.9,
+   "title": "Story of the day: Model shelf lives keep shrinking"
+  },
+  {
+   "startTime": 120.4,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 167.4,
+   "title": "Platform: AI gateways"
+  },
+  {
+   "startTime": 210.0,
+   "title": "Quality: Mistral"
+  },
+  {
+   "startTime": 252.5,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 268.8,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 285.6,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 314.2,
+   "title": "Question for your team"
+  }
+ ]
+}

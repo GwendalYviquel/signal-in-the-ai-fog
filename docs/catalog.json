@@ -16,6 +16,126 @@
  },
  "episodes": [
   {
+   "date": "2026-11-06",
+   "status": "published",
+   "title": "Models are leases, not purchases",
+   "summary": "This week's pattern: model identifiers, prices and benchmark scales all moved on dates you do not control, as Google's Flash lifecycle shows. Also: what self-hosting Mistral Large 4 takes, LLMjacking against enterprise AI keys, a vendor security benchmark to treat as a hypothesis, and a Foundry follow-up.",
+   "headlines": [
+    "Model shelf lives keep shrinking",
+    "LLMjacking targets enterprise AI keys",
+    "What self-hosting Mistral Large 4 takes"
+   ],
+   "themes": [
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Platform",
+    "Quality"
+   ],
+   "topics": [
+    "Gemini",
+    "Google",
+    "Artificial Analysis",
+    "Mistral",
+    "Open-weight models",
+    "Sovereign AI infrastructure",
+    "AI gateways",
+    "AI cost control",
+    "DeepSeek"
+   ],
+   "page": "episodes/2026-11-06.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 18.9,
+     "title": "Story of the day: Model shelf lives keep shrinking"
+    },
+    {
+     "start": 120.4,
+     "title": "Sovereignty and Europe: Mistral"
+    },
+    {
+     "start": 167.4,
+     "title": "Platform: AI gateways"
+    },
+    {
+     "start": 210.0,
+     "title": "Quality: Mistral"
+    },
+    {
+     "start": 252.5,
+     "title": "Follow-up"
+    },
+    {
+     "start": 268.8,
+     "title": "Number of the day"
+    },
+    {
+     "start": 285.6,
+     "title": "What to watch"
+    },
+    {
+     "start": 314.2,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 334,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-06/episode-2026-11-06.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+     "primary": true
+    },
+    {
+     "title": "Google AI for Developers: Gemini deprecations",
+     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+     "primary": true
+    },
+    {
+     "title": "Google: Gemini 4 Carbon, our next frontier model",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+     "primary": true
+    },
+    {
+     "title": "gHacks: Google Launches Gemini 4 Carbon for Cyber Defenders First, With API Pricing From $2 per Million Tokens",
+     "url": "https://www.ghacks.net/2026/10/31/google-launches-gemini-4-carbon-for-cyber-defenders-first-with-api-pricing-from-2-per-million-tokens/",
+     "primary": false
+    },
+    {
+     "title": "ActuIA: Mistral Large 4 drops from 38 to 25 on new Artificial Analysis index",
+     "url": "https://www.actuia.com/en/news/mistral-large-4-drops-from-38-to-25-on-new-artificial-analysis-index/",
+     "primary": false
+    },
+    {
+     "title": "Mistral: Mistral Large 4 (Le Chonk) is now open weight",
+     "url": "https://mistral.ai/news/mistral-large-4-oss/",
+     "primary": true
+    },
+    {
+     "title": "SmartScope: Mistral Large 4: Local PC Requirements, Weight Sizes, License, and API Pricing",
+     "url": "https://smartscope.blog/en/blog/mistral-large-4-local-pc-requirements-weight-sizes-2026/",
+     "primary": false
+    },
+    {
+     "title": "DataNorth: Mistral Large 4 is now open weight: free to run in-house, but it needs at least four B200 GPUs",
+     "url": "https://datanorth.ai/news/mistral-large-4-open-weights",
+     "primary": false
+    },
+    {
+     "title": "TechRadar: Hackers are using 'LLMjacking attacks' to hijack company AI usage and run up huge cloud bills",
+     "url": "https://techradar.com/pro/security/hackers-are-using-llmjacking-attacks-to-hijack-company-ai-usage-and-run-up-huge-cloud-bills",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Friday, November 6. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Model shelf lives keep shrinking, LLMjacking targets enterprise AI keys, and What self-hosting Mistral Large 4 takes.\n\nFirst, the story of the day.\n\nStart with Google's own lifecycle documentation for the Flash line. Gemini 3.6 Flash was released July twenty-first and retires November nineteenth on Google's enterprise agent platform. Gemini 3.7 Flash, released August thirteenth, retires there on January twenty-eighth, 2027. Gemini 3.8 Flash, released September second, lists retirement on September second, 2027 or later. That is three Flash versions in about six weeks. Pricing moves too. Google announced Gemini 4 Carbon on October twenty-eighth at an introductory two dollars per million input tokens and ten dollars per million output tokens. Press coverage says a footnote raises these to four dollars and twenty dollars afterwards, and Google has not said when. Carbon is not on the public API. And on a new version of the Artificial Analysis index, ActuIA reports Mistral Large 4 fell from 38 to 25.\n\nThe bigger picture: three things teams treat as stable all moved this week. The model identifier, the price, and the benchmark scale. Each is documented, each has a date, and none is under your control. Treat a model route as a lease, not a purchase. Record the release date, retirement date, price basis and index version next to every route. Re-run your evaluation set when a replacement appears, not when the notice arrives. And negotiate notice periods. If the Flash cadence is a guide, this pace likely continues.\n\nNext, Sovereignty and Europe.\n\nAccording to the blog SmartScope, Mistral Large 4's official weights total about 1060 gigabytes, or about 610 gigabytes in the NVFP4 quantized version. It is a mixture of experts with roughly one trillion parameters, about 52 billion active, and a one million token context. DataNorth's headline says it needs at least four B200 GPUs.\n\nWhat this really signals: open weights are not the same as operable. Even quantized, hundreds of gigabytes means a multi-GPU node. For a platform team, sovereign self-hosting is first a capacity and utilization question. Compare its all-in cost with a European managed endpoint before committing.\n\nNext, Platform.\n\nTechRadar reports on findings from Google's Threat Intelligence Group about LLMjacking. Attackers steal AI API keys and cloud credentials, then run expensive model workloads on the victim's bill. Google saw two clusters coordinating to compromise and monetize enterprise LLM infrastructure, plus so-called LLM Mixers that proxy and resell unauthorized access.\n\nWhy it matters: a gateway is a spend control, and also a target. Per-key budgets, short-lived credentials and alerts on token volume per team are the cheap defenses. Test that an alert fires on an overnight spike, not just that a quota exists.\n\nNext, Quality.\n\nIn its post accompanying the open weights, Mistral says reinforcement learning lifted Large 4 on the B3 Agent Security Benchmark. It resisted 97.1 percent of attacks, against 93.3 percent in the preview version. Mistral also says Large 4 now outperforms GLM-5.3 and DeepSeek Flash 4.1 1017. Both are the vendor's own claims.\n\nReading between the lines: the same model name scored differently between preview and final. Pin the exact version in your evaluation records, and re-run security tests, including your own prompt injection cases, at each checkpoint. A vendor benchmark is a hypothesis.\n\nA follow-up.\n\nExpected: Mistral Large 4 live in Microsoft Foundry. Mistral's own open-weights post now lists Foundry as a managed route, with private deployment options for Azure developers. I still found no Microsoft catalogue page confirming it is live.\n\nThe number of the day.\n\nGemini 3.6 Flash was released on July twenty-first and retires on November nineteenth, according to Google's lifecycle page. A model's production life can be set by a single notice. Budget migration work as a recurring cost, not a one-off.\n\nWhat to watch.\n\nAnthropic's IPO marketing, which reports say could start the week of November ninth. EuroHPC gigafactory bids, due November twelfth. Microsoft Ignite from November seventeenth, the same day several Gemini text-to-speech previews shut down. Gemini 3.6 Flash retiring on November nineteenth. Walmart's Agent Profiles, due by about November twenty-first. AI Act marking on December second. And any date for wider Gemini 4 Carbon access.\n\nAnd a question for your team.\n\nFor each model route in production, do you record its retirement date, its price basis and the evaluation version that approved it, and who is alerted when any of them changes?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you on Monday."
+  },
+  {
    "date": "2026-11-05",
    "status": "published",
    "title": "Carbon is announced, not available",

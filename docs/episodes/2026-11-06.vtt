@@ -1,0 +1,202 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.656
+Good morning, it's Friday, November 6.
+
+00:00:02.726 --> 00:00:10.065
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:10.135 --> 00:00:18.802
+Today: Model shelf lives keep shrinking, LLMjacking targets enterprise AI keys, and What self-hosting Mistral Large 4 takes.
+
+00:00:18.872 --> 00:00:20.829
+First, the story of the day.
+
+00:00:20.899 --> 00:00:25.582
+Start with Google's own lifecycle documentation for the Flash line.
+
+00:00:25.652 --> 00:00:33.900
+Gemini 3.6 Flash was released July twenty-first and retires November nineteenth on Google's enterprise agent platform.
+
+00:00:33.970 --> 00:00:40.330
+Gemini 3.7 Flash, released August thirteenth, retires there on January twenty-eighth, 2027.
+
+00:00:40.400 --> 00:00:47.180
+Gemini 3.8 Flash, released September second, lists retirement on September second, 2027 or later.
+
+00:00:47.250 --> 00:00:50.605
+That is three Flash versions in about six weeks.
+
+00:00:50.675 --> 00:00:51.933
+Pricing moves too.
+
+00:00:52.003 --> 00:01:02.907
+Google announced Gemini 4 Carbon on October twenty-eighth at an introductory two dollars per million input tokens and ten dollars per million output tokens.
+
+00:01:02.977 --> 00:01:11.364
+Press coverage says a footnote raises these to four dollars and twenty dollars afterwards, and Google has not said when.
+
+00:01:11.434 --> 00:01:13.671
+Carbon is not on the public API.
+
+00:01:13.741 --> 00:01:21.080
+And on a new version of the Artificial Analysis index, ActuIA reports Mistral Large 4 fell from 38 to 25.
+
+00:01:21.680 --> 00:01:27.199
+The bigger picture: three things teams treat as stable all moved this week.
+
+00:01:27.273 --> 00:01:31.468
+The model identifier, the price, and the benchmark scale.
+
+00:01:31.541 --> 00:01:36.545
+Each is documented, each has a date, and none is under your control.
+
+00:01:36.619 --> 00:01:40.078
+Treat a model route as a lease, not a purchase.
+
+00:01:40.151 --> 00:01:46.922
+Record the release date, retirement date, price basis and index version next to every route.
+
+00:01:46.995 --> 00:01:53.103
+Re-run your evaluation set when a replacement appears, not when the notice arrives.
+
+00:01:53.177 --> 00:01:55.311
+And negotiate notice periods.
+
+00:01:55.385 --> 00:01:59.800
+If the Flash cadence is a guide, this pace likely continues.
+
+00:02:00.400 --> 00:02:02.431
+Next, Sovereignty and Europe.
+
+00:02:02.501 --> 00:02:13.075
+According to the blog SmartScope, Mistral Large 4's official weights total about 1060 gigabytes, or about 610 gigabytes in the NVFP4 quantized version.
+
+00:02:13.145 --> 00:02:21.688
+It is a mixture of experts with roughly one trillion parameters, about 52 billion active, and a one million token context.
+
+00:02:21.758 --> 00:02:25.890
+DataNorth's headline says it needs at least four B200 GPUs.
+
+00:02:26.490 --> 00:02:31.160
+What this really signals: open weights are not the same as operable.
+
+00:02:31.229 --> 00:02:35.419
+Even quantized, hundreds of gigabytes means a multi-GPU node.
+
+00:02:35.487 --> 00:02:41.600
+For a platform team, sovereign self-hosting is first a capacity and utilization question.
+
+00:02:41.669 --> 00:02:46.820
+Compare its all-in cost with a European managed endpoint before committing.
+
+00:02:47.420 --> 00:02:48.366
+Next, Platform.
+
+00:02:48.429 --> 00:02:53.913
+TechRadar reports on findings from Google's Threat Intelligence Group about LLMjacking.
+
+00:02:53.976 --> 00:03:00.721
+Attackers steal AI API keys and cloud credentials, then run expensive model workloads on the victim's bill.
+
+00:03:00.784 --> 00:03:11.060
+Google saw two clusters coordinating to compromise and monetize enterprise LLM infrastructure, plus so-called LLM Mixers that proxy and resell unauthorized access.
+
+00:03:11.660 --> 00:03:16.332
+Why it matters: a gateway is a spend control, and also a target.
+
+00:03:16.405 --> 00:03:23.706
+Per-key budgets, short-lived credentials and alerts on token volume per team are the cheap defenses.
+
+00:03:23.779 --> 00:03:29.400
+Test that an alert fires on an overnight spike, not just that a quota exists.
+
+00:03:30.000 --> 00:03:30.991
+Next, Quality.
+
+00:03:31.062 --> 00:03:40.195
+In its post accompanying the open weights, Mistral says reinforcement learning lifted Large 4 on the B3 Agent Security Benchmark.
+
+00:03:40.265 --> 00:03:46.000
+It resisted 97.1 percent of attacks, against 93.3 percent in the preview version.
+
+00:03:46.071 --> 00:03:51.593
+Mistral also says Large 4 now outperforms GLM-5.3 and DeepSeek Flash 4.1 1017.
+
+00:03:51.664 --> 00:03:54.000
+Both are the vendor's own claims.
+
+00:03:54.610 --> 00:04:00.552
+Reading between the lines: the same model name scored differently between preview and final.
+
+00:04:00.617 --> 00:04:09.595
+Pin the exact version in your evaluation records, and re-run security tests, including your own prompt injection cases, at each checkpoint.
+
+00:04:09.659 --> 00:04:11.920
+A vendor benchmark is a hypothesis.
+
+00:04:12.530 --> 00:04:13.295
+A follow-up.
+
+00:04:13.359 --> 00:04:16.674
+Expected: Mistral Large 4 live in Microsoft Foundry.
+
+00:04:16.738 --> 00:04:24.579
+Mistral's own open-weights post now lists Foundry as a managed route, with private deployment options for Azure developers.
+
+00:04:24.643 --> 00:04:28.723
+I still found no Microsoft catalogue page confirming it is live.
+
+00:04:28.787 --> 00:04:30.190
+The number of the day.
+
+00:04:30.254 --> 00:04:38.159
+Gemini 3.6 Flash was released on July twenty-first and retires on November nineteenth, according to Google's lifecycle page.
+
+00:04:38.223 --> 00:04:41.793
+A model's production life can be set by a single notice.
+
+00:04:41.857 --> 00:04:45.491
+Budget migration work as a recurring cost, not a one-off.
+
+00:04:45.555 --> 00:04:46.447
+What to watch.
+
+00:04:46.511 --> 00:04:51.866
+Anthropic's IPO marketing, which reports say could start the week of November ninth.
+
+00:04:51.930 --> 00:04:54.926
+EuroHPC gigafactory bids, due November twelfth.
+
+00:04:54.990 --> 00:05:01.748
+Microsoft Ignite from November seventeenth, the same day several Gemini text-to-speech previews shut down.
+
+00:05:01.812 --> 00:05:04.936
+Gemini 3.6 Flash retiring on November nineteenth.
+
+00:05:04.999 --> 00:05:08.888
+Walmart's Agent Profiles, due by about November twenty-first.
+
+00:05:08.952 --> 00:05:11.120
+AI Act marking on December second.
+
+00:05:11.184 --> 00:05:14.116
+And any date for wider Gemini 4 Carbon access.
+
+00:05:14.180 --> 00:05:16.029
+And a question for your team.
+
+00:05:16.093 --> 00:05:27.313
+For each model route in production, do you record its retirement date, its price basis and the evaluation version that approved it, and who is alerted when any of them changes?
+
+00:05:27.377 --> 00:05:28.652
+That's it for today.
+
+00:05:28.716 --> 00:05:31.202
+Sources are in the episode description.
+
+00:05:31.266 --> 00:05:33.179
+This was Signal in the AI Fog.
+
+00:05:33.242 --> 00:05:34.390
+See you on Monday.
