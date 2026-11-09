@@ -493,5 +493,153 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-09",
+    "title": "Budget de la Sécu au Sénat, décrets sur le cumul emploi-retraite",
+    "summary": "Le Sénat entame lundi l'examen du budget de la sécurité sociale pour 2027, sur le texte du Gouvernement. Au programme aussi : les précisions du BOSS sur la prime transport, un décret sur le cumul emploi-retraite, les maladies professionnelles, la formation et un retour sur l'article du CPF.",
+    "headlines": [
+      "Le budget de la Sécu 2027 débattu au Sénat",
+      "Un décret sur le cumul emploi-retraite",
+      "Les tableaux des maladies professionnelles révisés"
+    ],
+    "themes": [
+      "Paie et cotisations",
+      "Santé et conditions de travail",
+      "Emploi et retraite",
+      "Formation",
+      "Europe"
+    ],
+    "topics": [
+      "PLFSS 2027",
+      "Indemnités journalières",
+      "CSG-CRDS",
+      "Prime carburant",
+      "DSN",
+      "Accidents du travail",
+      "Cumul emploi-retraite",
+      "Assurance chômage",
+      "Compte personnel de formation",
+      "France compétences",
+      "Transparence salariale"
+    ],
+    "sources": [
+      {
+        "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+        "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+        "primary": true
+      },
+      {
+        "title": "Politique Matin : Budget de la Sécurité sociale 2027, le Sénat reçoit un texte",
+        "url": "https://www.politiquematin.fr/plfss-2027-senat-transmission-deficit-127-milliards-20261103-0036",
+        "primary": false
+      },
+      {
+        "title": "FD Avocats : PLFSS et PLF 2027, ce qui changerait en droit social",
+        "url": "https://www.fd-avocats.com/news/budget-2027-mesures-droit-social",
+        "primary": false
+      },
+      {
+        "title": "Contexte : PLFSS, les sénateurs veulent revenir sur la suspension de la réforme des retraites",
+        "url": "https://www.contexte.com/fr/article/sante/plfss-les-senateurs-veulent-revenir-sur-la-suspension-de-la-reforme-des-retraites_283799",
+        "primary": false
+      },
+      {
+        "title": "Legisocial : Actualité sociale de novembre 2026",
+        "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+        "primary": false
+      },
+      {
+        "title": "Légifrance : Journal officiel du 5 novembre 2026, n° 0259",
+        "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+        "primary": true
+      },
+      {
+        "title": "Légifrance : Journal officiel du 3 novembre 2026, n° 0257",
+        "url": "https://legifrance.gouv.fr/jorf/jo/2026/11/03/0257",
+        "primary": true
+      },
+      {
+        "title": "Légifrance : Décret n° 2026-1016 du 2 novembre 2026 relatif au cumul emploi retraite",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055047286",
+        "primary": true
+      },
+      {
+        "title": "Insee : L'essentiel sur le chômage",
+        "url": "https://www.insee.fr/fr/statistiques/4805248",
+        "primary": true
+      },
+      {
+        "title": "Légifrance : Décret n° 2026-728 du 1er août 2026 relatif au référentiel national qualité",
+        "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054608509",
+        "primary": true
+      },
+      {
+        "title": "Certiforma : Décret Qualiopi 2026, le nouveau référentiel qualité",
+        "url": "https://certiforma.fr/projet-decret-referentiel-qualiopi-novembre-2026/",
+        "primary": false
+      },
+      {
+        "title": "CE Expertises : Transparence salariale, ce que le projet de loi change pour le CSE",
+        "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+        "primary": false
+      },
+      {
+        "title": "CP Formation : CPF, l'article 89 part au Sénat sans qu'un seul député l'ait voté",
+        "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-09T04:19:07+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#hr-news-fr-2026-11-09",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-11-09/hr-news-fr-2026-11-09.mp3",
+    "audio_bytes": 8150352,
+    "duration_seconds": 509.41387755102045,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 16.8,
+        "title": "Sujet de la semaine : Le budget de la Sécu 2027 débattu au Sénat"
+      },
+      {
+        "start": 161.5,
+        "title": "Paie et cotisations : Prime carburant"
+      },
+      {
+        "start": 220.3,
+        "title": "Santé et conditions de travail : Accidents du travail"
+      },
+      {
+        "start": 273.2,
+        "title": "Emploi et retraite : Cumul emploi-retraite"
+      },
+      {
+        "start": 331.3,
+        "title": "Formation : Compte personnel de formation"
+      },
+      {
+        "start": 371.0,
+        "title": "Europe : Transparence salariale"
+      },
+      {
+        "start": 413.6,
+        "title": "Retour sur un dossier"
+      },
+      {
+        "start": 432.8,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 448.7,
+        "title": "À surveiller"
+      },
+      {
+        "start": 488.8,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]

@@ -1,0 +1,187 @@
+{
+ "title": "Budget de la Sécu au Sénat, décrets sur le cumul emploi-retraite",
+ "summary": "Le Sénat entame lundi l'examen du budget de la sécurité sociale pour 2027, sur le texte du Gouvernement. Au programme aussi : les précisions du BOSS sur la prime transport, un décret sur le cumul emploi-retraite, les maladies professionnelles, la formation et un retour sur l'article du CPF.",
+ "headlines": [
+  "Le budget de la Sécu 2027 débattu au Sénat",
+  "Un décret sur le cumul emploi-retraite",
+  "Les tableaux des maladies professionnelles révisés"
+ ],
+ "story_of_the_day": {
+  "theme": "Paie et cotisations",
+  "facts": "Le Sénat commence ce lundi neuf novembre l'examen en séance publique du projet de loi de financement de la sécurité sociale pour deux mille vingt-sept. L'Assemblée nationale l'avait rejeté en première lecture le vingt-trois octobre. La commission des affaires sociales du Sénat l'a examiné le quatre novembre. Un vote solennel sur l'ensemble du texte est prévu le dix-huit novembre à seize heures trente, sous réserve de l'évolution des travaux. Selon la page du Sénat, le texte vise à réduire de moitié le déficit de la sécurité sociale, à douze virgule sept milliards d'euros. Il prévoit cinq virgule un milliards d'euros d'économies sur les dépenses de santé, dont un milliard sur les indemnités journalières de l'assurance maladie. Il gèle aussi les allocations familiales au niveau actuel. Selon un cabinet d'avocats, le texte initial limite à un plafond annuel de la sécurité sociale l'exonération des indemnités de rupture, pour les cotisations comme pour la CSG. Il supprimerait aussi, au premier janvier deux mille vingt-sept, le malus de cotisation vieillesse des entreprises qui ne négocient pas sur l'emploi des salariés expérimentés. Selon la presse sociale spécialisée, des sénateurs veulent revenir sur la suspension de la réforme des retraites. Ce sont des intentions, pas des votes. Rien n'est adopté.",
+  "read": "Ce qu'il faut en retenir : le texte n'est pas une loi, et son contenu peut encore bouger à chaque étape. Le Sénat part de la version du Gouvernement, puis viendront la suite de la procédure et le vote du dix-huit novembre. Pour un service paie, trois points du texte initial méritent un suivi serré. D'abord, le plafonnement de l'exonération des indemnités de rupture, qui changerait le coût d'un départ négocié. Ensuite, l'économie d'un milliard d'euros sur les indemnités journalières, dont la traduction concrète reste à lire dans les articles. Enfin, la suppression du malus seniors, qui toucherait la cotisation vieillesse. Aucune règle de CSG, de cotisations ou d'exonération pour deux mille vingt-sept n'est stabilisée. Le réflexe reste le même : préparer en décembre des scénarios de paramétrage, avec et sans ces mesures, plutôt que d'attendre un texte définitif. Les amendements de commission, eux, sont à suivre comme des signaux. Ils ne valent rien tant que la séance ne les a pas votés.",
+  "label": "confirmed",
+  "topics": [
+   "PLFSS 2027",
+   "Indemnités journalières",
+   "CSG-CRDS"
+  ],
+  "sources": [
+   {
+    "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+    "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+    "primary": true
+   },
+   {
+    "title": "Politique Matin : Budget de la Sécurité sociale 2027, le Sénat reçoit un texte",
+    "url": "https://www.politiquematin.fr/plfss-2027-senat-transmission-deficit-127-milliards-20261103-0036",
+    "primary": false
+   },
+   {
+    "title": "FD Avocats : PLFSS et PLF 2027, ce qui changerait en droit social",
+    "url": "https://www.fd-avocats.com/news/budget-2027-mesures-droit-social",
+    "primary": false
+   },
+   {
+    "title": "Contexte : PLFSS, les sénateurs veulent revenir sur la suspension de la réforme des retraites",
+    "url": "https://www.contexte.com/fr/article/sante/plfss-les-senateurs-veulent-revenir-sur-la-suspension-de-la-reforme-des-retraites_283799",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Paie et cotisations",
+   "facts": "Selon un site d'actualité sociale daté du cinq novembre deux mille vingt-six, le BOSS précise l'exonération de mille euros en deux mille vingt-six pour la prime transport et le forfait mobilités durables. Un complément de prime carburant peut permettre d'atteindre mille euros, même après un premier versement avant octobre. Le BOSS prévoit aussi d'intégrer au montant net social la participation du CSE à la cotisation salariale obligatoire de complémentaire santé. Ce changement devrait s'appliquer dès janvier deux mille vingt-sept, sous réserve d'un décret.",
+   "read": "Pour la paie, ça veut dire : une source secondaire, donc à confirmer sur le site du BOSS. Si cela se confirme, un employeur qui a déjà versé une première somme cette année peut encore la compléter, dans la limite du plafond commun. Il faut donc suivre le cumul par salarié. Côté net social, rien n'est fixé tant que le décret n'est pas paru. À surveiller : le paramétrage de la ligne net social et son effet sur la DSN.",
+   "label": "reported",
+   "topics": [
+    "Prime carburant",
+    "DSN"
+   ],
+   "sources": [
+    {
+     "title": "Legisocial : Actualité sociale de novembre 2026",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Santé et conditions de travail",
+   "facts": "Le décret du trois novembre deux mille vingt-six, publié au Journal officiel du cinq novembre, révise et complète les tableaux des maladies professionnelles annexés au livre quatre du code de la sécurité sociale. Les tableaux modifiés et la date d'entrée en vigueur n'ont pas pu être vérifiés dans les sources consultées.",
+   "read": "En pratique : le texte est publié, mais son contenu précis reste à lire. Pour un service paie ou prévention, la première étape est d'identifier les tableaux touchés et les métiers exposés. Ensuite, mesurez l'effet possible sur la reconnaissance des maladies professionnelles. Cela compte d'autant plus que les taux d'accidents du travail seront calculés par établissement à partir de deux mille vingt-sept. Aucune conclusion chiffrée n'est possible avant lecture du décret.",
+   "label": "confirmed",
+   "topics": [
+    "Accidents du travail"
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 5 novembre 2026, n° 0259",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Emploi et retraite",
+   "facts": "Le Journal officiel du trois novembre deux mille vingt-six publie le décret du deux novembre deux mille vingt-six, numéro deux mille vingt-six mille seize, relatif au cumul emploi-retraite. Son contenu détaillé et sa date d'entrée en vigueur n'ont pas pu être vérifiés dans les sources consultées. Par ailleurs, l'Insee a mesuré un taux de chômage de huit virgule trois pour cent au deuxième trimestre deux mille vingt-six.",
+   "read": "Ce qu'il faut en retenir : un décret sur le cumul emploi-retraite est paru, et sa portée n'est pas encore établie ici. À lire avant toute action. Un service RH peut déjà repérer les salariés retraités en poste et les cumuls déclarés, puis vérifier l'effet éventuel sur les cotisations et la DSN. Sur le chômage, le niveau du taux nourrit les discussions sur l'assurance chômage vues ces dernières semaines. Le chiffre du troisième trimestre dira si la tendance se confirme.",
+   "label": "confirmed",
+   "topics": [
+    "Cumul emploi-retraite",
+    "Assurance chômage"
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 3 novembre 2026, n° 0257",
+     "url": "https://legifrance.gouv.fr/jorf/jo/2026/11/03/0257",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Décret n° 2026-1016 du 2 novembre 2026 relatif au cumul emploi retraite",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055047286",
+     "primary": true
+    },
+    {
+     "title": "Insee : L'essentiel sur le chômage",
+     "url": "https://www.insee.fr/fr/statistiques/4805248",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Formation",
+   "facts": "Le décret numéro deux mille vingt-six, sept cent vingt-huit, du premier août deux mille vingt-six, relatif au référentiel national qualité des actions de formation, est en vigueur depuis le premier novembre, selon un site spécialisé.",
+   "read": "Concrètement : un service formation peut interroger l'instance ou l'opérateur sur les règles de prise en charge d'un projet de transition et sur les dossiers en cours. Côté qualité, le nouveau référentiel entre en application. Il faut s'assurer que les prestataires achetés restent certifiés, car cette certification conditionne le financement par fonds publics ou mutualisés.",
+   "label": "confirmed",
+   "topics": [
+    "Compte personnel de formation",
+    "France compétences"
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 5 novembre 2026, n° 0259",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Décret n° 2026-728 du 1er août 2026 relatif au référentiel national qualité",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054608509",
+     "primary": true
+    },
+    {
+     "title": "Certiforma : Décret Qualiopi 2026, le nouveau référentiel qualité",
+     "url": "https://certiforma.fr/projet-decret-referentiel-qualiopi-novembre-2026/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Europe",
+   "facts": "Selon un site spécialisé daté du trois novembre deux mille vingt-six, le projet de loi transposant la directive sur la transparence des rémunérations, déposé au Sénat en procédure accélérée, n'avait pas de date d'examen en commission à cette date. Rien n'est adopté.",
+   "read": "Pour l'instant : pas d'avancée, donc aucune obligation nouvelle opposable à un employeur privé. Le délai européen de transposition est dépassé, mais le calendrier parlementaire reste flou. Un service paie peut continuer à travailler sur les catégories d'emplois, les critères de classification et les fourchettes de rémunération. Source unique : à confirmer sur le dossier du Sénat.",
+   "label": "reported",
+   "topics": [
+    "Transparence salariale"
+   ],
+   "sources": [
+    {
+     "title": "CE Expertises : Transparence salariale, ce que le projet de loi change pour le CSE",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "follow_up": {
+  "text": "On attendait la fin de la discussion de la seconde partie du projet de loi de finances à l'Assemblée le seize novembre, avec l'article sur le CPF. Selon un site spécialisé, la partie recettes a été rejetée, et l'article quatre-vingt-neuf part au Sénat dans la version du Gouvernement, sans modification. Rien n'est adopté.",
+  "source": {
+   "title": "CP Formation : CPF, l'article 89 part au Sénat sans qu'un seul député l'ait voté",
+   "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+   "primary": false
+  }
+ },
+ "number_of_the_day": {
+  "text": "Un milliard d'euros : c'est l'économie que le projet de budget de la sécurité sociale pour deux mille vingt-sept attend des indemnités journalières de l'assurance maladie, sur cinq virgule un milliards d'euros d'économies de santé. Rien n'est voté à ce stade.",
+  "source": {
+   "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+   "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+   "primary": true
+  }
+ },
+ "what_to_watch": "Première échéance : le neuf novembre, début de l'examen du budget de la sécurité sociale en séance au Sénat. Le dix novembre à sept heures trente, l'Insee publie le taux de chômage du troisième trimestre. Le dix-huit novembre, le Sénat doit voter solennellement sur l'ensemble du texte, sous réserve de l'évolution des travaux. Selon un site spécialisé, le projet de loi de finances, qui porte l'article sur le CPF, serait examiné en séance au Sénat le vingt novembre. Le vingt-sept novembre, l'Insee publie l'emploi salarié du troisième trimestre. Restent à lire : le décret sur le cumul emploi-retraite, celui sur les maladies professionnelles, et la confirmation par décret de la mesure sur le net social.",
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Début de l'examen du budget de la Sécu en séance au Sénat"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Publication Insee du taux de chômage du troisième trimestre"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Vote solennel du Sénat sur le budget de la Sécu"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Examen du projet de loi de finances en séance au Sénat"
+  },
+  {
+   "date": "2026-11-27",
+   "text": "Publication Insee de l'emploi salarié du troisième trimestre"
+  }
+ ],
+ "question": "Si le plafonnement de l'exonération des indemnités de rupture était voté, votre service sait-il chiffrer l'écart sur ses départs négociés, et prévenir en amont les salariés et les managers concernés ?"
+}

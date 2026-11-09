@@ -1,0 +1,438 @@
+{
+ "items": [
+  {
+   "title": "Le budget de la Sécu 2027 arrive en séance au Sénat, sur le texte du Gouvernement",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Après le rejet du projet de loi de financement de la sécurité sociale 2027 par l'Assemblée le 23 octobre 2026, la commission des affaires sociales du Sénat l'a examiné le 4 novembre ; la séance publique commence le 9 novembre.",
+     "quote": "ce texte a été examiné en commission des affaires sociales le 4 novembre, et sera débattu en séance publique à partir du 9 novembre",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Un vote solennel du Sénat sur l'ensemble du texte est prévu le 18 novembre 2026.",
+     "quote": "Un vote solennel est prévu le 18 novembre.",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le scrutin public solennel est prévu le 18 novembre à 16 h 30, sous réserve de l'évolution des travaux.",
+     "quote": "Le calendrier prévoit un scrutin public solennel le 18 novembre à 16 h 30",
+     "url": "https://www.politiquematin.fr/plfss-2027-senat-transmission-deficit-127-milliards-20261103-0036",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte vise à réduire de moitié le déficit de la sécurité sociale, à 12,7 milliards d'euros.",
+     "quote": "prévoit de réduire de moitié le déficit, en le ramenant à 12,7 Md€",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte prévoit 5,1 milliards d'euros d'économies sur les dépenses de santé, dont 1 milliard d'euros sur les indemnités journalières de l'assurance maladie.",
+     "quote": "les indemnités journalières d’assurance maladie (1 Md€)",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le projet prévoit un gel des allocations familiales au niveau actuel.",
+     "quote": "un gel des allocations familiales au niveau actuel est prévu",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un cabinet d'avocats, le texte initial limite à un plafond annuel de la sécurité sociale l'exonération des indemnités de rupture (cotisations et CSG).",
+     "quote": "Exonération des indemnités de rupture limitée à un PASS (cotisations, CSG)",
+     "url": "https://www.fd-avocats.com/news/budget-2027-mesures-droit-social",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon le même cabinet, le texte initial supprime le malus sur les cotisations vieillesse des entreprises qui ne négocient pas sur l'emploi des salariés expérimentés, au premier janvier 2027.",
+     "quote": "Suppression du malus sur les cotisations vieillesse des entreprises qui ne négocient pas sur l'emploi des salariés expérimentés",
+     "url": "https://www.fd-avocats.com/news/budget-2027-mesures-droit-social",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse spécialisée (Contexte), la commission des affaires sociales du Sénat entend supprimer la taxe sur les complémentaires santé.",
+     "quote": "les sénateurs entendent supprimer la taxe sur les complémentaires santé",
+     "url": "https://www.contexte.com/fr/article/sante/plfss-les-senateurs-veulent-revenir-sur-la-suspension-de-la-reforme-des-retraites_283799",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la même presse, la commission veut aussi rétablir la réforme des retraites de 2023, suspendue l'an dernier.",
+     "quote": "rétablir la réforme des retraites de 2023",
+     "url": "https://www.contexte.com/fr/article/sante/plfss-les-senateurs-veulent-revenir-sur-la-suspension-de-la-reforme-des-retraites_283799",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Journal officiel du 8 novembre 2026 contient un décret du 7 novembre 2026 relatif à la composition du Gouvernement (contenu non détaillé dans les sources consultées).",
+     "quote": "Décret du 7 novembre 2026 relatif à la composition du Gouvernement",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Journal officiel du 8 novembre 2026, n° 0262",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo",
+     "primary": true
+    },
+    {
+     "title": "Politique Matin : Budget de la Sécurité sociale 2027, le Sénat reçoit un texte",
+     "url": "https://www.politiquematin.fr/plfss-2027-senat-transmission-deficit-127-milliards-20261103-0036",
+     "primary": false
+    },
+    {
+     "title": "UNAF : Projet de loi de financement de la sécurité sociale pour 2027",
+     "url": "https://www.unaf.fr/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027/",
+     "primary": false
+    },
+    {
+     "title": "FD Avocats : PLFSS et PLF 2027, ce qui changerait en droit social",
+     "url": "https://www.fd-avocats.com/news/budget-2027-mesures-droit-social",
+     "primary": false
+    },
+    {
+     "title": "Contexte : PLFSS, les sénateurs veulent revenir sur la suspension de la réforme des retraites",
+     "url": "https://www.contexte.com/fr/article/sante/plfss-les-senateurs-veulent-revenir-sur-la-suspension-de-la-reforme-des-retraites_283799",
+     "primary": false
+    }
+   ],
+   "context": "Étape réelle : projet de loi, rejeté en première lecture à l'Assemblée le 23 octobre, donc examiné au Sénat dans la version du Gouvernement ; rien n'est adopté. Ensuite : vote solennel du Sénat le 18 novembre, puis commission mixte paritaire et suite de la procédure (un recours à l'article 49 alinéa 3 ou aux ordonnances reste une anticipation de la presse, non confirmée). Pour la paie : aucune règle 2027 n'est stabilisée ; points du texte initial à suivre : plafonnement de l'exonération des indemnités de rupture, malus vieillesse seniors, économies sur les indemnités journalières (1 milliard d'euros). Les amendements de la commission du Sénat (taxe sur les complémentaires santé, réforme des retraites) sont des intentions, pas des votes. Le décret du 7 novembre sur la composition du Gouvernement figure au JO du 8 novembre : son contenu n'a pas été vérifié, à surveiller pour l'interlocuteur ministériel du texte. Conseil pratique générique : préparer en décembre des scénarios de paramétrage CSG, cotisations et exonérations."
+  },
+  {
+   "title": "Prime transport, forfait mobilités et net social : précisions du BOSS",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Selon un site d'actualité sociale (5 novembre 2026), le BOSS précise l'exonération de 1000 euros en 2026 pour la prime transport et le forfait mobilités durables.",
+     "quote": "Prime transport et forfait mobilités durables : le BOSS précise l’exonération de 1 000 € en 2026",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la même source, un complément de prime carburant peut permettre d'atteindre 1000 euros en 2026, même après un premier versement avant octobre.",
+     "quote": "Un complément de prime carburant peut permettre d’atteindre 1 000 € en 2026",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la même source, le BOSS prévoit d'intégrer au montant net social la participation du CSE à la cotisation salariale obligatoire de complémentaire santé.",
+     "quote": "Le BOSS prévoit désormais d’intégrer au montant net social la participation du CSE",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "status": "verified"
+    },
+    {
+     "statement": "Ce changement devrait s'appliquer dès janvier 2027, sous réserve d'une confirmation par décret.",
+     "quote": "Ce changement devrait s’appliquer dès janvier 2027, sous réserve d'une confirmation par décret.",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Legisocial : Actualité sociale de novembre 2026",
+     "url": "https://www.legisocial.fr/infos-conseils/2026/11-novembre/",
+     "primary": false
+    }
+   ],
+   "context": "Source secondaire uniquement : le texte du BOSS lui-même n'a pas été consulté, donc à confirmer sur boss.gouv.fr. Intérêt pratique : le plafond annuel commun de 1000 euros (décret du 21 octobre, vu aux épisodes précédents) s'apprécie en cumul avec le forfait mobilités durables ; un complément reste possible après un premier versement. Côté net social, la mesure annoncée pour janvier 2027 est conditionnée à un décret : à surveiller, impact sur le paramétrage de la ligne net social et la DSN."
+  },
+  {
+   "title": "Deux décrets du 2 novembre sur le cumul emploi-retraite",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Le Journal officiel du 3 novembre 2026 publie le décret n° 2026-1016 du 2 novembre 2026 relatif au cumul emploi retraite.",
+     "quote": "Décret n° 2026-1016 du 2 novembre 2026 relatif au cumul emploi retraite",
+     "url": "https://legifrance.gouv.fr/jorf/jo/2026/11/03/0257",
+     "status": "unread"
+    },
+    {
+     "statement": "Il publie aussi un second décret du même jour, n° 2026-1017, relatif au cumul emploi retraite.",
+     "quote": "Décret n° 2026-1017 du 2 novembre 2026 relatif au cumul emploi retraite",
+     "url": "https://legifrance.gouv.fr/jorf/jo/2026/11/03/0257",
+     "status": "unread"
+    },
+    {
+     "statement": "Le décret n° 2026-1016 est signé par le ministre du travail et des solidarités, Jean-Pierre Farandou.",
+     "quote": "Le ministre du travail et des solidarités, Jean-Pierre FARANDOU",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055047286",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 3 novembre 2026, n° 0257",
+     "url": "https://legifrance.gouv.fr/jorf/jo/2026/11/03/0257",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Décret n° 2026-1016 du 2 novembre 2026 relatif au cumul emploi retraite",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055047286",
+     "primary": true
+    }
+   ],
+   "context": "Textes publiés : décrets d'application, donc règles à lire dans le texte. Le contenu précis (mesures nouvelles, date d'entrée en vigueur) n'a pas pu être vérifié dans les sources consultées : ne pas en tirer de règle sans lecture du décret. Pour un service RH : vérifier les salariés retraités en poste, les cumuls déclarés et l'effet sur la DSN et les cotisations, une fois le texte lu. Rapprocher du PLFSS, qui porte aussi des sujets de retraite."
+  },
+  {
+   "title": "Chômage : 8,3 % au deuxième trimestre, résultats du troisième trimestre attendus le 10 novembre",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Au deuxième trimestre 2026, le taux de chômage au sens du BIT s'établit à 8,3 % de la population active (Insee).",
+     "quote": "Le taux de chômage au sens du BIT s’établit à 8,3 % de la population active",
+     "url": "https://www.insee.fr/fr/statistiques/4805248",
+     "status": "verified"
+    },
+    {
+     "statement": "L'Insee publie les résultats du troisième trimestre 2026 sur le chômage le 10 novembre 2026 à 7 h 30.",
+     "quote": "10/11/2026 à 07h30 - troisième trimestre 2026",
+     "url": "https://www.insee.fr/fr/statistiques/8735266",
+     "status": "verified"
+    },
+    {
+     "statement": "La prochaine publication de l'Insee sur la croissance et l'emploi salarié du troisième trimestre est datée du 27 novembre 2026.",
+     "quote": "27 novembre 2026",
+     "url": "https://www.insee.fr/fr/statistiques/2107840",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Insee : Chômage au sens du BIT, quatrième trimestre 2025 (prochaine parution)",
+     "url": "https://www.insee.fr/fr/statistiques/8735266",
+     "primary": true
+    },
+    {
+     "title": "Insee : L'essentiel sur le chômage",
+     "url": "https://www.insee.fr/fr/statistiques/4805248",
+     "primary": true
+    },
+    {
+     "title": "Insee : Tableau de bord de la conjoncture",
+     "url": "https://www.insee.fr/fr/statistiques/2107840",
+     "primary": true
+    }
+   ],
+   "context": "Le taux du deuxième trimestre est le dernier publié ; le chiffre du troisième trimestre sort le 10 novembre à 7 h 30, après l'heure limite de cet épisode, donc ne rien en dire. Intérêt : le niveau du chômage nourrit les discussions sur l'assurance chômage et les ruptures conventionnelles, déjà vues dans les épisodes précédents (prévisions de l'Unédic)."
+  },
+  {
+   "title": "Un décret révise les tableaux des maladies professionnelles",
+   "theme": "Santé et conditions de travail",
+   "facts": [
+    {
+     "statement": "Le décret n° 2026-1026 du 3 novembre 2026, paru au Journal officiel du 5 novembre, révise et complète les tableaux des maladies professionnelles annexés au livre IV du code de la sécurité sociale.",
+     "quote": "Décret n° 2026-1026 du 3 novembre 2026 révisant et complétant les tableaux des maladies professionnelles",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 5 novembre 2026, n° 0259",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "primary": true
+    }
+   ],
+   "context": "Texte publié ; les tableaux modifiés et la date d'entrée en vigueur n'ont pas été vérifiés dans les sources consultées. Pour un service paie ou prévention : identifier les tableaux concernés, vérifier l'effet sur la reconnaissance des maladies professionnelles et sur les taux AT/MP, calculés par établissement à compter de 2027 (décret du 13 octobre, vu précédemment). Rappel : le plafonnement des indemnités journalières AT/MP s'applique depuis le 1er novembre pour les sinistres nouveaux (épisode précédent)."
+  },
+  {
+   "title": "Projets de transition professionnelle : trois décrets sur le financement et le contrôle",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "Le décret n° 2026-1027 du 4 novembre 2026 organise le transfert du financement des fonds dédiés aux projets de transition professionnelle à l'instance paritaire nationale.",
+     "quote": "relatif au transfert du financement des fonds dédiés aux projets de transition professionnelle à l'instance paritaire nationale",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "status": "unread"
+    },
+    {
+     "statement": "Le décret n° 2026-1028 du 4 novembre 2026 porte diverses mesures relatives au financement du projet de transition professionnelle.",
+     "quote": "Décret n° 2026-1028 du 4 novembre 2026 portant diverses mesures relatives au financement du projet de transition professionnelle",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "status": "unread"
+    },
+    {
+     "statement": "Le décret n° 2026-1029 du 4 novembre 2026 est relatif aux catégories d'agents de contrôle de la formation professionnelle.",
+     "quote": "Décret n° 2026-1029 du 4 novembre 2026 relatif aux catégories d'agents de contrôle de la formation professionnelle",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 5 novembre 2026, n° 0259",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/05/0259",
+     "primary": true
+    }
+   ],
+   "context": "Trois décrets publiés au JO du 5 novembre ; leur contenu détaillé et leur date d'effet n'ont pas été vérifiés. Ils touchent le financement du projet de transition professionnelle (PTP) via l'instance paritaire nationale liée au CPF, et les agents de contrôle de la formation. Pour un service formation : vérifier auprès de l'opérateur ou de l'instance les règles de prise en charge d'un PTP et les conséquences sur les dossiers en cours."
+  },
+  {
+   "title": "Article 89 du budget : le CPF part au Sénat sans avoir été voté à l'Assemblée",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "Selon un site spécialisé en formation, la partie recettes du projet de loi de finances 2027 a été rejetée à l'Assemblée par 458 voix contre et aucune pour (date indiquée : 4 novembre ; une autre page de la même source indique le 3).",
+     "quote": "4 novembre : 458 voix contre, 0 pour.",
+     "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la même source, l'article 89 sur le CPF n'est ni rejeté ni modifié : il part au Sénat dans la version du Gouvernement.",
+     "quote": "L’article 89 n’est ni rejeté ni modifié.",
+     "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la même source, l'examen en séance au Sénat est annoncé pour le 20 novembre.",
+     "quote": "20 nov. examen en séance au Sénat",
+     "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "CP Formation : CPF, l'article 89 part au Sénat sans qu'un seul député l'ait voté",
+     "url": "https://cpformation.com/cpf-larticle-89-part-au-senat-sans-quun-seul-depute-lait-vote/",
+     "primary": false
+    }
+   ],
+   "context": "Candidat au retour sur dossier : on attendait la fin de la discussion de la seconde partie du PLF à l'Assemblée le 16 novembre ; en fait le rejet de la partie recettes a stoppé l'examen début novembre. Source unique, secondaire, dates divergentes (3 ou 4 novembre) : laisser la date du vote de côté. Le montant de la majoration n'est pas fixé par l'article, renvoyé au décret. Rien n'est adopté."
+  },
+  {
+   "title": "Qualiopi : le nouveau référentiel qualité est en vigueur depuis le 1er novembre",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "Le décret n° 2026-728 du 1er août 2026 est relatif au référentiel national sur la qualité des actions concourant au développement des compétences.",
+     "quote": "Décret n° 2026-728 du 1er août 2026 relatif au référentiel national sur la qualité des actions concourant au développement des compétences",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054608509",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon un site spécialisé, ce décret est entré en vigueur le 1er novembre 2026.",
+     "quote": "Il est entré en vigueur le 1er novembre 2026.",
+     "url": "https://certiforma.fr/projet-decret-referentiel-qualiopi-novembre-2026/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Décret n° 2026-728 du 1er août 2026 relatif au référentiel national qualité",
+     "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054608509",
+     "primary": true
+    },
+    {
+     "title": "Certiforma : Décret Qualiopi 2026, le nouveau référentiel qualité",
+     "url": "https://certiforma.fr/projet-decret-referentiel-qualiopi-novembre-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Concerne les organismes de formation certifiés ; pour un service formation d'entreprise, vérifier que les prestataires achetés restent certifiés sous le nouveau référentiel, condition de financement par fonds publics ou mutualisés. Détail des indicateurs non vérifié ici."
+  },
+  {
+   "title": "Trois avis d'extension d'accords au Journal officiel de la semaine",
+   "theme": "Dialogue social",
+   "facts": [
+    {
+     "statement": "Le Journal officiel du 4 novembre 2026 publie un avis relatif à l'extension d'un avenant à un accord conclu dans le secteur du travail temporaire.",
+     "quote": "Avis relatif à l'extension d'un avenant à un accord conclu dans le secteur du travail temporaire",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/04/0258",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Journal officiel du 6 novembre 2026 publie un avis relatif à l'extension d'accords régionaux Centre-Val de Loire aux conventions collectives nationales du bâtiment.",
+     "quote": "Avis relatif à l'extension d'accords régionaux (Centre-Val de Loire)",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo?datePubli=20%2F05%2F2025",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Journal officiel du 8 novembre 2026 publie un avis relatif à l'extension d'accords régionaux Pays de la Loire aux conventions collectives nationales du bâtiment.",
+     "quote": "Avis relatif à l'extension d'accords régionaux (Pays de la Loire)",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : Journal officiel du 4 novembre 2026, n° 0258",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/04/0258",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Journal officiel du 6 novembre 2026, n° 0260",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo?datePubli=20%2F05%2F2025",
+     "primary": true
+    },
+    {
+     "title": "Légifrance : Journal officiel du 8 novembre 2026, n° 0262",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo",
+     "primary": true
+    }
+   ],
+   "context": "Ce sont des avis d'extension, donc l'ouverture de la procédure, pas l'arrêté d'extension : l'accord ne devient obligatoire pour tous les employeurs du champ qu'à la publication de l'arrêté, quelques semaines plus tard (un arrêté du 23 septembre 2026 cite un avis publié le 13 août 2026). Pour un employeur du bâtiment ou du travail temporaire : repérer l'accord visé, son contenu et la date d'effet possible ; contenu des accords non vérifié ici."
+  },
+  {
+   "title": "Transparence salariale : pas de date d'examen au Sénat",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "Selon un site spécialisé (3 novembre 2026), le projet de loi de transposition, déposé au Sénat en procédure accélérée, n'avait pas de date d'examen en commission au 3 novembre 2026.",
+     "quote": "il n’avait pas encore de date d’examen en commission au 3 novembre 2026",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "CE Expertises : Transparence salariale, ce que le projet de loi change pour le CSE",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "primary": false
+    }
+   ],
+   "context": "Pas d'avancée depuis les épisodes précédents : texte non adopté, aucune obligation opposable. Item de réserve, à ne reprendre que si la place manque ailleurs."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Début de l'examen du budget de la Sécu en séance au Sénat"
+  },
+  {
+   "date": "2026-11-10",
+   "text": "Publication Insee du taux de chômage du troisième trimestre"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Vote solennel du Sénat sur le budget de la Sécu"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Examen du projet de loi de finances en séance au Sénat"
+  },
+  {
+   "date": "2026-11-27",
+   "text": "Publication Insee de l'emploi salarié du troisième trimestre"
+  }
+ ],
+ "checked": {
+  "verified": 17,
+  "unread": 17,
+  "dropped": 1
+ },
+ "dropped": [
+  {
+   "item": "Le budget de la Sécu 2027 arrive en séance au Sénat, sur le texte du Gouvernement",
+   "statement": "Le Sénat examine le texte dans sa version initiale, déposée par le Gouvernement.",
+   "quote": "Le Sénat va donc maintenant examiner ce texte dans sa version initiale",
+   "url": "https://www.unaf.fr/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027/"
+  }
+ ]
+}
