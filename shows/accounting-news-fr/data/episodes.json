@@ -475,5 +475,171 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-09",
+    "title": "Budget 2027 rejeté, petits colis et facture électronique",
+    "summary": "L'Assemblée a rejeté la partie recettes du budget 2027, qui part au Sénat dans sa version initiale. L'épisode traite aussi des frais sur les petits colis, du moratoire avorté sur la facture électronique, d'IFRS 18, de l'EFRAG et de la norme volontaire de durabilité.",
+    "headlines": [
+      "Le rejet unanime de la partie recettes du budget 2027",
+      "Le moratoire avorté sur la facture électronique",
+      "Les nouveaux frais sur les petits colis"
+    ],
+    "themes": [
+      "Fiscalité",
+      "E-commerce",
+      "Facturation électronique",
+      "Normes comptables",
+      "Durabilité"
+    ],
+    "topics": [
+      "Projet de loi de finances 2027",
+      "Loi de financement Sécurité sociale",
+      "Franchise des petits colis",
+      "Réforme de la facturation électronique",
+      "E-reporting",
+      "IFRS 18",
+      "ESRS",
+      "CSRD"
+    ],
+    "sources": [
+      {
+        "title": "Assemblée nationale : Rejet, en première lecture, du projet de loi de finances pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+        "primary": true
+      },
+      {
+        "title": "Assemblée nationale : Analyse du scrutin 9759 sur la première partie du projet de loi de finances pour 2027",
+        "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/9759",
+        "primary": true
+      },
+      {
+        "title": "franceinfo : L'Assemblée nationale rejette à l'unanimité le budget de l'État 2027 en première lecture",
+        "url": "https://www.franceinfo.fr/economie/budget/l-assemblee-nationale-rejette-a-l-unanimite-le-budget-de-l-etat-2027-en-premiere-lecture_8268527.html",
+        "primary": false
+      },
+      {
+        "title": "LCP : Budget 2027, l'Assemblée rejette à l'unanimité la partie recettes",
+        "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-rejette-a-l-unanimite-la-partie-recettes-le-projet-de-loi-de",
+        "primary": false
+      },
+      {
+        "title": "Rydge Conseil : PLF 2027, rejet à l'Assemblée, quelle suite pour le budget",
+        "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+        "primary": false
+      },
+      {
+        "title": "Journal du Net : L'Assemblée nationale rejette la partie recettes du budget",
+        "url": "https://www.journaldunet.com/business/action-publique/1557675-l-assemblee-nationale-rejette-la-partie-recettes-du-budget/",
+        "primary": false
+      },
+      {
+        "title": "Le Courrier des stratèges : Budget 2027 après le rejet, que va-t-il se passer",
+        "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+        "primary": false
+      },
+      {
+        "title": "Sécurité sociale : L'examen du PLFSS pour 2027",
+        "url": "https://www.securite-sociale.fr/la-secu-en-detail/loi-de-financement/annee-en-cours",
+        "primary": true
+      },
+      {
+        "title": "Legisocial : PLFSS 2027, rejet de l'Assemblée nationale",
+        "url": "https://www.legisocial.fr/actualites-sociales/8204-plfss-2027-rejet-assemblee-nationale.html",
+        "primary": false
+      },
+      {
+        "title": "Douane : Petits colis, ce qui change pour vos achats en ligne",
+        "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+        "primary": true
+      },
+      {
+        "title": "Ministère de l'Économie : Taxes sur les petits colis, comment ça marche",
+        "url": "https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/taxes-sur-les-petits-colis-comment-ca-marche",
+        "primary": true
+      },
+      {
+        "title": "Clubic : Ces entreprises ont failli échapper à la facturation électronique",
+        "url": "https://clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+        "primary": false
+      },
+      {
+        "title": "Clubic : Facturation électronique, deux mois après le lancement, des factures se perdent encore entre les plateformes",
+        "url": "https://clubic.com/actualite-638035-facturation-electronique-deux-mois-apres-le-lancement-des-factures-se-perdent-encore-entre-les-plateformes.html",
+        "primary": false
+      },
+      {
+        "title": "DemarchesAdministratives : Facturation électronique, pourquoi le vote des députés ne suspend pas la réforme",
+        "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme/amp",
+        "primary": false
+      },
+      {
+        "title": "IFRS Foundation : IASB Update, novembre 2026, CMAC",
+        "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+        "primary": true
+      },
+      {
+        "title": "IAS Plus : May 2026 IASB meeting notes posted",
+        "url": "https://www.iasplus.com/en-gb/news/2026/05/iasb-meeting-summaries",
+        "primary": false
+      },
+      {
+        "title": "EFRAG : EFRAG Launches Public Consultation on the ESRS-40a Exposure Draft for Certain Non-EU Undertakings",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-launches-public-consultation-on-the-esrs40a-exposure-draft-for-certain-noneu-undertakings",
+        "primary": true
+      },
+      {
+        "title": "EFRAG : EFRAG Releases the Voluntary Standard Digital Template and XBRL Converter",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-the-voluntary-standard-digital-template-and-xbrl-converter",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-09T04:10:48+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-11-09",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-11-09/accounting-news-fr-2026-11-09.mp3",
+    "audio_bytes": 7155653,
+    "duration_seconds": 447.24244897959187,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 14.6,
+        "title": "Sujet de la semaine : Le rejet unanime de la partie recettes du budget 2027"
+      },
+      {
+        "start": 146.1,
+        "title": "E-commerce : Franchise des petits colis"
+      },
+      {
+        "start": 199.9,
+        "title": "Facturation électronique : Réforme de la facturation électronique"
+      },
+      {
+        "start": 260.5,
+        "title": "Normes comptables : IFRS 18"
+      },
+      {
+        "start": 317.3,
+        "title": "Durabilité : ESRS"
+      },
+      {
+        "start": 363.5,
+        "title": "Retour sur un dossier"
+      },
+      {
+        "start": 380.2,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 394.9,
+        "title": "À surveiller"
+      },
+      {
+        "start": 429.2,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]

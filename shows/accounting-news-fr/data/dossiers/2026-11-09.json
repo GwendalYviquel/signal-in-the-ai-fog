@@ -1,0 +1,449 @@
+{
+ "items": [
+  {
+   "title": "Budget 2027 : l'Assemblée rejette la partie recettes, le texte part au Sénat dans sa version initiale",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "Le mercredi 4 novembre 2026, l'Assemblée nationale a rejeté la première partie du projet de loi de finances pour 2027, celle des recettes (source primaire : site de l'Assemblée).",
+     "quote": "du projet de loi de finances pour 2027, portant sur les recettes.",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le scrutin public sur la première partie, en première lecture, a eu lieu lors de la deuxième séance du mercredi 4 novembre 2026, et non le 3 novembre comme initialement prévu.",
+     "quote": "Deuxième séance du mercredi 4 novembre 2026",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/9759",
+     "status": "verified"
+    },
+    {
+     "statement": "Le rejet a été prononcé par 458 voix contre et aucune voix pour.",
+     "quote": "par 458 voix contre et aucune voix pour",
+     "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse, aucun député n'a soutenu la partie recettes, ce qui constitue une première sous la Ve République.",
+     "quote": "une première sous la Ve République",
+     "url": "https://www.journaldunet.com/business/action-publique/1557675-l-assemblee-nationale-rejette-la-partie-recettes-du-budget/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon LCP, le texte transmis au Sénat est le texte initial du Gouvernement, sans que la partie dépenses ait été examinée à l'Assemblée.",
+     "quote": "c'est le texte initial - celui du gouvernement - qui va être transmis au Sénat",
+     "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-rejette-a-l-unanimite-la-partie-recettes-le-projet-de-loi-de",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon LCP, la partie dépenses n'a pas été examinée à l'Assemblée.",
+     "quote": "sans examen de la partie consacrée aux dépenses",
+     "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-rejette-a-l-unanimite-la-partie-recettes-le-projet-de-loi-de",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon franceinfo, le Sénat examinera la version initiale du projet de loi de finances en séance à partir du 20 novembre 2026.",
+     "quote": "dans sa version initiale, à partir du 20 novembre, dans l'hémicycle du Sénat",
+     "url": "https://www.franceinfo.fr/economie/budget/l-assemblee-nationale-rejette-a-l-unanimite-le-budget-de-l-etat-2027-en-premiere-lecture_8268527.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le projet du Gouvernement vise un déficit public de 5 % du PIB en 2027.",
+     "quote": "qui vise un déficit public à 5 % du PIB en 2027",
+     "url": "https://www.franceinfo.fr/economie/budget/l-assemblee-nationale-rejette-a-l-unanimite-le-budget-de-l-etat-2027-en-premiere-lecture_8268527.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un site d'analyse parlementaire, les amendements votés à l'Assemblée disparaissent avec le rejet de la première partie.",
+     "quote": "Les amendements votés à l'Assemblée disparaissent avec le rejet.",
+     "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse, si les négociations échouent, le Gouvernement peut recourir à l'article 49.3 de la Constitution.",
+     "quote": "Si les négociations échouent, le gouvernement peut choisir de recourir à l'article 49.3",
+     "url": "https://www.journaldunet.com/business/action-publique/1557675-l-assemblee-nationale-rejette-la-partie-recettes-du-budget/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le délai de soixante-dix jours après lequel le Gouvernement peut recourir aux ordonnances fait l'objet de deux décomptes différents selon la presse : la date exacte n'est pas établie.",
+     "quote": "Le délai de 70 jours au-delà duquel le gouvernement peut recourir aux ordonnances fait l'objet de deux décomptes.",
+     "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Assemblée nationale : Rejet, en première lecture, du projet de loi de finances pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/actualites-accueil-hub/examen-de-la-premiere-partie-du-projet-de-loi-de-finances-pour-2027",
+     "primary": true
+    },
+    {
+     "title": "Assemblée nationale : Analyse du scrutin 9759 sur la première partie du projet de loi de finances pour 2027",
+     "url": "https://www.assemblee-nationale.fr/dyn/17/scrutins/9759",
+     "primary": true
+    },
+    {
+     "title": "franceinfo : L'Assemblée nationale rejette à l'unanimité le budget de l'État 2027 en première lecture",
+     "url": "https://www.franceinfo.fr/economie/budget/l-assemblee-nationale-rejette-a-l-unanimite-le-budget-de-l-etat-2027-en-premiere-lecture_8268527.html",
+     "primary": false
+    },
+    {
+     "title": "LCP : Budget 2027, l'Assemblée rejette à l'unanimité la partie recettes",
+     "url": "https://lcp.fr/actualites/budget-2027-l-assemblee-rejette-a-l-unanimite-la-partie-recettes-le-projet-de-loi-de",
+     "primary": false
+    },
+    {
+     "title": "Rydge Conseil : PLF 2027, rejet à l'Assemblée, quelle suite pour le budget",
+     "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+     "primary": false
+    },
+    {
+     "title": "Journal du Net : L'Assemblée nationale rejette la partie recettes du budget",
+     "url": "https://www.journaldunet.com/business/action-publique/1557675-l-assemblee-nationale-rejette-la-partie-recettes-du-budget/",
+     "primary": false
+    },
+    {
+     "title": "Le Courrier des stratèges : Budget 2027 après le rejet, que va-t-il se passer",
+     "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+     "primary": false
+    }
+   ],
+   "context": "Mots-clés suggérés : Projet de loi de finances 2027. Retour sur le point ouvert des épisodes précédents : le vote solennel attendu le mardi 3 novembre a en fait eu lieu le mercredi 4 novembre, et il a abouti à un rejet unanime. Conséquence : tout ce que les députés avaient voté en séance tombe, y compris la suppression de la reconduction de la surtaxe d'IS (contribution exceptionnelle sur les bénéfices, article quinze du texte initial), le dispositif de lutte contre l'optimisation, les amendements sur l'exit tax et le suramortissement, et le moratoire sur la facture électronique. Le Sénat repart du texte initial du Gouvernement, donc avec la surtaxe d'IS reconduite et allégée de trente pour cent selon le texte d'origine (chiffres des épisodes précédents, non re-vérifiés ici). Le vote sur l'ensemble prévu le 17 novembre à l'Assemblée n'a plus d'objet. Les dates de fin d'examen au Sénat et de CMP varient selon les sources (vote du Sénat le 9 décembre selon certains) : ne pas les citer comme certaines. Issue ouverte : 49.3 ou ordonnances, évoqués par la presse sans annonce officielle ; la loi spéciale est aussi mentionnée comme possible. Pour les praticiens : remettre en scénarios la clôture 2026 et le budget 2027, ne rien provisionner, et présenter les mesures comme des pistes (texte initial du Gouvernement, amendements possibles au Sénat). Pour une direction financière : hypothèse surtaxe reconduite redevient le scénario central du texte de départ ; le règlement ANC 2026-04 sur la comptabilisation des contributions assises sur l'impôt reste pertinent. Étape réelle : projet rejeté en première lecture à l'Assemblée, aucune loi."
+  },
+  {
+   "title": "PLFSS 2027 : le Sénat prend la main à partir du 9 novembre",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "Le texte, dans sa version initiale, est examiné par le Sénat à partir du 9 novembre.",
+     "quote": "sera désormais examiné par le Sénat dans sa version initiale",
+     "url": "https://www.legisocial.fr/actualites-sociales/8204-plfss-2027-rejet-assemblee-nationale.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la page officielle de la Sécurité sociale, la commission des affaires sociales du Sénat examinait le texte en première lecture le 2 novembre 2026.",
+     "quote": "examen en première lecture par la Commission des affaires sociales du Sénat",
+     "url": "https://www.securite-sociale.fr/la-secu-en-detail/loi-de-financement/annee-en-cours",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sécurité sociale : L'examen du PLFSS pour 2027",
+     "url": "https://www.securite-sociale.fr/la-secu-en-detail/loi-de-financement/annee-en-cours",
+     "primary": true
+    },
+    {
+     "title": "Legisocial : PLFSS 2027, rejet de l'Assemblée nationale",
+     "url": "https://www.legisocial.fr/actualites-sociales/8204-plfss-2027-rejet-assemblee-nationale.html",
+     "primary": false
+    },
+    {
+     "title": "NosParlementaires : Calendrier du PLFSS 2027",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    }
+   ],
+   "context": "Mots-clés suggérés : Loi de financement de la Sécurité sociale. Point d'étape qui était annoncé 'à partir du lundi 9 novembre' dans l'épisode du 2 novembre : le Sénat reprend le texte initial. Volets fiscaux et sociaux (cotisations, prélèvements) à suivre pour les employeurs et les cabinets paie ; rien n'est adopté. Pour un cabinet : informer les clients que seules les mesures du texte du Gouvernement ou amendées au Sénat comptent. Échéance du 26 novembre pour la fin du délai de cinquante jours (selon un site de suivi parlementaire, source secondaire)."
+  },
+  {
+   "title": "Petits colis : les frais de traitement de deux euros sont applicables depuis le 1er novembre",
+   "theme": "E-commerce",
+   "facts": [
+    {
+     "statement": "Selon la douane, la taxe française de deux euros sur les petits colis, instaurée en mars 2026, a été abrogée le 1er juillet 2026.",
+     "quote": "La taxe française de 2 € sur les petits colis, instaurée en mars 2026, a été abrogée le 1er juillet 2026.",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "status": "verified"
+    },
+    {
+     "statement": "Depuis le 1er novembre 2026, des frais de traitement de deux euros par catégorie d'article s'appliquent aux ventes à distance sans seuil de valeur, pour financer le renforcement des contrôles douaniers.",
+     "quote": "sans seuil de valeur, destinés à financer le renforcement des contrôles douaniers.",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "status": "verified"
+    },
+    {
+     "statement": "Le droit de douane forfaitaire de trois euros et les frais de traitement de deux euros s'appliquent par catégorie d'article.",
+     "quote": "Le droit de douane forfaitaire de 3 € et les frais de traitement de 2 € s'appliquent par catégorie d’article",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "status": "verified"
+    },
+    {
+     "statement": "Ces frais et le droit forfaitaire ne s'appliquent pas aux envois entre particuliers.",
+     "quote": "ne s’appliquent pas aux envois entre particuliers.",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon le ministère de l'Économie, les frais visent les envois effectués hors de l'Union européenne.",
+     "quote": "pour les envois effectués hors de l’Union européenne.",
+     "url": "https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/taxes-sur-les-petits-colis-comment-ca-marche",
+     "status": "unread"
+    },
+    {
+     "statement": "Le droit de douane forfaitaire de trois euros s'applique depuis le 1er juillet 2026.",
+     "quote": "qui s’appliquent depuis le 1^er juillet 2026",
+     "url": "https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/taxes-sur-les-petits-colis-comment-ca-marche",
+     "status": "unread"
+    },
+    {
+     "statement": "Le ministère cite le règlement délégué (UE) 2026/2152 de la Commission du 21 septembre 2026 fixant le montant des frais de traitement de l'Union.",
+     "quote": "Règlement délégué (UE) 2026/2152 de la Commission du 21 septembre 2026",
+     "url": "https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/taxes-sur-les-petits-colis-comment-ca-marche",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Douane : Petits colis, ce qui change pour vos achats en ligne",
+     "url": "https://www.douane.gouv.fr/petits-colis-ce-qui-change-pour-vos-achats-en-ligne",
+     "primary": true
+    },
+    {
+     "title": "Ministère de l'Économie : Taxes sur les petits colis, comment ça marche",
+     "url": "https://www.economie.gouv.fr/particuliers/mes-droits-conso/bien-consommer/taxes-sur-les-petits-colis-comment-ca-marche",
+     "primary": true
+    }
+   ],
+   "context": "Mots-clés suggérés : Franchise des petits colis. Le point annoncé dans l'épisode du 2 novembre est désormais passé : les frais de traitement sont applicables depuis le dimanche 1er novembre 2026 (annoncés auparavant pour cette date). Un exemple officiel : un colis t-shirts et jouets donne 5 euros au total (3 euros de droit plus 2 euros de frais). Reste à vérifier, côté pratique : qui supporte le prélèvement (plateforme, vendeur, intermédiaire) dans les conditions de vente et contrats de marketplace ; l'identifiant de produit obligatoire n'est pas confirmé par ces sources officielles. Pour un cabinet client vendeur à distance : relire les marges et prix, la donnée de catalogue. Le régime provisoire du droit de trois euros court jusqu'au 1er juillet 2028 selon l'épisode du 26 octobre (non re-vérifié ici)."
+  },
+  {
+   "title": "Facturation électronique : le moratoire pour les petites entreprises voté puis tombé avec le rejet du budget",
+   "theme": "Facturation électronique",
+   "facts": [
+    {
+     "statement": "Selon la presse, les députés ont adopté le 3 novembre un moratoire sur la facturation électronique pour les petites entreprises, par 101 voix contre 74, malgré l'avis défavorable du Gouvernement.",
+     "quote": "Adopté le 3 novembre par 101 voix contre 74, malgré l'avis défavorable du gouvernement",
+     "url": "https://clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Il prévoyait d'exclure les microentreprises, les PME et les exploitants agricoles des obligations de facturation électronique et d'e-reporting.",
+     "quote": "il prévoyait d'exclure les microentreprises, les PME et les exploitants agricoles des obligations de facturation électronique",
+     "url": "https://clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le rejet du budget le lendemain a rendu la mesure caduque : elle disparaît du texte.",
+     "quote": "avant que le rejet du budget 2027, dès le lendemain, ne rende cette mesure caduque",
+     "url": "https://clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Les échéances restent la réception depuis le 1er septembre 2026 et l'émission à partir du 1er septembre 2027.",
+     "quote": "réception des factures électroniques depuis le 1er septembre 2026, émission à partir du 1er septembre 2027",
+     "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme/amp",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la presse, un sénateur Les Républicains a publié le 5 novembre une question écrite sur des factures rejetées par les plateformes, puis envoyées par courrier électronique pour contourner les blocages.",
+     "quote": "décrit des factures rejetées par les plateformes, puis transmises par courrier électronique pour contourner les blocages",
+     "url": "https://clubic.com/actualite-638035-facturation-electronique-deux-mois-apres-le-lancement-des-factures-se-perdent-encore-entre-les-plateformes.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon le baromètre Connect-Compta publié par Chift, 5,26 millions d'entreprises françaises étaient raccordées au réseau Peppol au 2 novembre.",
+     "quote": "5,26 millions d'entreprises françaises étaient raccordées au réseau Peppol au 2 novembre",
+     "url": "https://clubic.com/actualite-638035-facturation-electronique-deux-mois-apres-le-lancement-des-factures-se-perdent-encore-entre-les-plateformes.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Clubic : Ces entreprises ont failli échapper à la facturation électronique",
+     "url": "https://clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "primary": false
+    },
+    {
+     "title": "Clubic : Facturation électronique, deux mois après le lancement, des factures se perdent encore entre les plateformes",
+     "url": "https://clubic.com/actualite-638035-facturation-electronique-deux-mois-apres-le-lancement-des-factures-se-perdent-encore-entre-les-plateformes.html",
+     "primary": false
+    },
+    {
+     "title": "DemarchesAdministratives : Facturation électronique, pourquoi le vote des députés ne suspend pas la réforme",
+     "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme/amp",
+     "primary": false
+    }
+   ],
+   "context": "Mots-clés suggérés : Réforme de la facturation électronique, E-reporting. Fiabilité : reported (presse spécialisée et grand public, pas de texte officiel). Le moratoire n'a jamais été une loi : amendement de séance sur la première partie du PLF, tombé avec le rejet du 4 novembre. Il pourrait être redéposé au Sénat ou en CMP, à surveiller sans l'annoncer. Pour un cabinet : les clients TPE/PME/micro qui espéraient un report doivent garder le calendrier du 1er septembre 2027 pour l'émission ; la réception est obligatoire depuis le 1er septembre 2026. Les dysfonctionnements d'interopérabilité entre plateformes sont rapportés par la presse et par une question écrite d'un sénateur : à vérifier avec la plateforme choisie, tests de réception et d'émission des factures d'achat. Le chiffre Peppol (5,26 millions d'entreprises raccordées au 2 novembre selon Chift via Clubic) est un candidat pour le chiffre de la semaine."
+  },
+  {
+   "title": "EFRAG : modèle numérique et convertisseur XBRL mis à jour pour la norme volontaire",
+   "theme": "Durabilité",
+   "facts": [
+    {
+     "statement": "Le 4 novembre 2026, l'EFRAG a publié la version mise à jour du modèle numérique (Digital Template) et du convertisseur XBRL de la norme volontaire (Voluntary Standard).",
+     "quote": "EFRAG Releases the Voluntary Standard Digital Template and XBRL Converter",
+     "url": "https://www.efrag.org/en",
+     "status": "verified"
+    },
+    {
+     "statement": "Le modèle reflète les modifications de la norme volontaire, adoptée en juillet 2026 et publiée au Journal officiel de l'Union par la Commission en septembre 2026.",
+     "quote": "The updated template reflects the amendments stemming from the Voluntary Standard, adopted in July 2026 and published in the Official Journal by the European Commission in September 2026.",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-the-voluntary-standard-digital-template-and-xbrl-converter",
+     "status": "verified"
+    },
+    {
+     "statement": "La norme volontaire a été publiée au Journal officiel de l'Union le 21 septembre 2026.",
+     "quote": "published in the Official Journal by the European Commission (EC) on 21 September 2026",
+     "url": "https://www.efrag.org/en/vs-digital-template-and-xbrl-taxonomy",
+     "status": "unread"
+    },
+    {
+     "statement": "Le convertisseur est gratuit et permet de convertir le modèle numérique en rapport Inline XBRL balisé.",
+     "quote": "It allows the conversion of the Digital Template into a tagged Inline XBRL report",
+     "url": "https://www.efrag.org/en/vs-digital-template-and-xbrl-taxonomy",
+     "status": "unread"
+    },
+    {
+     "statement": "Le secrétariat de l'EFRAG maintiendra le modèle, la taxonomie et le convertisseur au moins jusqu'à la fin juin 2027.",
+     "quote": "EFRAG Secretariat will continue to work and maintain the VS Digital Template, Taxonomy and Excel to XBRL Converter at least until the end of June 2027",
+     "url": "https://www.efrag.org/en/vs-digital-template-and-xbrl-taxonomy",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : EFRAG Releases the Voluntary Standard Digital Template and XBRL Converter",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-the-voluntary-standard-digital-template-and-xbrl-converter",
+     "primary": true
+    },
+    {
+     "title": "EFRAG : VS Digital Template and XBRL Taxonomy",
+     "url": "https://www.efrag.org/en/vs-digital-template-and-xbrl-taxonomy",
+     "primary": true
+    },
+    {
+     "title": "EFRAG : Europe's Voice in Corporate Reporting (page d'accueil)",
+     "url": "https://www.efrag.org/en",
+     "primary": true
+    }
+   ],
+   "context": "Mots-clés suggérés : VSME. C'est le point ouvert de l'épisode du 26 octobre : l'EFRAG devait publier en novembre un modèle numérique mis à jour avec convertisseur Excel vers XBRL ; c'est fait le 4 novembre 2026. Candidat idéal pour le retour sur un dossier. Pour un cabinet qui prépare des rapports volontaires pour des clients sortis du champ de la CSRD : récupérer la nouvelle version du modèle et du convertisseur, vérifier que les données collectées correspondent à la norme publiée en septembre. La transposition de l'Omnibus est attendue au plus tard le 19 mars 2027 (information des épisodes précédents)."
+  },
+  {
+   "title": "EFRAG : consultation sur les ESRS-40a pour certaines entités hors Union clôturée le 31 octobre",
+   "theme": "Durabilité",
+   "facts": [
+    {
+     "statement": "L'EFRAG a lancé le 23 juillet 2026 une consultation publique de cent jours sur l'exposé-sondage des ESRS-40a, destinés à certaines entités hors Union européenne.",
+     "quote": "EFRAG launches a 100-day public consultation on the Exposure Draft",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-launches-public-consultation-on-the-esrs40a-exposure-draft-for-certain-noneu-undertakings",
+     "status": "unread"
+    },
+    {
+     "statement": "La consultation invitait les parties prenantes à donner leur avis avant le 31 octobre 2026.",
+     "quote": "inviting all interested stakeholders, both within and outside the European Union, to share their views on the proposed standard before 31 October",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-launches-public-consultation-on-the-esrs40a-exposure-draft-for-certain-noneu-undertakings",
+     "status": "unread"
+    },
+    {
+     "statement": "L'objectif est d'assurer des conditions de concurrence équitables pour les entités actives sur le marché de l'Union.",
+     "quote": "to ensure that there is a level playing field for undertakings operating in the EU market",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-launches-public-consultation-on-the-esrs40a-exposure-draft-for-certain-noneu-undertakings",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : EFRAG Launches Public Consultation on the ESRS-40a Exposure Draft for Certain Non-EU Undertakings",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-launches-public-consultation-on-the-esrs40a-exposure-draft-for-certain-noneu-undertakings",
+     "primary": true
+    }
+   ],
+   "context": "Mots-clés suggérés : ESRS, CSRD. Les ESRS-40a sont des normes à destination de certaines entités hors Union dans le champ de l'article quarante-a de la directive comptable (Omnibus). La consultation est close ; l'EFRAG doit maintenant analyser les réponses et remettre un avis technique à la Commission, qui adoptera ensuite un acte. Pour un groupe français : sujet indirect (filiales de groupes non européens, chaînes de valeur) ; à suivre sans effet immédiat sur les comptes 2026. Les réunions du SR TEG et du SRB de l'EFRAG en novembre (9 et 10 novembre) figurent à l'agenda en ligne."
+  },
+  {
+   "title": "IASB : projet d'amendements à IFRS 18 attendu au quatrième trimestre 2026 et revue de IFRS 16",
+   "theme": "Normes comptables",
+   "facts": [
+    {
+     "statement": "Selon une présentation de l'IASB pour le comité consultatif des marchés de capitaux de novembre 2026, un exposé-sondage proposant des amendements à IFRS 18 est attendu au quatrième trimestre 2026.",
+     "quote": "Exposure Draft proposing amendments to IFRS 18",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "La même présentation indique que l'exposé-sondage est attendu au quatrième trimestre 2026.",
+     "quote": "Exposure Draft is expected in Q4 2026",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "L'IASB a conclu que IFRS 16 fonctionne globalement comme prévu à l'issue de sa revue post-mise en œuvre.",
+     "quote": "The IASB concluded that IFRS 16 is overall working as intended and decided:",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "L'IASB prévoit de publier en novembre 2026 un résumé du projet et une synthèse des retours.",
+     "quote": "Feedback Statement in November 2026",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "En mai 2026, l'IASB avait décidé d'explorer une modification d'IFRS 18 pour classer dans la catégorie des impôts sur le résultat certaines charges d'impôts hors impôt sur le résultat relevant du Pilier 2.",
+     "quote": "The IASB decided to explore amending IFRS 18 to require or allow an entity to classify non-income tax charges that meet the definition of ‘covered taxes’ in the Pillar Two model rules in the income taxes category.",
+     "url": "https://www.iasplus.com/en-gb/news/2026/05/iasb-meeting-summaries",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "IFRS Foundation : IASB Update, novembre 2026, CMAC",
+     "url": "https://www.ifrs.org/content/dam/ifrs/meetings/2026/november/cmac/ap1-iasb-update.pdf",
+     "primary": true
+    },
+    {
+     "title": "IAS Plus : May 2026 IASB meeting notes posted",
+     "url": "https://www.iasplus.com/en-gb/news/2026/05/iasb-meeting-summaries",
+     "primary": false
+    }
+   ],
+   "context": "Mots-clés suggérés : IFRS 18. IFRS 18 s'applique dans l'Union aux exercices ouverts à compter du 1er janvier 2027 (épisodes précédents, adoption par l'Union le 16 février 2026). L'exposé-sondage d'amendements attendu au quatrième trimestre 2026 n'est pas encore publié à notre connaissance : c'est un projet, pas une norme ; l'idée évoquée en mai de classer certains impôts du Pilier 2 dans la catégorie des impôts sur le résultat est une piste exploratoire. Pour un groupe IFRS : préparer le retraitement des comparatifs 2026 sans attendre, suivre l'exposé-sondage. Document fragmentaire (présentation) : rester prudent sur les détails."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-09",
+   "text": "Début de l'examen du PLFSS 2027 au Sénat"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Début de l'examen du projet de loi de finances 2027 en séance au Sénat"
+  },
+  {
+   "date": "2026-11-26",
+   "text": "Fin du délai de cinquante jours pour le PLFSS 2027"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission obligatoire de factures électroniques pour les PME, TPE et micro-entreprises"
+  }
+ ],
+ "checked": {
+  "verified": 23,
+  "unread": 16,
+  "dropped": 3
+ },
+ "dropped": [
+  {
+   "item": "PLFSS 2027 : le Sénat prend la main à partir du 9 novembre",
+   "statement": "Le projet de loi de financement de la Sécurité sociale pour 2027 a été rejeté par l'Assemblée nationale le 23 octobre 2026, ce qui a entraîné le rejet de l'ensemble du texte.",
+   "quote": "Le PLFSS 2027 a été rejeté par l’Assemblée nationale le 23 octobre 2026.",
+   "url": "https://www.legisocial.fr/actualites-sociales/8204-plfss-2027-rejet-assemblee-nationale.html"
+  },
+  {
+   "item": "PLFSS 2027 : le Sénat prend la main à partir du 9 novembre",
+   "statement": "Selon un site de suivi parlementaire, le texte a été rejeté par 115 voix contre 1.",
+   "quote": "Rejeté vendredi 23 octobre par 115 voix contre 1",
+   "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date"
+  },
+  {
+   "item": "PLFSS 2027 : le Sénat prend la main à partir du 9 novembre",
+   "statement": "Selon le même site, le Parlement a jusqu'au 26 novembre pour conclure (fin du délai de cinquante jours).",
+   "quote": "le Parlement a jusqu'au 26 novembre pour conclure",
+   "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date"
+  }
+ ]
+}
