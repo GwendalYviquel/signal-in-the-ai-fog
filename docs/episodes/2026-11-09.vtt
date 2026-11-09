@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.350
+Good morning, it's Monday, November 9.
+
+00:00:02.412 --> 00:00:08.906
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:08.968 --> 00:00:17.565
+Today: Anthropic's IPO roadshow reportedly starts this week, Sovereign AI events crowd the calendar, and AI Act marking deadline closes in.
+
+00:00:17.627 --> 00:00:19.359
+First, the story of the day.
+
+00:00:19.421 --> 00:00:27.647
+According to The Information, Anthropic plans to proceed next week with formal marketing of its initial public offering to investors.
+
+00:00:27.709 --> 00:00:30.244
+It cites people familiar with the matter.
+
+00:00:30.306 --> 00:00:35.192
+Bloomberg had earlier said the roadshow could start the week of November ninth.
+
+00:00:35.254 --> 00:00:39.089
+CNBC reports that some investors now expect a lower valuation.
+
+00:00:39.151 --> 00:00:42.552
+Sources disagree on the exact range, so I leave it out.
+
+00:00:42.614 --> 00:00:44.717
+No price range has been published.
+
+00:00:44.779 --> 00:00:50.407
+A finance outlet says it normally appears in an amended filing shortly before the roadshow.
+
+00:00:50.469 --> 00:00:57.520
+I found no company statement confirming the timing, and no report of any change to Claude availability or pricing.
+
+00:00:58.120 --> 00:01:03.775
+The read here: a vendor going public is a procurement event more than a technical one.
+
+00:01:03.841 --> 00:01:10.680
+The filing process is likely to put a frontier lab's costs, commitments and dependencies in public view.
+
+00:01:10.746 --> 00:01:14.889
+For a platform team, treat it as a risk document on a supplier.
+
+00:01:14.954 --> 00:01:21.596
+Read it for capacity commitments, reliance on a few cloud partners, and any sign of pricing pressure.
+
+00:01:21.662 --> 00:01:25.016
+That last point is speculation, but worth watching.
+
+00:01:25.081 --> 00:01:26.923
+Then run the practical test.
+
+00:01:26.988 --> 00:01:32.052
+Could your gateway move production traffic off any single vendor within days?
+
+00:01:32.118 --> 00:01:34.288
+Has anyone rehearsed it recently?
+
+00:01:34.353 --> 00:01:39.680
+A route that exists on paper, but has never carried real load, is not a fallback.
+
+00:01:40.280 --> 00:01:41.998
+Next, Models and vendors.
+
+00:01:42.067 --> 00:01:51.757
+OpenAI announced GPT-6 Cyber on November fifth, a model built for cybersecurity work such as finding and validating software vulnerabilities.
+
+00:01:51.825 --> 00:02:00.278
+According to CyberScoop, OpenAI claims it is a major step up from GPT-5.6 Cyber, and beats GPT-6 Astra on most cyber tasks.
+
+00:02:00.347 --> 00:02:05.020
+The sources I found do not describe general availability or pricing.
+
+00:02:05.620 --> 00:02:11.790
+What this really signals: Google's Carbon and now OpenAI's cyber model follow the same pattern.
+
+00:02:11.855 --> 00:02:16.336
+The strongest specialist models are announced first and opened later.
+
+00:02:16.401 --> 00:02:19.713
+For a platform team, a vendor claim is not a route.
+
+00:02:19.778 --> 00:02:28.610
+Keep such models off the gateway until access, price and data terms are written down, and until your own evaluation set has tested them.
+
+00:02:29.210 --> 00:02:31.007
+Next, Sovereignty and Europe.
+
+00:02:31.069 --> 00:02:34.167
+Two sovereign AI events are scheduled in November.
+
+00:02:34.229 --> 00:02:41.726
+Google Cloud's Sovereign AI Summit runs in Brussels on November seventeenth, with a welcome reception the evening before.
+
+00:02:41.788 --> 00:02:47.426
+OVHcloud's AI Summit, centred on sovereign AI, takes place in Paris on November nineteenth.
+
+00:02:47.488 --> 00:02:50.648
+Both are event announcements, not product launches.
+
+00:02:50.710 --> 00:02:59.570
+Separately, Venture Atlas reports that Mistral said on November fifth it is acquiring SkipLabs, a French company working on AI code generation.
+
+00:03:00.170 --> 00:03:07.469
+The bigger picture: sovereign offers tend to be announced on stages, then clarified months later in contracts.
+
+00:03:07.535 --> 00:03:09.459
+Nothing here is rentable yet.
+
+00:03:09.526 --> 00:03:17.090
+For a platform team, go in with questions on where inference runs, who operates it, and which models are included.
+
+00:03:17.156 --> 00:03:19.611
+Ask for terms in writing, not slides.
+
+00:03:19.677 --> 00:03:24.720
+The Mistral deal, if confirmed, shows European vendors widening their scope.
+
+00:03:25.320 --> 00:03:26.526
+Next, Regulation.
+
+00:03:26.597 --> 00:03:33.127
+The European Commission says the AI Omnibus entered into force on July twenty-seventh, 2026.
+
+00:03:33.198 --> 00:03:37.740
+It moves the Annex III high-risk rules to December second, 2027.
+
+00:03:37.811 --> 00:03:45.830
+A Cloud Security Alliance note says the grace period for marking AI-generated content ends December second, 2026.
+
+00:03:46.430 --> 00:03:49.299
+Why it matters: about three weeks remain.
+
+00:03:49.369 --> 00:03:57.205
+The open design question is where marking happens: in the model call, at the gateway, or at the publishing step.
+
+00:03:57.275 --> 00:04:04.692
+Pick one place, so a single owner can prove coverage across product descriptions, chat answers and images.
+
+00:04:04.762 --> 00:04:09.030
+Confirm the exact scope with legal now, not in late November.
+
+00:04:09.630 --> 00:04:11.112
+Next, Retail and agents.
+
+00:04:11.174 --> 00:04:17.102
+Walmart announced on October twenty-first that Agent Profiles will launch within the next month.
+
+00:04:17.164 --> 00:04:25.377
+Shoppers will be able to authorize an AI agent, set spending limits, approve purchases one at a time, and track what each agent buys.
+
+00:04:25.438 --> 00:04:29.884
+The most recent coverage I found still describes the launch as expected.
+
+00:04:29.946 --> 00:04:31.490
+I found no launch notice.
+
+00:04:32.090 --> 00:04:36.695
+The read here: a date inside a month is a commitment worth tracking.
+
+00:04:36.763 --> 00:04:43.536
+If it ships on time, the first usage figures will show how much shopping volume agents really carry.
+
+00:04:43.603 --> 00:04:49.360
+For a retailer, use the wait to prepare your own agent identity and reporting design.
+
+00:04:49.960 --> 00:04:51.401
+The number of the day.
+
+00:04:51.467 --> 00:04:52.057
+One year.
+
+00:04:52.122 --> 00:04:55.988
+The AI Act marking grace period ends December second, 2026.
+
+00:04:56.054 --> 00:05:00.378
+The delayed Annex III high-risk rules start December second, 2027.
+
+00:05:00.444 --> 00:05:02.606
+Only one of those dates is close.
+
+00:05:02.671 --> 00:05:03.589
+What to watch.
+
+00:05:03.654 --> 00:05:07.979
+This week: Anthropic's IPO roadshow, which reports say starts now.
+
+00:05:08.044 --> 00:05:11.124
+EuroHPC gigafactory bids, due November twelfth.
+
+00:05:11.189 --> 00:05:20.362
+Microsoft Ignite and Google's Sovereign AI Summit, both from November seventeenth, the day several Gemini text-to-speech previews shut down.
+
+00:05:20.428 --> 00:05:25.407
+OVHcloud's summit and Gemini 3.6 Flash retirement, both November nineteenth.
+
+00:05:25.473 --> 00:05:32.353
+Then Walmart's Agent Profiles, due by about November twenty-first, and AI Act marking on December second.
+
+00:05:32.418 --> 00:05:34.318
+And a question for your team.
+
+00:05:34.384 --> 00:05:45.523
+If your main model vendor became a listed company with new pricing pressure, how quickly could your gateway shift traffic to another route, and when did you last test it?
+
+00:05:45.588 --> 00:05:46.899
+That's it for today.
+
+00:05:46.964 --> 00:05:49.519
+Sources are in the episode description.
+
+00:05:49.585 --> 00:05:51.551
+This was Signal in the AI Fog.
+
+00:05:51.616 --> 00:05:52.730
+See you tomorrow.

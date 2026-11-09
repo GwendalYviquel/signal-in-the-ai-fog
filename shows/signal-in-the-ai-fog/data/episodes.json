@@ -1596,5 +1596,146 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-09",
+    "title": "Anthropic's roadshow, and the calendar ahead",
+    "summary": "Anthropic is reported to start its IPO roadshow this week, which turns a key model supplier into a listed-company question for platform teams. Also: a second gated cyber model, a crowded sovereign AI calendar, the AI Act marking deadline, and Walmart's pending agent profiles.",
+    "headlines": [
+      "Anthropic's IPO roadshow reportedly starts this week",
+      "Sovereign AI events crowd the calendar",
+      "AI Act marking deadline closes in"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Regulation",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "Sovereign AI infrastructure",
+      "Mistral",
+      "EU AI Act",
+      "Digital Omnibus",
+      "Walmart",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "The Information: Anthropic to Proceed With IPO Roadshow Next Week",
+        "url": "https://www.theinformation.com/briefings/anthropic-proceed-ipo-roadshow-next-week",
+        "primary": false
+      },
+      {
+        "title": "FinanceFeeds: Anthropic IPO Roadshow Looms With No Price Range In Sight",
+        "url": "https://financefeeds.com/anthropic-ipo-roadshow-looms-with-no-price-range/",
+        "primary": false
+      },
+      {
+        "title": "Daily AI Brief: Anthropic set to start IPO roadshow next week as investors expect a lower valuation",
+        "url": "https://dailyaibrief.com/news/anthropic-ipo-valuation-expectations-fall-to-1-trillion-HhtuQuCq",
+        "primary": false
+      },
+      {
+        "title": "CyberScoop: OpenAI debuts GPT-6 Cyber, touting better performance and safety guardrails",
+        "url": "https://cyberscoop.com/openai-gpt-6-cyber-security-model/",
+        "primary": false
+      },
+      {
+        "title": "Dig.watch: OpenAI launches ChatGPT-6 Cyber",
+        "url": "https://dig.watch/updates/openai-launches-chatgpt6-cyber",
+        "primary": false
+      },
+      {
+        "title": "Google Cloud: EMEA Sovereign AI Summit 2026",
+        "url": "https://cloud.google.com/events/sovereign-ai-summit-26",
+        "primary": true
+      },
+      {
+        "title": "OVHcloud: AI Summit 2026, sovereign AI on 19 November",
+        "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-sovereign-ai/",
+        "primary": true
+      },
+      {
+        "title": "Venture Atlas: Mistral agrees to acquire SkipLabs",
+        "url": "https://www.ventureatlas.org/news/2026-11-05-mistral-skiplabs",
+        "primary": false
+      },
+      {
+        "title": "European Commission: AI Omnibus enters into force",
+        "url": "https://digital-strategy.ec.europa.eu/en/news/ai-omnibus-enters-force",
+        "primary": true
+      },
+      {
+        "title": "Cloud Security Alliance: EU AI Act Watermarking Grace Period Ends December 2026",
+        "url": "https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article50-watermarking-deadline/",
+        "primary": false
+      },
+      {
+        "title": "i-SCOOP: The EU AI Act after the Digital Omnibus, what applies now and what to do before December 2",
+        "url": "https://www.i-scoop.eu/eu-ai-act-timeline-digital-omnibus/",
+        "primary": false
+      },
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      },
+      {
+        "title": "Digital Commerce 360: Walmart unveils AI agent shopping controls, spending limits",
+        "url": "https://www.digitalcommerce360.com/2026/10/23/walmart-unveils-ai-agent-shopping-controls-spending-limits/",
+        "primary": false
+      },
+      {
+        "title": "ConsumerGoods.com: Walmart Builds Infrastructure for Agentic Commerce, With Implications for Brands",
+        "url": "https://consumergoods.com/walmart-builds-infrastructure-agentic-commerce-implications-brands",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-09T04:06:14+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-09",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-09/episode-2026-11-09.mp3",
+    "audio_bytes": 5643477,
+    "duration_seconds": 352.7314285714286,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 17.7,
+        "title": "Story of the day: Anthropic's IPO roadshow reportedly starts this week"
+      },
+      {
+        "start": 100.3,
+        "title": "Models and vendors: OpenAI"
+      },
+      {
+        "start": 149.2,
+        "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+      },
+      {
+        "start": 205.3,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 249.6,
+        "title": "Retail and agents: Walmart"
+      },
+      {
+        "start": 290.0,
+        "title": "Number of the day"
+      },
+      {
+        "start": 302.7,
+        "title": "What to watch"
+      },
+      {
+        "start": 332.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

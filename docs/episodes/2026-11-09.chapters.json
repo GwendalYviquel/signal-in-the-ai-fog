@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 17.7,
+   "title": "Story of the day: Anthropic's IPO roadshow reportedly starts this week"
+  },
+  {
+   "startTime": 100.3,
+   "title": "Models and vendors: OpenAI"
+  },
+  {
+   "startTime": 149.2,
+   "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+  },
+  {
+   "startTime": 205.3,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 249.6,
+   "title": "Retail and agents: Walmart"
+  },
+  {
+   "startTime": 290.0,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 302.7,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 332.4,
+   "title": "Question for your team"
+  }
+ ]
+}
