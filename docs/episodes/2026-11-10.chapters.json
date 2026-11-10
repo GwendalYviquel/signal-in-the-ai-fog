@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 19.5,
+   "title": "Story of the day: Anthropic IPO filing still shows no price range"
+  },
+  {
+   "startTime": 86.9,
+   "title": "Models and vendors: OpenAI"
+  },
+  {
+   "startTime": 126.0,
+   "title": "Sovereignty and Europe: EuroHPC"
+  },
+  {
+   "startTime": 179.3,
+   "title": "Retail and agents: Agentic commerce"
+  },
+  {
+   "startTime": 217.8,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 232.6,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 261.2,
+   "title": "Question for your team"
+  }
+ ]
+}

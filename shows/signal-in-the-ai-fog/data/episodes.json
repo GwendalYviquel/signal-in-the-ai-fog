@@ -1737,5 +1737,113 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-10",
+    "title": "Anthropic's IPO price missing, EuroHPC dates move",
+    "summary": "Anthropic's IPO marketing reportedly starts next week, and its amended registration filing still shows no price range. Also: EuroHPC moves its AI gigafactory deadlines and orders bidders to resubmit, OpenAI's new GPT-6 family pages, and an agentic commerce startup funding round.",
+    "headlines": [
+      "Anthropic IPO filing still shows no price range",
+      "EuroHPC gigafactory deadlines shift",
+      "Agentic commerce startup raises fifteen million dollars"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Anthropic",
+      "OpenAI",
+      "EuroHPC",
+      "Sovereign AI infrastructure",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "The Information: Anthropic to Proceed With IPO Roadshow Next Week",
+        "url": "https://www.theinformation.com/briefings/anthropic-proceed-ipo-roadshow-next-week",
+        "primary": false
+      },
+      {
+        "title": "FourWeekMBA: Anthropic Retracts $70 to $80 IPO Range It Sent to Bankers",
+        "url": "https://fourweekmba.com/ai-anthropic-seeks-up-to-69-3b-in-ipo-at-70-to-80-a-share/",
+        "primary": false
+      },
+      {
+        "title": "FinanceFeeds: Anthropic IPO Date: No Price Range Yet for $80B-$100B Deal",
+        "url": "https://financefeeds.com/anthropic-ipo-date-roadshow-week-arrives-with-no-price-range-on-file/",
+        "primary": false
+      },
+      {
+        "title": "Investment Alley: Anthropic's IPO Roadshow: A Lower Bar, a Faster Clock",
+        "url": "https://investmentalley.substack.com/p/anthropics-ipo-roadshow-a-lower-bar",
+        "primary": false
+      },
+      {
+        "title": "Anthropic: Anthropic files S-1 with the SEC for proposed initial public offering",
+        "url": "https://www.anthropic.com/news/s1-sec",
+        "primary": true
+      },
+      {
+        "title": "OpenAI: Introducing GPT-6 Sol and Luna",
+        "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+        "primary": true
+      },
+      {
+        "title": "OpenAI: Introducing GPT-6.1 Terra",
+        "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+        "primary": true
+      },
+      {
+        "title": "HPCwire: EuroHPC Requires Bidders to Resubmit AI Gigafactory Proposals",
+        "url": "https://www.hpcwire.com/off-the-wire/eurohpc-requires-bidders-to-resubmit-ai-gigafactory-proposals/",
+        "primary": false
+      },
+      {
+        "title": "GlobeNewswire: firmly Raises $15 Million Series A and Launches Ask Agent to Help Merchants More Easily Adopt Agentic Commerce",
+        "url": "https://www.globenewswire.com/news-release/2026/11/05/3396499/0/en/firmly-raises-15-million-series-a-and-launches-ask-agent-to-help-merchants-more-easily-adopt-agentic-commerce.html",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-10T04:06:24+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-10",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-10/episode-2026-11-10.mp3",
+    "audio_bytes": 4506672,
+    "duration_seconds": 281.6783673469388,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 19.5,
+        "title": "Story of the day: Anthropic IPO filing still shows no price range"
+      },
+      {
+        "start": 86.9,
+        "title": "Models and vendors: OpenAI"
+      },
+      {
+        "start": 126.0,
+        "title": "Sovereignty and Europe: EuroHPC"
+      },
+      {
+        "start": 179.3,
+        "title": "Retail and agents: Agentic commerce"
+      },
+      {
+        "start": 217.8,
+        "title": "Number of the day"
+      },
+      {
+        "start": 232.6,
+        "title": "What to watch"
+      },
+      {
+        "start": 261.2,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

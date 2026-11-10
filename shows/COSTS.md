@@ -8,14 +8,14 @@ The projection runs the cost of a published episode over the month's episode day
 
 | Show | Runs | Episodes published | Claude (≈ USD) | ElevenLabs characters | Projection, Claude | Projection, characters |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| [Signal in the AI Fog](signal-in-the-ai-fog/COSTS.md) | 7 | 6 | $3.62 | 30,117 | $10.52 | 105,388 |
+| [Signal in the AI Fog](signal-in-the-ai-fog/COSTS.md) | 8 | 7 | $4.02 | 34,381 | $10.22 | 103,125 |
 | [Signal in the Tax Fog](accounting-news-fr/COSTS.md) | 2 | 2 | $2.46 | 16,760 | $6.14 | 41,900 |
 | [Signal in the HR Fog](hr-news-fr/COSTS.md) | 3 | 2 | $2.43 | 17,454 | $3.31 | 43,620 |
-| **All shows** | **12** | **10** | **$8.51** | **64,331** | **$19.97** | **190,908** |
+| **All shows** | **13** | **11** | **$8.91** | **68,595** | **$19.67** | **188,645** |
 
-**ElevenLabs credits are one quota shared by every show**: 64,331 characters used this month, about 190,908 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
+**ElevenLabs credits are one quota shared by every show**: 68,595 characters used this month, about 188,645 by the end of the month at this pace. Compare with the plan's monthly credits in the ElevenLabs account.
 
-**Credits left: 100,478 characters of 127,282**, renewed on 2026-11-30 (read before the run of 2026-11-09 03:26 UTC). Every publication reads them before paying for anything, and stops when they cannot voice the episode.
+**Credits left: 96,758 characters of 127,282**, renewed on 2026-11-30 (read before the run of 2026-11-10 03:10 UTC). Every publication reads them before paying for anything, and stops when they cannot voice the episode.
 
 ## Per episode and per download, since the first run
 
@@ -23,6 +23,6 @@ Every run counts, failed ones and checks included: they are part of what an epis
 
 | Show | Episodes published | Claude per episode | ElevenLabs characters per episode | Downloads | Claude per download |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Signal in the AI Fog | 16 | $0.66 | 5,028 | 45 | $0.234 |
+| Signal in the AI Fog | 17 | $0.64 | 4,983 | 45 | $0.243 |
 | Signal in the Tax Fog | 4 | $1.21 | 7,969 | 9 | $0.537 |
 | Signal in the HR Fog | 4 | $2.04 | 8,482 | 10 | $0.814 |
