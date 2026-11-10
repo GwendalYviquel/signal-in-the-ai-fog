@@ -23,6 +23,6 @@ Every run counts, failed ones and checks included: they are part of what an epis
 
 | Show | Episodes published | Claude per episode | ElevenLabs characters per episode | Downloads | Claude per download |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Signal in the AI Fog | 16 | $0.66 | 5,028 | 42 | $0.251 |
-| Signal in the Tax Fog | 4 | $1.21 | 7,969 | 7 | $0.691 |
-| Signal in the HR Fog | 4 | $2.04 | 8,482 | 8 | $1.018 |
+| Signal in the AI Fog | 16 | $0.66 | 5,028 | 45 | $0.234 |
+| Signal in the Tax Fog | 4 | $1.21 | 7,969 | 9 | $0.537 |
+| Signal in the HR Fog | 4 | $2.04 | 8,482 | 10 | $0.814 |
