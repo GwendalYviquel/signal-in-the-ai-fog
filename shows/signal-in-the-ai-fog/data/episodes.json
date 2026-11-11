@@ -1845,5 +1845,132 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-11",
+    "title": "Anthropic's price range lands, Fable gets cheaper",
+    "summary": "Anthropic's amended filing now shows a price range and a reported pricing date, turning a vendor question into a schedule. Also: a cheaper Claude Fable 5.2 with a retention catch, EuroHPC's working resubmission links, Meta's low-cost agent model, and Gemini 4 Carbon opening to paying developers.",
+    "headlines": [
+      "Anthropic's IPO price range goes public",
+      "Claude Fable 5.2 gets cheaper",
+      "EuroHPC reopens AI gigafactory bids"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform"
+    ],
+    "topics": [
+      "Anthropic",
+      "EuroHPC",
+      "Sovereign AI infrastructure",
+      "Meta",
+      "AI cost control"
+    ],
+    "sources": [
+      {
+        "title": "SEC: Anthropic, PBC Form S-1/A",
+        "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+        "primary": true
+      },
+      {
+        "title": "SEC: Anthropic, PBC Form S-1",
+        "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm",
+        "primary": true
+      },
+      {
+        "title": "CNBC: Anthropic sets IPO price range of $70 to $78, looks to start trading Nov. 19, sources say",
+        "url": "https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html",
+        "primary": false
+      },
+      {
+        "title": "RuntimeWire: Anthropic files $70 to $78 IPO range for 825 million shares",
+        "url": "https://runtimewire.com/article/anthropic-ipo-price-range-70-78-valuation",
+        "primary": false
+      },
+      {
+        "title": "Anthropic: Claude Fable 5.2",
+        "url": "https://www.anthropic.com/claude/fable",
+        "primary": true
+      },
+      {
+        "title": "Claude Platform Docs: Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+        "primary": true
+      },
+      {
+        "title": "LLM Stats: Claude Fable 5.2, Anthropic's long-horizon model gets cheaper",
+        "url": "https://llm-stats.com/blog/research/claude-fable-5-2-launch",
+        "primary": false
+      },
+      {
+        "title": "EuroHPC JU: Call for tenders for AI Gigafactory consortia",
+        "url": "https://www.eurohpc-ju.europa.eu/call-tenders-selection-artificial-intelligence-gigafactory-consortia-and-establishment-ai_en",
+        "primary": true
+      },
+      {
+        "title": "HPCwire: EuroHPC Requires Bidders to Resubmit AI Gigafactory Proposals",
+        "url": "https://www.hpcwire.com/off-the-wire/eurohpc-requires-bidders-to-resubmit-ai-gigafactory-proposals/",
+        "primary": false
+      },
+      {
+        "title": "Mezha: Meta releases Muse Ember, a lightweight model for agent tasks",
+        "url": "https://mezha.net/eng/news/mezha-730323ba6c06bee9681a1047_meta_releases_muse/",
+        "primary": false
+      },
+      {
+        "title": "Digg: Meta launches Muse Ember for repetitive AI agent work",
+        "url": "https://digg.com/ai/korhyosx",
+        "primary": false
+      },
+      {
+        "title": "Google: Gemini 4 Carbon is now available",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-11T04:06:19+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-11",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-11/episode-2026-11-11.mp3",
+    "audio_bytes": 4978550,
+    "duration_seconds": 311.170612244898,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.4,
+        "title": "Story of the day: Anthropic's IPO price range goes public"
+      },
+      {
+        "start": 97.7,
+        "title": "Models and vendors: Anthropic"
+      },
+      {
+        "start": 138.5,
+        "title": "Sovereignty and Europe: EuroHPC"
+      },
+      {
+        "start": 184.2,
+        "title": "Platform: Meta"
+      },
+      {
+        "start": 226.1,
+        "title": "Follow-up"
+      },
+      {
+        "start": 245.9,
+        "title": "Number of the day"
+      },
+      {
+        "start": 258.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 291.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

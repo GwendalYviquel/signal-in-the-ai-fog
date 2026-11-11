@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.867
+Good morning, it's Wednesday, November 11.
+
+00:00:02.936 --> 00:00:10.104
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:10.172 --> 00:00:18.296
+Today: Anthropic's IPO price range goes public, Claude Fable 5.2 gets cheaper, and EuroHPC reopens AI gigafactory bids.
+
+00:00:18.365 --> 00:00:20.276
+First, the story of the day.
+
+00:00:20.344 --> 00:00:25.874
+Anthropic filed an amended registration statement with the SEC on November tenth.
+
+00:00:25.942 --> 00:00:35.842
+It sets a price range of seventy to seventy-eight dollars per share for 825 million Class A shares, with a Nasdaq listing under the ticker A N T.
+
+00:00:35.910 --> 00:00:43.420
+CNBC, citing people familiar, reports pricing on November eighteenth and first trading on November nineteenth.
+
+00:00:43.488 --> 00:00:46.219
+Anthropic has not announced those dates.
+
+00:00:46.287 --> 00:00:57.210
+According to press coverage of the filing, a private placement with suppliers including AMD, Broadcom, Google, Microsoft and Nvidia runs alongside the offering.
+
+00:00:57.810 --> 00:01:02.084
+What this really signals: the open question from Monday is closed.
+
+00:01:02.149 --> 00:01:09.014
+A price range exists, and the dates move from rumour toward a schedule, although final pricing is not set.
+
+00:01:09.078 --> 00:01:13.029
+For a platform team, the cloud channel deserves a close look.
+
+00:01:13.094 --> 00:01:21.966
+If you buy Claude through a hyperscaler marketplace, that cloud provider is both your route to the model and could also be a rival to it.
+
+00:01:22.031 --> 00:01:27.276
+Check which route your contracts use, and what changes if terms are renegotiated.
+
+00:01:27.341 --> 00:01:32.198
+Then rehearse a failover through your gateway and record how long it takes.
+
+00:01:32.263 --> 00:01:37.120
+Listed-company disclosures will likely make pricing pressure easier to see.
+
+00:01:37.720 --> 00:01:39.287
+Next, Models and vendors.
+
+00:01:39.349 --> 00:01:42.733
+Anthropic released Claude Fable 5.2 on November ninth.
+
+00:01:42.796 --> 00:01:52.947
+Its documentation lists eight dollars per million input tokens and forty dollars per million output tokens, down from ten dollars and fifty dollars for Fable 5.1.
+
+00:01:53.009 --> 00:01:55.202
+It has a one million token context.
+
+00:01:55.265 --> 00:02:01.030
+It requires thirty-day data retention, unless Anthropic expressly authorizes zero retention.
+
+00:02:01.630 --> 00:02:08.178
+Why it matters: a twenty percent cut is easy to route on, but retention terms are a compliance gate.
+
+00:02:08.244 --> 00:02:17.870
+Check thirty-day retention against your data processing terms and your gateway's zero-retention policies before this model becomes a default route.
+
+00:02:18.480 --> 00:02:20.569
+Next, Sovereignty and Europe.
+
+00:02:20.641 --> 00:02:29.500
+EuroHPC says the new submission links for both lots of its AI gigafactories call are now on the funding and tenders portal.
+
+00:02:29.572 --> 00:02:34.469
+Earlier drafts and submitted tenders are void and must be recreated.
+
+00:02:34.541 --> 00:02:37.278
+Lot 1 closes on February fourth, 2027.
+
+00:02:37.350 --> 00:02:40.015
+Lot 2 closes on December third, 2026.
+
+00:02:40.087 --> 00:02:41.743
+Both close at five p.m.
+
+00:02:41.815 --> 00:02:43.400
+Central European Time.
+
+00:02:44.000 --> 00:02:52.047
+Reading between the lines: the window is open again, but Lot 2 bidders must rebuild full tenders in about three weeks.
+
+00:02:52.115 --> 00:02:56.275
+That likely favours consortia with documents already drafted.
+
+00:02:56.343 --> 00:02:59.344
+For a platform team nothing is rentable yet.
+
+00:02:59.412 --> 00:03:03.640
+Watch which consortia name cloud, model and software partners.
+
+00:03:04.240 --> 00:03:05.229
+Next, Platform.
+
+00:03:05.294 --> 00:03:13.071
+According to TechCrunch coverage, Meta released Muse Ember on November ninth through its Meta Model API and Muse Code.
+
+00:03:13.137 --> 00:03:21.639
+Meta calls it its lightest, most cost-efficient model, aimed at repetitive agent work such as tool calls, routing and extraction.
+
+00:03:21.705 --> 00:03:24.407
+Input costs ten cents per million tokens.
+
+00:03:24.473 --> 00:03:30.470
+Artificial Analysis reported that at max effort, Ember scored 36 on its Intelligence Index.
+
+00:03:31.070 --> 00:03:37.890
+The bigger picture: pairing a planner model with a cheap executor turns routing into a budget lever.
+
+00:03:37.958 --> 00:03:45.460
+But test it on your own tasks and your own evaluation set, not on any single benchmark or cost-per-task chart.
+
+00:03:46.060 --> 00:03:46.862
+A follow-up.
+
+00:03:46.929 --> 00:03:50.272
+Expected: a date for wider Gemini 4 Carbon access.
+
+00:03:50.339 --> 00:03:58.696
+On November tenth, Google opened it to all paying developers and enterprises, through the Gemini API and Gemini for business.
+
+00:03:58.763 --> 00:04:05.783
+The introductory price is two dollars per million input tokens and ten dollars per million output tokens.
+
+00:04:05.850 --> 00:04:07.321
+The number of the day.
+
+00:04:07.388 --> 00:04:10.263
+Seventy to seventy-eight dollars per share.
+
+00:04:10.329 --> 00:04:16.614
+That is the proposed price range for 825 million Class A shares in Anthropic's amended filing.
+
+00:04:16.681 --> 00:04:18.352
+Final pricing is not set.
+
+00:04:18.419 --> 00:04:19.355
+What to watch.
+
+00:04:19.422 --> 00:04:25.506
+Anthropic's reported pricing on November eighteenth and first trade on November nineteenth.
+
+00:04:25.573 --> 00:04:30.654
+Microsoft Ignite and Google's Sovereign AI Summit from November seventeenth.
+
+00:04:30.721 --> 00:04:35.802
+OVHcloud's summit and Gemini 3.6 Flash retirement, both November nineteenth.
+
+00:04:35.869 --> 00:04:39.947
+Walmart's Agent Profiles, due by about November twenty-first.
+
+00:04:40.014 --> 00:04:45.764
+The end of Carbon's introductory price, which press reports put at November thirtieth.
+
+00:04:45.831 --> 00:04:48.104
+AI Act marking on December second.
+
+00:04:48.171 --> 00:04:51.313
+And EuroHPC's Lot 2 deadline on December third.
+
+00:04:51.380 --> 00:04:53.319
+And a question for your team.
+
+00:04:53.386 --> 00:05:03.816
+When a vendor cuts its price but attaches thirty-day data retention, does your gateway policy catch that change, or does routing keep following price alone?
+
+00:05:03.882 --> 00:05:05.220
+That's it for today.
+
+00:05:05.287 --> 00:05:07.894
+Sources are in the episode description.
+
+00:05:07.961 --> 00:05:09.967
+This was Signal in the AI Fog.
+
+00:05:10.033 --> 00:05:11.170
+See you tomorrow.

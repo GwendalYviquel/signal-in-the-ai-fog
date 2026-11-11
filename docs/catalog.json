@@ -16,6 +16,136 @@
  },
  "episodes": [
   {
+   "date": "2026-11-11",
+   "status": "published",
+   "title": "Anthropic's price range lands, Fable gets cheaper",
+   "summary": "Anthropic's amended filing now shows a price range and a reported pricing date, turning a vendor question into a schedule. Also: a cheaper Claude Fable 5.2 with a retention catch, EuroHPC's working resubmission links, Meta's low-cost agent model, and Gemini 4 Carbon opening to paying developers.",
+   "headlines": [
+    "Anthropic's IPO price range goes public",
+    "Claude Fable 5.2 gets cheaper",
+    "EuroHPC reopens AI gigafactory bids"
+   ],
+   "themes": [
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Platform"
+   ],
+   "topics": [
+    "Anthropic",
+    "EuroHPC",
+    "Sovereign AI infrastructure",
+    "Meta",
+    "AI cost control"
+   ],
+   "page": "episodes/2026-11-11.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 18.4,
+     "title": "Story of the day: Anthropic's IPO price range goes public"
+    },
+    {
+     "start": 97.7,
+     "title": "Models and vendors: Anthropic"
+    },
+    {
+     "start": 138.5,
+     "title": "Sovereignty and Europe: EuroHPC"
+    },
+    {
+     "start": 184.2,
+     "title": "Platform: Meta"
+    },
+    {
+     "start": 226.1,
+     "title": "Follow-up"
+    },
+    {
+     "start": 245.9,
+     "title": "Number of the day"
+    },
+    {
+     "start": 258.5,
+     "title": "What to watch"
+    },
+    {
+     "start": 291.4,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 311,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-11/episode-2026-11-11.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "SEC: Anthropic, PBC Form S-1/A",
+     "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026072484/anthropicpbc-sx1ax2.htm",
+     "primary": true
+    },
+    {
+     "title": "SEC: Anthropic, PBC Form S-1",
+     "url": "https://www.sec.gov/Archives/edgar/data/0002130357/000162828026067168/anthropicpbc-sx1.htm",
+     "primary": true
+    },
+    {
+     "title": "CNBC: Anthropic sets IPO price range of $70 to $78, looks to start trading Nov. 19, sources say",
+     "url": "https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html",
+     "primary": false
+    },
+    {
+     "title": "RuntimeWire: Anthropic files $70 to $78 IPO range for 825 million shares",
+     "url": "https://runtimewire.com/article/anthropic-ipo-price-range-70-78-valuation",
+     "primary": false
+    },
+    {
+     "title": "Anthropic: Claude Fable 5.2",
+     "url": "https://www.anthropic.com/claude/fable",
+     "primary": true
+    },
+    {
+     "title": "Claude Platform Docs: Claude Fable 5.2",
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+     "primary": true
+    },
+    {
+     "title": "LLM Stats: Claude Fable 5.2, Anthropic's long-horizon model gets cheaper",
+     "url": "https://llm-stats.com/blog/research/claude-fable-5-2-launch",
+     "primary": false
+    },
+    {
+     "title": "EuroHPC JU: Call for tenders for AI Gigafactory consortia",
+     "url": "https://www.eurohpc-ju.europa.eu/call-tenders-selection-artificial-intelligence-gigafactory-consortia-and-establishment-ai_en",
+     "primary": true
+    },
+    {
+     "title": "HPCwire: EuroHPC Requires Bidders to Resubmit AI Gigafactory Proposals",
+     "url": "https://www.hpcwire.com/off-the-wire/eurohpc-requires-bidders-to-resubmit-ai-gigafactory-proposals/",
+     "primary": false
+    },
+    {
+     "title": "Mezha: Meta releases Muse Ember, a lightweight model for agent tasks",
+     "url": "https://mezha.net/eng/news/mezha-730323ba6c06bee9681a1047_meta_releases_muse/",
+     "primary": false
+    },
+    {
+     "title": "Digg: Meta launches Muse Ember for repetitive AI agent work",
+     "url": "https://digg.com/ai/korhyosx",
+     "primary": false
+    },
+    {
+     "title": "Google: Gemini 4 Carbon is now available",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+     "primary": true
+    }
+   ],
+   "transcript": "Good morning, it's Wednesday, November 11. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Anthropic's IPO price range goes public, Claude Fable 5.2 gets cheaper, and EuroHPC reopens AI gigafactory bids.\n\nFirst, the story of the day.\n\nAnthropic filed an amended registration statement with the SEC on November tenth. It sets a price range of seventy to seventy-eight dollars per share for 825 million Class A shares, with a Nasdaq listing under the ticker A N T. CNBC, citing people familiar, reports pricing on November eighteenth and first trading on November nineteenth. Anthropic has not announced those dates. According to press coverage of the filing, a private placement with suppliers including AMD, Broadcom, Google, Microsoft and Nvidia runs alongside the offering.\n\nWhat this really signals: the open question from Monday is closed. A price range exists, and the dates move from rumour toward a schedule, although final pricing is not set. For a platform team, the cloud channel deserves a close look. If you buy Claude through a hyperscaler marketplace, that cloud provider is both your route to the model and could also be a rival to it. Check which route your contracts use, and what changes if terms are renegotiated. Then rehearse a failover through your gateway and record how long it takes. Listed-company disclosures will likely make pricing pressure easier to see.\n\nNext, Models and vendors.\n\nAnthropic released Claude Fable 5.2 on November ninth. Its documentation lists eight dollars per million input tokens and forty dollars per million output tokens, down from ten dollars and fifty dollars for Fable 5.1. It has a one million token context. It requires thirty-day data retention, unless Anthropic expressly authorizes zero retention.\n\nWhy it matters: a twenty percent cut is easy to route on, but retention terms are a compliance gate. Check thirty-day retention against your data processing terms and your gateway's zero-retention policies before this model becomes a default route.\n\nNext, Sovereignty and Europe.\n\nEuroHPC says the new submission links for both lots of its AI gigafactories call are now on the funding and tenders portal. Earlier drafts and submitted tenders are void and must be recreated. Lot 1 closes on February fourth, 2027. Lot 2 closes on December third, 2026. Both close at five p.m. Central European Time.\n\nReading between the lines: the window is open again, but Lot 2 bidders must rebuild full tenders in about three weeks. That likely favours consortia with documents already drafted. For a platform team nothing is rentable yet. Watch which consortia name cloud, model and software partners.\n\nNext, Platform.\n\nAccording to TechCrunch coverage, Meta released Muse Ember on November ninth through its Meta Model API and Muse Code. Meta calls it its lightest, most cost-efficient model, aimed at repetitive agent work such as tool calls, routing and extraction. Input costs ten cents per million tokens. Artificial Analysis reported that at max effort, Ember scored 36 on its Intelligence Index.\n\nThe bigger picture: pairing a planner model with a cheap executor turns routing into a budget lever. But test it on your own tasks and your own evaluation set, not on any single benchmark or cost-per-task chart.\n\nA follow-up.\n\nExpected: a date for wider Gemini 4 Carbon access. On November tenth, Google opened it to all paying developers and enterprises, through the Gemini API and Gemini for business. The introductory price is two dollars per million input tokens and ten dollars per million output tokens.\n\nThe number of the day.\n\nSeventy to seventy-eight dollars per share. That is the proposed price range for 825 million Class A shares in Anthropic's amended filing. Final pricing is not set.\n\nWhat to watch.\n\nAnthropic's reported pricing on November eighteenth and first trade on November nineteenth. Microsoft Ignite and Google's Sovereign AI Summit from November seventeenth. OVHcloud's summit and Gemini 3.6 Flash retirement, both November nineteenth. Walmart's Agent Profiles, due by about November twenty-first. The end of Carbon's introductory price, which press reports put at November thirtieth. AI Act marking on December second. And EuroHPC's Lot 2 deadline on December third.\n\nAnd a question for your team.\n\nWhen a vendor cuts its price but attaches thirty-day data retention, does your gateway policy catch that change, or does routing keep following price alone?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-11-10",
    "status": "published",
    "title": "Anthropic's IPO price missing, EuroHPC dates move",

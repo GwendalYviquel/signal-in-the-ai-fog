@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.4,
+   "title": "Story of the day: Anthropic's IPO price range goes public"
+  },
+  {
+   "startTime": 97.7,
+   "title": "Models and vendors: Anthropic"
+  },
+  {
+   "startTime": 138.5,
+   "title": "Sovereignty and Europe: EuroHPC"
+  },
+  {
+   "startTime": 184.2,
+   "title": "Platform: Meta"
+  },
+  {
+   "startTime": 226.1,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 245.9,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 258.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 291.4,
+   "title": "Question for your team"
+  }
+ ]
+}
