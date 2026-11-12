@@ -1972,5 +1972,113 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-12",
+    "title": "Anthropic's roadshow launches, Claude gets a fast lane",
+    "summary": "Anthropic has launched its IPO roadshow, with a private placement from major technology companies alongside. Also: a reported Google Decisions API for closed-set choices, Claude's double-price fast mode, and a caveat about models that suspect they are being tested.",
+    "headlines": [
+      "Anthropic launches its IPO roadshow",
+      "Google's reported Decisions API arrives",
+      "Claude fast mode costs double"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Platform",
+      "Quality"
+    ],
+    "topics": [
+      "Anthropic",
+      "Gemini",
+      "Google",
+      "AI cost control",
+      "Model evaluation"
+    ],
+    "sources": [
+      {
+        "title": "Anthropic: Anthropic launches roadshow for proposed initial public offering",
+        "url": "https://www.anthropic.com/news/roadshow-launch",
+        "primary": true
+      },
+      {
+        "title": "Yahoo Finance: Anthropic is Seeking to Raise Over $90.4 Billion. The IPO is Reportedly Oversubscribed Multiple Times",
+        "url": "https://finance.yahoo.com/technology/ai/articles/anthropic-seeking-raise-over-90-153907895.html",
+        "primary": false
+      },
+      {
+        "title": "Bloomberg: Anthropic Bankers Look to Increase IPO Valuation, Report Says",
+        "url": "https://www.bloomberg.com/news/articles/2026-11-10/anthropic-targets-64-4-billion-ipo-nearing-spacex-s-record",
+        "primary": false
+      },
+      {
+        "title": "CNBC: Anthropic sets IPO price range of $70 to $78, looks to start trading Nov. 19, sources say",
+        "url": "https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html",
+        "primary": false
+      },
+      {
+        "title": "Startup Fortune: Google's Gemini Decision 1 destroys the so-called system one models",
+        "url": "https://startupfortune.com/googles-gemini-decision-1-destroys-the-so-called-system-one-models/",
+        "primary": false
+      },
+      {
+        "title": "Resultsense: Anthropic launches Claude Fable 5.2 and Mythos 5.2 at lower prices",
+        "url": "https://www.resultsense.com/news/2026-11-10-claude-fable-mythos-5-2-launch/",
+        "primary": false
+      },
+      {
+        "title": "CNBC: Anthropic releases first frontier models since Amodei's call for slowdown as IPO buzz builds",
+        "url": "https://www.cnbc.com/2026/11/09/anthropic-claude-fable-5-2-mythos-5-2.html",
+        "primary": false
+      },
+      {
+        "title": "Around Prague: Anthropic Releases Claude Fable 5.2, Cutting Prices 20% and Boosting Speed 30%",
+        "url": "https://aroundprague.cz/en/news/us/anthropic-releases-claude-fable-5-2-cutting-prices-20-and-boosting-speed-30",
+        "primary": false
+      },
+      {
+        "title": "CBC News: Anthropic eyes $1 trillion US valuation in hotly anticipated IPO that's a key test for AI market",
+        "url": "https://www.cbc.ca/news/business/anthropic-ipo-9.7416077",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-12T04:06:13+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-12",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-12/episode-2026-11-12.mp3",
+    "audio_bytes": 5009897,
+    "duration_seconds": 313.12979591836734,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 17.7,
+        "title": "Story of the day: Anthropic launches its IPO roadshow"
+      },
+      {
+        "start": 113.3,
+        "title": "Models and vendors: Gemini"
+      },
+      {
+        "start": 161.8,
+        "title": "Platform: Anthropic"
+      },
+      {
+        "start": 206.8,
+        "title": "Quality: Anthropic"
+      },
+      {
+        "start": 244.6,
+        "title": "Number of the day"
+      },
+      {
+        "start": 259.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 292.1,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 17.7,
+   "title": "Story of the day: Anthropic launches its IPO roadshow"
+  },
+  {
+   "startTime": 113.3,
+   "title": "Models and vendors: Gemini"
+  },
+  {
+   "startTime": 161.8,
+   "title": "Platform: Anthropic"
+  },
+  {
+   "startTime": 206.8,
+   "title": "Quality: Anthropic"
+  },
+  {
+   "startTime": 244.6,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 259.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 292.1,
+   "title": "Question for your team"
+  }
+ ]
+}
