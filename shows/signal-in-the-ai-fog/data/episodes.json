@@ -2080,5 +2080,129 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-13",
+    "title": "Inference pricing becomes a menu",
+    "summary": "This Friday's deeper look: in one week, vendors priced inference along speed, retention and expiry, not just tokens. Also: Gemini 2.5 requests reroute on December first, an API gateway that governs 140 models, and the AI Act marking date nineteen days away. Plus a follow-up on Anthropic's confirmed IPO dates.",
+    "headlines": [
+      "Inference pricing becomes a menu of tiers",
+      "Gemini 2.5 traffic reroutes on December first",
+      "AI Act marking arrives December second"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Platform",
+      "Regulation"
+    ],
+    "topics": [
+      "AI cost control",
+      "Anthropic",
+      "Gemini",
+      "Google",
+      "AI gateways",
+      "EU AI Act",
+      "Digital Omnibus"
+    ],
+    "sources": [
+      {
+        "title": "Claude Platform Docs: Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+        "primary": true
+      },
+      {
+        "title": "Google: Gemini 4 Carbon is now available",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+        "primary": true
+      },
+      {
+        "title": "Resultsense: Anthropic launches Claude Fable 5.2 and Mythos 5.2 at lower prices",
+        "url": "https://www.resultsense.com/news/2026-11-10-claude-fable-mythos-5-2-launch/",
+        "primary": false
+      },
+      {
+        "title": "Mezha: Meta releases Muse Ember, a lightweight model for agent tasks",
+        "url": "https://mezha.net/eng/news/mezha-730323ba6c06bee9681a1047_meta_releases_muse/",
+        "primary": false
+      },
+      {
+        "title": "Hello Growth: Gemini 2.5 retires on 1 December: what should you do?",
+        "url": "https://hellogrowth.ai/en/blog/gemini-2-5-api-retirement",
+        "primary": false
+      },
+      {
+        "title": "Evalshift: Gemini model deprecation: dates, replacements and a migration checklist",
+        "url": "https://www.evalshift.dev/blog/gemini-model-deprecation-migration-checklist",
+        "primary": false
+      },
+      {
+        "title": "MuleSoft: Any model, one gateway: Omni Gateway now supports 140+ LLMs",
+        "url": "https://blogs.mulesoft.com/news/any-model-one-gateway-omni-gateway-now-supports-140-llms/",
+        "primary": true
+      },
+      {
+        "title": "Mayer Brown: EU AI Act News: Digital Omnibus on AI, New Guidance on Risk Classification, GPAI, and Transparency Obligations",
+        "url": "https://www.mayerbrown.com/en/insights/publications/2026/07/eu-ai-act-news-digital-omnibus-on-ai-new-guidance-on-risk-classification-gpai-and-transparency-obligations",
+        "primary": false
+      },
+      {
+        "title": "Loyens & Loeff: EU AI Act: key amendments adopted under the Digital Omnibus package",
+        "url": "https://www.loyensloeff.com/insights/news--events/news/eu-ai-act-key-amendments-adopted-under-digital-omnibus-package/",
+        "primary": false
+      },
+      {
+        "title": "AI Act Explorer: Digital Omnibus on AI",
+        "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/",
+        "primary": false
+      },
+      {
+        "title": "Yahoo Finance: Anthropic IPO: Claude maker to begin trading on Thursday, Nov. 19",
+        "url": "https://finance.yahoo.com/technology/article/anthropic-ipo-claude-maker-to-begin-trading-on-thursday-nov-19-173550865.html",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-13T04:06:16+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-13",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-13/episode-2026-11-13.mp3",
+    "audio_bytes": 5525657,
+    "duration_seconds": 345.3648979591837,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.3,
+        "title": "Story of the day: Inference pricing becomes a menu of tiers"
+      },
+      {
+        "start": 118.9,
+        "title": "Models and vendors: Gemini"
+      },
+      {
+        "start": 164.7,
+        "title": "Platform: AI gateways"
+      },
+      {
+        "start": 215.1,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 265.3,
+        "title": "Follow-up"
+      },
+      {
+        "start": 276.5,
+        "title": "Number of the day"
+      },
+      {
+        "start": 289.0,
+        "title": "What to watch"
+      },
+      {
+        "start": 325.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

@@ -1,0 +1,161 @@
+{
+ "title": "Inference pricing becomes a menu",
+ "summary": "This Friday's deeper look: in one week, vendors priced inference along speed, retention and expiry, not just tokens. Also: Gemini 2.5 requests reroute on December first, an API gateway that governs 140 models, and the AI Act marking date nineteen days away. Plus a follow-up on Anthropic's confirmed IPO dates.",
+ "headlines": [
+  "Inference pricing becomes a menu of tiers",
+  "Gemini 2.5 traffic reroutes on December first",
+  "AI Act marking arrives December second"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Anthropic released Claude Fable 5.2 on November ninth. Its documentation lists eight dollars per million input tokens and forty dollars per million output tokens. It requires thirty-day data retention unless Anthropic expressly authorizes zero retention. According to Resultsense, an optional fast mode runs up to two and a half times quicker at double the price: sixteen dollars per million input tokens and eighty dollars per million output tokens. Meta's Muse Ember, aimed at repetitive agent work, costs ten cents per million input tokens, according to press coverage. Google opened Gemini 4 Carbon to all paying developers on November tenth, at an introductory two dollars per million input tokens and ten dollars per million output tokens. Press reports put the end of that introductory price at November thirtieth.",
+  "read": "The bigger picture: a price per token no longer describes a route. Look at what varied in a single week: speed tier, retention terms, model size, and an expiry date on the price itself. For a platform team, a route now needs more fields than a model name and a rate. Add latency tier, retention class and price-valid-until, and let gateway policy read them. Budget each tier separately. Put the November thirtieth expiry in an alert. Test cheap executor models on your own evaluation set before they take volume. Likely consequence: the cheapest sensible route changes monthly, so routing becomes a regular review, not a one-time design.",
+  "label": "reported",
+  "topics": [
+   "AI cost control",
+   "Anthropic",
+   "Gemini"
+  ],
+  "sources": [
+   {
+    "title": "Claude Platform Docs: Claude Fable 5.2",
+    "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+    "primary": true
+   },
+   {
+    "title": "Google: Gemini 4 Carbon is now available",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+    "primary": true
+   },
+   {
+    "title": "Resultsense: Anthropic launches Claude Fable 5.2 and Mythos 5.2 at lower prices",
+    "url": "https://www.resultsense.com/news/2026-11-10-claude-fable-mythos-5-2-launch/",
+    "primary": false
+   },
+   {
+    "title": "Mezha: Meta releases Muse Ember, a lightweight model for agent tasks",
+    "url": "https://mezha.net/eng/news/mezha-730323ba6c06bee9681a1047_meta_releases_muse/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "According to migration guides, Google deprecated Gemini 2.5 Pro and 2.5 Flash in the Gemini API on November second. From December first, requests are routed automatically to Gemini 3.8 Flash and Gemini 3.5 Flash-Lite, at those models' prices. Several audio previews shut down November seventeenth. Gemini 3.6 Flash retires on Vertex on November nineteenth.",
+   "read": "Why it matters: an automatic reroute keeps your integration answering, but with a different model and a different bill. Pin the successor now, run your evaluation set against it before December first, and check that your gateway flags silent model substitutions rather than absorbing them.",
+   "label": "reported",
+   "topics": [
+    "Gemini",
+    "Google"
+   ],
+   "sources": [
+    {
+     "title": "Hello Growth: Gemini 2.5 retires on 1 December: what should you do?",
+     "url": "https://hellogrowth.ai/en/blog/gemini-2-5-api-retirement",
+     "primary": false
+    },
+    {
+     "title": "Evalshift: Gemini model deprecation: dates, replacements and a migration checklist",
+     "url": "https://www.evalshift.dev/blog/gemini-model-deprecation-migration-checklist",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "MuleSoft says its Omni Gateway now supports more than 140 models from vendors including OpenAI, Anthropic, Google, Mistral, xAI and NVIDIA, plus models hosted on Amazon Bedrock and Azure. Each model inherits existing authentication, rate limits and audit policies. An in-house or sovereign model can be registered as a provider. The gateway is included in the subscription.",
+   "read": "What this really signals: API management vendors are converging with AI gateways. Inheritance is convenient, but it is also the risk. A fast tier or a decision-style endpoint should not silently inherit its parent model's quota or retention policy. Ask how your gateway treats it.",
+   "label": "confirmed",
+   "topics": [
+    "AI gateways"
+   ],
+   "sources": [
+    {
+     "title": "MuleSoft: Any model, one gateway: Omni Gateway now supports 140+ LLMs",
+     "url": "https://blogs.mulesoft.com/news/any-model-one-gateway-omni-gateway-now-supports-140-llms/",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Regulation",
+   "facts": "The Digital Omnibus on AI entered into force on July twenty-seventh, 2026. According to Mayer Brown, watermarking obligations for AI-generated content apply from December second, 2026, earlier than the February 2027 date the Commission had proposed. Per Loyens and Loeff, stand-alone high-risk systems follow on December second, 2027, and embedded safety components on August second, 2028.",
+   "read": "Reading between the lines: the marking date stayed close while high-risk duties slipped. That makes December second the nearest hard AI Act deadline. Nineteen days remain. Inventory which of your generative pipelines produce text, images or audio, and check whether your vendors or your own code mark the output.",
+   "label": "reported",
+   "topics": [
+    "EU AI Act",
+    "Digital Omnibus"
+   ],
+   "sources": [
+    {
+     "title": "Mayer Brown: EU AI Act News: Digital Omnibus on AI, New Guidance on Risk Classification, GPAI, and Transparency Obligations",
+     "url": "https://www.mayerbrown.com/en/insights/publications/2026/07/eu-ai-act-news-digital-omnibus-on-ai-new-guidance-on-risk-classification-gpai-and-transparency-obligations",
+     "primary": false
+    },
+    {
+     "title": "Loyens & Loeff: EU AI Act: key amendments adopted under the Digital Omnibus package",
+     "url": "https://www.loyensloeff.com/insights/news--events/news/eu-ai-act-key-amendments-adopted-under-digital-omnibus-package/",
+     "primary": false
+    },
+    {
+     "title": "AI Act Explorer: Digital Omnibus on AI",
+     "url": "https://artificialintelligenceact.eu/ai-act-explorer/digital-omnibus/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Double the price. That is what Claude Fable 5.2's optional fast mode costs: sixteen dollars per million input tokens, for a response up to two and a half times quicker.",
+  "source": {
+   "title": "Resultsense: Anthropic launches Claude Fable 5.2 and Mythos 5.2 at lower prices",
+   "url": "https://www.resultsense.com/news/2026-11-10-claude-fable-mythos-5-2-launch/",
+   "primary": false
+  }
+ },
+ "follow_up": {
+  "text": "Expected: Anthropic's pricing on November eighteenth and first trade on November nineteenth, then only reported. Anthropic has now announced both dates itself.",
+  "source": {
+   "title": "Yahoo Finance: Anthropic IPO: Claude maker to begin trading on Thursday, Nov. 19",
+   "url": "https://finance.yahoo.com/technology/article/anthropic-ipo-claude-maker-to-begin-trading-on-thursday-nov-19-173550865.html",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Next week is dense. Microsoft Ignite and Google's Sovereign AI Summit start November seventeenth, the day several Gemini audio previews shut down. Anthropic prices its IPO November eighteenth and trades November nineteenth. OVHcloud's summit and Gemini 3.6 Flash retirement also fall on the nineteenth. Walmart's Agent Profiles are due about November twenty-first. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.",
+ "agenda": [
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite and Google Sovereign AI Summit begin; Gemini audio previews shut down"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Anthropic IPO pricing expected"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "Anthropic first trade; OVHcloud summit; Gemini 3.6 Flash retires on Vertex"
+  },
+  {
+   "date": "2026-11-21",
+   "text": "Walmart Agent Profiles due, approximately"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Gemini 4 Carbon introductory price reportedly ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 API requests reroute to newer models"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations for AI-generated content apply"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC AI gigafactory Lot 2 deadline"
+  }
+ ],
+ "question": "Which fields does a route in your gateway carry besides model name and price: speed tier, data retention, price expiry date? Who gets alerted when one of them changes?"
+}

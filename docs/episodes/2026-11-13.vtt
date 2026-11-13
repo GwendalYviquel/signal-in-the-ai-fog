@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.488
+Good morning, it's Friday, November 13.
+
+00:00:02.552 --> 00:00:09.251
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.315 --> 00:00:18.247
+Today: Inference pricing becomes a menu of tiers, Gemini 2.5 traffic reroutes on December first, and AI Act marking arrives December second.
+
+00:00:18.310 --> 00:00:20.097
+First, the story of the day.
+
+00:00:20.161 --> 00:00:23.606
+Anthropic released Claude Fable 5.2 on November ninth.
+
+00:00:23.670 --> 00:00:30.496
+Its documentation lists eight dollars per million input tokens and forty dollars per million output tokens.
+
+00:00:30.560 --> 00:00:36.366
+It requires thirty-day data retention unless Anthropic expressly authorizes zero retention.
+
+00:00:36.429 --> 00:00:48.870
+According to Resultsense, an optional fast mode runs up to two and a half times quicker at double the price: sixteen dollars per million input tokens and eighty dollars per million output tokens.
+
+00:00:48.934 --> 00:00:56.654
+Meta's Muse Ember, aimed at repetitive agent work, costs ten cents per million input tokens, according to press coverage.
+
+00:00:56.718 --> 00:01:07.691
+Google opened Gemini 4 Carbon to all paying developers on November tenth, at an introductory two dollars per million input tokens and ten dollars per million output tokens.
+
+00:01:07.755 --> 00:01:12.540
+Press reports put the end of that introductory price at November thirtieth.
+
+00:01:13.140 --> 00:01:17.817
+The bigger picture: a price per token no longer describes a route.
+
+00:01:17.888 --> 00:01:26.250
+Look at what varied in a single week: speed tier, retention terms, model size, and an expiry date on the price itself.
+
+00:01:26.321 --> 00:01:31.990
+For a platform team, a route now needs more fields than a model name and a rate.
+
+00:01:32.061 --> 00:01:38.438
+Add latency tier, retention class and price-valid-until, and let gateway policy read them.
+
+00:01:38.509 --> 00:01:40.493
+Budget each tier separately.
+
+00:01:40.564 --> 00:01:43.824
+Put the November thirtieth expiry in an alert.
+
+00:01:43.895 --> 00:01:49.422
+Test cheap executor models on your own evaluation set before they take volume.
+
+00:01:49.493 --> 00:01:58.280
+Likely consequence: the cheapest sensible route changes monthly, so routing becomes a regular review, not a one-time design.
+
+00:01:58.880 --> 00:02:00.619
+Next, Models and vendors.
+
+00:02:00.688 --> 00:02:08.687
+According to migration guides, Google deprecated Gemini 2.5 Pro and 2.5 Flash in the Gemini API on November second.
+
+00:02:08.757 --> 00:02:17.521
+From December first, requests are routed automatically to Gemini 3.8 Flash and Gemini 3.5 Flash-Lite, at those models' prices.
+
+00:02:17.590 --> 00:02:21.346
+Several audio previews shut down November seventeenth.
+
+00:02:21.416 --> 00:02:25.450
+Gemini 3.6 Flash retires on Vertex on November nineteenth.
+
+00:02:26.050 --> 00:02:33.462
+Why it matters: an automatic reroute keeps your integration answering, but with a different model and a different bill.
+
+00:02:33.524 --> 00:02:44.050
+Pin the successor now, run your evaluation set against it before December first, and check that your gateway flags silent model substitutions rather than absorbing them.
+
+00:02:44.650 --> 00:02:45.726
+Next, Platform.
+
+00:02:45.798 --> 00:02:59.210
+MuleSoft says its Omni Gateway now supports more than 140 models from vendors including OpenAI, Anthropic, Google, Mistral, xAI and NVIDIA, plus models hosted on Amazon Bedrock and Azure.
+
+00:02:59.281 --> 00:03:04.732
+Each model inherits existing authentication, rate limits and audit policies.
+
+00:03:04.804 --> 00:03:09.322
+An in-house or sovereign model can be registered as a provider.
+
+00:03:09.394 --> 00:03:12.550
+The gateway is included in the subscription.
+
+00:03:13.150 --> 00:03:19.318
+What this really signals: API management vendors are converging with AI gateways.
+
+00:03:19.394 --> 00:03:23.277
+Inheritance is convenient, but it is also the risk.
+
+00:03:23.353 --> 00:03:32.033
+A fast tier or a decision-style endpoint should not silently inherit its parent model's quota or retention policy.
+
+00:03:32.110 --> 00:03:34.470
+Ask how your gateway treats it.
+
+00:03:35.070 --> 00:03:36.268
+Next, Regulation.
+
+00:03:36.338 --> 00:03:41.553
+The Digital Omnibus on AI entered into force on July twenty-seventh, 2026.
+
+00:03:41.623 --> 00:03:53.885
+According to Mayer Brown, watermarking obligations for AI-generated content apply from December second, 2026, earlier than the February 2027 date the Commission had proposed.
+
+00:03:53.955 --> 00:04:03.750
+Per Loyens and Loeff, stand-alone high-risk systems follow on December second, 2027, and embedded safety components on August second, 2028.
+
+00:04:04.350 --> 00:04:10.081
+Reading between the lines: the marking date stayed close while high-risk duties slipped.
+
+00:04:10.146 --> 00:04:14.054
+That makes December second the nearest hard AI Act deadline.
+
+00:04:14.119 --> 00:04:15.487
+Nineteen days remain.
+
+00:04:15.552 --> 00:04:24.670
+Inventory which of your generative pipelines produce text, images or audio, and check whether your vendors or your own code mark the output.
+
+00:04:25.270 --> 00:04:26.047
+A follow-up.
+
+00:04:26.112 --> 00:04:33.363
+Expected: Anthropic's pricing on November eighteenth and first trade on November nineteenth, then only reported.
+
+00:04:33.428 --> 00:04:36.406
+Anthropic has now announced both dates itself.
+
+00:04:36.471 --> 00:04:37.895
+The number of the day.
+
+00:04:37.960 --> 00:04:39.061
+Double the price.
+
+00:04:39.126 --> 00:04:48.837
+That is what Claude Fable 5.2's optional fast mode costs: sixteen dollars per million input tokens, for a response up to two and a half times quicker.
+
+00:04:48.902 --> 00:04:49.808
+What to watch.
+
+00:04:49.873 --> 00:04:51.103
+Next week is dense.
+
+00:04:51.168 --> 00:04:59.326
+Microsoft Ignite and Google's Sovereign AI Summit start November seventeenth, the day several Gemini audio previews shut down.
+
+00:04:59.391 --> 00:05:04.311
+Anthropic prices its IPO November eighteenth and trades November nineteenth.
+
+00:05:04.376 --> 00:05:09.426
+OVHcloud's summit and Gemini 3.6 Flash retirement also fall on the nineteenth.
+
+00:05:09.491 --> 00:05:13.441
+Walmart's Agent Profiles are due about November twenty-first.
+
+00:05:13.505 --> 00:05:25.354
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:05:25.418 --> 00:05:27.296
+And a question for your team.
+
+00:05:27.361 --> 00:05:35.389
+Which fields does a route in your gateway carry besides model name and price: speed tier, data retention, price expiry date?
+
+00:05:35.454 --> 00:05:38.173
+Who gets alerted when one of them changes?
+
+00:05:38.238 --> 00:05:39.533
+That's it for today.
+
+00:05:39.598 --> 00:05:42.123
+Sources are in the episode description.
+
+00:05:42.187 --> 00:05:44.130
+This was Signal in the AI Fog.
+
+00:05:44.195 --> 00:05:45.360
+See you on Monday.

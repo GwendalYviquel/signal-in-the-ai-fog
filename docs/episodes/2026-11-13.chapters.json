@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.3,
+   "title": "Story of the day: Inference pricing becomes a menu of tiers"
+  },
+  {
+   "startTime": 118.9,
+   "title": "Models and vendors: Gemini"
+  },
+  {
+   "startTime": 164.7,
+   "title": "Platform: AI gateways"
+  },
+  {
+   "startTime": 215.1,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 265.3,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 276.5,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 289.0,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 325.4,
+   "title": "Question for your team"
+  }
+ ]
+}
