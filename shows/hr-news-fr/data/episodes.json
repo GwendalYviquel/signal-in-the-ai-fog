@@ -641,5 +641,165 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "title": "Budget de la Sécu au Sénat, plafond des indemnités de rupture",
+    "summary": "Le Sénat a voté le volet recettes du budget de la sécurité sociale 2027 et se prépare au vote solennel du dix-huit novembre. Au programme aussi : le plafond des indemnités de rupture, l'assiette des allègements généraux, le chômage à huit virgule deux pour cent, le CPF et la transparence salariale.",
+    "headlines": [
+      "Le budget de la Sécu 2027 avance au Sénat",
+      "Un plafond unique pour les indemnités de rupture",
+      "Le chômage stable à huit virgule deux pour cent"
+    ],
+    "themes": [
+      "Paie et cotisations",
+      "Droit du travail",
+      "Emploi et retraite",
+      "Formation",
+      "Europe"
+    ],
+    "topics": [
+      "PLFSS 2027",
+      "CSG-CRDS",
+      "Indemnités journalières",
+      "Rupture conventionnelle",
+      "Allègements généraux",
+      "Cumul emploi-retraite",
+      "Compte personnel de formation",
+      "Transparence salariale"
+    ],
+    "sources": [
+      {
+        "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+        "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+        "primary": true
+      },
+      {
+        "title": "Sénat : PLFSS 2027, l'essentiel (commission des affaires sociales)",
+        "url": "https://www.senat.fr/lessentiel/plfss2027.pdf",
+        "primary": true
+      },
+      {
+        "title": "Public Sénat : Budget 2027 de la Sécurité sociale, le Sénat adopte un volet recettes affaibli",
+        "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+        "primary": false
+      },
+      {
+        "title": "NosParlementaires : Calendrier du PLFSS 2027",
+        "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+        "primary": false
+      },
+      {
+        "title": "Veille de presse : Indemnités de rupture, la commission du Sénat garde le plafond de 48 060 euros",
+        "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+        "primary": false
+      },
+      {
+        "title": "Benjamin Duplaa : Rupture conventionnelle 2027, ce que le budget changerait",
+        "url": "https://www.benjaminduplaa.com/blog/rupture-conventionnelle-2027-indemnite-plafond-budget",
+        "primary": false
+      },
+      {
+        "title": "FD Avocats : Indemnités de rupture 2027, exonération limitée à un PASS",
+        "url": "https://www.fd-avocats.com/news/indemnites-rupture-plafond-exoneration-2027",
+        "primary": false
+      },
+      {
+        "title": "Actance Avocats : PLF et PLFSS pour 2027, coût des ruptures et charges patronales",
+        "url": "https://www.actanceavocats.com/blog/breve/plf-et-plfss-pour-2027-%E2%80%93-des-changements-en-perspective-pour-le-cout-des-ruptures-et-les-charges-patronales-86",
+        "primary": false
+      },
+      {
+        "title": "AEF info : PLFSS 2027, le Sénat adopte, après l'avoir modifié, la réforme de l'assiette des allègements généraux",
+        "url": "https://www.aefinfo.fr/depeche/760097-plfss-2027-le-senat-adopte-apres-lavoir-modifie-la-reforme-de-lassiette-des-allegements-generaux",
+        "primary": false
+      },
+      {
+        "title": "Sénat : PLFSS 2027, examen des articles (rapport n° 144, tome II)",
+        "url": "https://www.senat.fr/rap/l26-144-2/l26-144-2_mono.html",
+        "primary": true
+      },
+      {
+        "title": "Sénat : PLFSS 2027, exposé général (rapport n° 144, tome I)",
+        "url": "https://www.senat.fr/rap/l26-144-1/l26-144-1_mono.html",
+        "primary": true
+      },
+      {
+        "title": "NosParlementaires : Gel des pensions 2027, le Sénat veut un seuil à 1 500 euros",
+        "url": "https://nosparlementaires.fr/actualites/gel-pensions-senat-1500-euros-reforme-retraites-plfss-2027",
+        "primary": false
+      },
+      {
+        "title": "UNCCAS : PLF et PLFSS 2027, le Sénat à la manœuvre, les ordonnances se profilent",
+        "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+        "primary": false
+      },
+      {
+        "title": "CE Expertises : Transparence salariale, le projet de loi et le CSE",
+        "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+        "primary": false
+      },
+      {
+        "title": "People Base CBM : Directive européenne sur la transparence des rémunérations, le guide",
+        "url": "https://www.people-base-cbm.com/equite-des-remunerations/directive-europeenne-sur-la-transparence-des-remunerations-le-guide-complet-pour-les-entreprises/",
+        "primary": false
+      },
+      {
+        "title": "Insee : Au troisième trimestre 2026, le taux de chômage s'établit à 8,2 %",
+        "url": "https://www.insee.fr/fr/statistiques/9118603",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-16T04:21:40+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#hr-news-fr-2026-11-16",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-11-16/hr-news-fr-2026-11-16.mp3",
+    "audio_bytes": 8620555,
+    "duration_seconds": 538.8016326530612,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 17.1,
+        "title": "Sujet de la semaine : Le budget de la Sécu 2027 avance au Sénat"
+      },
+      {
+        "start": 162.1,
+        "title": "Droit du travail : Rupture conventionnelle"
+      },
+      {
+        "start": 227.8,
+        "title": "Paie et cotisations : PLFSS 2027"
+      },
+      {
+        "start": 288.7,
+        "title": "Emploi et retraite : PLFSS 2027"
+      },
+      {
+        "start": 341.0,
+        "title": "Formation : Compte personnel de formation"
+      },
+      {
+        "start": 394.9,
+        "title": "Europe : Transparence salariale"
+      },
+      {
+        "start": 443.0,
+        "title": "Retour sur un dossier"
+      },
+      {
+        "start": 463.0,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 479.5,
+        "title": "À surveiller"
+      },
+      {
+        "start": 516.6,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]

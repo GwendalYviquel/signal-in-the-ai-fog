@@ -1,0 +1,497 @@
+{
+ "items": [
+  {
+   "title": "Budget de la Sécu 2027 : le Sénat adopte le volet recettes, vote solennel mercredi",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Le projet de loi de financement de la sécurité sociale pour 2027 a été rejeté par l'Assemblée nationale le 23 octobre 2026, puis examiné en commission des affaires sociales du Sénat le 4 novembre.",
+     "quote": "Après son rejet par l’Assemblée nationale le 23 octobre 2026, ce texte a été examiné en commission des affaires sociales le 4 novembre.",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la page officielle du Sénat, le texte est débattu en séance publique du 9 au 17 novembre, avec un vote solennel prévu le 18 novembre.",
+     "quote": "Il est débattu en séance publique du 9 au 17 novembre. Un vote solennel est prévu le 18 novembre.",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Comme l'Assemblée a rejeté le texte en première lecture, le Sénat examine le texte initial du Gouvernement.",
+     "quote": "L’Assemblée nationale ayant rejeté le PLFSS en première lecture, le 23 octobre 2026,",
+     "url": "https://www.senat.fr/lessentiel/plfss2027.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "Le 13 novembre 2026, les sénateurs ont adopté le volet recettes du budget de la Sécurité sociale 2027.",
+     "quote": "Les sénateurs ont adopté ce 13 novembre le volet recettes du projet de loi de financement de la Sécurité sociale",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+     "status": "verified"
+    },
+    {
+     "statement": "Ce volet recettes a été adopté par 200 voix contre 110.",
+     "quote": "Cette partie a été adoptée par 200 voix contre 110.",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon Public Sénat, le Gouvernement relève que le déficit s'est aggravé de 3,2 milliards d'euros à l'issue de ce volet.",
+     "quote": "Le gouvernement relève que le déficit s’est aggravé de 3,2 milliards d’euros.",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+     "status": "verified"
+    },
+    {
+     "statement": "Ce bilan est provisoire : la majorité sénatoriale promet des économies sur la partie dépenses, pas encore examinée.",
+     "quote": "la majorité sénatoriale promet des économies sur la partie dépenses",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "primary": true
+    },
+    {
+     "title": "Sénat : PLFSS 2027, l'essentiel (commission des affaires sociales)",
+     "url": "https://www.senat.fr/lessentiel/plfss2027.pdf",
+     "primary": true
+    },
+    {
+     "title": "Public Sénat : Budget 2027 de la Sécurité sociale, le Sénat adopte un volet recettes affaibli",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-le-senat-adopte-un-volet-recettes-affaibli",
+     "primary": false
+    },
+    {
+     "title": "NosParlementaires : Calendrier du PLFSS 2027",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    },
+    {
+     "title": "Legiwatch : Le Sénat adopte la première partie du budget de la Sécurité sociale",
+     "url": "https://www.legiwatch.fr/actualites/financement-securite-sociale-2027-senat-adopte-2026-11-09/",
+     "primary": false
+    }
+   ],
+   "context": "Sujet de la semaine proposé. Étape réelle : le texte n'est pas adopté. Le Sénat a voté le volet recettes le vendredi 13 novembre (200 contre 110), la partie dépenses reste à examiner, puis vote solennel le mercredi 18 novembre. Ensuite : commission mixte paritaire, et en cas d'échec nouvelle lecture. Selon NosParlementaires, le délai de cinquante jours se termine le 26 novembre ; la presse parlementaire évoque un recours possible aux ordonnances, ce qui reste une anticipation. Note : certains sites de suivi parlementaire parlent d'une première partie adoptée le 9 novembre par 217 voix contre 127 et d'une deuxième partie le 13 novembre ; les découpages diffèrent, ne retenir que le vote du 13 novembre, 200 contre 110. En pratique pour un service paie : aucune règle de cotisations, d'exonération ou de CSG pour 2027 n'est stabilisée ; préparer des scénarios de paramétrage en décembre ; les mesures sur les indemnités de rupture et l'assiette des allègements généraux (voir autres items) sont les plus structurantes. Rappel d'un épisode précédent : le texte initial prévoit un milliard d'euros d'économies sur les indemnités journalières. Aucun texte définitif avant la fin du processus."
+  },
+  {
+   "title": "Indemnités de rupture : le plafond unique d'un PASS passe l'étape du Sénat",
+   "theme": "Droit du travail",
+   "facts": [
+    {
+     "statement": "Selon une source juridique, la commission des affaires sociales du Sénat a adopté l'article 6 du PLFSS, qui plafonne l'exonération à 48 060 euros, en y ajoutant une clause transitoire.",
+     "quote": "a adopté l’article 6 du budget de la Sécurité sociale, qui plafonne l’exonération à 48 060 euros",
+     "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "La clause transitoire vise les plans de sauvegarde de l'emploi validés ou homologués avant 2027.",
+     "quote": "Clause transitoire pour les PSE validés ou homologués avant 2027",
+     "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un site juridique, le Sénat a adopté l'article 6 en séance lors de ses séances des 9 et 10 novembre.",
+     "quote": "le Sénat a adopté l'article 6 lors de ses séances des 9 et 10 novembre",
+     "url": "https://www.benjaminduplaa.com/blog/rupture-conventionnelle-2027-indemnite-plafond-budget",
+     "status": "verified"
+    },
+    {
+     "statement": "Cette adoption comporte une exception pour les plans de sauvegarde de l'emploi.",
+     "quote": "avec une exception pour les plans de sauvegarde de l'emploi",
+     "url": "https://www.benjaminduplaa.com/blog/rupture-conventionnelle-2027-indemnite-plafond-budget",
+     "status": "verified"
+    },
+    {
+     "statement": "Le plafond unique est d'un plafond annuel de la sécurité sociale, soit 48 060 euros en 2026.",
+     "quote": "soit 48 060 € en 2026",
+     "url": "https://www.benjaminduplaa.com/blog/rupture-conventionnelle-2027-indemnite-plafond-budget",
+     "status": "verified"
+    },
+    {
+     "statement": "Le plafond d'exonération passerait de deux plafonds à un seul, quel que soit le mode de rupture.",
+     "quote": "Le plafond d'exonération passerait de deux PASS à un PASS, quel que soit le mode de rupture.",
+     "url": "https://www.fd-avocats.com/news/indemnites-rupture-plafond-exoneration-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le montant de 48 060 euros est le plafond de 2026, pas celui de 2027, qui reste à fixer par arrêté.",
+     "quote": "Non : 48 060 € est le PASS 2026.",
+     "url": "https://www.fd-avocats.com/news/indemnites-rupture-plafond-exoneration-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Sur le plan social, l'article 6 vise les ruptures prenant effet à compter du 1er janvier 2027.",
+     "quote": "l’article 6 du PLFSS retient en revanche les ruptures prenant effet à compter du 1er janvier 2027",
+     "url": "https://www.actanceavocats.com/blog/breve/plf-et-plfss-pour-2027-%E2%80%93-des-changements-en-perspective-pour-le-cout-des-ruptures-et-les-charges-patronales-86",
+     "status": "verified"
+    },
+    {
+     "statement": "Une rupture conventionnelle signée en décembre 2026 mais effective en janvier 2027 pourrait relever du régime fiscal actuel et du nouveau régime social.",
+     "quote": "pourrait ainsi relever du régime fiscal actuel et du nouveau régime social",
+     "url": "https://www.actanceavocats.com/blog/breve/plf-et-plfss-pour-2027-%E2%80%93-des-changements-en-perspective-pour-le-cout-des-ruptures-et-les-charges-patronales-86",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Veille de presse : Indemnités de rupture, la commission du Sénat garde le plafond de 48 060 euros",
+     "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+     "primary": false
+    },
+    {
+     "title": "Benjamin Duplaa : Rupture conventionnelle 2027, ce que le budget changerait",
+     "url": "https://www.benjaminduplaa.com/blog/rupture-conventionnelle-2027-indemnite-plafond-budget",
+     "primary": false
+    },
+    {
+     "title": "FD Avocats : Indemnités de rupture 2027, exonération limitée à un PASS",
+     "url": "https://www.fd-avocats.com/news/indemnites-rupture-plafond-exoneration-2027",
+     "primary": false
+    },
+    {
+     "title": "Actance Avocats : PLF et PLFSS pour 2027, coût des ruptures et charges patronales",
+     "url": "https://www.actanceavocats.com/blog/breve/plf-et-plfss-pour-2027-%E2%80%93-des-changements-en-perspective-pour-le-cout-des-ruptures-et-les-charges-patronales-86",
+     "primary": false
+    }
+   ],
+   "context": "Label reported : sources secondaires (cabinets d'avocats, presse juridique), le rapport du Sénat n'a pas été relu directement. Pas une loi : article voté par le Sénat en première lecture, le texte reste à adopter définitivement (vote solennel le 18 novembre, CMP ensuite). Le plafond d'exonération de cotisations et CSG-CRDS passerait de deux plafonds à un pour toutes les ruptures, avec effet des ruptures à compter du 1er janvier 2027 ; pour l'impôt, c'est l'article 2 du PLF, distinct et non voté. Pratique : vérifier la date d'effet de la rupture (et non de signature) pour les départs négociés fin décembre, chiffrer l'écart sur les départs prévus, prévenir managers et salariés, regarder les accords de PSE en cours. Un épisode précédent avait déjà posé la question du chiffrage ; la nouveauté est le vote du Sénat. Le montant 2027 du plafond dépend de l'arrêté à paraître d'ici la fin de l'année."
+  },
+  {
+   "title": "Allègements généraux : le Sénat adopte, en le modifiant, l'élargissement de l'assiette",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Selon AEF, le Sénat a adopté en séance en le modifiant l'article du PLFSS 2027 sur l'assiette des allègements généraux.",
+     "quote": "le Sénat adopte, après l'avoir modifié, la réforme de l'assiette des allègements généraux",
+     "url": "https://www.aefinfo.fr/depeche/760097-plfss-2027-le-senat-adopte-apres-lavoir-modifie-la-reforme-de-lassiette-des-allegements-generaux",
+     "status": "verified"
+    },
+    {
+     "statement": "Les articles concernés ont été adoptés en séance publique les 10 et 12 novembre 2026.",
+     "quote": "adopté en séance publique, les 10 et 12 novembre 2026, les articles du PLFSS pour 2027",
+     "url": "https://www.aefinfo.fr/depeche/760097-plfss-2027-le-senat-adopte-apres-lavoir-modifie-la-reforme-de-lassiette-des-allegements-generaux",
+     "status": "verified"
+    },
+    {
+     "statement": "Le rapport de la commission du Sénat intitule l'article 7 : rationaliser l'assiette des allègements généraux de cotisations sociales.",
+     "quote": "Rationaliser l'assiette des allègements généraux de cotisations sociales",
+     "url": "https://www.senat.fr/rap/l26-144-2/l26-144-2_mono.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "AEF info : PLFSS 2027, le Sénat adopte, après l'avoir modifié, la réforme de l'assiette des allègements généraux",
+     "url": "https://www.aefinfo.fr/depeche/760097-plfss-2027-le-senat-adopte-apres-lavoir-modifie-la-reforme-de-lassiette-des-allegements-generaux",
+     "primary": false
+    },
+    {
+     "title": "Sénat : PLFSS 2027, examen des articles (rapport n° 144, tome II)",
+     "url": "https://www.senat.fr/rap/l26-144-2/l26-144-2_mono.html",
+     "primary": true
+    },
+    {
+     "title": "Legiwatch : PLFSS 2027, mesures, débats et étapes",
+     "url": "https://www.legiwatch.fr/loi/plfss-2027/",
+     "primary": false
+    }
+   ],
+   "context": "Label reported : la dépêche AEF est payante, seul le chapeau est lisible ; la nature exacte de la modification apportée par le Sénat n'est pas connue dans ce dossier, ne pas la préciser. Pas adopté définitivement. Enjeu : l'élargissement de l'assiette (intéressement, participation, abondement) réduirait le montant des allègements généraux pour les employeurs concernés, particulièrement pour ceux qui ont de l'épargne salariale ; la mesure est à relier à l'épargne salariale et au coût du travail au niveau du SMIC. Pratique : demander à l'éditeur de paie comment le calcul de la réduction générale serait paramétré, simuler l'effet, attendre le texte final (CMP) avant de modifier le paramétrage. Les montants de l'effet ne figurent pas dans les sources."
+  },
+  {
+   "title": "Chômage : le taux de l'Insee à 8,2 % au troisième trimestre 2026",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Selon l'Insee, le taux de chômage est quasi stable au troisième trimestre 2026, à 8,2 %, avec un recul de 0,1 point.",
+     "quote": "Le taux de chômage est quasi stable (-0,1 point) au troisième trimestre 2026, à 8,2 %",
+     "url": "https://www.insee.fr/fr/statistiques/9118603",
+     "status": "verified"
+    },
+    {
+     "statement": "Sur un an, le taux de chômage augmente pour toutes les tranches d'âge.",
+     "quote": "Sur un an, le taux de chômage augmente pour toutes les tranches d’âge",
+     "url": "https://www.insee.fr/fr/statistiques/9118603",
+     "status": "verified"
+    },
+    {
+     "statement": "Les chiffres ont été publiés par l'Insee le 10 novembre.",
+     "quote": "selon les données publiées le 10 novembre par l’Insee",
+     "url": "https://gazette-du-midi.fr/au-sommaire/hommes-et-chiffres/barometre/t3-2026-le-chomage-se-stabilise-a-8-2-en-france",
+     "status": "verified"
+    },
+    {
+     "statement": "Un an plus tôt le taux était de 7,8 % et il était de 7,4 % à l'automne 2024.",
+     "quote": "contre 7,8 % (hausse de 0,4 point) il y a un an et 7,4 % à l’automne 2024",
+     "url": "https://www.ouest-france.fr/economie/emploi/chomage/le-taux-de-chomage-a-continue-a-augmenter-au-3e-trimestre-par-rapport-a-2025-63f61626-dc1c-11f1-a45f-49114163a350",
+     "status": "unread"
+    },
+    {
+     "statement": "Le taux recule de 0,1 point par rapport au trimestre précédent.",
+     "quote": "en recul de 0,1 point par rapport au trimestre précédent, a indiqué l'Insee ce mardi",
+     "url": "https://www.ici.fr/infos/economie-social/le-taux-de-chomage-reste-quasiment-stable-au-troisieme-trimestre-en-france-s-etablissant-a-8-2-4286262",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Insee : Au troisième trimestre 2026, le taux de chômage s'établit à 8,2 %",
+     "url": "https://www.insee.fr/fr/statistiques/9118603",
+     "primary": true
+    },
+    {
+     "title": "Ouest-France : La lente remontée du taux de chômage fait une timide pause au 3e trimestre",
+     "url": "https://www.ouest-france.fr/economie/emploi/chomage/le-taux-de-chomage-a-continue-a-augmenter-au-3e-trimestre-par-rapport-a-2025-63f61626-dc1c-11f1-a45f-49114163a350",
+     "primary": false
+    },
+    {
+     "title": "La Gazette du Midi : T3 2026, le chômage se stabilise à 8,2 % en France",
+     "url": "https://gazette-du-midi.fr/au-sommaire/hommes-et-chiffres/barometre/t3-2026-le-chomage-se-stabilise-a-8-2-en-france",
+     "primary": false
+    },
+    {
+     "title": "ici : Le taux de chômage reste quasiment stable au troisième trimestre",
+     "url": "https://www.ici.fr/infos/economie-social/le-taux-de-chomage-reste-quasiment-stable-au-troisieme-trimestre-en-france-s-etablissant-a-8-2-4286262",
+     "primary": false
+    }
+   ],
+   "context": "Confirmed (Insee). Candidat naturel pour le retour sur un dossier : l'épisode du 9 novembre annonçait la publication du taux de chômage du troisième trimestre le 10 novembre à sept heures trente ; l'Insee l'a publié à 8,2 %, en léger recul de 0,1 point sur le deuxième trimestre (8,3 % cité dans l'épisode du 9 novembre), mais en hausse de 0,4 point sur un an. Peut aussi servir de chiffre de la semaine. À ne pas utiliser deux fois. Ce que ça dit : la remontée du chômage marque une pause, sans inversion ; les prévisions d'octobre de l'Unédic (8,6 % en 2026) ne sont pas contredites directement car la méthode diffère (à ne pas comparer). Lien avec les discussions sur l'assurance chômage et le déficit du régime. Prochaine publication : emploi salarié du troisième trimestre, annoncé pour le 27 novembre dans les épisodes précédents."
+  },
+  {
+   "title": "Retraites : le Sénat veut annuler la suspension de la réforme et relever le seuil du gel des pensions",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Selon le Sénat, la suspension de 2023 résulte de l'article 105 de la loi de financement de la sécurité sociale pour 2026.",
+     "quote": "résultant de l'article 105 de la LFSS pour 2026",
+     "url": "https://www.senat.fr/rap/l26-144-1/l26-144-1_mono.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : PLFSS 2027, exposé général (rapport n° 144, tome I)",
+     "url": "https://www.senat.fr/rap/l26-144-1/l26-144-1_mono.html",
+     "primary": true
+    },
+    {
+     "title": "NosParlementaires : Gel des pensions 2027, le Sénat veut un seuil à 1 500 euros",
+     "url": "https://nosparlementaires.fr/actualites/gel-pensions-senat-1500-euros-reforme-retraites-plfss-2027",
+     "primary": false
+    },
+    {
+     "title": "Bulletin des communes : Revalorisation des pensions 2027, le PLFSS limite la hausse",
+     "url": "https://bulletindescommunes.net/revalorisation-des-pensions-2027-plfss/",
+     "primary": false
+    }
+   ],
+   "context": "Position de commission, pas un vote de séance : le sort de ces amendements en séance et le contenu final après CMP restent ouverts. Pas d'effet direct sur la paie 2027, mais effet potentiel sur l'âge de départ, donc sur la gestion des fins de carrière, le cumul emploi-retraite et les ruptures de salariés proches du départ (rupture conventionnelle d'un salarié pouvant liquider sa retraite). Le décret sur le cumul emploi-retraite du 2 novembre, signalé dans l'épisode du 9 novembre, n'a pas pu être relu ce jour. À surveiller : le vote solennel du 18 novembre."
+  },
+  {
+   "title": "Budget de l'État : le CPF dans le projet de loi de finances examiné au Sénat à partir du 20 novembre",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "Selon l'UNCCAS, le Sénat examinera le projet de loi de finances du 20 novembre au 9 décembre.",
+     "quote": "Le Sénat examinera le texte du 20 novembre au 9 décembre.",
+     "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+     "status": "verified"
+    },
+    {
+     "statement": "Une commission mixte paritaire de sept députés et sept sénateurs cherchera ensuite un compromis.",
+     "quote": "Une commission mixte paritaire (CMP), composée de sept députés et de sept sénateurs, cherchera ensuite un compromis.",
+     "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+     "status": "verified"
+    },
+    {
+     "statement": "En cas d'échec de la commission mixte paritaire, le texte repart en nouvelle lecture à l'Assemblée nationale.",
+     "quote": "En cas d’échec, le texte repartira en nouvelle lecture à l’Assemblée nationale.",
+     "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+     "status": "verified"
+    },
+    {
+     "statement": "Un site juridique donne le 9 décembre comme date de vote du PLF au Sénat.",
+     "quote": "Vote du Sénat le 18 novembre, PLF voté le 9 décembre",
+     "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon l'UNCCAS, l'absence de majorité politique rend de plus en plus incertaine l'adoption des budgets avant le 31 décembre.",
+     "quote": "rendant de plus en plus incertaine leur adoption avant le 31 décembre",
+     "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "UNCCAS : PLF et PLFSS 2027, le Sénat à la manœuvre, les ordonnances se profilent",
+     "url": "https://www.unccas.org/plf-et-plfss-2027-le-senat-la-manoeuvre-les-ordonnances-se-profilent",
+     "primary": false
+    },
+    {
+     "title": "Veille de presse : Indemnités de rupture, la commission du Sénat garde le plafond",
+     "url": "https://www.veilledepresse.com/droit-social/6746-indemnites-de-rupture-la-commission-du-senat-garde-le-plafond-de-48-060-euros-et-epargne-les-pse-valides-avant-2027",
+     "primary": false
+    }
+   ],
+   "context": "Label reported (source associative et site juridique, pas de page officielle du Sénat relue). Suite d'un dossier suivi : les épisodes du 2 et du 9 novembre indiquaient que l'article 89 du PLF, qui majore la participation du titulaire du CPF pour les formations non prioritaires financées par le seul titulaire, était parti au Sénat dans la version du Gouvernement après rejet des recettes à l'Assemblée. Le calendrier se précise : examen au Sénat du 20 novembre au 9 décembre, donc pas de vote définitif avant la CMP. Rien n'est adopté. Pratique : un service formation peut préparer l'information des salariés, et mesurer l'effet sur les abondements employeur ; ne pas citer de montant de reste à charge, qui ne figure pas dans la loi en projet (source unique de presse, à manier avec prudence). Le contenu de l'article 89 n'a pas été relu cette semaine."
+  },
+  {
+   "title": "Transparence salariale : toujours pas de date d'examen au Sénat",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "Au 3 novembre 2026, le texte n'avait pas de date d'examen en commission.",
+     "quote": "il n’avait pas encore de date d’examen en commission au 3 novembre 2026",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Gouvernement a évoqué un vote du Sénat en fin d'année ou début 2027.",
+     "quote": "le Gouvernement a évoqué un vote du Sénat en fin d’année ou début 2027",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "People Base CBM : Directive européenne sur la transparence des rémunérations, le guide",
+     "url": "https://www.people-base-cbm.com/equite-des-remunerations/directive-europeenne-sur-la-transparence-des-remunerations-le-guide-complet-pour-les-entreprises/",
+     "primary": false
+    },
+    {
+     "title": "CE Expertises : Transparence salariale, le projet de loi et le CSE",
+     "url": "https://www.ce-expertises.fr/actualites/projet-loi-transparence-salariale-cse/",
+     "primary": false
+    }
+   ],
+   "context": "Label reported : sources secondaires, dossier législatif du Sénat non relu ce jour. Rien n'est adopté ; le délai de transposition de la directive est dépassé, donc l'obligation n'est pas opposable à un employeur privé tant que la loi n'est pas votée. Peu de nouveauté cette semaine : l'absence de date est elle-même le fait. À garder en rubrique courte, ou à sauter si l'épisode est chargé. Pratique : poursuivre le travail sur les catégories d'emplois, les critères de classification et les fourchettes de rémunération. À surveiller : l'inscription à l'ordre du jour de la commission des affaires sociales du Sénat."
+  },
+  {
+   "title": "Indemnités journalières : la fiscalisation en discussion dans le budget de l'État",
+   "theme": "Santé et conditions de travail",
+   "facts": [
+    {
+     "statement": "Dans la liasse d'amendements du Sénat sur la première partie du PLF 2027, un amendement vise à soumettre intégralement à l'impôt sur le revenu les indemnités journalières.",
+     "quote": "Cet amendement vise à soumettre intégralement à l’impôt sur le revenu les indemnités journalières",
+     "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "Lors de l'examen à l'Assemblée, les députés avaient retiré l'imposition des indemnités journalières d'affection de longue durée.",
+     "quote": "Les députés ont retiré l’imposition des indemnités journalières d’affection de longue durée",
+     "url": "https://www.maxcompta.com/blogs/actualites/plf-2027-seance-assemblee-votes-13-16-octobre",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon le Sénat, le rendement de la fiscalisation à 50 % des indemnités journalières versées pour une ALD serait affecté à la sécurité sociale.",
+     "quote": "la fiscalisation à 50 % des indemnités journalières (IJ) versées en cas de maladie au titre d’ALD",
+     "url": "https://www.senat.fr/tableau-historique/plfss2027.html",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : PLF 2027 (provisoire), liasse d'amendements, première partie",
+     "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+     "primary": true
+    },
+    {
+     "title": "Sénat : Financement de la sécurité sociale pour 2027, la loi en construction",
+     "url": "https://www.senat.fr/tableau-historique/plfss2027.html",
+     "primary": true
+    },
+    {
+     "title": "Maxcompta : PLF 2027, ce que les députés ont voté du 13 au 16 octobre",
+     "url": "https://www.maxcompta.com/blogs/actualites/plf-2027-seance-assemblee-votes-13-16-octobre",
+     "primary": false
+    }
+   ],
+   "context": "Label reported, matière fragile : il s'agit d'amendements déposés (document provisoire), pas de textes adoptés, et le PLF repart au Sénat dans la version du Gouvernement. Ne pas présenter comme une règle. Lien avec les économies attendues sur les indemnités journalières dans le PLFSS (un milliard d'euros selon le texte initial, d'après un épisode précédent) et avec la baisse de la durée d'indemnisation de certaines ALD. Pratique : un salarié en arrêt long peut voir son net évoluer si la fiscalisation était votée ; à suivre côté information des salariés et prévoyance. À ne retenir que si la place le permet."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-18",
+   "text": "Vote solennel du Sénat sur le budget de la sécurité sociale 2027"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Début de l'examen du budget de l'État 2027 au Sénat"
+  },
+  {
+   "date": "2026-11-26",
+   "text": "Fin du délai de cinquante jours pour le budget de la Sécu"
+  },
+  {
+   "date": "2026-11-27",
+   "text": "Publication de l'emploi salarié du troisième trimestre par l'Insee"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "Marquage des contenus générés par l'IA pour les systèmes existants"
+  },
+  {
+   "date": "2026-12-09",
+   "text": "Fin prévue de l'examen du budget de l'État au Sénat"
+  }
+ ],
+ "checked": {
+  "verified": 31,
+  "unread": 4,
+  "dropped": 8
+ },
+ "dropped": [
+  {
+   "item": "Budget de la Sécu 2027 : le Sénat adopte le volet recettes, vote solennel mercredi",
+   "statement": "Selon NosParlementaires, le délai de cinquante jours prend fin le 26 novembre.",
+   "quote": "Sénat à partir du 9 novembre, fin du délai de 50 jours le 26 novembre.",
+   "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date"
+  },
+  {
+   "item": "Budget de la Sécu 2027 : le Sénat adopte le volet recettes, vote solennel mercredi",
+   "statement": "Le texte poursuit sa navette : il doit être adopté dans les mêmes termes par les deux chambres pour être définitif.",
+   "quote": "il doit être adopté dans les mêmes termes par l'Assemblée nationale et le Sénat.",
+   "url": "https://www.legiwatch.fr/actualites/financement-securite-sociale-2027-senat-adopte-2026-11-09/"
+  },
+  {
+   "item": "Allègements généraux : le Sénat adopte, en le modifiant, l'élargissement de l'assiette",
+   "statement": "L'article 7 du PLFSS modifie l'assiette en y intégrant l'intéressement, la participation et l'abondement de l'épargne salariale.",
+   "quote": "L'article 7 modifie l'assiette des allègements généraux de cotisations en y intégrant l'intéressement, la participation et l'abondement de l'épargne salariale.",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Retraites : le Sénat veut annuler la suspension de la réforme et relever le seuil du gel des pensions",
+   "statement": "Dans son rapport, la commission des affaires sociales du Sénat propose d'annuler la suspension de la réforme des retraites de 2023.",
+   "quote": "la commission propose d'annuler la suspension de la réforme des retraites de 2023",
+   "url": "https://www.senat.fr/rap/l26-144-1/l26-144-1_mono.html"
+  },
+  {
+   "item": "Retraites : le Sénat veut annuler la suspension de la réforme et relever le seuil du gel des pensions",
+   "statement": "La commission veut garantir l'inflation aux pensions jusqu'à 1500 euros, contre 1260 euros dans le texte du Gouvernement.",
+   "quote": "veut garantir l’inflation aux pensions jusqu’à 1 500 euros, contre 1 260 dans le texte du gouvernement",
+   "url": "https://nosparlementaires.fr/actualites/gel-pensions-senat-1500-euros-reforme-retraites-plfss-2027"
+  },
+  {
+   "item": "Retraites : le Sénat veut annuler la suspension de la réforme et relever le seuil du gel des pensions",
+   "statement": "Le texte du Gouvernement prévoit de limiter la hausse des retraites au-dessus de 1260 euros bruts par mois.",
+   "quote": "Le PLFSS 2027 prévoit de limiter la hausse des retraites au-dessus de 1 260 € bruts par mois.",
+   "url": "https://bulletindescommunes.net/revalorisation-des-pensions-2027-plfss/"
+  },
+  {
+   "item": "Transparence salariale : toujours pas de date d'examen au Sénat",
+   "statement": "Le projet de loi n° 944 a été déposé au Sénat le 10 septembre 2026, en procédure accélérée.",
+   "quote": "Le projet de loi n° 944 a été déposé au Sénat le 10 septembre 2026, en procédure accélérée.",
+   "url": "https://www.people-base-cbm.com/equite-des-remunerations/directive-europeenne-sur-la-transparence-des-remunerations-le-guide-complet-pour-les-entreprises/"
+  },
+  {
+   "item": "Transparence salariale : toujours pas de date d'examen au Sénat",
+   "statement": "Au 5 novembre 2026, selon ce site, le texte n'a pas de date d'examen et le ministère du Travail l'annonce pour 2027.",
+   "quote": "Au 5 novembre 2026, il n’a pas de date d’examen",
+   "url": "https://www.people-base-cbm.com/equite-des-remunerations/directive-europeenne-sur-la-transparence-des-remunerations-le-guide-complet-pour-les-entreprises/"
+  }
+ ]
+}
