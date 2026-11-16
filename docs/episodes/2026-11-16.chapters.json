@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 19.1,
+   "title": "Story of the day: Anthropic's IPO ties it to two clouds"
+  },
+  {
+   "startTime": 115.8,
+   "title": "Models and vendors: Gemini"
+  },
+  {
+   "startTime": 166.1,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 210.2,
+   "title": "Platform: NVIDIA"
+  },
+  {
+   "startTime": 256.0,
+   "title": "Retail and agents: Walmart"
+  },
+  {
+   "startTime": 304.2,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 315.6,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 350.2,
+   "title": "Question for your team"
+  }
+ ]
+}

@@ -1,0 +1,190 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.624
+Good morning, it's Monday, November 16.
+
+00:00:02.691 --> 00:00:09.756
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.823 --> 00:00:18.973
+Today: Anthropic's IPO ties it to two clouds, Nvidia reports earnings without Jensen Huang, and Gemini 2.5 Pro reroute changes the bill.
+
+00:00:19.040 --> 00:00:20.924
+First, the story of the day.
+
+00:00:20.991 --> 00:00:34.918
+Anthropic said on Thursday that it will price its initial public offering on Wednesday, November eighteenth, and begin trading on Nasdaq as A N T on Thursday, November nineteenth, according to Yahoo Finance.
+
+00:00:34.986 --> 00:00:44.203
+The offer is 825 million shares at seventy to seventy-eight dollars each, up to about sixty-four billion dollars at the top of the range.
+
+00:00:44.270 --> 00:00:55.237
+A Saturday KuCoin report says a concurrent twenty-six billion dollar private placement involves AMD, Broadcom, Google, Micron, Microsoft, Nvidia and TSMC Partners.
+
+00:00:55.304 --> 00:00:58.937
+Yahoo says Nvidia's part is up to ten billion dollars.
+
+00:00:59.004 --> 00:01:10.913
+NBC News, reporting on the filing, says Anthropic plans to spend one hundred fifteen billion dollars with Google and forty-five billion with Microsoft on computing through 2033.
+
+00:01:10.980 --> 00:01:16.430
+It also reports a first-half 2026 net loss of eighty point seven billion dollars.
+
+00:01:17.040 --> 00:01:22.091
+What this really signals: the supplier is raising money from its own suppliers.
+
+00:01:22.155 --> 00:01:29.061
+Chip makers and clouds become shareholders, and two of those clouds also hold the large compute commitments.
+
+00:01:29.125 --> 00:01:37.054
+For a platform team, that means Claude capacity, pricing and availability are likely tied to Google and Microsoft decisions.
+
+00:01:37.118 --> 00:01:39.868
+Check which cloud route your contracts use.
+
+00:01:39.932 --> 00:01:44.408
+Rehearse a failover through your gateway before Thursday, and time it.
+
+00:01:44.472 --> 00:01:51.441
+Once the stock trades, vendor risk will be discussed quarter after quarter, so put a review in your calendar.
+
+00:01:51.505 --> 00:01:55.150
+Treat valuation headlines as noise for routing decisions.
+
+00:01:55.750 --> 00:01:57.387
+Next, Models and vendors.
+
+00:01:57.453 --> 00:02:08.652
+According to migration guides citing Google's deprecations page, from December first all requests to Gemini 2.5 Pro are routed to Gemini 3.8 Flash and billed at its rates.
+
+00:02:08.717 --> 00:02:15.856
+That is seventy-five cents per million input tokens and three dollars seventy-five per million output tokens.
+
+00:02:15.921 --> 00:02:23.191
+Gemini 2.5 Pro costs one dollar twenty-five per million input tokens and ten dollars per million output tokens.
+
+00:02:23.256 --> 00:02:27.120
+Gemini 2.5 Flash moves to 3.5 Flash-Lite at the same price.
+
+00:02:27.720 --> 00:02:31.831
+The read here: the bill falls, but so does the model tier.
+
+00:02:31.902 --> 00:02:37.784
+A Pro workload answered by a Flash model is a quality question, not a savings line.
+
+00:02:37.855 --> 00:02:45.510
+Run your evaluation set against 3.8 Flash before December first, and have the gateway flag the substitution.
+
+00:02:46.110 --> 00:02:47.978
+Next, Sovereignty and Europe.
+
+00:02:48.043 --> 00:02:53.583
+Two model trackers say Mistral Large 4 reached general availability on November fifth.
+
+00:02:53.647 --> 00:02:59.445
+It entered public preview on October sixth, and open weights are reported on Hugging Face.
+
+00:02:59.510 --> 00:03:06.274
+One tracker describes it as a one trillion parameter multimodal model trained on European infrastructure.
+
+00:03:06.338 --> 00:03:10.590
+I could not open Mistral's own page, so treat this as unconfirmed.
+
+00:03:11.190 --> 00:03:20.727
+Why it matters: if confirmed, Europe has a large open-weight model you can also host yourself, which strengthens a sovereign route in the gateway.
+
+00:03:20.792 --> 00:03:29.610
+Verify licence terms, hardware needs and price on Mistral's pages, then benchmark on your own tasks before calling it production-ready.
+
+00:03:30.210 --> 00:03:31.135
+Next, Platform.
+
+00:03:31.197 --> 00:03:39.090
+According to Forbes and Benzinga, Jensen Huang resigned as Nvidia's chief executive last week, and Colette Kress is interim CEO.
+
+00:03:39.152 --> 00:03:45.257
+Forbes reports a Justice Department probe and a stock drop of almost thirteen percent for the week.
+
+00:03:45.318 --> 00:03:51.485
+Nvidia reports quarterly earnings on Tuesday, November seventeenth, its first since the resignation.
+
+00:03:51.547 --> 00:03:54.630
+Analysts expect two dollars forty-seven per share.
+
+00:03:55.230 --> 00:03:59.777
+Reading between the lines: nothing changes in your clusters this week.
+
+00:03:59.842 --> 00:04:04.648
+But guidance on supply and roadmap will shape inference cost expectations.
+
+00:04:04.713 --> 00:04:13.352
+For a platform team, the lasting question is dependence: how much of your serving stack is tied to one accelerator vendor's software?
+
+00:04:13.416 --> 00:04:15.430
+Watch any change in lead times.
+
+00:04:16.030 --> 00:04:17.460
+Next, Retail and agents.
+
+00:04:17.520 --> 00:04:24.254
+Walmart said in October that Agent Profiles, a dedicated identity for each shopping agent, launch within a month.
+
+00:04:24.314 --> 00:04:30.929
+PYMNTS reports customers can cap spending at fifty, one hundred or two hundred dollars, or approve every order.
+
+00:04:30.989 --> 00:04:39.869
+Home Depot's chief information officer told Business Insider the retailer will admit agents that identify themselves and the customer they represent.
+
+00:04:39.929 --> 00:04:42.670
+It is in talks with Meta about its Muse agent.
+
+00:04:43.270 --> 00:04:50.656
+What this really signals: retailers are writing admission rules, not simply blocking or opening the door.
+
+00:04:50.727 --> 00:04:59.098
+For a retailer, the work is on your side: agent identity, per-agent limits, and logs of which agent placed which order.
+
+00:04:59.168 --> 00:05:03.600
+Product data and APIs must be agent-ready before the rules are.
+
+00:05:04.200 --> 00:05:05.621
+The number of the day.
+
+00:05:05.686 --> 00:05:15.506
+December second is the date by which generative systems already on the market before August second must meet the AI Act's machine-readable marking duty.
+
+00:05:15.571 --> 00:05:16.475
+What to watch.
+
+00:05:16.540 --> 00:05:23.323
+Microsoft Ignite runs November seventeenth to twentieth, with Satya Nadella's keynote on the seventeenth.
+
+00:05:23.388 --> 00:05:30.947
+Nvidia reports earnings that day, and Google's Sovereign AI Summit starts as several Gemini audio previews shut down.
+
+00:05:31.011 --> 00:05:40.185
+Anthropic prices its IPO November eighteenth and trades November nineteenth, the day of OVHcloud's summit and the Gemini 3.6 Flash retirement.
+
+00:05:40.250 --> 00:05:44.191
+Walmart's Agent Profiles are due about November twenty-first.
+
+00:05:44.255 --> 00:05:50.135
+Next comes the Gemini 2.5 reroute on December first, and AI Act marking on December second.
+
+00:05:50.199 --> 00:05:52.073
+And a question for your team.
+
+00:05:52.137 --> 00:06:02.603
+If your main model supplier's investors are also your cloud providers, does your risk register show that dependency, and has anyone timed a failover this quarter?
+
+00:06:02.668 --> 00:06:03.960
+That's it for today.
+
+00:06:04.025 --> 00:06:06.544
+Sources are in the episode description.
+
+00:06:06.609 --> 00:06:08.547
+This was Signal in the AI Fog.
+
+00:06:08.612 --> 00:06:09.710
+See you tomorrow.

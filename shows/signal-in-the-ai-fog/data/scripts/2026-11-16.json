@@ -1,0 +1,171 @@
+{
+ "title": "Anthropic's cloud ties, Nvidia's leadership test",
+ "summary": "Anthropic's IPO, now set for pricing on Wednesday, ties the vendor more tightly to Google and Microsoft. Also: what the Gemini 2.5 reroute does to your bill, Nvidia's first earnings without its founder, an unconfirmed Mistral Large 4 availability report, and Walmart's agent rules ahead of launch. Plus a week-ahead calendar.",
+ "headlines": [
+  "Anthropic's IPO ties it to two clouds",
+  "Nvidia reports earnings without Jensen Huang",
+  "Gemini 2.5 Pro reroute changes the bill"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Anthropic said on Thursday that it will price its initial public offering on Wednesday, November eighteenth, and begin trading on Nasdaq as A N T on Thursday, November nineteenth, according to Yahoo Finance. The offer is 825 million shares at seventy to seventy-eight dollars each, up to about sixty-four billion dollars at the top of the range. A Saturday KuCoin report says a concurrent twenty-six billion dollar private placement involves AMD, Broadcom, Google, Micron, Microsoft, Nvidia and TSMC Partners. Yahoo says Nvidia's part is up to ten billion dollars. NBC News, reporting on the filing, says Anthropic plans to spend one hundred fifteen billion dollars with Google and forty-five billion with Microsoft on computing through 2033. It also reports a first-half 2026 net loss of eighty point seven billion dollars.",
+  "read": "What this really signals: the supplier is raising money from its own suppliers. Chip makers and clouds become shareholders, and two of those clouds also hold the large compute commitments. For a platform team, that means Claude capacity, pricing and availability are likely tied to Google and Microsoft decisions. Check which cloud route your contracts use. Rehearse a failover through your gateway before Thursday, and time it. Once the stock trades, vendor risk will be discussed quarter after quarter, so put a review in your calendar. Treat valuation headlines as noise for routing decisions.",
+  "label": "reported",
+  "topics": [
+   "Anthropic",
+   "Google"
+  ],
+  "sources": [
+   {
+    "title": "Yahoo Finance: Anthropic IPO: Claude maker to begin trading on Thursday, Nov. 19",
+    "url": "https://finance.yahoo.com/technology/article/anthropic-ipo-claude-maker-to-begin-trading-on-thursday-nov-19-173550865.html",
+    "primary": false
+   },
+   {
+    "title": "Yahoo Finance: Nvidia's first post-Jensen earnings and Anthropic's IPO: What to watch this week",
+    "url": "https://finance.yahoo.com/markets/article/nvidias-first-post-jensen-earnings-and-anthropics-ipo-what-to-watch-this-week-110000732.html",
+    "primary": false
+   },
+   {
+    "title": "KuCoin News: Anthropic IPO to Be Second-Largest Ever After SpaceX, Set for November 19",
+    "url": "https://www.kucoin.com/news/flash/anthropic-ipo-to-be-second-largest-ever-after-spacex-set-for-november-19",
+    "primary": false
+   },
+   {
+    "title": "NBC News: Anthropic reveals $80 billion loss, huge spending spree ahead of IPO",
+    "url": "https://www.nbcnews.com/business/markets/anthropic-releases-ipo-filing-ahead-highly-anticipated-stock-debut-rcna605676",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "According to migration guides citing Google's deprecations page, from December first all requests to Gemini 2.5 Pro are routed to Gemini 3.8 Flash and billed at its rates. That is seventy-five cents per million input tokens and three dollars seventy-five per million output tokens. Gemini 2.5 Pro costs one dollar twenty-five per million input tokens and ten dollars per million output tokens. Gemini 2.5 Flash moves to 3.5 Flash-Lite at the same price.",
+   "read": "The read here: the bill falls, but so does the model tier. A Pro workload answered by a Flash model is a quality question, not a savings line. Run your evaluation set against 3.8 Flash before December first, and have the gateway flag the substitution.",
+   "label": "reported",
+   "topics": [
+    "Gemini",
+    "Google"
+   ],
+   "sources": [
+    {
+     "title": "MxChat: Gemini 2.5 Pro Pricing After the 1 December Reroute",
+     "url": "https://mxchat.ai/gemini-2-5-pro-pricing-reroute-december/",
+     "primary": false
+    },
+    {
+     "title": "OrcaRouter: Gemini 4 Hydrogen vs Gemini 4 Pro",
+     "url": "https://www.orcarouter.ai/blog/gemini-4-hydrogen-vs-gemini-4-pro",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "Two model trackers say Mistral Large 4 reached general availability on November fifth. It entered public preview on October sixth, and open weights are reported on Hugging Face. One tracker describes it as a one trillion parameter multimodal model trained on European infrastructure. I could not open Mistral's own page, so treat this as unconfirmed.",
+   "read": "Why it matters: if confirmed, Europe has a large open-weight model you can also host yourself, which strengthens a sovereign route in the gateway. Verify licence terms, hardware needs and price on Mistral's pages, then benchmark on your own tasks before calling it production-ready.",
+   "label": "unconfirmed",
+   "topics": [
+    "Mistral",
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "NHIMG: Mistral AI Models: Every Model, Spec, Price and Release Date",
+     "url": "https://nhimg.org/mistral-ai-llm-models-guide",
+     "primary": false
+    },
+    {
+     "title": "Second Talent: Every Mistral AI Model Explained and Compared (Nov, 2026)",
+     "url": "https://www.secondtalent.com/resources/every-mistral-ai-model-explained-compared/",
+     "primary": false
+    },
+    {
+     "title": "StockAnalysis: Mistral AI Stock",
+     "url": "https://stockanalysis.com/private/mistral-ai/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "According to Forbes and Benzinga, Jensen Huang resigned as Nvidia's chief executive last week, and Colette Kress is interim CEO. Forbes reports a Justice Department probe and a stock drop of almost thirteen percent for the week. Nvidia reports quarterly earnings on Tuesday, November seventeenth, its first since the resignation. Analysts expect two dollars forty-seven per share.",
+   "read": "Reading between the lines: nothing changes in your clusters this week. But guidance on supply and roadmap will shape inference cost expectations. For a platform team, the lasting question is dependence: how much of your serving stack is tied to one accelerator vendor's software? Watch any change in lead times.",
+   "label": "reported",
+   "topics": [
+    "NVIDIA"
+   ],
+   "sources": [
+    {
+     "title": "Forbes: Nvidia Without Jensen Huang And What Investors Should Watch Now",
+     "url": "https://www.forbes.com/sites/bill_stone/2026/11/15/nvidia-without-jensen-huang-and-what-investors-should-watch-now/",
+     "primary": false
+    },
+    {
+     "title": "Benzinga: Nvidia Stock Faces First Earnings Since Jensen Huang's Ouster as Options Signal a Big Move",
+     "url": "https://www.benzinga.com/markets/equities/26/11/63277138/nvidia-stock-faces-first-earnings-since-jensen-huangs-ouster-as-options-signal-a-big-move",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "Walmart said in October that Agent Profiles, a dedicated identity for each shopping agent, launch within a month. PYMNTS reports customers can cap spending at fifty, one hundred or two hundred dollars, or approve every order. Home Depot's chief information officer told Business Insider the retailer will admit agents that identify themselves and the customer they represent. It is in talks with Meta about its Muse agent.",
+   "read": "What this really signals: retailers are writing admission rules, not simply blocking or opening the door. For a retailer, the work is on your side: agent identity, per-agent limits, and logs of which agent placed which order. Product data and APIs must be agent-ready before the rules are.",
+   "label": "reported",
+   "topics": [
+    "Walmart",
+    "Agentic commerce"
+   ],
+   "sources": [
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "PYMNTS: Walmart and Home Depot Set the Rules for AI Shoppers",
+     "url": "https://www.pymnts.com/commerce/ecommerce/2026/walmart-and-home-depot-set-the-rules-for-ai-shoppers/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "December second is the date by which generative systems already on the market before August second must meet the AI Act's machine-readable marking duty.",
+  "source": {
+   "title": "Encorp: EU AI Act After Digital Omnibus: What Applies Now",
+   "url": "https://encorp.ai/en/blog/eu-ai-act-digital-omnibus-2026-11-05",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Microsoft Ignite runs November seventeenth to twentieth, with Satya Nadella's keynote on the seventeenth. Nvidia reports earnings that day, and Google's Sovereign AI Summit starts as several Gemini audio previews shut down. Anthropic prices its IPO November eighteenth and trades November nineteenth, the day of OVHcloud's summit and the Gemini 3.6 Flash retirement. Walmart's Agent Profiles are due about November twenty-first. Next comes the Gemini 2.5 reroute on December first, and AI Act marking on December second.",
+ "agenda": [
+  {
+   "date": "2026-11-17",
+   "text": "Microsoft Ignite keynote and Nvidia earnings"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Anthropic IPO pricing expected"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "Anthropic first trade; Gemini 3.6 Flash retires on Vertex"
+  },
+  {
+   "date": "2026-11-21",
+   "text": "Walmart Agent Profiles due, about"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute to Flash models"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking transition ends for existing generative systems"
+  }
+ ],
+ "question": "If your main model supplier's investors are also your cloud providers, does your risk register show that dependency, and has anyone timed a failover this quarter?"
+}
