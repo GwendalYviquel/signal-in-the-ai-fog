@@ -641,5 +641,172 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-16",
+    "title": "Budget 2027 au Sénat, surtaxe d'IS et TVA télévision",
+    "summary": "Le projet de loi de finances pour 2027 repart du texte initial devant le Sénat, après le rejet de l'Assemblée. L'épisode examine aussi la surtaxe d'IS et la TVA sur la télévision payante, le moratoire avorté sur la facture électronique et les calendriers européens ViDA et DAC8.",
+    "headlines": [
+      "Le budget 2027 devant le Sénat",
+      "La surtaxe d'IS et la TVA télévision en suspens",
+      "Les calendriers européens ViDA et DAC8"
+    ],
+    "themes": [
+      "Fiscalité",
+      "Europe",
+      "Facturation électronique"
+    ],
+    "topics": [
+      "Projet de loi de finances 2027",
+      "Contribution exceptionnelle sur les bénéfices",
+      "ViDA",
+      "DAC8",
+      "Réforme de la facturation électronique"
+    ],
+    "sources": [
+      {
+        "title": "Sénat : Projet de loi de finances pour 2027",
+        "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-finances-pour-2027.html",
+        "primary": true
+      },
+      {
+        "title": "Public Sénat : Budget 2027, calendrier, 49.3, ordonnances",
+        "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-calendrier-49-3-ordonnancesquelles-sont-les-echeances-a-venir-et-les-scenarios-possibles",
+        "primary": false
+      },
+      {
+        "title": "Banque des Territoires : Budget 2027, le Sénat entend ramener l'effort des collectivités",
+        "url": "https://www.banquedesterritoires.fr/budget-2027-le-senat-entend-ramener-leffort-des-collectivites-entre-2-et-25-milliards-deuros",
+        "primary": false
+      },
+      {
+        "title": "Rydge Conseil : PLF 2027, rejet à l'Assemblée, quelle suite pour le budget",
+        "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+        "primary": false
+      },
+      {
+        "title": "Le Courrier des stratèges : Budget 2027 après le rejet",
+        "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+        "primary": false
+      },
+      {
+        "title": "Mooncard : PLF 2027, les principales mesures pour les entreprises",
+        "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+        "primary": false
+      },
+      {
+        "title": "L'Argus de l'assurance : Budget 2027, les députés suppriment la prolongation de la surtaxe",
+        "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-les-deputes-suppriment-la-prolongation-de-la-surtaxe-exceptionnelle-dimpot-sur-les-societes-pour-les-grandes-entreprises.PHXG6G4DTNAQ5HPE4ZBMPVTA7E.html",
+        "primary": false
+      },
+      {
+        "title": "CB News : PLF 2027, le Sénat veut préserver la TVA réduite de Canal+",
+        "url": "https://www.cbnews.fr/medias/plf-2027-senat-veut-preserver-tva-reduite-canal-taxer-davantage-publicite-plateformes-video",
+        "primary": false
+      },
+      {
+        "title": "Renseignement économique : TVA sur la télévision payante, les députés repoussent la hausse",
+        "url": "https://renseignementeconomique.fr/tva-sur-la-television-payante-les-deputes-repoussent-la-hausse-a-20",
+        "primary": false
+      },
+      {
+        "title": "Legifiscal : Directive ViDA, la TVA dans l'Union européenne entre dans l'ère du reporting numérique",
+        "url": "https://www.legifiscal.fr/actualites-fiscales/4547-directive-vida-tva-union-europeenne-ere-reporting-numerique.html",
+        "primary": false
+      },
+      {
+        "title": "Generix : ViDA, VAT in the Digital Age",
+        "url": "https://www.generixgroup.com/fr/blog/vida-vat-in-the-digital-age",
+        "primary": false
+      },
+      {
+        "title": "Banqup : Navigation de la TVA à l'ère numérique",
+        "url": "https://www.banqup.com/fr-be/resources/blog/vat-in-the-digital-age-agreement-reached-a-milestone-in-the-eu-tax-digitalisation",
+        "primary": false
+      },
+      {
+        "title": "Legibloq : DAC8 and Crypto, what changes in 2026",
+        "url": "https://www.legibloq.fr/en/blog/dac8-crypto-france-2026",
+        "primary": false
+      },
+      {
+        "title": "Kohen Avocats : DAC8, le fisc reçoit vos données crypto en 2026",
+        "url": "https://kohenavocats.com/dac8-crypto-fisc-donnees-2026-plus-value-regulariser-contester-redressement/",
+        "primary": false
+      },
+      {
+        "title": "Clubic : Ces entreprises ont failli échapper à la facturation électronique",
+        "url": "https://www.clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+        "primary": false
+      },
+      {
+        "title": "Batiweb : Budget 2027, des amendements visent l'éolien et la facturation électronique",
+        "url": "https://www.batiweb.com/actualites/legislation/plf-2027-facturation-electronique-fiscalite-eolien-49564",
+        "primary": false
+      },
+      {
+        "title": "DemarchesAdministratives : Pourquoi le vote des députés ne suspend pas la réforme",
+        "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme",
+        "primary": false
+      },
+      {
+        "title": "FrenchBreaches : Les députés votent sa suspension pour les petites entreprises",
+        "url": "https://frenchbreaches.com/blog/facturation-electronique-les-deputes-votent-sa-suspension-pour-les-petites-entreprises",
+        "primary": false
+      },
+      {
+        "title": "Public Sénat : Budget 2027 de la Sécurité sociale, le Sénat atténue la hausse des cotisations retraites",
+        "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-cnracl-le-senat-attenue-la-hausse-prevue-sur-les-cotisations-retraites-des-collectivites-locales-et-des-hopitaux",
+        "primary": false
+      },
+      {
+        "title": "Public Sénat : Les points chauds lors des débats au Sénat du 9 au 17 novembre",
+        "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-les-points-chauds-lors-des-debats-au-senat-du-9-au-17-novembre",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-16T04:12:19+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-11-16",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-11-16/accounting-news-fr-2026-11-16.mp3",
+    "audio_bytes": 7108469,
+    "duration_seconds": 444.290612244898,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 14.0,
+        "title": "Sujet de la semaine : Le budget 2027 devant le Sénat"
+      },
+      {
+        "start": 144.6,
+        "title": "Fiscalité : Contribution exceptionnelle sur les bénéfices"
+      },
+      {
+        "start": 221.9,
+        "title": "Europe : ViDA"
+      },
+      {
+        "start": 298.7,
+        "title": "Facturation électronique : Réforme de la facturation électronique"
+      },
+      {
+        "start": 359.6,
+        "title": "Retour sur un dossier"
+      },
+      {
+        "start": 376.4,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 389.7,
+        "title": "À surveiller"
+      },
+      {
+        "start": 425.1,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]

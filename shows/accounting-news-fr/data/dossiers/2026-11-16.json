@@ -1,0 +1,493 @@
+{
+ "items": [
+  {
+   "title": "Budget 2027 : le Sénat reprend le projet de loi de finances, séance à partir du 20 novembre",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "L'Assemblée nationale a rejeté la première partie (recettes) du projet de loi de finances pour 2027 le mercredi 4 novembre 2026, par 458 voix contre et aucune pour.",
+     "quote": "Le projet de loi de finances pour 2027 a été rejeté à l’unanimité par les députés mercredi 4 novembre, avec 458 voix contre et aucune pour.",
+     "url": "https://www.clubpatrimoine.com/contenus/budget-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte rejeté par l'Assemblée est le texte initial transmis au Sénat, sans les amendements de séance : les mesures nées en séance s'éteignent, sauf si elles sont redéposées au Sénat.",
+     "quote": "Sauf à être déposées de nouveau au Sénat, elles s'éteignent",
+     "url": "https://nosparlementaires.fr/actualites/budget-2027-calendrier-assemblee-cinq-semaines",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Sénat examine le projet en séance publique du 20 novembre au 8 décembre 2026.",
+     "quote": "Le Sénat doit, ensuite, examiner le projet du 20 novembre au 8 décembre",
+     "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote solennel du Sénat sur le projet de loi de finances est fixé au 9 décembre 2026.",
+     "quote": "Le vote solennel sur le projet de loi se tiendra le 9 décembre.",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-calendrier-49-3-ordonnancesquelles-sont-les-echeances-a-venir-et-les-scenarios-possibles",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission des finances du Sénat a adopté le 12 novembre des amendements sur le volet recettes, dont la suppression de la réduction des remboursements de TVA aux collectivités (FCTVA).",
+     "quote": "La commission a notamment supprimé la réduction des remboursements de TVA aux collectivités",
+     "url": "https://www.banquedesterritoires.fr/budget-2027-le-senat-entend-ramener-leffort-des-collectivites-entre-2-et-25-milliards-deuros",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse, la droite sénatoriale propose plus de trois milliards d'euros d'efforts en moins pour les collectivités locales ; l'effort initial est évalué à environ 5,6 milliards d'euros.",
+     "quote": "Plus de trois milliards d'euros d'efforts en moins pour les collectivités locales",
+     "url": "https://www.moneyvox.fr/votre-argent/actualites/111216/collectivites-epargnees-deficit-maitrise-le-senat-fait-ses-propositions-sur-le-budget-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "En cas d'échec de la commission mixte paritaire, le texte fait l'objet de nouvelles lectures à l'Assemblée nationale et au Sénat ; la CMP est attendue vers la mi-décembre selon la presse.",
+     "quote": "En cas d’échec de la commission mixte paritaire, le projet de loi fera l’objet de nouvelles lectures à l’Assemblée nationale et au Sénat.",
+     "url": "https://www.clubpatrimoine.com/contenus/budget-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le point de départ du délai de 70 jours au-delà duquel le Gouvernement peut recourir aux ordonnances fait l'objet de deux décomptes différents (17 décembre selon Public Sénat, 10 décembre selon un autre calcul).",
+     "quote": "Le délai de 70 jours au-delà duquel le gouvernement peut recourir aux ordonnances fait l'objet de deux décomptes.",
+     "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Sénat, comme l'Assemblée, a rejeté le texte initial à l'Assemblée le 4 novembre 2026 ; le Sénat est saisi de ce texte.",
+     "quote": "Mercredi 4 novembre 2026, le texte a été rejeté par l'Assemblée nationale.",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-finances-pour-2027.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de finances pour 2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-finances-pour-2027.html",
+     "primary": true
+    },
+    {
+     "title": "Public Sénat : Budget 2027, calendrier, 49.3, ordonnances",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-calendrier-49-3-ordonnancesquelles-sont-les-echeances-a-venir-et-les-scenarios-possibles",
+     "primary": false
+    },
+    {
+     "title": "Banque des Territoires : Budget 2027, le Sénat entend ramener l'effort des collectivités",
+     "url": "https://www.banquedesterritoires.fr/budget-2027-le-senat-entend-ramener-leffort-des-collectivites-entre-2-et-25-milliards-deuros",
+     "primary": false
+    },
+    {
+     "title": "Gaz d'aujourd'hui : Budget 2027, le projet de loi de finances dans le viseur du Sénat",
+     "url": "https://www.gazdaujourdhui.fr/budget-2027-le-projet-de-loi-de-finances-dans-le-viseur-du-senat/",
+     "primary": false
+    },
+    {
+     "title": "Rydge Conseil : PLF 2027, rejet à l'Assemblée, quelle suite pour le budget",
+     "url": "https://www.rydge.fr/articles-analyses/plf-2027-examen",
+     "primary": false
+    },
+    {
+     "title": "Le Courrier des stratèges : Budget 2027 après le rejet",
+     "url": "https://www.lecourrierdesstrateges.fr/budget-2027-apres-le-rejet-que-va-t-il-se-passer-maintenant/",
+     "primary": false
+    }
+   ],
+   "context": "Sujet de la semaine possible, étape réelle : le texte du Gouvernement est devant le Sénat, rien n'est adopté. Les sénateurs repartent du texte initial : tout ce que les députés avaient voté en séance (suppression de la surtaxe d'IS, exit tax, etc.) tombe sauf redépôt. La commission des finances du Sénat a adopté une soixantaine d'amendements sur les recettes le 12 novembre (FCTVA préservé, CPEB réduite) ; la séance commence le 20 novembre, vote solennel le 9 décembre, CMP vers la mi-décembre. Deux décomptes du délai de 70 jours (10 ou 17 décembre) : l'issue procédurale (49.3, ordonnances, loi spéciale) reste ouverte, aucune annonce officielle. Pour une direction financière : scénarios de clôture 2026 et budget 2027, ne rien provisionner sur un amendement ; pour un cabinet : étiqueter chaque mesure par son étape (texte initial, amendement de commission, séance, CMP). Label proposé : confirmed (page du Sénat) pour le calendrier de base, reported pour le détail des amendements de commission."
+  },
+  {
+   "title": "Contribution exceptionnelle sur les bénéfices : retour dans le texte initial, position du Sénat à suivre",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "Le seuil d'assujettissement reste fixé à 1,5 milliard d'euros de chiffre d'affaires dans le texte initial.",
+     "quote": "Le seuil d’assujettissement reste fixé à 1,5 Md€ de chiffre d’affaires",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "status": "verified"
+    },
+    {
+     "statement": "Le taux serait de 15,7 pour cent pour les groupes dont le chiffre d'affaires est compris entre 1,5 et 3 milliards d'euros (31,4 pour cent au-delà selon d'autres sources).",
+     "quote": "Le taux de cette surtaxe était de 15,7 % pour les groupes réalisant entre 1,5 Md€ et 3 Mds€ de CA.",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-les-deputes-suppriment-la-prolongation-de-la-surtaxe-exceptionnelle-dimpot-sur-les-societes-pour-les-grandes-entreprises.PHXG6G4DTNAQ5HPE4ZBMPVTA7E.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le Gouvernement chiffrait le rendement de la mesure à 5 milliards d'euros en 2027.",
+     "quote": "Cette mesure aurait dû rapporter 5 Mds€ de rendement en 2027 selon le chiffrage du Gouvernement.",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-les-deputes-suppriment-la-prolongation-de-la-surtaxe-exceptionnelle-dimpot-sur-les-societes-pour-les-grandes-entreprises.PHXG6G4DTNAQ5HPE4ZBMPVTA7E.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la presse, les sénateurs s'étaient déjà prononcés contre la mesure dans un rapport d'information de septembre ; sa suppression pourrait être confirmée par le Sénat.",
+     "quote": "La suppression de cette surtaxe exceptionnelle pourrait être confirmée par les sénateurs.",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-les-deputes-suppriment-la-prolongation-de-la-surtaxe-exceptionnelle-dimpot-sur-les-societes-pour-les-grandes-entreprises.PHXG6G4DTNAQ5HPE4ZBMPVTA7E.html",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "KPMG Avocats : PLF 2027, le texte initial est paru",
+     "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/publication-du-plf-2027.html",
+     "primary": false
+    },
+    {
+     "title": "Mooncard : PLF 2027, les principales mesures pour les entreprises",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "primary": false
+    },
+    {
+     "title": "L'Argus de l'assurance : Budget 2027, les députés suppriment la prolongation de la surtaxe",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/plf/budget-2027-les-deputes-suppriment-la-prolongation-de-la-surtaxe-exceptionnelle-dimpot-sur-les-societes-pour-les-grandes-entreprises.PHXG6G4DTNAQ5HPE4ZBMPVTA7E.html",
+     "primary": false
+    },
+    {
+     "title": "Sénat : Projet de loi de finances pour 2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-finances-pour-2027.html",
+     "primary": true
+    }
+   ],
+   "context": "Statut : reported. La suppression votée par les députés est caduque avec le rejet du 4 novembre ; l'article 15 revient dans le texte initial examiné par le Sénat. Je n'ai pas trouvé de vote de la commission des finances du Sénat sur cet article : position du Sénat à vérifier, ne rien affirmer. Lien avec le règlement ANC 2026-04 sur la comptabilisation des contributions assises sur l'impôt : tant que la loi n'est pas promulguée, hypothèse de budget et de trésorerie, pas charge à provisionner. Mesure aussi pour les groupes concernés : sensibilité entre 15,7 et 31,4 pour cent de taux selon le chiffre d'affaires."
+  },
+  {
+   "title": "TVA sur la télévision payante : le Sénat veut supprimer le passage de 10 à 20 pour cent",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "L'article 16 du texte initial supprime le taux réduit de TVA de 10 pour cent sur les services de télévision, qui passeraient à 20 pour cent.",
+     "quote": "qui portait de 10 % à 20 % la TVA sur les abonnements de télévision payante",
+     "url": "https://www.strategies.fr/actualites/medias/LQ6734093C/plf-2027-vote-en-seance-sur-la-tva-taux-reduit-de-canal.html",
+     "status": "unread"
+    },
+    {
+     "statement": "La rapporteure générale du Sénat, Christine Lavarde, propose par l'amendement FINC.29 de supprimer intégralement l'article 16.",
+     "quote": "Avec son amendement FINC.29, Christine Lavarde propose de supprimer intégralement l'article 16 du PLF 2027",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-veut-preserver-tva-reduite-canal-taxer-davantage-publicite-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon cette même source, l'adoption de ces amendements en commission n'était pas encore confirmée et aucun vote en séance n'a eu lieu.",
+     "quote": "Leur adoption en commission n'est pas encore confirmée",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-veut-preserver-tva-reduite-canal-taxer-davantage-publicite-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "Un second amendement (FINC.25) propose de supprimer l'abattement applicable à la taxe sur la publicité diffusée par les services de contenus audiovisuels à la demande.",
+     "quote": "Son amendement FINC.25 propose de supprimer intégralement l'abattement applicable à la taxe sur la publicité",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-veut-preserver-tva-reduite-canal-taxer-davantage-publicite-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "Les députés avaient supprimé l'article 16 en première lecture, mais cette suppression est tombée avec le rejet du texte.",
+     "quote": "L'Assemblée nationale a supprimé en première lecture l'article du PLF 2027",
+     "url": "https://renseignementeconomique.fr/tva-sur-la-television-payante-les-deputes-repoussent-la-hausse-a-20",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "CB News : PLF 2027, le Sénat veut préserver la TVA réduite de Canal+",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-veut-preserver-tva-reduite-canal-taxer-davantage-publicite-plateformes-video",
+     "primary": false
+    },
+    {
+     "title": "Stratégies : PLF 2027, vote en séance sur la TVA à taux réduit",
+     "url": "https://www.strategies.fr/actualites/medias/LQ6734093C/plf-2027-vote-en-seance-sur-la-tva-taux-reduit-de-canal.html",
+     "primary": false
+    },
+    {
+     "title": "Renseignement économique : TVA sur la télévision payante, les députés repoussent la hausse",
+     "url": "https://renseignementeconomique.fr/tva-sur-la-television-payante-les-deputes-repoussent-la-hausse-a-20",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported, amendement de la rapporteure générale en liasse provisoire du 12 novembre. Exemple concret de changement de taux de TVA à surveiller pour les cabinets qui accompagnent des éditeurs de services et leurs clients (facturation, abonnements en cours). Rien n'est décidé : texte initial au Sénat, puis CMP. Si le taux était porté à 20 pour cent, effet sur les contrats d'abonnement et la facturation à anticiper ; à ce stade, aucune modification d'outil à engager."
+  },
+  {
+   "title": "PLFSS 2027 : le Sénat supprime la contribution exceptionnelle sur les complémentaires santé",
+   "theme": "Fiscalité",
+   "facts": [
+    {
+     "statement": "Après le rejet à l'Assemblée le 23 octobre 2026, le Sénat est saisi du projet de loi de financement de la Sécurité sociale initial.",
+     "quote": "Après son rejet par l’Assemblée nationale le 23 octobre 2026",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "status": "verified"
+    },
+    {
+     "statement": "L'examen en séance publique au Sénat se poursuit jusqu'au mardi 17 novembre 2026.",
+     "quote": "L’examen du PLFSS pour 2027 se poursuit en séance publique au Sénat jusqu’au mardi 17 novembre.",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-2027-le-senat-supprime-la-contribution-exceptionnelle-de-11-milliard-deuros-sur-les-complementaires-sante.ZBWA4EZHQBGJBBCTFTPO2IG6LI.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le vote solennel sur l'ensemble du texte est prévu le mercredi 18 novembre 2026.",
+     "quote": "Le vote solennel sur l’ensemble du texte est prévu le lendemain, mercredi 18 novembre.",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-2027-le-senat-supprime-la-contribution-exceptionnelle-de-11-milliard-deuros-sur-les-complementaires-sante.ZBWA4EZHQBGJBBCTFTPO2IG6LI.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le 13 novembre 2026, le Sénat a adopté par 339 voix contre une l'amendement du rapporteur général supprimant l'article 12, qui reconduisait la contribution exceptionnelle de 1,1 milliard d'euros sur les complémentaires santé.",
+     "quote": "visant à supprimer l’article 12 a été adopté par 339 voix contre une",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-2027-le-senat-supprime-la-contribution-exceptionnelle-de-11-milliard-deuros-sur-les-complementaires-sante.ZBWA4EZHQBGJBBCTFTPO2IG6LI.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le 12 novembre, le Sénat a tempéré le relèvement des cotisations employeurs à la CNRACL : le surcoût 2027 est limité à 1,4 milliard d'euros au lieu de 1,8 milliard dans le texte initial.",
+     "quote": "limitée à 1,4 milliard d’euros dans la copie sénatoriale, au lieu de 1,8 milliard d’euros dans le texte initial",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-cnracl-le-senat-attenue-la-hausse-prevue-sur-les-cotisations-retraites-des-collectivites-locales-et-des-hopitaux",
+     "status": "verified"
+    },
+    {
+     "statement": "Plus de 1200 amendements ont été déposés sur le PLFSS au Sénat.",
+     "quote": "Plus de 1 200 amendements ont été déposés sur le projet de loi de financement de la Sécurité sociale",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-les-points-chauds-lors-des-debats-au-senat-du-9-au-17-novembre",
+     "status": "verified"
+    },
+    {
+     "statement": "Pour le PLFSS, le délai maximum d'examen par le Parlement est de 50 jours.",
+     "quote": "Dans le cas du PLFSS, le délai maximum est de 50 jours.",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-calendrier-49-3-ordonnancesquelles-sont-les-echeances-a-venir-et-les-scenarios-possibles",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de financement de la sécurité sociale pour 2027",
+     "url": "https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/projet-de-loi-de-financement-de-la-securite-sociale-pour-2027.html",
+     "primary": true
+    },
+    {
+     "title": "L'Argus de l'assurance : Budget de la Sécu 2027, le Sénat supprime la contribution exceptionnelle de 1,1 milliard",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-2027-le-senat-supprime-la-contribution-exceptionnelle-de-11-milliard-deuros-sur-les-complementaires-sante.ZBWA4EZHQBGJBBCTFTPO2IG6LI.html",
+     "primary": false
+    },
+    {
+     "title": "Public Sénat : Budget 2027 de la Sécurité sociale, le Sénat atténue la hausse des cotisations retraites",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-de-la-securite-sociale-cnracl-le-senat-attenue-la-hausse-prevue-sur-les-cotisations-retraites-des-collectivites-locales-et-des-hopitaux",
+     "primary": false
+    },
+    {
+     "title": "Public Sénat : Les points chauds lors des débats au Sénat du 9 au 17 novembre",
+     "url": "https://www.publicsenat.fr/actualites/politique/budget-2027-les-points-chauds-lors-des-debats-au-senat-du-9-au-17-novembre",
+     "primary": false
+    }
+   ],
+   "context": "Utilisable comme retour sur dossier (point ouvert du 9 novembre : exemen du PLFSS au Sénat : attendu à partir du 9 novembre, il a avancé, avec vote solennel le 18 novembre) ou comme rubrique Fiscalité. Attention : les sources divergent sur le vote de la première partie (un site de suivi parle d'un vote le 9 novembre par 217 voix contre 127, Public Sénat évoque l'adoption du volet recettes le 13 novembre) : ne pas citer de chiffre de vote de première partie. Rien n'est adopté définitivement : vote du Sénat le 18 novembre, puis CMP vers la fin novembre selon la presse. Pour les employeurs du secteur public local et les organismes d'assurance : mesures encore au stade du texte sénatorial."
+  },
+  {
+   "title": "Facturation électronique : le moratoire voté le 3 novembre est tombé avec le rejet du budget",
+   "theme": "Facturation électronique",
+   "facts": [
+    {
+     "statement": "Le 3 novembre 2026, les députés ont voté un moratoire sur la facturation électronique pour les petites entreprises.",
+     "quote": "ils ont voté mardi 3 novembre un moratoire sur la facturation électronique pour les petites entreprises",
+     "url": "https://www.clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le vote a eu lieu par 101 voix pour et 74 contre, selon les résultats rapportés.",
+     "quote": "101 députés se sont prononcés pour et 74 contre",
+     "url": "https://frenchbreaches.com/blog/facturation-electronique-les-deputes-votent-sa-suspension-pour-les-petites-entreprises",
+     "status": "verified"
+    },
+    {
+     "statement": "Le moratoire valait tant qu'un portail de facturation public et gratuit n'était pas déployé.",
+     "quote": "tant qu'un portail de facturation public et gratuit n'est pas déployé",
+     "url": "https://www.batiweb.com/actualites/legislation/plf-2027-facturation-electronique-fiscalite-eolien-49564",
+     "status": "verified"
+    },
+    {
+     "statement": "Aucune obligation n'a été suspendue : le rejet du budget a rendu la mesure caduque.",
+     "quote": "Concrètement, aucune obligation n'a été suspendue.",
+     "url": "https://www.clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le calendrier est inchangé : réception depuis le 1er septembre 2026, émission à partir du 1er septembre 2027 pour les TPE, PME et micro-entreprises.",
+     "quote": "réception des factures électroniques depuis le 1er septembre 2026, émission à partir du 1er septembre 2027",
+     "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Clubic : Ces entreprises ont failli échapper à la facturation électronique",
+     "url": "https://www.clubic.com/actualite-637768-ces-entreprises-ont-failli-echapper-a-la-facturation-electronique-mais-tout-a-bascule-en-24-heures.html",
+     "primary": false
+    },
+    {
+     "title": "Batiweb : Budget 2027, des amendements visent l'éolien et la facturation électronique",
+     "url": "https://www.batiweb.com/actualites/legislation/plf-2027-facturation-electronique-fiscalite-eolien-49564",
+     "primary": false
+    },
+    {
+     "title": "DemarchesAdministratives : Pourquoi le vote des députés ne suspend pas la réforme",
+     "url": "https://demarchesadministratives.fr/actualites/facturation-electronique-pourquoi-le-vote-des-deputes-ne-suspend-pas-la-reforme",
+     "primary": false
+    },
+    {
+     "title": "FrenchBreaches : Les députés votent sa suspension pour les petites entreprises",
+     "url": "https://frenchbreaches.com/blog/facturation-electronique-les-deputes-votent-sa-suspension-pour-les-petites-entreprises",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported. Sujet déjà traité dans l'épisode du 9 novembre : à ne reprendre que très brièvement, sans nouvelle information à ce stade. Rien de nouveau trouvé cette semaine : le moratoire pourrait être redéposé au Sénat (hypothèse, à suivre). Pour un cabinet : le calendrier ne bouge pas, tests de réception et d'émission à poursuivre avant le 1er septembre 2027. Les chiffres sur le nombre de plateformes agréées divergent selon les sources (149, 158, 163) : ne pas en citer."
+  },
+  {
+   "title": "ViDA : calendrier européen de la facturation et du reporting numérique",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "La directive ViDA a été adoptée le 11 mars 2025 et est entrée en vigueur le 14 avril 2025.",
+     "quote": "Adoptée le 11 mars 2025 et entrée en vigueur le 14 avril 2025",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4547-directive-vida-tva-union-europeenne-ere-reporting-numerique.html",
+     "status": "verified"
+    },
+    {
+     "statement": "ViDA introduit des exigences de reporting numérique pour les transactions B2B transfrontalières intra-UE, à partir du 1er juillet 2030.",
+     "quote": "ViDA introduit des exigences de reporting numérique pour les transactions B2B transfrontalières intra-UE",
+     "url": "https://www.generixgroup.com/fr/blog/vida-vat-in-the-digital-age",
+     "status": "verified"
+    },
+    {
+     "statement": "La norme sémantique EN 16931-1:2026 a été publiée par le CEN le 18 mars 2026 pour les besoins du reporting numérique.",
+     "quote": "Elle a été officiellement publiée par le CEN le 18 mars 2026.",
+     "url": "https://www.banqup.com/fr-be/resources/blog/vat-in-the-digital-age-agreement-reached-a-milestone-in-the-eu-tax-digitalisation",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Legifiscal : Directive ViDA, la TVA dans l'Union européenne entre dans l'ère du reporting numérique",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4547-directive-vida-tva-union-europeenne-ere-reporting-numerique.html",
+     "primary": false
+    },
+    {
+     "title": "Generix : ViDA, VAT in the Digital Age",
+     "url": "https://www.generixgroup.com/fr/blog/vida-vat-in-the-digital-age",
+     "primary": false
+    },
+    {
+     "title": "Données personnelles : Directive ViDA, la TVA européenne à l'ère numérique",
+     "url": "https://donneespersonnelles.fr/directive-vida",
+     "primary": false
+    },
+    {
+     "title": "Banqup : Navigation de la TVA à l'ère numérique",
+     "url": "https://www.banqup.com/fr-be/resources/blog/vat-in-the-digital-age-agreement-reached-a-milestone-in-the-eu-tax-digitalisation",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported (presse spécialisée et éditeurs, pas de texte EUR-Lex lu). Pas d'événement nouveau cette semaine : rappel de calendrier, utile pour un groupe ou un cabinet qui choisit une plateforme de facturation : demander sa feuille de route ViDA (formats EN 16931, reporting intra-UE 2030, plateformes redevables 2028). Déjà évoqué dans les épisodes précédents : à traiter très brièvement ou à sauter."
+  },
+  {
+   "title": "DAC8 : collecte des données crypto depuis 2026, premier échange en 2027",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "DAC8 est entrée en vigueur le 1er janvier 2026 : les plateformes collectent les données sur les transactions réalisées à partir de cette date.",
+     "quote": "Platforms begin collecting data on transactions carried out from this date.",
+     "url": "https://www.legibloq.fr/en/blog/dac8-crypto-france-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "En France, la transposition repose sur la loi de finances pour 2025 et sur deux décrets du 19 décembre 2025.",
+     "quote": "two decrees of 19 December 2025",
+     "url": "https://www.legibloq.fr/en/blog/dac8-crypto-france-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "La première déclaration annuelle, portant sur les opérations de 2026, sera souscrite en 2027.",
+     "quote": "La première déclaration annuelle, qui portera sur les opérations réalisées en 2026, sera souscrite en 2027.",
+     "url": "https://kohenavocats.com/dac8-crypto-fisc-donnees-2026-plus-value-regulariser-contester-redressement/",
+     "status": "verified"
+    },
+    {
+     "statement": "La date limite du premier échange automatique entre administrations fiscales européennes est le 30 septembre 2027.",
+     "quote": "30 September 2027",
+     "url": "https://www.legibloq.fr/en/blog/dac8-crypto-france-2026",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Legibloq : DAC8 and Crypto, what changes in 2026",
+     "url": "https://www.legibloq.fr/en/blog/dac8-crypto-france-2026",
+     "primary": false
+    },
+    {
+     "title": "Kohen Avocats : DAC8, le fisc reçoit vos données crypto en 2026",
+     "url": "https://kohenavocats.com/dac8-crypto-fisc-donnees-2026-plus-value-regulariser-contester-redressement/",
+     "primary": false
+    }
+   ],
+   "context": "Statut : reported. Sujet déjà abordé le 26 octobre et le 2 novembre ; aucune nouveauté cette semaine, à ne mentionner que comme rappel de calendrier. Intérêt pratique : les clients actifs en crypto-actifs voient leurs transactions collectées dès 2026, les déclarations de 2027 reposeront sur ces données ; rassembler les historiques."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-17",
+   "text": "Fin de l'examen en séance du PLFSS 2027 au Sénat"
+  },
+  {
+   "date": "2026-11-18",
+   "text": "Vote solennel du Sénat sur le PLFSS 2027"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Début de l'examen du projet de loi de finances 2027 en séance au Sénat"
+  },
+  {
+   "date": "2026-12-08",
+   "text": "Fin de l'examen en séance du projet de loi de finances au Sénat"
+  },
+  {
+   "date": "2026-12-09",
+   "text": "Vote solennel du Sénat sur le projet de loi de finances 2027"
+  },
+  {
+   "date": "2026-12-17",
+   "text": "Expiration du délai de 70 jours selon Public Sénat"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission obligatoire de factures électroniques pour les PME, TPE et micro-entreprises"
+  },
+  {
+   "date": "2027-09-30",
+   "text": "Premier échange automatique DAC8 entre administrations fiscales"
+  },
+  {
+   "date": "2028-07-01",
+   "text": "ViDA : plateformes redevables de la TVA pour transport et location courte durée"
+  }
+ ],
+ "checked": {
+  "verified": 29,
+  "unread": 8,
+  "dropped": 4
+ },
+ "dropped": [
+  {
+   "item": "Budget 2027 : le Sénat reprend le projet de loi de finances, séance à partir du 20 novembre",
+   "statement": "La commission des finances du Sénat a revu la contribution des collectivités à l'équilibre des finances publiques (CPEB), ramenée de 2,5 à 1,5 milliard d'euros.",
+   "quote": "dont le montant serait ramené de 2,5 à 1,5 milliard d’euros",
+   "url": "https://www.gazdaujourdhui.fr/budget-2027-le-projet-de-loi-de-finances-dans-le-viseur-du-senat/"
+  },
+  {
+   "item": "Contribution exceptionnelle sur les bénéfices : retour dans le texte initial, position du Sénat à suivre",
+   "statement": "Le texte initial prolonge la contribution exceptionnelle des grandes entreprises au titre du troisième exercice clos à compter du 31 décembre 2025, soit l'exercice 2027 pour un exercice calendaire.",
+   "quote": "au titre du troisième exercice clos à compter du 31 décembre 2025",
+   "url": "https://kpmg.com/av/fr/avocats/eclairages/2026/10/publication-du-plf-2027.html"
+  },
+  {
+   "item": "ViDA : calendrier européen de la facturation et du reporting numérique",
+   "statement": "Les plateformes de transport de passagers et de location de courte durée deviennent redevables de la TVA à compter du 1er juillet 2028.",
+   "quote": "deviennent redevables de la TVA à compter du 1er juillet 2028",
+   "url": "https://donneespersonnelles.fr/directive-vida"
+  },
+  {
+   "item": "ViDA : calendrier européen de la facturation et du reporting numérique",
+   "statement": "Les États peuvent reporter cette application au plus tard au 1er janvier 2030.",
+   "quote": "les États pouvant reporter l’application au 1er janvier 2030 au plus tard",
+   "url": "https://donneespersonnelles.fr/directive-vida"
+  }
+ ]
+}
