@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 17.6,
+   "title": "Story of the day: Digital Fairness Act targets shopping agents"
+  },
+  {
+   "startTime": 109.6,
+   "title": "Models and vendors: Anthropic"
+  },
+  {
+   "startTime": 150.3,
+   "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+  },
+  {
+   "startTime": 192.0,
+   "title": "Platform: NVIDIA"
+  },
+  {
+   "startTime": 236.1,
+   "title": "Retail and agents: Agentic commerce"
+  },
+  {
+   "startTime": 273.1,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 292.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 326.3,
+   "title": "Question for your team"
+  }
+ ]
+}

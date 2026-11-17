@@ -1,0 +1,199 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.514
+Good morning, it's Tuesday, November 17.
+
+00:00:02.577 --> 00:00:09.176
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.239 --> 00:00:17.535
+Today: Digital Fairness Act targets shopping agents, Google and OVHcloud sovereign AI summits, and Anthropic's IPO prices Wednesday.
+
+00:00:17.598 --> 00:00:19.358
+First, the story of the day.
+
+00:00:19.421 --> 00:00:25.329
+The European Commission has proposed a Digital Fairness Act, a consumer protection regulation.
+
+00:00:25.391 --> 00:00:31.174
+Yahoo reports it would add safeguards for shoppers who use AI agents to buy on their behalf.
+
+00:00:31.236 --> 00:00:39.281
+Consumers would get a right to reach a human customer service representative, and clear rights when an agent purchases for them.
+
+00:00:39.344 --> 00:00:43.304
+The text also covers unfair practices carried out by AI agents.
+
+00:00:43.367 --> 00:00:52.103
+According to CASRAI, it includes a provision requiring controls to switch off features that encourage compulsive use, with some exclusions.
+
+00:00:52.166 --> 00:00:56.816
+Sources give different dates for the announcement, so none is stated here.
+
+00:00:56.879 --> 00:01:00.965
+The proposal now goes to the European Parliament and the Council.
+
+00:01:01.027 --> 00:01:03.290
+None of these safeguards is law yet.
+
+00:01:03.900 --> 00:01:08.762
+What this really signals: agentic shopping is being framed from two sides.
+
+00:01:08.828 --> 00:01:12.048
+Retailers are writing admission rules for agents.
+
+00:01:12.113 --> 00:01:16.384
+Brussels is now drafting the consumer's rights on the other side.
+
+00:01:16.450 --> 00:01:21.049
+Nothing binds yet, and the text will change in Parliament and Council.
+
+00:01:21.115 --> 00:01:33.796
+But the design direction is already usable for a platform team: log which agent acted for which customer, keep a clear path to a human, and make agent-initiated orders traceable and reversible.
+
+00:01:33.862 --> 00:01:40.367
+Review your own conversational and agent features against those basics now, with legal in the loop.
+
+00:01:40.433 --> 00:01:49.040
+Worth watching: how the final text defines an AI agent, because that decides whether your customer-facing assistants fall in scope.
+
+00:01:49.640 --> 00:01:51.230
+Next, Models and vendors.
+
+00:01:51.294 --> 00:02:00.707
+According to CNBC, Anthropic expects to price its offering on the evening of November eighteenth and start trading on Nasdaq on November nineteenth.
+
+00:02:00.770 --> 00:02:07.893
+The range is seventy to seventy-eight dollars a share, implying a valuation of up to about 1.4 trillion dollars.
+
+00:02:07.957 --> 00:02:14.190
+CNBC's coverage cites a revised filing showing seventeen billion dollars of third-quarter revenue.
+
+00:02:14.790 --> 00:02:20.304
+Why it matters: the pricing is tomorrow, and nothing in your contract changes with it.
+
+00:02:20.368 --> 00:02:26.780
+The useful signal is the revised filing, which will keep publishing a frontier vendor's commitments.
+
+00:02:26.845 --> 00:02:29.730
+Keep the failover rehearsal on your calendar.
+
+00:02:30.330 --> 00:02:32.087
+Next, Sovereignty and Europe.
+
+00:02:32.147 --> 00:02:40.811
+Google Cloud holds its Sovereign AI Summit in Brussels today, November seventeenth, with a session on an independent AI stack made with Europe.
+
+00:02:40.871 --> 00:02:48.807
+OVHcloud's AI Summit follows in Paris on November nineteenth, where its leaders will present AI strategy and product announcements.
+
+00:02:48.868 --> 00:02:52.200
+A beta of OVHai Workspace is due to be announced there.
+
+00:02:52.800 --> 00:03:00.977
+The bigger picture: two sovereignty pitches in three days, one from a hyperscaler and one from a European provider.
+
+00:03:01.048 --> 00:03:09.155
+Compare them on concrete terms: where models run, who operates them, price, and what you can actually order today.
+
+00:03:09.226 --> 00:03:11.430
+Announcements are not capacity.
+
+00:03:12.030 --> 00:03:13.068
+Next, Platform.
+
+00:03:13.138 --> 00:03:21.860
+Nvidia reports third-quarter earnings after the US market closes on Tuesday, November seventeenth, according to Yahoo Finance.
+
+00:03:21.929 --> 00:03:28.991
+Bloomberg consensus is about 109 billion dollars of revenue, with about 102 billion from data centers.
+
+00:03:29.060 --> 00:03:35.013
+Interim chief executive Colette Kress leads the call after Jensen Huang's resignation.
+
+00:03:35.083 --> 00:03:39.790
+Yahoo's headline mentions a reported Huang comeback, without detail.
+
+00:03:40.400 --> 00:03:46.717
+Reading between the lines: listen for supply, lead times and roadmap, not the headline number.
+
+00:03:46.784 --> 00:03:50.816
+They shape your inference capacity planning and GPU pricing.
+
+00:03:50.883 --> 00:03:55.520
+Ask how much of your serving stack depends on one accelerator vendor.
+
+00:03:56.120 --> 00:03:57.555
+Next, Retail and agents.
+
+00:03:57.615 --> 00:04:04.849
+Commerce.com, the company behind BigCommerce, announced on November sixteenth a Shopping Agent for BigCommerce merchants.
+
+00:04:04.908 --> 00:04:11.007
+It is described as a customizable AI storefront assistant for product discovery and shopping guidance.
+
+00:04:11.066 --> 00:04:15.610
+It is rolling out to eligible merchants ahead of the holiday selling season.
+
+00:04:16.210 --> 00:04:22.060
+The read here: storefront assistants are becoming a platform feature merchants switch on.
+
+00:04:22.125 --> 00:04:28.632
+For a retailer, the lasting work is product data quality and clear answers on returns and delivery.
+
+00:04:28.698 --> 00:04:32.510
+Test any such assistant on your own catalogue before peak.
+
+00:04:33.110 --> 00:04:34.602
+The number of the day.
+
+00:04:34.670 --> 00:04:38.264
+Eight hundred ninety-five point four billion dollars.
+
+00:04:38.332 --> 00:04:44.164
+That is the purchase commitments in Anthropic's revised IPO filing, according to CNBC.
+
+00:04:44.231 --> 00:04:52.437
+Set against seventeen billion dollars of quarterly revenue, it shows how much capacity the vendor has already contracted.
+
+00:04:52.505 --> 00:04:53.454
+What to watch.
+
+00:04:53.522 --> 00:04:59.693
+Today: Microsoft Ignite opens, with the Nadella keynote at seven in the evening Paris time.
+
+00:04:59.761 --> 00:05:02.066
+Nvidia reports after the US close.
+
+00:05:02.134 --> 00:05:04.847
+Several Gemini audio previews shut down.
+
+00:05:04.915 --> 00:05:07.831
+Tomorrow evening, Anthropic prices its IPO.
+
+00:05:07.898 --> 00:05:13.663
+November nineteenth: first trade, OVHcloud's summit, and Gemini 3.6 Flash retirement.
+
+00:05:13.730 --> 00:05:17.867
+Walmart's Agent Profiles are due about November twenty-first.
+
+00:05:17.935 --> 00:05:26.208
+Then Gemini 2.5 reroutes December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:05:26.276 --> 00:05:28.242
+And a question for your team.
+
+00:05:28.310 --> 00:05:39.160
+If a law gave shoppers explicit rights when an agent buys for them, could you today trace which agent placed which order, for which customer, and reach a human?
+
+00:05:39.228 --> 00:05:40.585
+That's it for today.
+
+00:05:40.652 --> 00:05:43.297
+Sources are in the episode description.
+
+00:05:43.365 --> 00:05:45.399
+This was Signal in the AI Fog.
+
+00:05:45.467 --> 00:05:46.620
+See you tomorrow.

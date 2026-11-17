@@ -2345,5 +2345,111 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-17",
+    "title": "Brussels drafts rules for shopping agents",
+    "summary": "The Commission's Digital Fairness Act proposal would give shoppers rights when an AI agent buys for them. Also: Anthropic's IPO prices tomorrow, Google and OVHcloud stage sovereign AI summits, Nvidia reports without its founder, and a new shopping agent for e-commerce merchants.",
+    "headlines": [
+      "Digital Fairness Act targets shopping agents",
+      "Google and OVHcloud sovereign AI summits",
+      "Anthropic's IPO prices Wednesday"
+    ],
+    "themes": [
+      "Regulation",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Agentic commerce",
+      "Digital Fairness Act",
+      "Anthropic",
+      "Sovereign AI infrastructure",
+      "Google",
+      "NVIDIA",
+      "GPU pricing"
+    ],
+    "sources": [
+      {
+        "title": "Yahoo: European Commission's New Proposal Wants to Rein in AI Agents",
+        "url": "https://www.yahoo.com/news/world/articles/european-commission-proposal-wants-rein-150000606.html",
+        "primary": false
+      },
+      {
+        "title": "CASRAI: EU proposes Digital Fairness Act with AI consumer safeguards",
+        "url": "https://casrai.org/news/eu-digital-fairness-act-ai-consumer-proposal-2026",
+        "primary": false
+      },
+      {
+        "title": "CNBC: Anthropic IPO guide: Everything you need to know",
+        "url": "https://www.cnbc.com/2026/11/16/anthropic-ipo-date-price-range.html",
+        "primary": false
+      },
+      {
+        "title": "Google Cloud: Sovereign AI Summit, 16-17 November 2026, Brussels",
+        "url": "https://cloud.google.com/events/sovereign-ai-summit-26",
+        "primary": true
+      },
+      {
+        "title": "OVHcloud: OVHcloud AI Summit 2026: sovereign AI, from infrastructure to models",
+        "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-sovereign-ai/",
+        "primary": true
+      },
+      {
+        "title": "Yahoo Finance: Nvidia live updates: Interim CEO Kress prepares for Q3 earnings",
+        "url": "https://finance.yahoo.com/technology/live/nvidia-live-updates-interim-ceo-kress-prepares-for-q3-earnings-with-huang-reportedly-planning-comeback-153114076.html",
+        "primary": false
+      },
+      {
+        "title": "Commerce.com: Commerce Introduces Shopping Agent to Enable Conversational Shopping for BigCommerce Merchants",
+        "url": "https://investors.bigcommerce.com/news-releases/news-release-details/commerce-introduces-shopping-agent-enable-conversational",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-17T04:06:23+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-17",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-17/episode-2026-11-17.mp3",
+    "audio_bytes": 5545674,
+    "duration_seconds": 346.6187755102041,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 17.6,
+        "title": "Story of the day: Digital Fairness Act targets shopping agents"
+      },
+      {
+        "start": 109.6,
+        "title": "Models and vendors: Anthropic"
+      },
+      {
+        "start": 150.3,
+        "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+      },
+      {
+        "start": 192.0,
+        "title": "Platform: NVIDIA"
+      },
+      {
+        "start": 236.1,
+        "title": "Retail and agents: Agentic commerce"
+      },
+      {
+        "start": 273.1,
+        "title": "Number of the day"
+      },
+      {
+        "start": 292.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 326.3,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
