@@ -2451,5 +2451,139 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-18",
+    "title": "Foundry lands on your Kubernetes clusters",
+    "summary": "Microsoft Ignite brings Foundry models and agents to customers' own Kubernetes clusters, in preview. Also: a small routing model and new coding models, Gemini in Google's partner-run sovereign cloud, managed retrieval upgrades, and Walmart's agent rules. Plus a follow-up on Nvidia's first earnings without its founder.",
+    "headlines": [
+      "Microsoft Foundry moves onto your Kubernetes clusters",
+      "Microsoft ships a small routing model and new coders",
+      "Gemini reaches Google's partner-run sovereign cloud"
+    ],
+    "themes": [
+      "Platform",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Quality",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Microsoft Foundry",
+      "Inference engines",
+      "Open-weight models",
+      "AI gateways",
+      "OpenAI",
+      "Google",
+      "Gemini",
+      "Sovereign AI infrastructure",
+      "Model evaluation",
+      "Walmart",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "Microsoft: Microsoft Ignite 2026 Book of News",
+        "url": "https://news.microsoft.com/events/ignite/2026/book-of-news/",
+        "primary": true
+      },
+      {
+        "title": "Virtualization Review: Microsoft Ignite 2026: Top Azure Announcements for Enterprise IT",
+        "url": "https://virtualizationreview.com/articles/2026/11/17/microsoft-ignite-2026-top-azure-announcements-for-enterprise-it.aspx",
+        "primary": false
+      },
+      {
+        "title": "Microsoft: Ignite 2026: Building the frontier ecosystem",
+        "url": "https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/",
+        "primary": true
+      },
+      {
+        "title": "EPC Group: Microsoft Ignite 2026 Day 1 Announcements",
+        "url": "https://www.epcgroup.net/insights/microsoft-ignite-2026-day-1-announcements",
+        "primary": false
+      },
+      {
+        "title": "TestingCatalog: Microsoft launches seven MAI models at Ignite 2026",
+        "url": "https://www.testingcatalog.com/microsoft-launches-seven-mai-models-at-ignite-2026/",
+        "primary": false
+      },
+      {
+        "title": "Techzine: Google brings Gemini to sovereign Google Cloud Dedicated",
+        "url": "https://www.techzine.eu/news/infrastructure/145864/google-brings-gemini-to-sovereign-google-cloud-dedicated/",
+        "primary": false
+      },
+      {
+        "title": "Computer Weekly: Google widens sovereign cloud with Gemini, key and audit tools",
+        "url": "https://www.computerweekly.com/news/366654859/Google-widens-sovereign-cloud-with-Gemini-key-and-audit-tools",
+        "primary": false
+      },
+      {
+        "title": "ITdaily: Google Cloud brings Gemini to isolated European cloud environment",
+        "url": "https://itdaily.com/news/cloud/google-gemini-isolated-european-cloud/",
+        "primary": false
+      },
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      },
+      {
+        "title": "Yahoo Finance: Walmart CEO Is Launching AI Agent Profiles as United Airlines Blocks Third-Party Agents",
+        "url": "https://finance.yahoo.com/technology/ai/articles/walmart-ceo-launching-ai-agent-194059829.html",
+        "primary": false
+      },
+      {
+        "title": "NVIDIA: NVIDIA Announces Financial Results for Third Quarter Fiscal 2027",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-18T04:06:27+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-18",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-18/episode-2026-11-18.mp3",
+    "audio_bytes": 7172788,
+    "duration_seconds": 448.3134693877551,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 20.1,
+        "title": "Story of the day: Microsoft Foundry moves onto your Kubernetes clusters"
+      },
+      {
+        "start": 131.4,
+        "title": "Models and vendors: Microsoft Foundry"
+      },
+      {
+        "start": 195.1,
+        "title": "Sovereignty and Europe: Google"
+      },
+      {
+        "start": 252.4,
+        "title": "Quality: Microsoft Foundry"
+      },
+      {
+        "start": 304.8,
+        "title": "Retail and agents: Walmart"
+      },
+      {
+        "start": 346.9,
+        "title": "Follow-up"
+      },
+      {
+        "start": 371.0,
+        "title": "Number of the day"
+      },
+      {
+        "start": 389.3,
+        "title": "What to watch"
+      },
+      {
+        "start": 425.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

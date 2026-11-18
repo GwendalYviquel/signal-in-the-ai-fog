@@ -16,6 +16,143 @@
  },
  "episodes": [
   {
+   "date": "2026-11-18",
+   "status": "published",
+   "title": "Foundry lands on your Kubernetes clusters",
+   "summary": "Microsoft Ignite brings Foundry models and agents to customers' own Kubernetes clusters, in preview. Also: a small routing model and new coding models, Gemini in Google's partner-run sovereign cloud, managed retrieval upgrades, and Walmart's agent rules. Plus a follow-up on Nvidia's first earnings without its founder.",
+   "headlines": [
+    "Microsoft Foundry moves onto your Kubernetes clusters",
+    "Microsoft ships a small routing model and new coders",
+    "Gemini reaches Google's partner-run sovereign cloud"
+   ],
+   "themes": [
+    "Platform",
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Quality",
+    "Retail and agents"
+   ],
+   "topics": [
+    "Microsoft Foundry",
+    "Inference engines",
+    "Open-weight models",
+    "AI gateways",
+    "OpenAI",
+    "Google",
+    "Gemini",
+    "Sovereign AI infrastructure",
+    "Model evaluation",
+    "Walmart",
+    "Agentic commerce"
+   ],
+   "page": "episodes/2026-11-18.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 20.1,
+     "title": "Story of the day: Microsoft Foundry moves onto your Kubernetes clusters"
+    },
+    {
+     "start": 131.4,
+     "title": "Models and vendors: Microsoft Foundry"
+    },
+    {
+     "start": 195.1,
+     "title": "Sovereignty and Europe: Google"
+    },
+    {
+     "start": 252.4,
+     "title": "Quality: Microsoft Foundry"
+    },
+    {
+     "start": 304.8,
+     "title": "Retail and agents: Walmart"
+    },
+    {
+     "start": 346.9,
+     "title": "Follow-up"
+    },
+    {
+     "start": 371.0,
+     "title": "Number of the day"
+    },
+    {
+     "start": 389.3,
+     "title": "What to watch"
+    },
+    {
+     "start": 425.4,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 448,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-18/episode-2026-11-18.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Microsoft: Microsoft Ignite 2026 Book of News",
+     "url": "https://news.microsoft.com/events/ignite/2026/book-of-news/",
+     "primary": true
+    },
+    {
+     "title": "Virtualization Review: Microsoft Ignite 2026: Top Azure Announcements for Enterprise IT",
+     "url": "https://virtualizationreview.com/articles/2026/11/17/microsoft-ignite-2026-top-azure-announcements-for-enterprise-it.aspx",
+     "primary": false
+    },
+    {
+     "title": "Microsoft: Ignite 2026: Building the frontier ecosystem",
+     "url": "https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/",
+     "primary": true
+    },
+    {
+     "title": "EPC Group: Microsoft Ignite 2026 Day 1 Announcements",
+     "url": "https://www.epcgroup.net/insights/microsoft-ignite-2026-day-1-announcements",
+     "primary": false
+    },
+    {
+     "title": "TestingCatalog: Microsoft launches seven MAI models at Ignite 2026",
+     "url": "https://www.testingcatalog.com/microsoft-launches-seven-mai-models-at-ignite-2026/",
+     "primary": false
+    },
+    {
+     "title": "Techzine: Google brings Gemini to sovereign Google Cloud Dedicated",
+     "url": "https://www.techzine.eu/news/infrastructure/145864/google-brings-gemini-to-sovereign-google-cloud-dedicated/",
+     "primary": false
+    },
+    {
+     "title": "Computer Weekly: Google widens sovereign cloud with Gemini, key and audit tools",
+     "url": "https://www.computerweekly.com/news/366654859/Google-widens-sovereign-cloud-with-Gemini-key-and-audit-tools",
+     "primary": false
+    },
+    {
+     "title": "ITdaily: Google Cloud brings Gemini to isolated European cloud environment",
+     "url": "https://itdaily.com/news/cloud/google-gemini-isolated-european-cloud/",
+     "primary": false
+    },
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "Yahoo Finance: Walmart CEO Is Launching AI Agent Profiles as United Airlines Blocks Third-Party Agents",
+     "url": "https://finance.yahoo.com/technology/ai/articles/walmart-ceo-launching-ai-agent-194059829.html",
+     "primary": false
+    },
+    {
+     "title": "NVIDIA: NVIDIA Announces Financial Results for Third Quarter Fiscal 2027",
+     "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-third-quarter-fiscal-2027",
+     "primary": true
+    }
+   ],
+   "transcript": "Good morning, it's Wednesday, November 18. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Microsoft Foundry moves onto your Kubernetes clusters, Microsoft ships a small routing model and new coders, and Gemini reaches Google's partner-run sovereign cloud.\n\nFirst, the story of the day.\n\nAt Microsoft Ignite on November seventeenth, Microsoft announced new previews that let organisations deploy open-weight models and agents from Foundry onto their own Azure Kubernetes Service clusters. They keep their existing infrastructure, security policies and governance. Microsoft says support for vLLM, Ray and Kubernetes keeps the foundation open and portable. A separate preview, Programmed Training, lets engineers write their own training loops, including supervised fine-tuning and reinforcement learning, on supported open-weight models, while Foundry runs the compute. Foundry Local is set to become generally available for connected and disconnected operation on Azure Local, with a catalog of Microsoft, partner and open-weight models. Maia 200, Microsoft's own accelerator, now serves Microsoft production workloads including Copilot. GitHub Copilot and Foundry are to follow by the end of the year.\n\nThe read here: this is a hyperscaler answering teams that already run vLLM on Kubernetes themselves. The pitch is one control plane for API models and for models in your own cluster. But remember what is announced and what is shipping: these are previews, not production commitments. For a platform team, the useful test is policy parity. Would quotas, logging, evaluation gates and cost attribution apply identically to a cluster-hosted open-weight model and to a vendor API? If your gateway sits in front of both, the answer should be yes, and you should verify it. Worth watching: GPU quota, pricing and region coverage, which the announcements do not settle. The open-source foundation is the reassuring part, because it keeps an exit route.\n\nNext, Models and vendors.\n\nMicrosoft says Microsoft-Decision-1.1, a small model for routing and classification, is generally available in Foundry, now with multimodal support. GPT 6.2 comes to Foundry, and Meta's latest models, including Muse Ember, are announced as coming soon. The MAI Code 2 coding models are generally available in GitHub Copilot, with Code 2 Flash in limited preview in Foundry, according to TestingCatalog. Reported input pricing is zero point zero four two dollars per million tokens on the Global Standard deployment, according to EPC Group and TestingCatalog.\n\nWhy it matters: a small, cheap model sold for routing is a candidate classifier in front of your gateway. Test it on your own traffic before trusting vendor claims on cost and quality. Treat anything marked coming soon as not yet routable. And compare the listed prices per task, not per token, because a cheaper model that needs more retries is not cheaper.\n\nNext, Sovereignty and Europe.\n\nAt its Sovereign AI Summit in Brussels on November seventeenth, Google announced Gemini models on Google Cloud Dedicated, its cloud operated by local partners, where only open models from its catalog ran until now. Confidential external key management is in preview, with no general availability date. Thales extends Dedicated to Germany, in preview, from three Berlin data centres. In France, S3NS has made managed model serving generally available.\n\nWhat this really signals: the hyperscaler sovereignty offer is moving from infrastructure to frontier models. Before comparing it with European providers, ask which partner, which region and which model you can actually order today. Announcements are not capacity. Compare on where models run, who operates them, who holds the keys, and what happens if the link to the vendor is cut.\n\nNext, Quality.\n\nMicrosoft announced upgrades to Foundry IQ, its retrieval layer for agents. Knowledge graphs are in public preview, along with permission-aware SharePoint integration and a retrieval model built for agents. Foundry IQ Serverless, with consumption pricing and scale to zero when idle, is due to become generally available in December. Microsoft also ties evaluations and production insights into Foundry's improvement loop for agents.\n\nThe bigger picture: retrieval is turning into a managed platform feature, with relationships between entities and access rights built in. For a retailer, a product catalogue is exactly that kind of data. Benchmark it against your own RAG evaluation set before moving anything, and compare serverless cost with what you run today. Vendor retrieval benchmarks are not your corpus.\n\nNext, Retail and agents.\n\nWalmart said in October that Agent Profiles, a dedicated identity for each shopping agent, would launch within a month. Yahoo Finance now reports, in its headline, that Walmart's chief executive is launching them as United Airlines blocks third-party agents. The sources reviewed do not confirm that the profiles are live.\n\nReading between the lines: retailers and airlines are choosing different postures toward outside agents, from admission with identity to outright blocking. For a retailer, decide your posture before agents arrive: how an agent identifies itself, what limits apply, and how orders are logged and reversed.\n\nA follow-up.\n\nExpected: Nvidia's first earnings since Jensen Huang's resignation. Result: revenue of 115.8 billion dollars, up 103 percent, with data center at 107.6 billion. Nvidia guides fourth-quarter revenue to 130 billion dollars, plus or minus three percent, assuming no China data center compute. Vera Rubin NVL72 has begun shipping.\n\nThe number of the day.\n\nTwelve months. That is how long, according to Google, a Google Cloud Dedicated environment can keep running if its connection to Google is severed. It turns sovereignty into a measurable resilience question you can put in a contract.\n\nWhat to watch.\n\nThis evening, Anthropic prices its IPO. Tomorrow, November nineteenth, it starts trading, OVHcloud holds its AI Summit in Paris, with a beta of OVHai Workspace expected, and Gemini 3.6 Flash retires on Vertex. Microsoft Ignite runs until November twentieth. Walmart's Agent Profiles are due about November twenty-first. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 reroutes December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.\n\nAnd a question for your team.\n\nIf a hyperscaler offers to run open-weight models on your own Kubernetes clusters, would your gateway, quotas and evaluation gates treat them like any API model, or as a special case?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-11-17",
    "status": "published",
    "title": "Brussels drafts rules for shopping agents",

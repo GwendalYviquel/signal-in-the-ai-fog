@@ -1,0 +1,220 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.617
+Good morning, it's Wednesday, November 18.
+
+00:00:02.680 --> 00:00:09.223
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.285 --> 00:00:20.003
+Today: Microsoft Foundry moves onto your Kubernetes clusters, Microsoft ships a small routing model and new coders, and Gemini reaches Google's partner-run sovereign cloud.
+
+00:00:20.065 --> 00:00:21.810
+First, the story of the day.
+
+00:00:21.872 --> 00:00:34.335
+At Microsoft Ignite on November seventeenth, Microsoft announced new previews that let organisations deploy open-weight models and agents from Foundry onto their own Azure Kubernetes Service clusters.
+
+00:00:34.398 --> 00:00:39.009
+They keep their existing infrastructure, security policies and governance.
+
+00:00:39.071 --> 00:00:44.742
+Microsoft says support for vLLM, Ray and Kubernetes keeps the foundation open and portable.
+
+00:00:44.804 --> 00:00:58.077
+A separate preview, Programmed Training, lets engineers write their own training loops, including supervised fine-tuning and reinforcement learning, on supported open-weight models, while Foundry runs the compute.
+
+00:00:58.139 --> 00:01:08.608
+Foundry Local is set to become generally available for connected and disconnected operation on Azure Local, with a catalog of Microsoft, partner and open-weight models.
+
+00:01:08.670 --> 00:01:14.840
+Maia 200, Microsoft's own accelerator, now serves Microsoft production workloads including Copilot.
+
+00:01:14.902 --> 00:01:18.890
+GitHub Copilot and Foundry are to follow by the end of the year.
+
+00:01:19.490 --> 00:01:26.377
+The read here: this is a hyperscaler answering teams that already run vLLM on Kubernetes themselves.
+
+00:01:26.446 --> 00:01:32.025
+The pitch is one control plane for API models and for models in your own cluster.
+
+00:01:32.094 --> 00:01:38.981
+But remember what is announced and what is shipping: these are previews, not production commitments.
+
+00:01:39.050 --> 00:01:42.769
+For a platform team, the useful test is policy parity.
+
+00:01:42.838 --> 00:01:52.273
+Would quotas, logging, evaluation gates and cost attribution apply identically to a cluster-hosted open-weight model and to a vendor API?
+
+00:01:52.342 --> 00:01:58.541
+If your gateway sits in front of both, the answer should be yes, and you should verify it.
+
+00:01:58.610 --> 00:02:05.084
+Worth watching: GPU quota, pricing and region coverage, which the announcements do not settle.
+
+00:02:05.152 --> 00:02:10.800
+The open-source foundation is the reassuring part, because it keeps an exit route.
+
+00:02:11.400 --> 00:02:13.046
+Next, Models and vendors.
+
+00:02:13.112 --> 00:02:22.856
+Microsoft says Microsoft-Decision-1.1, a small model for routing and classification, is generally available in Foundry, now with multimodal support.
+
+00:02:22.922 --> 00:02:29.703
+GPT 6.2 comes to Foundry, and Meta's latest models, including Muse Ember, are announced as coming soon.
+
+00:02:29.769 --> 00:02:39.579
+The MAI Code 2 coding models are generally available in GitHub Copilot, with Code 2 Flash in limited preview in Foundry, according to TestingCatalog.
+
+00:02:39.645 --> 00:02:49.850
+Reported input pricing is zero point zero four two dollars per million tokens on the Global Standard deployment, according to EPC Group and TestingCatalog.
+
+00:02:50.450 --> 00:02:57.492
+Why it matters: a small, cheap model sold for routing is a candidate classifier in front of your gateway.
+
+00:02:57.559 --> 00:03:02.790
+Test it on your own traffic before trusting vendor claims on cost and quality.
+
+00:03:02.857 --> 00:03:06.479
+Treat anything marked coming soon as not yet routable.
+
+00:03:06.546 --> 00:03:14.460
+And compare the listed prices per task, not per token, because a cheaper model that needs more retries is not cheaper.
+
+00:03:15.060 --> 00:03:16.894
+Next, Sovereignty and Europe.
+
+00:03:16.957 --> 00:03:30.488
+At its Sovereign AI Summit in Brussels on November seventeenth, Google announced Gemini models on Google Cloud Dedicated, its cloud operated by local partners, where only open models from its catalog ran until now.
+
+00:03:30.551 --> 00:03:35.989
+Confidential external key management is in preview, with no general availability date.
+
+00:03:36.052 --> 00:03:41.110
+Thales extends Dedicated to Germany, in preview, from three Berlin data centres.
+
+00:03:41.174 --> 00:03:45.410
+In France, S3NS has made managed model serving generally available.
+
+00:03:46.010 --> 00:03:53.355
+What this really signals: the hyperscaler sovereignty offer is moving from infrastructure to frontier models.
+
+00:03:53.423 --> 00:04:01.644
+Before comparing it with European providers, ask which partner, which region and which model you can actually order today.
+
+00:04:01.712 --> 00:04:03.801
+Announcements are not capacity.
+
+00:04:03.868 --> 00:04:11.820
+Compare on where models run, who operates them, who holds the keys, and what happens if the link to the vendor is cut.
+
+00:04:12.420 --> 00:04:13.264
+Next, Quality.
+
+00:04:13.324 --> 00:04:17.846
+Microsoft announced upgrades to Foundry IQ, its retrieval layer for agents.
+
+00:04:17.906 --> 00:04:25.744
+Knowledge graphs are in public preview, along with permission-aware SharePoint integration and a retrieval model built for agents.
+
+00:04:25.804 --> 00:04:33.401
+Foundry IQ Serverless, with consumption pricing and scale to zero when idle, is due to become generally available in December.
+
+00:04:33.461 --> 00:04:39.430
+Microsoft also ties evaluations and production insights into Foundry's improvement loop for agents.
+
+00:04:40.030 --> 00:04:48.779
+The bigger picture: retrieval is turning into a managed platform feature, with relationships between entities and access rights built in.
+
+00:04:48.843 --> 00:04:52.994
+For a retailer, a product catalogue is exactly that kind of data.
+
+00:04:53.058 --> 00:05:01.041
+Benchmark it against your own RAG evaluation set before moving anything, and compare serverless cost with what you run today.
+
+00:05:01.105 --> 00:05:04.170
+Vendor retrieval benchmarks are not your corpus.
+
+00:05:04.770 --> 00:05:06.234
+Next, Retail and agents.
+
+00:05:06.294 --> 00:05:13.551
+Walmart said in October that Agent Profiles, a dedicated identity for each shopping agent, would launch within a month.
+
+00:05:13.612 --> 00:05:22.027
+Yahoo Finance now reports, in its headline, that Walmart's chief executive is launching them as United Airlines blocks third-party agents.
+
+00:05:22.088 --> 00:05:25.930
+The sources reviewed do not confirm that the profiles are live.
+
+00:05:26.530 --> 00:05:36.615
+Reading between the lines: retailers and airlines are choosing different postures toward outside agents, from admission with identity to outright blocking.
+
+00:05:36.680 --> 00:05:46.310
+For a retailer, decide your posture before agents arrive: how an agent identifies itself, what limits apply, and how orders are logged and reversed.
+
+00:05:46.910 --> 00:05:47.760
+A follow-up.
+
+00:05:47.831 --> 00:05:52.579
+Expected: Nvidia's first earnings since Jensen Huang's resignation.
+
+00:05:52.650 --> 00:05:59.169
+Result: revenue of 115.8 billion dollars, up 103 percent, with data center at 107.6 billion.
+
+00:05:59.240 --> 00:06:08.310
+Nvidia guides fourth-quarter revenue to 130 billion dollars, plus or minus three percent, assuming no China data center compute.
+
+00:06:08.380 --> 00:06:10.931
+Vera Rubin NVL72 has begun shipping.
+
+00:06:11.002 --> 00:06:12.561
+The number of the day.
+
+00:06:12.632 --> 00:06:13.624
+Twelve months.
+
+00:06:13.695 --> 00:06:23.048
+That is how long, according to Google, a Google Cloud Dedicated environment can keep running if its connection to Google is severed.
+
+00:06:23.119 --> 00:06:29.142
+It turns sovereignty into a measurable resilience question you can put in a contract.
+
+00:06:29.213 --> 00:06:30.205
+What to watch.
+
+00:06:30.276 --> 00:06:33.040
+This evening, Anthropic prices its IPO.
+
+00:06:33.110 --> 00:06:45.086
+Tomorrow, November nineteenth, it starts trading, OVHcloud holds its AI Summit in Paris, with a beta of OVHai Workspace expected, and Gemini 3.6 Flash retires on Vertex.
+
+00:06:45.157 --> 00:06:48.487
+Microsoft Ignite runs until November twentieth.
+
+00:06:48.558 --> 00:06:52.880
+Walmart's Agent Profiles are due about November twenty-first.
+
+00:06:52.951 --> 00:07:05.352
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 reroutes December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:07:05.422 --> 00:07:07.477
+And a question for your team.
+
+00:07:07.548 --> 00:07:20.515
+If a hyperscaler offers to run open-weight models on your own Kubernetes clusters, would your gateway, quotas and evaluation gates treat them like any API model, or as a special case?
+
+00:07:20.586 --> 00:07:22.004
+That's it for today.
+
+00:07:22.074 --> 00:07:24.838
+Sources are in the episode description.
+
+00:07:24.909 --> 00:07:27.035
+This was Signal in the AI Fog.
+
+00:07:27.105 --> 00:07:28.310
+See you tomorrow.

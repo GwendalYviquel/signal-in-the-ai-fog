@@ -1,0 +1,45 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 20.1,
+   "title": "Story of the day: Microsoft Foundry moves onto your Kubernetes clusters"
+  },
+  {
+   "startTime": 131.4,
+   "title": "Models and vendors: Microsoft Foundry"
+  },
+  {
+   "startTime": 195.1,
+   "title": "Sovereignty and Europe: Google"
+  },
+  {
+   "startTime": 252.4,
+   "title": "Quality: Microsoft Foundry"
+  },
+  {
+   "startTime": 304.8,
+   "title": "Retail and agents: Walmart"
+  },
+  {
+   "startTime": 346.9,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 371.0,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 389.3,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 425.4,
+   "title": "Question for your team"
+  }
+ ]
+}
