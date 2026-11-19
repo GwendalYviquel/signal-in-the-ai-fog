@@ -85,7 +85,7 @@ jobs:
     timeout-minutes: 30
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url }}
     env:
       # On scheduled runs the inputs are empty: real publication.
       DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
@@ -152,9 +152,24 @@ jobs:
           path: docs
           name: github-pages-${{ matrix.show }}   # one per show: two shows publish in one run
 
+      # Learning (2026-11-19): the deployment looked the artifact up one second after its upload, the
+      # API did not list it yet ("No artifacts named github-pages-<show>"), and the episode stayed off
+      # the live feed: later attempts find it out and never deploy. A failed deployment waits, then retries.
       - name: Deploy the RSS feed
         id: deploy
         if: steps.generate.outputs.published == 'true'
+        continue-on-error: true   # the retry below decides the job's outcome
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ matrix.show }}
+
+      - name: Wait before retrying the deployment
+        if: steps.generate.outputs.published == 'true' && steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry the RSS feed deployment
+        id: deploy_retry
+        if: steps.generate.outputs.published == 'true' && steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ matrix.show }}

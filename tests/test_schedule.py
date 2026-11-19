@@ -102,8 +102,9 @@ def test_workflow_passes_the_cron_can_be_paused_and_deploys_only_a_publication()
     assert wf["jobs"]["shows"]["if"] == "github.event_name != 'schedule' || vars.SCHEDULE_ENABLED == 'true'"
     assert job["needs"] == "shows" and job["env"]["SHOW"] == "${{ matrix.show }}"
     pages = [s for s in job["steps"] if s.get("name") in ("Configure GitHub Pages", "Upload the RSS feed",
-                                                            "Deploy the RSS feed")]
-    assert len(pages) == 3 and all(s["if"] == "steps.generate.outputs.published == 'true'" for s in pages)
+                                                            "Deploy the RSS feed", "Wait before retrying the deployment",
+                                                            "Retry the RSS feed deployment")]
+    assert len(pages) == 5 and all(s["if"].startswith("steps.generate.outputs.published == 'true'") for s in pages)
     assert wf["permissions"]["actions"] == "read"  # counts today's failed attempts
 
 

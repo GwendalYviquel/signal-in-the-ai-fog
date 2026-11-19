@@ -121,9 +121,29 @@ def test_daily_manual_run_defaults_to_dry_run():
 def test_daily_publication_steps_run_only_after_a_publication():
     # Dry runs, early attempts and attempts finding the episode out publish nothing: no deployment.
     steps = main_steps(workflow("daily-episode.yml"))
-    publication = [s for s in steps if "pages" in s.get("uses", "") or s.get("name") == "Deploy the RSS feed"]
-    assert len(publication) == 3
-    assert all(s.get("if") == "steps.generate.outputs.published == 'true'" for s in publication)
+    publication = [s for s in steps if "pages" in s.get("uses", "") or "deploy" in s.get("name", "").lower()]
+    assert len(publication) == 5   # configure, upload, deploy, wait, retry
+    assert all(s.get("if", "").startswith("steps.generate.outputs.published == 'true'") for s in publication)
+
+
+def test_a_failed_daily_deployment_is_retried_after_a_wait():
+    # Regression (2026-11-19): deploy-pages looked the artifact up one second after its upload, the API
+    # did not list it yet, the deployment failed and the episode stayed off the live feed all morning
+    # (later attempts found it out and deployed nothing).
+    steps = main_steps(workflow("daily-episode.yml"))
+    names = [s.get("name") for s in steps]
+    deploy, wait, retry = (steps[names.index(n)] for n in (
+        "Deploy the RSS feed", "Wait before retrying the deployment", "Retry the RSS feed deployment"))
+    assert names.index("Deploy the RSS feed") < names.index("Wait before retrying the deployment") \
+        < names.index("Retry the RSS feed deployment")
+    assert deploy["id"] == "deploy" and deploy["continue-on-error"] is True
+    for s in (wait, retry):
+        assert s["if"] == "steps.generate.outputs.published == 'true' && steps.deploy.outcome == 'failure'"
+    assert "sleep" in wait["run"]
+    assert retry["uses"] == deploy["uses"] and retry["with"] == deploy["with"]
+    assert "continue-on-error" not in retry   # a second failure fails the job and notifies the phone
+    url = workflow("daily-episode.yml")["jobs"]["episode"]["environment"]["url"]
+    assert "steps.deploy.outputs.page_url" in url and f"steps.{retry['id']}.outputs.page_url" in url
 
 
 @pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml", "rehearsal.yml", "check-voices.yml"])
