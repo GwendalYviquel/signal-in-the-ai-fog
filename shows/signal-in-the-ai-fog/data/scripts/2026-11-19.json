@@ -1,0 +1,128 @@
+{
+ "title": "Anthropic prices above range, Gemini 3.6 Flash retires",
+ "summary": "Anthropic priced its IPO at eighty-three dollars a share and starts trading today. Also: Google retires Gemini 3.6 Flash on its enterprise agent platform, and OVHcloud opens its AI Summit in Paris. Plus a calendar of the deadlines ahead.",
+ "headlines": [
+  "Anthropic prices its IPO above range",
+  "Gemini 3.6 Flash retires today",
+  "OVHcloud opens its sovereign AI summit"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Anthropic priced its initial public offering at eighty-three dollars per share on Wednesday, November eighteenth, above the expected range of seventy to seventy-eight dollars. According to the Washington Examiner, it is selling 980 million Class A shares in what would be the largest IPO on record. Reports put the valuation at about 1.5 trillion dollars. Shares are expected to start trading on Nasdaq under the ticker A N T on Thursday, November nineteenth, today. Yahoo, relaying the Associated Press, says the pricing signals investor appetite for AI despite bubble worries.",
+  "read": "The read here: nothing in your contract changes at the opening bell. What changes is the disclosure regime. A frontier vendor now reports every quarter, and each report will show commitments, margins and capacity constraints. That is useful input for a risk register. Pricing above the range likely gives the vendor room to keep investing in capacity, but that is a prediction, not a promise about your prices or your quotas. A much larger share count also means more public scrutiny of its spending. For a platform team, the practical steps stay the same. Keep a second vendor routable through the gateway. Time a failover. Review the vendor's disclosures each quarter. And ignore first-day price swings when you make routing decisions.",
+  "label": "reported",
+  "topics": [
+   "Anthropic"
+  ],
+  "sources": [
+   {
+    "title": "ABC News: Anthropic announces price of $83 per share for IPO",
+    "url": "https://abcnews.com/Business/anthropic-announces-price-83-share-ipo/story?id=138245320",
+    "primary": false
+   },
+   {
+    "title": "Washington Examiner: Anthropic prices IPO at $83 per share ahead of stock market debut",
+    "url": "https://www.washingtonexaminer.com/policy/finance-and-economy/4808336/anthropic-ipo-83-share-stock-market-debut/",
+    "primary": false
+   },
+   {
+    "title": "The Motley Fool: It's Official: Anthropic Prices Its IPO at $83 a Share",
+    "url": "https://www.fool.com/investing/2026/11/18/it-s-official-anthropic-prices-its-ipo-at-usd83-a-share-here-s-what-we-know-an",
+    "primary": false
+   },
+   {
+    "title": "Yahoo Finance: Anthropic prices its IPO at $83 per share, valuing the AI giant at $1.5 trillion",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/anthropic-prices-ipo-83-per-222443646.html",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "OVHcloud holds its AI Summit in Paris today, November nineteenth. The company's own event page frames it around sovereign AI, from infrastructure to models, with its leaders presenting AI strategy and product announcements. A beta of OVHai Workspace is expected to be announced there. Nothing from the event itself was available before this briefing, so no announcement is described here.",
+   "read": "Why it matters: today is a pitch, not capacity. When the announcements land, sort each one into three boxes: what you can order now, what is a beta, and what is only a roadmap. Then compare with the hyperscaler sovereign offers on four points: where models run, who operates them, who holds the keys, and price. A European option earns a place in your gateway only when it passes your own evaluation set and has a published price and quota.",
+   "label": "confirmed",
+   "topics": [
+    "Sovereign AI infrastructure"
+   ],
+   "sources": [
+    {
+     "title": "OVHcloud: OVHcloud AI Summit 2026: sovereign AI, from infrastructure to models",
+     "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-sovereign-ai/",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "Google's documentation lists November nineteenth as the retirement date of Gemini 3.6 Flash on its Gemini Enterprise Agent Platform, with Gemini 3.8 Flash as the replacement. The model was released there on July twenty-first and is available in the global endpoint and in the US and EU multi-regions. Google notes that retirement dates apply to support on that platform, that models may remain reachable through the Gemini API, and that timelines may be extended but never moved earlier. Its policy gives at least forty-five days to migrate once a date is posted.",
+   "read": "What this really signals: model lifetimes are now measured in months. This one lasted about four months. For a platform team, treat retirement dates as data in the gateway, not as emails in an inbox. Alert well before the date. Rerun your evaluation set on the successor before the switch, not after. And check that your fallback route does not point at another model on the same calendar. A forced migration is a quality event and a cost event, so budget time for both.",
+   "label": "confirmed",
+   "topics": [
+    "Gemini",
+    "Google"
+   ],
+   "sources": [
+    {
+     "title": "Google Cloud: Gemini 3.6 Flash, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-6-flash",
+     "primary": true
+    },
+    {
+     "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Eighty-three dollars a share. That is Anthropic's IPO price, above the expected range of seventy to seventy-eight dollars. Investor appetite for AI is running stronger than the range suggested.",
+  "source": {
+   "title": "ABC News: Anthropic announces price of $83 per share for IPO",
+   "url": "https://abcnews.com/Business/anthropic-announces-price-83-share-ipo/story?id=138245320",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Today, November nineteenth: Anthropic's first trade, OVHcloud's AI Summit in Paris, and the Gemini 3.6 Flash retirement. Microsoft Ignite runs until November twentieth. Walmart's Agent Profiles are due about November twenty-first. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.",
+ "agenda": [
+  {
+   "date": "2026-11-19",
+   "text": "Anthropic first trade on Nasdaq"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "OVHcloud AI Summit in Paris"
+  },
+  {
+   "date": "2026-11-19",
+   "text": "Gemini 3.6 Flash retirement on Google's agent platform"
+  },
+  {
+   "date": "2026-11-20",
+   "text": "Microsoft Ignite ends"
+  },
+  {
+   "date": "2026-11-21",
+   "text": "Walmart Agent Profiles due, approximately"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking duty starts"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 deadline"
+  }
+ ],
+ "question": "Which of your production routes point at a model with a retirement date in the next ninety days, and does your gateway warn you before the notice window closes?"
+}

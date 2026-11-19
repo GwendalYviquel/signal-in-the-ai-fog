@@ -1,0 +1,33 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.0,
+   "title": "Story of the day: Anthropic prices its IPO above range"
+  },
+  {
+   "startTime": 106.5,
+   "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+  },
+  {
+   "startTime": 165.4,
+   "title": "Platform: Gemini"
+  },
+  {
+   "startTime": 233.5,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 247.9,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 276.1,
+   "title": "Question for your team"
+  }
+ ]
+}

@@ -2585,5 +2585,98 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-19",
+    "title": "Anthropic prices above range, Gemini 3.6 Flash retires",
+    "summary": "Anthropic priced its IPO at eighty-three dollars a share and starts trading today. Also: Google retires Gemini 3.6 Flash on its enterprise agent platform, and OVHcloud opens its AI Summit in Paris. Plus a calendar of the deadlines ahead.",
+    "headlines": [
+      "Anthropic prices its IPO above range",
+      "Gemini 3.6 Flash retires today",
+      "OVHcloud opens its sovereign AI summit"
+    ],
+    "themes": [
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform"
+    ],
+    "topics": [
+      "Anthropic",
+      "Sovereign AI infrastructure",
+      "Gemini",
+      "Google"
+    ],
+    "sources": [
+      {
+        "title": "ABC News: Anthropic announces price of $83 per share for IPO",
+        "url": "https://abcnews.com/Business/anthropic-announces-price-83-share-ipo/story?id=138245320",
+        "primary": false
+      },
+      {
+        "title": "Washington Examiner: Anthropic prices IPO at $83 per share ahead of stock market debut",
+        "url": "https://www.washingtonexaminer.com/policy/finance-and-economy/4808336/anthropic-ipo-83-share-stock-market-debut/",
+        "primary": false
+      },
+      {
+        "title": "The Motley Fool: It's Official: Anthropic Prices Its IPO at $83 a Share",
+        "url": "https://www.fool.com/investing/2026/11/18/it-s-official-anthropic-prices-its-ipo-at-usd83-a-share-here-s-what-we-know-an",
+        "primary": false
+      },
+      {
+        "title": "Yahoo Finance: Anthropic prices its IPO at $83 per share, valuing the AI giant at $1.5 trillion",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/anthropic-prices-ipo-83-per-222443646.html",
+        "primary": false
+      },
+      {
+        "title": "OVHcloud: OVHcloud AI Summit 2026: sovereign AI, from infrastructure to models",
+        "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-sovereign-ai/",
+        "primary": true
+      },
+      {
+        "title": "Google Cloud: Gemini 3.6 Flash, Gemini Enterprise Agent Platform",
+        "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-6-flash",
+        "primary": true
+      },
+      {
+        "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+        "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+        "primary": true
+      }
+    ],
+    "published_at": "2026-11-19T04:06:30+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-19",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-19/episode-2026-11-19.mp3",
+    "audio_bytes": 4734505,
+    "duration_seconds": 295.91510204081635,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.0,
+        "title": "Story of the day: Anthropic prices its IPO above range"
+      },
+      {
+        "start": 106.5,
+        "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+      },
+      {
+        "start": 165.4,
+        "title": "Platform: Gemini"
+      },
+      {
+        "start": 233.5,
+        "title": "Number of the day"
+      },
+      {
+        "start": 247.9,
+        "title": "What to watch"
+      },
+      {
+        "start": 276.1,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

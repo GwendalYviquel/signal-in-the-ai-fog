@@ -1,0 +1,169 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.734
+Good morning, it's Thursday, November 19.
+
+00:00:02.800 --> 00:00:09.802
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.868 --> 00:00:17.870
+Today: Anthropic prices its IPO above range, Gemini 3.6 Flash retires today, and OVHcloud opens its sovereign AI summit.
+
+00:00:17.936 --> 00:00:19.803
+First, the story of the day.
+
+00:00:19.870 --> 00:00:31.539
+Anthropic priced its initial public offering at eighty-three dollars per share on Wednesday, November eighteenth, above the expected range of seventy to seventy-eight dollars.
+
+00:00:31.605 --> 00:00:39.740
+According to the Washington Examiner, it is selling 980 million Class A shares in what would be the largest IPO on record.
+
+00:00:39.807 --> 00:00:43.541
+Reports put the valuation at about 1.5 trillion dollars.
+
+00:00:43.607 --> 00:00:50.942
+Shares are expected to start trading on Nasdaq under the ticker A N T on Thursday, November nineteenth, today.
+
+00:00:51.009 --> 00:00:58.410
+Yahoo, relaying the Associated Press, says the pricing signals investor appetite for AI despite bubble worries.
+
+00:00:59.010 --> 00:01:03.341
+The read here: nothing in your contract changes at the opening bell.
+
+00:01:03.405 --> 00:01:05.825
+What changes is the disclosure regime.
+
+00:01:05.889 --> 00:01:13.340
+A frontier vendor now reports every quarter, and each report will show commitments, margins and capacity constraints.
+
+00:01:13.404 --> 00:01:16.015
+That is useful input for a risk register.
+
+00:01:16.079 --> 00:01:26.079
+Pricing above the range likely gives the vendor room to keep investing in capacity, but that is a prediction, not a promise about your prices or your quotas.
+
+00:01:26.142 --> 00:01:30.855
+A much larger share count also means more public scrutiny of its spending.
+
+00:01:30.919 --> 00:01:34.422
+For a platform team, the practical steps stay the same.
+
+00:01:34.486 --> 00:01:37.670
+Keep a second vendor routable through the gateway.
+
+00:01:37.734 --> 00:01:38.753
+Time a failover.
+
+00:01:38.817 --> 00:01:41.683
+Review the vendor's disclosures each quarter.
+
+00:01:41.746 --> 00:01:45.950
+And ignore first-day price swings when you make routing decisions.
+
+00:01:46.550 --> 00:01:48.341
+Next, Sovereignty and Europe.
+
+00:01:48.402 --> 00:01:52.416
+OVHcloud holds its AI Summit in Paris today, November nineteenth.
+
+00:01:52.478 --> 00:02:02.172
+The company's own event page frames it around sovereign AI, from infrastructure to models, with its leaders presenting AI strategy and product announcements.
+
+00:02:02.234 --> 00:02:05.938
+A beta of OVHai Workspace is expected to be announced there.
+
+00:02:06.000 --> 00:02:12.360
+Nothing from the event itself was available before this briefing, so no announcement is described here.
+
+00:02:12.960 --> 00:02:16.362
+Why it matters: today is a pitch, not capacity.
+
+00:02:16.435 --> 00:02:25.700
+When the announcements land, sort each one into three boxes: what you can order now, what is a beta, and what is only a roadmap.
+
+00:02:25.772 --> 00:02:35.472
+Then compare with the hyperscaler sovereign offers on four points: where models run, who operates them, who holds the keys, and price.
+
+00:02:35.545 --> 00:02:44.810
+A European option earns a place in your gateway only when it passes your own evaluation set and has a published price and quota.
+
+00:02:45.410 --> 00:02:46.340
+Next, Platform.
+
+00:02:46.402 --> 00:02:57.187
+Google's documentation lists November nineteenth as the retirement date of Gemini 3.6 Flash on its Gemini Enterprise Agent Platform, with Gemini 3.8 Flash as the replacement.
+
+00:02:57.249 --> 00:03:04.998
+The model was released there on July twenty-first and is available in the global endpoint and in the US and EU multi-regions.
+
+00:03:05.060 --> 00:03:16.589
+Google notes that retirement dates apply to support on that platform, that models may remain reachable through the Gemini API, and that timelines may be extended but never moved earlier.
+
+00:03:16.651 --> 00:03:21.300
+Its policy gives at least forty-five days to migrate once a date is posted.
+
+00:03:21.900 --> 00:03:26.453
+What this really signals: model lifetimes are now measured in months.
+
+00:03:26.519 --> 00:03:28.762
+This one lasted about four months.
+
+00:03:28.828 --> 00:03:35.030
+For a platform team, treat retirement dates as data in the gateway, not as emails in an inbox.
+
+00:03:35.096 --> 00:03:36.877
+Alert well before the date.
+
+00:03:36.943 --> 00:03:41.694
+Rerun your evaluation set on the successor before the switch, not after.
+
+00:03:41.760 --> 00:03:47.566
+And check that your fallback route does not point at another model on the same calendar.
+
+00:03:47.632 --> 00:03:52.910
+A forced migration is a quality event and a cost event, so budget time for both.
+
+00:03:53.510 --> 00:03:54.960
+The number of the day.
+
+00:03:55.026 --> 00:03:56.937
+Eighty-three dollars a share.
+
+00:03:57.003 --> 00:04:03.066
+That is Anthropic's IPO price, above the expected range of seventy to seventy-eight dollars.
+
+00:04:03.132 --> 00:04:07.745
+Investor appetite for AI is running stronger than the range suggested.
+
+00:04:07.811 --> 00:04:08.734
+What to watch.
+
+00:04:08.799 --> 00:04:16.708
+Today, November nineteenth: Anthropic's first trade, OVHcloud's AI Summit in Paris, and the Gemini 3.6 Flash retirement.
+
+00:04:16.774 --> 00:04:19.871
+Microsoft Ignite runs until November twentieth.
+
+00:04:19.937 --> 00:04:23.957
+Walmart's Agent Profiles are due about November twenty-first.
+
+00:04:24.023 --> 00:04:36.083
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:04:36.149 --> 00:04:38.060
+And a question for your team.
+
+00:04:38.126 --> 00:04:48.671
+Which of your production routes point at a model with a retirement date in the next ninety days, and does your gateway warn you before the notice window closes?
+
+00:04:48.737 --> 00:04:50.055
+That's it for today.
+
+00:04:50.121 --> 00:04:52.691
+Sources are in the episode description.
+
+00:04:52.757 --> 00:04:54.734
+This was Signal in the AI Fog.
+
+00:04:54.800 --> 00:04:55.920
+See you tomorrow.
