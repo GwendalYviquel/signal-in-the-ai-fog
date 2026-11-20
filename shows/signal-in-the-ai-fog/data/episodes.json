@@ -2678,5 +2678,125 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-20",
+    "title": "Sovereign AI becomes a catalogue",
+    "summary": "Microsoft at Ignite and OVHcloud in Paris both put new AI offers on the table. Also: Microsoft's cost-cutting model pitch, OVHcloud's routing products, and an open model released with AI Act papers. Plus a follow-up on Anthropic's first day of trading.",
+    "headlines": [
+      "Sovereign AI turns into a product catalogue",
+      "Microsoft sells cheaper task-specific models",
+      "OVHcloud ships Olala with AI Act papers"
+    ],
+    "themes": [
+      "Sovereignty and Europe",
+      "Models and vendors",
+      "Platform",
+      "Regulation"
+    ],
+    "topics": [
+      "Sovereign AI infrastructure",
+      "Microsoft Foundry",
+      "Google",
+      "AI cost control",
+      "AI gateways",
+      "EU AI Act",
+      "Open-weight models"
+    ],
+    "sources": [
+      {
+        "title": "OVHcloud: OVHcloud AI Summit 2026: 55 launches to take AI into production",
+        "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-announcements/",
+        "primary": true
+      },
+      {
+        "title": "OVHcloud: Corporate news, Qwant, Shadow, EUSP and OVHcloud partnership",
+        "url": "https://corporate.ovhcloud.com/en-gb/newsroom/news/",
+        "primary": true
+      },
+      {
+        "title": "Microsoft: Microsoft Ignite 2026 Book of News",
+        "url": "https://news.microsoft.com/events/ignite/2026/book-of-news/",
+        "primary": true
+      },
+      {
+        "title": "Techzine: Google brings Gemini to sovereign Google Cloud Dedicated",
+        "url": "https://www.techzine.eu/news/infrastructure/145864/google-brings-gemini-to-sovereign-google-cloud-dedicated/",
+        "primary": false
+      },
+      {
+        "title": "French Tech Journal: Olala! Octave Klaba Wants OVHcloud to Build Every Layer of AI",
+        "url": "https://www.frenchtechjournal.com/ovhcloud-olala-sovereign-ai-stack/",
+        "primary": false
+      },
+      {
+        "title": "Yahoo Finance: Microsoft's AI pitch at Ignite: Cheaper models as business 'token spend is going through the roof'",
+        "url": "https://finance.yahoo.com/markets/article/microsoft-ignite-focuses-on-ai-models-for-specific-tasks-lowering-costs-for-enterprise-203433266.html",
+        "primary": false
+      },
+      {
+        "title": "TechRepublic: Everything Microsoft Announced at Ignite 2026 So Far: What You Can Use Now",
+        "url": "https://www.techrepublic.com/article/news-microsoft-ignite-2026-announcements/",
+        "primary": false
+      },
+      {
+        "title": "OVHcloud: OVH announces Olala mini 7A1B",
+        "url": "https://corporate.ovhcloud.com/en/newsroom/news/ovh-olala-mini/",
+        "primary": true
+      },
+      {
+        "title": "ITdaily: OVHcloud launches Olala mini, a European open-source language model",
+        "url": "https://itdaily.com/news/software/ovhcloud-olala-mini-european-language-model/",
+        "primary": false
+      },
+      {
+        "title": "NBC News: Anthropic's record-setting IPO can't halt broader market slide: Live updates",
+        "url": "https://www.nbcnews.com/business/markets/live-blog/anthropic-ipo-live-updates-rcna610159",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-20T04:06:37+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-20",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-20/episode-2026-11-20.mp3",
+    "audio_bytes": 4842711,
+    "duration_seconds": 302.68081632653065,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 19.7,
+        "title": "Story of the day: Sovereign AI turns into a product catalogue"
+      },
+      {
+        "start": 87.4,
+        "title": "Models and vendors: Microsoft Foundry"
+      },
+      {
+        "start": 132.2,
+        "title": "Platform: AI gateways"
+      },
+      {
+        "start": 172.5,
+        "title": "Regulation: EU AI Act"
+      },
+      {
+        "start": 219.1,
+        "title": "Follow-up"
+      },
+      {
+        "start": 237.3,
+        "title": "Number of the day"
+      },
+      {
+        "start": 252.5,
+        "title": "What to watch"
+      },
+      {
+        "start": 281.4,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

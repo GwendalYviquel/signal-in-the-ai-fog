@@ -1,0 +1,154 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.662
+Good morning, it's Friday, November 20.
+
+00:00:02.731 --> 00:00:09.898
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.967 --> 00:00:19.660
+Today: Sovereign AI turns into a product catalogue, Microsoft sells cheaper task-specific models, and OVHcloud ships Olala with AI Act papers.
+
+00:00:19.729 --> 00:00:21.640
+First, the story of the day.
+
+00:00:21.708 --> 00:00:31.538
+Microsoft announced at its Ignite event previews that let Foundry open-weight models and agents run on customers' own Azure Kubernetes clusters.
+
+00:00:31.607 --> 00:00:45.601
+On November nineteenth in Paris, OVHcloud announced 55 cloud and AI launches, from GPUs to its own Olala model family and an agentic workspace, plus a partnership with Qwant, Shadow and the EUSP web index.
+
+00:00:45.669 --> 00:00:49.970
+OVHcloud's page points to its Labs for trying several products.
+
+00:00:50.570 --> 00:00:56.180
+What this really signals: sovereignty is turning into a catalogue with two shapes.
+
+00:00:56.248 --> 00:01:03.911
+Hyperscaler software now comes to your own cluster, and a European provider offers every layer, models included.
+
+00:01:03.979 --> 00:01:11.573
+Each shape fails differently: dependence on a vendor's control plane, or on a young model with no track record.
+
+00:01:11.642 --> 00:01:20.673
+For a platform team, the practical answer is a gateway that treats both as routes, scored on one evaluation set and one price sheet.
+
+00:01:20.741 --> 00:01:26.830
+Worth watching: published prices, quotas and regions, which the announcements leave open.
+
+00:01:27.430 --> 00:01:28.994
+Next, Models and vendors.
+
+00:01:29.056 --> 00:01:40.379
+At Ignite on November seventeenth, Microsoft AI chief executive Mustafa Suleyman said enterprises keep telling him token spend is going through the roof, according to Yahoo Finance.
+
+00:01:40.441 --> 00:01:48.323
+Microsoft pitched specialised models for specific tasks, and Copilot Fusion, which orchestrates several models for lower cost.
+
+00:01:48.385 --> 00:01:53.890
+TechRepublic tracks which Ignite items are generally available and which remain preview.
+
+00:01:54.490 --> 00:02:01.340
+The read here: a vendor is now selling routing as a cost lever, the same logic as your gateway.
+
+00:02:01.413 --> 00:02:04.802
+Ask for cost per completed task, not per token.
+
+00:02:04.874 --> 00:02:11.580
+And check whether a vendor-side router exposes logs and overrides, or hides the model choice.
+
+00:02:12.180 --> 00:02:13.199
+Next, Platform.
+
+00:02:13.267 --> 00:02:25.695
+OVHcloud's launch list includes AI Routers, described as a single OpenAI-compatible endpoint for all AI traffic, and AI Fabric, where the GPU becomes an argument of a Python function.
+
+00:02:25.763 --> 00:02:29.838
+The launch page links both to OVHcloud Labs for trying them.
+
+00:02:29.906 --> 00:02:32.690
+No price appears in the sources reviewed.
+
+00:02:33.290 --> 00:02:41.424
+Reading between the lines: a European cloud shipping its own routing layer shows the gateway becoming a standard product.
+
+00:02:41.491 --> 00:02:47.608
+Test an OpenAI-compatible endpoint behind your own gateway for latency, quotas and logging.
+
+00:02:47.675 --> 00:02:51.910
+Do not make it a default until prices and limits are published.
+
+00:02:52.510 --> 00:02:53.638
+Next, Regulation.
+
+00:02:53.704 --> 00:03:03.191
+OVHcloud announced Olala mini, a seven-billion-parameter mixture-of-experts model with one billion active parameters and a 32000-token context.
+
+00:03:03.257 --> 00:03:12.346
+It says the model comes with its weights, base model, technical report and AI Act compliance documentation, open source under Apache 2.0.
+
+00:03:12.412 --> 00:03:19.710
+It was trained on Jupiter, MeluXina and Jean Zay, with public compute support worth about seven million euros.
+
+00:03:20.310 --> 00:03:26.291
+Why it matters: shipping AI Act documentation with the weights is the practice to copy.
+
+00:03:26.360 --> 00:03:31.585
+For a retailer choosing an open model, the paperwork is part of the product.
+
+00:03:31.654 --> 00:03:38.460
+Small models suit classification and routing, but vendor speed claims are not your quality results.
+
+00:03:39.060 --> 00:03:39.899
+A follow-up.
+
+00:03:39.969 --> 00:03:46.611
+Expected: Anthropic's first trade on November nineteenth after pricing at eighty-three dollars.
+
+00:03:46.681 --> 00:03:57.238
+Result: shares opened at 111 dollars 50, then closed at 97 dollars 17, up 17 percent, in a volatile session on a falling market, according to NBC News.
+
+00:03:57.308 --> 00:03:58.846
+The number of the day.
+
+00:03:58.916 --> 00:03:59.685
+Fifty-five.
+
+00:03:59.755 --> 00:04:05.209
+That is how many cloud and AI launches OVHcloud announced in one day in Paris.
+
+00:04:05.279 --> 00:04:12.410
+It shows breadth, not readiness: sort each launch into orderable, beta or roadmap before comparing it.
+
+00:04:12.480 --> 00:04:13.459
+What to watch.
+
+00:04:13.529 --> 00:04:17.025
+Microsoft Ignite closes today, November twentieth.
+
+00:04:17.095 --> 00:04:24.156
+Walmart's Agent Profiles are due about November twenty-first, and nothing yet confirms they are live.
+
+00:04:24.226 --> 00:04:37.021
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:04:37.091 --> 00:04:41.286
+Also watch for prices and quotas on OVHcloud's new products.
+
+00:04:41.356 --> 00:04:43.383
+And a question for your team.
+
+00:04:43.453 --> 00:04:54.919
+If sovereign options arrive as different shapes, would your gateway score all of them on one evaluation set and one price sheet, or only the vendor you already use?
+
+00:04:54.989 --> 00:04:56.388
+That's it for today.
+
+00:04:56.457 --> 00:04:59.184
+Sources are in the episode description.
+
+00:04:59.254 --> 00:05:01.352
+This was Signal in the AI Fog.
+
+00:05:01.422 --> 00:05:02.680
+See you on Monday.

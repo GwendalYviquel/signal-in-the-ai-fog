@@ -1,0 +1,41 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 19.7,
+   "title": "Story of the day: Sovereign AI turns into a product catalogue"
+  },
+  {
+   "startTime": 87.4,
+   "title": "Models and vendors: Microsoft Foundry"
+  },
+  {
+   "startTime": 132.2,
+   "title": "Platform: AI gateways"
+  },
+  {
+   "startTime": 172.5,
+   "title": "Regulation: EU AI Act"
+  },
+  {
+   "startTime": 219.1,
+   "title": "Follow-up"
+  },
+  {
+   "startTime": 237.3,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 252.5,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 281.4,
+   "title": "Question for your team"
+  }
+ ]
+}

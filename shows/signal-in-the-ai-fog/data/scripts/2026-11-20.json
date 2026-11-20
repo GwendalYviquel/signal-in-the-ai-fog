@@ -1,0 +1,159 @@
+{
+ "title": "Sovereign AI becomes a catalogue",
+ "summary": "Microsoft at Ignite and OVHcloud in Paris both put new AI offers on the table. Also: Microsoft's cost-cutting model pitch, OVHcloud's routing products, and an open model released with AI Act papers. Plus a follow-up on Anthropic's first day of trading.",
+ "headlines": [
+  "Sovereign AI turns into a product catalogue",
+  "Microsoft sells cheaper task-specific models",
+  "OVHcloud ships Olala with AI Act papers"
+ ],
+ "story_of_the_day": {
+  "theme": "Sovereignty and Europe",
+  "facts": "Microsoft announced at its Ignite event previews that let Foundry open-weight models and agents run on customers' own Azure Kubernetes clusters. On November nineteenth in Paris, OVHcloud announced 55 cloud and AI launches, from GPUs to its own Olala model family and an agentic workspace, plus a partnership with Qwant, Shadow and the EUSP web index. OVHcloud's page points to its Labs for trying several products.",
+  "read": "What this really signals: sovereignty is turning into a catalogue with two shapes. Hyperscaler software now comes to your own cluster, and a European provider offers every layer, models included. Each shape fails differently: dependence on a vendor's control plane, or on a young model with no track record. For a platform team, the practical answer is a gateway that treats both as routes, scored on one evaluation set and one price sheet. Worth watching: published prices, quotas and regions, which the announcements leave open.",
+  "label": "confirmed",
+  "topics": [
+   "Sovereign AI infrastructure",
+   "Microsoft Foundry",
+   "Google"
+  ],
+  "sources": [
+   {
+    "title": "OVHcloud: OVHcloud AI Summit 2026: 55 launches to take AI into production",
+    "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-announcements/",
+    "primary": true
+   },
+   {
+    "title": "OVHcloud: Corporate news, Qwant, Shadow, EUSP and OVHcloud partnership",
+    "url": "https://corporate.ovhcloud.com/en-gb/newsroom/news/",
+    "primary": true
+   },
+   {
+    "title": "Microsoft: Microsoft Ignite 2026 Book of News",
+    "url": "https://news.microsoft.com/events/ignite/2026/book-of-news/",
+    "primary": true
+   },
+   {
+    "title": "Techzine: Google brings Gemini to sovereign Google Cloud Dedicated",
+    "url": "https://www.techzine.eu/news/infrastructure/145864/google-brings-gemini-to-sovereign-google-cloud-dedicated/",
+    "primary": false
+   },
+   {
+    "title": "French Tech Journal: Olala! Octave Klaba Wants OVHcloud to Build Every Layer of AI",
+    "url": "https://www.frenchtechjournal.com/ovhcloud-olala-sovereign-ai-stack/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "At Ignite on November seventeenth, Microsoft AI chief executive Mustafa Suleyman said enterprises keep telling him token spend is going through the roof, according to Yahoo Finance. Microsoft pitched specialised models for specific tasks, and Copilot Fusion, which orchestrates several models for lower cost. TechRepublic tracks which Ignite items are generally available and which remain preview.",
+   "read": "The read here: a vendor is now selling routing as a cost lever, the same logic as your gateway. Ask for cost per completed task, not per token. And check whether a vendor-side router exposes logs and overrides, or hides the model choice.",
+   "label": "reported",
+   "topics": [
+    "Microsoft Foundry",
+    "AI cost control"
+   ],
+   "sources": [
+    {
+     "title": "Yahoo Finance: Microsoft's AI pitch at Ignite: Cheaper models as business 'token spend is going through the roof'",
+     "url": "https://finance.yahoo.com/markets/article/microsoft-ignite-focuses-on-ai-models-for-specific-tasks-lowering-costs-for-enterprise-203433266.html",
+     "primary": false
+    },
+    {
+     "title": "TechRepublic: Everything Microsoft Announced at Ignite 2026 So Far: What You Can Use Now",
+     "url": "https://www.techrepublic.com/article/news-microsoft-ignite-2026-announcements/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "OVHcloud's launch list includes AI Routers, described as a single OpenAI-compatible endpoint for all AI traffic, and AI Fabric, where the GPU becomes an argument of a Python function. The launch page links both to OVHcloud Labs for trying them. No price appears in the sources reviewed.",
+   "read": "Reading between the lines: a European cloud shipping its own routing layer shows the gateway becoming a standard product. Test an OpenAI-compatible endpoint behind your own gateway for latency, quotas and logging. Do not make it a default until prices and limits are published.",
+   "label": "confirmed",
+   "topics": [
+    "AI gateways",
+    "Sovereign AI infrastructure"
+   ],
+   "sources": [
+    {
+     "title": "OVHcloud: OVHcloud AI Summit 2026: 55 launches to take AI into production",
+     "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-announcements/",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Regulation",
+   "facts": "OVHcloud announced Olala mini, a seven-billion-parameter mixture-of-experts model with one billion active parameters and a 32000-token context. It says the model comes with its weights, base model, technical report and AI Act compliance documentation, open source under Apache 2.0. It was trained on Jupiter, MeluXina and Jean Zay, with public compute support worth about seven million euros.",
+   "read": "Why it matters: shipping AI Act documentation with the weights is the practice to copy. For a retailer choosing an open model, the paperwork is part of the product. Small models suit classification and routing, but vendor speed claims are not your quality results.",
+   "label": "confirmed",
+   "topics": [
+    "EU AI Act",
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "OVHcloud: OVH announces Olala mini 7A1B",
+     "url": "https://corporate.ovhcloud.com/en/newsroom/news/ovh-olala-mini/",
+     "primary": true
+    },
+    {
+     "title": "OVHcloud: OVHcloud AI Summit 2026: 55 launches to take AI into production",
+     "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-announcements/",
+     "primary": true
+    },
+    {
+     "title": "ITdaily: OVHcloud launches Olala mini, a European open-source language model",
+     "url": "https://itdaily.com/news/software/ovhcloud-olala-mini-european-language-model/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Fifty-five. That is how many cloud and AI launches OVHcloud announced in one day in Paris. It shows breadth, not readiness: sort each launch into orderable, beta or roadmap before comparing it.",
+  "source": {
+   "title": "OVHcloud: OVHcloud AI Summit 2026: 55 launches to take AI into production",
+   "url": "https://blog.ovhcloud.com/en/posts/ai-summit-2026-announcements/",
+   "primary": true
+  }
+ },
+ "follow_up": {
+  "text": "Expected: Anthropic's first trade on November nineteenth after pricing at eighty-three dollars. Result: shares opened at 111 dollars 50, then closed at 97 dollars 17, up 17 percent, in a volatile session on a falling market, according to NBC News.",
+  "source": {
+   "title": "NBC News: Anthropic's record-setting IPO can't halt broader market slide: Live updates",
+   "url": "https://www.nbcnews.com/business/markets/live-blog/anthropic-ipo-live-updates-rcna610159",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Microsoft Ignite closes today, November twentieth. Walmart's Agent Profiles are due about November twenty-first, and nothing yet confirms they are live. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third. Also watch for prices and quotas on OVHcloud's new products.",
+ "agenda": [
+  {
+   "date": "2026-11-20",
+   "text": "Microsoft Ignite closes"
+  },
+  {
+   "date": "2026-11-21",
+   "text": "Walmart Agent Profiles due about this date"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations start"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 closes"
+  }
+ ],
+ "question": "If sovereign options arrive as different shapes, would your gateway score all of them on one evaluation set and one price sheet, or only the vendor you already use?"
+}
