@@ -103,5 +103,10 @@
   "title": "Anthropic prices above range, Gemini 3.6 Flash retires",
   "first_seen_live": "2026-11-19T10:13:43+00:00",
   "minutes_after_publication": 427
+ },
+ "2026-11-20": {
+  "title": "Sovereign AI becomes a catalogue",
+  "first_seen_live": "2026-11-20T09:56:54+00:00",
+  "minutes_after_publication": 410
  }
 }
