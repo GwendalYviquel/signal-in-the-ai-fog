@@ -1,0 +1,588 @@
+{
+ "items": [
+  {
+   "title": "Budget de la Sécu 2027 : adopté au Sénat, commission mixte paritaire le 26 novembre",
+   "theme": "Droit du travail",
+   "facts": [
+    {
+     "statement": "Le Sénat a adopté le projet de loi de financement de la sécurité sociale pour 2027 en première lecture le 18 novembre 2026, par 201 voix contre 124 et 15 abstentions.",
+     "quote": "Vote solennel du Sénat : le texte est adopté par 201 voix contre 124, avec 15 abstentions.",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte adopté par le Sénat est celui du Gouvernement amendé, car l'Assemblée nationale l'avait considéré comme rejeté en première lecture.",
+     "quote": "Le Sénat a adopté, en première lecture, le projet de loi, considéré comme rejeté par l’Assemblée nationale",
+     "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+     "status": "unread"
+    },
+    {
+     "statement": "L'Assemblée nationale avait rejeté le texte le 23 octobre avant sa transmission au Sénat.",
+     "quote": "Après avoir été rejeté par l'Assemblée nationale le 23 octobre, le texte a été transmis au Sénat.",
+     "url": "https://www.cnews.fr/france/2026-11-18/budget-de-la-securite-sociale-pour-2027-un-vote-solennel-prevu-au-senat-ce",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte initial du Gouvernement visait un déficit de 12,7 milliards d'euros en 2027.",
+     "quote": "Alors que le texte initial fixait un objectif d’un déficit ramené à 12,7 milliards d’euros",
+     "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/le-senat-adopte-le-budget-2027-de-la-securite-sociale-en-premiere-lecture/",
+     "status": "verified"
+    },
+    {
+     "statement": "La version issue du Sénat conclut à un déficit prévisionnel de 14 milliards d'euros, soit 1,3 milliard de plus que le texte initial.",
+     "quote": "la copie issue du Sénat conclut à un déficit prévisionnel de 14 milliards d’euros",
+     "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/le-senat-adopte-le-budget-2027-de-la-securite-sociale-en-premiere-lecture/",
+     "status": "verified"
+    },
+    {
+     "statement": "Une commission mixte paritaire doit se réunir le 26 novembre selon la presse.",
+     "quote": "se réuniront en commission mixte paritaire (CMP) le 26 novembre",
+     "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/le-senat-adopte-le-budget-2027-de-la-securite-sociale-en-premiere-lecture/",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission mixte paritaire compte sept députés et sept sénateurs et doit chercher un compromis.",
+     "quote": "Composée de sept députés et de sept sénateurs, elle devra tenter de trouver un compromis",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-le-senat-adopte-une-version-modifiee-du-plfss-avec-plusieurs-evolutions-pour-lassurance.O436FAKNXJD3ZOSNPII7CU5WHE.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon Public Sénat, un accord en commission mixte paritaire est jugé peu probable.",
+     "quote": "Un accord en commission reste « peu probable », selon Public Sénat.",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/plfss-2027-delai-26-novembre-ordonnances/43615/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le délai de 50 jours dont dispose le Parlement expire le 26 novembre à minuit.",
+     "quote": "le délai de 50 jours dont dispose le Parlement pour voter le budget de la Sécurité sociale pour 2027 expire",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/plfss-2027-delai-26-novembre-ordonnances/43615/",
+     "status": "verified"
+    },
+    {
+     "statement": "Passé ce délai, le Gouvernement pourrait appliquer le texte par ordonnance, procédure jamais utilisée, sans y être obligé.",
+     "quote": "le gouvernement aura le droit d’appliquer le projet de loi de financement de la Sécurité sociale (PLFSS) par ordonnance",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/plfss-2027-delai-26-novembre-ordonnances/43615/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Financement de la sécurité sociale pour 2027, texte adopté provisoire",
+     "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+     "primary": true
+    },
+    {
+     "title": "NosParlementaires : Calendrier du PLFSS 2027",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    },
+    {
+     "title": "Touteleurope : Le Sénat adopte le budget 2027 de la Sécurité sociale en première lecture",
+     "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/le-senat-adopte-le-budget-2027-de-la-securite-sociale-en-premiere-lecture/",
+     "primary": false
+    },
+    {
+     "title": "CNews : Budget de la Sécurité sociale, le Sénat adopte le projet de loi de financement pour 2027",
+     "url": "https://www.cnews.fr/france/2026-11-18/budget-de-la-securite-sociale-pour-2027-un-vote-solennel-prevu-au-senat-ce",
+     "primary": false
+    },
+    {
+     "title": "L'Argus de l'assurance : Budget de la Sécu, le Sénat adopte une version modifiée du PLFSS",
+     "url": "https://www.argusdelassurance.com/reglementation/vie-publique/projet-de-loi-de-financement-de-la-securite-sociale-plfss/budget-de-la-secu-le-senat-adopte-une-version-modifiee-du-plfss-avec-plusieurs-evolutions-pour-lassurance.O436FAKNXJD3ZOSNPII7CU5WHE.html",
+     "primary": false
+    },
+    {
+     "title": "Actu-alt-plus : Que se passe-t-il pour le PLFSS 2027 quand le délai expire le 26 novembre",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/plfss-2027-delai-26-novembre-ordonnances/43615/",
+     "primary": false
+    }
+   ],
+   "context": "Sujet de la semaine, étiquette confirmed (page du Sénat) pour le vote, reported pour le calendrier de la CMP (presse, date pas encore inscrite aux ordres du jour officiels). Rien n'est adopté définitivement. Étapes : CMP le 26 novembre, puis en cas d'échec nouvelle lecture à l'Assemblée et au Sénat, puis lecture définitive à l'Assemblée. Pour la paie : aucune règle 2027 stabilisée (CSG, allègements, indemnités de rupture, indemnités journalières). Les ordonnances sont un scénario évoqué par la presse, pas une décision. Retour sur dossier possible : le vote solennel du 18 novembre attendu dans le précédent épisode a eu lieu (201 contre 124). Préparer des scénarios de paramétrage en décembre. Les mots-clés suggérés : PLFSS 2027."
+  },
+  {
+   "title": "Indemnités de rupture et temps de travail dans le texte du Sénat",
+   "theme": "Droit du travail",
+   "facts": [
+    {
+     "statement": "La commission des affaires sociales du Sénat a adopté 76 amendements le 4 novembre sur le texte initial du Gouvernement.",
+     "quote": "La commission des affaires sociales a adopté 76 amendements le 4 novembre",
+     "url": "https://sedomicilier.fr/articles/plfss-senat",
+     "status": "verified"
+    },
+    {
+     "statement": "Le plafond d'exonération des indemnités de rupture viserait les ruptures prenant effet à partir du 1er janvier 2027.",
+     "quote": "prennent effet à compter du 1er janvier 2027",
+     "url": "https://sedomicilier.fr/articles/plfss-senat",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission a adopté la mesure avec une clause transitoire pour les plans de sauvegarde de l'emploi validés avant 2027.",
+     "quote": "Adopté avec une clause transitoire pour les PSE validés avant 2027",
+     "url": "https://sedomicilier.fr/articles/plfss-senat",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Sénat a adopté une disposition juridiquement non contraignante prévoyant une concertation avec les organisations syndicales d'ici la fin de 2027 pour ouvrir une négociation sur l'augmentation du temps de travail.",
+     "quote": "une concertation préalable sera engagée d’ici la fin de l’année 2027 avec les organisations syndicales",
+     "url": "https://www.ah-avocats.fr/2026/11/19/plfss-pour-2027-adoption-au-senat/",
+     "status": "verified"
+    },
+    {
+     "statement": "La plupart des dispositions sociales du PLF et du PLFSS 2027 n'entreraient en vigueur que le 1er janvier 2027, selon un cabinet.",
+     "quote": "La plupart des dispositions sociales n'entreraient en vigueur que le 1er janvier 2027",
+     "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Se Domicilier : PLFSS au Sénat, ce que la commission change pour les entreprises",
+     "url": "https://sedomicilier.fr/articles/plfss-senat",
+     "primary": false
+    },
+    {
+     "title": "Auché-Hedou Avocats : PLFSS pour 2027, adoption au Sénat",
+     "url": "https://www.ah-avocats.fr/2026/11/19/plfss-pour-2027-adoption-au-senat/",
+     "primary": false
+    },
+    {
+     "title": "Sancy Avocats : Les mesures RH du PLF et du PLFSS 2027",
+     "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+     "primary": false
+    }
+   ],
+   "context": "Étiquette reported : sources de cabinets et de sites juridiques, aucun texte définitif. Critère : date d'effet de la rupture, pas date de signature ; rupture signée en décembre mais effective en janvier à regarder. Vérifier les accords de PSE en cours. Le texte final dépendra de la CMP. La disposition sur le temps de travail est non contraignante : signal politique, pas obligation. Relie les sujets Rupture conventionnelle et PLFSS 2027."
+  },
+  {
+   "title": "Cour de cassation, 10 novembre 2026 : grève et rupture du contrat de travail",
+   "theme": "Droit du travail",
+   "facts": [
+    {
+     "statement": "La chambre sociale de la Cour de cassation a rendu le 10 novembre 2026 un arrêt de cassation, arrêt n° 938 F-B, donc publié au Bulletin.",
+     "quote": "Arrêt n° 938 F-B",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-25-15-527/",
+     "status": "verified"
+    },
+    {
+     "statement": "La Cour rappelle que l'exercice du droit de grève ne justifie pas la rupture du contrat, sauf faute lourde.",
+     "quote": "l'exercice du droit de grève ne peut justifier la rupture du contrat de travail, sauf faute lourde imputable au salarié",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-25-15-527/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'arrêt de la cour d'appel de Lyon est cassé.",
+     "quote": "la cour d'appel de Lyon",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-25-15-527/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'affaire est renvoyée devant la cour d'appel de Grenoble.",
+     "quote": "renvoie devant la cour d'appel de Grenoble",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-25-15-527/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Kohen Avocats : Cass. soc., 10 nov. 2026, n° 25-15.527",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-25-15-527/",
+     "primary": false
+    }
+   ],
+   "context": "Attention : décision du 10 novembre, donc antérieure aux sept derniers jours ; à n'utiliser qu'en complément. Le contenu précis de la solution n'a pas été lu en entier : se limiter au rappel de la règle (la grève ne justifie pas une rupture hors faute lourde) et à la cassation avec renvoi. Pour un service RH : vérifier la qualification des griefs en cas de salarié gréviste avant toute sanction. Source secondaire (cabinet reproduisant l'arrêt) ; texte à confirmer sur le site de la Cour de cassation. Étiquette reported."
+  },
+  {
+   "title": "Plafond de la sécurité sociale 2027 : 48900 euros, arrêté attendu avant la fin de l'année",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "À partir du 1er janvier 2027, le plafond annuel de la sécurité sociale sera de 48 900 euros, selon l'URSSAF.",
+     "quote": "48 900",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le plafond mensuel passera à 4 075 euros ; l'URSSAF précise qu'un arrêté sera publié d'ici la fin de l'année.",
+     "quote": "Un arrêté sera publié d’ici la fin de l’année.",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le BOSS a annoncé la revalorisation par communiqué du 16 octobre 2026.",
+     "quote": "Dans un communiqué du 16 octobre 2026",
+     "url": "https://www.legisocial.fr/actualites-sociales/8197-plafond-securite-sociale-2027-sont-montants.html",
+     "status": "verified"
+    },
+    {
+     "statement": "La revalorisation est de 1,74 pour cent, hors Mayotte, et doit encore être officialisée par arrêté.",
+     "quote": "Cette revalorisation de 1,74 %, hors Mayotte, doit encore être officialisée par un arrêté attendu d’ici la fin de l’année.",
+     "url": "https://www.legisocial.fr/actualites-sociales/8197-plafond-securite-sociale-2027-sont-montants.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "URSSAF : Plafond annuel de la Sécurité sociale, une augmentation prévue pour 2027",
+     "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+     "primary": true
+    },
+    {
+     "title": "Legisocial : PSS 2027, le BOSS confirme les montants",
+     "url": "https://www.legisocial.fr/actualites-sociales/8197-plafond-securite-sociale-2027-sont-montants.html",
+     "primary": false
+    }
+   ],
+   "context": "Confirmed (page URSSAF) pour le montant annoncé ; la fixation réglementaire reste à venir par arrêté, attendu avant le 31 décembre. Annonce du 16 octobre, donc pas nouvelle cette semaine, mais l'arrêté est un point ouvert des épisodes précédents, toujours pas paru dans les sources lues. Le plafond de 2026 était de 48060 euros (épisode précédent). Pour la paie : préparer les paramètres 2027 avec contrôle final à la publication de l'arrêté ; impact sur plafond unique des indemnités de rupture s'il est voté. Mot-clé : Plafond de la sécurité sociale. Candidat chiffre de la semaine : 48900 euros."
+  },
+  {
+   "title": "BOSS du 16 novembre et décret sur le groupe d'experts du SMIC",
+   "theme": "Paie et cotisations",
+   "facts": [
+    {
+     "statement": "Le BOSS a corrigé le 16 novembre 2026 la liste des dispositifs non cumulables avec l'exonération dans les bassins d'emploi à redynamiser.",
+     "quote": "Le 16 novembre 2026, le Bulletin officiel de la sécurité sociale (BOSS) a corrigé la liste des dispositifs",
+     "url": "https://www.legisocial.fr/actualites-sociales/8245-boss-mise-jour-exonerations-zonees-heures-supplementaires.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Pour l'exonération des zones de restructuration de la défense, elle est totale jusqu'à 1,4 SMIC horaire et s'annule à 2,4 SMIC horaire.",
+     "quote": "L’exonération est totale sur les cotisations visées jusqu’à 1,4 Smic horaire, puis diminue et s’annule à 2,4 Smic horaire.",
+     "url": "https://www.legisocial.fr/actualites-sociales/8245-boss-mise-jour-exonerations-zonees-heures-supplementaires.html",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Journal officiel du 21 novembre 2026 publie le décret du 19 novembre 2026 modifiant le décret du 19 mai 2009 relatif au groupe d'experts sur le salaire minimum de croissance.",
+     "quote": "Décret n° 2026-1069 du 19 novembre 2026 modifiant le décret n° 2009-552 du 19 mai 2009 relatif au groupe d'experts sur le salaire minimum de croissance",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/21/0272",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon un cabinet, le SMIC 2027 n'est pas encore fixé.",
+     "quote": "Le Smic 2027 n’est pas encore fixé, mais son niveau se dessine déjà.",
+     "url": "https://www.fiduciaire-yadan.fr/smic-2027-revalorisation-1er-janvier/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Légifrance : JORF n° 0272 du 21 novembre 2026",
+     "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/21/0272",
+     "primary": true
+    },
+    {
+     "title": "Legisocial : BOSS, mise à jour des exonérations zonées et des heures supplémentaires",
+     "url": "https://www.legisocial.fr/actualites-sociales/8245-boss-mise-jour-exonerations-zonees-heures-supplementaires.html",
+     "primary": false
+    },
+    {
+     "title": "Fiduciaire Yadan : Smic 2027, revalorisation au 1er janvier",
+     "url": "https://www.fiduciaire-yadan.fr/smic-2027-revalorisation-1er-janvier/",
+     "primary": false
+    }
+   ],
+   "context": "Confirmed pour le décret (titre au Journal officiel) ; son contenu n'a pas été lu : ne rien affirmer au-delà de son objet (groupe d'experts du SMIC). Les estimations de SMIC 2027 divergent selon les sources : ne donner aucun montant. Le décret de revalorisation est habituellement publié mi à fin décembre selon un cabinet. Pour la paie : contrôler la mise à jour du BOSS sur les exonérations zonées avant d'appliquer. Étiquette confirmed pour le décret, reported pour la mise à jour BOSS (site spécialisé)."
+  },
+  {
+   "title": "Allègements généraux : l'assiette élargie à l'épargne salariale dans le texte initial",
+   "theme": "Paie et cotisations",
+   "facts": [],
+   "sources": [
+    {
+     "title": "Legiwatch : PLFSS 2027, ce que contient le projet de loi",
+     "url": "https://www.legiwatch.fr/loi/plfss-2027/",
+     "primary": false
+    }
+   ],
+   "context": "ATTENTION : la troisième fait ne doit pas être utilisée (citation non vérifiée) ; ne retenir que les deux premières. Étiquette reported. L'assiette élargie à l'épargne salariale réduirait probablement le montant des allègements pour les employeurs concernés : hypothèse. Rien n'est adopté définitivement ; attendre la CMP du 26 novembre. Mot-clé : Allègements généraux. Pour la paie : simuler l'effet avec l'éditeur."
+  },
+  {
+   "title": "Indemnités journalières : fiscalisation et CSG dans le projet",
+   "theme": "Santé et conditions de travail",
+   "facts": [
+    {
+     "statement": "Le texte du Sénat affecte à la sécurité sociale le rendement de la fiscalisation à 50 pour cent des indemnités journalières versées en cas d'ALD.",
+     "quote": "la fiscalisation à 50 % des indemnités journalières (IJ) versées en cas de maladie au titre d’ALD",
+     "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le montant total est d'un milliard d'euros en 2027.",
+     "quote": "pour un montant total d’un milliard d’euros en 2027",
+     "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon un cabinet, les indemnités liées à une ALD deviendraient imposables pour la moitié de leur montant.",
+     "quote": "Les indemnités liées à une affection de longue durée deviendraient imposables pour 50 % de leur montant",
+     "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon ce cabinet, ces indemnités relèveraient du taux de CSG de droit commun de 9,2 pour cent.",
+     "quote": "Ces indemnités relèveraient alors du taux de droit commun de 9,2 %",
+     "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Financement de la sécurité sociale pour 2027, texte adopté provisoire",
+     "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+     "primary": true
+    },
+    {
+     "title": "Sancy Avocats : Les mesures RH du PLF et du PLFSS 2027",
+     "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+     "primary": false
+    }
+   ],
+   "context": "Étiquette reported : la page du Sénat est un extrait difficile à situer précisément, et le cabinet décrit le projet initial ; la version finale reste ouverte. Mots-clés : Indemnités journalières, CSG-CRDS. Pour la paie : prévoir le paramétrage éventuel du taux de CSG sur les indemnités journalières au 1er janvier 2027 sans le figer. Ne pas mentionner de plafond de revenus des indemnités AT-MP : les sources divergent (1,6 ou 1,8 SMIC)."
+  },
+  {
+   "title": "Retraites : le Sénat annule la suspension de la réforme et refuse le gel des pensions",
+   "theme": "Emploi et retraite",
+   "facts": [
+    {
+     "statement": "Le Sénat a supprimé le gel partiel des pensions (article 35) par 329 voix contre 0.",
+     "quote": "Le gel partiel des pensions (article 35) est supprimé par 329 voix contre 0",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "status": "verified"
+    },
+    {
+     "statement": "Il a annulé la suspension de la réforme des retraites par 200 voix contre 129.",
+     "quote": "la suspension de la réforme des retraites est annulée par 200 voix contre 129",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "status": "verified"
+    },
+    {
+     "statement": "Cette annulation doit dégager 600 millions d'euros d'économies selon un magazine.",
+     "quote": "Cette décision doit permettre de dégager 600 millions d’euros d’économies.",
+     "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/plfss-2027-le-senat-adopte-un-budget-avec-des-ajustements-fiscaux-28275",
+     "status": "verified"
+    },
+    {
+     "statement": "L'Insee estime que l'emploi salarié privé au troisième trimestre 2026 est quasi stable, à moins 0,1 pour cent.",
+     "quote": "Au troisième trimestre 2026, l’emploi salarié du secteur privé est quasi stable sur le trimestre (-0,1 %)",
+     "url": "https://www.insee.fr/fr/statistiques/9109624",
+     "status": "verified"
+    },
+    {
+     "statement": "L'Insee publie les résultats détaillés le 27 novembre 2026.",
+     "quote": "L’Insee doit publier les résultats détaillés du troisième trimestre le 27 novembre 2026.",
+     "url": "https://www.economiematin.fr/emploi-prive-troisieme-trimestre-2026-apprentissage-industrie-construction-20261104-1436",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "NosParlementaires : Calendrier du PLFSS 2027",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    },
+    {
+     "title": "DAF Mag : PLFSS 2027, le Sénat adopte un budget avec des ajustements fiscaux",
+     "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/plfss-2027-le-senat-adopte-un-budget-avec-des-ajustements-fiscaux-28275",
+     "primary": false
+    },
+    {
+     "title": "Insee : Au troisième trimestre 2026, l'emploi salarié du secteur privé est quasi stable",
+     "url": "https://www.insee.fr/fr/statistiques/9109624",
+     "primary": true
+    },
+    {
+     "title": "Économie Matin : Emploi privé, 25 800 postes perdus au troisième trimestre",
+     "url": "https://www.economiematin.fr/emploi-prive-troisieme-trimestre-2026-apprentissage-industrie-construction-20261104-1436",
+     "primary": false
+    }
+   ],
+   "context": "Vote de première lecture du Sénat, pas une loi. Le point dur avec l'Assemblée (qui avait voté la suspension en décembre 2025) se jouera en CMP. Aucun effet sur la paie 2027 mais effet possible sur l'âge de départ et la gestion des fins de carrière. Mot-clés : Cumul emploi-retraite si utile. Le 27 novembre : emploi salarié détaillé du troisième trimestre (estimation flash : environ 25800 emplois en moins sur le trimestre selon la presse). Étiquette confirmed pour les chiffres Insee, reported pour le reste."
+  },
+  {
+   "title": "CPF : le reste à charge majoré attend le Sénat",
+   "theme": "Formation",
+   "facts": [
+    {
+     "statement": "L'Assemblée nationale a rejeté le projet de loi de finances pour 2027 le 4 novembre sans débattre de la réforme du CPF.",
+     "quote": "l'Assemblée nationale a rejeté le projet de loi de finances pour 2027 le 4 novembre",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Sénat examine le texte initial à partir du 20 novembre.",
+     "quote": "le Sénat examine le texte initial à partir du 20 novembre",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "status": "verified"
+    },
+    {
+     "statement": "Le chiffre de 350 euros n'est pas dans le projet de loi de finances.",
+     "quote": "Le chiffre de 350 euros ne figure nulle part dans le projet de loi de finances pour 2027.",
+     "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon un rapport au Sénat, le recul des utilisateurs après l'instauration du premier reste à charge est de 15,8 pour cent.",
+     "quote": "Le rapport d’Emmanuel Capus au Sénat chiffre à 15,8 % le recul des utilisateurs",
+     "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+     "status": "verified"
+    },
+    {
+     "statement": "La loi sur le CPF est toujours à l'état de projet.",
+     "quote": "À ce jour, la loi sur le CPF est donc toujours à l’état de projet",
+     "url": "https://www.encg-formation.com/2026/11/18/reste-a-charge-cpf-2027/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "OPCO Direct : Reste à charge CPF 2027",
+     "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+     "primary": false
+    },
+    {
+     "title": "NosParlementaires : CPF à 350 euros, rétroactif, sans montant dans la loi",
+     "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+     "primary": false
+    },
+    {
+     "title": "ENCG Formation : Reste à charge CPF 2027",
+     "url": "https://www.encg-formation.com/2026/11/18/reste-a-charge-cpf-2027/",
+     "primary": false
+    }
+   ],
+   "context": "Étiquette reported : sources de presse et sites spécialisés, pas de texte officiel relu. Rien n'est adopté ; montants à ne pas retenir. Dates d'examen au Sénat données par la presse : le 20 novembre, jusqu'au 9 décembre selon l'UNCCAS (épisode précédent). Mots-clés : Compte personnel de formation. Pour un service formation : informer les salariés avec prudence et mesurer l'effet sur les abondements."
+  },
+  {
+   "title": "Transparence salariale : toujours pas de date d'examen au Sénat",
+   "theme": "Europe",
+   "facts": [
+    {
+     "statement": "Le projet de loi de transposition a été déposé au Sénat le 10 septembre 2026.",
+     "quote": "déposé au Sénat le 10 septembre 2026",
+     "url": "https://www.socialfind.com/fr/blog/transparence-salariale-etat-par-pays",
+     "status": "verified"
+    },
+    {
+     "statement": "Le dossier législatif, mis à jour le 8 octobre 2026, n'affiche que le dépôt.",
+     "quote": "mis à jour pour la dernière fois le 8 octobre 2026",
+     "url": "https://www.socialfind.com/fr/blog/transparence-salariale-etat-par-pays",
+     "status": "verified"
+    },
+    {
+     "statement": "Le délai de transposition de la directive était fixé au 7 juin 2026.",
+     "quote": "la directive ayant fixé aux États membres une échéance au 7 juin 2026",
+     "url": "https://www.epilogue.legal/actualites/transparence-salariale-ou-en-est-on/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte a été renvoyé à la commission des affaires sociales du Sénat.",
+     "quote": "a été renvoyé à la commission des affaires sociales du Sénat",
+     "url": "https://www.epilogue.legal/actualites/transparence-salariale-ou-en-est-on/",
+     "status": "verified"
+    },
+    {
+     "statement": "En 2024, les femmes du privé gagnaient 14,0 pour cent de moins que les hommes à temps de travail identique, selon l'Insee.",
+     "quote": "les femmes du privé gagnaient 14,0 % de moins que les hommes",
+     "url": "https://www.socialfind.com/fr/blog/transparence-salariale-etat-par-pays",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Socialfind : Directive transparence salariale, où en sont la France, les Pays-Bas et l'Allemagne",
+     "url": "https://www.socialfind.com/fr/blog/transparence-salariale-etat-par-pays",
+     "primary": false
+    },
+    {
+     "title": "Épilogue : Transparence salariale, où en est-on",
+     "url": "https://www.epilogue.legal/actualites/transparence-salariale-ou-en-est-on/",
+     "primary": false
+    },
+    {
+     "title": "Zola : Loi transparence salariale 2026",
+     "url": "https://www.zola.fr/fiches-pratiques/transparence-des-salaires",
+     "primary": false
+    }
+   ],
+   "context": "Étiquette reported. Aucune obligation nouvelle n'est opposable à un employeur privé tant que la loi n'est pas votée ; délai européen dépassé. Pas d'avancée depuis les épisodes précédents, mais l'absence de date reste l'information. Mot-clé : Transparence salariale. Un service paie peut travailler sur catégories d'emplois, critères de classification, fourchettes. À confirmer sur le dossier du Sénat."
+  },
+  {
+   "title": "Cour de cassation, 10 novembre 2026 : désignation du secrétaire d'une délégation spéciale du CSE central",
+   "theme": "Dialogue social",
+   "facts": [
+    {
+     "statement": "La chambre sociale a rendu le 10 novembre 2026 un arrêt de cassation, arrêt n° 940 FS-B, donc publié au Bulletin.",
+     "quote": "Arrêt n° 940 FS-B",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-24-16-289/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Kohen Avocats : Cass. soc., 10 nov. 2026, n° 24-16.289",
+     "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-24-16-289/",
+     "primary": false
+    }
+   ],
+   "context": "Matériau mince et antérieur aux sept derniers jours : le sens de la solution n'a pas été lu. À n'utiliser que si besoin de remplir la rubrique, en se limitant au fait (arrêt publié, cassation, litige sur la désignation du secrétaire d'une délégation spéciale du CSE central). Étiquette reported ; vérifier sur le site de la Cour de cassation."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-26",
+   "text": "Commission mixte paritaire sur le budget de la Sécu et fin du délai de cinquante jours"
+  },
+  {
+   "date": "2026-11-27",
+   "text": "Publication de l'emploi salarié détaillé du troisième trimestre par l'Insee"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "Marquage des contenus générés par l'IA pour les systèmes existants"
+  },
+  {
+   "date": "2026-12-31",
+   "text": "Arrêté fixant le plafond de la sécurité sociale 2027 attendu avant cette date"
+  },
+  {
+   "date": "2027-01-01",
+   "text": "Plafond de la sécurité sociale de 48900 euros et ruptures concernées par le plafond unique"
+  }
+ ],
+ "checked": {
+  "verified": 42,
+  "unread": 5,
+  "dropped": 5
+ },
+ "dropped": [
+  {
+   "item": "Allègements généraux : l'assiette élargie à l'épargne salariale dans le texte initial",
+   "statement": "L'article 7 du texte initial intègre intéressement, participation et abondement dans l'assiette des allègements généraux.",
+   "quote": "L'article 7 intègre l'intéressement, la participation et l'abondement aux plans d'épargne salariale dans l'assiette des allègements généraux de cotisations",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Allègements généraux : l'assiette élargie à l'épargne salariale dans le texte initial",
+   "statement": "L'exposé des motifs chiffre le rendement de la mesure à 3,7 milliards d'euros.",
+   "quote": "pour un rendement que l'exposé des motifs chiffre à 3,7 milliards d'euros",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Allègements généraux : l'assiette élargie à l'épargne salariale dans le texte initial",
+   "statement": "Les articles sur les allègements ont été adoptés avec modifications par le Sénat, selon AEF (épisode précédent) ; la nature exacte de la modification n'a pas été vérifiée.",
+   "quote": "Le Sénat a adopté en première lecture le 18 novembre 2026",
+   "url": "https://www.legiwatch.fr/loi/plfss-2027/"
+  },
+  {
+   "item": "Transparence salariale : toujours pas de date d'examen au Sénat",
+   "statement": "Un vote définitif est espéré d'ici fin février 2027 selon un site spécialisé.",
+   "quote": "vote définitif espéré d'ici fin février 2027",
+   "url": "https://www.zola.fr/fiches-pratiques/transparence-des-salaires"
+  },
+  {
+   "item": "Cour de cassation, 10 novembre 2026 : désignation du secrétaire d'une délégation spéciale du CSE central",
+   "statement": "La décision attaquée est un jugement du tribunal judiciaire de Paris du 28 mai 2024.",
+   "quote": "Décision attaquée : tribunal judiciaire de Paris, 28 mai 2024",
+   "url": "https://kohenavocats.com/jurisprudence/cour-de-cassation/2026-11-10-24-16-289/"
+  }
+ ]
+}

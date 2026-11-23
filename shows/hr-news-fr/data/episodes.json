@@ -801,5 +801,160 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "title": "Budget de la Sécu adopté au Sénat, la CMP s'ouvre jeudi",
+    "summary": "Le Sénat a adopté le budget de la sécurité sociale 2027 en première lecture, et une commission mixte paritaire est attendue le vingt-six novembre. Au programme aussi : le plafond de la sécurité sociale 2027, les indemnités de rupture, les indemnités journalières en ALD, les retraites et le CPF.",
+    "headlines": [
+      "Le budget de la Sécu adopté au Sénat",
+      "Le plafond de la sécurité sociale annoncé pour 2027",
+      "La suspension de la réforme des retraites annulée au Sénat"
+    ],
+    "themes": [
+      "Droit du travail",
+      "Paie et cotisations",
+      "Santé et conditions de travail",
+      "Emploi et retraite",
+      "Formation"
+    ],
+    "topics": [
+      "PLFSS 2027",
+      "Rupture conventionnelle",
+      "Plafond de la sécurité sociale",
+      "Indemnités journalières",
+      "CSG-CRDS",
+      "Cumul emploi-retraite",
+      "Compte personnel de formation"
+    ],
+    "sources": [
+      {
+        "title": "Sénat : Financement de la sécurité sociale pour 2027, texte adopté provisoire",
+        "url": "https://www.senat.fr/petite-loi-ameli/2026-2027/138.html",
+        "primary": true
+      },
+      {
+        "title": "NosParlementaires : Calendrier du PLFSS 2027",
+        "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+        "primary": false
+      },
+      {
+        "title": "Touteleurope : Le Sénat adopte le budget 2027 de la Sécurité sociale en première lecture",
+        "url": "https://www.touteleurope.eu/vie-politique-des-etats-membres/le-senat-adopte-le-budget-2027-de-la-securite-sociale-en-premiere-lecture/",
+        "primary": false
+      },
+      {
+        "title": "CNews : Budget de la Sécurité sociale, le Sénat adopte le projet de loi de financement pour 2027",
+        "url": "https://www.cnews.fr/france/2026-11-18/budget-de-la-securite-sociale-pour-2027-un-vote-solennel-prevu-au-senat-ce",
+        "primary": false
+      },
+      {
+        "title": "Actu-alt-plus : Que se passe-t-il pour le PLFSS 2027 quand le délai expire le 26 novembre",
+        "url": "https://www.actu-alt-plus.com/idees-solutions/plfss-2027-delai-26-novembre-ordonnances/43615/",
+        "primary": false
+      },
+      {
+        "title": "Se Domicilier : PLFSS au Sénat, ce que la commission change pour les entreprises",
+        "url": "https://sedomicilier.fr/articles/plfss-senat",
+        "primary": false
+      },
+      {
+        "title": "Auché-Hedou Avocats : PLFSS pour 2027, adoption au Sénat",
+        "url": "https://www.ah-avocats.fr/2026/11/19/plfss-pour-2027-adoption-au-senat/",
+        "primary": false
+      },
+      {
+        "title": "Sancy Avocats : Les mesures RH du PLF et du PLFSS 2027",
+        "url": "https://www.sancy-avocats.com/academie/plfss-2027-mesures-rh",
+        "primary": false
+      },
+      {
+        "title": "URSSAF : Plafond annuel de la Sécurité sociale, une augmentation prévue pour 2027",
+        "url": "https://www.urssaf.fr/accueil/actualites/plafond-annuel-securite-sociale.html",
+        "primary": true
+      },
+      {
+        "title": "Légifrance : JORF n° 0272 du 21 novembre 2026",
+        "url": "https://www.legifrance.gouv.fr/jorf/jo/2026/11/21/0272",
+        "primary": true
+      },
+      {
+        "title": "Legisocial : PSS 2027, le BOSS confirme les montants",
+        "url": "https://www.legisocial.fr/actualites-sociales/8197-plafond-securite-sociale-2027-sont-montants.html",
+        "primary": false
+      },
+      {
+        "title": "DAF Mag : PLFSS 2027, le Sénat adopte un budget avec des ajustements fiscaux",
+        "url": "https://www.daf-mag.fr/reglementation-1243/fiscalite-2115/plfss-2027-le-senat-adopte-un-budget-avec-des-ajustements-fiscaux-28275",
+        "primary": false
+      },
+      {
+        "title": "Insee : Au troisième trimestre 2026, l'emploi salarié du secteur privé est quasi stable",
+        "url": "https://www.insee.fr/fr/statistiques/9109624",
+        "primary": true
+      },
+      {
+        "title": "OPCO Direct : Reste à charge CPF 2027",
+        "url": "https://opcodirect.fr/blog/reste-a-charge-cpf-2027",
+        "primary": false
+      },
+      {
+        "title": "NosParlementaires : CPF à 350 euros, rétroactif, sans montant dans la loi",
+        "url": "https://nosparlementaires.fr/actualites/cpf-reste-a-charge-350-euros-article-89-plf-2027-retroactif",
+        "primary": false
+      },
+      {
+        "title": "ENCG Formation : Reste à charge CPF 2027",
+        "url": "https://www.encg-formation.com/2026/11/18/reste-a-charge-cpf-2027/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-23T04:23:57+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#hr-news-fr-2026-11-23",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/hr-news-fr-2026-11-23/hr-news-fr-2026-11-23.mp3",
+    "audio_bytes": 7466151,
+    "duration_seconds": 466.6514285714286,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 18.0,
+        "title": "Sujet de la semaine : Le budget de la Sécu adopté au Sénat"
+      },
+      {
+        "start": 150.7,
+        "title": "Droit du travail : Rupture conventionnelle"
+      },
+      {
+        "start": 207.5,
+        "title": "Paie et cotisations : Plafond de la sécurité sociale"
+      },
+      {
+        "start": 251.9,
+        "title": "Santé et conditions de travail : Indemnités journalières"
+      },
+      {
+        "start": 294.6,
+        "title": "Emploi et retraite : Cumul emploi-retraite"
+      },
+      {
+        "start": 346.3,
+        "title": "Formation : Compte personnel de formation"
+      },
+      {
+        "start": 398.5,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 409.6,
+        "title": "À surveiller"
+      },
+      {
+        "start": 447.3,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]
