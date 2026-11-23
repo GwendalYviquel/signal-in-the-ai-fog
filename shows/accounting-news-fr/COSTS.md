@@ -15,13 +15,14 @@ Claude estimates use the prices in `config.yaml` (claude-sonnet-5-5: $2.00 per m
 
 | Month | Runs | Episodes published | Claude tokens | Web searches | Claude (≈ USD) | ElevenLabs characters |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 2026-11 | 3 | 3 | 4,918,713 | 45 | $3.66 | 25,486 |
+| 2026-11 | 4 | 4 | 6,282,940 | 60 | $4.80 | 33,960 |
 | 2026-10 | 4 | 2 | 1,747,700 | 30 | $2.38 | 15,115 |
 
 ## Runs
 
 | Date (UTC) | Mode | Outcome | Claude calls | Input tokens | Output tokens | Web searches | Claude (≈ USD) | ElevenLabs characters | Note |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| [2026-11-23 03:23](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/45103877061) | publish | ok | 2 | 1,326,113 | 38,114 | 15 | $1.14 | 8,474 | voice check 6 + episode 8468 characters |
 | [2026-11-16 03:20](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/43796026128) | publish | ok | 2 | 1,434,501 | 40,250 | 15 | $1.20 | 8,726 | voice check 6 + episode 8720 characters |
 | [2026-11-09 03:18](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/42554426259) | publish | ok | 2 | 1,788,703 | 39,349 | 15 | $1.21 | 8,734 | voice check 6 + episode 8728 characters |
 | [2026-11-02 03:20](https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/41381136984) | publish | ok | 2 | 1,570,321 | 45,589 | 15 | $1.25 | 8,026 | voice check 6 + episode 8020 characters |

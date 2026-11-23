@@ -1,0 +1,570 @@
+{
+ "items": [
+  {
+   "title": "Le projet de loi de finances 2027 examiné en séance au Sénat",
+   "theme": "Fiscalité",
+   "label_hint": "confirmed",
+   "facts": [
+    {
+     "statement": "Le Sénat examine le projet de loi de finances pour 2027 en séance du vendredi 20 novembre au mercredi 9 décembre 2026 (rapporteure générale : Christine Lavarde).",
+     "quote": "le Sénat examine le projet de loi de finances pour 2027",
+     "url": "https://www.senat.fr/actualite/projet-de-loi-de-finances-pour-2027-8662.html",
+     "status": "unread"
+    },
+    {
+     "statement": "Le 20 novembre 2026, le Sénat a rejeté une question préalable qui visait à interrompre l'examen du texte, par 249 voix contre 19.",
+     "quote": "écarte une motion d’arrêt des débats par 249 voix contre 19",
+     "url": "https://www.politiquematin.fr/budget-2027-senat-rejette-question-prealable-249-voix-20-novembre",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte examiné est la version initiale du Gouvernement, la première partie ayant été rejetée par l'Assemblée le 4 novembre 2026.",
+     "quote": "Le projet a alors été transmis au Sénat dans sa version initiale",
+     "url": "https://www.politiquematin.fr/budget-2027-senat-rejette-question-prealable-249-voix-20-novembre",
+     "status": "verified"
+    },
+    {
+     "statement": "L'examen des recettes a commencé le 20 novembre et précède celui des dépenses, prévu à partir du 30 novembre 2026.",
+     "quote": "doit précéder celui des dépenses, prévu à partir du 30 novembre",
+     "url": "https://www.economiematin.fr/budget-2027-senat-46-milliards-economies-etat-france-2030",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission des finances du Sénat défend une réduction de 4,6 milliards d'euros des dépenses de l'État pour 2027.",
+     "quote": "une proposition de réduction de 4,6 milliards d’euros des dépenses de l’État",
+     "url": "https://www.economiematin.fr/budget-2027-senat-46-milliards-economies-etat-france-2030",
+     "status": "verified"
+    },
+    {
+     "statement": "Le texte vise un déficit de 5 pour cent du PIB en 2027 contre 5,4 pour cent cette année, avec 43 milliards d'euros de mesures de redressement.",
+     "quote": "ramener le déficit de la France à 5% du PIB, contre 5,4% cette année",
+     "url": "https://www.cnews.fr/france/2026-11-20/budget-2027-le-senat-examine-le-projet-de-loi-de-finances-ce-vendredi-alors-que",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Gouvernement prévoit 43 milliards d'euros de mesures de redressement des finances publiques dans son projet.",
+     "quote": "le gouvernement prévoit 43 milliards d’euros de «mesures de redressement»",
+     "url": "https://www.cnews.fr/france/2026-11-20/budget-2027-le-senat-examine-le-projet-de-loi-de-finances-ce-vendredi-alors-que",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon la presse, la piste d'une adoption par l'article 49.3 est de plus en plus envisagée ; aucune annonce officielle citée.",
+     "quote": "la piste de l'adoption du budget par 49.3 est de plus en plus envisagée",
+     "url": "https://www.cnews.fr/france/2026-11-20/budget-2027-le-senat-examine-le-projet-de-loi-de-finances-ce-vendredi-alors-que",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon ce site, le délai de soixante-dix jours expire le 17 décembre 2026 à minuit (un autre décompte donne le 10 décembre, selon le suivi des épisodes précédents).",
+     "quote": "Les 70 jours expirent le 17 décembre à minuit.",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/budget-2027-senat-calendrier-vote-9-decembre/43576/",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission des finances du Sénat propose, selon la presse, de supprimer l'abattement de 10 pour cent sur les pensions de retraite, pour gager environ 3 milliards d'euros de dépenses de Sécurité sociale.",
+     "quote": "supprimer purement et simplement l’abattement fiscal de 10 % appliqué aux pensions de retraite",
+     "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+     "status": "verified"
+    },
+    {
+     "statement": "Un scénario de repli évoqué par la presse : le dépôt, avant le 19 décembre, d'une loi spéciale permettant de percevoir les impôts existants.",
+     "quote": "Déposer avant le 19 décembre une loi spéciale",
+     "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de finances pour 2027",
+     "url": "https://www.senat.fr/actualite/projet-de-loi-de-finances-pour-2027-8662.html",
+     "primary": true
+    },
+    {
+     "title": "Politique Matin : Budget 2027, le Sénat écarte une motion d'arrêt des débats",
+     "url": "https://www.politiquematin.fr/budget-2027-senat-rejette-question-prealable-249-voix-20-novembre",
+     "primary": false
+    },
+    {
+     "title": "Économie Matin : Budget 2027, la commission du Sénat défend 4,6 milliards d'économies",
+     "url": "https://www.economiematin.fr/budget-2027-senat-46-milliards-economies-etat-france-2030",
+     "primary": false
+    },
+    {
+     "title": "CNews : Budget 2027, le Sénat examine le projet de loi de finances",
+     "url": "https://www.cnews.fr/france/2026-11-20/budget-2027-le-senat-examine-le-projet-de-loi-de-finances-ce-vendredi-alors-que",
+     "primary": false
+    },
+    {
+     "title": "Actu Alt Plus : Budget 2027 au Sénat, vote le 9 décembre",
+     "url": "https://www.actu-alt-plus.com/idees-solutions/budget-2027-senat-calendrier-vote-9-decembre/43576/",
+     "primary": false
+    },
+    {
+     "title": "Les Français : Budget 2027, ce que le Sénat a changé",
+     "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+     "primary": false
+    }
+   ],
+   "context": "Sujet de la semaine. Rien n'est adopté : le Sénat repart du texte initial du Gouvernement (la première partie ayant été rejetée à l'Assemblée le 4 novembre par 458 voix contre 0, déjà couvert dans l'épisode du 9 novembre). Étapes à venir : recettes en séance depuis le 20 novembre, dépenses à partir du 30 novembre, vote solennel le 9 décembre, puis commission mixte paritaire attendue vers la mi-décembre, nouvelles lectures en cas d'échec, et question ouverte de la sortie de crise (49.3, ordonnances, loi spéciale si pas de budget avant fin d'année). Les deux décomptes du délai de soixante-dix jours (10 ou 17 décembre) restent contradictoires : ne pas trancher. Pour une direction financière : hypothèses de clôture 2026 et de budget 2027 en scénarios, pas de provision sur mesure non promulguée ; pour un cabinet : étiqueter chaque mesure par son étape réelle (texte initial, amendement de commission, séance, CMP). Les amendements de commission du Sénat ne valent pas adoption en séance. Lien avec les épisodes précédents : 16 novembre (calendrier Sénat, commission des finances du 12 novembre)."
+  },
+  {
+   "title": "TVA sur la télévision payante : le Sénat s'oppose au doublement du taux",
+   "theme": "Fiscalité",
+   "label_hint": "reported",
+   "facts": [
+    {
+     "statement": "La rapporteure générale du Sénat propose, par l'amendement FINC.29 adopté en commission des finances le 12 novembre 2026, de supprimer l'article 16 du projet, qui porte la TVA de 10 à 20 pour cent sur les services de télévision concernés.",
+     "quote": "faire passer de 10% à 20% la TVA applicable aux services de télévision concernés",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-vote-commission-maintien-tva-reduite-canal-taxation-accrue-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "Deux amendements de fiscalité audiovisuelle ont été adoptés en commission des finances du Sénat le 12 novembre 2026.",
+     "quote": "adoptés en commission des finances du Sénat, ce même 12 novembre",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-vote-commission-maintien-tva-reduite-canal-taxation-accrue-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "Ces dispositions restent à examiner en séance publique.",
+     "quote": "Ils devront être soumis à l'examen des sénateurs en séance publique",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-vote-commission-maintien-tva-reduite-canal-taxation-accrue-plateformes-video",
+     "status": "verified"
+    },
+    {
+     "statement": "La commission de la culture du Sénat a voté à l'unanimité, le mercredi 18 novembre 2026, la suppression de l'article faisant passer la TVA de 10 à 20 pour cent sur les abonnements aux chaînes payantes.",
+     "quote": "a voté à l'unanimité, mercredi 18 novembre, la suppression de l'article",
+     "url": "https://www.telesatellite.com/actu/70252-tva-des-chaines-payantes-la-commission-de-la-culture-du-senat.html",
+     "status": "verified"
+    },
+    {
+     "statement": "La presse précise que ce vote de commission n'est qu'une étape, le texte initial du Gouvernement étant de nouveau en discussion.",
+     "quote": "Le vote de la commission de la culture n'est donc qu'une étape.",
+     "url": "https://www.telesatellite.com/actu/70252-tva-des-chaines-payantes-la-commission-de-la-culture-du-senat.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "CB News : PLF 2027, le Sénat vote en commission le maintien de la TVA réduite pour Canal+",
+     "url": "https://www.cbnews.fr/medias/plf-2027-senat-vote-commission-maintien-tva-reduite-canal-taxation-accrue-plateformes-video",
+     "primary": false
+    },
+    {
+     "title": "Télésatellite : TVA des chaînes payantes, la commission de la culture du Sénat vote à son tour",
+     "url": "https://www.telesatellite.com/actu/70252-tva-des-chaines-payantes-la-commission-de-la-culture-du-senat.html",
+     "primary": false
+    }
+   ],
+   "context": "Deux commissions du Sénat (finances le 12 novembre, culture le 18 novembre) s'opposent au passage de 10 à 20 pour cent de la TVA sur la télévision payante. Ce n'est qu'un vote de commission : le sort se jouera en séance puis en commission mixte paritaire. L'Assemblée avait supprimé la hausse en séance, mais cette suppression est tombée avec le rejet de la première partie le 4 novembre. Pour un cabinet ou une direction financière d'un client concerné : recenser les abonnements et offres couplées, ne rien modifier dans les outils de facturation tant que le texte n'est pas promulgué. Rappel de l'article : l'administration avait clarifié le 3 septembre 2025 les modalités du taux réduit pour les offres associant télévision linéaire et services à la demande (information du même article de presse spécialisée)."
+  },
+  {
+   "title": "Apport-cession : l'article 5 retouché par la rapporteure générale du Sénat",
+   "theme": "Fiscalité",
+   "label_hint": "confirmed",
+   "facts": [
+    {
+     "statement": "Un amendement de la rapporteure générale à la liasse du Sénat sur la première partie du projet de loi de finances 2027 propose de limiter l'application de l'article 5, qui restreint le régime de l'apport-cession.",
+     "quote": "le présent amendement propose de limiter l’application de l’article 5",
+     "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "Le même amendement modifie aussi les conditions d'entrée en vigueur de l'article 5.",
+     "quote": "cet amendement modifie les conditions d’entrée en vigueur de l’article 5",
+     "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "Des entrepreneurs, cités par la presse, jugent l'article 5 du texte initial très sévère car il restreint le régime fiscal de l'apport-cession.",
+     "quote": "qui restreint le régime fiscal de l’**apport-cession**",
+     "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Sénat : Projet de loi de finances pour 2027, liasse provisoire d'amendements de la rapporteure générale",
+     "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+     "primary": true
+    },
+    {
+     "title": "Les Français : Budget 2027, ce que le Sénat a changé",
+     "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+     "primary": false
+    }
+   ],
+   "context": "Il s'agit d'amendements de rapporteure dans une liasse provisoire, pas d'un texte adopté. Le texte initial de l'article 5 restreint l'apport-cession ; les députés l'avaient remanié en séance avant le rejet du 4 novembre, remaniement tombé avec le rejet. Pour un cabinet : repérer les dirigeants ayant une opération d'apport-cession envisagée ou en cours, expliquer qu'aucune règle n'est stabilisée avant la promulgation, vérifier la date d'entrée en vigueur retenue à chaque étape. Sujet à suivre en séance au Sénat puis en CMP."
+  },
+  {
+   "title": "Contribution exceptionnelle sur les bénéfices : le texte initial à nouveau en jeu",
+   "theme": "Fiscalité",
+   "label_hint": "reported",
+   "facts": [
+    {
+     "statement": "Dans le texte initial, le seuil d'assujettissement reste fixé à 1,5 milliard d'euros de chiffre d'affaires.",
+     "quote": "Le seuil d’assujettissement reste fixé à 1,5 Md€ de chiffre d’affaires",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "status": "verified"
+    },
+    {
+     "statement": "Taux selon la presse spécialisée : 15,7 pour cent entre 1,5 et 3 milliards d'euros de chiffre d'affaires (31,4 pour cent au-delà de 3 milliards).",
+     "quote": "15,7 % pour les entreprises réalisant entre 1,5 et 3 Md€ de chiffre d’affaires",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "status": "verified"
+    },
+    {
+     "statement": "Le Conseil des prélèvements obligatoires (Cour des comptes) décrit un seuil maintenu à 1,5 milliard d'euros et des taux abaissés d'environ 24 pour cent.",
+     "quote": "avec un seuil maintenu à 1,5 Md€ mais des taux abaissés d’environ 24 %",
+     "url": "https://www.ccomptes.fr/sites/default/files/2026-10/20261015-note-CPO-Analyse-mesures-PLF-2027.pdf",
+     "status": "unread"
+    },
+    {
+     "statement": "La contribution des grandes entreprises de transport maritime est rétablie pour un exercice au taux de 8 pour cent du résultat d'exploitation dans le texte initial.",
+     "quote": "rétablie pour un exercice, au taux de 8 % du résultat d’exploitation",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "status": "verified"
+    },
+    {
+     "statement": "À l'Assemblée, l'article 15 avait été supprimé par 79 voix contre 77, suppression devenue caduque avec le rejet du texte le 4 novembre.",
+     "quote": "L’article a été supprimé par 79 voix contre 77.",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4704-plf-2027-suramortissement-elargi-surtaxe-is-supprimee-jei-assouplie.html",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Mooncard : PLF 2027, les principales mesures pour les entreprises",
+     "url": "https://www.mooncard.co/fr/blog/plf-2027-entreprises-principales-mesures",
+     "primary": false
+    },
+    {
+     "title": "Cour des comptes : Note du CPO, analyse de mesures du PLF 2027",
+     "url": "https://www.ccomptes.fr/sites/default/files/2026-10/20261015-note-CPO-Analyse-mesures-PLF-2027.pdf",
+     "primary": true
+    },
+    {
+     "title": "Legifiscal : PLF 2027, suramortissement élargi, surtaxe d'IS supprimée, JEI assouplie",
+     "url": "https://www.legifiscal.fr/actualites-fiscales/4704-plf-2027-suramortissement-elargi-surtaxe-is-supprimee-jei-assouplie.html",
+     "primary": false
+    }
+   ],
+   "context": "Rappel déjà traité les 2 et 16 novembre ; ici, point d'étape uniquement : le Sénat repart du texte initial où la contribution est reconduite pour un troisième exercice avec des taux abaissés. Position de la commission des finances du Sénat sur l'article 15 non confirmée dans mes sources. Pour un groupe proche du seuil de 1,5 milliard : garder deux scénarios, avec et sans contribution ; le règlement ANC 2026-04 sur la comptabilisation de l'impôt sur les bénéfices et des contributions qui s'y rattachent ne jouerait qu'en cas de promulgation. Peu de matière nouvelle : à n'utiliser que si besoin comme complément du sujet de la semaine."
+  },
+  {
+   "title": "Le Sénat adopte le projet de loi de financement de la Sécurité sociale pour 2027",
+   "theme": "Fiscalité",
+   "label_hint": "confirmed",
+   "facts": [
+    {
+     "statement": "Le Sénat a adopté le PLFSS pour 2027 le mercredi 18 novembre 2026 par 201 voix contre 124.",
+     "quote": "par 201 voix contre 124",
+     "url": "https://www.banquedesterritoires.fr/plfss-2027-le-senat-vote-un-budget-de-la-secu-plus-favorable-aux-collectivites",
+     "status": "verified"
+    },
+    {
+     "statement": "Une hausse des cotisations CNRACL des employeurs de 39,3 pour cent en 2027 au lieu de 40,65 pour cent a été retenue par le Sénat.",
+     "quote": "une hausse de cotisations de 39,3% en 2027 au lieu de 40,65%",
+     "url": "https://www.banquedesterritoires.fr/plfss-2027-le-senat-vote-un-budget-de-la-secu-plus-favorable-aux-collectivites",
+     "status": "verified"
+    },
+    {
+     "statement": "L'objectif de dépenses de la branche autonomie a été augmenté de 400 millions d'euros.",
+     "quote": "augmenté de 400 millions d'euros",
+     "url": "https://www.banquedesterritoires.fr/plfss-2027-le-senat-vote-un-budget-de-la-secu-plus-favorable-aux-collectivites",
+     "status": "verified"
+    },
+    {
+     "statement": "Le 13 novembre, le Sénat avait adopté la partie recettes par 200 voix contre 110.",
+     "quote": "Le 13 novembre, le Sénat a adopté à 200 voix pour contre 110 la première partie",
+     "url": "https://www.cnews.fr/france/2026-11-18/budget-de-la-securite-sociale-pour-2027-un-vote-solennel-prevu-au-senat-ce",
+     "status": "verified"
+    },
+    {
+     "statement": "Une commission mixte paritaire doit désormais se réunir pour tenter de trouver un accord.",
+     "quote": "Une commission mixte paritaire doit désormais se réunir pour tenter de trouver un accord",
+     "url": "https://www.egora.fr/actus-pro/politiques/le-senat-adopte-le-budget-de-la-securite-sociale-pour-2027",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Banque des Territoires : PLFSS 2027, le Sénat vote un budget de la sécu plus favorable aux collectivités",
+     "url": "https://www.banquedesterritoires.fr/plfss-2027-le-senat-vote-un-budget-de-la-secu-plus-favorable-aux-collectivites",
+     "primary": false
+    },
+    {
+     "title": "CNews : Budget de la Sécurité sociale, le Sénat adopte le projet de loi de financement pour 2027",
+     "url": "https://www.cnews.fr/france/2026-11-18/budget-de-la-securite-sociale-pour-2027-un-vote-solennel-prevu-au-senat-ce",
+     "primary": false
+    },
+    {
+     "title": "Egora : Le Sénat adopte le budget de la Sécurité sociale pour 2027",
+     "url": "https://www.egora.fr/actus-pro/politiques/le-senat-adopte-le-budget-de-la-securite-sociale-pour-2027",
+     "primary": false
+    },
+    {
+     "title": "NosParlementaires : Calendrier PLFSS 2027",
+     "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date",
+     "primary": false
+    }
+   ],
+   "context": "Candidat au retour sur un dossier : le vote solennel du Sénat sur le PLFSS était annoncé pour le 18 novembre, il a eu lieu. Texte non définitif : prochaine étape, commission mixte paritaire (certains médias parlent d'une nouvelle lecture à l'Assemblée ; les sources divergent, ne pas trancher) ; le délai de cinquante jours couru jusqu'au 26 novembre selon un site de suivi. Pour les employeurs publics et hospitaliers, l'enjeu est le taux de cotisation CNRACL 2027 ; pour un cabinet, prudence tant que rien n'est promulgué."
+  },
+  {
+   "title": "Facturation électronique : le moratoire des PME reste sans effet, un amendement déposé au Sénat",
+   "theme": "Facturation électronique",
+   "label_hint": "reported",
+   "facts": [
+    {
+     "statement": "Selon un cabinet d'avocats, le vote du 3 novembre 2026 ne change aucune obligation.",
+     "quote": "le vote ne change aucune de vos obligations",
+     "url": "https://kohenavocats.fr/2026/11/06/facturation-electronique-report-vote-3-novembre-2026-moratoire-pme/",
+     "status": "verified"
+    },
+    {
+     "statement": "Le moratoire voté à l'Assemblée le 3 novembre 2026 est tombé dès le lendemain avec le rejet de la première partie du projet de loi de finances.",
+     "quote": "est tombé dès le lendemain avec le rejet de la première partie du projet de loi de finances",
+     "url": "https://comparateur-efacturation.fr/blog/facturation-electronique-reportee-suspendue-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Selon ce comparateur, à la date du 20 novembre aucun amendement sur la facturation électronique n'a été adopté au Sénat.",
+     "quote": "aucun amendement sur la facturation électronique n'a été adopté au Sénat",
+     "url": "https://comparateur-efacturation.fr/blog/facturation-electronique-reportee-suspendue-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "Un syndicat agricole a publié le 18 novembre 2026 un communiqué sur le dépôt d'un amendement de moratoire au Sénat.",
+     "quote": "communiqué du 18 novembre 2026 sur le dépôt d'un amendement de moratoire au Sénat",
+     "url": "https://comparateur-efacturation.fr/blog/facturation-electronique-reportee-suspendue-2026",
+     "status": "verified"
+    },
+    {
+     "statement": "La réforme est entrée en vigueur le 1er septembre 2026 : réception obligatoire pour toutes les entreprises, aucune sanction en 2026.",
+     "quote": "réception obligatoire pour toutes les entreprises et aucune sanction en 2026",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "unread"
+    },
+    {
+     "statement": "Selon la fiche DGFiP d'octobre 2026, une société civile immobilière non assujettie à la TVA n'est pas concernée par la réforme.",
+     "quote": "une SCI non assujettie à la TVA n'est pas concernée par la réforme",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "Comparateur e-Facturation : Facturation électronique suspendue ? Non",
+     "url": "https://comparateur-efacturation.fr/blog/facturation-electronique-reportee-suspendue-2026",
+     "primary": false
+    },
+    {
+     "title": "Kohen Avocats : Facturation électronique, le report voté le 3 novembre suspend-il vos obligations ?",
+     "url": "https://kohenavocats.fr/2026/11/06/facturation-electronique-report-vote-3-novembre-2026-moratoire-pme/",
+     "primary": false
+    },
+    {
+     "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+     "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+     "primary": false
+    }
+   ],
+   "context": "Le moratoire de l'Assemblée n'a jamais été une loi et est caduc ; un amendement de moratoire est déposé au Sénat, mais aucun n'était adopté au 20 novembre. Calendrier inchangé : émission obligatoire pour PME, TPE et micro-entreprises le 1er septembre 2027. Action pour un cabinet : continuer à choisir la plateforme et tester réception et émission ; vérifier avec la fiche DGFiP le cas des clients non assujettis à la TVA (SCI). Pas d'anticipation d'un vote au Sénat."
+  },
+  {
+   "title": "IASB : deux projets de portée limitée, dont les cryptoactifs et stablecoins",
+   "theme": "Normes comptables",
+   "label_hint": "confirmed",
+   "facts": [
+    {
+     "statement": "À sa réunion de novembre 2026, l'IASB a ajouté deux projets de portée limitée à son plan de travail.",
+     "quote": "added two narrow-scope projects to its work plan",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'un des projets portera sur la détention de cryptomonnaies et de stablecoins.",
+     "quote": "focus on holdings of cryptocurrencies and stablecoins",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'IASB commencera la revue post-mise en œuvre d'IFRS 17 au premier trimestre 2027.",
+     "quote": "The IASB will begin the Post-implementation Review of IFRS 17",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+     "status": "verified"
+    },
+    {
+     "statement": "L'IASB a décidé de la prochaine étape de sa revue d'ensemble d'IAS 38 Immobilisations incorporelles, en commençant par les informations à fournir.",
+     "quote": "The IASB decided on the next stage of its comprehensive review of IAS 38",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+     "status": "verified"
+    },
+    {
+     "statement": "En droit français, l'ANC a adopté en 2026 un règlement 2026-01 sur les crypto-actifs pour les entreprises.",
+     "quote": "le règlement 2026-01 sur les crypto-actifs pour les entreprises",
+     "url": "https://www.apogea.fr/comprendre-la-nouvelle-norme-comptable-anc-2026/",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "IFRS Foundation : IASB decisions from the November 2026 meeting",
+     "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+     "primary": true
+    },
+    {
+     "title": "Apogea : Comprendre la nouvelle norme comptable ANC 2026",
+     "url": "https://www.apogea.fr/comprendre-la-nouvelle-norme-comptable-anc-2026/",
+     "primary": false
+    }
+   ],
+   "context": "Attention : la date exacte de publication de la page IASB n'est pas confirmée dans mes sources (elle semble remonter à fin octobre ou début novembre) ; à traiter prudemment, sans date précise, si utilisé. Ce sont des décisions de programme de travail, pas des normes ni des exposés-sondages : aucune application avant plusieurs années. Pour un groupe qui consolide en IFRS et détient des cryptoactifs ou stablecoins, signal d'un futur traitement IFRS ; en attendant, interprétation actuelle. En France, règlement ANC 2026-01 pour les comptes sociaux. L'exposé-sondage sur IFRS 18 attendu au quatrième trimestre 2026 n'est pas encore publié selon mes sources."
+  },
+  {
+   "title": "Omnibus et ESRS révisés : entrée en vigueur du règlement délégué et transposition française attendue",
+   "theme": "Durabilité",
+   "label_hint": "reported",
+   "facts": [
+    {
+     "statement": "La Commission européenne a adopté les ESRS révisés et la norme volontaire de durabilité (page EFRAG du 22 septembre 2026).",
+     "quote": "European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "status": "unread"
+    },
+    {
+     "statement": "Les États membres doivent transposer la directive Omnibus I au plus tard le 19 mars 2027.",
+     "quote": "les États membres doivent transposer la directive Omnibus I au plus tard le 19 mars 2027",
+     "url": "https://www.sami.eco/blog/fiche-csrd",
+     "status": "verified"
+    },
+    {
+     "statement": "Au 9 novembre 2026, le code de commerce français n'a pas encore intégré l'Omnibus.",
+     "quote": "le code de commerce français n’a pas encore intégré l’Omnibus",
+     "url": "https://www.takeair.fr/blog/csrd/se-preparer-a-la-directive-csrd/",
+     "status": "verified"
+    },
+    {
+     "statement": "Seuil de la directive Omnibus I : plus de 1000 salariés et plus de 450 millions d'euros de chiffre d'affaires net.",
+     "quote": "plus de 1 000 salariés ET plus de 450 M€ de chiffre d'affaires net",
+     "url": "https://www.sami.eco/blog/fiche-csrd",
+     "status": "verified"
+    }
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+     "primary": true
+    },
+    {
+     "title": "Données personnelles : CSRD Omnibus, ce qui change vraiment en 2026",
+     "url": "https://www.donneespersonnelles.fr/csrd-omnibus",
+     "primary": false
+    },
+    {
+     "title": "Sami : CSRD 2026, tout savoir sur le reporting de durabilité",
+     "url": "https://www.sami.eco/blog/fiche-csrd",
+     "primary": false
+    },
+    {
+     "title": "take[air] : CSRD, préparation à la directive, seuils Omnibus et calendrier",
+     "url": "https://www.takeair.fr/blog/csrd/se-preparer-a-la-directive-csrd/",
+     "primary": false
+    }
+   ],
+   "context": "Pas d'événement daté de la semaine : l'entrée en vigueur du règlement délégué (10 novembre) est antérieure de quelques jours à la fenêtre. Utile comme point d'étape : droit européen fixé, loi française de transposition non encore adoptée ; échéance 19 mars 2027. Tant que le code de commerce n'est pas modifié, les seuils français actuels restent applicables : vérifier le périmètre client par client sans promettre de sortie. Application des ESRS révisés aux exercices ouverts en 2027, avec options pour 2026 selon une source secondaire (non confirmée au texte)."
+  },
+  {
+   "title": "EFRAG : taxonomie XBRL des ESRS révisés, soumission à l'ESMA et à la Commission d'ici fin 2026",
+   "theme": "Europe",
+   "label_hint": "confirmed",
+   "facts": [
+    {
+     "statement": "La consultation publique de l'EFRAG sur le projet de taxonomie XBRL des ESRS révisés était ouverte jusqu'au 11 novembre 2026.",
+     "quote": "open until 11 November 2026",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-draft-esrs-xbrl-taxonomy-for-the-revised-esrs-and-launches-public-consultation",
+     "status": "unread"
+    },
+    {
+     "statement": "L'EFRAG entend soumettre la taxonomie finale à l'ESMA et à la Commission européenne d'ici la fin 2026.",
+     "quote": "EFRAG intends to submit the final XBRL Taxonomy to ESMA and the European Commission by the end of 2026.",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-draft-esrs-xbrl-taxonomy-for-the-revised-esrs-and-launches-public-consultation",
+     "status": "unread"
+    }
+   ],
+   "sources": [
+    {
+     "title": "EFRAG : EFRAG Releases Draft ESRS XBRL Taxonomy for the Revised ESRS and Launches Public Consultation",
+     "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-draft-esrs-xbrl-taxonomy-for-the-revised-esrs-and-launches-public-consultation",
+     "primary": true
+    }
+   ],
+   "context": "Consultation close le 11 novembre ; l'EFRAG doit maintenant finaliser avant transmission à l'ESMA et à la Commission d'ici fin 2026. La numérisation passe par le format électronique européen unique (ESEF). Pour un cabinet ou une direction financière qui préparera un rapport de durabilité numérique : suivre, pas d'action sur les comptes 2026. Item mineur, à ne mentionner qu'en complément de l'item Durabilité."
+  }
+ ],
+ "agenda": [
+  {
+   "date": "2026-11-23",
+   "text": "Séances de la commission des sanctions de la Haute autorité de l'audit"
+  },
+  {
+   "date": "2026-11-26",
+   "text": "Échéance du délai d'examen du PLFSS selon un site de suivi"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Début de l'examen des dépenses du budget en séance au Sénat"
+  },
+  {
+   "date": "2026-12-09",
+   "text": "Vote solennel du Sénat sur le projet de loi de finances"
+  },
+  {
+   "date": "2026-12-17",
+   "text": "Expiration du délai de soixante-dix jours selon Public Sénat"
+  },
+  {
+   "date": "2026-12-19",
+   "text": "Date limite évoquée pour une éventuelle loi spéciale"
+  },
+  {
+   "date": "2027-03-19",
+   "text": "Date limite de transposition de la directive Omnibus"
+  },
+  {
+   "date": "2027-09-01",
+   "text": "Émission obligatoire de factures électroniques pour les PME"
+  }
+ ],
+ "checked": {
+  "verified": 37,
+  "unread": 9,
+  "dropped": 4
+ },
+ "dropped": [
+  {
+   "item": "Le projet de loi de finances 2027 examiné en séance au Sénat",
+   "statement": "Vote du Sénat sur l'ensemble du projet de loi de finances le 9 décembre 2026 à 16 h 30.",
+   "quote": "Le 9 décembre 2026 à 16 h 30, les sénateurs voteront sur l’ensemble",
+   "url": "https://www.actu-alt-plus.com/idees-solutions/budget-2027-senat-calendrier-vote-9-decembre/43576/"
+  },
+  {
+   "item": "Le Sénat adopte le projet de loi de financement de la Sécurité sociale pour 2027",
+   "statement": "Selon un site de suivi parlementaire, la date du 26 novembre est déterminante pour la suite du texte.",
+   "quote": "le Sénat adopte le texte, tout se joue le 26 novembre",
+   "url": "https://nosparlementaires.fr/actualites/plfss-2027-calendrier-examen-date-par-date"
+  },
+  {
+   "item": "Omnibus et ESRS révisés : entrée en vigueur du règlement délégué et transposition française attendue",
+   "statement": "Le règlement délégué (UE) 2026/1563 a été publié le 21 septembre 2026.",
+   "quote": "Le règlement délégué (UE) 2026/1563 a été publié le 21 septembre 2026.",
+   "url": "https://www.donneespersonnelles.fr/csrd-omnibus"
+  },
+  {
+   "item": "Omnibus et ESRS révisés : entrée en vigueur du règlement délégué et transposition française attendue",
+   "statement": "Il prévoit une entrée en vigueur le 10 novembre 2026, avec application générale aux exercices commençant en 2027.",
+   "quote": "une entrée en vigueur le 10 novembre 2026",
+   "url": "https://www.donneespersonnelles.fr/csrd-omnibus"
+  }
+ ]
+}

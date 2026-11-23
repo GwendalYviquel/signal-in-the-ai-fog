@@ -808,5 +808,178 @@
         "title": "Question pour votre équipe"
       }
     ]
+  },
+  {
+    "date": "2026-11-23",
+    "title": "Budget 2027 au Sénat, TVA télévision et cryptoactifs à l'IASB",
+    "summary": "Le Sénat a commencé l'examen du projet de loi de finances pour 2027 à partir du texte initial, sans rien d'adopté. L'épisode traite aussi de la TVA sur la télévision payante, du moratoire avorté sur la facture électronique, des cryptoactifs à l'IASB et du calendrier de l'Omnibus.",
+    "headlines": [
+      "Le budget 2027 au Sénat sans rien d'adopté",
+      "La TVA sur la télévision payante contestée",
+      "Les cryptoactifs au programme de l'IASB"
+    ],
+    "themes": [
+      "Fiscalité",
+      "Europe",
+      "Facturation électronique",
+      "Normes comptables",
+      "Durabilité"
+    ],
+    "topics": [
+      "Projet de loi de finances 2027",
+      "ESRS",
+      "CSRD",
+      "Réforme de la facturation électronique",
+      "IFRS 18",
+      "VSME"
+    ],
+    "sources": [
+      {
+        "title": "Sénat : Projet de loi de finances pour 2027",
+        "url": "https://www.senat.fr/actualite/projet-de-loi-de-finances-pour-2027-8662.html",
+        "primary": true
+      },
+      {
+        "title": "Politique Matin : Budget 2027, le Sénat écarte une motion d'arrêt des débats",
+        "url": "https://www.politiquematin.fr/budget-2027-senat-rejette-question-prealable-249-voix-20-novembre",
+        "primary": false
+      },
+      {
+        "title": "Économie Matin : Budget 2027, la commission du Sénat défend 4,6 milliards d'économies",
+        "url": "https://www.economiematin.fr/budget-2027-senat-46-milliards-economies-etat-france-2030",
+        "primary": false
+      },
+      {
+        "title": "CNews : Budget 2027, le Sénat examine le projet de loi de finances",
+        "url": "https://www.cnews.fr/france/2026-11-20/budget-2027-le-senat-examine-le-projet-de-loi-de-finances-ce-vendredi-alors-que",
+        "primary": false
+      },
+      {
+        "title": "Actu Alt Plus : Budget 2027 au Sénat, vote le 9 décembre",
+        "url": "https://www.actu-alt-plus.com/idees-solutions/budget-2027-senat-calendrier-vote-9-decembre/43576/",
+        "primary": false
+      },
+      {
+        "title": "Les Français : Budget 2027, ce que le Sénat a changé",
+        "url": "https://lesfrancais.press/budget-2027-ce-que-le-senat-a-change/",
+        "primary": false
+      },
+      {
+        "title": "CB News : PLF 2027, le Sénat vote en commission le maintien de la TVA réduite pour Canal+",
+        "url": "https://www.cbnews.fr/medias/plf-2027-senat-vote-commission-maintien-tva-reduite-canal-taxation-accrue-plateformes-video",
+        "primary": false
+      },
+      {
+        "title": "Télésatellite : TVA des chaînes payantes, la commission de la culture du Sénat vote à son tour",
+        "url": "https://www.telesatellite.com/actu/70252-tva-des-chaines-payantes-la-commission-de-la-culture-du-senat.html",
+        "primary": false
+      },
+      {
+        "title": "Sénat : Projet de loi de finances pour 2027, liasse provisoire d'amendements de la rapporteure générale",
+        "url": "https://www.senat.fr/fileadmin/cru-1794475262/Presse/Documents_pdf/PLF2027_Liasse_amdts_RG.pdf",
+        "primary": true
+      },
+      {
+        "title": "EFRAG : EFRAG Releases Draft ESRS XBRL Taxonomy for the Revised ESRS and Launches Public Consultation",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/efrag-releases-draft-esrs-xbrl-taxonomy-for-the-revised-esrs-and-launches-public-consultation",
+        "primary": true
+      },
+      {
+        "title": "Comparateur e-Facturation : Facturation électronique suspendue ? Non",
+        "url": "https://comparateur-efacturation.fr/blog/facturation-electronique-reportee-suspendue-2026",
+        "primary": false
+      },
+      {
+        "title": "Kohen Avocats : Facturation électronique, le report voté le 3 novembre suspend-il vos obligations ?",
+        "url": "https://kohenavocats.fr/2026/11/06/facturation-electronique-report-vote-3-novembre-2026-moratoire-pme/",
+        "primary": false
+      },
+      {
+        "title": "Compta-online : Facturation électronique, calendrier, obligations et sanctions",
+        "url": "https://www.compta-online.com/facturation-electronique-ao5562",
+        "primary": false
+      },
+      {
+        "title": "IFRS Foundation : IASB decisions from the November 2026 meeting",
+        "url": "https://www.ifrs.org/news-and-events/news/2026/11/iasb-decisions-from-the-november-2026-meeting/",
+        "primary": true
+      },
+      {
+        "title": "Apogea : Comprendre la nouvelle norme comptable ANC 2026",
+        "url": "https://www.apogea.fr/comprendre-la-nouvelle-norme-comptable-anc-2026/",
+        "primary": false
+      },
+      {
+        "title": "EFRAG : European Commission adopts revised ESRS and Voluntary Sustainability Reporting Standard",
+        "url": "https://www.efrag.org/en/news-and-calendar/news/european-commission-adopts-revised-esrs-and-voluntary-sustainability-reporting-standard-efrag",
+        "primary": true
+      },
+      {
+        "title": "Sami : CSRD 2026, tout savoir sur le reporting de durabilité",
+        "url": "https://www.sami.eco/blog/fiche-csrd",
+        "primary": false
+      },
+      {
+        "title": "take[air] : CSRD, préparation à la directive, seuils Omnibus et calendrier",
+        "url": "https://www.takeair.fr/blog/csrd/se-preparer-a-la-directive-csrd/",
+        "primary": false
+      },
+      {
+        "title": "Banque des Territoires : PLFSS 2027, le Sénat vote un budget de la sécu plus favorable aux collectivités",
+        "url": "https://www.banquedesterritoires.fr/plfss-2027-le-senat-vote-un-budget-de-la-secu-plus-favorable-aux-collectivites",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-23T04:11:57+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#accounting-news-fr-2026-11-23",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/accounting-news-fr-2026-11-23/accounting-news-fr-2026-11-23.mp3",
+    "audio_bytes": 6873070,
+    "duration_seconds": 429.58367346938775,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Ouverture"
+      },
+      {
+        "start": 13.5,
+        "title": "Sujet de la semaine : Le budget 2027 au Sénat sans rien d'adopté"
+      },
+      {
+        "start": 131.3,
+        "title": "Fiscalité : Projet de loi de finances 2027"
+      },
+      {
+        "start": 164.0,
+        "title": "Europe : ESRS"
+      },
+      {
+        "start": 203.1,
+        "title": "Facturation électronique : Réforme de la facturation électronique"
+      },
+      {
+        "start": 257.1,
+        "title": "Normes comptables : IFRS 18"
+      },
+      {
+        "start": 306.7,
+        "title": "Durabilité : CSRD"
+      },
+      {
+        "start": 351.5,
+        "title": "Retour sur un dossier"
+      },
+      {
+        "start": 367.3,
+        "title": "Chiffre de la semaine"
+      },
+      {
+        "start": 378.7,
+        "title": "À surveiller"
+      },
+      {
+        "start": 411.0,
+        "title": "Question pour votre équipe"
+      }
+    ]
   }
 ]
