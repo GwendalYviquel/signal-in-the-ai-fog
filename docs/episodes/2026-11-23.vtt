@@ -1,0 +1,172 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.749
+Good morning, it's Monday, November 23.
+
+00:00:02.819 --> 00:00:10.221
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:10.291 --> 00:00:20.089
+Today: Anthropic shares fall after record debut, Gemini 3.6 Flash shutdown set for January, and Walmart's agent profiles still unconfirmed.
+
+00:00:20.159 --> 00:00:22.133
+First, the story of the day.
+
+00:00:22.203 --> 00:00:30.380
+Anthropic shares fell 8.5 percent on Friday, November twentieth, their first full day of trading, according to CNBC.
+
+00:00:30.450 --> 00:00:42.080
+The stock had opened at 111 dollars 50 on Thursday after the company raised 81.3 billion dollars, the largest IPO of all time, then closed that day at 97 dollars 17.
+
+00:00:42.151 --> 00:00:44.195
+The IPO price was 83 dollars.
+
+00:00:44.266 --> 00:00:52.442
+Yahoo Finance reports that the implied valuation briefly approached two trillion dollars during the opening session.
+
+00:00:52.512 --> 00:00:57.517
+Friday's drop came as tech stocks slid, with Nvidia and AMD also lower.
+
+00:00:57.587 --> 00:01:01.535
+CNN reports the Nasdaq wiped out its gains for the year.
+
+00:01:01.605 --> 00:01:08.795
+Reuters, cited by Yahoo Finance, describes Anthropic as the first publicly traded frontier AI company.
+
+00:01:08.865 --> 00:01:18.240
+CNBC also quotes the US Treasury Secretary saying the company has been cooperative in pre-testing its models with the administration.
+
+00:01:18.840 --> 00:01:26.546
+The read here: a first public frontier vendor now has a share price that moves with AI sentiment, not with your usage.
+
+00:01:26.611 --> 00:01:32.227
+That price tells you nothing about model quality, availability or your contract terms.
+
+00:01:32.293 --> 00:01:39.215
+What it adds is a quarterly disclosure rhythm, and a vendor under market pressure on spending and margins.
+
+00:01:39.280 --> 00:01:42.872
+That could, but need not, show up in pricing or quotas.
+
+00:01:42.937 --> 00:01:45.288
+It is worth watching, not acting on.
+
+00:01:45.353 --> 00:01:55.671
+A swing from a premium of about thirty-four percent at the open to a fall below the first-day close in two sessions is a reminder of how noisy this signal is.
+
+00:01:55.737 --> 00:01:58.937
+For a platform team, the discipline is unchanged.
+
+00:01:59.002 --> 00:02:02.267
+Keep a second vendor routable through the gateway.
+
+00:02:02.332 --> 00:02:03.377
+Time a failover.
+
+00:02:03.442 --> 00:02:10.430
+Base routing decisions on your own evaluations and your own cost per task, not on headlines or on a ticker.
+
+00:02:11.030 --> 00:02:11.984
+Next, Platform.
+
+00:02:12.048 --> 00:02:20.126
+Google's documentation lists Gemini 3.6 Flash on its Gemini Enterprise Agent Platform with a date of November nineteenth, 2026.
+
+00:02:20.190 --> 00:02:26.105
+Existing active projects keep access until permanent shutdown on January twenty-eighth, 2027.
+
+00:02:26.169 --> 00:02:30.367
+The model had been released on that platform on July twenty-first.
+
+00:02:30.430 --> 00:02:43.470
+Google says retirement dates apply to support on that platform, that models may remain reachable through the Gemini API, and that its policy gives at least forty-five days to migrate once a date is posted.
+
+00:02:44.080 --> 00:02:52.231
+Why it matters: the shutdown that counts for existing projects is January twenty-eighth, 2027, not this week.
+
+00:02:52.306 --> 00:03:04.645
+Use the time to check that no production route, fallback or batch job still depends on the model, and that any replacement you choose has passed your evaluation set.
+
+00:03:04.720 --> 00:03:09.955
+A new model can also change token usage per task, so look at cost too.
+
+00:03:10.030 --> 00:03:15.788
+The next calendar item, Gemini 2.5 rerouting on December first, is days away.
+
+00:03:15.863 --> 00:03:20.200
+Keep these dates as data in your gateway, not in an inbox.
+
+00:03:20.800 --> 00:03:22.270
+Next, Retail and agents.
+
+00:03:22.331 --> 00:03:33.170
+Walmart announced on October twenty-first that Agent Profiles would let customers authorise individual shopping agents, track their purchases separately and set spending limits.
+
+00:03:33.231 --> 00:03:37.824
+Its chief executive has said the launch would come over the next few weeks.
+
+00:03:37.885 --> 00:03:48.051
+Yahoo Finance still describes Walmart as preparing to launch them, and notes that United Airlines is restricting unauthorised third-party agents from booking flights.
+
+00:03:48.112 --> 00:03:51.970
+The sources reviewed do not confirm that the profiles are live.
+
+00:03:52.570 --> 00:04:00.531
+The bigger picture: the expected date has slipped past without confirmation, so treat the launch as pending, not delivered.
+
+00:04:00.595 --> 00:04:08.167
+The design is the useful part for any retailer: an identity per agent, a separate purchase history and spending caps.
+
+00:04:08.232 --> 00:04:14.186
+Add the airline's opposite stance, blocking, and you have the two ends of the posture range.
+
+00:04:14.251 --> 00:04:26.030
+Decide where you stand, and specify how an agent identifies itself, what limits apply, and how an order is logged and reversed, before outside agents start arriving at your checkout.
+
+00:04:26.630 --> 00:04:28.114
+The number of the day.
+
+00:04:28.182 --> 00:04:29.599
+81.3 billion dollars.
+
+00:04:29.666 --> 00:04:34.929
+That is what Anthropic raised in its IPO, the largest ever, according to CNBC.
+
+00:04:34.996 --> 00:04:38.842
+Even so, the shares fell 8.5 percent on their second day.
+
+00:04:38.910 --> 00:04:45.319
+Capital raised does not settle market confidence, and it does not change your vendor risk plan.
+
+00:04:45.387 --> 00:04:46.331
+What to watch.
+
+00:04:46.399 --> 00:04:54.833
+This week: Anthropic's shares, to see whether the market slide continues, and what the first weeks of public reporting bring.
+
+00:04:54.900 --> 00:04:58.611
+Prices, quotas and regions for OVHcloud's new products.
+
+00:04:58.678 --> 00:05:02.187
+Confirmation that Walmart's Agent Profiles are live.
+
+00:05:02.254 --> 00:05:14.601
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:05:14.669 --> 00:05:16.625
+And a question for your team.
+
+00:05:16.693 --> 00:05:26.948
+Could your gateway shift traffic away from your main model vendor within an hour, and when did you last test that failover with your own evaluation set?
+
+00:05:27.016 --> 00:05:28.365
+That's it for today.
+
+00:05:28.433 --> 00:05:31.064
+Sources are in the episode description.
+
+00:05:31.131 --> 00:05:33.156
+This was Signal in the AI Fog.
+
+00:05:33.223 --> 00:05:34.370
+See you tomorrow.

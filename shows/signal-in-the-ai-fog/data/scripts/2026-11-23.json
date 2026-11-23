@@ -1,0 +1,109 @@
+{
+ "title": "Anthropic's second day, and a retired Gemini",
+ "summary": "A thin weekend for enterprise AI news. Anthropic's shares fell on their first full trading day, a Gemini model's shutdown date is set for January, and Walmart's agent profiles are still unconfirmed. Plus the deadlines for the week and the weeks ahead.",
+ "headlines": [
+  "Anthropic shares fall after record debut",
+  "Gemini 3.6 Flash shutdown set for January",
+  "Walmart's agent profiles still unconfirmed"
+ ],
+ "story_of_the_day": {
+  "theme": "Models and vendors",
+  "facts": "Anthropic shares fell 8.5 percent on Friday, November twentieth, their first full day of trading, according to CNBC. The stock had opened at 111 dollars 50 on Thursday after the company raised 81.3 billion dollars, the largest IPO of all time, then closed that day at 97 dollars 17. The IPO price was 83 dollars. Yahoo Finance reports that the implied valuation briefly approached two trillion dollars during the opening session. Friday's drop came as tech stocks slid, with Nvidia and AMD also lower. CNN reports the Nasdaq wiped out its gains for the year. Reuters, cited by Yahoo Finance, describes Anthropic as the first publicly traded frontier AI company. CNBC also quotes the US Treasury Secretary saying the company has been cooperative in pre-testing its models with the administration.",
+  "read": "The read here: a first public frontier vendor now has a share price that moves with AI sentiment, not with your usage. That price tells you nothing about model quality, availability or your contract terms. What it adds is a quarterly disclosure rhythm, and a vendor under market pressure on spending and margins. That could, but need not, show up in pricing or quotas. It is worth watching, not acting on. A swing from a premium of about thirty-four percent at the open to a fall below the first-day close in two sessions is a reminder of how noisy this signal is. For a platform team, the discipline is unchanged. Keep a second vendor routable through the gateway. Time a failover. Base routing decisions on your own evaluations and your own cost per task, not on headlines or on a ticker.",
+  "label": "reported",
+  "topics": [
+   "Anthropic"
+  ],
+  "sources": [
+   {
+    "title": "CNBC: Anthropic falls nearly 9% in first full day of trading as tech stocks get shellacked",
+    "url": "https://www.cnbc.com/2026/11/20/anthropic-stock-ai-amd-nvidia.html",
+    "primary": false
+   },
+   {
+    "title": "Yahoo Finance: Anthropic Stock Falls About 9% on First Full Trading Day as AI Stocks Slide",
+    "url": "https://finance.yahoo.com/markets/stocks/articles/anthropic-stock-falls-9-first-164916488.html",
+    "primary": false
+   },
+   {
+    "title": "CNN: Nasdaq wipes out gains for the year as Anthropic IPO fails to quell AI nerves",
+    "url": "https://www.cnn.com/2026/11/20/investing/us-stocks-anthropic-ai",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Platform",
+   "facts": "Google's documentation lists Gemini 3.6 Flash on its Gemini Enterprise Agent Platform with a date of November nineteenth, 2026. Existing active projects keep access until permanent shutdown on January twenty-eighth, 2027. The model had been released on that platform on July twenty-first. Google says retirement dates apply to support on that platform, that models may remain reachable through the Gemini API, and that its policy gives at least forty-five days to migrate once a date is posted.",
+   "read": "Why it matters: the shutdown that counts for existing projects is January twenty-eighth, 2027, not this week. Use the time to check that no production route, fallback or batch job still depends on the model, and that any replacement you choose has passed your evaluation set. A new model can also change token usage per task, so look at cost too. The next calendar item, Gemini 2.5 rerouting on December first, is days away. Keep these dates as data in your gateway, not in an inbox.",
+   "label": "confirmed",
+   "topics": [
+    "Gemini",
+    "Google"
+   ],
+   "sources": [
+    {
+     "title": "Google Cloud: Gemini 3.6 Flash, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-6-flash",
+     "primary": true
+    },
+    {
+     "title": "Google Cloud: Model versions and lifecycle, Gemini Enterprise Agent Platform",
+     "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "Walmart announced on October twenty-first that Agent Profiles would let customers authorise individual shopping agents, track their purchases separately and set spending limits. Its chief executive has said the launch would come over the next few weeks. Yahoo Finance still describes Walmart as preparing to launch them, and notes that United Airlines is restricting unauthorised third-party agents from booking flights. The sources reviewed do not confirm that the profiles are live.",
+   "read": "The bigger picture: the expected date has slipped past without confirmation, so treat the launch as pending, not delivered. The design is the useful part for any retailer: an identity per agent, a separate purchase history and spending caps. Add the airline's opposite stance, blocking, and you have the two ends of the posture range. Decide where you stand, and specify how an agent identifies itself, what limits apply, and how an order is logged and reversed, before outside agents start arriving at your checkout.",
+   "label": "reported",
+   "topics": [
+    "Walmart",
+    "Agentic commerce"
+   ],
+   "sources": [
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "Yahoo Finance: Walmart CEO Is Launching AI Agent Profiles as United Airlines Blocks Third-Party Agents",
+     "url": "https://finance.yahoo.com/technology/ai/articles/walmart-ceo-launching-ai-agent-194059829.html",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "81.3 billion dollars. That is what Anthropic raised in its IPO, the largest ever, according to CNBC. Even so, the shares fell 8.5 percent on their second day. Capital raised does not settle market confidence, and it does not change your vendor risk plan.",
+  "source": {
+   "title": "CNBC: Anthropic falls nearly 9% in first full day of trading as tech stocks get shellacked",
+   "url": "https://www.cnbc.com/2026/11/20/anthropic-stock-ai-amd-nvidia.html",
+   "primary": false
+  }
+ },
+ "what_to_watch": "This week: Anthropic's shares, to see whether the market slide continues, and what the first weeks of public reporting bring. Prices, quotas and regions for OVHcloud's new products. Confirmation that Walmart's Agent Profiles are live. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.",
+ "agenda": [
+  {
+   "date": "2026-11-30",
+   "text": "Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations start"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 closes"
+  }
+ ],
+ "question": "Could your gateway shift traffic away from your main model vendor within an hour, and when did you last test that failover with your own evaluation set?"
+}
