@@ -1,0 +1,178 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.579
+Good morning, it's Tuesday, November 24.
+
+00:00:02.644 --> 00:00:09.414
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.479 --> 00:00:19.667
+Today: Walmart's agent profiles go live with Meta's Muse, Gemini 4 Neon arrives with cheap cached tokens, and Google opens a sovereign AI startup accelerator.
+
+00:00:19.731 --> 00:00:21.537
+First, the story of the day.
+
+00:00:21.601 --> 00:00:31.338
+The Verge reported on November twenty-third that Walmart's Agent Gateway is live, with Meta's Muse as the first supported agent, according to Unite AI.
+
+00:00:31.403 --> 00:00:38.689
+Muse can find and buy Walmart products, including Black Friday deals, through customer-controlled Agent Profiles.
+
+00:00:38.754 --> 00:00:45.976
+The first time an item goes in the cart, the shopper sets up a profile with a spending limit and approval rules.
+
+00:00:46.040 --> 00:00:48.684
+Purchases are kept in a separate history.
+
+00:00:48.748 --> 00:00:52.746
+Prices match Walmart.com, and Walmart's return policy applies.
+
+00:00:52.811 --> 00:00:57.324
+Crypto Briefing says the gateway relies on the Model Context Protocol.
+
+00:00:57.389 --> 00:01:00.677
+Walmart reportedly said more agents are on the way.
+
+00:01:00.742 --> 00:01:04.482
+The framework was first announced on October twenty-first.
+
+00:01:04.546 --> 00:01:12.800
+Separately, commercetools said menswear retailer DXL is exposing its catalogue to Muse, with real-time pricing and availability.
+
+00:01:13.400 --> 00:01:19.490
+What this really signals: the pending launch from last week has become a working pattern.
+
+00:01:19.558 --> 00:01:29.411
+An agent gets its own identity, a separate purchase history and a hard spending cap, and it enters through a dedicated door, not the storefront.
+
+00:01:29.479 --> 00:01:34.132
+For a retailer, that is a reference design to compare with your own.
+
+00:01:34.200 --> 00:01:41.179
+Specify how an agent authenticates, which limits apply, how an order is logged and how it is reversed.
+
+00:01:41.248 --> 00:01:49.048
+Note the pairing: Walmart builds the gateway itself, while DXL relies on a commerce vendor to feed the same agent.
+
+00:01:49.116 --> 00:01:52.606
+Both need clean, real-time product data and prices.
+
+00:01:52.674 --> 00:01:57.190
+Worth watching: how many agents Walmart admits, and on what terms.
+
+00:01:57.790 --> 00:01:59.360
+Next, Models and vendors.
+
+00:01:59.422 --> 00:02:06.077
+Google announced Gemini 4 Neon on November eighteenth, and updated its blog post on November twenty-third.
+
+00:02:06.140 --> 00:02:17.629
+It costs three dollars per million input tokens, fifteen cents per million cached input tokens, and fifteen dollars per million output tokens, with a one million token context window.
+
+00:02:17.692 --> 00:02:27.360
+It is rolling out in the Gemini API in Google AI Studio, in Gemini for business, and for paid Pro and Ultra subscribers in Antigravity and the Gemini app.
+
+00:02:27.960 --> 00:02:36.702
+The bigger picture: the cached price is ninety-five percent below the standard input price, so your real bill depends on cache hit rate.
+
+00:02:36.766 --> 00:02:40.109
+The post names the Gemini API and business surfaces.
+
+00:02:40.173 --> 00:02:45.830
+Check regions and quotas before adding a route, and rerun your own evaluation set first.
+
+00:02:46.430 --> 00:02:48.246
+Next, Sovereignty and Europe.
+
+00:02:48.308 --> 00:02:55.257
+Google Cloud has launched an accelerator called Sovereign AI for Europe and Israel, according to SecurityBrief.
+
+00:02:55.320 --> 00:03:02.019
+It is a twelve-week, equity-free programme for late-seed to Series A companies with regulated AI workloads.
+
+00:03:02.081 --> 00:03:09.844
+It offers engineering mentoring, advice linked to AI Act regulatory sandboxes, and guidance on sovereign deployment options.
+
+00:03:09.907 --> 00:03:16.230
+It follows Google's Brussels announcement bringing Gemini to partner-operated Google Cloud Dedicated.
+
+00:03:16.830 --> 00:03:23.396
+Reading between the lines: hyperscalers are now seeding the European sovereign ecosystem as a customer funnel.
+
+00:03:23.456 --> 00:03:34.200
+That makes startups in it candidates for your vendor scans, but check who operates the infrastructure and who holds the keys before treating any of them as a sovereign alternative.
+
+00:03:34.800 --> 00:03:35.778
+Next, Platform.
+
+00:03:35.843 --> 00:03:40.667
+Psionic AI has officially launched OpenGateway, according to DigitalToday.
+
+00:03:40.732 --> 00:03:48.815
+The gateway serves open-weight models optimised with the company's own kernel from its edge data centres, behind an API key.
+
+00:03:48.880 --> 00:03:53.509
+It offers team-level permissions, spending limits and per-request logs.
+
+00:03:53.574 --> 00:03:59.180
+An on-premise version is offered for closed networks in finance and the public sector.
+
+00:03:59.780 --> 00:04:06.851
+Why it matters: team quotas, spend caps and request logs are becoming the baseline of any gateway product.
+
+00:04:06.917 --> 00:04:12.187
+The speed claims come from the vendor, so test throughput and quality yourself.
+
+00:04:12.254 --> 00:04:16.990
+And ask whether you can keep your own gateway in front of a hosted one.
+
+00:04:17.590 --> 00:04:18.384
+A follow-up.
+
+00:04:18.450 --> 00:04:22.287
+Expected: whether Anthropic's market slide would continue.
+
+00:04:22.353 --> 00:04:36.641
+Result: on Monday, November twenty-third, the shares slipped to about eighty-eight dollars, roughly five percent above the eighty-three dollar IPO price, while other AI stocks rallied, according to Bloomberg and AOL.
+
+00:04:36.707 --> 00:04:38.163
+The number of the day.
+
+00:04:38.229 --> 00:04:39.552
+Ninety-five percent.
+
+00:04:39.618 --> 00:04:49.673
+That is the discount on cached input tokens for Gemini 4 Neon: fifteen cents per million, against three dollars per million at the standard input price.
+
+00:04:49.739 --> 00:04:52.517
+Cache hit rate now shapes your cost model.
+
+00:04:52.583 --> 00:04:53.509
+What to watch.
+
+00:04:53.576 --> 00:04:57.545
+Which agents Walmart admits next to Muse, and on what terms.
+
+00:04:57.611 --> 00:05:01.249
+Prices, quotas and regions for OVHcloud's new products.
+
+00:05:01.315 --> 00:05:13.420
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:05:13.487 --> 00:05:15.405
+And a question for your team.
+
+00:05:15.471 --> 00:05:27.114
+If an outside shopping agent reached your checkout tomorrow, could you identify it, cap its spending, log its orders separately and reverse them, without building anything new?
+
+00:05:27.180 --> 00:05:28.503
+That's it for today.
+
+00:05:28.569 --> 00:05:31.149
+Sources are in the episode description.
+
+00:05:31.215 --> 00:05:33.199
+This was Signal in the AI Fog.
+
+00:05:33.265 --> 00:05:34.390
+See you tomorrow.

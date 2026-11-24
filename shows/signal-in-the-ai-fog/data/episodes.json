@@ -2892,5 +2892,132 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-24",
+    "title": "Walmart's agent profiles go live",
+    "summary": "Walmart's Agent Gateway is reported live with Meta's Muse as its first agent, with spending-limited Agent Profiles. Also: Gemini 4 Neon's price sheet, Google's sovereign AI accelerator for European startups, and a new gateway from Psionic AI. Plus a follow-up on Anthropic's shares and the deadlines ahead.",
+    "headlines": [
+      "Walmart's agent profiles go live with Meta's Muse",
+      "Gemini 4 Neon arrives with cheap cached tokens",
+      "Google opens a sovereign AI startup accelerator"
+    ],
+    "themes": [
+      "Retail and agents",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform"
+    ],
+    "topics": [
+      "Agentic commerce",
+      "Walmart",
+      "Model Context Protocol",
+      "Gemini",
+      "Google",
+      "Sovereign AI infrastructure",
+      "AI gateways",
+      "Open-weight models",
+      "AI cost control"
+    ],
+    "sources": [
+      {
+        "title": "Unite.AI: Walmart Enables Muse Shopping Through Its Agent Gateway",
+        "url": "https://www.unite.ai/walmart-enables-muse-shopping-through-its-agent-gateway/",
+        "primary": false
+      },
+      {
+        "title": "MLQ: Walmart opens its Agent Gateway with Meta's Muse as the first AI agent able to buy for shoppers",
+        "url": "https://mlq.ai/news/walmart-opens-its-agent-gateway-with-metas-muse-as-the-first-ai-agent-able-to-buy-for-shoppers/",
+        "primary": false
+      },
+      {
+        "title": "Crypto Briefing: Walmart lets Meta's Muse AI agent shop for Black Friday deals",
+        "url": "https://cryptobriefing.com/walmart-meta-muse-black-friday-agent/",
+        "primary": false
+      },
+      {
+        "title": "FashionUnited: DXL partners with commercetools to launch AI-powered shopping via Meta's Muse",
+        "url": "https://fashionunited.com/news/retail/dxl-partners-with-commercetools-to-launch-ai-powered-shopping-via-metas-muse/2026112375898",
+        "primary": false
+      },
+      {
+        "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+        "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+        "primary": true
+      },
+      {
+        "title": "Google: Introducing Gemini 4 Neon",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+        "primary": true
+      },
+      {
+        "title": "GSMArena: Google launches Gemini 4 Neon, its new mid-tier AI model",
+        "url": "https://www.gsmarena.com/google_launches_gemini_4_neon_its_new_midtier_ai_model-news-75544.php",
+        "primary": false
+      },
+      {
+        "title": "SecurityBrief: Google Cloud launches sovereign AI accelerator for Europe",
+        "url": "https://securitybrief.co.uk/story/google-cloud-launches-sovereign-ai-accelerator-for-europe",
+        "primary": false
+      },
+      {
+        "title": "Google Cloud: Sovereign AI on your terms, made with Europe",
+        "url": "https://cloud.google.com/blog/products/identity-security/sovereign-ai-on-your-terms-made-with-europe",
+        "primary": true
+      },
+      {
+        "title": "DigitalToday: Psionic AI launches OpenGateway LLM gateway for optimized open-weight models",
+        "url": "https://digitaltoday.co.kr/en/view/129858/psionic-ai-launches-opengateway-llm-gateway-for-optimized-open-weight-models",
+        "primary": false
+      },
+      {
+        "title": "Bloomberg: Anthropic Shares Fluctuate as AI Sector Rallies on Nvidia CEO Return",
+        "url": "https://www.bloomberg.com/news/articles/2026-11-23/anthropic-shares-churn-defying-ai-trade-rally-on-huang-s-return",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-24T04:06:25+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-24",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-24/episode-2026-11-24.mp3",
+    "audio_bytes": 5350115,
+    "duration_seconds": 334.3934693877551,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 19.8,
+        "title": "Story of the day: Walmart's agent profiles go live with Meta's Muse"
+      },
+      {
+        "start": 117.8,
+        "title": "Models and vendors: Gemini"
+      },
+      {
+        "start": 166.4,
+        "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+      },
+      {
+        "start": 214.8,
+        "title": "Platform: AI gateways"
+      },
+      {
+        "start": 257.6,
+        "title": "Follow-up"
+      },
+      {
+        "start": 276.7,
+        "title": "Number of the day"
+      },
+      {
+        "start": 292.6,
+        "title": "What to watch"
+      },
+      {
+        "start": 313.5,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

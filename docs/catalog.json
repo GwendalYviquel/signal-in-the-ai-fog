@@ -16,6 +16,136 @@
  },
  "episodes": [
   {
+   "date": "2026-11-24",
+   "status": "published",
+   "title": "Walmart's agent profiles go live",
+   "summary": "Walmart's Agent Gateway is reported live with Meta's Muse as its first agent, with spending-limited Agent Profiles. Also: Gemini 4 Neon's price sheet, Google's sovereign AI accelerator for European startups, and a new gateway from Psionic AI. Plus a follow-up on Anthropic's shares and the deadlines ahead.",
+   "headlines": [
+    "Walmart's agent profiles go live with Meta's Muse",
+    "Gemini 4 Neon arrives with cheap cached tokens",
+    "Google opens a sovereign AI startup accelerator"
+   ],
+   "themes": [
+    "Retail and agents",
+    "Models and vendors",
+    "Sovereignty and Europe",
+    "Platform"
+   ],
+   "topics": [
+    "Agentic commerce",
+    "Walmart",
+    "Model Context Protocol",
+    "Gemini",
+    "Google",
+    "Sovereign AI infrastructure",
+    "AI gateways",
+    "Open-weight models",
+    "AI cost control"
+   ],
+   "page": "episodes/2026-11-24.html",
+   "chapters": [
+    {
+     "start": 0.0,
+     "title": "Opening"
+    },
+    {
+     "start": 19.8,
+     "title": "Story of the day: Walmart's agent profiles go live with Meta's Muse"
+    },
+    {
+     "start": 117.8,
+     "title": "Models and vendors: Gemini"
+    },
+    {
+     "start": 166.4,
+     "title": "Sovereignty and Europe: Sovereign AI infrastructure"
+    },
+    {
+     "start": 214.8,
+     "title": "Platform: AI gateways"
+    },
+    {
+     "start": 257.6,
+     "title": "Follow-up"
+    },
+    {
+     "start": 276.7,
+     "title": "Number of the day"
+    },
+    {
+     "start": 292.6,
+     "title": "What to watch"
+    },
+    {
+     "start": 313.5,
+     "title": "Question for your team"
+    }
+   ],
+   "corrections": [],
+   "duration_seconds": 334,
+   "downloads": null,
+   "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-24/episode-2026-11-24.mp3",
+   "spotify_url": "",
+   "sources": [
+    {
+     "title": "Unite.AI: Walmart Enables Muse Shopping Through Its Agent Gateway",
+     "url": "https://www.unite.ai/walmart-enables-muse-shopping-through-its-agent-gateway/",
+     "primary": false
+    },
+    {
+     "title": "MLQ: Walmart opens its Agent Gateway with Meta's Muse as the first AI agent able to buy for shoppers",
+     "url": "https://mlq.ai/news/walmart-opens-its-agent-gateway-with-metas-muse-as-the-first-ai-agent-able-to-buy-for-shoppers/",
+     "primary": false
+    },
+    {
+     "title": "Crypto Briefing: Walmart lets Meta's Muse AI agent shop for Black Friday deals",
+     "url": "https://cryptobriefing.com/walmart-meta-muse-black-friday-agent/",
+     "primary": false
+    },
+    {
+     "title": "FashionUnited: DXL partners with commercetools to launch AI-powered shopping via Meta's Muse",
+     "url": "https://fashionunited.com/news/retail/dxl-partners-with-commercetools-to-launch-ai-powered-shopping-via-metas-muse/2026112375898",
+     "primary": false
+    },
+    {
+     "title": "Walmart: Making It Possible for Agents to Shop on Behalf of Customers",
+     "url": "https://corporate.walmart.com/news/2026/10/Making-It-Possible-for-Agents-to-Shop-on-Behalf-of-Customers",
+     "primary": true
+    },
+    {
+     "title": "Google: Introducing Gemini 4 Neon",
+     "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+     "primary": true
+    },
+    {
+     "title": "GSMArena: Google launches Gemini 4 Neon, its new mid-tier AI model",
+     "url": "https://www.gsmarena.com/google_launches_gemini_4_neon_its_new_midtier_ai_model-news-75544.php",
+     "primary": false
+    },
+    {
+     "title": "SecurityBrief: Google Cloud launches sovereign AI accelerator for Europe",
+     "url": "https://securitybrief.co.uk/story/google-cloud-launches-sovereign-ai-accelerator-for-europe",
+     "primary": false
+    },
+    {
+     "title": "Google Cloud: Sovereign AI on your terms, made with Europe",
+     "url": "https://cloud.google.com/blog/products/identity-security/sovereign-ai-on-your-terms-made-with-europe",
+     "primary": true
+    },
+    {
+     "title": "DigitalToday: Psionic AI launches OpenGateway LLM gateway for optimized open-weight models",
+     "url": "https://digitaltoday.co.kr/en/view/129858/psionic-ai-launches-opengateway-llm-gateway-for-optimized-open-weight-models",
+     "primary": false
+    },
+    {
+     "title": "Bloomberg: Anthropic Shares Fluctuate as AI Sector Rallies on Nvidia CEO Return",
+     "url": "https://www.bloomberg.com/news/articles/2026-11-23/anthropic-shares-churn-defying-ai-trade-rally-on-huang-s-return",
+     "primary": false
+    }
+   ],
+   "transcript": "Good morning, it's Tuesday, November 24. This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI. Today: Walmart's agent profiles go live with Meta's Muse, Gemini 4 Neon arrives with cheap cached tokens, and Google opens a sovereign AI startup accelerator.\n\nFirst, the story of the day.\n\nThe Verge reported on November twenty-third that Walmart's Agent Gateway is live, with Meta's Muse as the first supported agent, according to Unite AI. Muse can find and buy Walmart products, including Black Friday deals, through customer-controlled Agent Profiles. The first time an item goes in the cart, the shopper sets up a profile with a spending limit and approval rules. Purchases are kept in a separate history. Prices match Walmart.com, and Walmart's return policy applies. Crypto Briefing says the gateway relies on the Model Context Protocol. Walmart reportedly said more agents are on the way. The framework was first announced on October twenty-first. Separately, commercetools said menswear retailer DXL is exposing its catalogue to Muse, with real-time pricing and availability.\n\nWhat this really signals: the pending launch from last week has become a working pattern. An agent gets its own identity, a separate purchase history and a hard spending cap, and it enters through a dedicated door, not the storefront. For a retailer, that is a reference design to compare with your own. Specify how an agent authenticates, which limits apply, how an order is logged and how it is reversed. Note the pairing: Walmart builds the gateway itself, while DXL relies on a commerce vendor to feed the same agent. Both need clean, real-time product data and prices. Worth watching: how many agents Walmart admits, and on what terms.\n\nNext, Models and vendors.\n\nGoogle announced Gemini 4 Neon on November eighteenth, and updated its blog post on November twenty-third. It costs three dollars per million input tokens, fifteen cents per million cached input tokens, and fifteen dollars per million output tokens, with a one million token context window. It is rolling out in the Gemini API in Google AI Studio, in Gemini for business, and for paid Pro and Ultra subscribers in Antigravity and the Gemini app.\n\nThe bigger picture: the cached price is ninety-five percent below the standard input price, so your real bill depends on cache hit rate. The post names the Gemini API and business surfaces. Check regions and quotas before adding a route, and rerun your own evaluation set first.\n\nNext, Sovereignty and Europe.\n\nGoogle Cloud has launched an accelerator called Sovereign AI for Europe and Israel, according to SecurityBrief. It is a twelve-week, equity-free programme for late-seed to Series A companies with regulated AI workloads. It offers engineering mentoring, advice linked to AI Act regulatory sandboxes, and guidance on sovereign deployment options. It follows Google's Brussels announcement bringing Gemini to partner-operated Google Cloud Dedicated.\n\nReading between the lines: hyperscalers are now seeding the European sovereign ecosystem as a customer funnel. That makes startups in it candidates for your vendor scans, but check who operates the infrastructure and who holds the keys before treating any of them as a sovereign alternative.\n\nNext, Platform.\n\nPsionic AI has officially launched OpenGateway, according to DigitalToday. The gateway serves open-weight models optimised with the company's own kernel from its edge data centres, behind an API key. It offers team-level permissions, spending limits and per-request logs. An on-premise version is offered for closed networks in finance and the public sector.\n\nWhy it matters: team quotas, spend caps and request logs are becoming the baseline of any gateway product. The speed claims come from the vendor, so test throughput and quality yourself. And ask whether you can keep your own gateway in front of a hosted one.\n\nA follow-up.\n\nExpected: whether Anthropic's market slide would continue. Result: on Monday, November twenty-third, the shares slipped to about eighty-eight dollars, roughly five percent above the eighty-three dollar IPO price, while other AI stocks rallied, according to Bloomberg and AOL.\n\nThe number of the day.\n\nNinety-five percent. That is the discount on cached input tokens for Gemini 4 Neon: fifteen cents per million, against three dollars per million at the standard input price. Cache hit rate now shapes your cost model.\n\nWhat to watch.\n\nWhich agents Walmart admits next to Muse, and on what terms. Prices, quotas and regions for OVHcloud's new products. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.\n\nAnd a question for your team.\n\nIf an outside shopping agent reached your checkout tomorrow, could you identify it, cap its spending, log its orders separately and reverse them, without building anything new?\n\nThat's it for today. Sources are in the episode description. This was Signal in the AI Fog. See you tomorrow."
+  },
+  {
    "date": "2026-11-23",
    "status": "published",
    "title": "Anthropic's second day, and a retired Gemini",
