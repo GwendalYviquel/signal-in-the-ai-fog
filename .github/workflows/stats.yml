@@ -56,6 +56,18 @@ jobs:
         with:
           path: docs
 
+      # Same learning as daily-episode.yml (2026-11-19): deploy-pages can look the artifact up before
+      # the API lists it ("No artifacts named github-pages"). The stats are already on main by then:
+      # a failed deployment waits, then retries, instead of failing the run.
       - name: Deploy the catalog site
         id: deploy
+        continue-on-error: true   # the retry below decides the job's outcome
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retrying the deployment
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Retry the catalog deployment
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
