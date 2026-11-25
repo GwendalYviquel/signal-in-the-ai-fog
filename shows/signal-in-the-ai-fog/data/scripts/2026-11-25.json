@@ -1,0 +1,133 @@
+{
+ "title": "Agents that approve code, and a looped laptop model",
+ "summary": "A quiet day with three useful signals. Anthropic's Claude Ship lets agents approve routine pull requests under a written policy. Thinking Machines releases a looped open-weights model, and OpenAI's agent wallet shows another door for shopping agents. Plus the deadlines ahead.",
+ "headlines": [
+  "Claude Ship lets agents approve pull requests",
+  "Thinking Machines opens a looped laptop model",
+  "ChatGPT Wallet lets agents buy at checkout"
+ ],
+ "story_of_the_day": {
+  "theme": "Platform",
+  "facts": "Anthropic launched Claude Ship on November twenty-third, according to TechCrunch. It bundles three agents for GitHub pull requests, for Claude Team and Enterprise plans. Code Review is generally available. PR Steward and Claude Approvals are in beta. PR Steward fixes failing checks, merge conflicts and review feedback, and after each push it comments on what it changed and how to roll it back. Trending Topics reports it is not allowed to approve or merge anything itself. Claude Approvals applies an approval policy that the team writes in plain language, stored as a file in the repository, and can approve routine changes on its own. Teams choose which changes still go to a human. According to a newsletter summary, Anthropic suggests starting in observe-only mode, on one repository, with monthly spending limits.",
+  "read": "What this really signals: approval is becoming a policy you write, not a person you wait for. That is the same pattern as gateway rules for models, applied to code. For a platform team, the questions are practical. Who owns the policy file, and who reviews changes to it? Where do agent decisions get logged? Can you replay why a change was approved? The suggested observe-only start is the right instinct, because it lets you compare the agent's verdicts with human ones before it acts. Measure agreement, and measure cost per merged change, since the agents consume tokens. Both agents are still beta, so treat this as a pilot, not a control.",
+  "label": "reported",
+  "topics": [
+   "Anthropic",
+   "Claude Ship"
+  ],
+  "sources": [
+   {
+    "title": "TechCrunch: Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+    "url": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+    "primary": false
+   },
+   {
+    "title": "The Register: Claude Ship puts AI at the helm of pull request approvals",
+    "url": "https://www.theregister.com/ai-and-ml/2026/11/24/claude-ship-puts-ai-at-the-helm-of-pull-request-approvals/5311883",
+    "primary": false
+   },
+   {
+    "title": "Trending Topics: Claude Ship, Anthropic now lets Claude approve code, too",
+    "url": "https://www.trendingtopics.eu/claude-ship-anthropic-code-approval/",
+    "primary": false
+   },
+   {
+    "title": "Sam on AI: AI Brief, November 24, 2026",
+    "url": "https://samonai.substack.com/p/ai-brief-november-24-2026",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "Thinking Machines released Inkling 2 Mini, an open-weights model it says is small enough for a laptop. It thinks in loops, according to The Decoder. The Next Web counts 5.4 billion weight activations per token. The Hugging Face model card lists Apache 2.0, with a separate acceptable use policy.",
+   "read": "The bigger picture: looping spends compute per token to save output tokens. Whether that lowers your cost depends on your serving stack and latency targets, not on the headline. Benchmarks are the company's own claims. Run it on your evaluation set, and check your inference engine supports it.",
+   "label": "confirmed",
+   "topics": [
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "Thinking Machines Lab: Introducing Inkling 2 Mini",
+     "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+     "primary": true
+    },
+    {
+     "title": "The Decoder: New open model Inkling 2 Mini thinks in loops to solve problems with fewer words",
+     "url": "https://the-decoder.com/new-open-model-inkling-2-mini-thinks-in-loops-to-solve-problems-with-fewer-words-and-still-runs-",
+     "primary": false
+    },
+    {
+     "title": "The Next Web: Thinking Machines releases Inkling 2 Mini, a looped AI model for laptops",
+     "url": "https://thenextweb.com/news/inkling-2-mini-thinking-machines-looped-open-weights-laptop",
+     "primary": false
+    },
+    {
+     "title": "CASRAI: Thinking Machines releases Inkling 2 Mini, an open-weights looped model for laptops",
+     "url": "https://casrai.org/news/thinking-machines-inkling-2-mini-open-looped-model-laptop-2026",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Retail and agents",
+   "facts": "OpenAI announced ChatGPT Wallet on November thirteenth, letting its dots agents complete purchases for users, with user approval. CNBC says it was built with American Express, Mastercard and Visa, and that the agents never access card details. Digital Commerce 360 says purchases go through retailers' existing checkout systems. TechCrunch describes a limited rollout to US Pro subscribers.",
+   "read": "Reading between the lines: this is a second door for agents, next to Walmart's dedicated gateway. Here the agent arrives through the normal checkout. For a retailer, that means fraud rules, order tagging and reversal must handle agent-made orders without a special channel. Still limited rollout, so watch Black Friday data.",
+   "label": "reported",
+   "topics": [
+    "OpenAI",
+    "Agentic commerce"
+   ],
+   "sources": [
+    {
+     "title": "CNBC: OpenAI launches ChatGPT Wallet, allowing its 'dots' AI agents to make purchases for users",
+     "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+     "primary": false
+    },
+    {
+     "title": "TechCrunch: ChatGPT's new Wallet lets AI agents shop and check out for you",
+     "url": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+     "primary": false
+    },
+    {
+     "title": "Digital Commerce 360: ChatGPT Wallet launches for AI agent purchases",
+     "url": "https://www.digitalcommerce360.com/2026/11/16/openai-chatgpt-wallet-for-ai-purchases-through-retailer-checkouts/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "5.4 billion. That is the weight activations per token in Inkling 2 Mini once its loops are counted, according to The Next Web. Compute per token, not parameter count, is what you should price.",
+  "source": {
+   "title": "The Next Web: Thinking Machines releases Inkling 2 Mini, a looped AI model for laptops",
+   "url": "https://thenextweb.com/news/inkling-2-mini-thinking-machines-looped-open-weights-laptop",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Black Friday, November twenty-seventh, as a first test of shopping agents at checkout, and which agents Walmart admits next to Muse. Whether Claude Ship's beta agents reach general availability. Prices, quotas and regions for OVHcloud's new products. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.",
+ "agenda": [
+  {
+   "date": "2026-11-27",
+   "text": "Black Friday, first test for shopping agents"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations start"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 closes"
+  }
+ ],
+ "question": "If an agent could approve changes in your repositories, which changes would your policy let it approve alone, and who would read its decision logs every week?"
+}

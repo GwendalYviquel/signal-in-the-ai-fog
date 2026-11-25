@@ -1,0 +1,166 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.579
+Good morning, it's Wednesday, November 25.
+
+00:00:02.640 --> 00:00:09.086
+This is Signal in the AI Fog, your daily briefing on enterprise AI in production, written and read by AI.
+
+00:00:09.148 --> 00:00:18.234
+Today: Claude Ship lets agents approve pull requests, Thinking Machines opens a looped laptop model, and ChatGPT Wallet lets agents buy at checkout.
+
+00:00:18.295 --> 00:00:20.014
+First, the story of the day.
+
+00:00:20.076 --> 00:00:25.049
+Anthropic launched Claude Ship on November twenty-third, according to TechCrunch.
+
+00:00:25.110 --> 00:00:30.451
+It bundles three agents for GitHub pull requests, for Claude Team and Enterprise plans.
+
+00:00:30.513 --> 00:00:32.661
+Code Review is generally available.
+
+00:00:32.723 --> 00:00:35.424
+PR Steward and Claude Approvals are in beta.
+
+00:00:35.486 --> 00:00:44.388
+PR Steward fixes failing checks, merge conflicts and review feedback, and after each push it comments on what it changed and how to roll it back.
+
+00:00:44.449 --> 00:00:49.238
+Trending Topics reports it is not allowed to approve or merge anything itself.
+
+00:00:49.299 --> 00:00:59.306
+Claude Approvals applies an approval policy that the team writes in plain language, stored as a file in the repository, and can approve routine changes on its own.
+
+00:00:59.368 --> 00:01:02.253
+Teams choose which changes still go to a human.
+
+00:01:02.315 --> 00:01:10.480
+According to a newsletter summary, Anthropic suggests starting in observe-only mode, on one repository, with monthly spending limits.
+
+00:01:11.080 --> 00:01:17.229
+What this really signals: approval is becoming a policy you write, not a person you wait for.
+
+00:01:17.295 --> 00:01:21.923
+That is the same pattern as gateway rules for models, applied to code.
+
+00:01:21.989 --> 00:01:25.229
+For a platform team, the questions are practical.
+
+00:01:25.295 --> 00:01:28.998
+Who owns the policy file, and who reviews changes to it?
+
+00:01:29.064 --> 00:01:31.444
+Where do agent decisions get logged?
+
+00:01:31.510 --> 00:01:34.221
+Can you replay why a change was approved?
+
+00:01:34.287 --> 00:01:43.279
+The suggested observe-only start is the right instinct, because it lets you compare the agent's verdicts with human ones before it acts.
+
+00:01:43.346 --> 00:01:49.098
+Measure agreement, and measure cost per merged change, since the agents consume tokens.
+
+00:01:49.164 --> 00:01:53.660
+Both agents are still beta, so treat this as a pilot, not a control.
+
+00:01:54.260 --> 00:01:55.818
+Next, Models and vendors.
+
+00:01:55.881 --> 00:02:02.239
+Thinking Machines released Inkling 2 Mini, an open-weights model it says is small enough for a laptop.
+
+00:02:02.301 --> 00:02:05.107
+It thinks in loops, according to The Decoder.
+
+00:02:05.169 --> 00:02:08.971
+The Next Web counts 5.4 billion weight activations per token.
+
+00:02:09.034 --> 00:02:14.270
+The Hugging Face model card lists Apache 2.0, with a separate acceptable use policy.
+
+00:02:14.870 --> 00:02:19.582
+The bigger picture: looping spends compute per token to save output tokens.
+
+00:02:19.645 --> 00:02:25.990
+Whether that lowers your cost depends on your serving stack and latency targets, not on the headline.
+
+00:02:26.053 --> 00:02:28.565
+Benchmarks are the company's own claims.
+
+00:02:28.628 --> 00:02:33.340
+Run it on your evaluation set, and check your inference engine supports it.
+
+00:02:33.940 --> 00:02:35.535
+Next, Retail and agents.
+
+00:02:35.601 --> 00:02:44.175
+OpenAI announced ChatGPT Wallet on November thirteenth, letting its dots agents complete purchases for users, with user approval.
+
+00:02:44.241 --> 00:02:51.751
+CNBC says it was built with American Express, Mastercard and Visa, and that the agents never access card details.
+
+00:02:51.817 --> 00:02:57.400
+Digital Commerce 360 says purchases go through retailers' existing checkout systems.
+
+00:02:57.466 --> 00:03:01.520
+TechCrunch describes a limited rollout to US Pro subscribers.
+
+00:03:02.130 --> 00:03:08.495
+Reading between the lines: this is a second door for agents, next to Walmart's dedicated gateway.
+
+00:03:08.560 --> 00:03:11.907
+Here the agent arrives through the normal checkout.
+
+00:03:11.973 --> 00:03:20.044
+For a retailer, that means fraud rules, order tagging and reversal must handle agent-made orders without a special channel.
+
+00:03:20.109 --> 00:03:23.390
+Still limited rollout, so watch Black Friday data.
+
+00:03:23.990 --> 00:03:25.412
+The number of the day.
+
+00:03:25.476 --> 00:03:26.252
+5.4 billion.
+
+00:03:26.317 --> 00:03:33.619
+That is the weight activations per token in Inkling 2 Mini once its loops are counted, according to The Next Web.
+
+00:03:33.684 --> 00:03:37.885
+Compute per token, not parameter count, is what you should price.
+
+00:03:37.949 --> 00:03:38.854
+What to watch.
+
+00:03:38.919 --> 00:03:47.449
+Black Friday, November twenty-seventh, as a first test of shopping agents at checkout, and which agents Walmart admits next to Muse.
+
+00:03:47.514 --> 00:03:51.456
+Whether Claude Ship's beta agents reach general availability.
+
+00:03:51.521 --> 00:03:55.075
+Prices, quotas and regions for OVHcloud's new products.
+
+00:03:55.140 --> 00:04:06.967
+Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.
+
+00:04:07.031 --> 00:04:08.905
+And a question for your team.
+
+00:04:08.970 --> 00:04:19.181
+If an agent could approve changes in your repositories, which changes would your policy let it approve alone, and who would read its decision logs every week?
+
+00:04:19.246 --> 00:04:20.538
+That's it for today.
+
+00:04:20.603 --> 00:04:23.123
+Sources are in the episode description.
+
+00:04:23.188 --> 00:04:25.127
+This was Signal in the AI Fog.
+
+00:04:25.191 --> 00:04:26.290
+See you tomorrow.

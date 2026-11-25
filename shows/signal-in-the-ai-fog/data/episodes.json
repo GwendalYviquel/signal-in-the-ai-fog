@@ -3019,5 +3019,119 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-25",
+    "title": "Agents that approve code, and a looped laptop model",
+    "summary": "A quiet day with three useful signals. Anthropic's Claude Ship lets agents approve routine pull requests under a written policy. Thinking Machines releases a looped open-weights model, and OpenAI's agent wallet shows another door for shopping agents. Plus the deadlines ahead.",
+    "headlines": [
+      "Claude Ship lets agents approve pull requests",
+      "Thinking Machines opens a looped laptop model",
+      "ChatGPT Wallet lets agents buy at checkout"
+    ],
+    "themes": [
+      "Platform",
+      "Models and vendors",
+      "Retail and agents"
+    ],
+    "topics": [
+      "Anthropic",
+      "Claude Ship",
+      "Open-weight models",
+      "OpenAI",
+      "Agentic commerce"
+    ],
+    "sources": [
+      {
+        "title": "TechCrunch: Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+        "url": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+        "primary": false
+      },
+      {
+        "title": "The Register: Claude Ship puts AI at the helm of pull request approvals",
+        "url": "https://www.theregister.com/ai-and-ml/2026/11/24/claude-ship-puts-ai-at-the-helm-of-pull-request-approvals/5311883",
+        "primary": false
+      },
+      {
+        "title": "Trending Topics: Claude Ship, Anthropic now lets Claude approve code, too",
+        "url": "https://www.trendingtopics.eu/claude-ship-anthropic-code-approval/",
+        "primary": false
+      },
+      {
+        "title": "Sam on AI: AI Brief, November 24, 2026",
+        "url": "https://samonai.substack.com/p/ai-brief-november-24-2026",
+        "primary": false
+      },
+      {
+        "title": "Thinking Machines Lab: Introducing Inkling 2 Mini",
+        "url": "https://thinkingmachines.ai/news/inkling-2-mini/",
+        "primary": true
+      },
+      {
+        "title": "The Decoder: New open model Inkling 2 Mini thinks in loops to solve problems with fewer words",
+        "url": "https://the-decoder.com/new-open-model-inkling-2-mini-thinks-in-loops-to-solve-problems-with-fewer-words-and-still-runs-",
+        "primary": false
+      },
+      {
+        "title": "The Next Web: Thinking Machines releases Inkling 2 Mini, a looped AI model for laptops",
+        "url": "https://thenextweb.com/news/inkling-2-mini-thinking-machines-looped-open-weights-laptop",
+        "primary": false
+      },
+      {
+        "title": "CASRAI: Thinking Machines releases Inkling 2 Mini, an open-weights looped model for laptops",
+        "url": "https://casrai.org/news/thinking-machines-inkling-2-mini-open-looped-model-laptop-2026",
+        "primary": false
+      },
+      {
+        "title": "CNBC: OpenAI launches ChatGPT Wallet, allowing its 'dots' AI agents to make purchases for users",
+        "url": "https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html",
+        "primary": false
+      },
+      {
+        "title": "TechCrunch: ChatGPT's new Wallet lets AI agents shop and check out for you",
+        "url": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+        "primary": false
+      },
+      {
+        "title": "Digital Commerce 360: ChatGPT Wallet launches for AI agent purchases",
+        "url": "https://www.digitalcommerce360.com/2026/11/16/openai-chatgpt-wallet-for-ai-purchases-through-retailer-checkouts/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-25T04:06:09+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-25",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-25/episode-2026-11-25.mp3",
+    "audio_bytes": 4260539,
+    "duration_seconds": 266.2922448979592,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.3,
+        "title": "Story of the day: Claude Ship lets agents approve pull requests"
+      },
+      {
+        "start": 114.3,
+        "title": "Models and vendors: Open-weight models"
+      },
+      {
+        "start": 153.9,
+        "title": "Retail and agents: OpenAI"
+      },
+      {
+        "start": 204.0,
+        "title": "Number of the day"
+      },
+      {
+        "start": 218.0,
+        "title": "What to watch"
+      },
+      {
+        "start": 247.0,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]

@@ -1,0 +1,33 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.3,
+   "title": "Story of the day: Claude Ship lets agents approve pull requests"
+  },
+  {
+   "startTime": 114.3,
+   "title": "Models and vendors: Open-weight models"
+  },
+  {
+   "startTime": 153.9,
+   "title": "Retail and agents: OpenAI"
+  },
+  {
+   "startTime": 204.0,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 218.0,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 247.0,
+   "title": "Question for your team"
+  }
+ ]
+}

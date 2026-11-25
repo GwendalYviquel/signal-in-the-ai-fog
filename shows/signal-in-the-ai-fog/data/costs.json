@@ -1456,5 +1456,46 @@
    "limit": 127282,
    "reset": "2026-11-30"
   }
+ },
+ {
+  "time": "2026-11-25T03:09:19+00:00",
+  "mode": "publish",
+  "outcome": "ok",
+  "run_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/actions/runs/45537513041",
+  "claude": {
+   "model": "claude-sonnet-5-5",
+   "input_tokens": 20,
+   "output_tokens": 11367,
+   "cache_creation_input_tokens": 31227,
+   "cache_read_input_tokens": 199614,
+   "web_search_requests": 15,
+   "api_calls": 1,
+   "factcheck": {
+    "model": "claude-haiku-5-5",
+    "input_tokens": 81185,
+    "output_tokens": 7374,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "web_search_requests": 0,
+    "api_calls": 8
+   },
+   "corrections": {
+    "model": "claude-haiku-5-5",
+    "input_tokens": 7596,
+    "output_tokens": 3763,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "web_search_requests": 0,
+    "api_calls": 1
+   },
+   "usd": 0.3961
+  },
+  "elevenlabs_characters": 4126,
+  "note": "voice check 6 + episode 4120 characters",
+  "elevenlabs_credits": {
+   "left": 57555,
+   "limit": 127282,
+   "reset": "2026-11-30"
+  }
  }
 ]
