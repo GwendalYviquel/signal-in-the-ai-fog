@@ -56,7 +56,7 @@ jobs:
     timeout-minutes: 20
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url || steps.deploy_last.outputs.page_url }}
     env:
       PREVIEW: "true"
       SHOW: ${{ matrix.show }}
@@ -112,8 +112,35 @@ jobs:
           path: docs
           name: github-pages-${{ matrix.show }}   # one per show: two shows publish in one run
 
+      # Learning (2026-11-19, then 22/24/25 Nov in Stats): deploy-pages looks the artifact up right after its
+      # upload and the API does not always list it yet ("No artifacts named github-pages"). Three attempts,
+      # 30 s then 90 s apart; tests/test_workflows.py checks every workflow that publishes the site does this.
       - name: Deploy the catalog site
         id: deploy
+        continue-on-error: true   # the last attempt decides the job's outcome
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ matrix.show }}
+
+      - name: Wait before the second deployment attempt
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy the catalog site (second attempt)
+        id: deploy_retry
+        if: steps.deploy.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ matrix.show }}
+
+      - name: Wait before the last deployment attempt
+        if: steps.deploy_retry.outcome == 'failure'
+        run: sleep 90
+
+      - name: Deploy the catalog site (last attempt)
+        id: deploy_last
+        if: steps.deploy_retry.outcome == 'failure'
         uses: actions/deploy-pages@v4
         with:
           artifact_name: github-pages-${{ matrix.show }}

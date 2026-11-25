@@ -122,28 +122,41 @@ def test_daily_publication_steps_run_only_after_a_publication():
     # Dry runs, early attempts and attempts finding the episode out publish nothing: no deployment.
     steps = main_steps(workflow("daily-episode.yml"))
     publication = [s for s in steps if "pages" in s.get("uses", "") or "deploy" in s.get("name", "").lower()]
-    assert len(publication) == 5   # configure, upload, deploy, wait, retry
+    assert len(publication) == 7   # configure, upload, deploy, wait, second attempt, wait, last attempt
     assert all(s.get("if", "").startswith("steps.generate.outputs.published == 'true'") for s in publication)
 
 
-def test_a_failed_daily_deployment_is_retried_after_a_wait():
-    # Regression (2026-11-19): deploy-pages looked the artifact up one second after its upload, the API
-    # did not list it yet, the deployment failed and the episode stayed off the live feed all morning
-    # (later attempts found it out and deployed nothing).
-    steps = main_steps(workflow("daily-episode.yml"))
+PAGES_WORKFLOWS = sorted(p.name for p in WORKFLOWS.glob("*.yml") if "actions/deploy-pages@" in p.read_text(encoding="utf-8"))
+
+
+def test_the_site_publishing_workflows_are_all_checked():
+    # A new workflow that deploys the site is picked up here, so it cannot skip the retries below.
+    assert {"daily-episode.yml", "stats.yml", "correction.yml", "deploy-site.yml", "preview-episode.yml"} <= set(PAGES_WORKFLOWS)
+
+
+@pytest.mark.parametrize("name", PAGES_WORKFLOWS)
+def test_every_site_deployment_is_tried_three_times(name):
+    # Regression (2026-11-19 for the episodes, 22/24/25 Nov for Stats): deploy-pages looked the artifact up
+    # right after its upload, the API did not list it yet ("No artifacts named github-pages"), and the run
+    # failed with the site left stale. Every deployment: three attempts, a wait before each retry.
+    wf = workflow(name)
+    steps = main_steps(wf)
     names = [s.get("name") for s in steps]
-    deploy, wait, retry = (steps[names.index(n)] for n in (
-        "Deploy the RSS feed", "Wait before retrying the deployment", "Retry the RSS feed deployment"))
-    assert names.index("Deploy the RSS feed") < names.index("Wait before retrying the deployment") \
-        < names.index("Retry the RSS feed deployment")
-    assert deploy["id"] == "deploy" and deploy["continue-on-error"] is True
-    for s in (wait, retry):
-        assert s["if"] == "steps.generate.outputs.published == 'true' && steps.deploy.outcome == 'failure'"
-    assert "sleep" in wait["run"]
-    assert retry["uses"] == deploy["uses"] and retry["with"] == deploy["with"]
-    assert "continue-on-error" not in retry   # a second failure fails the job and notifies the phone
-    url = workflow("daily-episode.yml")["jobs"]["episode"]["environment"]["url"]
-    assert "steps.deploy.outputs.page_url" in url and f"steps.{retry['id']}.outputs.page_url" in url
+    deploys = [s for s in steps if s.get("uses", "").startswith("actions/deploy-pages@")]
+    assert [s["id"] for s in deploys] == ["deploy", "deploy_retry", "deploy_last"]
+    first, second, last = deploys
+    assert first["continue-on-error"] is True and second["continue-on-error"] is True
+    assert "continue-on-error" not in last   # a third failure fails the job, so it is seen
+    assert first.get("with") == second.get("with") == last.get("with")
+    prefix = first.get("if", "")
+    prefix = f"{prefix} && " if prefix else ""
+    for previous, attempt in ((first, second), (second, last)):
+        wait = steps[names.index(attempt["name"]) - 1]
+        assert "sleep" in wait["run"]
+        assert wait["if"] == attempt["if"] == f"{prefix}steps.{previous['id']}.outcome == 'failure'"
+    job = max(wf["jobs"].values(), key=lambda job: len(job.get("steps", [])))
+    url = job["environment"]["url"]
+    assert all(f"steps.{s['id']}.outputs.page_url" in url for s in deploys)
 
 
 @pytest.mark.parametrize("name", ["daily-episode.yml", "preview-episode.yml", "rehearsal.yml", "check-voices.yml"])
