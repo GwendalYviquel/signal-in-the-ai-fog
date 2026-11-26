@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.5,
+   "title": "Story of the day: Black Friday tests shopping agents at checkout"
+  },
+  {
+   "startTime": 85.2,
+   "title": "Sovereignty and Europe: Cloudera"
+  },
+  {
+   "startTime": 133.0,
+   "title": "Platform: Claude Ship"
+  },
+  {
+   "startTime": 173.2,
+   "title": "Regulation: Cloud AI Development Act"
+  },
+  {
+   "startTime": 221.6,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 239.4,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 270.2,
+   "title": "Question for your team"
+  }
+ ]
+}

@@ -1,0 +1,134 @@
+{
+ "title": "Black Friday tests shopping agents at checkout",
+ "summary": "Black Friday arrives tomorrow as a first real test for shopping agents at checkout, with Walmart opening its door and Amazon keeping it shut. Also: Cloudera's sovereignty offer, the token bill behind Claude Ship's observe-only mode, and where the EU Cloud and AI Development Act stands. Plus the deadlines ahead.",
+ "headlines": [
+  "Black Friday tests shopping agents at checkout",
+  "Cloudera launches a sovereignty offer",
+  "Claude Ship bills even in observe-only mode"
+ ],
+ "story_of_the_day": {
+  "theme": "Retail and agents",
+  "facts": "TechCrunch reports that Walmart now lets shoppers buy its Black Friday deals through Meta's Muse, and plans to open its gateway to more developers and AI platforms. TechCrunch also says Amazon has taken steps to stop third-party agents from making purchases for customers. TechTarget notes that agents already show up on retail sites, but that nobody has documented large numbers of them shopping for a single person.",
+  "read": "The bigger picture: you now have two public postures to compare. Walmart builds a dedicated door and sets the terms. Amazon blocks. Most retailers sit in between, and by default that means whatever your bot rules decide. So check what your bot protection does with a legitimate agent, whether a blocked agent gets a clear answer, and whether you can tell agent orders from human ones afterwards. Black Friday traffic will likely be noisy and hard to attribute. Still, treat it as free test data. Log it, and write down your posture before the January review.",
+  "label": "reported",
+  "topics": [
+   "Agentic commerce",
+   "Walmart",
+   "Meta"
+  ],
+  "sources": [
+   {
+    "title": "TechCrunch: Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+    "url": "https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/",
+    "primary": false
+   },
+   {
+    "title": "Retail TouchPoints: This Black Friday and Cyber Monday, the Shopper Might Be an AI Agent. Is Your Checkout Ready?",
+    "url": "https://www.retailtouchpoints.com/news/this-black-friday-and-cyber-monday-the-shopper-might-be-an-ai-agent-is-your-checkout-ready/622222/",
+    "primary": false
+   },
+   {
+    "title": "TechTarget: 'Twas the night before Black Friday, and the bots were shopping",
+    "url": "https://www.techtarget.com/news/twas-the-night-before-black-friday-and-the-bots-were-shopping/875476/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "Cloudera announced Cloudera for Digital Sovereignty on November twenty-fourth at its EVOLVE event in Madrid, according to Compare the Cloud. It lets organisations run governed data and private AI across sovereign clouds, private data centres and air-gapped sites. It builds on support for the AWS European Sovereign Cloud and on Cloudera's partnership with Mistral. The source gives no pricing.",
+   "read": "Reading between the lines: data platforms are repositioning as the control layer across mixed estates. The claim to test is portability. Can retrieval, lineage and policy move between environments without rework? Ask for named regions and operators before calling anything sovereign.",
+   "label": "reported",
+   "topics": [
+    "Cloudera",
+    "Sovereign AI infrastructure",
+    "Mistral"
+   ],
+   "sources": [
+    {
+     "title": "Compare the Cloud: Cloudera launches a digital sovereignty offering that spans sovereign clouds and air-gapped sites",
+     "url": "https://www.comparethecloud.net/news/cloudera-launches-a-digital-sovereignty-offering-that-spans-sovereign-clouds-and-air-gapped-sites",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "Claude Ship, from Anthropic, is billed on token usage, according to Help Net Security. Claude Approvals has no base charge, but the classifiers in a policy consume billed tokens. Policies that rely on Claude's review trigger a billable Code Review, even in observe-only mode. Eligible Enterprise customers can claim at least ten thousand dollars in credits, valid for thirty days.",
+   "read": "Why it matters: observe-only is not free. The trial that compares agent verdicts with human ones still spends tokens. Set the monthly cap before you start, and meter cost per merged change from day one.",
+   "label": "reported",
+   "topics": [
+    "Claude Ship",
+    "AI cost control",
+    "Anthropic"
+   ],
+   "sources": [
+    {
+     "title": "Help Net Security: Claude Ship gives AI a seat on both sides of code review",
+     "url": "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/",
+     "primary": false
+    },
+    {
+     "title": "heise online: Claude Ship aims to ease pull request review bottlenecks",
+     "url": "https://www.heise.de/en/news/Claude-Ship-aims-to-ease-pull-request-review-bottlenecks-11537242.html",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Regulation",
+   "facts": "The Commission proposed the Cloud and AI Development Act on June third, 2026. According to a Qovery analysis, it covers four Union assurance levels, public procurement minimums and data centre permitting. The Irish Council presidency tabled a first compromise text on the sovereignty pillar on November tenth. Parliament's co-rapporteurs presented a joint draft report on November eleventh. The act is still in negotiation.",
+   "read": "The bigger picture: nothing binds you yet. But the assurance levels will likely become the vocabulary of sovereign tenders. Worth watching whether the Council's softer text survives. For now, classify your workloads by sensitivity, so you can map them to a level later.",
+   "label": "reported",
+   "topics": [
+    "Cloud AI Development Act",
+    "Sovereign AI infrastructure"
+   ],
+   "sources": [
+    {
+     "title": "Qovery: The EU Cloud and AI Development Act, what the proposal means if you are planning a sovereign cloud deployment in Europe",
+     "url": "https://www.qovery.com/blog/eu-cloud-ai-development-act-sovereign-deployment-planning",
+     "primary": false
+    },
+    {
+     "title": "Cloud Computing News: OVHcloud launches 55 cloud and AI products amid Europe's sovereignty push",
+     "url": "https://www.cloudcomputing-news.net/news/ovhcloud-cloud-ai-products-europe-sovereignty/",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "One hundred fifty-seven point five percent. That is the rise in AI-agent requests from September to October across applications protected by Human Security, per TechTarget. It counts requests, not shoppers or sales, so size bot rules with it, not revenue.",
+  "source": {
+   "title": "TechTarget: 'Twas the night before Black Friday, and the bots were shopping",
+   "url": "https://www.techtarget.com/news/twas-the-night-before-black-friday-and-the-bots-were-shopping/875476/",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Black Friday, November twenty-seventh, then Cyber Monday on November thirtieth, as a first test of shopping agents at checkout. Which agents Walmart admits next to Muse. Whether Claude Ship's beta agents reach general availability. Prices, quotas and regions for OVHcloud's new products. Then Carbon's introductory price ends November thirtieth, Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third.",
+ "agenda": [
+  {
+   "date": "2026-11-27",
+   "text": "Black Friday, first test of shopping agents at checkout"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations start"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 closes"
+  }
+ ],
+ "question": "When a shopping agent hits your site this weekend, can your logs show whether it was blocked, served or ordered, and who decided that rule?"
+}

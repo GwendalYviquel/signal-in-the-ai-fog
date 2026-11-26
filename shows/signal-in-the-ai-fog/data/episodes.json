@@ -3133,5 +3133,114 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-26",
+    "title": "Black Friday tests shopping agents at checkout",
+    "summary": "Black Friday arrives tomorrow as a first real test for shopping agents at checkout, with Walmart opening its door and Amazon keeping it shut. Also: Cloudera's sovereignty offer, the token bill behind Claude Ship's observe-only mode, and where the EU Cloud and AI Development Act stands. Plus the deadlines ahead.",
+    "headlines": [
+      "Black Friday tests shopping agents at checkout",
+      "Cloudera launches a sovereignty offer",
+      "Claude Ship bills even in observe-only mode"
+    ],
+    "themes": [
+      "Retail and agents",
+      "Sovereignty and Europe",
+      "Platform",
+      "Regulation"
+    ],
+    "topics": [
+      "Agentic commerce",
+      "Walmart",
+      "Meta",
+      "Cloudera",
+      "Sovereign AI infrastructure",
+      "Mistral",
+      "Claude Ship",
+      "AI cost control",
+      "Anthropic",
+      "Cloud AI Development Act"
+    ],
+    "sources": [
+      {
+        "title": "TechCrunch: Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+        "url": "https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/",
+        "primary": false
+      },
+      {
+        "title": "Retail TouchPoints: This Black Friday and Cyber Monday, the Shopper Might Be an AI Agent. Is Your Checkout Ready?",
+        "url": "https://www.retailtouchpoints.com/news/this-black-friday-and-cyber-monday-the-shopper-might-be-an-ai-agent-is-your-checkout-ready/622222/",
+        "primary": false
+      },
+      {
+        "title": "TechTarget: 'Twas the night before Black Friday, and the bots were shopping",
+        "url": "https://www.techtarget.com/news/twas-the-night-before-black-friday-and-the-bots-were-shopping/875476/",
+        "primary": false
+      },
+      {
+        "title": "Compare the Cloud: Cloudera launches a digital sovereignty offering that spans sovereign clouds and air-gapped sites",
+        "url": "https://www.comparethecloud.net/news/cloudera-launches-a-digital-sovereignty-offering-that-spans-sovereign-clouds-and-air-gapped-sites",
+        "primary": false
+      },
+      {
+        "title": "Help Net Security: Claude Ship gives AI a seat on both sides of code review",
+        "url": "https://www.helpnetsecurity.com/2026/11/24/anthropic-claude-ship-beta/",
+        "primary": false
+      },
+      {
+        "title": "heise online: Claude Ship aims to ease pull request review bottlenecks",
+        "url": "https://www.heise.de/en/news/Claude-Ship-aims-to-ease-pull-request-review-bottlenecks-11537242.html",
+        "primary": false
+      },
+      {
+        "title": "Qovery: The EU Cloud and AI Development Act, what the proposal means if you are planning a sovereign cloud deployment in Europe",
+        "url": "https://www.qovery.com/blog/eu-cloud-ai-development-act-sovereign-deployment-planning",
+        "primary": false
+      },
+      {
+        "title": "Cloud Computing News: OVHcloud launches 55 cloud and AI products amid Europe's sovereignty push",
+        "url": "https://www.cloudcomputing-news.net/news/ovhcloud-cloud-ai-products-europe-sovereignty/",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-26T04:36:18+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-26",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-26/episode-2026-11-26.mp3",
+    "audio_bytes": 4607401,
+    "duration_seconds": 287.9738775510204,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.5,
+        "title": "Story of the day: Black Friday tests shopping agents at checkout"
+      },
+      {
+        "start": 85.2,
+        "title": "Sovereignty and Europe: Cloudera"
+      },
+      {
+        "start": 133.0,
+        "title": "Platform: Claude Ship"
+      },
+      {
+        "start": 173.2,
+        "title": "Regulation: Cloud AI Development Act"
+      },
+      {
+        "start": 221.6,
+        "title": "Number of the day"
+      },
+      {
+        "start": 239.4,
+        "title": "What to watch"
+      },
+      {
+        "start": 270.2,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
