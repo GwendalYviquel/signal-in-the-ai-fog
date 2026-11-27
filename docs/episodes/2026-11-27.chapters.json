@@ -1,0 +1,37 @@
+{
+ "version": "1.2.0",
+ "chapters": [
+  {
+   "startTime": 0.0,
+   "title": "Opening"
+  },
+  {
+   "startTime": 18.9,
+   "title": "Story of the day: Shopping agents face Black Friday"
+  },
+  {
+   "startTime": 122.8,
+   "title": "Models and vendors: OpenAI"
+  },
+  {
+   "startTime": 166.6,
+   "title": "Sovereignty and Europe: Mistral"
+  },
+  {
+   "startTime": 206.2,
+   "title": "Platform: OpenAI"
+  },
+  {
+   "startTime": 251.2,
+   "title": "Number of the day"
+  },
+  {
+   "startTime": 267.7,
+   "title": "What to watch"
+  },
+  {
+   "startTime": 296.6,
+   "title": "Question for your team"
+  }
+ ]
+}

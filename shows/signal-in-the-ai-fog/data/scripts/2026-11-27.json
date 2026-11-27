@@ -1,0 +1,151 @@
+{
+ "title": "Three postures toward shopping agents",
+ "summary": "On the first Black Friday where shopping agents can buy, this week's trend is how retailers answer them: a dedicated gateway, the normal checkout, or a closed door. Also: GPT-6.2 in the API, Mistral's Singapore headquarters, and an alpha of confidential inference at OpenAI. Plus the deadlines ahead.",
+ "headlines": [
+  "Shopping agents face Black Friday",
+  "Mistral opens its Asia-Pacific headquarters",
+  "OpenAI tests confidential enterprise inference"
+ ],
+ "story_of_the_day": {
+  "theme": "Retail and agents",
+  "facts": "This week produced three public stances toward shopping agents. Since November twenty-fourth, Walmart lets shoppers buy Black Friday deals through Meta's Muse, according to TechCrunch, and plans to open to more AI platforms. CryptoSlate, citing Walmart's agentic access terms, says outside agents cannot add cards or see card numbers, and each transaction uses a short-lived token tied to merchant, cart, amount and session. OpenAI's ChatGPT Wallet is, for now, limited to US Pro subscribers, according to IBM. TechCrunch says Amazon has taken steps to block third-party agents. I found no Amazon confirmation of that step. IBM adds that Adobe forecasts AI-tool traffic to US retail sites nearly doubling this Black Friday, while only sixteen percent of US shoppers would let AI complete a purchase. An IBM study warns agents may pass over brands with unreliable product data.",
+  "read": "The bigger picture: the agent door is hardening into three designs. A dedicated gateway with scoped, short-lived authorisation. The normal checkout, where agents blend in. And a closed gate. Amazon's block may be a posture rather than permanent policy, though that is speculation. For a retailer, the design that travels is per-transaction authorisation tied to cart and amount, because it answers fraud and liability together. The other lever is data quality: agents may simply skip brands they cannot trust. After the weekend, measure agent-attributed orders, false blocks and returns, then write down your posture.",
+  "label": "reported",
+  "topics": [
+   "Agentic commerce",
+   "Walmart",
+   "Meta"
+  ],
+  "sources": [
+   {
+    "title": "IBM Think: This Black Friday, AI agents head to checkout",
+    "url": "https://www.ibm.com/think/news/black-friday-ai-agents-online-shopping",
+    "primary": false
+   },
+   {
+    "title": "TechCrunch: Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+    "url": "https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/",
+    "primary": false
+   },
+   {
+    "title": "CryptoSlate: Walmart's Black Friday rollout reveals how AI agents could spend money without controlling your wallet",
+    "url": "https://cryptoslate.com/walmarts-black-friday-rollout-reveals-how-ai-agents-could-spend-money-without-controlling-your-wallet/",
+    "primary": false
+   },
+   {
+    "title": "Daily AI Caffeine: Today's (real) AI news 27 Nov 26",
+    "url": "https://dailyaicaffeinenobs.substack.com/p/todays-real-ai-news-27-nov-26",
+    "primary": false
+   },
+   {
+    "title": "The Neuron: Everything That Happened in AI Today, November 26, 2026",
+    "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/",
+    "primary": false
+   }
+  ]
+ },
+ "segments": [
+  {
+   "theme": "Models and vendors",
+   "facts": "OpenAI introduced GPT-6.2 Astra, its frontier model, and GPT-6.2 Sol, an efficient model for everyday work, on November seventeenth. Both are available in the API as gpt-6.2-astra and gpt-6.2-sol, with an Ultrafast option at launch. OpenAI says Astra is its first externally released model to reach the High threshold for AI self-improvement.",
+   "read": "Why it matters: two tiers from one vendor invite routing, with Sol as default and Astra as escalation. The announcement page cites lower cost, but check the pricing page and rerun your own evaluation set before any route changes.",
+   "label": "confirmed",
+   "topics": [
+    "OpenAI"
+   ],
+   "sources": [
+    {
+     "title": "OpenAI: Introducing GPT-6.2 Astra and Sol",
+     "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+     "primary": true
+    },
+    {
+     "title": "9to5Mac: OpenAI upgrades ChatGPT and Codex with new GPT-6.2 Astra and Sol models",
+     "url": "https://9to5mac.com/2026/11/17/openai-upgrades-chatgpt-and-codex-with-new-gpt-6-2-astra-and-sol-models/",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Sovereignty and Europe",
+   "facts": "Mistral opened its Asia-Pacific headquarters in Singapore on November twentieth, according to Crypto Briefing, and plans to double regional staff to 200 by 2027. It extends Mistral's Science Hub. Computer Weekly reports that Mistral Large 4, with one trillion parameters, had its weights released about three weeks after an early October preview.",
+   "read": "Reading between the lines: a European lab is exporting the sovereignty pitch, while keeping open weights as the proof. For a European buyer, the question is whether self-hosting plus support in your own regions is available, not where the headquarters sit.",
+   "label": "reported",
+   "topics": [
+    "Mistral",
+    "Open-weight models"
+   ],
+   "sources": [
+    {
+     "title": "Crypto Briefing: Mistral opens Asia-Pacific headquarters in Singapore, plans to double regional headcount by 2027",
+     "url": "https://cryptobriefing.com/mistral-asia-pacific-headquarters-singapore/",
+     "primary": false
+    },
+    {
+     "title": "The Next Web: Mistral opens Asia Pacific headquarters in Singapore to build sovereign AI",
+     "url": "https://thenextweb.com/news/mistral-opens-asia-pacific-headquarters-in-singapore-to-build-sovereign-ai",
+     "primary": false
+    },
+    {
+     "title": "Computer Weekly: Mistral targets cyber defence and sovereign AI with ML4",
+     "url": "https://www.computerweekly.com/news/366654624/Mistral-targets-cyber-defence-and-sovereign-AI-with-ML4",
+     "primary": false
+    }
+   ]
+  },
+  {
+   "theme": "Platform",
+   "facts": "Unconfirmed, from newsletter roundups only: Sam Altman said on X that OpenAI is testing Private Inference, an alpha confidential-computing feature, with a small group of business customers, so prompts cannot be read by OpenAI. The same roundups say Anthropic moved its API from Python to Rust, cutting CPU per request by about seventy percent in one region.",
+   "read": "What this really signals: confidential inference is becoming a vendor feature to evaluate, next to private deployment. It is alpha, so it is not a plan yet. Ask for attestation details, regions and logging terms when it opens, and wait for primary sources on both items.",
+   "label": "unconfirmed",
+   "topics": [
+    "OpenAI",
+    "Anthropic"
+   ],
+   "sources": [
+    {
+     "title": "This is not Average: AI Frontier Daily, November 26, 2026",
+     "url": "https://kellyabbott1.substack.com/p/ai-frontier-daily-2026-11-26",
+     "primary": false
+    },
+    {
+     "title": "Daily AI Caffeine: Today's (real) AI news 27 Nov 26",
+     "url": "https://dailyaicaffeinenobs.substack.com/p/todays-real-ai-news-27-nov-26",
+     "primary": false
+    }
+   ]
+  }
+ ],
+ "number_of_the_day": {
+  "text": "Sixteen percent. That is the share of surveyed US shoppers willing to let AI complete a purchase, according to IBM, even as Adobe expects agent traffic to retail sites to nearly double. Interest in agents outruns trust.",
+  "source": {
+   "title": "IBM Think: This Black Friday, AI agents head to checkout",
+   "url": "https://www.ibm.com/think/news/black-friday-ai-agents-online-shopping",
+   "primary": false
+  }
+ },
+ "what_to_watch": "Cyber Monday, November thirtieth, for more data on shopping agents at checkout, and whether Amazon and Meta confirm talks. Carbon's introductory price also ends November thirtieth. Then Gemini 2.5 requests reroute December first, AI Act marking starts December second, and EuroHPC's Lot 2 closes December third. Still open: Claude Ship's beta agents, and prices, quotas and regions for OVHcloud's new products.",
+ "question": "If a shopping agent were approved at your checkout, which single authorisation rule would you insist on first: spending cap, cart binding, or expiry, and where would it be enforced?",
+ "agenda": [
+  {
+   "date": "2026-11-30",
+   "text": "Cyber Monday, second test for shopping agents"
+  },
+  {
+   "date": "2026-11-30",
+   "text": "Gemini 4 Carbon introductory price ends"
+  },
+  {
+   "date": "2026-12-01",
+   "text": "Gemini 2.5 requests reroute"
+  },
+  {
+   "date": "2026-12-02",
+   "text": "AI Act marking obligations start"
+  },
+  {
+   "date": "2026-12-03",
+   "text": "EuroHPC Lot 2 closes"
+  }
+ ]
+}

@@ -3242,5 +3242,126 @@
         "title": "Question for your team"
       }
     ]
+  },
+  {
+    "date": "2026-11-27",
+    "title": "Three postures toward shopping agents",
+    "summary": "On the first Black Friday where shopping agents can buy, this week's trend is how retailers answer them: a dedicated gateway, the normal checkout, or a closed door. Also: GPT-6.2 in the API, Mistral's Singapore headquarters, and an alpha of confidential inference at OpenAI. Plus the deadlines ahead.",
+    "headlines": [
+      "Shopping agents face Black Friday",
+      "Mistral opens its Asia-Pacific headquarters",
+      "OpenAI tests confidential enterprise inference"
+    ],
+    "themes": [
+      "Retail and agents",
+      "Models and vendors",
+      "Sovereignty and Europe",
+      "Platform"
+    ],
+    "topics": [
+      "Agentic commerce",
+      "Walmart",
+      "Meta",
+      "OpenAI",
+      "Mistral",
+      "Open-weight models",
+      "Anthropic"
+    ],
+    "sources": [
+      {
+        "title": "IBM Think: This Black Friday, AI agents head to checkout",
+        "url": "https://www.ibm.com/think/news/black-friday-ai-agents-online-shopping",
+        "primary": false
+      },
+      {
+        "title": "TechCrunch: Walmart teams up with Meta to bring Black Friday deals to AI agent Muse",
+        "url": "https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/",
+        "primary": false
+      },
+      {
+        "title": "CryptoSlate: Walmart's Black Friday rollout reveals how AI agents could spend money without controlling your wallet",
+        "url": "https://cryptoslate.com/walmarts-black-friday-rollout-reveals-how-ai-agents-could-spend-money-without-controlling-your-wallet/",
+        "primary": false
+      },
+      {
+        "title": "Daily AI Caffeine: Today's (real) AI news 27 Nov 26",
+        "url": "https://dailyaicaffeinenobs.substack.com/p/todays-real-ai-news-27-nov-26",
+        "primary": false
+      },
+      {
+        "title": "The Neuron: Everything That Happened in AI Today, November 26, 2026",
+        "url": "https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/",
+        "primary": false
+      },
+      {
+        "title": "OpenAI: Introducing GPT-6.2 Astra and Sol",
+        "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+        "primary": true
+      },
+      {
+        "title": "9to5Mac: OpenAI upgrades ChatGPT and Codex with new GPT-6.2 Astra and Sol models",
+        "url": "https://9to5mac.com/2026/11/17/openai-upgrades-chatgpt-and-codex-with-new-gpt-6-2-astra-and-sol-models/",
+        "primary": false
+      },
+      {
+        "title": "Crypto Briefing: Mistral opens Asia-Pacific headquarters in Singapore, plans to double regional headcount by 2027",
+        "url": "https://cryptobriefing.com/mistral-asia-pacific-headquarters-singapore/",
+        "primary": false
+      },
+      {
+        "title": "The Next Web: Mistral opens Asia Pacific headquarters in Singapore to build sovereign AI",
+        "url": "https://thenextweb.com/news/mistral-opens-asia-pacific-headquarters-in-singapore-to-build-sovereign-ai",
+        "primary": false
+      },
+      {
+        "title": "Computer Weekly: Mistral targets cyber defence and sovereign AI with ML4",
+        "url": "https://www.computerweekly.com/news/366654624/Mistral-targets-cyber-defence-and-sovereign-AI-with-ML4",
+        "primary": false
+      },
+      {
+        "title": "This is not Average: AI Frontier Daily, November 26, 2026",
+        "url": "https://kellyabbott1.substack.com/p/ai-frontier-daily-2026-11-26",
+        "primary": false
+      }
+    ],
+    "published_at": "2026-11-27T04:36:20+01:00",
+    "guid": "GwendalYviquel/signal-in-the-ai-fog#episode-2026-11-27",
+    "audio_url": "https://github.com/GwendalYviquel/signal-in-the-ai-fog/releases/download/episode-2026-11-27/episode-2026-11-27.mp3",
+    "audio_bytes": 5093907,
+    "duration_seconds": 318.3804081632653,
+    "chapters": [
+      {
+        "start": 0.0,
+        "title": "Opening"
+      },
+      {
+        "start": 18.9,
+        "title": "Story of the day: Shopping agents face Black Friday"
+      },
+      {
+        "start": 122.8,
+        "title": "Models and vendors: OpenAI"
+      },
+      {
+        "start": 166.6,
+        "title": "Sovereignty and Europe: Mistral"
+      },
+      {
+        "start": 206.2,
+        "title": "Platform: OpenAI"
+      },
+      {
+        "start": 251.2,
+        "title": "Number of the day"
+      },
+      {
+        "start": 267.7,
+        "title": "What to watch"
+      },
+      {
+        "start": 296.6,
+        "title": "Question for your team"
+      }
+    ]
   }
 ]
